@@ -6,6 +6,7 @@
 import Page from '../layouts/Page.astro';
 import Faq from '../components/Faq.astro';
 import CtaBand from '../components/CtaBand.astro';
+import ApplyButton from '../components/ApplyButton.astro';
 import { pages, pageBySlug } from '../data/pages.js';
 import { site } from '../data/site.js';
 
@@ -15,12 +16,6 @@ export function getStaticPaths() {
 }
 
 const { p } = Astro.props;
-// Pages that get an "Apply online" button, and the form it opens.
-const applyFor = {
-  'indian-visa-application-uk': '/apply/india-visa/', 'e-tourist-visa-india': '/apply/india-visa/',
-  'e-business-visa-india': '/apply/india-visa/', 'sri-lanka-visa-services': '/apply/sri-lanka-eta/',
-};
-const applyUrl = applyFor[p.slug];
 const hubFor = { uk: ['UK Visas', '/uk-visa-services/'], employer: ['Employers', '/hire-foreign-nationals-uk/'], worldwide: ['Worldwide Visas', '/worldwide-visas/'] };
 const hub = hubFor[p.group];
 const showCrumb = hub && hub[1] !== `/${p.slug}/`;
@@ -39,7 +34,7 @@ const howWeHelp = [
         <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a>{showCrumb && <> / <a href={hub[1]}>{hub[0]}</a></>}</nav>
         <h1>{p.h1}</h1>
         {p.intro && <p class="lead">{p.intro}</p>}
-        {applyUrl && <p style="margin-top:24px"><a class="btn btn-gold" href={applyUrl}>Apply online</a></p>}
+        <ApplyButton url={p.applyButton} />
       </div>
     </div>
 

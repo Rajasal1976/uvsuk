@@ -4,5 +4,6 @@
   "h1": "UK work visas",
   "intro": "Most people coming to work in the UK use the Skilled Worker visa. We also advise on other work routes, including religious workers, sportspeople, temporary work and the Youth Mobility Scheme. Call us to check which fits.",
   "faqs": [],
-  "govuk": "https://www.gov.uk/browse/visas-immigration/work-visas"
+  "govuk": "https://www.gov.uk/browse/visas-immigration/work-visas",
+  "applyButton": "none"
 }

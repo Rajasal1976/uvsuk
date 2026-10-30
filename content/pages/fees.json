@@ -8,5 +8,6 @@
     "[Add your fees here, for example: Consultation from £XX. Spouse visa application from £XXX. Indian eVisa service fee £XX.]"
   ],
   "faqs": [],
-  "govuk": ""
+  "govuk": "",
+  "applyButton": "none"
 }

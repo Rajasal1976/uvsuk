@@ -1,6 +1,7 @@
 ---
 import Page from '../layouts/Page.astro';
 import Faq from '../components/Faq.astro';
+import ApplyButton from '../components/ApplyButton.astro';
 // SEO title, description and FAQs for this page are edited in the admin (content/special/skilled-worker-visa-formally-tier-t2-general.json).
 import content from '../../content/special/skilled-worker-visa-formally-tier-t2-general.json';
 import SalaryChecker from '../components/SalaryChecker.astro';
@@ -14,7 +15,8 @@ const schemas = [];
 <div class="wrap">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/uk-visa-services/">UK Visas</a></nav>
 <h1>Skilled Worker visa</h1>
-<p class="lead">The Skilled Worker visa (formerly Tier 2 General) lets you work in the UK for an employer with a sponsor licence. We help with new applications, extensions and changing employer.</p></div></div>
+<p class="lead">The Skilled Worker visa (formerly Tier 2 General) lets you work in the UK for an employer with a sponsor licence. We help with new applications, extensions and changing employer.</p>
+<ApplyButton url={content.applyButton} /></div></div>
 <div class="wrap section page-body" style="padding-top:64px">
 <div class="content">
 <SalaryChecker />

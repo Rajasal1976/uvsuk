@@ -16,5 +16,6 @@
       "q": "Do I need to attend the visa centre?",
       "a": "Yes. Most applicants give fingerprints in person at a Chinese Visa Application Service Centre. We book the appointment and prepare everything you take with you."
     }
-  ]
+  ],
+  "applyButton": "/apply/china-visa/"
 }

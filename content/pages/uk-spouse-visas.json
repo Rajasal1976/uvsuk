@@ -13,5 +13,6 @@
       "a": "Missing or incorrect financial evidence. The Home Office is strict about which documents count and which dates they must cover, so we check this carefully before you apply."
     }
   ],
-  "govuk": "https://www.gov.uk/uk-family-visa"
+  "govuk": "https://www.gov.uk/uk-family-visa",
+  "applyButton": "none"
 }

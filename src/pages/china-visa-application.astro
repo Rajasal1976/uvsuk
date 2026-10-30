@@ -1,6 +1,7 @@
 ---
 import Page from '../layouts/Page.astro';
 import Faq from '../components/Faq.astro';
+import ApplyButton from '../components/ApplyButton.astro';
 // SEO title, description and FAQs for this page are edited in the admin (content/special/china-visa-application.json).
 import content from '../../content/special/china-visa-application.json';
 import '../styles/china-chooser.css';
@@ -15,7 +16,7 @@ const schemas = [];
 <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/worldwide-visas/">Worldwide Visas</a></nav>
 <h1>China visa from the UK</h1>
 <p class="lead">Not sure which China visa you need? Choose the purpose of your trip below and we will show you the right visa and what to prepare. We complete your application and book your appointment at the visa centre.</p>
-<p style="margin-top:24px"><a class="btn btn-gold" href="/apply/china-visa/">Apply online</a></p></div></div>
+<ApplyButton url={content.applyButton} /></div></div>
 <div class="wrap section page-body" style="padding-top:64px">
 <div class="content">
 <section class="vc"><style is:global>

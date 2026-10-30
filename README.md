@@ -15,6 +15,8 @@ Go to **https://www.uvsuk.co.uk/admin** (or uvsuk.netlify.app/admin) and log in 
 - **Pages with calculators**: FAQs and Google details for the ILR, Skilled Worker, China and China business pages.
 - **Homepage**: main heading, photos, reviews, FAQs.
 - **Business details**: phone, email, address, hours, review numbers. These update everywhere on the site.
+Each page also has an **Apply button** dropdown: choose which form the gold button under the introduction opens, or No button.
+
 Click **Publish**. The site rebuilds itself and the change is live in about a minute.
 
 The text lives in the `content/` folder as simple files; the editor's settings are in `public/admin/config.yml`.
@@ -43,7 +45,8 @@ The text lives in the `content/` folder as simple files; the editor's settings a
   This happens on the client's own device (the reader is in `/public/ocr`); nothing is sent until they press Send.
 - Submissions arrive in Netlify under Forms, with the documents attached, and by email if you set up
   Form notifications. Each one has a reference like UVS-CN-AB12CD.
-- To add a country, copy one of the forms in `src/data/applications.js` and add it to `applications`.
+- Each visa type has its own document checklist (`uploads` and `docsIntro` in `src/data/applications.js`). Files arrive named after the document, e.g. "KHAN - Invitation letter from the Chinese company or trade fair.pdf".
+- To add a country, copy one of the forms in `src/data/applications.js` and add it to `applications`, then add it to the Apply button options in `public/admin/config.yml`.
 - The questions follow the official forms. Check them against the current official forms from time to time.
 - Passport scans are sensitive personal data: download what you need, then delete submissions from Netlify
   regularly, and make sure your privacy policy covers online applications.

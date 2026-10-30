@@ -12,5 +12,6 @@
       "q": "Can my family come with me?",
       "a": "Your partner and children can usually apply as dependants. Some roles have restrictions, so we check this for your case."
     }
-  ]
+  ],
+  "applyButton": "none"
 }

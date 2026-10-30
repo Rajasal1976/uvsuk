@@ -42,6 +42,7 @@ collections:
     fields:
       - { name: h1, label: Page heading, widget: string, hint: 'The big heading at the top of the page.' }
       - { name: intro, label: Introduction, widget: text, required: false, hint: 'One or two sentences under the heading.' }
+      - { name: applyButton, label: Apply button, widget: select, default: none, options: [{ label: 'No button', value: 'none' }, { label: 'Apply online → China visa form', value: '/apply/china-visa/' }, { label: 'Apply online → India eVisa form', value: '/apply/india-visa/' }, { label: 'Apply online → Sri Lanka ETA form', value: '/apply/sri-lanka-eta/' }, { label: 'Apply now → contact / enquiry form', value: '/contact-us/' }], hint: 'A gold button under the introduction. Pick the form it should open.' }
       - name: eligibility
         label: '"Do you qualify?" points'
         label_singular: point
@@ -98,6 +99,7 @@ collections:
     files:
       - { name: ilr, label: Indefinite Leave to Remain (ILR), file: content/special/indefinite-leave-to-remain-ilr.json, fields: &specialFields [
           { name: name, label: Name in menus and lists, widget: string },
+          { name: applyButton, label: Apply button, widget: select, default: none, options: [{ label: 'No button', value: 'none' }, { label: 'Apply online → China visa form', value: '/apply/china-visa/' }, { label: 'Apply online → India eVisa form', value: '/apply/india-visa/' }, { label: 'Apply online → Sri Lanka ETA form', value: '/apply/sri-lanka-eta/' }, { label: 'Apply now → contact / enquiry form', value: '/contact-us/' }] },
           { name: faqHeading, label: FAQ heading, widget: string, default: Common questions },
           { name: faqs, label: FAQs, label_singular: FAQ, widget: list, required: false, summary: '{{fields.q}}', fields: [
             { name: q, label: Question, widget: string },

@@ -32,5 +32,6 @@
       "a": "A spouse visa is usually granted for an initial period, after which you apply to extend it. We explain the full timeline to settlement for your situation."
     }
   ],
-  "govuk": "https://www.gov.uk/uk-family-visa"
+  "govuk": "https://www.gov.uk/uk-family-visa",
+  "applyButton": "none"
 }

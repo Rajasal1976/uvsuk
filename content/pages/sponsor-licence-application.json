@@ -25,5 +25,6 @@
       "a": "Licence rules have changed and many licences no longer need routine renewal. We check the status of your licence and what applies to you."
     }
   ],
-  "govuk": "https://www.gov.uk/uk-visa-sponsorship-employers"
+  "govuk": "https://www.gov.uk/uk-visa-sponsorship-employers",
+  "applyButton": "none"
 }

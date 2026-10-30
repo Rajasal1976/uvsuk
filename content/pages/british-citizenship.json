@@ -21,5 +21,6 @@
       "a": "Children born in the UK, or children of British or settled parents, may be able to register as British. The rules depend on when and where they were born."
     }
   ],
-  "govuk": "https://www.gov.uk/becoming-a-british-citizen"
+  "govuk": "https://www.gov.uk/becoming-a-british-citizen",
+  "applyButton": "none"
 }

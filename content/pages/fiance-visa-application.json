@@ -21,5 +21,6 @@
       "a": "No. You cannot work on a fiancé visa. You can work once you switch to a spouse visa after the wedding."
     }
   ],
-  "govuk": "https://www.gov.uk/uk-family-visa"
+  "govuk": "https://www.gov.uk/uk-family-visa",
+  "applyButton": "none"
 }

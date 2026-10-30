@@ -25,5 +25,6 @@
       "a": "You may be able to switch to the Graduate visa after you finish your course."
     }
   ],
-  "govuk": "https://www.gov.uk/student-visa"
+  "govuk": "https://www.gov.uk/student-visa",
+  "applyButton": "none"
 }

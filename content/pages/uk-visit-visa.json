@@ -20,5 +20,6 @@
       "a": "It depends on nationality. Many nationalities need a visa; others need an Electronic Travel Authorisation (ETA). We check this first."
     }
   ],
-  "govuk": "https://www.gov.uk/standard-visitor"
+  "govuk": "https://www.gov.uk/standard-visitor",
+  "applyButton": "none"
 }

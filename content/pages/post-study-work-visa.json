@@ -19,5 +19,6 @@
       "a": "No. The Graduate visa does not need a sponsor or job offer. Many people later switch to a Skilled Worker visa."
     }
   ],
-  "govuk": "https://www.gov.uk/graduate-visa"
+  "govuk": "https://www.gov.uk/graduate-visa",
+  "applyButton": "none"
 }

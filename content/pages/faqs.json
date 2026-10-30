@@ -26,5 +26,6 @@
       "a": "No adviser can guarantee a decision. What we can do is make sure your application is complete, accurate and well evidenced."
     }
   ],
-  "govuk": ""
+  "govuk": "",
+  "applyButton": "none"
 }

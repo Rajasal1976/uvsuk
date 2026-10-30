@@ -1,0 +1,7 @@
+---
+// The "Apply" button under a page's introduction. Chosen per page in the editor
+// ("Apply button" dropdown). 'none' or empty = no button.
+const { url } = Astro.props;
+const label = url === '/contact-us/' ? 'Apply now' : 'Apply online';
+---
+{url && url !== 'none' && <p style="margin-top:24px"><a class="btn btn-gold" href={url}>{label}</a></p>}

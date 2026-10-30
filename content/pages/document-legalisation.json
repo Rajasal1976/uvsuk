@@ -9,5 +9,6 @@
     "Details of the country they will be used in"
   ],
   "faqs": [],
-  "govuk": ""
+  "govuk": "",
+  "applyButton": "none"
 }

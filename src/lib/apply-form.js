@@ -79,6 +79,12 @@ export function mountApplication(root, config, opts = {}) {
     return Array.isArray(c.is) ? c.is.includes(v) : v === c.is;
   };
   const visibleUploads = () => config.uploads.filter((u) => visible(u));
+  const PASSPORT_SLOT = { name: 'passport', label: 'Passport photo page' };
+  const slotInfo = (slot) => (slot === 'passport' ? PASSPORT_SLOT : visibleUploads().find((u) => u.name === slot));
+  // Only files for documents that still apply (e.g. if the client changed their visa type)
+  const SLOT_ORDER = ['passport', 'photo', 'doc1', 'doc2', 'doc3', 'doc4', 'doc5', 'doc6', 'doc7', 'doc8'];
+  const activeFiles = () => Object.entries(files).filter(([slot]) => slotInfo(slot)).sort(([a], [b]) => SLOT_ORDER.indexOf(a) - SLOT_ORDER.indexOf(b));
+  const safeName = (t) => t.replace(/[^\w\s().,-]/g, '').replace(/\s+/g, ' ').trim().slice(0, 80);
 
   // ---------- layout ----------
   root.innerHTML = '';
@@ -265,9 +271,11 @@ export function mountApplication(root, config, opts = {}) {
   function documentsStep() {
     const wrap = h('div', { class: 'ap-docs' });
     const total = h('p', { class: 'ap-total' });
+    const intro = config.docsIntro?.[answers.visaType];
+    if (intro) wrap.append(h('div', { class: 'ap-docs-intro' }, h('strong', {}, answers.visaType), h('p', {}, intro)));
     const slots = [{ name: 'passport', label: 'Passport photo page', required: true, hint: 'Added in step 1. You can replace it here.' }, ...visibleUploads()];
     const updateTotal = () => {
-      const sum = Object.values(files).reduce((a, f) => a + f.size, 0);
+      const sum = activeFiles().reduce((a, [, f]) => a + f.size, 0);
       total.textContent = `Total size: ${fmtSize(sum)} of ${fmtSize(MAX_TOTAL)}`;
       total.classList.toggle('over', sum > MAX_TOTAL);
     };
@@ -277,7 +285,7 @@ export function mountApplication(root, config, opts = {}) {
       const err = h('p', { class: 'ap-err', role: 'alert' });
       const input = h('input', { type: 'file', id, accept: 'image/*,application/pdf', class: 'ap-file-input' });
       const card = h('div', { class: 'ap-up', 'data-slot': u.name },
-        h('div', { class: 'ap-up-text' }, h('strong', {}, u.label, u.required ? null : h('span', { class: 'ap-optional' }, ' (optional)')), u.hint ? h('small', {}, u.hint) : null),
+        h('div', { class: 'ap-up-text' }, h('strong', {}, u.label, u.required || /optional/i.test(u.label) ? null : h('span', { class: 'ap-optional' }, ' (optional)')), u.hint ? h('small', {}, u.hint) : null),
         info, input, h('label', { for: id, class: 'btn btn-outline' }, 'Choose file'), err);
       const draw = () => {
         info.innerHTML = '';
@@ -352,13 +360,10 @@ export function mountApplication(root, config, opts = {}) {
         h('div', { class: 'ap-review-head' }, h('h3', {}, s.title), h('button', { type: 'button', class: 'ap-link', onclick: () => go(i) }, `Change`, h('span', { class: 'sr-only' }, ` ${s.title}`))),
         dl));
     });
-    const docs = h('ul', { class: 'ap-doclist' }, Object.entries(files).map(([slot, f]) => {
-      const u = slot === 'passport' ? { label: 'Passport photo page' } : config.uploads.find((x) => x.name === slot);
-      return h('li', {}, `${u?.label || slot}: ${f.name} (${fmtSize(f.size)})`);
-    }));
+    const docs = h('ul', { class: 'ap-doclist' }, activeFiles().map(([slot, f]) => h('li', {}, `${slotInfo(slot).label}: ${f.name} (${fmtSize(f.size)})`)));
     wrap.append(h('section', { class: 'ap-review-sec' },
       h('div', { class: 'ap-review-head' }, h('h3', {}, 'Documents'), h('button', { type: 'button', class: 'ap-link', onclick: () => go(steps.length - 2) }, 'Change', h('span', { class: 'sr-only' }, ' documents'))),
-      Object.keys(files).length ? docs : h('p', { class: 'ap-hint' }, 'No documents added.')));
+      activeFiles().length ? docs : h('p', { class: 'ap-hint' }, 'No documents added.')));
 
     const c1 = h('input', { type: 'checkbox', id: 'decl-true' });
     const c2 = h('input', { type: 'checkbox', id: 'decl-privacy' });
@@ -385,7 +390,7 @@ export function mountApplication(root, config, opts = {}) {
         const u = card.dataset.slot === 'passport' ? { required: true, label: 'Passport photo page' } : card._upload;
         if (u.required && !files[card.dataset.slot]) flag(card, `Add your ${u.label.toLowerCase()}`, card.querySelector('label.btn'));
       });
-      const sum = Object.values(files).reduce((a, f) => a + f.size, 0);
+      const sum = activeFiles().reduce((a, [, f]) => a + f.size, 0);
       if (sum > MAX_TOTAL) errors.push({ msg: `Your documents add up to ${fmtSize(sum)}. Please remove or shrink some so they total under ${fmtSize(MAX_TOTAL)}.`, el: null });
       return errors;
     }
@@ -494,10 +499,14 @@ export function mountApplication(root, config, opts = {}) {
     fd.append('visa_type', answers.visaType || '');
     fd.append('reference', ref);
     fd.append('subject', `${config.title}: ${name} (${ref})`);
-    fd.append('summary', [`${config.title}`, `Reference: ${ref}`, `Submitted: ${new Date().toLocaleString('en-GB')}`, ...summaryLines(), '', '== DOCUMENTS ==', ...Object.entries(files).map(([k, f]) => `${k}: ${f.name} (${fmtSize(f.size)})`)].join('\n'));
+    fd.append('summary', [`${config.title}`, `Reference: ${ref}`, `Submitted: ${new Date().toLocaleString('en-GB')}`, ...summaryLines(), '', '== DOCUMENTS ==', ...activeFiles().map(([k, f]) => `${slotInfo(k).label}: ${f.name} (${fmtSize(f.size)})`)].join('\n'));
     fd.append('answers_json', JSON.stringify(answers));
     fd.append('bot-field', '');
-    for (const [slot, f] of Object.entries(files)) fd.append(slot, f, f.name);
+    // Name each file after the document it is, e.g. "KHAN - Invitation letter from the Chinese company.pdf"
+    for (const [slot, f] of activeFiles()) {
+      const ext = (f.name.match(/\.\w+$/) || [''])[0];
+      fd.append(slot, f, `${safeName(answers.surname || 'Applicant')} - ${safeName(slotInfo(slot).label.replace(/\s*\((optional|if [^)]*)\)/gi, ''))}${ext}`);
+    }
     try {
       const res = await fetch('/', { method: 'POST', body: fd });
       if (!res.ok) throw new Error(String(res.status));

@@ -25,5 +25,6 @@
       "a": "Tell us at your consultation. A change of job, address or income can affect which evidence you need, and we will adjust your application to fit."
     }
   ],
-  "govuk": "https://www.gov.uk/uk-family-visa"
+  "govuk": "https://www.gov.uk/uk-family-visa",
+  "applyButton": "none"
 }

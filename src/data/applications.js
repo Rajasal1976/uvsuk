@@ -14,6 +14,10 @@
 const yesNo = (name, label, extra = {}) => ({ name, label, type: 'yesno', required: true, ...extra });
 const details = (name, onField, label = 'Please give details') => ({ name, label, type: 'textarea', required: true, showIf: { name: onField, is: 'Yes' } });
 
+// One upload slot that asks for a different document depending on the visa chosen.
+// map: { 'Visa option': { label, hint, required } }
+const byVisa = (name, map) => Object.entries(map).map(([visa, u]) => ({ name, ...u, showIf: { name: 'visaType', is: visa } }));
+
 // ---------- Shared steps ----------
 
 const passportFields = [
@@ -200,14 +204,60 @@ const china = {
       ],
     },
   ],
+  // What each visa needs. Shown at the top of the Documents step.
+  docsIntro: {
+    'Business (M visa)': 'For a business visa you’ll need an invitation letter from the Chinese company or trade fair, plus your travel bookings if you have them.',
+    'Tourism (L visa)': 'For a tourist visa you’ll need your return flights and hotel bookings for the whole trip.',
+    'Visiting family in China (Q2 / Q1 visa)': 'For a family visit you’ll need an invitation letter from your relative, a copy of their ID and proof of how you’re related.',
+    'Visiting a foreigner living in China (S visa)': 'You’ll need an invitation letter from the person you’re visiting, a copy of their passport and residence permit, and proof of how you’re related.',
+    'Work (Z visa)': 'For a work visa you’ll need the Work Permit Notification issued by the Chinese authorities.',
+    'Study (X visa)': 'For a student visa you’ll need your JW201 or JW202 form and your admission letter.',
+    'Transit (G visa)': 'For a transit visa you’ll need your onward ticket to a third country, and a visa for that country if it requires one.',
+    'Crew (C visa)': 'For a crew visa you’ll need a letter from your employer.',
+    'Journalism (J visa)': 'For a journalist visa you’ll need the visa notification letter and a letter from your media organisation.',
+  },
   uploads: [
     { name: 'photo', label: 'Passport-style photo', hint: 'Recent colour photo on a white background, no glasses, face fully visible.', required: true },
-    { name: 'doc1', label: 'Your UK visa, BRP or eVisa share code page', hint: 'Only if you’re not a British citizen.', required: true, showIf: { name: 'nationality', isNot: 'United Kingdom' } },
-    { name: 'doc2', label: 'Invitation letter', hint: 'From the company, family member or organisation in China.', required: true, showIf: { name: 'inviterName', filled: true } },
-    { name: 'doc3', label: 'Flight booking', hint: 'A reservation is fine; you don’t need to have paid yet.' },
-    { name: 'doc4', label: 'Hotel booking or address in China' },
-    { name: 'doc5', label: 'Copy of your previous Chinese visa', showIf: { name: 'hadChinaVisa', is: 'Yes' } },
-    { name: 'doc6', label: 'Any other supporting document (optional)' },
+    { name: 'doc1', label: 'Your UK visa, BRP or eVisa share code page', hint: 'Because you’re not a British citizen.', required: true, showIf: { name: 'nationality', isNot: 'United Kingdom' } },
+    ...byVisa('doc2', {
+      'Business (M visa)': { label: 'Invitation letter from the Chinese company or trade fair', hint: 'On their letterhead, with your trip dates and their contact details.', required: true },
+      'Visiting family in China (Q2 / Q1 visa)': { label: 'Invitation letter from your family member in China', hint: 'Signed by them, with your trip dates and their address.', required: true },
+      'Visiting a foreigner living in China (S visa)': { label: 'Invitation letter from the person you’re visiting', hint: 'Signed by them, with your trip dates and their address.', required: true },
+      'Work (Z visa)': { label: 'Work Permit Notification', hint: 'Issued by the Chinese authorities through your employer.', required: true },
+      'Study (X visa)': { label: 'JW201 or JW202 form', hint: 'Visa application form for study in China, from your school.', required: true },
+      'Crew (C visa)': { label: 'Letter from your employer', hint: 'Confirming your role and the journey.', required: true },
+      'Journalism (J visa)': { label: 'Journalist visa notification letter', hint: 'Issued by the Chinese foreign affairs office.', required: true },
+    }),
+    ...byVisa('doc3', {
+      'Business (M visa)': { label: 'Flight booking (optional)', hint: 'A reservation is fine; you don’t need to have paid yet.' },
+      'Tourism (L visa)': { label: 'Return flight booking', hint: 'A reservation is fine; you don’t need to have paid yet.', required: true },
+      'Visiting family in China (Q2 / Q1 visa)': { label: 'Flight booking (optional)' },
+      'Visiting a foreigner living in China (S visa)': { label: 'Flight booking (optional)' },
+      'Work (Z visa)': { label: 'Flight booking (optional)' },
+      'Study (X visa)': { label: 'Flight booking (optional)' },
+      'Transit (G visa)': { label: 'Onward flight ticket to a third country', hint: 'Showing you’re leaving China for another country.', required: true },
+      'Crew (C visa)': { label: 'Flight or voyage details (optional)' },
+      'Journalism (J visa)': { label: 'Flight booking (optional)' },
+    }),
+    ...byVisa('doc4', {
+      'Business (M visa)': { label: 'Hotel booking (optional)' },
+      'Tourism (L visa)': { label: 'Hotel bookings for your whole stay', hint: 'One document or several pages combined into a PDF.', required: true },
+      'Transit (G visa)': { label: 'Hotel booking, if you’re staying overnight (optional)' },
+    }),
+    ...byVisa('doc5', {
+      'Visiting family in China (Q2 / Q1 visa)': { label: 'Proof of relationship', hint: 'For example a birth certificate or marriage certificate.', required: true },
+      'Visiting a foreigner living in China (S visa)': { label: 'Proof of relationship', hint: 'For example a birth certificate or marriage certificate.', required: true },
+      'Work (Z visa)': { label: 'Invitation letter from your employer in China (if you have one)' },
+      'Study (X visa)': { label: 'Admission letter from your school or university', required: true },
+      'Journalism (J visa)': { label: 'Letter from your media organisation', required: true },
+    }),
+    { name: 'doc6', label: 'Copy of your previous Chinese visa', showIf: { name: 'hadChinaVisa', is: 'Yes' } },
+    ...byVisa('doc7', {
+      'Visiting family in China (Q2 / Q1 visa)': { label: 'Copy of your relative’s Chinese ID card', hint: 'Or their passport and Chinese residence permit if they’re not Chinese.', required: true },
+      'Visiting a foreigner living in China (S visa)': { label: 'Copy of their passport and Chinese residence permit', required: true },
+      'Transit (G visa)': { label: 'Visa for your onward destination (if it needs one)' },
+    }),
+    { name: 'doc8', label: 'Any other supporting document (optional)' },
   ],
 };
 
@@ -347,12 +397,32 @@ const india = {
       ],
     },
   ],
+  docsIntro: {
+    'e-Tourist visa (30 days)': 'For a tourist eVisa you only need your passport and photo. Flight and hotel bookings are helpful but optional.',
+    'e-Tourist visa (1 year)': 'For a tourist eVisa you only need your passport and photo. Flight and hotel bookings are helpful but optional.',
+    'e-Tourist visa (5 years)': 'For a tourist eVisa you only need your passport and photo. Flight and hotel bookings are helpful but optional.',
+    'e-Business visa': 'For a business eVisa you’ll need your business card and an invitation letter from the Indian company.',
+    'e-Medical visa': 'For a medical eVisa you’ll need a letter from the hospital in India.',
+    'e-Medical Attendant visa': 'For a medical attendant eVisa you’ll need a copy of the patient’s e-Medical visa and the hospital letter.',
+    'e-Conference visa': 'For a conference eVisa you’ll need the conference invitation and, if you have it, the event clearance.',
+  },
   uploads: [
     { name: 'photo', label: 'Passport-style photo', hint: 'Square colour photo, plain white background, face centred, no glasses.', required: true },
-    { name: 'doc1', label: 'Business card or invitation letter', hint: 'Needed for e-Business and e-Conference visas.', required: true, showIf: { name: 'visaType', is: ['e-Business visa', 'e-Conference visa'] } },
-    { name: 'doc2', label: 'Letter from the hospital in India', required: true, showIf: { name: 'visaType', is: ['e-Medical visa', 'e-Medical Attendant visa'] } },
-    { name: 'doc3', label: 'Your UK visa, BRP or eVisa share code page', hint: 'Only if you’re not a British citizen.', showIf: { name: 'nationality', isNot: 'United Kingdom' } },
-    { name: 'doc4', label: 'Any other supporting document (optional)' },
+    ...byVisa('doc1', {
+      'e-Business visa': { label: 'Your business card', hint: 'A photo or scan of the front.', required: true },
+      'e-Medical visa': { label: 'Letter from the hospital in India', hint: 'On the hospital’s letterhead, confirming your treatment.', required: true },
+      'e-Medical Attendant visa': { label: 'Copy of the patient’s e-Medical visa', required: true },
+      'e-Conference visa': { label: 'Conference invitation letter', required: true },
+    }),
+    ...byVisa('doc2', {
+      'e-Business visa': { label: 'Invitation letter from the Indian company', hint: 'On their letterhead, with their address and contact details.', required: true },
+      'e-Medical Attendant visa': { label: 'Letter from the hospital in India', required: true },
+      'e-Conference visa': { label: 'Event or political clearance (if you have it)', hint: 'Usually provided by the conference organiser.' },
+    }),
+    { name: 'doc3', label: 'Your UK visa, BRP or eVisa share code page', hint: 'Because you’re not a British citizen.', showIf: { name: 'nationality', isNot: 'United Kingdom' } },
+    { name: 'doc4', label: 'Flight booking (optional)' },
+    { name: 'doc5', label: 'Hotel booking (optional)' },
+    { name: 'doc8', label: 'Any other supporting document (optional)' },
   ],
 };
 
@@ -395,10 +465,23 @@ const sriLanka = {
     },
     contactStep(),
   ],
+  docsIntro: {
+    Tourism: 'For a tourist ETA no documents are required. Flight and hotel bookings are helpful but optional.',
+    Business: 'For a business ETA you’ll need an invitation letter from the company in Sri Lanka.',
+    Transit: 'For a transit ETA you’ll need your onward flight ticket.',
+  },
   uploads: [
-    { name: 'doc1', label: 'Flight booking (optional)' },
-    { name: 'doc2', label: 'Hotel booking (optional)' },
-    { name: 'doc3', label: 'Business invitation letter', required: true, showIf: { name: 'visaType', is: 'Business' } },
+    ...byVisa('doc1', {
+      Tourism: { label: 'Return flight booking (optional)' },
+      Business: { label: 'Return flight booking (optional)' },
+      Transit: { label: 'Onward flight ticket', hint: 'Showing your flight out of Sri Lanka.', required: true },
+    }),
+    ...byVisa('doc2', {
+      Tourism: { label: 'Hotel booking (optional)' },
+      Business: { label: 'Hotel booking (optional)' },
+    }),
+    { name: 'doc3', label: 'Invitation letter from the company in Sri Lanka', required: true, showIf: { name: 'visaType', is: 'Business' } },
+    { name: 'doc8', label: 'Any other supporting document (optional)' },
   ],
 };
 

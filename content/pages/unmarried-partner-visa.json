@@ -19,5 +19,6 @@
       "a": "Official letters addressed to you both at the same address, spread over the period, are strongest. We review what you have and tell you where the gaps are."
     }
   ],
-  "govuk": "https://www.gov.uk/uk-family-visa"
+  "govuk": "https://www.gov.uk/uk-family-visa",
+  "applyButton": "none"
 }
