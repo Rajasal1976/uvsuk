@@ -1,15 +1,15 @@
 {
-  "title": "UK Immigration Advice Manchester | Spouse, Skilled Worker & ILR",
-  "description": "IAA-regulated UK immigration advisers in Manchester. Spouse visas, Skilled Worker visas, sponsor licences, ILR and British citizenship. Call 0161 956 2003.",
-  "heroEyebrow": "IAA-REGULATED IMMIGRATION ADVICE SINCE 2008",
-  "heroHeading": "UK immigration advice in Manchester, from advisers who check every detail",
-  "heroIntro": "Spouse visas, Skilled Worker visas, sponsor licences, ILR and British citizenship. We assess your case, prepare your evidence and review every application before it goes to the Home Office.",
-  "heroPhoto": "",
-  "heroPhotoAlt": "Raj and Sunita with a client in our Manchester office",
-  "advisersPhoto": "",
   "advisersPhotoAlt": "Raj and Sunita, immigration advisers at Unique Visa Services",
   "advisersIntro": "Unique Visa Services is run by Raj and Sunita from our Manchester office. When you work with us, you deal with them directly, from first call to decision.",
+  "heroHeading": "UK immigration advice in Manchester, from advisers who check every detail",
+  "advisersPhoto": "",
+  "heroEyebrow": "IAA-REGULATED IMMIGRATION ADVICE SINCE 2008",
+  "heroPhotoAlt": "Raj and Sunita with a client in our Manchester office",
+  "heroIntro": "Spouse visas, Skilled Worker visas, sponsor licences, ILR and British citizenship. We assess your case, prepare your evidence and review every application before it goes to the Home Office.",
   "consultationFrom": "[£XX]",
+  "iaaLogo": "/images/uploads/iaa-logo.jpg",
+  "title": "UK Immigration Advice Manchester | Spouse, Skilled Worker & ILR",
+  "heroPhoto": "",
   "reviews": [
     {
       "quote": "Sunita guided us through every single step, with clear explanations on every call and email. Their response rate is exceptionally high.",
@@ -24,6 +24,7 @@
       "source": "Google review · China visa"
     }
   ],
+  "description": "IAA-regulated UK immigration advisers in Manchester. Spouse visas, Skilled Worker visas, sponsor licences, ILR and British citizenship. Call 0161 956 2003.",
   "faqs": [
     {
       "q": "Do I need an adviser, or can I apply myself?",
