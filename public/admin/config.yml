@@ -127,6 +127,7 @@ collections:
           - { name: advisersPhoto, label: Advisers photo, widget: image, required: false, choose_url: false, hint: 'About 1000 pixels wide. JPG under 300 KB.' }
           - { name: advisersPhotoAlt, label: Advisers photo description, widget: string }
           - { name: advisersIntro, label: '"Meet your advisers" text', widget: text }
+          - { name: iaaLogo, label: IAA logo, widget: image, required: false, choose_url: false, hint: 'The official logo file the Immigration Advice Authority gave you, as PNG or SVG. Shown next to your registration details.' }
           - { name: consultationFrom, label: Consultation price, widget: string, hint: 'Shown as "Consultations from …", e.g. £50.' }
           - name: reviews
             label: Client reviews
