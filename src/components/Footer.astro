@@ -1,0 +1,18 @@
+---
+import { site } from '../data/site.js';
+const year = new Date().getFullYear();
+---
+<footer class="footer" id="contact">
+  <div class="wrap">
+    <div class="footer-cols">
+      <div><span class="footer-brand">{site.legalName}</span><span>UK immigration and visa specialists in Manchester since {site.since}.</span></div>
+      <div><span class="footer-title">Visit us</span><span>{site.address.line1}<br />{site.address.city} {site.address.postcode}</span><span>{site.hours}</span></div>
+      <div><span class="footer-title">Contact</span><a href={`tel:${site.phoneIntl}`}>{site.phone}</a><a href={`mailto:${site.email}`}>{site.email}</a></div>
+      <div><span class="footer-title">Company</span><a href="/about-us/">About us</a><a href="/fees/">Fees</a><a href="/faqs/">FAQs</a><a href="/complaints/">Complaints procedure</a><a href="/privacy-policy/">Privacy policy</a><a href="/terms/">Terms of use</a></div>
+    </div>
+    <div class="footer-legal">
+      <span>{site.legalName} is regulated by the Immigration Advice Authority, ref {site.iaaRef}. <a href={site.iaaFinder}>Check our registration</a>. We are a private advisory service and are not affiliated with the Home Office or any government. You can apply directly through official government websites. Our fees are charged in addition to government application fees. <a href="/disclaimer/">Disclaimer</a>.</span>
+      <span>© {year} {site.legalName}. Company no. {site.companyNumber}.</span>
+    </div>
+  </div>
+</footer>

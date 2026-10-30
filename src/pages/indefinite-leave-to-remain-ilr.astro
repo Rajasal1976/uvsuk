@@ -1,0 +1,67 @@
+---
+import Page from '../layouts/Page.astro';
+import Faq from '../components/Faq.astro';
+// SEO title, description and FAQs for this page are edited in the admin (content/special/indefinite-leave-to-remain-ilr.json).
+import content from '../../content/special/indefinite-leave-to-remain-ilr.json';
+import AbsenceCalculator from '../components/AbsenceCalculator.astro';
+const title = content.title;
+const description = content.description;
+const schemas = [];
+---
+<Page title={title} description={description} schemas={schemas}>
+<main>
+<div class="page-head">
+<div class="wrap">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/uk-visa-services/">UK Visas</a></nav>
+<h1>Indefinite Leave to Remain (ILR)</h1>
+<p class="lead">ILR means you can live, work and study in the UK without time limits. Most people qualify after a set period on a spouse, Skilled Worker or other route. Settlement rules are changing, so we check exactly where you stand before you apply.</p></div></div>
+<div class="wrap section page-body" style="padding-top:64px">
+<div class="content">
+<AbsenceCalculator />
+
+<section>
+<h2>Do you qualify?</h2>
+<ul>
+<li>You have completed the qualifying period on your visa route</li>
+<li>You meet the continuous residence rules, including limits on time abroad</li>
+<li>You have passed the Life in the UK test</li>
+<li>You meet the English language requirement</li></ul></section>
+<section>
+<h2>Documents you&#x27;ll usually need</h2>
+<ul>
+<li>Passports covering the whole qualifying period</li>
+<li>Life in the UK test pass reference</li>
+<li>English language evidence</li>
+<li>Evidence relevant to your route, such as payslips or relationship evidence</li>
+<li>A record of all trips abroad</li></ul>
+<p class="soft" style="font-size:15px">We give you a full checklist for your circumstances at your consultation.</p></section>
+<section>
+<h2>How we help</h2>
+<ul>
+<li>Check your eligibility and confirm the right route at your consultation</li>
+<li>Give you a personalised document checklist</li>
+<li>Prepare and complete your application forms</li>
+<li>Review all evidence against the current rules before submission</li>
+<li>Keep you updated until you have a decision</li></ul></section>
+<section id="fees">
+<h2>Fees and timescales</h2>
+<p>Our fee is agreed before we start. <a href="/fees/">See our fees</a>. Government fees are paid separately, and are listed on <a href="https://www.gov.uk/settle-in-the-uk">GOV.UK</a>.</p></section>
+
+<Faq items={content.faqs} title={content.faqHeading} />
+
+<section>
+<h2>Related services</h2>
+<ul>
+<li><a href="/british-citizenship/">British citizenship</a></li></ul></section></div>
+<aside class="aside">
+<div class="panel">
+<h2>Talk to an adviser</h2>
+<p class="soft" style="font-size:16px">Book a consultation and we&#x27;ll confirm your options, what you&#x27;ll need and our fee.</p><a class="btn btn-primary" href="/contact-us/">Book a consultation</a><a href="tel:+441619562003" class="btn btn-outline">Call 0161 956 2003</a>
+<p style="font-size:14px;color:var(--ink-mute)">IAA-regulated · Ref F200700144</p></div></aside></div>
+<section class="wrap section">
+<div class="cta-band">
+<div class="stack" style="flex:1 1 460px;min-width:0;gap:10px">
+<h2>Not sure which visa you need?</h2>
+<p>Book a consultation and we&#x27;ll tell you your options, what you&#x27;ll need and what it will cost.</p></div>
+<div class="btn-row"><a class="btn btn-gold" href="/contact-us/">Book a consultation</a><a href="tel:+441619562003" class="btn btn-ghost-light">0161 956 2003</a></div></div></section></main>
+</Page>

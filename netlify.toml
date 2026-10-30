@@ -1,0 +1,8 @@
+# Netlify settings. Redirects live in src/data/redirects.mjs and are written to
+# public/_redirects automatically on every build.
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"

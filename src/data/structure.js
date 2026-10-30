@@ -1,0 +1,276 @@
+// Site structure: which pages exist, their type, menu group and links between them.
+// Page TEXT lives in src/content (edited in the admin at /admin). Changing this file is a code change.
+export const structure = [
+  {
+    "slug": "uk-visa-services",
+    "type": "hub",
+    "group": "uk",
+    "children": [
+      "uk-spouse-visas",
+      "work-visa-uk",
+      "student-visa-uk",
+      "uk-visit-visa",
+      "indefinite-leave-to-remain-ilr",
+      "british-citizenship",
+      "sponsor-licence-application"
+    ]
+  },
+  {
+    "slug": "uk-spouse-visas",
+    "type": "hub",
+    "group": "uk",
+    "children": [
+      "uk-spouse-visa-application",
+      "uk-spouse-visa-extension",
+      "fiance-visa-application",
+      "unmarried-partner-visa"
+    ]
+  },
+  {
+    "slug": "uk-spouse-visa-application",
+    "type": "service",
+    "group": "uk",
+    "related": [
+      "uk-spouse-visa-extension",
+      "indefinite-leave-to-remain-ilr"
+    ]
+  },
+  {
+    "slug": "uk-spouse-visa-extension",
+    "type": "service",
+    "group": "uk",
+    "related": [
+      "uk-spouse-visa-application",
+      "indefinite-leave-to-remain-ilr"
+    ]
+  },
+  {
+    "slug": "fiance-visa-application",
+    "type": "service",
+    "group": "uk",
+    "related": [
+      "uk-spouse-visa-application"
+    ]
+  },
+  {
+    "slug": "unmarried-partner-visa",
+    "type": "service",
+    "group": "uk",
+    "related": [
+      "uk-spouse-visa-application"
+    ]
+  },
+  {
+    "slug": "work-visa-uk",
+    "type": "hub",
+    "group": "uk",
+    "children": [
+      "skilled-worker-visa-formally-tier-t2-general",
+      "post-study-work-visa",
+      "sponsor-licence-application"
+    ]
+  },
+  {
+    "slug": "skilled-worker-visa-formally-tier-t2-general",
+    "type": "service",
+    "group": "uk",
+    "related": [
+      "sponsor-licence-application",
+      "indefinite-leave-to-remain-ilr"
+    ]
+  },
+  {
+    "slug": "student-visa-uk",
+    "type": "service",
+    "group": "uk",
+    "related": [
+      "post-study-work-visa"
+    ]
+  },
+  {
+    "slug": "post-study-work-visa",
+    "type": "service",
+    "group": "uk",
+    "related": [
+      "skilled-worker-visa-formally-tier-t2-general",
+      "student-visa-uk"
+    ]
+  },
+  {
+    "slug": "indefinite-leave-to-remain-ilr",
+    "type": "service",
+    "group": "uk",
+    "related": [
+      "british-citizenship"
+    ]
+  },
+  {
+    "slug": "british-citizenship",
+    "type": "service",
+    "group": "uk",
+    "related": [
+      "indefinite-leave-to-remain-ilr"
+    ]
+  },
+  {
+    "slug": "uk-visit-visa",
+    "type": "service",
+    "group": "uk"
+  },
+  {
+    "slug": "hire-foreign-nationals-uk",
+    "type": "hub",
+    "group": "employer",
+    "children": [
+      "sponsor-licence-application",
+      "skilled-worker-visa-formally-tier-t2-general"
+    ]
+  },
+  {
+    "slug": "sponsor-licence-application",
+    "type": "service",
+    "group": "employer",
+    "related": [
+      "skilled-worker-visa-formally-tier-t2-general"
+    ]
+  },
+  {
+    "slug": "worldwide-visas",
+    "type": "hub",
+    "group": "worldwide",
+    "children": [
+      "indian-visa-application-uk",
+      "china-visa-application",
+      "schengen-visa-application",
+      "usa-visa-services",
+      "saudi-arabia-visa-uk",
+      "ghana-visa-services",
+      "russian-visa-services-from-uk",
+      "sri-lanka-visa-services",
+      "document-legalisation",
+      "indian-passport-services",
+      "second-uk-passport"
+    ]
+  },
+  {
+    "slug": "indian-visa-application-uk",
+    "type": "hub",
+    "group": "worldwide",
+    "children": [
+      "e-tourist-visa-india",
+      "e-business-visa-india",
+      "employment-visa-india"
+    ]
+  },
+  {
+    "slug": "e-tourist-visa-india",
+    "type": "service",
+    "group": "worldwide"
+  },
+  {
+    "slug": "e-business-visa-india",
+    "type": "service",
+    "group": "worldwide"
+  },
+  {
+    "slug": "employment-visa-india",
+    "type": "service",
+    "group": "worldwide"
+  },
+  {
+    "slug": "china-visa-application",
+    "type": "service",
+    "group": "worldwide",
+    "related": [
+      "china-work-visa-for-uk-citizens"
+    ]
+  },
+  {
+    "slug": "china-work-visa-for-uk-citizens",
+    "type": "service",
+    "group": "worldwide",
+    "related": [
+      "china-visa-application"
+    ]
+  },
+  {
+    "slug": "schengen-visa-application",
+    "type": "service",
+    "group": "worldwide"
+  },
+  {
+    "slug": "usa-visa-services",
+    "type": "service",
+    "group": "worldwide"
+  },
+  {
+    "slug": "saudi-arabia-visa-uk",
+    "type": "service",
+    "group": "worldwide"
+  },
+  {
+    "slug": "ghana-visa-services",
+    "type": "service",
+    "group": "worldwide"
+  },
+  {
+    "slug": "russian-visa-services-from-uk",
+    "type": "service",
+    "group": "worldwide"
+  },
+  {
+    "slug": "sri-lanka-visa-services",
+    "type": "service",
+    "group": "worldwide"
+  },
+  {
+    "slug": "document-legalisation",
+    "type": "service",
+    "group": "worldwide"
+  },
+  {
+    "slug": "indian-passport-services",
+    "type": "service",
+    "group": "worldwide"
+  },
+  {
+    "slug": "second-uk-passport",
+    "type": "service",
+    "group": "worldwide"
+  },
+  {
+    "slug": "about-us",
+    "type": "info",
+    "group": "company"
+  },
+  {
+    "slug": "faqs",
+    "type": "info",
+    "group": "company"
+  },
+  {
+    "slug": "fees",
+    "type": "info",
+    "group": "company"
+  },
+  {
+    "slug": "complaints",
+    "type": "info",
+    "group": "company"
+  },
+  {
+    "slug": "privacy-policy",
+    "type": "info",
+    "group": "company"
+  },
+  {
+    "slug": "terms",
+    "type": "info",
+    "group": "company"
+  },
+  {
+    "slug": "disclaimer",
+    "type": "info",
+    "group": "company"
+  }
+];

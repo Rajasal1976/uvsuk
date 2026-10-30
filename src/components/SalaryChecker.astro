@@ -1,0 +1,104 @@
+---
+// Skilled Worker salary checker. Same rules and wording as the original design,
+// rewritten in plain JavaScript. Thresholds are in RULES below: update them when the rules change.
+const options = [
+  { id: 'A', label: 'Standard', hint: 'Most applicants' },
+  { id: 'E', label: 'New entrant', hint: 'Under 26, a recent UK graduate, switching from a Student or Graduate visa, or in professional training' },
+  { id: 'B', label: 'Relevant PhD (non-STEM)', hint: 'PhD relevant to the job' },
+  { id: 'C', label: 'Relevant PhD (STEM)', hint: 'Science, technology, engineering or maths PhD relevant to the job' },
+  { id: 'D', label: 'Immigration Salary List job', hint: 'Your job is on the Immigration Salary List' },
+];
+---
+<section class="tool" aria-labelledby="salary-title" id="salary-tool">
+  <div class="tool-head">
+    <span class="tool-badge">Free tool</span>
+    <h2 id="salary-title">Skilled Worker salary checker</h2>
+    <p class="soft">Check whether a job offer meets the salary rules for a new Skilled Worker visa application.</p>
+  </div>
+  <div class="tool-body">
+    <fieldset class="tool-field">
+      <legend>Which applies to you?</legend>
+      <div class="tool-options">
+        {options.map((o, i) => (
+          <label class={`tool-option${i === 0 ? ' on' : ''}`}><input type="radio" name="sw-option" value={o.id} checked={i === 0} /><span><strong>{o.label}</strong><small>{o.hint}</small></span></label>
+        ))}
+      </div>
+    </fieldset>
+    <div class="tool-inputs">
+      <label class="tool-field"><span>Guaranteed basic salary (per year)</span><span class="tool-money"><span aria-hidden="true">£</span><input inputmode="decimal" placeholder="42,000" data-salary /></span><small>Don't include bonuses, overtime or allowances.</small></label>
+      <label class="tool-field"><span>Hours per week</span><input inputmode="decimal" value="37.5" data-hours /><small>Hours over 48 a week don't count.</small></label>
+      <label class="tool-field"><span>Going rate for your job (optional)</span><span class="tool-money"><span aria-hidden="true">£</span><input inputmode="decimal" placeholder="e.g. 49,400" data-rate /></span><small>Find it by your occupation code on <a href="https://www.gov.uk/skilled-worker-visa/your-job">GOV.UK</a>.</small></label>
+    </div>
+    <div class="tool-result" aria-live="polite" data-result><p class="soft">Enter a salary and hours to see your result.</p></div>
+    <p class="tool-small">A guide only, based on the rules for new applications from 22 July 2025. Extensions for people first sponsored before then, Health and Care roles and Temporary Shortage List jobs have different thresholds. <a href="/contact-us/">Ask us to check your offer</a>.</p>
+  </div>
+</section>
+
+<script>
+  const RULES = {
+    hourlyFloor: 17.13,
+    standardHours: 37.5,
+    maxHours: 48,
+    options: {
+      A: { threshold: 41700, pct: 1 },
+      E: { threshold: 33400, pct: 0.7 },
+      B: { threshold: 37500, pct: 0.9 },
+      C: { threshold: 33400, pct: 0.8 },
+      D: { threshold: 33400, pct: 1 },
+    } as Record<string, { threshold: number; pct: number }>,
+  };
+  const pounds = (n: number) => '£' + Math.ceil(n).toLocaleString('en-GB');
+  const pence = (n: number) => '£' + n.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  const num = (v: string) => parseFloat(v.replace(/[£,\s]/g, ''));
+
+  const root = document.getElementById('salary-tool')!;
+  const salaryIn = root.querySelector<HTMLInputElement>('[data-salary]')!;
+  const hoursIn = root.querySelector<HTMLInputElement>('[data-hours]')!;
+  const rateIn = root.querySelector<HTMLInputElement>('[data-rate]')!;
+  const result = root.querySelector<HTMLElement>('[data-result]')!;
+  let option = 'A';
+
+  function check() {
+    const opt = RULES.options[option];
+    const salary = num(salaryIn.value), hours = parseFloat(hoursIn.value), rate = num(rateIn.value);
+    if (!(salary > 0 && hours > 0)) {
+      result.innerHTML = '<p class="soft">Enter a salary and hours to see your result.</p>';
+      return;
+    }
+    const counted = Math.min(hours, RULES.maxHours);
+    const countedSalary = hours > RULES.maxHours ? (salary * RULES.maxHours) / hours : salary;
+    const hourly = countedSalary / (counted * 52);
+    const goingRate = rate > 0 ? rate * opt.pct * (counted / RULES.standardHours) : null;
+    const hourlyNeed = RULES.hourlyFloor * counted * 52;
+    const checks = [
+      { label: `General threshold (${pounds(opt.threshold)})`, ok: countedSalary >= opt.threshold, need: opt.threshold },
+      goingRate !== null
+        ? { label: `${Math.round(opt.pct * 100)}% of the going rate, adjusted for your hours (${pounds(goingRate)})`, ok: countedSalary >= goingRate, need: goingRate }
+        : { label: 'Going rate for your job', ok: null, need: 0 },
+      { label: `Minimum hourly rate (${pence(RULES.hourlyFloor)} per hour)`, ok: hourly >= RULES.hourlyFloor, need: hourlyNeed, extra: `Your rate: ${pence(hourly)} per hour` },
+    ];
+    const minimum = Math.max(...checks.filter((c) => c.need).map((c) => c.need));
+    const allOk = checks.every((c) => c.ok !== false);
+    const partial = goingRate === null;
+    const verdict = allOk
+      ? partial ? 'Meets the general salary rules. Add the going rate to complete the check.' : 'This salary appears to meet the Skilled Worker salary rules.'
+      : `This salary appears too low. You need at least ${pounds(minimum)} a year.`;
+
+    result.innerHTML = `
+      <p class="tool-verdict ${allOk ? (partial ? 'warn' : 'ok') : 'bad'}">${verdict}</p>
+      <ul class="tool-checks">${checks.map((c) => `
+        <li class="${c.ok === null ? 'na' : c.ok ? 'ok' : 'bad'}">
+          <span class="tool-icon" aria-hidden="true">${c.ok === null ? '–' : c.ok ? '✓' : '✕'}</span>
+          <span>${c.label}${c.extra ? `<small>${c.extra}</small>` : ''}</span>
+          <span class="sr-only">${c.ok === null ? 'not checked' : c.ok ? 'met' : 'not met'}</span>
+        </li>`).join('')}</ul>
+      ${hours > RULES.maxHours ? `<p class="tool-small">Only the first 48 hours count, so we've used ${pounds(countedSalary)} of your salary.</p>` : ''}`;
+  }
+
+  root.querySelectorAll<HTMLInputElement>('input[name="sw-option"]').forEach((r) => r.addEventListener('change', () => {
+    option = r.value;
+    root.querySelectorAll('.tool-option').forEach((l) => l.classList.toggle('on', l.contains(r)));
+    check();
+  }));
+  [salaryIn, hoursIn, rateIn].forEach((i) => i.addEventListener('input', check));
+</script>

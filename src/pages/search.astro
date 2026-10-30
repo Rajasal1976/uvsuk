@@ -1,0 +1,51 @@
+---
+import Page from '../layouts/Page.astro';
+import { pages } from '../data/pages.js';
+const all = [
+  ...pages.map((p) => ({ url: `/${p.slug}/`, title: p.h1, description: p.description, text: `${p.h1} ${p.title} ${p.description} ${p.intro ?? ''}` })),
+  // Pages with their own file that aren't in pages.js:
+  { url: '/china-business-visa/', title: 'China business visa (M visa)', description: 'China business visa help for UK residents: meetings, trade fairs and supplier visits.', text: 'china business visa m visa trade fair supplier meetings' },
+  { url: '/apply/', title: 'Apply online', description: 'Online application forms for China visas, Indian eVisas and Sri Lanka ETAs.', text: 'apply online application form china india evisa sri lanka eta' },
+  { url: '/contact-us/', title: 'Contact us', description: 'Call, email or visit us to book a consultation.', text: 'contact book consultation phone email address' },
+];
+const index = all.map((p) => ({ url: p.url, title: p.title, description: p.description, text: p.text.toLowerCase() }));
+---
+<Page title="Search | Unique Visa Services" description="Search our visa and immigration services." noindex>
+  <main>
+    <div class="page-head">
+      <div class="wrap">
+        <h1>Search</h1>
+        <p class="lead" id="search-summary">Search our visas and services.</p>
+      </div>
+    </div>
+    <div class="wrap section" style="padding-top:48px">
+      <ul class="results" id="results" data-index={JSON.stringify(index)}></ul>
+      <p id="no-results" hidden>No pages matched. Try another word, or <a href="/contact-us/">ask us directly</a>.</p>
+    </div>
+  </main>
+</Page>
+
+<style>
+  .results { list-style: none; padding: 0; margin: 0; max-width: 760px; }
+  .results :global(li) { border-bottom: 1px solid var(--line); }
+  .results :global(a) { display: block; padding: 18px 0; text-decoration: none; font-size: 20px; font-weight: 600; }
+  .results :global(small) { display: block; color: var(--ink-mute); font-weight: 400; font-size: 15px; }
+</style>
+
+<script>
+  const list = document.getElementById('results')!;
+  const index = JSON.parse(list.dataset.index || '[]');
+  const q = (new URLSearchParams(location.search).get('q') || '').trim();
+  const input = document.getElementById('site-search') as HTMLInputElement | null;
+  if (input) input.value = q;
+  const words = q.toLowerCase().split(/\s+/).filter((w) => w && !['visa', 'visas', 'uk', 'the', 'a', 'for'].includes(w));
+  const hits = q ? index
+    .map((p: any) => ({ p, score: words.filter((w) => p.text.includes(w)).length }))
+    .filter((h: any) => h.score > 0 || (!words.length && h.p.text.includes(q.toLowerCase())))
+    .sort((a: any, b: any) => b.score - a.score)
+    .map((h: any) => h.p) : [];
+  const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' } as any)[c]);
+  document.getElementById('search-summary')!.textContent = q ? `Results for “${q}”` : 'Search our visas and services.';
+  list.innerHTML = hits.map((p: any) => `<li><a href="${p.url}">${esc(p.title)}<small>${esc(p.description)}</small></a></li>`).join('');
+  document.getElementById('no-results')!.hidden = !q || hits.length > 0;
+</script>

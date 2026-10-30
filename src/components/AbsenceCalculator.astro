@@ -1,0 +1,157 @@
+---
+// Absence calculator (ILR and citizenship). Same rules and wording as the original design,
+// rewritten in plain JavaScript so the page doesn't need React.
+---
+<section class="tool" aria-labelledby="absence-title" id="absence-tool">
+  <div class="tool-head">
+    <span class="tool-badge">Free tool</span>
+    <h2 id="absence-title">Absence calculator</h2>
+    <p class="soft">Add your trips abroad to check them against the limits on time outside the UK.</p>
+  </div>
+  <div class="tool-body">
+    <fieldset class="tool-field">
+      <legend>What are you applying for?</legend>
+      <div class="tool-options">
+        <label class="tool-option on"><input type="radio" name="abs-mode" value="ilr" checked /><span><strong>Indefinite Leave to Remain</strong><small>Most 5-year routes: no more than 180 days outside the UK in any 12 months</small></span></label>
+        <label class="tool-option"><input type="radio" name="abs-mode" value="citizen" /><span><strong>British citizenship</strong><small>No more than 450 days in the last 5 years, and 90 days in the last 12 months</small></span></label>
+        <label class="tool-option"><input type="radio" name="abs-mode" value="spouse" /><span><strong>Citizenship (married to a British citizen)</strong><small>No more than 270 days in the last 3 years, and 90 days in the last 12 months</small></span></label>
+      </div>
+    </fieldset>
+    <div class="tool-inputs">
+      <label class="tool-field" data-start-field><span>Date your qualifying visa started</span><input type="date" data-start /></label>
+      <label class="tool-field"><span>Date you plan to apply</span><input type="date" data-apply /></label>
+    </div>
+    <div class="tool-field">
+      <span>Your trips outside the UK</span>
+      <div class="trip-list" data-trips></div>
+      <button type="button" class="btn btn-outline" style="align-self:flex-start" data-add>Add another trip</button>
+      <small>The days you leave and return don't count as days outside the UK.</small>
+      <small class="tool-err" data-err hidden>Check your dates: a return date is before its departure date.</small>
+    </div>
+    <div class="tool-result" aria-live="polite" data-result></div>
+    <p class="tool-small">A guide only. Some absences, for example for serious illness or compelling reasons, may be treated differently, and the Home Office can use discretion for citizenship. Settlement rules are being reformed, so <a href="/contact-us/">check with us</a> before you apply.</p>
+  </div>
+</section>
+
+<script>
+  const MODES: Record<string, { years?: number; total?: number; lastYear?: number }> = {
+    ilr: {},
+    citizen: { years: 5, total: 450, lastYear: 90 },
+    spouse: { years: 3, total: 270, lastYear: 90 },
+  };
+  const DAY = 864e5;
+  const toDay = (v: string) => (v ? Math.floor(Date.UTC(+v.slice(0, 4), +v.slice(5, 7) - 1, +v.slice(8, 10)) / DAY) : null);
+  const fmt = (d: number) => new Date(d * DAY).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+  const yearsBefore = (d: number, n: number) => { const x = new Date(d * DAY); x.setUTCFullYear(x.getUTCFullYear() - n); return Math.floor(x.getTime() / DAY); };
+  const tripDays = (t: { out: string; back: string }) => { const a = toDay(t.out), b = toDay(t.back); return a !== null && b !== null && b > a ? b - a - 1 : 0; };
+
+  const root = document.getElementById('absence-tool')!;
+  const startField = root.querySelector<HTMLElement>('[data-start-field]')!;
+  const startInput = root.querySelector<HTMLInputElement>('[data-start]')!;
+  const applyInput = root.querySelector<HTMLInputElement>('[data-apply]')!;
+  const tripList = root.querySelector<HTMLElement>('[data-trips]')!;
+  const result = root.querySelector<HTMLElement>('[data-result]')!;
+  const err = root.querySelector<HTMLElement>('[data-err]')!;
+
+  let mode = 'ilr';
+  let nextId = 3;
+  let trips = [{ id: 1, out: '', back: '' }, { id: 2, out: '', back: '' }];
+  applyInput.value = new Date().toISOString().slice(0, 10);
+
+  function renderTrips() {
+    tripList.innerHTML = trips.map((t, i) => `
+      <div class="trip" data-id="${t.id}">
+        <span class="trip-n">${i + 1}</span>
+        <label><small>Left the UK</small><input type="date" data-k="out" value="${t.out}"></label>
+        <label><small>Returned</small><input type="date" data-k="back" value="${t.back}"></label>
+        <span class="trip-days">${tripDays(t) ? tripDays(t) + ' days' : '–'}</span>
+        <button type="button" class="trip-remove" aria-label="Remove trip ${i + 1}">✕</button>
+      </div>`).join('');
+  }
+
+  function calculate() {
+    // update per-trip day counts
+    tripList.querySelectorAll<HTMLElement>('.trip').forEach((row) => {
+      const t = trips.find((x) => x.id === +row.dataset.id!)!;
+      row.querySelector('.trip-days')!.textContent = tripDays(t) ? tripDays(t) + ' days' : '–';
+    });
+    err.hidden = !trips.some((t) => t.out && t.back && toDay(t.back)! <= toDay(t.out)!);
+
+    const days = new Set<number>();
+    trips.forEach((t) => { const a = toDay(t.out), b = toDay(t.back); if (a !== null && b !== null && b > a) for (let d = a + 1; d < b; d++) days.add(d); });
+    const apply = toDay(applyInput.value);
+    let res: { ok: boolean; rows: any[] } | null = null;
+
+    if (apply !== null && days.size > 0) {
+      if (mode === 'ilr') {
+        const start = toDay(startInput.value);
+        if (start !== null && start < apply) {
+          let worst = 0, worstDay = start, run = 0, total = 0;
+          for (let d = start; d <= apply; d++) {
+            if (days.has(d)) run++;
+            if (d - 365 >= start && days.has(d - 365)) run--;
+            if (run > worst) { worst = run; worstDay = d; }
+          }
+          days.forEach((d) => { if (d >= start && d <= apply) total++; });
+          const longest = Math.max(0, ...trips.map(tripDays));
+          res = { ok: worst <= 180, rows: [
+            { label: 'Most days outside the UK in any 12 months', value: worst, limit: 180, ok: worst <= 180, note: worst > 0 ? `Highest in the 12 months up to ${fmt(worstDay)}` : null },
+            { label: 'Total days outside the UK in this period', value: total, limit: null, ok: null },
+            { label: 'Longest single trip', value: longest, limit: 180, ok: longest <= 180 },
+          ] };
+        }
+      } else {
+        const m = MODES[mode];
+        const from = yearsBefore(apply, m.years!), lastYearFrom = yearsBefore(apply, 1);
+        let total = 0, recent = 0;
+        days.forEach((d) => { if (d > from && d <= apply) total++; if (d > lastYearFrom && d <= apply) recent++; });
+        res = { ok: total <= m.total! && recent <= m.lastYear!, rows: [
+          { label: `Days outside the UK in the ${m.years} years before ${fmt(apply)}`, value: total, limit: m.total, ok: total <= m.total! },
+          { label: 'Days outside the UK in the last 12 months', value: recent, limit: m.lastYear, ok: recent <= m.lastYear! },
+        ] };
+      }
+    }
+
+    if (!res) {
+      result.innerHTML = `<p class="soft">${mode === 'ilr' && !startInput.value ? 'Enter your visa start date and your trips to see your result.' : 'Add your trips to see your result.'}</p>`;
+      return;
+    }
+    result.innerHTML = `
+      <p class="tool-verdict ${res.ok ? 'ok' : 'bad'}">${res.ok ? 'Your absences appear to be within the limits.' : 'Your absences appear to be over the limit. Talk to us before you apply.'}</p>
+      <ul class="tool-checks">${res.rows.map((r) => `
+        <li class="${r.ok === null ? 'na' : r.ok ? 'ok' : 'bad'}">
+          <span class="tool-icon" aria-hidden="true">${r.ok === null ? '•' : r.ok ? '✓' : '✕'}</span>
+          <span>${r.label}: <strong>${r.value} days</strong>${r.limit !== null ? ` (limit ${r.limit})` : ''}${r.note ? `<small>${r.note}</small>` : ''}</span>
+        </li>`).join('')}</ul>`;
+  }
+
+  root.querySelectorAll<HTMLInputElement>('input[name="abs-mode"]').forEach((r) => r.addEventListener('change', () => {
+    mode = r.value;
+    root.querySelectorAll('.tool-option').forEach((l) => l.classList.toggle('on', l.contains(r)));
+    startField.hidden = mode !== 'ilr';
+    calculate();
+  }));
+  startInput.addEventListener('input', calculate);
+  applyInput.addEventListener('input', calculate);
+  tripList.addEventListener('input', (e) => {
+    const input = e.target as HTMLInputElement;
+    const id = +(input.closest('.trip') as HTMLElement).dataset.id!;
+    const t = trips.find((x) => x.id === id)!;
+    (t as any)[input.dataset.k!] = input.value;
+    calculate();
+  });
+  tripList.addEventListener('click', (e) => {
+    const b = (e.target as HTMLElement).closest('.trip-remove');
+    if (!b || trips.length === 1) return;
+    const id = +(b.closest('.trip') as HTMLElement).dataset.id!;
+    trips = trips.filter((t) => t.id !== id);
+    renderTrips(); calculate();
+  });
+  root.querySelector('[data-add]')!.addEventListener('click', () => {
+    trips.push({ id: nextId++, out: '', back: '' });
+    renderTrips(); calculate();
+  });
+
+  renderTrips();
+  calculate();
+</script>

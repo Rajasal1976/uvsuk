@@ -1,0 +1,55 @@
+---
+// The frame every page sits in: <head> for SEO, header, footer.
+import '../styles/site.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { site } from '../data/site.js';
+
+interface Props {
+  title: string;
+  description: string;
+  schemas?: string[];   // extra structured data, e.g. FAQ (JSON text)
+  noindex?: boolean;    // hide from Google (draft pages)
+}
+const { title, description, schemas = [], noindex = false } = Astro.props;
+const canonical = new URL(Astro.url.pathname, site.url).href;
+
+const business = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: site.legalName,
+  url: site.url,
+  telephone: site.phoneIntl,
+  address: { '@type': 'PostalAddress', streetAddress: site.address.line1, addressLocality: site.address.city, postalCode: site.address.postcode, addressCountry: 'GB' },
+  openingHours: site.hoursSchema,
+};
+---
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:site_name" content={site.name} />
+  <meta property="og:locale" content="en_GB" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=Inter:wght@400;500;600&display=swap" />
+  <script type="application/ld+json" set:html={JSON.stringify(business)} />
+  {schemas.map((s) => <script type="application/ld+json" set:html={s} />)}
+  <slot name="head" />
+</head>
+<body>
+  <Header />
+  <slot />
+  <Footer />
+</body>
+</html>

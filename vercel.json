@@ -1,0 +1,185 @@
+{
+  "trailingSlash": true,
+  "redirects": [
+    {
+      "source": "/civil-partner-visa/",
+      "destination": "/uk-spouse-visas/",
+      "permanent": true
+    },
+    {
+      "source": "/tier-2-work-visa-extension/",
+      "destination": "/skilled-worker-visa-formally-tier-t2-general/",
+      "permanent": true
+    },
+    {
+      "source": "/change-of-employment/",
+      "destination": "/skilled-worker-visa-formally-tier-t2-general/",
+      "permanent": true
+    },
+    {
+      "source": "/tier-2-minister-of-religion-visa/",
+      "destination": "/work-visa-uk/",
+      "permanent": true
+    },
+    {
+      "source": "/tier-2-sportsperson/",
+      "destination": "/work-visa-uk/",
+      "permanent": true
+    },
+    {
+      "source": "/tier-5-temporary-work-visa/",
+      "destination": "/work-visa-uk/",
+      "permanent": true
+    },
+    {
+      "source": "/tier-5-youth-mobility-visas/",
+      "destination": "/work-visa-uk/",
+      "permanent": true
+    },
+    {
+      "source": "/study-visas-uk/",
+      "destination": "/student-visa-uk/",
+      "permanent": true
+    },
+    {
+      "source": "/child-student-visa/",
+      "destination": "/student-visa-uk/",
+      "permanent": true
+    },
+    {
+      "source": "/settlement-citizenship/",
+      "destination": "/indefinite-leave-to-remain-ilr/",
+      "permanent": true
+    },
+    {
+      "source": "/british-naturalisation/",
+      "destination": "/british-citizenship/",
+      "permanent": true
+    },
+    {
+      "source": "/british-citizenship-by-marriage/",
+      "destination": "/british-citizenship/",
+      "permanent": true
+    },
+    {
+      "source": "/british-citizenship-by-birth/",
+      "destination": "/british-citizenship/",
+      "permanent": true
+    },
+    {
+      "source": "/short-visit-visas-uk/",
+      "destination": "/uk-visit-visa/",
+      "permanent": true
+    },
+    {
+      "source": "/tourist-visa/",
+      "destination": "/uk-visit-visa/",
+      "permanent": true
+    },
+    {
+      "source": "/business-visa/",
+      "destination": "/uk-visit-visa/",
+      "permanent": true
+    },
+    {
+      "source": "/sponsor-licence-renewal/",
+      "destination": "/sponsor-licence-application/",
+      "permanent": true
+    },
+    {
+      "source": "/indian-business-visa/",
+      "destination": "/e-business-visa-india/",
+      "permanent": true
+    },
+    {
+      "source": "/china-visa-services/",
+      "destination": "/china-visa-application/",
+      "permanent": true
+    },
+    {
+      "source": "/home-business/",
+      "destination": "/china-visa-application/",
+      "permanent": true
+    },
+    {
+      "source": "/china-crew-visa/",
+      "destination": "/china-visa-application/",
+      "permanent": true
+    },
+    {
+      "source": "/china-cruise-visa/",
+      "destination": "/china-visa-application/",
+      "permanent": true
+    },
+    {
+      "source": "/china-family-visit/",
+      "destination": "/china-visa-application/",
+      "permanent": true
+    },
+    {
+      "source": "/china-journalist-visa/",
+      "destination": "/china-visa-application/",
+      "permanent": true
+    },
+    {
+      "source": "/china-non-business-f-visa/",
+      "destination": "/china-visa-application/",
+      "permanent": true
+    },
+    {
+      "source": "/china-student-visa/",
+      "destination": "/china-visa-application/",
+      "permanent": true
+    },
+    {
+      "source": "/china-tourist-visa/",
+      "destination": "/china-visa-application/",
+      "permanent": true
+    },
+    {
+      "source": "/schengen-visa/",
+      "destination": "/schengen-visa-application/",
+      "permanent": true
+    },
+    {
+      "source": "/ghana-business-visa/",
+      "destination": "/ghana-visa-services/",
+      "permanent": true
+    },
+    {
+      "source": "/ghana-tourist-visa/",
+      "destination": "/ghana-visa-services/",
+      "permanent": true
+    },
+    {
+      "source": "/russia-business-visa/",
+      "destination": "/russian-visa-services-from-uk/",
+      "permanent": true
+    },
+    {
+      "source": "/russian-work-visa/",
+      "destination": "/russian-visa-services-from-uk/",
+      "permanent": true
+    },
+    {
+      "source": "/russia-family-visa/",
+      "destination": "/russian-visa-services-from-uk/",
+      "permanent": true
+    },
+    {
+      "source": "/russia-tourist-visa/",
+      "destination": "/russian-visa-services-from-uk/",
+      "permanent": true
+    },
+    {
+      "source": "/russia-student-visa/",
+      "destination": "/russian-visa-services-from-uk/",
+      "permanent": true
+    },
+    {
+      "source": "/terms-of-use/",
+      "destination": "/terms/",
+      "permanent": true
+    }
+  ]
+}

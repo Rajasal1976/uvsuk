@@ -1,0 +1,25 @@
+{
+  "title": "UK Fiancé Visa Application | Unique Visa Services",
+  "description": "Planning to marry in the UK? Get help with your fiancé or proposed civil partner visa from IAA-regulated advisers in Manchester.",
+  "h1": "UK fiancé visa",
+  "intro": "A fiancé or proposed civil partner visa lets you come to the UK to marry or form a civil partnership with your British or settled partner. After the wedding, you switch to a spouse visa without leaving the UK.",
+  "eligibility": [
+    "You plan to marry or form a civil partnership within the visa period",
+    "You have met each other in person",
+    "You meet the financial and English language requirements",
+    "You can show your wedding plans are genuine"
+  ],
+  "documents": [
+    "Passports for both of you",
+    "Evidence of your relationship",
+    "Evidence of wedding plans, such as a booking or venue confirmation",
+    "Financial and English language evidence"
+  ],
+  "faqs": [
+    {
+      "q": "Can I work on a fiancé visa?",
+      "a": "No. You cannot work on a fiancé visa. You can work once you switch to a spouse visa after the wedding."
+    }
+  ],
+  "govuk": "https://www.gov.uk/uk-family-visa"
+}

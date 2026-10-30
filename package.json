@@ -1,0 +1,18 @@
+{
+  "name": "uvsuk",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "prebuild": "node scripts/make-redirects.mjs",
+    "build": "astro build",
+    "preview": "astro preview",
+    "redirects": "node scripts/make-redirects.mjs"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.2.0",
+    "astro": "^5.0.0",
+    "tesseract.js": "^5.1.1"
+  }
+}

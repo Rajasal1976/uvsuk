@@ -1,0 +1,39 @@
+---
+import { site } from '../data/site.js';
+import { menu } from '../data/nav.js';
+---
+<div class="topbar"><div class="wrap"><span>Regulated by the Immigration Advice Authority · Ref {site.iaaRef}</span><span>{site.hours} · <a href={`tel:${site.phoneIntl}`}>{site.phone}</a></span></div></div>
+<header class="header">
+  <div class="wrap header-row">
+    <a class="brand" href="/"><span class="brand-name">{site.name}</span><span class="brand-tag">UK immigration advisers in Manchester</span></a>
+    <button type="button" class="btn btn-outline menu-btn" aria-expanded="false" aria-controls="main-nav">Menu</button>
+    <nav id="main-nav" class="nav" aria-label="Main">
+      {menu.map((m) => (
+        <div class="dd">
+          <a aria-haspopup="true" href={m.href}>{m.label} <svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2.5 4.5 6 8l3.5-3.5"></path></svg></a>
+          <ul class="dd-menu">{m.items.map(([label, href]) => <li><a href={href}>{label}</a></li>)}</ul>
+        </div>
+      ))}
+      <a href="/about-us/">About us</a>
+      <a href="/contact-us/">Contact</a>
+      <a class="btn btn-primary" href={site.bookingUrl}>Book a consultation</a>
+    </nav>
+  </div>
+  <div class="wrap search-row">
+    <form class="search-form" role="search" action="/search/" method="get">
+      <label for="site-search" class="sr-only">Search visas and services</label>
+      <input id="site-search" type="search" placeholder="Search visas and services, e.g. spouse visa, Indian eVisa, sponsor licence" name="q" />
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+  </div>
+</header>
+
+<script>
+  // Mobile menu button
+  const btn = document.querySelector<HTMLButtonElement>('.menu-btn');
+  const nav = document.getElementById('main-nav');
+  btn?.addEventListener('click', () => {
+    const open = nav!.classList.toggle('open');
+    btn.setAttribute('aria-expanded', String(open));
+  });
+</script>

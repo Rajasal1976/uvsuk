@@ -1,0 +1,29 @@
+{
+  "title": "Spouse Visa Extension (FLR(M)) | UVS Manchester",
+  "description": "Extend your UK spouse visa on time with an IAA-regulated adviser. We check your financial, relationship and English evidence before you apply.",
+  "h1": "Spouse visa extension",
+  "intro": "If your spouse or partner visa is coming to an end, you need to apply to extend it (form FLR(M)) before it expires. We make sure your evidence covers the right dates and meets the current rules.",
+  "eligibility": [
+    "You hold a spouse or partner visa that has not yet expired",
+    "You are still in a genuine relationship and living together",
+    "You meet the financial requirement at the time you apply",
+    "You meet the English language requirement at the higher level needed for an extension"
+  ],
+  "documents": [
+    "Current passport and visa or eVisa details",
+    "Evidence you have lived together, spread across your visa period",
+    "Up-to-date financial evidence",
+    "English language test certificate, if needed"
+  ],
+  "faqs": [
+    {
+      "q": "When should I apply?",
+      "a": "You must apply before your current visa expires. We recommend starting about two months before, so there is time to gather evidence."
+    },
+    {
+      "q": "What if our circumstances have changed?",
+      "a": "Tell us at your consultation. A change of job, address or income can affect which evidence you need, and we will adjust your application to fit."
+    }
+  ],
+  "govuk": "https://www.gov.uk/uk-family-visa"
+}

@@ -1,0 +1,111 @@
+---
+// Every page in src/data/pages.js is built from this one template.
+// Edit page text in src/data/pages.js, not here.
+// Pages with their own file in src/pages (the ones with calculators or extra design)
+// are listed in `own` below so they aren't built twice.
+import Page from '../layouts/Page.astro';
+import Faq from '../components/Faq.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { pages, pageBySlug } from '../data/pages.js';
+import { site } from '../data/site.js';
+
+export function getStaticPaths() {
+  const own = ['indefinite-leave-to-remain-ilr', 'skilled-worker-visa-formally-tier-t2-general', 'china-visa-application'];
+  return pages.filter((p) => !own.includes(p.slug)).map((p) => ({ params: { slug: p.slug }, props: { p } }));
+}
+
+const { p } = Astro.props;
+// Pages that get an "Apply online" button, and the form it opens.
+const applyFor = {
+  'indian-visa-application-uk': '/apply/india-visa/', 'e-tourist-visa-india': '/apply/india-visa/',
+  'e-business-visa-india': '/apply/india-visa/', 'sri-lanka-visa-services': '/apply/sri-lanka-eta/',
+};
+const applyUrl = applyFor[p.slug];
+const hubFor = { uk: ['UK Visas', '/uk-visa-services/'], employer: ['Employers', '/hire-foreign-nationals-uk/'], worldwide: ['Worldwide Visas', '/worldwide-visas/'] };
+const hub = hubFor[p.group];
+const showCrumb = hub && hub[1] !== `/${p.slug}/`;
+const howWeHelp = [
+  'Check your eligibility and confirm the right route at your consultation',
+  'Give you a personalised document checklist',
+  'Prepare and complete your application forms',
+  'Review all evidence against the current rules before submission',
+  'Keep you updated until you have a decision',
+];
+---
+<Page title={p.title} description={p.description}>
+  <main>
+    <div class="page-head">
+      <div class="wrap">
+        <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a>{showCrumb && <> / <a href={hub[1]}>{hub[0]}</a></>}</nav>
+        <h1>{p.h1}</h1>
+        {p.intro && <p class="lead">{p.intro}</p>}
+        {applyUrl && <p style="margin-top:24px"><a class="btn btn-gold" href={applyUrl}>Apply online</a></p>}
+      </div>
+    </div>
+
+    <div class="wrap section page-body" style="padding-top:64px">
+      <div class="content">
+        {p.type === 'hub' && (
+          <div class="grid">
+            {p.children.map((c) => {
+              const child = pageBySlug[c];
+              return (
+                <a href={`/${c}/`} class="card">
+                  <h3>{child.h1}</h3>
+                  <p>{child.description}</p>
+                  <span class="more">Find out more</span>
+                </a>
+              );
+            })}
+          </div>
+        )}
+
+        {p.type === 'service' && (
+          <>
+            {p.eligibility?.length > 0 && (
+              <section><h2>Do you qualify?</h2><ul>{p.eligibility.map((e) => <li>{e}</li>)}</ul></section>
+            )}
+            {p.documents?.length > 0 && (
+              <section>
+                <h2>Documents you'll usually need</h2>
+                <ul>{p.documents.map((d) => <li>{d}</li>)}</ul>
+                <p class="soft" style="font-size:15px">We give you a full checklist for your circumstances at your consultation.</p>
+              </section>
+            )}
+            <section><h2>How we help</h2><ul>{howWeHelp.map((h) => <li>{h}</li>)}</ul></section>
+            <section>
+              <h2>Fees and timescales</h2>
+              <p>Our fee is agreed before we start. <a href="/fees/">See our fees</a>. Government fees are paid separately{p.govuk && <>, and are listed on <a href={p.govuk}>GOV.UK</a></>}.</p>
+            </section>
+          </>
+        )}
+
+        {p.type === 'info' && p.body?.length > 0 && <div class="prose">{p.body.map((t) => <p>{t}</p>)}</div>}
+
+        {p.type === 'hub' && p.govuk && <p class="soft">Official rules and fees: <a href={p.govuk}>GOV.UK</a></p>}
+
+        <Faq items={p.faqs} />
+
+        {p.related?.length > 0 && (
+          <section>
+            <h2>Related services</h2>
+            <ul>{p.related.map((r) => <li><a href={`/${r}/`}>{pageBySlug[r].h1}</a></li>)}</ul>
+          </section>
+        )}
+      </div>
+      {p.group !== 'company' && (
+        <aside class="aside">
+          <div class="panel">
+            <h2>Talk to an adviser</h2>
+            <p class="soft" style="font-size:16px">Book a consultation and we'll confirm your options, what you'll need and our fee.</p>
+            <a href={site.bookingUrl} class="btn btn-primary">Book a consultation</a>
+            <a href={`tel:${site.phoneIntl}`} class="btn btn-outline">Call {site.phone}</a>
+            <p style="font-size:14px;color:var(--ink-mute)">IAA-regulated · Ref {site.iaaRef}</p>
+          </div>
+        </aside>
+      )}
+    </div>
+
+    <CtaBand />
+  </main>
+</Page>

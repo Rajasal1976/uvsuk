@@ -1,0 +1,24 @@
+{
+  "title": "UK Visitor Visa Help | Family & Business Visits | UVS",
+  "description": "Inviting family or business contacts to the UK? IAA-regulated help with UK Standard Visitor visas, invitation letters and sponsor documents.",
+  "h1": "UK Visitor visa",
+  "intro": "The Standard Visitor visa covers tourism, visiting family and friends, and business trips such as meetings and conferences. If you are inviting someone to the UK, we help prepare both their application and your sponsor documents.",
+  "eligibility": [
+    "The visitor intends to leave the UK at the end of the visit",
+    "They can support themselves, or be supported by their host, during the trip",
+    "The purpose of the visit is allowed under visitor rules"
+  ],
+  "documents": [
+    "Passport and travel history",
+    "Bank statements and evidence of employment or study at home",
+    "Invitation letter from the UK host",
+    "Host's ID, address proof and financial evidence, if they are supporting the trip"
+  ],
+  "faqs": [
+    {
+      "q": "Do I need a visa or an ETA?",
+      "a": "It depends on nationality. Many nationalities need a visa; others need an Electronic Travel Authorisation (ETA). We check this first."
+    }
+  ],
+  "govuk": "https://www.gov.uk/standard-visitor"
+}

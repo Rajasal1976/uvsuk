@@ -1,0 +1,29 @@
+---
+import Page from '../../layouts/Page.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { applications } from '../../data/applications.js';
+---
+<Page title="Apply online for your visa | Unique Visa Services" description="Apply online for your China visa, Indian eVisa or Sri Lanka ETA. Upload your passport and we fill in your details for you.">
+  <main>
+    <div class="page-head">
+      <div class="wrap">
+        <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a></nav>
+        <h1>Apply online</h1>
+        <p class="lead">Upload a photo of your passport and we’ll fill in your details for you. Answer the rest of the questions, add your documents, and an adviser checks everything before your application goes in.</p>
+      </div>
+    </div>
+    <div class="wrap section" style="padding-top:64px">
+      <div class="grid">
+        {applications.map((a) => (
+          <a href={`/apply/${a.slug}/`} class="card">
+            <h3>{a.title}</h3>
+            <p>{a.description}</p>
+            <span class="more">Start application · about {a.minutes} minutes</span>
+          </a>
+        ))}
+      </div>
+      <p class="soft" style="margin-top:32px">Applying somewhere else? <a href="/worldwide-visas/">See all the countries we handle</a> or <a href="/contact-us/">contact us</a>.</p>
+    </div>
+    <CtaBand />
+  </main>
+</Page>

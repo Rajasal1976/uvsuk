@@ -1,0 +1,41 @@
+---
+// One page per online application form: /apply/china-visa/, /apply/india-visa/, /apply/sri-lanka-eta/
+import Page from '../../layouts/Page.astro';
+import { applications, declaration } from '../../data/applications.js';
+import { site } from '../../data/site.js';
+import '../../styles/apply.css';
+
+export function getStaticPaths() {
+  return applications.map((a) => ({ params: { form: a.slug }, props: { app: a } }));
+}
+const { app } = Astro.props;
+const opts = { declaration, phone: site.phone, phoneIntl: site.phoneIntl };
+---
+<Page title={`${app.title} | Apply online | Unique Visa Services`} description={app.description}>
+  <main>
+    <div class="page-head ap-pagehead">
+      <div class="wrap">
+        <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/apply/">Apply online</a> / <a href={app.pageUrl}>{app.country}</a></nav>
+        <h1>{app.title}</h1>
+        <p class="lead">{app.description}</p>
+        <ul class="ap-facts">
+          <li>About {app.minutes} minutes</li>
+          <li>Passport details filled in for you</li>
+          <li>Checked by an IAA-regulated adviser</li>
+        </ul>
+      </div>
+    </div>
+    <div class="wrap section ap-section">
+      {app.notice && <p class="ap-notice">{app.notice}</p>}
+      <div id="application" data-config={JSON.stringify(app)} data-opts={JSON.stringify(opts)}>
+        <noscript><p>This form needs JavaScript. Please turn it on, or call us on {site.phone} and we'll help you apply.</p></noscript>
+      </div>
+    </div>
+  </main>
+</Page>
+
+<script>
+  import { mountApplication } from '../../lib/apply-form.js';
+  const root = document.getElementById('application')!;
+  mountApplication(root, JSON.parse(root.dataset.config!), JSON.parse(root.dataset.opts!));
+</script>

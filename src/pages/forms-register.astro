@@ -1,0 +1,27 @@
+---
+// Netlify only accepts form submissions for forms it finds in the site's HTML when it deploys.
+// The application forms are built by JavaScript, so this hidden page lists their fields for Netlify.
+// Field names must match exactly what src/lib/apply-form.js sends.
+import { applications, FILE_SLOTS } from '../data/applications.js';
+---
+<!doctype html>
+<html lang="en-GB">
+<head><meta charset="utf-8" /><meta name="robots" content="noindex" /><title>Forms</title></head>
+<body>
+  {applications.map((a) => (
+    <form name={a.slug} data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data" hidden>
+      <input type="hidden" name="form-name" value={a.slug} />
+      <input type="text" name="applicant_name" />
+      <input type="email" name="email" />
+      <input type="tel" name="phone" />
+      <input type="text" name="visa_type" />
+      <input type="text" name="reference" />
+      <input type="hidden" name="subject" />
+      <textarea name="summary"></textarea>
+      <textarea name="answers_json"></textarea>
+      <input name="bot-field" />
+      {FILE_SLOTS.map((s) => <input type="file" name={s} />)}
+    </form>
+  ))}
+</body>
+</html>

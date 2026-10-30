@@ -1,0 +1,205 @@
+---
+import Page from '../layouts/Page.astro';
+import Faq from '../components/Faq.astro';
+// SEO title, description and FAQs for this page are edited in the admin (content/special/china-visa-application.json).
+import content from '../../content/special/china-visa-application.json';
+import '../styles/china-chooser.css';
+const title = content.title;
+const description = content.description;
+const schemas = [];
+---
+<Page title={title} description={description} schemas={schemas}>
+<main>
+<div class="page-head">
+<div class="wrap">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/worldwide-visas/">Worldwide Visas</a></nav>
+<h1>China visa from the UK</h1>
+<p class="lead">Not sure which China visa you need? Choose the purpose of your trip below and we will show you the right visa and what to prepare. We complete your application and book your appointment at the visa centre.</p>
+<p style="margin-top:24px"><a class="btn btn-gold" href="/apply/china-visa/">Apply online</a></p></div></div>
+<div class="wrap section page-body" style="padding-top:64px">
+<div class="content">
+<section class="vc"><style is:global>
+#vc-business:checked ~ .vc-grid label[for="vc-business"]{border-color:var(--green-800);background:var(--green-50);box-shadow:inset 0 0 0 1px var(--green-800)}
+#vc-business:checked ~ .vc-grid label[for="vc-business"] .vc-check{background:var(--green-800);border-color:var(--green-800)}
+#vc-business:focus-visible ~ .vc-grid label[for="vc-business"]{outline:3px solid var(--gold);outline-offset:2px}
+#vc-business:checked ~ .vc-panels .vc-p-business{display:flex}
+#vc-business:checked ~ .vc-panels .vc-hint{display:none}
+#vc-work:checked ~ .vc-grid label[for="vc-work"]{border-color:var(--green-800);background:var(--green-50);box-shadow:inset 0 0 0 1px var(--green-800)}
+#vc-work:checked ~ .vc-grid label[for="vc-work"] .vc-check{background:var(--green-800);border-color:var(--green-800)}
+#vc-work:focus-visible ~ .vc-grid label[for="vc-work"]{outline:3px solid var(--gold);outline-offset:2px}
+#vc-work:checked ~ .vc-panels .vc-p-work{display:flex}
+#vc-work:checked ~ .vc-panels .vc-hint{display:none}
+#vc-tourism:checked ~ .vc-grid label[for="vc-tourism"]{border-color:var(--green-800);background:var(--green-50);box-shadow:inset 0 0 0 1px var(--green-800)}
+#vc-tourism:checked ~ .vc-grid label[for="vc-tourism"] .vc-check{background:var(--green-800);border-color:var(--green-800)}
+#vc-tourism:focus-visible ~ .vc-grid label[for="vc-tourism"]{outline:3px solid var(--gold);outline-offset:2px}
+#vc-tourism:checked ~ .vc-panels .vc-p-tourism{display:flex}
+#vc-tourism:checked ~ .vc-panels .vc-hint{display:none}
+#vc-family:checked ~ .vc-grid label[for="vc-family"]{border-color:var(--green-800);background:var(--green-50);box-shadow:inset 0 0 0 1px var(--green-800)}
+#vc-family:checked ~ .vc-grid label[for="vc-family"] .vc-check{background:var(--green-800);border-color:var(--green-800)}
+#vc-family:focus-visible ~ .vc-grid label[for="vc-family"]{outline:3px solid var(--gold);outline-offset:2px}
+#vc-family:checked ~ .vc-panels .vc-p-family{display:flex}
+#vc-family:checked ~ .vc-panels .vc-hint{display:none}
+#vc-study:checked ~ .vc-grid label[for="vc-study"]{border-color:var(--green-800);background:var(--green-50);box-shadow:inset 0 0 0 1px var(--green-800)}
+#vc-study:checked ~ .vc-grid label[for="vc-study"] .vc-check{background:var(--green-800);border-color:var(--green-800)}
+#vc-study:focus-visible ~ .vc-grid label[for="vc-study"]{outline:3px solid var(--gold);outline-offset:2px}
+#vc-study:checked ~ .vc-panels .vc-p-study{display:flex}
+#vc-study:checked ~ .vc-panels .vc-hint{display:none}
+#vc-transit:checked ~ .vc-grid label[for="vc-transit"]{border-color:var(--green-800);background:var(--green-50);box-shadow:inset 0 0 0 1px var(--green-800)}
+#vc-transit:checked ~ .vc-grid label[for="vc-transit"] .vc-check{background:var(--green-800);border-color:var(--green-800)}
+#vc-transit:focus-visible ~ .vc-grid label[for="vc-transit"]{outline:3px solid var(--gold);outline-offset:2px}
+#vc-transit:checked ~ .vc-panels .vc-p-transit{display:flex}
+#vc-transit:checked ~ .vc-panels .vc-hint{display:none}
+#vc-crew:checked ~ .vc-grid label[for="vc-crew"]{border-color:var(--green-800);background:var(--green-50);box-shadow:inset 0 0 0 1px var(--green-800)}
+#vc-crew:checked ~ .vc-grid label[for="vc-crew"] .vc-check{background:var(--green-800);border-color:var(--green-800)}
+#vc-crew:focus-visible ~ .vc-grid label[for="vc-crew"]{outline:3px solid var(--gold);outline-offset:2px}
+#vc-crew:checked ~ .vc-panels .vc-p-crew{display:flex}
+#vc-crew:checked ~ .vc-panels .vc-hint{display:none}
+#vc-journalist:checked ~ .vc-grid label[for="vc-journalist"]{border-color:var(--green-800);background:var(--green-50);box-shadow:inset 0 0 0 1px var(--green-800)}
+#vc-journalist:checked ~ .vc-grid label[for="vc-journalist"] .vc-check{background:var(--green-800);border-color:var(--green-800)}
+#vc-journalist:focus-visible ~ .vc-grid label[for="vc-journalist"]{outline:3px solid var(--gold);outline-offset:2px}
+#vc-journalist:checked ~ .vc-panels .vc-p-journalist{display:flex}
+#vc-journalist:checked ~ .vc-panels .vc-hint{display:none}</style>
+<h2>What is the purpose of your trip?</h2>
+<p class="soft">Choose one to see which visa you need and what to prepare.</p><input type="radio" id="vc-business" class="sr-only" name="visa-choice"/><input type="radio" id="vc-work" class="sr-only" name="visa-choice"/><input type="radio" id="vc-tourism" class="sr-only" name="visa-choice"/><input type="radio" id="vc-family" class="sr-only" name="visa-choice"/><input type="radio" id="vc-study" class="sr-only" name="visa-choice"/><input type="radio" id="vc-transit" class="sr-only" name="visa-choice"/><input type="radio" id="vc-crew" class="sr-only" name="visa-choice"/><input type="radio" id="vc-journalist" class="sr-only" name="visa-choice"/>
+<div class="vc-grid">
+<label for="vc-business" class="vc-card"><span class="vc-check" aria-hidden="true"></span><span class="vc-name">Business</span><span class="vc-sub">Business visa</span></label>
+<label for="vc-work" class="vc-card"><span class="vc-check" aria-hidden="true"></span><span class="vc-name">Work</span><span class="vc-sub">Work visa</span></label>
+<label for="vc-tourism" class="vc-card"><span class="vc-check" aria-hidden="true"></span><span class="vc-name">Holiday</span><span class="vc-sub">Tourist visa</span></label>
+<label for="vc-family" class="vc-card"><span class="vc-check" aria-hidden="true"></span><span class="vc-name">Visiting family</span><span class="vc-sub">Family visit visa</span></label>
+<label for="vc-study" class="vc-card"><span class="vc-check" aria-hidden="true"></span><span class="vc-name">Study</span><span class="vc-sub">Student visa</span></label>
+<label for="vc-transit" class="vc-card"><span class="vc-check" aria-hidden="true"></span><span class="vc-name">Transit</span><span class="vc-sub">Transit visa</span></label>
+<label for="vc-crew" class="vc-card"><span class="vc-check" aria-hidden="true"></span><span class="vc-name">Crew</span><span class="vc-sub">Crew visa</span></label>
+<label for="vc-journalist" class="vc-card"><span class="vc-check" aria-hidden="true"></span><span class="vc-name">Journalism</span><span class="vc-sub">Journalist visa</span></label></div>
+<div class="vc-panels">
+<p class="vc-hint">Select a purpose above to see the right visa.</p>
+<div class="vc-panel vc-p-business">
+<div class="vc-panel-head"><span class="vc-code">M</span>
+<div>
+<h3>Business visa</h3>
+<p class="soft">Meetings, trade fairs, factory and supplier visits, and negotiating contracts.</p></div></div>
+<p class="vc-note">Travelling on a British passport? Short trips for this purpose are currently visa-free, so you may not need a visa at all. We check the latest rules for your dates before you apply.</p>
+<div>
+<p class="vc-label">You&#x27;ll usually need</p>
+<ul>
+<li>Passport and photo</li>
+<li>Invitation letter from the Chinese company or trade fair</li>
+<li>UK residence evidence if you are not British</li></ul></div>
+<div class="btn-row"><a class="btn btn-primary" href="/china-business-visa/">See full details and fees</a><a class="btn btn-outline" href="/contact-us/">Get help with this visa</a></div></div>
+<div class="vc-panel vc-p-work">
+<div class="vc-panel-head"><span class="vc-code">Z</span>
+<div>
+<h3>Work visa</h3>
+<p class="soft">Taking up paid employment with a company in China.</p></div></div>
+<div>
+<p class="vc-label">You&#x27;ll usually need</p>
+<ul>
+<li>Passport and photo</li>
+<li>Work permit notice from your employer in China</li>
+<li>Completed application form</li></ul></div>
+<div class="btn-row"><a class="btn btn-primary" href="/china-work-visa-for-uk-citizens/">See full details and fees</a><a class="btn btn-outline" href="/contact-us/">Get help with this visa</a></div></div>
+<div class="vc-panel vc-p-tourism">
+<div class="vc-panel-head"><span class="vc-code">L</span>
+<div>
+<h3>Tourist visa</h3>
+<p class="soft">Sightseeing, holidays and tours.</p></div></div>
+<p class="vc-note">Travelling on a British passport? Short trips for this purpose are currently visa-free, so you may not need a visa at all. We check the latest rules for your dates before you apply.</p>
+<div>
+<p class="vc-label">You&#x27;ll usually need</p>
+<ul>
+<li>Passport and photo</li>
+<li>Return flight booking</li>
+<li>Hotel bookings or itinerary</li></ul></div>
+<div class="btn-row"><a class="btn btn-primary" href="/contact-us/">Get help with this visa</a></div></div>
+<div class="vc-panel vc-p-family">
+<div class="vc-panel-head"><span class="vc-code">Q/S</span>
+<div>
+<h3>Family visit visa</h3>
+<p class="soft">Visiting relatives who are Chinese citizens, permanent residents, or foreigners working or studying in China.</p></div></div>
+<p class="vc-note">Travelling on a British passport? Short trips for this purpose are currently visa-free, so you may not need a visa at all. We check the latest rules for your dates before you apply.</p>
+<div>
+<p class="vc-label">You&#x27;ll usually need</p>
+<ul>
+<li>Passport and photo</li>
+<li>Invitation letter from your relative</li>
+<li>Copy of your relative&#x27;s ID or residence permit</li>
+<li>Proof of your relationship</li></ul></div>
+<div class="btn-row"><a class="btn btn-primary" href="/contact-us/">Get help with this visa</a></div></div>
+<div class="vc-panel vc-p-study">
+<div class="vc-panel-head"><span class="vc-code">X</span>
+<div>
+<h3>Student visa</h3>
+<p class="soft">Studying at a Chinese university or school, short or long term.</p></div></div>
+<div>
+<p class="vc-label">You&#x27;ll usually need</p>
+<ul>
+<li>Passport and photo</li>
+<li>Admission letter</li>
+<li>JW201 or JW202 form for longer courses</li></ul></div>
+<div class="btn-row"><a class="btn btn-primary" href="/contact-us/">Get help with this visa</a></div></div>
+<div class="vc-panel vc-p-transit">
+<div class="vc-panel-head"><span class="vc-code">G</span>
+<div>
+<h3>Transit visa</h3>
+<p class="soft">Passing through China on the way to another country.</p></div></div>
+<p class="vc-note">Travelling on a British passport? Short trips for this purpose are currently visa-free, so you may not need a visa at all. We check the latest rules for your dates before you apply.</p>
+<div>
+<p class="vc-label">You&#x27;ll usually need</p>
+<ul>
+<li>Passport and photo</li>
+<li>Onward ticket to your next destination</li>
+<li>Visa for your next destination, if needed</li></ul></div>
+<div class="btn-row"><a class="btn btn-primary" href="/contact-us/">Get help with this visa</a></div></div>
+<div class="vc-panel vc-p-crew">
+<div class="vc-panel-head"><span class="vc-code">C</span>
+<div>
+<h3>Crew visa</h3>
+<p class="soft">Airline, shipping and transport crew working on international routes.</p></div></div>
+<div>
+<p class="vc-label">You&#x27;ll usually need</p>
+<ul>
+<li>Passport and photo</li>
+<li>Letter from your airline or shipping company</li></ul></div>
+<div class="btn-row"><a class="btn btn-primary" href="/contact-us/">Get help with this visa</a></div></div>
+<div class="vc-panel vc-p-journalist">
+<div class="vc-panel-head"><span class="vc-code">J</span>
+<div>
+<h3>Journalist visa</h3>
+<p class="soft">Foreign journalists on short reporting trips or long-term postings.</p></div></div>
+<div>
+<p class="vc-label">You&#x27;ll usually need</p>
+<ul>
+<li>Passport and photo</li>
+<li>Letter from your media organisation</li>
+<li>Approval from the Chinese authorities</li></ul></div>
+<div class="btn-row"><a class="btn btn-primary" href="/contact-us/">Get help with this visa</a></div></div></div></section>
+<section>
+<h2>How we help</h2>
+<ul>
+<li>Check your eligibility and confirm the right route at your consultation</li>
+<li>Give you a personalised document checklist</li>
+<li>Prepare and complete your application forms</li>
+<li>Review all evidence against the current rules before submission</li>
+<li>Keep you updated until you have a decision</li></ul></section>
+<section id="fees">
+<h2>Fees and timescales</h2>
+<p>Our fee is agreed before we start. <a href="/fees/">See our fees</a>. Government fees are paid separately.</p></section>
+
+<Faq items={content.faqs} title={content.faqHeading} />
+
+<section>
+<h2>Related services</h2>
+<ul>
+<li><a href="/china-business-visa/">China business visa (M visa)</a></li>
+<li><a href="/china-work-visa-for-uk-citizens/">China work visa (Z visa)</a></li></ul></section></div>
+<aside class="aside">
+<div class="panel">
+<h2>Talk to an adviser</h2>
+<p class="soft" style="font-size:16px">Book a consultation and we&#x27;ll confirm your options, what you&#x27;ll need and our fee.</p><a class="btn btn-primary" href="/contact-us/">Book a consultation</a><a href="tel:+441619562003" class="btn btn-outline">Call 0161 956 2003</a>
+<p style="font-size:14px;color:var(--ink-mute)">IAA-regulated · Ref F200700144</p></div></aside></div>
+<section class="wrap section">
+<div class="cta-band">
+<div class="stack" style="flex:1 1 460px;min-width:0;gap:10px">
+<h2>Not sure which visa you need?</h2>
+<p>Book a consultation and we&#x27;ll tell you your options, what you&#x27;ll need and what it will cost.</p></div>
+<div class="btn-row"><a class="btn btn-gold" href="/contact-us/">Book a consultation</a><a href="tel:+441619562003" class="btn btn-ghost-light">0161 956 2003</a></div></div></section></main>
+</Page>

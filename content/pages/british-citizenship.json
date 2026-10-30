@@ -1,0 +1,25 @@
+{
+  "title": "British Citizenship & Naturalisation | UVS Manchester",
+  "description": "Apply for British citizenship by naturalisation, including through marriage. IAA-regulated help with residence and good character checks.",
+  "h1": "British citizenship",
+  "intro": "Once you have ILR or settled status, you may be able to apply to become a British citizen by naturalisation. If you are married to a British citizen, you may be able to apply sooner. We also advise on registering children as British.",
+  "eligibility": [
+    "You hold ILR or settled status, usually for at least 12 months, unless married to a British citizen",
+    "You meet the residence requirements, including limits on time abroad",
+    "You meet the good character requirement",
+    "You have passed the Life in the UK test and meet the English requirement"
+  ],
+  "documents": [
+    "Passports covering the residence period",
+    "Proof of ILR or settled status",
+    "Life in the UK and English language evidence",
+    "Two referees who meet the Home Office criteria"
+  ],
+  "faqs": [
+    {
+      "q": "Can my children become British?",
+      "a": "Children born in the UK, or children of British or settled parents, may be able to register as British. The rules depend on when and where they were born."
+    }
+  ],
+  "govuk": "https://www.gov.uk/becoming-a-british-citizen"
+}

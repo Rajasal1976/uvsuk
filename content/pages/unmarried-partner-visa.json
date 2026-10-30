@@ -1,0 +1,23 @@
+{
+  "title": "UK Unmarried Partner Visa | Unique Visa Services",
+  "description": "Not married but living together? IAA-regulated help with UK unmarried partner visa applications, including cohabitation evidence.",
+  "h1": "Unmarried partner visa",
+  "intro": "If you are in a long-term relationship with a British or settled partner but not married, you can apply as an unmarried partner. The key is proving you have lived together in a relationship like a marriage.",
+  "eligibility": [
+    "You have lived together in a relationship akin to marriage for the required period",
+    "You both intend to live together permanently in the UK",
+    "You meet the financial and English language requirements"
+  ],
+  "documents": [
+    "Evidence of living at the same address, spread across the whole period",
+    "Joint bills, tenancy agreements or bank accounts",
+    "Financial and English language evidence"
+  ],
+  "faqs": [
+    {
+      "q": "What counts as proof we lived together?",
+      "a": "Official letters addressed to you both at the same address, spread over the period, are strongest. We review what you have and tell you where the gaps are."
+    }
+  ],
+  "govuk": "https://www.gov.uk/uk-family-visa"
+}

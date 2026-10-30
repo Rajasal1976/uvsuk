@@ -1,0 +1,13 @@
+---
+import { site } from '../data/site.js';
+const { title = 'Not sure which visa you need?', text = "Book a consultation and we'll tell you your options, what you'll need and what it will cost." } = Astro.props;
+---
+<section class="wrap section">
+  <div class="cta-band">
+    <div class="stack" style="flex:1 1 460px;min-width:0;gap:10px">
+      <h2>{title}</h2>
+      <p>{text}</p>
+    </div>
+    <div class="btn-row"><a class="btn btn-gold" href={site.bookingUrl}>Book a consultation</a><a href={`tel:${site.phoneIntl}`} class="btn btn-ghost-light">{site.phone}</a></div>
+  </div>
+</section>
