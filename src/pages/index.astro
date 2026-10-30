@@ -61,7 +61,9 @@ const placeholder = 'background: #D6E3DA; border-radius: 12px; display: flex; al
 </div>
 </div>
 <div style="background: #FFFFFF; border: 1px solid #DCE6DF; border-radius: 12px; padding: 28px; display: flex; flex-wrap: wrap; gap: 20px; align-items: center">
-<div style="flex: 0 0 120px; height: 120px; background: #D6E3DA; border-radius: 8px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 13px; color: #3A4552; padding: 8px; box-sizing: border-box">Official IAA logo</div>
+{home.iaaLogo
+  ? <img src={home.iaaLogo} alt="Immigration Advice Authority logo" width="120" height="120" loading="lazy" style="flex: 0 0 120px; width: 120px; height: 120px; object-fit: contain" />
+  : <div style="flex: 0 0 120px; height: 120px; background: #D6E3DA; border-radius: 8px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 13px; color: #3A4552; padding: 8px; box-sizing: border-box">Add the IAA logo in the admin: Homepage › IAA logo</div>}
 <div style="flex: 1 1 220px; min-width: 0; display: flex; flex-direction: column; gap: 8px">
 <h2 style="margin: 0; font-size: 22px; color: #14532D">Regulated by the Immigration Advice Authority</h2>
 <p style="margin: 0; color: #3A4552; font-size: 16px">Unique Visa Services Ltd is registered with the IAA, the UK body that regulates immigration advisers. Registration ref {site.iaaRef}.</p>
