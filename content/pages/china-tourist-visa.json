@@ -1,0 +1,63 @@
+{
+  "country": "China",
+  "sortKey": "1 china 1 china tourist visa (l visa)",
+  "h1": "China tourist visa (L visa)",
+  "intro": "The China tourist visa (L visa) is for holidays, sightseeing and tours. British passport holders can currently visit China visa-free for short trips, so you need an L visa if your stay is longer, you want multiple entries, or you travel on another passport. We complete your application and book your visa centre appointment.",
+  "applyButton": "/apply/china-visa/",
+  "eligibility": [
+    "Your trip is for tourism, sightseeing or visiting friends, not work or study",
+    "Your passport is valid for at least six months, with two blank visa pages",
+    "If you are not British, you hold valid UK residence status"
+  ],
+  "documents": [
+    "Original passport, plus a copy of the photo page",
+    "Recent colour photo on a white background, meeting Chinese visa specifications",
+    "Return flight booking",
+    "Hotel bookings for your whole stay, or an invitation letter if you’re staying with someone in China",
+    "Your UK visa or eVisa share code, if you are not British",
+    "Copies of any previous Chinese visas"
+  ],
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Form completion, document check, visa centre appointment and submission support",
+      "processing": "",
+      "processingFee": "",
+      "fee": "",
+      "popular": false
+    },
+    {
+      "service": "Express",
+      "included": "Everything in Standard, with faster processing at the visa centre",
+      "processing": "",
+      "processingFee": "",
+      "fee": "",
+      "popular": true
+    },
+    {
+      "service": "Urgent",
+      "included": "Everything in Standard, with the fastest processing available",
+      "processing": "",
+      "processingFee": "",
+      "fee": "",
+      "popular": false
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Do I need a visa for a holiday in China?",
+      "a": "If you travel on a British passport, short holidays are currently visa-free. You need an L visa for longer stays, or if you travel on a passport that isn’t covered. We check the latest rules for your dates and passport before you book."
+    },
+    {
+      "q": "Do I need to attend the visa centre?",
+      "a": "Yes. Most applicants give fingerprints in person at a Chinese Visa Application Service Centre. We book the appointment and prepare everything you take with you."
+    },
+    {
+      "q": "Can I get a multiple-entry tourist visa?",
+      "a": "Often, yes, especially if you have visited China before. Tell us how often you plan to travel and we’ll advise on the best visa to request."
+    }
+  ],
+  "govuk": "",
+  "title": "China Tourist Visa (L Visa) from the UK | UVS",
+  "description": "China tourist visa help for UK residents: flights, hotels, application form and visa centre appointment, checked by an IAA-regulated adviser."
+}
