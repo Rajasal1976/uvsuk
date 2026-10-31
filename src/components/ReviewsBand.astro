@@ -1,0 +1,92 @@
+---
+// Reviews strip shown above the footer on every page (the homepage has its own reviews section).
+// Reviews are the ones on the Homepage in the admin ("Client reviews"); ratings and links are in Business details.
+import { site } from '../data/site.js';
+import home from '../../content/home.json';
+const reviews = (home.reviews || []).filter((r) => r && r.quote);
+const badges = [
+  site.googleRating && { name: 'Google', rating: site.googleRating, count: site.googleReviewCount, url: site.googleReviewsUrl },
+  site.trustpilotRating && site.trustpilotUrl && { name: 'Trustpilot', rating: site.trustpilotRating, count: site.trustpilotCount, url: site.trustpilotUrl },
+].filter(Boolean);
+const stars = (r) => Math.round(Number(String(r).replace(',', '.')) || 0);
+---
+{(reviews.length > 0 || badges.length > 0) && (
+  <section class="rv wrap section" aria-labelledby="rv-title">
+    <div class="rv-head">
+      <h2 id="rv-title">What our clients say</h2>
+      <div class="rv-badges">
+        {badges.map((b) => (
+          <a class="rv-badge" href={b.url} target="_blank" rel="noopener">
+            <span class="rv-stars" aria-hidden="true">{'★'.repeat(stars(b.rating))}{'☆'.repeat(Math.max(0, 5 - stars(b.rating)))}</span>
+            <span><strong>{b.rating}</strong> on {b.name}{b.count && <> · {b.count} reviews</>}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+    {reviews.length > 0 && (
+      <div class="rv-track" data-rv>
+        {reviews.map((r) => (
+          <figure class="rv-card">
+            <span class="rv-stars" aria-hidden="true">★★★★★</span>
+            <blockquote>“{r.quote}”</blockquote>
+            <figcaption>{r.source}</figcaption>
+          </figure>
+        ))}
+      </div>
+    )}
+    {reviews.length > 3 && <button type="button" class="rv-pause" data-rv-pause aria-pressed="false">Pause reviews</button>}
+  </section>
+)}
+
+<style>
+  .rv { padding-top: 56px; padding-bottom: 8px; }
+  .rv-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px 32px; margin-bottom: 24px; }
+  .rv-head h2 { margin: 0; }
+  .rv-badges { display: flex; flex-wrap: wrap; gap: 10px; }
+  .rv-badge { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 8px 16px; border: 1px solid var(--line); border-radius: 999px; text-decoration: none; color: var(--ink); font-size: 15px; background: #fff; }
+  .rv-badge:hover { border-color: var(--green-600); }
+  .rv-badge strong { color: var(--green-800); }
+  .rv-stars { color: #E0A526; letter-spacing: 1px; font-size: 16px; }
+  .rv-track { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+  .rv-card { margin: 0; border: 1px solid var(--line); border-radius: 10px; padding: 24px; display: flex; flex-direction: column; gap: 12px; background: #fff; transition: opacity .5s ease; }
+  .rv-card blockquote { margin: 0; font-size: 17px; color: var(--ink); }
+  .rv-card figcaption { font-size: 14px; color: var(--ink-mute); }
+  .rv-card.rv-out { opacity: 0; }
+  .rv-card[hidden] { display: none; }
+  .rv-pause { margin-top: 16px; background: none; border: 0; padding: 8px 0; font: inherit; font-size: 14px; color: var(--green-800); text-decoration: underline; cursor: pointer; }
+  @media (prefers-reduced-motion: reduce) { .rv-card { transition: none; } }
+</style>
+
+<script is:inline>
+  // When there are more than 3 reviews, show a few at a time and gently change them every 8 seconds.
+  // Stops on hover or keyboard focus, has a Pause button, and stays still for people who prefer less motion.
+  (function () {
+    var track = document.querySelector('[data-rv]'); if (!track) return;
+    var cards = Array.prototype.slice.call(track.children);
+    var btn = document.querySelector('[data-rv-pause]');
+    if (cards.length <= 3 || !btn) return;
+    var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var perPage = function () { return window.matchMedia('(min-width: 900px)').matches ? 3 : 1; };
+    var page = 0, paused = still, hover = false, timer;
+    function show(fade) {
+      var n = perPage(), pages = Math.ceil(cards.length / n); page = page % pages;
+      var swap = function () { cards.forEach(function (c, i) { var on = Math.floor(i / n) === page; c.hidden = !on; c.classList.remove('rv-out'); }); };
+      if (!fade || still) return swap();
+      cards.forEach(function (c) { if (!c.hidden) c.classList.add('rv-out'); });
+      setTimeout(swap, 450);
+    }
+    function tick() { if (!paused && !hover) { page++; show(true); } }
+    show(false);
+    timer = setInterval(tick, 8000);
+    track.addEventListener('mouseenter', function () { hover = true; });
+    track.addEventListener('mouseleave', function () { hover = false; });
+    track.addEventListener('focusin', function () { hover = true; });
+    track.addEventListener('focusout', function () { hover = false; });
+    window.addEventListener('resize', function () { show(false); });
+    if (still) { btn.textContent = 'Show more reviews'; btn.addEventListener('click', function () { page++; show(false); }); return; }
+    btn.addEventListener('click', function () {
+      paused = !paused; btn.setAttribute('aria-pressed', String(paused));
+      btn.textContent = paused ? 'Play reviews' : 'Pause reviews';
+    });
+  })();
+</script>
