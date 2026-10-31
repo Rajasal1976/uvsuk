@@ -1,0 +1,240 @@
+---
+// China visa application form
+// Sent with Netlify Forms, including file uploads. See the setup notes in the chat.
+---
+<section class="vf" id="china-visa-form">
+  <h1 class="vf-title">China visa application</h1>
+  <p class="vf-lede">Most of your details come straight from your passport and documents, so this only takes a few minutes. Have your passport ready.</p>
+  <div class="vf-progress"><p class="vf-progress-label" aria-live="polite"></p><div class="vf-bar"><span></span></div></div>
+  <form name="china-visa" method="POST" enctype="multipart/form-data" data-netlify="true" netlify-honeypot="bot-field" data-vf novalidate>
+    <input type="hidden" name="form-name" value="china-visa">
+    <p hidden><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+    <div class="vf-step" data-title="Your passport"><h2 tabindex="-1">Your passport</h2><p class=vf-intro>Upload a photo of your passport’s photo page. We’ll copy your name, date and place of birth and passport details from it, so you don’t need to type them.</p><div class="vf-field vf-file"><label class="vf-label" for="china-visa-form-passport_page">Passport photo page</label><span class="vf-hint" id="china-visa-form-h-passport_page">The page with your photo. Make sure all four corners and the two lines of code at the bottom are clear.</span><div class="vf-filewrap"><input type="file" class="vf-fileinput" id="china-visa-form-passport_page" name="passport_page" accept="image/*,.pdf" required><div class="vf-filebox" aria-hidden="true"><span class="vf-filebtn">Choose file or take photo</span><span class="vf-filename">No file chosen</span></div></div></div><div class="vf-field"><label class="vf-label" for="china-visa-form-full_name">Full name, as shown in your passport</label><input type="text" id="china-visa-form-full_name" name="full_name" autocomplete="name" required></div></div><div class="vf-step" data-title="Contact details"><h2 tabindex="-1">Contact details</h2><p class=vf-intro>We’ll use these to send you updates about your application.</p><div class="vf-field"><label class="vf-label" for="china-visa-form-email">Email address</label><input type="email" id="china-visa-form-email" name="email" autocomplete="email" required></div><div class="vf-field"><label class="vf-label" for="china-visa-form-phone">Mobile number</label><input type="tel" id="china-visa-form-phone" name="phone" autocomplete="tel" required></div><h3 class="vf-sub">Home address</h3><div class="vf-field"><label class="vf-label" for="china-visa-form-address_1">Address line 1</label><input type="text" id="china-visa-form-address_1" name="address_1" autocomplete="address-line1" required></div><div class="vf-field"><label class="vf-label" for="china-visa-form-address_2">Address line 2 <span class="vf-opt">(optional)</span></label><input type="text" id="china-visa-form-address_2" name="address_2" autocomplete="address-line2"></div><div class="vf-field"><label class="vf-label" for="china-visa-form-town">Town or city</label><input type="text" id="china-visa-form-town" name="town" autocomplete="address-level2" required></div><div class="vf-field"><label class="vf-label" for="china-visa-form-postcode">Postcode</label><input type="text" id="china-visa-form-postcode" name="postcode" autocomplete="postal-code" required></div></div><div class="vf-step" data-title="Family"><h2 tabindex="-1">Family</h2><fieldset class="vf-field"><legend>Which parent will you give us details for?</legend><div class="vf-choices"><label class="vf-choice"><input type="radio" name="parent_relation" value="Mother" required><span>Mother</span></label><label class="vf-choice"><input type="radio" name="parent_relation" value="Father" required><span>Father</span></label></div></fieldset><div class="vf-field"><label class="vf-label" for="china-visa-form-parent_name">Their full name</label><input type="text" id="china-visa-form-parent_name" name="parent_name" required></div><div class="vf-field"><label class="vf-label" for="china-visa-form-marital_status">Your marital status</label><select id="china-visa-form-marital_status" name="marital_status" required><option value="">Choose…</option><option>Single</option><option>Married</option><option>Divorced</option><option>Widowed</option><option>Other</option></select></div><div class="vf-cond" data-show-if="marital_status=Married"><h3 class="vf-sub">Your husband or wife</h3><div class="vf-field"><label class="vf-label" for="china-visa-form-spouse_name">Full name</label><input type="text" id="china-visa-form-spouse_name" name="spouse_name" required></div><div class="vf-field"><label class="vf-label" for="china-visa-form-spouse_nationality">Nationality</label><input type="text" id="china-visa-form-spouse_nationality" name="spouse_nationality" required></div><div class="vf-field"><label class="vf-label" for="china-visa-form-spouse_birth_place">Place of birth</label><span class="vf-hint" id="china-visa-form-h-spouse_birth_place">Town or city, and country</span><input type="text" id="china-visa-form-spouse_birth_place" name="spouse_birth_place" aria-describedby="china-visa-form-h-spouse_birth_place" required></div><div class="vf-field"><label class="vf-label" for="china-visa-form-spouse_dob">Date of birth</label><input type="date" id="china-visa-form-spouse_dob" name="spouse_dob" required data-past></div></div></div><div class="vf-step" data-title="Travel history"><h2 tabindex="-1">Travel history</h2><fieldset class="vf-field"><legend>Have you been to China before?</legend><div class="vf-choices"><label class="vf-choice"><input type="radio" name="china_before" value="Yes" required><span>Yes</span></label><label class="vf-choice"><input type="radio" name="china_before" value="No" required><span>No</span></label></div></fieldset><div class="vf-cond" data-show-if="china_before=Yes"><div class="vf-note"><p>If your last Chinese visa is in your current passport, please upload a photo of it before you continue. If it’s in an old passport you no longer have, you can skip this.</p></div><div class="vf-field vf-file"><label class="vf-label" for="china-visa-form-previous_china_visa">Your last Chinese visa <span class="vf-opt">(optional)</span></label><div class="vf-filewrap"><input type="file" class="vf-fileinput" id="china-visa-form-previous_china_visa" name="previous_china_visa" accept="image/*,.pdf"><div class="vf-filebox" aria-hidden="true"><span class="vf-filebtn">Choose file or take photo</span><span class="vf-filename">No file chosen</span></div></div></div></div><div class="vf-field"><label class="vf-label" for="china-visa-form-countries_12m">Which countries have you visited in the last 12 months?</label><span class="vf-hint" id="china-visa-form-h-countries_12m">List each country and roughly when you went. Write “None” if you haven’t travelled.</span><textarea id="china-visa-form-countries_12m" name="countries_12m" rows="3" aria-describedby="china-visa-form-h-countries_12m" required></textarea></div></div><div class="vf-step" data-title="Background questions"><h2 tabindex="-1">Background questions</h2><p class=vf-intro>Answer each question. If you answer yes, tell us briefly what happened. A yes doesn’t always lead to a refusal, but leaving something out can.</p><fieldset class="vf-yesno"><legend>Have you ever been refused a Chinese visa, or refused entry to China?</legend><div class="vf-choices"><label class="vf-choice"><input type="radio" name="refused_china" value="Yes" required><span>Yes</span></label><label class="vf-choice"><input type="radio" name="refused_china" value="No" required><span>No</span></label></div><div class="vf-cond" data-show-if="refused_china=Yes"><div class="vf-field"><label class="vf-label" for="china-visa-form-refused_china_details">Tell us what happened, with dates</label><textarea id="china-visa-form-refused_china_details" name="refused_china_details" rows="3" required></textarea></div></div></fieldset><fieldset class="vf-yesno"><legend>Has a Chinese visa of yours ever been cancelled?</legend><div class="vf-choices"><label class="vf-choice"><input type="radio" name="visa_cancelled" value="Yes" required><span>Yes</span></label><label class="vf-choice"><input type="radio" name="visa_cancelled" value="No" required><span>No</span></label></div><div class="vf-cond" data-show-if="visa_cancelled=Yes"><div class="vf-field"><label class="vf-label" for="china-visa-form-visa_cancelled_details">Tell us what happened, with dates</label><textarea id="china-visa-form-visa_cancelled_details" name="visa_cancelled_details" rows="3" required></textarea></div></div></fieldset><fieldset class="vf-yesno"><legend>Have you ever entered China illegally, overstayed, or worked there without permission?</legend><div class="vf-choices"><label class="vf-choice"><input type="radio" name="illegal_stay" value="Yes" required><span>Yes</span></label><label class="vf-choice"><input type="radio" name="illegal_stay" value="No" required><span>No</span></label></div><div class="vf-cond" data-show-if="illegal_stay=Yes"><div class="vf-field"><label class="vf-label" for="china-visa-form-illegal_stay_details">Tell us what happened, with dates</label><textarea id="china-visa-form-illegal_stay_details" name="illegal_stay_details" rows="3" required></textarea></div></div></fieldset><fieldset class="vf-yesno"><legend>Do you have a criminal record in any country?</legend><div class="vf-choices"><label class="vf-choice"><input type="radio" name="criminal_record" value="Yes" required><span>Yes</span></label><label class="vf-choice"><input type="radio" name="criminal_record" value="No" required><span>No</span></label></div><div class="vf-cond" data-show-if="criminal_record=Yes"><div class="vf-field"><label class="vf-label" for="china-visa-form-criminal_record_details">Tell us what happened, with dates</label><textarea id="china-visa-form-criminal_record_details" name="criminal_record_details" rows="3" required></textarea></div></div></fieldset><fieldset class="vf-yesno"><legend>Do you have a serious mental health condition, infectious tuberculosis, or another infectious disease that could be a public health risk?</legend><div class="vf-choices"><label class="vf-choice"><input type="radio" name="health" value="Yes" required><span>Yes</span></label><label class="vf-choice"><input type="radio" name="health" value="No" required><span>No</span></label></div><div class="vf-cond" data-show-if="health=Yes"><div class="vf-field"><label class="vf-label" for="china-visa-form-health_details">Give brief details</label><textarea id="china-visa-form-health_details" name="health_details" rows="3" required></textarea></div></div></fieldset><fieldset class="vf-yesno"><legend>Have you ever served in the armed forces?</legend><div class="vf-choices"><label class="vf-choice"><input type="radio" name="military" value="Yes" required><span>Yes</span></label><label class="vf-choice"><input type="radio" name="military" value="No" required><span>No</span></label></div><div class="vf-cond" data-show-if="military=Yes"><div class="vf-field"><label class="vf-label" for="china-visa-form-military_details">Which country, which service, your rank and the dates</label><textarea id="china-visa-form-military_details" name="military_details" rows="3" required></textarea></div></div></fieldset><fieldset class="vf-yesno"><legend>Do you have training or experience with firearms, explosives, or nuclear, biological or chemical materials?</legend><div class="vf-choices"><label class="vf-choice"><input type="radio" name="special_skills" value="Yes" required><span>Yes</span></label><label class="vf-choice"><input type="radio" name="special_skills" value="No" required><span>No</span></label></div><div class="vf-cond" data-show-if="special_skills=Yes"><div class="vf-field"><label class="vf-label" for="china-visa-form-special_skills_details">Give brief details</label><textarea id="china-visa-form-special_skills_details" name="special_skills_details" rows="3" required></textarea></div></div></fieldset></div><div class="vf-step" data-title="Documents"><h2 tabindex="-1">Documents</h2><p class=vf-intro>Clear phone photos are fine. We’ll check everything before we submit your application.</p><div class="vf-field vf-file"><label class="vf-label" for="china-visa-form-photo">Passport-style photo of you</label><span class="vf-hint" id="china-visa-form-h-photo">Plain light background, face straight on, no glasses or hat.</span><div class="vf-filewrap"><input type="file" class="vf-fileinput" id="china-visa-form-photo" name="photo" accept="image/*,.pdf" required><div class="vf-filebox" aria-hidden="true"><span class="vf-filebtn">Choose file or take photo</span><span class="vf-filename">No file chosen</span></div></div></div><div class="vf-field vf-file"><label class="vf-label" for="china-visa-form-travel_docs">Invitation letter, or your flight and hotel bookings</label><span class="vf-hint" id="china-visa-form-h-travel_docs">We’ll take your travel dates and the inviter’s details from this.</span><div class="vf-filewrap"><input type="file" class="vf-fileinput" id="china-visa-form-travel_docs" name="travel_docs" accept="image/*,.pdf" required><div class="vf-filebox" aria-hidden="true"><span class="vf-filebtn">Choose file or take photo</span><span class="vf-filename">No file chosen</span></div></div></div><div class="vf-field vf-file"><label class="vf-label" for="china-visa-form-uk_status">UK visa or residence permit <span class="vf-opt">(optional)</span></label><span class="vf-hint" id="china-visa-form-h-uk_status">Only if you’re not a British citizen. A screenshot of your UK eVisa is fine.</span><div class="vf-filewrap"><input type="file" class="vf-fileinput" id="china-visa-form-uk_status" name="uk_status" accept="image/*,.pdf"><div class="vf-filebox" aria-hidden="true"><span class="vf-filebtn">Choose file or take photo</span><span class="vf-filename">No file chosen</span></div></div></div><div class="vf-field vf-file"><label class="vf-label" for="china-visa-form-other_doc">Any other document <span class="vf-opt">(optional)</span></label><div class="vf-filewrap"><input type="file" class="vf-fileinput" id="china-visa-form-other_doc" name="other_doc" accept="image/*,.pdf"><div class="vf-filebox" aria-hidden="true"><span class="vf-filebtn">Choose file or take photo</span><span class="vf-filename">No file chosen</span></div></div></div><div class="vf-check"><label><input type="checkbox" name="declaration" value="Yes" required><span>I confirm the information I’ve given is true and complete, and I agree to Unique Visa Services using it to prepare my application.</span></label></div></div>
+    <p class="vf-send-error" role="alert" hidden></p>
+    <div class="vf-nav">
+      <button type="button" class="vf-btn vf-btn-back" data-vf-back>Back</button>
+      <button type="button" class="vf-btn vf-btn-main" data-vf-next>Continue</button>
+      <button type="submit" class="vf-btn vf-btn-main" data-vf-submit>Send my application</button>
+    </div>
+  </form>
+  <div class="vf-done" hidden role="status"><h2 tabindex="-1">Application sent</h2><p>Thank you. We’ve received your details and documents, and we’ll be in touch once we’ve checked everything.</p><p>Need us sooner? Call <a href="tel:01619562003">0161 956 2003</a>, Monday to Friday, 9am to 5pm.</p></div>
+</section>
+
+<style is:global>
+.vf{--vf-green:#2B5434;--vf-gold:#8A6A2B;--vf-ink:#1E2A22;--vf-muted:#56625A;--vf-line:#C6CDC3;--vf-bg:#FFFFFF;--vf-tint:#F1F3EC;--vf-error:#B42318;--vf-error-bg:#FEF3F2;--vf-serif:Georgia,"Times New Roman",serif;
+  color:var(--vf-ink);max-width:640px;margin:0 auto;font-size:1.0625rem;line-height:1.55;scroll-margin-top:1rem}
+.vf [hidden]{display:none!important}
+.vf-title{font-family:var(--vf-serif);color:var(--vf-green);font-size:clamp(1.75rem,5vw,2.25rem);line-height:1.15;font-weight:600;margin:0 0 .5rem}
+.vf-lede{color:var(--vf-muted);margin:0}
+.vf-progress{margin:1.5rem 0 2rem}
+.vf-progress-label{font-size:.9375rem;color:var(--vf-muted);margin:0 0 .5rem}
+.vf-progress-label strong{color:var(--vf-ink);font-weight:600}
+.vf-bar{height:6px;background:var(--vf-line);border-radius:3px;overflow:hidden}
+.vf-bar span{display:block;height:100%;width:0;background:var(--vf-gold);transition:width .3s ease}
+.vf-step h2,.vf-done h2{font-family:var(--vf-serif);color:var(--vf-green);font-size:1.5rem;line-height:1.2;font-weight:600;margin:0 0 .5rem}
+.vf-step h2:focus{outline:none}
+.vf-intro{color:var(--vf-muted);margin:0 0 1.75rem}
+.vf-sub-first{border-top:0!important;padding-top:0!important;margin-top:1rem!important}
+.vf-sub{font-size:1.125rem;font-weight:600;margin:2rem 0 1rem;padding-top:1.5rem;border-top:1px solid var(--vf-line)}
+.vf-field{margin:0 0 1.375rem;border:0;padding:0;min-width:0}
+.vf-label,.vf-field legend{display:block;font-weight:600;margin:0 0 .375rem;padding:0}
+.vf-opt{font-weight:400;color:var(--vf-muted)}
+.vf-hint{display:block;color:var(--vf-muted);font-size:.9375rem;margin:-.125rem 0 .5rem}
+.vf input[type=text],.vf input[type=email],.vf input[type=tel],.vf input[type=date],.vf select,.vf textarea{display:block;width:100%;box-sizing:border-box;font:inherit;font-size:max(16px,1rem);padding:.7rem .8rem;min-height:50px;border:1.5px solid var(--vf-line);border-radius:6px;background:var(--vf-bg);color:var(--vf-ink)}
+.vf textarea{min-height:6.5rem;resize:vertical}
+.vf input:focus-visible,.vf select:focus-visible,.vf textarea:focus-visible{outline:3px solid var(--vf-gold);outline-offset:1px;border-color:var(--vf-green)}
+.vf [aria-invalid=true]{border-color:var(--vf-error)!important}
+.vf-choices{display:flex;flex-wrap:wrap;gap:.5rem}
+.vf-choice{position:relative;display:inline-flex}
+.vf-choice input{position:absolute;opacity:0;width:1px;height:1px;margin:0;pointer-events:none}
+.vf-choice span{display:inline-flex;align-items:center;min-height:50px;min-width:5rem;justify-content:center;padding:0 1.25rem;border:1.5px solid var(--vf-line);border-radius:6px;background:var(--vf-bg);cursor:pointer;font-weight:500}
+.vf-choice input:checked+span{background:var(--vf-green);border-color:var(--vf-green);color:#fff}
+.vf-choice input:focus-visible+span{outline:3px solid var(--vf-gold);outline-offset:2px}
+.vf-file{position:relative}
+.vf-filebox{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem 1rem;padding:1rem;border:1.5px dashed var(--vf-line);border-radius:6px;background:var(--vf-tint);cursor:pointer}
+.vf-filebtn{display:inline-flex;align-items:center;min-height:44px;padding:0 1rem;border-radius:6px;background:var(--vf-bg);border:1.5px solid var(--vf-green);color:var(--vf-green);font-weight:600}
+.vf-filename{color:var(--vf-muted);font-size:.9375rem;word-break:break-all}
+.vf-file.has-file .vf-filebox{border-style:solid;border-color:var(--vf-green)}
+.vf-file.has-file .vf-filename{color:var(--vf-ink)}
+.vf-fileinput:focus-visible~.vf-filebox{outline:3px solid var(--vf-gold);outline-offset:2px}
+.vf-file:has(.vf-error) .vf-filebox{border-color:var(--vf-error)}
+.vf-note{background:var(--vf-tint);border-left:4px solid var(--vf-gold);padding:.875rem 1rem;margin:0 0 1.375rem;border-radius:0 6px 6px 0}
+.vf-note p{margin:0}
+.vf-stop{border:1.5px solid var(--vf-error);background:var(--vf-error-bg);color:var(--vf-ink);padding:1.125rem 1.25rem;border-radius:6px;margin:0 0 1.375rem}
+.vf-stop h3{margin:0 0 .5rem;font-size:1.125rem;color:var(--vf-error)}
+.vf-stop p{margin:0 0 .5rem}.vf-stop p:last-child{margin:0}
+.vf-stop a,.vf-done a{color:var(--vf-green);font-weight:600}
+.vf-yesno{padding:1rem 0;margin:0;border-bottom:1px solid var(--vf-line)}
+.vf-yesno legend{font-weight:500;margin-bottom:.625rem}
+.vf-yesno .vf-cond{margin-top:.875rem}
+.vf-yesno .vf-cond .vf-field{margin-bottom:0}
+.vf-check label{display:flex;gap:.75rem;align-items:flex-start;cursor:pointer;font-weight:500}
+.vf-check input{width:24px;height:24px;flex:none;margin:.1rem 0 0;accent-color:var(--vf-green)}
+.vf-error{color:var(--vf-error);font-size:.9375rem;font-weight:600;margin:.4rem 0 0}
+.vf-nav{display:flex;gap:.75rem;margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--vf-line)}
+.vf-nav [data-vf-next],.vf-nav [data-vf-submit]{margin-left:auto}
+.vf-btn{font:inherit;font-weight:600;min-height:52px;padding:0 1.5rem;border-radius:6px;cursor:pointer;border:1.5px solid var(--vf-green)}
+.vf-btn-main{background:var(--vf-green);color:#fff}
+.vf-btn-back{background:transparent;color:var(--vf-green)}
+.vf-btn:focus-visible{outline:3px solid var(--vf-gold);outline-offset:2px}
+.vf-btn:disabled{opacity:.6;cursor:progress}
+.vf-done{padding:1rem 0}
+.vf-done h2:focus{outline:none}
+@media (prefers-reduced-motion:reduce){.vf-bar span{transition:none}}
+.vf-send-error{color:var(--vf-error);background:var(--vf-error-bg);border:1.5px solid var(--vf-error);border-radius:6px;padding:.75rem 1rem;font-weight:600;margin:1.25rem 0 0}
+.vf-filewrap{position:relative}
+.vf-fileinput{position:absolute;inset:0;width:100%;height:100%;opacity:0;margin:0;padding:0;cursor:pointer;z-index:2;font-size:16px}
+</style>
+
+<script is:inline>
+(function(){
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var LIMIT = 7.5 * 1024 * 1024; // Netlify Forms allows about 8 MB per submission
+  document.querySelectorAll('form[data-vf]').forEach(function(form){
+    if (form.dataset.vfReady) return; form.dataset.vfReady = '1';
+    var wrap = form.closest('.vf');
+    var steps = Array.prototype.slice.call(form.querySelectorAll('.vf-step'));
+    var last = steps.length - 1, i = 0;
+    var label = wrap.querySelector('.vf-progress-label');
+    var bar = wrap.querySelector('.vf-bar span');
+    var back = form.querySelector('[data-vf-back]');
+    var next = form.querySelector('[data-vf-next]');
+    var submit = form.querySelector('[data-vf-submit]');
+    var sendErr = form.querySelector('.vf-send-error');
+    var conds = Array.prototype.slice.call(form.querySelectorAll('[data-show-if]'));
+    var today = new Date().toISOString().slice(0,10);
+    form.querySelectorAll('[data-future]').forEach(function(d){ d.min = today; });
+    form.querySelectorAll('[data-past]').forEach(function(d){ d.max = today; });
+
+    function val(name){ var el = form.elements[name]; return el ? el.value : ''; }
+    function matches(rule){ var p = rule.split('='); return p[1].split('|').indexOf(val(p[0])) > -1; }
+    function update(){
+      conds.forEach(function(el){
+        var on = matches(el.dataset.showIf);
+        el.hidden = !on;
+        el.querySelectorAll('input,select,textarea').forEach(function(f){ f.disabled = !on; });
+      });
+      var s = steps[i];
+      var stop = s.dataset.stopIf && matches(s.dataset.stopIf);
+      back.hidden = i === 0;
+      next.hidden = i === last || !!stop;
+      submit.hidden = i !== last;
+      label.innerHTML = 'Step ' + (i+1) + ' of ' + steps.length + ': <strong>' + s.dataset.title + '</strong>';
+      bar.style.width = ((i+1) / steps.length * 100) + '%';
+    }
+    function clearErr(scope){
+      scope.querySelectorAll('.vf-error').forEach(function(e){ e.remove(); });
+      scope.querySelectorAll('[aria-invalid]').forEach(function(e){ e.removeAttribute('aria-invalid'); });
+    }
+    function addErr(f, msg){
+      var box = f.type === 'radio' ? f.closest('fieldset') : (f.closest('.vf-check') || f.closest('.vf-field'));
+      if (box.querySelector(':scope > .vf-error')) return;
+      var p = document.createElement('p'); p.className = 'vf-error'; p.textContent = msg;
+      box.appendChild(p); f.setAttribute('aria-invalid','true');
+    }
+    function message(f){
+      if (f.type === 'radio') return 'Choose an answer to continue.';
+      if (f.type === 'file') return 'Upload this document to continue.';
+      if (f.type === 'checkbox') return 'Tick this box to send your application.';
+      if (f.validity.typeMismatch && f.type === 'email') return 'Enter an email address like name@example.com.';
+      if (f.validity.rangeUnderflow) return 'Choose a date in the future.';
+      if (f.validity.rangeOverflow) return 'Choose a date in the past.';
+      return 'Fill this in to continue.';
+    }
+    function validStep(){
+      var s = steps[i]; clearErr(s);
+      var bad = null, seen = {};
+      s.querySelectorAll('input,select,textarea').forEach(function(f){
+        if (f.disabled) return;
+        if (f.type === 'radio'){ if (seen[f.name]) return; seen[f.name] = 1; }
+        if (!f.checkValidity()){ addErr(f, message(f)); bad = bad || f; }
+      });
+      if (bad){ bad.focus(); if (bad.scrollIntoView) bad.closest('.vf-field,fieldset,.vf-check').scrollIntoView({block:'center', behavior: reduce ? 'auto' : 'smooth'}); }
+      return !bad;
+    }
+    function go(n){
+      steps[i].hidden = true; i = n; steps[i].hidden = false; update();
+      wrap.scrollIntoView({block:'start', behavior: reduce ? 'auto' : 'smooth'});
+      var h = steps[i].querySelector('h2'); if (h) h.focus({preventScroll:true});
+    }
+    function goNext(){
+      var s = steps[i];
+      if (s.dataset.stopIf && matches(s.dataset.stopIf)) return;
+      if (validStep()) go(i+1);
+    }
+    back.addEventListener('click', function(){ go(i-1); });
+    next.addEventListener('click', goNext);
+    form.addEventListener('change', function(e){
+      update();
+      var box = e.target.closest('fieldset,.vf-field,.vf-check'); if (box) clearErr(box);
+    });
+    form.addEventListener('input', function(e){
+      var box = e.target.closest('.vf-field'); if (box && e.target.type !== 'file') clearErr(box);
+    });
+
+    // Shrink phone photos so uploads stay under the size limit
+    function shrink(file){
+      if (!/^image\/(jpeg|png|webp)$/.test(file.type) || file.size < 700*1024) return Promise.resolve(file);
+      return new Promise(function(resolve){
+        var url = URL.createObjectURL(file), img = new Image();
+        img.onload = function(){
+          var max = 2000, s = Math.min(1, max / Math.max(img.naturalWidth, img.naturalHeight));
+          var c = document.createElement('canvas');
+          c.width = Math.round(img.naturalWidth * s); c.height = Math.round(img.naturalHeight * s);
+          var ctx = c.getContext('2d'); ctx.fillStyle = '#fff'; ctx.fillRect(0,0,c.width,c.height);
+          ctx.drawImage(img, 0, 0, c.width, c.height); URL.revokeObjectURL(url);
+          c.toBlob(function(b){
+            if (!b || b.size >= file.size) return resolve(file);
+            resolve(new File([b], file.name.replace(/\.[^.]+$/,'') + '.jpg', {type:'image/jpeg'}));
+          }, 'image/jpeg', 0.85);
+        };
+        img.onerror = function(){ URL.revokeObjectURL(url); resolve(file); };
+        img.src = url;
+      });
+    }
+    function size(b){ return b > 1048576 ? (b/1048576).toFixed(1) + ' MB' : Math.max(1, Math.round(b/1024)) + ' KB'; }
+    form.querySelectorAll('.vf-fileinput').forEach(function(inp){
+      var box = inp.closest('.vf-file'), name = box.querySelector('.vf-filename');
+      inp.addEventListener('change', function(){
+        clearErr(box);
+        var f = inp.files && inp.files[0];
+        if (!f){ box.classList.remove('has-file'); name.textContent = 'No file chosen'; return; }
+        name.textContent = 'Preparing ' + f.name + '…';
+        shrink(f).then(function(out){
+          if (out !== f){ try { var dt = new DataTransfer(); dt.items.add(out); inp.files = dt.files; } catch(e){ out = f; } }
+          box.classList.add('has-file');
+          name.textContent = out.name + ' (' + size(out.size) + ')';
+        });
+      });
+    });
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      if (i < last){ goNext(); return; }
+      if (!validStep()) return;
+      var total = 0;
+      form.querySelectorAll('.vf-fileinput').forEach(function(inp){ if (!inp.disabled && inp.files[0]) total += inp.files[0].size; });
+      sendErr.hidden = true;
+      if (total > LIMIT){
+        sendErr.textContent = 'Your documents add up to ' + size(total) + ', which is too large to send. The limit is 8 MB. Upload photos of the pages instead of large PDF scans, or email the extra documents to us after sending this form.';
+        sendErr.hidden = false; return;
+      }
+      var txt = submit.textContent; submit.disabled = true; submit.textContent = 'Sending…';
+      var send = window.VF_PREVIEW
+        ? new Promise(function(r){ setTimeout(r, 700); })
+        : fetch('/', { method:'POST', body:new FormData(form) }).then(function(r){ if (!r.ok) throw new Error(r.status); });
+      send.then(function(){
+        form.hidden = true; wrap.querySelector('.vf-progress').hidden = true;
+        var done = wrap.querySelector('.vf-done'); done.hidden = false;
+        wrap.scrollIntoView({block:'start', behavior: reduce ? 'auto' : 'smooth'});
+        done.querySelector('h2').focus({preventScroll:true});
+      }).catch(function(){
+        sendErr.textContent = 'Your application wasn’t sent. Check your internet connection and try again, or call us on 0161 956 2003.';
+        sendErr.hidden = false; submit.disabled = false; submit.textContent = txt;
+      });
+    });
+    steps.forEach(function(s, n){ s.hidden = n !== 0; });
+    update();
+  });
+})();
+</script>
