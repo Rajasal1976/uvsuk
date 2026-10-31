@@ -255,3 +255,30 @@ a.card:hover { border-color: var(--green-600); color: inherit; }
 .nav > a.btn-primary { color: #fff; padding: 12px 22px; }
 .nav > a.btn-primary:hover { color: #fff; }
 @media (max-width: 960px) { .nav > a.btn-primary { justify-content: center; border-bottom: 0; } }
+
+/* eVisas menu: countries grouped by continent */
+.dd-mega { display: none; grid-template-columns: repeat(4, minmax(150px, 1fr)); gap: 0 8px; width: min(800px, calc(100vw - 48px)); left: auto; right: -240px; padding: 16px 8px; }
+.dd:hover .dd-mega, .dd:focus-within .dd-mega { display: grid; }
+.dd-group ul { list-style: none; margin: 0; padding: 0; }
+.dd-mega a.dd-head { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--green-800); padding: 6px 18px 8px; }
+.dd-mega .dd-group ul a { padding: 6px 18px; font-size: 15px; }
+@media (max-width: 960px) {
+  .dd-mega { display: block; width: auto; padding: 0 0 8px 12px; }
+  .dd-group ul { display: none; }
+  .dd-mega a.dd-head { font-size: inherit; font-weight: 400; text-transform: none; letter-spacing: 0; color: var(--ink); padding: 8px 0; }
+}
+.evisa-jump { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 8px; padding: 0; list-style: none; }
+.evisa-jump a { display: inline-flex; min-height: 44px; align-items: center; padding: 0 16px; border: 1px solid var(--line); border-radius: 999px; text-decoration: none; color: var(--green-800); font-weight: 600; }
+.evisa-jump a:hover { border-color: var(--green-600); background: var(--green-50); }
+.evisa-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
+.evisa-grid .card { padding: 18px 20px; gap: 4px; scroll-margin-top: 24px; }
+.evisa-grid .card h3 { font-size: 19px; margin: 0; }
+.evisa-grid .card:target { border-color: var(--gold); box-shadow: 0 0 0 2px var(--gold); }
+.evisa-continent { scroll-margin-top: 24px; }
+/* Keep menu labels on one line now the menu has an extra item */
+.nav > a, .dd > a { white-space: nowrap; }
+@media (min-width: 961px) and (max-width: 1240px) {
+  .nav { gap: 16px; font-size: 15px; }
+  .nav > a.btn-primary { padding: 10px 16px; }
+  .brand-tag { display: none; }
+}

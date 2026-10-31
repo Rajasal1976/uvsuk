@@ -1,0 +1,57 @@
+---
+// Price table for travel visa and eVisa pages, plus delivery charges.
+// Rows come from each page's "Price table" in the admin. Delivery prices are in Business details.
+import { site } from '../data/site.js';
+const { prices = [], kind = 'travel' } = Astro.props;
+const rows = prices.filter((r) => r && r.service);
+const label = (s) => s.replace(/'/g, '’');
+---
+<section id="fees">
+  <h2>Fees and timescales</h2>
+  {rows.length > 0 && (
+    <div class="table-wrap">
+      <table class="data-table price-table">
+        <thead><tr><th scope="col">Service</th><th scope="col">What’s included</th><th scope="col">Processing</th><th scope="col">Our fee</th></tr></thead>
+        <tbody>
+          {rows.map((r) => (
+            <tr class={r.popular ? 'popular' : undefined}>
+              <th scope="row" data-label="Service">{r.service}{r.popular && <span class="tag tag-pop">Most popular</span>}</th>
+              <td data-label="What’s included">{r.included || '–'}</td>
+              <td data-label="Processing">{r.processing || 'Ask us'}</td>
+              <td data-label="Our fee" class={r.fee ? 'price' : undefined}>{r.fee || <a href={`tel:${site.phoneIntl}`}>Call for price</a>}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )}
+  <p class="soft" style="font-size:15px">Our fee covers our service. {kind === 'evisa' ? 'The official eVisa fee is paid separately at cost.' : 'Embassy and visa centre fees are paid separately at cost.'}</p>
+
+  {kind === 'travel' && site.delivery.length > 0 && (
+    <>
+      <h3 style="margin-top:32px">Returning your passport</h3>
+      <div class="table-wrap">
+        <table class="data-table price-table">
+          <thead><tr><th scope="col">Delivery option</th><th scope="col">Price</th></tr></thead>
+          <tbody>
+            {site.delivery.map((d) => (
+              <tr><th scope="row" data-label="Delivery option">{label(d.service)}</th><td data-label="Price" class={/\d/.test(d.price) ? 'price' : undefined}>{d.price}</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </>
+  )}
+  {kind === 'evisa' && site.evisaDelivery && (
+    <>
+      <h3 style="margin-top:32px">Delivery</h3>
+      <div class="table-wrap">
+        <table class="data-table price-table">
+          <thead><tr><th scope="col">Delivery option</th><th scope="col">Price</th></tr></thead>
+          <tbody><tr><th scope="row" data-label="Delivery option">eVisa delivery</th><td data-label="Price" class="price">{site.evisaDelivery}</td></tr></tbody>
+        </table>
+      </div>
+    </>
+  )}
+  <div class="btn-row" style="margin-top:24px"><a class="btn btn-primary" href="/contact-us/">Start your application</a></div>
+</section>

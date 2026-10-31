@@ -2,6 +2,7 @@
 import Page from '../layouts/Page.astro';
 import Faq from '../components/Faq.astro';
 import ApplyButton from '../components/ApplyButton.astro';
+import PriceTables from '../components/PriceTables.astro';
 // SEO title, description and FAQs for this page are edited in the admin (content/special/china-visa-application.json).
 import content from '../../content/special/china-visa-application.json';
 import '../styles/china-chooser.css';
@@ -181,9 +182,7 @@ const schemas = [];
 <li>Prepare and complete your application forms</li>
 <li>Review all evidence against the current rules before submission</li>
 <li>Keep you updated until you have a decision</li></ul></section>
-<section id="fees">
-<h2>Fees and timescales</h2>
-<p>Our fee is agreed before we start. <a href="/fees/">See our fees</a>. Government fees are paid separately.</p></section>
+<PriceTables prices={content.prices} kind="travel" />
 
 <Faq items={content.faqs} title={content.faqHeading} />
 

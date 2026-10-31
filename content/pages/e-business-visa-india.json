@@ -15,5 +15,21 @@
   ],
   "faqs": [],
   "govuk": "",
-  "applyButton": "/apply/india-visa/"
+  "applyButton": "/apply/india-visa/",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Application completed and checked, photo and passport scan checked",
+      "processing": "",
+      "fee": "",
+      "popular": true
+    },
+    {
+      "service": "Urgent",
+      "included": "Everything in Standard, submitted the same working day",
+      "processing": "",
+      "fee": "",
+      "popular": false
+    }
+  ]
 }

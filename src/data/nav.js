@@ -1,4 +1,6 @@
 // Menu structure, shared by the header and footer.
+import { evisaContinents, evisaLink } from './evisas.js';
+
 export const menu = [
   {
     label: 'UK Visas',
@@ -37,5 +39,15 @@ export const menu = [
       ['Document Legalisation', '/document-legalisation/'],
       ['All countries', '/worldwide-visas/'],
     ],
+  },
+  {
+    // Grouped by continent. The countries come from src/data/evisas.js
+    label: 'eVisas',
+    href: '/e-visa/',
+    groups: evisaContinents.map((g) => ({
+      label: g.name,
+      href: `/e-visa/#${g.id}`,
+      items: g.countries.map((k) => [k.name, evisaLink(k)]),
+    })),
   },
 ];

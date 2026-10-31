@@ -59,6 +59,19 @@ collections:
         required: false
         field: { name: document, label: Document, widget: string }
         hint: 'Visa pages only.'
+      - name: prices
+        label: Price table
+        label_singular: price row
+        widget: list
+        required: false
+        summary: '{{fields.service}}: {{fields.fee}}'
+        hint: 'Travel visa and eVisa pages only. Leave the fee or processing time empty to show "Call for price" or "Ask us".'
+        fields:
+          - { name: service, label: Service, widget: string, hint: 'For example Standard, Express or Urgent.' }
+          - { name: included, label: "What's included", widget: string, required: false }
+          - { name: processing, label: Processing time, widget: string, required: false, hint: 'For example 5 working days.' }
+          - { name: fee, label: Our fee, widget: string, required: false, hint: 'For example £95.' }
+          - { name: popular, label: Mark as most popular, widget: boolean, required: false, default: false }
       - name: body
         label: Page text
         label_singular: paragraph
@@ -101,6 +114,12 @@ collections:
           { name: name, label: Name in menus and lists, widget: string },
           { name: applyButton, label: Apply button, widget: select, default: none, options: [{ label: 'No button', value: 'none' }, { label: 'Apply online → China visa form', value: '/apply/china-visa/' }, { label: 'Apply online → India eVisa form', value: '/apply/india-visa/' }, { label: 'Apply online → Sri Lanka ETA form', value: '/apply/sri-lanka-eta/' }, { label: 'Apply now → contact / enquiry form', value: '/contact-us/' }] },
           { name: faqHeading, label: FAQ heading, widget: string, default: Common questions },
+          { name: prices, label: Price table, label_singular: price row, widget: list, required: false, summary: '{{fields.service}}: {{fields.fee}}', hint: 'China and eVisa pages only. Leave the fee empty to show "Call for price".', fields: [
+            { name: service, label: Service, widget: string },
+            { name: included, label: "What's included", widget: string, required: false },
+            { name: processing, label: Processing time, widget: string, required: false },
+            { name: fee, label: Our fee, widget: string, required: false },
+            { name: popular, label: Mark as most popular, widget: boolean, required: false, default: false } ] },
           { name: faqs, label: FAQs, label_singular: FAQ, widget: list, required: false, summary: '{{fields.q}}', fields: [
             { name: q, label: Question, widget: string },
             { name: a, label: Answer, widget: text } ] },
@@ -109,6 +128,7 @@ collections:
       - { name: skilled-worker, label: Skilled Worker visa, file: content/special/skilled-worker-visa-formally-tier-t2-general.json, fields: *specialFields }
       - { name: china, label: China visa, file: content/special/china-visa-application.json, fields: *specialFields }
       - { name: china-business, label: China business visa, file: content/special/china-business-visa.json, fields: *specialFields }
+      - { name: e-visa, label: eVisas page, file: content/special/e-visa.json, fields: *specialFields }
 
   # ---------- Homepage ----------
   - name: homepage
@@ -172,3 +192,13 @@ collections:
           - { name: googleReviewCount, label: Number of Google reviews, widget: string }
           - { name: googleReviewsUrl, label: Link to your Google reviews, widget: string, required: false }
           - { name: companyNumber, label: Company number, widget: string }
+          - name: delivery
+            label: Passport return prices (travel visas)
+            label_singular: delivery option
+            widget: list
+            summary: '{{fields.service}}: {{fields.price}}'
+            hint: 'Shown on every travel visa page. Not shown on eVisa pages.'
+            fields:
+              - { name: service, label: Delivery option, widget: string }
+              - { name: price, label: Price, widget: string, hint: 'For example £15, or "We’ll quote".' }
+          - { name: evisaDelivery, label: eVisa delivery price, widget: string, hint: 'Shown on every eVisa page, e.g. £5.' }

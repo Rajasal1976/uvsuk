@@ -11,5 +11,28 @@
   "yearsInPractice": "18+",
   "applicationsHandled": "15000",
   "email": "hello@uvsuk.com",
-  "googleReviewCount": "111"
+  "googleReviewCount": "111",
+  "delivery": [
+    {
+      "service": "Special Delivery",
+      "price": "£15"
+    },
+    {
+      "service": "Special Delivery by 9am",
+      "price": "£45"
+    },
+    {
+      "service": "Saturday Guaranteed",
+      "price": "£55"
+    },
+    {
+      "service": "Saturday by 9am",
+      "price": "£65"
+    },
+    {
+      "service": "Courier",
+      "price": "We’ll quote"
+    }
+  ],
+  "evisaDelivery": "£5"
 }

@@ -15,5 +15,28 @@
   ],
   "faqs": [],
   "govuk": "",
-  "applyButton": "none"
+  "applyButton": "none",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Form completion, document check and submission",
+      "processing": "",
+      "fee": "",
+      "popular": false
+    },
+    {
+      "service": "Express",
+      "included": "Everything in Standard, with faster processing",
+      "processing": "",
+      "fee": "",
+      "popular": true
+    },
+    {
+      "service": "Urgent",
+      "included": "Everything in Standard, with the fastest processing available",
+      "processing": "",
+      "fee": "",
+      "popular": false
+    }
+  ]
 }

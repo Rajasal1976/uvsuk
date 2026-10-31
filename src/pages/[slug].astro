@@ -7,6 +7,7 @@ import Page from '../layouts/Page.astro';
 import Faq from '../components/Faq.astro';
 import CtaBand from '../components/CtaBand.astro';
 import ApplyButton from '../components/ApplyButton.astro';
+import PriceTables from '../components/PriceTables.astro';
 import { pages, pageBySlug } from '../data/pages.js';
 import { site } from '../data/site.js';
 
@@ -68,10 +69,12 @@ const howWeHelp = [
               </section>
             )}
             <section><h2>How we help</h2><ul>{howWeHelp.map((h) => <li>{h}</li>)}</ul></section>
-            <section>
-              <h2>Fees and timescales</h2>
-              <p>Our fee is agreed before we start. <a href="/fees/">See our fees</a>. Government fees are paid separately{p.govuk && <>, and are listed on <a href={p.govuk}>GOV.UK</a></>}.</p>
-            </section>
+            {p.visa ? <PriceTables prices={p.prices} kind={p.visa} /> : (
+              <section>
+                <h2>Fees and timescales</h2>
+                <p>Our fee is agreed before we start. <a href="/fees/">See our fees</a>. Government fees are paid separately{p.govuk && <>, and are listed on <a href={p.govuk}>GOV.UK</a></>}.</p>
+              </section>
+            )}
           </>
         )}
 

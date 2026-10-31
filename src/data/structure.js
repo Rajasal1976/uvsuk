@@ -1,4 +1,5 @@
 // Site structure: which pages exist, their type, menu group and links between them.
+// "visa": "travel" or "evisa" adds the price tables (travel visas also get the delivery table).
 // Page TEXT lives in src/content (edited in the admin at /admin). Changing this file is a code change.
 export const structure = [
   {
@@ -165,17 +166,20 @@ export const structure = [
   {
     "slug": "e-tourist-visa-india",
     "type": "service",
-    "group": "worldwide"
+    "group": "worldwide",
+    "visa": "evisa"
   },
   {
     "slug": "e-business-visa-india",
     "type": "service",
-    "group": "worldwide"
+    "group": "worldwide",
+    "visa": "evisa"
   },
   {
     "slug": "employment-visa-india",
     "type": "service",
-    "group": "worldwide"
+    "group": "worldwide",
+    "visa": "travel"
   },
   {
     "slug": "china-visa-application",
@@ -191,37 +195,44 @@ export const structure = [
     "group": "worldwide",
     "related": [
       "china-visa-application"
-    ]
+    ],
+    "visa": "travel"
   },
   {
     "slug": "schengen-visa-application",
     "type": "service",
-    "group": "worldwide"
+    "group": "worldwide",
+    "visa": "travel"
   },
   {
     "slug": "usa-visa-services",
     "type": "service",
-    "group": "worldwide"
+    "group": "worldwide",
+    "visa": "travel"
   },
   {
     "slug": "saudi-arabia-visa-uk",
     "type": "service",
-    "group": "worldwide"
+    "group": "worldwide",
+    "visa": "travel"
   },
   {
     "slug": "ghana-visa-services",
     "type": "service",
-    "group": "worldwide"
+    "group": "worldwide",
+    "visa": "travel"
   },
   {
     "slug": "russian-visa-services-from-uk",
     "type": "service",
-    "group": "worldwide"
+    "group": "worldwide",
+    "visa": "travel"
   },
   {
     "slug": "sri-lanka-visa-services",
     "type": "service",
-    "group": "worldwide"
+    "group": "worldwide",
+    "visa": "evisa"
   },
   {
     "slug": "document-legalisation",

@@ -17,5 +17,28 @@
       "a": "Yes. Most applicants give fingerprints in person at a Chinese Visa Application Service Centre. We book the appointment and prepare everything you take with you."
     }
   ],
-  "applyButton": "/apply/china-visa/"
+  "applyButton": "/apply/china-visa/",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Form completion, document check, visa centre appointment and submission support",
+      "processing": "",
+      "fee": "",
+      "popular": false
+    },
+    {
+      "service": "Express",
+      "included": "Everything in Standard, with faster processing at the visa centre",
+      "processing": "",
+      "fee": "",
+      "popular": true
+    },
+    {
+      "service": "Urgent",
+      "included": "Everything in Standard, with the fastest processing available",
+      "processing": "",
+      "fee": "",
+      "popular": false
+    }
+  ]
 }

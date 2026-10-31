@@ -25,4 +25,7 @@ export const site = {
   googleReviewsUrl: s.googleReviewsUrl || '/contact-us/',
   companyNumber: s.companyNumber,
   bookingUrl: '/contact-us/',
+  // Passport return options for travel visas, and the single eVisa delivery charge (edited in the admin)
+  delivery: s.delivery || [],
+  evisaDelivery: s.evisaDelivery || '',
 };

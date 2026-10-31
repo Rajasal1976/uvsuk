@@ -2,6 +2,7 @@
 import Page from '../layouts/Page.astro';
 import Faq from '../components/Faq.astro';
 import ApplyButton from '../components/ApplyButton.astro';
+import PriceTables from '../components/PriceTables.astro';
 // SEO title, description and FAQs for this page are edited in the admin (content/special/china-business-visa.json).
 import content from '../../content/special/china-business-visa.json';
 const title = content.title;
@@ -45,16 +46,7 @@ const schemas = [];
 <li>Prepare and complete your application forms</li>
 <li>Review all evidence against the current rules before submission</li>
 <li>Keep you updated until you have a decision</li></ul></section>
-<section id="fees">
-<h2>Fees and timescales</h2>
-<div class="table-wrap">
-<table class="data-table price-table"><thead>
-<tr><th scope="col">Service</th><th scope="col">What&#x27;s included</th><th scope="col">Processing</th><th scope="col">Our fee</th></tr></thead><tbody>
-<tr><th scope="row" data-label="Service">Standard</th><td data-label="What&#x27;s included">Form completion, document check, visa centre appointment and submission support</td><td data-label="Processing">[X] working days</td><td data-label="Our fee" class="price">£[XX]</td></tr>
-<tr class="popular"><th scope="row" data-label="Service">Express<span class="tag tag-pop">Most popular</span></th><td data-label="What&#x27;s included">Everything in Standard, with faster processing at the visa centre</td><td data-label="Processing">[X] working days</td><td data-label="Our fee" class="price">£[XX]</td></tr>
-<tr><th scope="row" data-label="Service">Urgent</th><td data-label="What&#x27;s included">Everything in Standard, with the fastest processing available</td><td data-label="Processing">[X] working day</td><td data-label="Our fee" class="price">£[XX]</td></tr></tbody></table></div>
-<p class="soft" style="font-size:15px">Our fee covers our service. The Chinese visa fee and visa centre service fee are paid separately at cost, and depend on your nationality and the number of entries.</p>
-<div class="btn-row"><a class="btn btn-primary" href="/contact-us/">Start your application</a></div></section>
+<PriceTables prices={content.prices} kind="travel" />
 
 <Faq items={content.faqs} title={content.faqHeading} />
 
