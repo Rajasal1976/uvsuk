@@ -153,6 +153,15 @@ export function mountApplication(root, config, opts = {}) {
   }
 
   function fieldBlock(f, { id = `f-${f.name}`, value, onChange, scope }) {
+    // A message that stops the client continuing (for example, not eligible for an eVisa)
+    if (f.type === 'stop') {
+      const box = h('div', { class: 'ap-field ap-stop', 'data-field': f.name, role: 'alert', style: 'border:2px solid #B42318;background:#FEF3F2;border-radius:8px;padding:16px 20px' },
+        h('h3', { style: 'color:#B42318;font-size:19px;margin:0 0 8px' }, f.label),
+        ...(f.text || []).map((t) => h('p', { style: 'margin:0 0 8px' }, t)),
+        opts.phone ? h('p', { style: 'margin:0' }, 'Call us on ', h('a', { href: `tel:${opts.phoneIntl || opts.phone}`, style: 'font-weight:600' }, opts.phone), ' and we’ll explain your options.') : null);
+      box._field = f;
+      return box;
+    }
     const wrap = h('div', { class: `ap-field${f.half ? ' half' : ''}${autofilled.has(f.name) ? ' autofilled' : ''}`, 'data-field': f.name });
     const labelEl = ['radio', 'yesno'].includes(f.type)
       ? h('p', { class: 'ap-label', id: `${id}-label` }, f.label, f.required ? null : '')
@@ -403,6 +412,7 @@ export function mountApplication(root, config, opts = {}) {
       if (el.hidden || el.closest('[hidden]')) return;
       const f = el._field;
       if (!f || f.type === 'repeat') return;
+      if (f.type === 'stop') { errors.push({ msg: f.label, el: null }); return; }
       const id = el.querySelector('input,select,textarea,[role=radiogroup]')?.id || '';
       const scopeVal = el._scope ? el._scope[f.name] : answers[f.name];
       if (el._scope && el._scope !== answers) { if (f.showIf && !visible(f, el._scope)) return; }
