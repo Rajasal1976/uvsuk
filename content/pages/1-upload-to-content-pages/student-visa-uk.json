@@ -1,0 +1,32 @@
+{
+  "title": "UK Student Visa Help | Applications & Extensions | UVS",
+  "description": "UK Student and Child Student visa applications and extensions, with CAS and financial evidence checks. IAA-regulated advisers in Manchester.",
+  "h1": "UK Student visa",
+  "intro": "The Student visa (formerly Tier 4) lets you study at a licensed UK university or college. We also help with Child Student visas for under-18s at independent schools.",
+  "eligibility": [
+    "You have an unconditional offer and a CAS from a licensed student sponsor",
+    "You can show you have enough money for course fees and living costs",
+    "You meet the English language requirement",
+    "For under-18s: parental consent and suitable care arrangements"
+  ],
+  "documents": [
+    "Passport",
+    "Confirmation of Acceptance for Studies (CAS)",
+    "Bank statements showing the required funds, held for the required time",
+    "Tuberculosis test results, if required for your country"
+  ],
+  "faqs": [
+    {
+      "q": "Can I bring my family?",
+      "a": "Only on certain courses, mainly postgraduate research. We check whether your course allows dependants before you apply."
+    },
+    {
+      "q": "Can I stay in the UK after my course?",
+      "a": "You may be able to switch to the Graduate visa after you finish your course."
+    }
+  ],
+  "govuk": "https://www.gov.uk/student-visa",
+  "applyButton": "none",
+  "country": "UK",
+  "sortKey": "1 uk 1 uk student visa"
+}

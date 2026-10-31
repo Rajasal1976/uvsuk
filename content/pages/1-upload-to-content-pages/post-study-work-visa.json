@@ -1,0 +1,26 @@
+{
+  "title": "UK Graduate Visa (Post-Study Work) | UVS",
+  "description": "Stay and work in the UK after your degree. IAA-regulated help with Graduate visa applications from our Manchester office.",
+  "h1": "Graduate visa",
+  "intro": "The Graduate visa lets you stay in the UK to work or look for work after successfully completing an eligible UK degree. You apply from inside the UK, before your Student visa expires.",
+  "eligibility": [
+    "You are in the UK on a Student visa",
+    "Your university has confirmed to the Home Office that you completed your course",
+    "You apply before your Student visa expires"
+  ],
+  "documents": [
+    "Passport",
+    "Your CAS number from your course",
+    "Current visa or eVisa details"
+  ],
+  "faqs": [
+    {
+      "q": "Do I need a job offer?",
+      "a": "No. The Graduate visa does not need a sponsor or job offer. Many people later switch to a Skilled Worker visa."
+    }
+  ],
+  "govuk": "https://www.gov.uk/graduate-visa",
+  "applyButton": "none",
+  "country": "UK",
+  "sortKey": "1 uk 1 graduate visa"
+}

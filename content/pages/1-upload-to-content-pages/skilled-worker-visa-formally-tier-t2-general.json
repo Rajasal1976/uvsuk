@@ -1,0 +1,20 @@
+{
+  "h1": "Skilled Worker visa",
+  "intro": "The Skilled Worker visa (formerly Tier 2 General) lets you work in the UK for an employer with a sponsor licence. We help with new applications, extensions and changing employer.",
+  "title": "Skilled Worker Visa UK | Applications & Extensions | UVS",
+  "description": "Skilled Worker visa applications, extensions and changes of employer, with Certificate of Sponsorship and salary checks. IAA-regulated, Manchester.",
+  "faqHeading": "Common questions",
+  "faqs": [
+    {
+      "q": "Can I change employer?",
+      "a": "Yes, but you need to make a new application before you start the new job, with a Certificate of Sponsorship from the new employer."
+    },
+    {
+      "q": "Can my family come with me?",
+      "a": "Your partner and children can usually apply as dependants. Some roles have restrictions, so we check this for your case."
+    }
+  ],
+  "applyButton": "none",
+  "country": "UK",
+  "sortKey": "1 uk 1 skilled worker visa"
+}

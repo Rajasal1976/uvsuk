@@ -1,0 +1,45 @@
+{
+  "title": "Ghana Visa from the UK | Unique Visa Services",
+  "description": "Ghana tourist and business visa help for UK residents. Forms, photos and supporting documents checked before submission.",
+  "h1": "Ghana visa from the UK",
+  "intro": "We help UK residents apply for Ghana tourist and business visas, including checking forms, photos and supporting documents.",
+  "eligibility": [],
+  "documents": [
+    "Passport",
+    "Photos",
+    "Flight booking",
+    "Invitation letter or hotel booking",
+    "Yellow fever vaccination certificate"
+  ],
+  "faqs": [],
+  "govuk": "",
+  "applyButton": "none",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Form completion, document check and submission",
+      "processing": "",
+      "fee": "",
+      "popular": false,
+      "processingFee": ""
+    },
+    {
+      "service": "Express",
+      "included": "Everything in Standard, with faster processing",
+      "processing": "",
+      "fee": "",
+      "popular": true,
+      "processingFee": ""
+    },
+    {
+      "service": "Urgent",
+      "included": "Everything in Standard, with the fastest processing available",
+      "processing": "",
+      "fee": "",
+      "popular": false,
+      "processingFee": ""
+    }
+  ],
+  "country": "Ghana",
+  "sortKey": "1 ghana 0 ghana visa from the uk"
+}

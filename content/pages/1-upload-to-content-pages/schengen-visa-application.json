@@ -1,0 +1,47 @@
+{
+  "title": "Schengen Visa from the UK | Unique Visa Services",
+  "description": "Schengen visa help for UK residents travelling to France, Spain, Italy, Germany and other Schengen countries. Documents and appointments.",
+  "h1": "Schengen visa from the UK",
+  "intro": "If you live in the UK on a non-EU passport, you may need a Schengen visa to visit Europe. We prepare your application for the right country and help book your appointment.",
+  "eligibility": [
+    "You hold a valid UK visa or residence status",
+    "You are applying to the country where you will spend the most time"
+  ],
+  "documents": [
+    "Passport and UK residence evidence",
+    "Travel insurance",
+    "Flight and hotel bookings",
+    "Bank statements and employment letter"
+  ],
+  "faqs": [],
+  "govuk": "",
+  "applyButton": "none",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Form completion, document check and submission",
+      "processing": "",
+      "fee": "",
+      "popular": false,
+      "processingFee": ""
+    },
+    {
+      "service": "Express",
+      "included": "Everything in Standard, with faster processing",
+      "processing": "",
+      "fee": "",
+      "popular": true,
+      "processingFee": ""
+    },
+    {
+      "service": "Urgent",
+      "included": "Everything in Standard, with the fastest processing available",
+      "processing": "",
+      "fee": "",
+      "popular": false,
+      "processingFee": ""
+    }
+  ],
+  "country": "Schengen",
+  "sortKey": "1 schengen 0 schengen visa from the uk"
+}

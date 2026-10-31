@@ -1,0 +1,39 @@
+{
+  "title": "India e-Business Visa from the UK | UVS",
+  "description": "India e-Business Visa help for UK residents attending meetings, trade fairs and supplier visits. Forms and documents checked.",
+  "h1": "India e-Business Visa",
+  "intro": "For business meetings, trade fairs and visiting suppliers in India. We prepare your application and check your invitation and business documents.",
+  "eligibility": [
+    "Your nationality is eligible for the Indian eVisa",
+    "Your trip is for permitted business activities"
+  ],
+  "documents": [
+    "Passport bio page scan",
+    "Photo meeting the Indian specifications",
+    "Business card",
+    "Invitation letter from the Indian company"
+  ],
+  "faqs": [],
+  "govuk": "",
+  "applyButton": "/apply/india-visa/",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Application completed and checked, photo and passport scan checked",
+      "processing": "",
+      "fee": "",
+      "popular": true,
+      "processingFee": ""
+    },
+    {
+      "service": "Urgent",
+      "included": "Everything in Standard, submitted the same working day",
+      "processing": "",
+      "fee": "",
+      "popular": false,
+      "processingFee": ""
+    }
+  ],
+  "country": "India",
+  "sortKey": "1 india 1 india e-business visa"
+}

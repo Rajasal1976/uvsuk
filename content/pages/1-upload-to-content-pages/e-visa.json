@@ -1,0 +1,38 @@
+{
+  "h1": "eVisas",
+  "intro": "Many countries now let you apply for your visa online, with no embassy visit and no need to post your passport. We complete and check your application so it isn’t rejected for a small mistake, and send your eVisa to you.",
+  "title": "eVisa Applications from the UK | Africa, Asia & More | UVS",
+  "description": "Help with eVisas, ETAs and ESTAs for over 25 countries, grouped by continent. We complete and check your application so it isn’t rejected.",
+  "faqHeading": "Common questions",
+  "faqs": [
+    {
+      "q": "What is an eVisa?",
+      "a": "An eVisa is a visa you apply for online instead of at an embassy. It is linked to your passport and usually sent to you by email, so you don’t need to post your passport anywhere."
+    },
+    {
+      "q": "How long does an eVisa take?",
+      "a": "It depends on the country. Many are issued within a few working days. Tell us your travel date and we’ll tell you whether there is enough time."
+    }
+  ],
+  "applyButton": "/contact-us/",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Application completed and checked, photo and passport scan checked",
+      "processing": "",
+      "fee": "",
+      "popular": true,
+      "processingFee": ""
+    },
+    {
+      "service": "Urgent",
+      "included": "Everything in Standard, submitted the same working day",
+      "processing": "",
+      "fee": "",
+      "popular": false,
+      "processingFee": ""
+    }
+  ],
+  "country": "eVisas (all countries)",
+  "sortKey": "1 evisas (all countries) 0 evisas"
+}
