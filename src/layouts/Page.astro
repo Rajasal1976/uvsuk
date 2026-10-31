@@ -14,6 +14,14 @@ interface Props {
 const { title, description, schemas = [], noindex = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, site.url).href;
 
+// "Edit this page" button: only shown to someone logged in to the editor (/admin) in this browser.
+const editable = new Set(Object.keys(import.meta.glob('../../content/pages/*.json')).map((p) => p.split('/').pop()!.replace('.json', '')));
+const slug = Astro.url.pathname.replace(/^\/|\/$/g, '');
+const editUrl = slug === '' ? '/admin/#/collections/homepage/entries/home'
+  : editable.has(slug) ? `/admin/#/collections/pages/entries/${slug}`
+  : '/admin/';
+const editLabel = editUrl === '/admin/' ? 'Open the editor' : 'Edit this page';
+
 const business = {
   '@context': 'https://schema.org',
   '@type': 'ProfessionalService',
@@ -51,5 +59,11 @@ const business = {
   <Header />
   <slot />
   <Footer />
+  <a id="edit-page" href={editUrl} rel="nofollow" style="position:fixed;left:16px;bottom:16px;z-index:50;display:none;align-items:center;gap:8px;padding:12px 18px;border-radius:999px;background:#0D3B21;color:#fff;font:600 15px/1 Inter,system-ui,sans-serif;text-decoration:none;box-shadow:0 6px 18px rgba(0,0,0,.25)">
+    <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>{editLabel}
+  </a>
+  <script is:inline>
+    try { if (localStorage.getItem('decap-cms-user')) document.getElementById('edit-page').style.display = 'inline-flex'; } catch (e) {}
+  </script>
 </body>
 </html>
