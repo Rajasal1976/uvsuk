@@ -28,18 +28,26 @@ collections:
     label: Visa & service pages
     label_singular: Page
     description: >-
-      Edit the text and FAQs on your visa, country and company pages. Click Publish and the website
-      updates in about a minute. To add a brand-new page, ask your developer.
+      Every page on the website, grouped by country (A to Z), with UK pages under UK and company pages at the end.
+      Click a page to edit its text, prices and FAQs, then click Publish. The website updates in about a minute.
+      To add a brand-new page, ask your developer.
     folder: content/pages
     format: json
     extension: json
     create: false
     delete: false
     identifier_field: h1
-    summary: '{{h1}}'
-    sortable_fields: ['h1']
+    summary: '{{country}}  ›  {{h1}}'
+    sortable_fields:
+      fields: [sortKey, h1]
+      default: { field: sortKey, direction: ascending }
+    view_groups:
+      - { label: Country, field: country }
     editor: { preview: false }
     fields:
+      - { name: country, label: Country, widget: hidden }
+      - { name: sortKey, label: Order in the list, widget: hidden }
+      - { name: faqHeading, label: FAQ heading, widget: hidden, required: false }
       - { name: h1, label: Page heading, widget: string, hint: 'The big heading at the top of the page.' }
       - { name: intro, label: Introduction, widget: text, required: false, hint: 'One or two sentences under the heading.' }
       - { name: applyButton, label: Apply button, widget: select, default: none, options: [{ label: 'No button', value: 'none' }, { label: 'Apply online → China visa form', value: '/apply/china-visa/' }, { label: 'Apply online → India eVisa form', value: '/apply/india-visa/' }, { label: 'Apply online → Sri Lanka ETA form', value: '/apply/sri-lanka-eta/' }, { label: 'Apply now → contact / enquiry form', value: '/contact-us/' }], hint: 'A gold button under the introduction. Pick the form it should open.' }
@@ -50,7 +58,7 @@ collections:
         collapsed: false
         required: false
         field: { name: point, label: Point, widget: string }
-        hint: 'Visa pages only. One requirement per line.'
+        hint: 'Visa pages only (not used on the China, ILR, Skilled Worker and eVisas pages, which have their own layout). One requirement per line.'
       - name: documents
         label: '"Documents you''ll usually need" list'
         label_singular: document
@@ -65,12 +73,14 @@ collections:
         widget: list
         required: false
         summary: '{{fields.service}}: {{fields.fee}}'
-        hint: 'Travel visa and eVisa pages only. Leave the fee or processing time empty to show "Call for price" or "Ask us".'
+        hint: 'Travel visa and eVisa pages only.'
         fields:
           - { name: service, label: Service, widget: string, hint: 'For example Standard, Express or Urgent.' }
           - { name: included, label: "What's included", widget: string, required: false }
           - { name: processing, label: Processing time, widget: string, required: false, hint: 'For example 5 working days.' }
-          - { name: fee, label: Our fee, widget: string, required: false, hint: 'For example £95.' }
+          - { name: processingFee, label: Processing fee, widget: string, required: false, hint: 'The embassy, visa centre or official eVisa fee, for example £85.' }
+          - { name: fee, label: Our fee, widget: string, required: false, hint: 'For example £95. Leave empty to show "Call for price".' }
+          - { name: total, label: Total (optional), widget: string, required: false, hint: 'Leave empty and it''s added up for you from the two fees.' }
           - { name: popular, label: Mark as most popular, widget: boolean, required: false, default: false }
       - name: body
         label: Page text
@@ -103,33 +113,6 @@ collections:
         hint: 'The grey text under the headline in Google results.'
 
   # ---------- Pages with calculators or special design ----------
-  - name: special
-    label: Pages with calculators
-    description: >-
-      These pages have a special design or a built-in calculator, so only their FAQs and Google
-      details are edited here. For other changes, ask your developer.
-    editor: { preview: false }
-    files:
-      - { name: ilr, label: Indefinite Leave to Remain (ILR), file: content/special/indefinite-leave-to-remain-ilr.json, fields: &specialFields [
-          { name: name, label: Name in menus and lists, widget: string },
-          { name: applyButton, label: Apply button, widget: select, default: none, options: [{ label: 'No button', value: 'none' }, { label: 'Apply online → China visa form', value: '/apply/china-visa/' }, { label: 'Apply online → India eVisa form', value: '/apply/india-visa/' }, { label: 'Apply online → Sri Lanka ETA form', value: '/apply/sri-lanka-eta/' }, { label: 'Apply now → contact / enquiry form', value: '/contact-us/' }] },
-          { name: faqHeading, label: FAQ heading, widget: string, default: Common questions },
-          { name: prices, label: Price table, label_singular: price row, widget: list, required: false, summary: '{{fields.service}}: {{fields.fee}}', hint: 'China and eVisa pages only. Leave the fee empty to show "Call for price".', fields: [
-            { name: service, label: Service, widget: string },
-            { name: included, label: "What's included", widget: string, required: false },
-            { name: processing, label: Processing time, widget: string, required: false },
-            { name: fee, label: Our fee, widget: string, required: false },
-            { name: popular, label: Mark as most popular, widget: boolean, required: false, default: false } ] },
-          { name: faqs, label: FAQs, label_singular: FAQ, widget: list, required: false, summary: '{{fields.q}}', fields: [
-            { name: q, label: Question, widget: string },
-            { name: a, label: Answer, widget: text } ] },
-          { name: title, label: 'Google: page title', widget: string, pattern: ['^.{10,65}$', 'Keep it between 10 and 65 characters.'] },
-          { name: description, label: 'Google: description', widget: text, pattern: ['^[\s\S]{50,160}$', 'Keep it between 50 and 160 characters.'] } ] }
-      - { name: skilled-worker, label: Skilled Worker visa, file: content/special/skilled-worker-visa-formally-tier-t2-general.json, fields: *specialFields }
-      - { name: china, label: China visa, file: content/special/china-visa-application.json, fields: *specialFields }
-      - { name: china-business, label: China business visa, file: content/special/china-business-visa.json, fields: *specialFields }
-      - { name: e-visa, label: eVisas page, file: content/special/e-visa.json, fields: *specialFields }
-
   # ---------- Homepage ----------
   - name: homepage
     label: Homepage
