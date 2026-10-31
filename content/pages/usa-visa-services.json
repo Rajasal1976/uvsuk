@@ -19,21 +19,26 @@
       "included": "Form completion, document check and submission",
       "processing": "",
       "fee": "",
-      "popular": false
+      "popular": false,
+      "processingFee": ""
     },
     {
       "service": "Express",
       "included": "Everything in Standard, with faster processing",
       "processing": "",
       "fee": "",
-      "popular": true
+      "popular": true,
+      "processingFee": ""
     },
     {
       "service": "Urgent",
       "included": "Everything in Standard, with the fastest processing available",
       "processing": "",
       "fee": "",
-      "popular": false
+      "popular": false,
+      "processingFee": ""
     }
-  ]
+  ],
+  "country": "USA",
+  "sortKey": "1 usa 0 usa visa and esta"
 }

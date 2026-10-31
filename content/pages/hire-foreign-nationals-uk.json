@@ -5,5 +5,7 @@
   "intro": "To employ most overseas workers, your business needs a Home Office sponsor licence. We help you apply, set up the systems the Home Office expects, and assign Certificates of Sponsorship to new hires.",
   "faqs": [],
   "govuk": "https://www.gov.uk/uk-visa-sponsorship-employers",
-  "applyButton": "none"
+  "applyButton": "none",
+  "country": "UK",
+  "sortKey": "1 uk 1 hiring from overseas"
 }

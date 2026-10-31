@@ -26,14 +26,18 @@
       "included": "Application completed and checked, photo and passport scan checked",
       "processing": "",
       "fee": "",
-      "popular": true
+      "popular": true,
+      "processingFee": ""
     },
     {
       "service": "Urgent",
       "included": "Everything in Standard, submitted the same working day",
       "processing": "",
       "fee": "",
-      "popular": false
+      "popular": false,
+      "processingFee": ""
     }
-  ]
+  ],
+  "country": "India",
+  "sortKey": "1 india 1 india e-tourist visa"
 }

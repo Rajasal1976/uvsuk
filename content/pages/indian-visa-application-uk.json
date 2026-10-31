@@ -5,5 +5,7 @@
   "intro": "Most UK residents travelling to India need an eVisa or a regular visa. The official website can be difficult to use, and small mistakes with photos or forms often lead to rejections. We handle the application for you.",
   "faqs": [],
   "govuk": "",
-  "applyButton": "/apply/india-visa/"
+  "applyButton": "/apply/india-visa/",
+  "country": "India",
+  "sortKey": "1 india 0 indian visa from the uk"
 }

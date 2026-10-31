@@ -26,5 +26,7 @@
     }
   ],
   "govuk": "https://www.gov.uk/uk-visa-sponsorship-employers",
-  "applyButton": "none"
+  "applyButton": "none",
+  "country": "UK",
+  "sortKey": "1 uk 1 sponsor licence application"
 }

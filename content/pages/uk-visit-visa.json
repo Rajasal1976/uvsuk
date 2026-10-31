@@ -21,5 +21,7 @@
     }
   ],
   "govuk": "https://www.gov.uk/standard-visitor",
-  "applyButton": "none"
+  "applyButton": "none",
+  "country": "UK",
+  "sortKey": "1 uk 1 uk visitor visa"
 }

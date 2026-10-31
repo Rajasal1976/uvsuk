@@ -22,5 +22,7 @@
     }
   ],
   "govuk": "https://www.gov.uk/uk-family-visa",
-  "applyButton": "none"
+  "applyButton": "none",
+  "country": "UK",
+  "sortKey": "1 uk 1 uk fiancé visa"
 }

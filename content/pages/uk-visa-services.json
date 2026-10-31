@@ -5,5 +5,7 @@
   "intro": "Coming to the UK, extending your stay or settling permanently? Choose your route below. Every application is checked by a regulated adviser before it goes to the Home Office.",
   "faqs": [],
   "govuk": "",
-  "applyButton": "none"
+  "applyButton": "none",
+  "country": "UK",
+  "sortKey": "1 uk 0 uk visa and immigration services"
 }

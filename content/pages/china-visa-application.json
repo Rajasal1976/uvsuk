@@ -1,0 +1,42 @@
+{
+  "h1": "China visa from the UK",
+  "intro": "Not sure which China visa you need? Choose the purpose of your trip below and we will show you the right visa and what to prepare. We complete your application and book your appointment at the visa centre.",
+  "title": "China Visa from the UK | Business, Work & Family Visits | UVS",
+  "description": "China visa help for UK residents: business, work, family visit, crew and student visas, with forms and appointment booking.",
+  "faqHeading": "Common questions",
+  "faqs": [
+    {
+      "q": "Do I need a visa for a short holiday?",
+      "a": "If you travel on a British passport, probably not, for now. Check the current visa-free rules before you book, or ask us."
+    }
+  ],
+  "applyButton": "/apply/china-visa/",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Form completion, document check and submission",
+      "processing": "",
+      "fee": "",
+      "popular": false,
+      "processingFee": ""
+    },
+    {
+      "service": "Express",
+      "included": "Everything in Standard, with faster processing",
+      "processing": "",
+      "fee": "",
+      "popular": true,
+      "processingFee": ""
+    },
+    {
+      "service": "Urgent",
+      "included": "Everything in Standard, with the fastest processing available",
+      "processing": "",
+      "fee": "",
+      "popular": false,
+      "processingFee": ""
+    }
+  ],
+  "country": "China",
+  "sortKey": "1 china 0 china visa from the uk"
+}

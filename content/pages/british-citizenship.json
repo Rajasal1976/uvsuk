@@ -22,5 +22,7 @@
     }
   ],
   "govuk": "https://www.gov.uk/becoming-a-british-citizen",
-  "applyButton": "none"
+  "applyButton": "none",
+  "country": "UK",
+  "sortKey": "1 uk 1 british citizenship"
 }
