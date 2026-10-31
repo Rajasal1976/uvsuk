@@ -7,11 +7,6 @@
   "phone": "0161 956 2003",
   "hours": "Mon–Fri 9am–5pm",
   "hoursForGoogle": "Mo-Fr 09:00-17:00",
-  "googleRating": "4.8",
-  "yearsInPractice": "18+",
-  "applicationsHandled": "15000",
-  "email": "hello@uvsuk.com",
-  "googleReviewCount": "111",
   "delivery": [
     {
       "service": "Special Delivery",
@@ -34,5 +29,10 @@
       "price": "We’ll quote"
     }
   ],
-  "evisaDelivery": "£5"
+  "googleRating": "4.8",
+  "yearsInPractice": "18+",
+  "applicationsHandled": "15000+",
+  "evisaDelivery": "£5",
+  "email": "hello@uvsuk.com",
+  "googleReviewCount": "111"
 }
