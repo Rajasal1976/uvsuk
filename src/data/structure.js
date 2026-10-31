@@ -186,8 +186,19 @@ export const structure = [
     "type": "service",
     "group": "worldwide",
     "related": [
+      "china-tourist-visa",
       "china-work-visa-for-uk-citizens"
     ]
+  },
+  {
+    "slug": "china-tourist-visa",
+    "type": "service",
+    "group": "worldwide",
+    "related": [
+      "china-visa-application",
+      "china-work-visa-for-uk-citizens"
+    ],
+    "visa": "travel"
   },
   {
     "slug": "china-work-visa-for-uk-citizens",
