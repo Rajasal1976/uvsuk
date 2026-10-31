@@ -39,8 +39,8 @@ collections:
     identifier_field: h1
     summary: '{{country}}  ›  {{h1}}'
     sortable_fields:
-      fields: [sortKey, h1]
-      default: { field: sortKey, direction: ascending }
+      - { field: sortKey, label: Country, default_sort: asc }
+      - { field: h1, label: Page heading }
     view_groups:
       - { label: Country, field: country }
     editor: { preview: false }
