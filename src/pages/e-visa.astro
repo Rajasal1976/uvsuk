@@ -1,21 +1,21 @@
 ---
 // eVisas page (same address as the old site: /e-visa/). Countries come from src/data/evisas.js.
-// Text, FAQs, prices and Google details are edited in the admin (content/special/e-visa.json).
+// Text, FAQs, prices and Google details are edited in the admin (content/pages/e-visa.json).
 import Page from '../layouts/Page.astro';
 import Faq from '../components/Faq.astro';
 import CtaBand from '../components/CtaBand.astro';
 import PriceTables from '../components/PriceTables.astro';
 import { site } from '../data/site.js';
 import { evisaContinents } from '../data/evisas.js';
-import content from '../../content/special/e-visa.json';
+import content from '../../content/pages/e-visa.json';
 ---
 <Page title={content.title} description={content.description}>
   <main>
     <div class="page-head">
       <div class="wrap">
         <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/worldwide-visas/">Worldwide Visas</a></nav>
-        <h1>eVisas</h1>
-        <p class="lead">Many countries now let you apply for your visa online, with no embassy visit and no need to post your passport. We complete and check your application so it isn’t rejected for a small mistake, and send your eVisa to you.</p>
+        <h1>{content.h1}</h1>
+        {content.intro && <p class="lead">{content.intro}</p>}
         <ul class="evisa-jump" aria-label="Jump to a continent">
           {evisaContinents.map((g) => <li><a href={`#${g.id}`}>{g.name}</a></li>)}
         </ul>
@@ -51,7 +51,7 @@ import content from '../../content/special/e-visa.json';
 
         <PriceTables prices={content.prices} kind="evisa" />
 
-        <Faq items={content.faqs} title={content.faqHeading} />
+        <Faq items={content.faqs} title={content.faqHeading || 'Common questions'} />
       </div>
       <aside class="aside">
         <div class="panel">

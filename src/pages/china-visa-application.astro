@@ -3,8 +3,8 @@ import Page from '../layouts/Page.astro';
 import Faq from '../components/Faq.astro';
 import ApplyButton from '../components/ApplyButton.astro';
 import PriceTables from '../components/PriceTables.astro';
-// SEO title, description and FAQs for this page are edited in the admin (content/special/china-visa-application.json).
-import content from '../../content/special/china-visa-application.json';
+// SEO title, description and FAQs for this page are edited in the admin (content/pages/china-visa-application.json).
+import content from '../../content/pages/china-visa-application.json';
 import '../styles/china-chooser.css';
 const title = content.title;
 const description = content.description;
@@ -15,8 +15,8 @@ const schemas = [];
 <div class="page-head">
 <div class="wrap">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/worldwide-visas/">Worldwide Visas</a></nav>
-<h1>China visa from the UK</h1>
-<p class="lead">Not sure which China visa you need? Choose the purpose of your trip below and we will show you the right visa and what to prepare. We complete your application and book your appointment at the visa centre.</p>
+<h1>{content.h1}</h1>
+{content.intro && <p class="lead">{content.intro}</p>}
 <ApplyButton url={content.applyButton} /></div></div>
 <div class="wrap section page-body" style="padding-top:64px">
 <div class="content">
@@ -184,7 +184,7 @@ const schemas = [];
 <li>Keep you updated until you have a decision</li></ul></section>
 <PriceTables prices={content.prices} kind="travel" />
 
-<Faq items={content.faqs} title={content.faqHeading} />
+<Faq items={content.faqs} title={content.faqHeading || 'Common questions'} />
 
 <section>
 <h2>Related services</h2>

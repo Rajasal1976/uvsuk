@@ -2,8 +2,8 @@
 import Page from '../layouts/Page.astro';
 import Faq from '../components/Faq.astro';
 import ApplyButton from '../components/ApplyButton.astro';
-// SEO title, description and FAQs for this page are edited in the admin (content/special/skilled-worker-visa-formally-tier-t2-general.json).
-import content from '../../content/special/skilled-worker-visa-formally-tier-t2-general.json';
+// SEO title, description and FAQs for this page are edited in the admin (content/pages/skilled-worker-visa-formally-tier-t2-general.json).
+import content from '../../content/pages/skilled-worker-visa-formally-tier-t2-general.json';
 import SalaryChecker from '../components/SalaryChecker.astro';
 const title = content.title;
 const description = content.description;
@@ -14,8 +14,8 @@ const schemas = [];
 <div class="page-head">
 <div class="wrap">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/uk-visa-services/">UK Visas</a></nav>
-<h1>Skilled Worker visa</h1>
-<p class="lead">The Skilled Worker visa (formerly Tier 2 General) lets you work in the UK for an employer with a sponsor licence. We help with new applications, extensions and changing employer.</p>
+<h1>{content.h1}</h1>
+{content.intro && <p class="lead">{content.intro}</p>}
 <ApplyButton url={content.applyButton} /></div></div>
 <div class="wrap section page-body" style="padding-top:64px">
 <div class="content">
@@ -49,7 +49,7 @@ const schemas = [];
 <h2>Fees and timescales</h2>
 <p>Our fee is agreed before we start. <a href="/fees/">See our fees</a>. Government fees are paid separately, and are listed on <a href="https://www.gov.uk/skilled-worker-visa">GOV.UK</a>.</p></section>
 
-<Faq items={content.faqs} title={content.faqHeading} />
+<Faq items={content.faqs} title={content.faqHeading || 'Common questions'} />
 
 <section>
 <h2>Related services</h2>

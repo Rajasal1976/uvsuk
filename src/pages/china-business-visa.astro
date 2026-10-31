@@ -3,8 +3,8 @@ import Page from '../layouts/Page.astro';
 import Faq from '../components/Faq.astro';
 import ApplyButton from '../components/ApplyButton.astro';
 import PriceTables from '../components/PriceTables.astro';
-// SEO title, description and FAQs for this page are edited in the admin (content/special/china-business-visa.json).
-import content from '../../content/special/china-business-visa.json';
+// SEO title, description and FAQs for this page are edited in the admin (content/pages/china-business-visa.json).
+import content from '../../content/pages/china-business-visa.json';
 const title = content.title;
 const description = content.description;
 const schemas = [];
@@ -14,8 +14,8 @@ const schemas = [];
 <div class="page-head">
 <div class="wrap">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/worldwide-visas/">Worldwide Visas</a></nav>
-<h1>China business visa (M visa)</h1>
-<p class="lead">The China business visa (M visa) is for commercial trips such as meetings, trade fairs, factory and supplier visits, and negotiating contracts. British passport holders can currently make short business trips visa-free, so you need an M visa if your stay is longer, you need multiple entries over a longer period, or you travel on another passport.</p>
+<h1>{content.h1}</h1>
+{content.intro && <p class="lead">{content.intro}</p>}
 <ApplyButton url={content.applyButton} /></div></div>
 <div class="wrap section page-body" style="padding-top:64px">
 <div class="content">
@@ -48,7 +48,7 @@ const schemas = [];
 <li>Keep you updated until you have a decision</li></ul></section>
 <PriceTables prices={content.prices} kind="travel" />
 
-<Faq items={content.faqs} title={content.faqHeading} />
+<Faq items={content.faqs} title={content.faqHeading || 'Common questions'} />
 
 <section>
 <h2>Related services</h2>
