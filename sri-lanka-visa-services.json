@@ -1,0 +1,34 @@
+{
+  "title": "Sri Lanka Visa & ETA from the UK | UVS",
+  "description": "Sri Lanka ETA and visa help for UK residents travelling for tourism or business.",
+  "h1": "Sri Lanka visa and ETA",
+  "intro": "Most visitors to Sri Lanka need an ETA or visa before they travel. We check what applies to you and complete the application.",
+  "eligibility": [],
+  "documents": [
+    "Passport",
+    "Travel details"
+  ],
+  "faqs": [],
+  "govuk": "",
+  "applyButton": "/apply/sri-lanka-eta/",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Application completed and checked, photo and passport scan checked",
+      "processing": "",
+      "fee": "",
+      "popular": true,
+      "processingFee": ""
+    },
+    {
+      "service": "Urgent",
+      "included": "Everything in Standard, submitted the same working day",
+      "processing": "",
+      "fee": "",
+      "popular": false,
+      "processingFee": ""
+    }
+  ],
+  "country": "Sri Lanka",
+  "sortKey": "1 sri lanka 0 sri lanka visa and eta"
+}

@@ -1,0 +1,32 @@
+{
+  "title": "Sponsor Licence Application | Help for UK Employers | UVS",
+  "description": "Apply for or renew a UK sponsor licence with IAA-regulated advisers. Document preparation, Key Personnel set-up and compliance support.",
+  "h1": "Sponsor licence application",
+  "intro": "A sponsor licence lets your business employ workers from overseas on the Skilled Worker and other routes. We prepare your application, set up your Key Personnel and help you meet ongoing compliance duties. We also handle renewals.",
+  "eligibility": [
+    "Your business is genuine and operating lawfully in the UK",
+    "You have roles that meet the skill and salary requirements",
+    "You have HR systems to monitor sponsored workers",
+    "Your Key Personnel have no unspent relevant convictions"
+  ],
+  "documents": [
+    "Company registration and recent accounts or bank statements",
+    "Employer liability insurance certificate",
+    "Business premises evidence, such as a lease",
+    "Details of the roles you want to fill"
+  ],
+  "faqs": [
+    {
+      "q": "What are our duties once we have a licence?",
+      "a": "You must keep records on each sponsored worker, report certain changes to the Home Office and pay workers correctly. We explain each duty and help you set up processes."
+    },
+    {
+      "q": "Do we need to renew the licence?",
+      "a": "Licence rules have changed and many licences no longer need routine renewal. We check the status of your licence and what applies to you."
+    }
+  ],
+  "govuk": "https://www.gov.uk/uk-visa-sponsorship-employers",
+  "applyButton": "none",
+  "country": "UK",
+  "sortKey": "1 uk 1 sponsor licence application"
+}

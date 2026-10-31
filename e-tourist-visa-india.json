@@ -1,0 +1,43 @@
+{
+  "title": "India e-Tourist Visa for UK Residents | UVS",
+  "description": "Apply for an India e-Tourist Visa from the UK with expert help. We complete the form and check your photo and passport scan.",
+  "h1": "India e-Tourist Visa",
+  "intro": "The e-Tourist Visa covers holidays, visiting friends and family, and short yoga or wellness courses in India. It is applied for online, and we complete and check the whole application for you.",
+  "eligibility": [
+    "Your nationality is eligible for the Indian eVisa",
+    "Your passport is valid for at least six months from arrival"
+  ],
+  "documents": [
+    "Passport bio page scan",
+    "Recent passport-style photo meeting the Indian specifications",
+    "Travel details"
+  ],
+  "faqs": [
+    {
+      "q": "How quickly can I get it?",
+      "a": "Many eVisas are issued within a few working days. Tell us your travel date and we will advise whether there is time."
+    }
+  ],
+  "govuk": "",
+  "applyButton": "/apply/india-visa/",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Application completed and checked, photo and passport scan checked",
+      "processing": "",
+      "fee": "",
+      "popular": true,
+      "processingFee": ""
+    },
+    {
+      "service": "Urgent",
+      "included": "Everything in Standard, submitted the same working day",
+      "processing": "",
+      "fee": "",
+      "popular": false,
+      "processingFee": ""
+    }
+  ],
+  "country": "India",
+  "sortKey": "1 india 1 india e-tourist visa"
+}

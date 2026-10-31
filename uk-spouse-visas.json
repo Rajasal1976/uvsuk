@@ -1,0 +1,20 @@
+{
+  "title": "UK Spouse & Partner Visas | Unique Visa Services",
+  "description": "Help with UK spouse, civil partner, fiancé and unmarried partner visas, including extensions. IAA-regulated advisers in Manchester.",
+  "h1": "Spouse and partner visas",
+  "intro": "If your husband, wife, civil partner, fiancé or long-term partner is British or settled in the UK, a partner visa lets you live here together. We help you choose the right route, meet the financial requirement and put together strong relationship evidence.",
+  "faqs": [
+    {
+      "q": "Can civil partners apply on the same route?",
+      "a": "Yes. Civil partners apply on the same partner route as married couples, with the same requirements."
+    },
+    {
+      "q": "What is the most common reason partner visas are refused?",
+      "a": "Missing or incorrect financial evidence. The Home Office is strict about which documents count and which dates they must cover, so we check this carefully before you apply."
+    }
+  ],
+  "govuk": "https://www.gov.uk/uk-family-visa",
+  "applyButton": "none",
+  "country": "UK",
+  "sortKey": "1 uk 1 spouse and partner visas"
+}

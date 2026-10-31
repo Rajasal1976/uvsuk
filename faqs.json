@@ -1,0 +1,33 @@
+{
+  "title": "Frequently Asked Questions | Unique Visa Services",
+  "description": "Answers to common questions about working with Unique Visa Services: fees, appointments, regulation and timescales.",
+  "h1": "Frequently asked questions",
+  "intro": "",
+  "body": [],
+  "faqs": [
+    {
+      "q": "Do I need an adviser, or can I apply myself?",
+      "a": "You can apply directly. Many people use us because a missing document or misunderstood rule can mean a refusal, a lost fee and months of delay."
+    },
+    {
+      "q": "Do I need to visit your office?",
+      "a": "No. You can meet us in Manchester, or we can work with you by phone, video call and email from anywhere in the UK."
+    },
+    {
+      "q": "How much do your services cost?",
+      "a": "Our fee depends on the service and is agreed before we start. Government fees are paid separately. See our fees page."
+    },
+    {
+      "q": "Are you regulated?",
+      "a": "Yes. We are registered with the Immigration Advice Authority, reference F200700144."
+    },
+    {
+      "q": "Can you guarantee my visa?",
+      "a": "No adviser can guarantee a decision. What we can do is make sure your application is complete, accurate and well evidenced."
+    }
+  ],
+  "govuk": "",
+  "applyButton": "none",
+  "country": "Company pages",
+  "sortKey": "2 company pages 1 frequently asked questions"
+}

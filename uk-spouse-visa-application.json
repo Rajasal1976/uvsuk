@@ -1,0 +1,39 @@
+{
+  "title": "UK Spouse Visa Application Help | UVS Manchester",
+  "description": "Apply for a UK spouse visa with an IAA-regulated adviser. We check your financial requirement, relationship evidence and documents before you submit.",
+  "h1": "UK spouse visa application",
+  "intro": "A spouse visa lets you join your husband or wife in the UK if they are British, settled here, or have refugee or humanitarian protection. You can apply from outside the UK, or switch from some other visas inside the UK.",
+  "eligibility": [
+    "You are legally married and your marriage is recognised in the UK",
+    "You both intend to live together permanently in the UK",
+    "You meet the financial requirement, through income, savings or a combination",
+    "You meet the English language requirement",
+    "You have suitable accommodation in the UK"
+  ],
+  "documents": [
+    "Passports and any previous visas or BRPs",
+    "Marriage certificate",
+    "Evidence of your relationship, such as photos, messages and travel records",
+    "Financial evidence: payslips, bank statements, employer letter or savings statements",
+    "English language test certificate or degree evidence",
+    "Proof of accommodation, such as a tenancy agreement or mortgage statement"
+  ],
+  "faqs": [
+    {
+      "q": "How much do we need to earn?",
+      "a": "The financial requirement is set by the Home Office and has changed in recent years. We confirm the current figure and whether your income, savings or both can be used during your consultation."
+    },
+    {
+      "q": "Can I apply from inside the UK?",
+      "a": "Sometimes. It depends on the visa you hold now. Some visitors and short-term visa holders cannot switch and must apply from abroad."
+    },
+    {
+      "q": "How long is the visa granted for?",
+      "a": "A spouse visa is usually granted for an initial period, after which you apply to extend it. We explain the full timeline to settlement for your situation."
+    }
+  ],
+  "govuk": "https://www.gov.uk/uk-family-visa",
+  "applyButton": "none",
+  "country": "UK",
+  "sortKey": "1 uk 1 uk spouse visa application"
+}
