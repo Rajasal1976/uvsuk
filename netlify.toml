@@ -6,3 +6,25 @@
 
 [build.environment]
   NODE_VERSION = "22"
+
+# Security settings sent with every page. They tell browsers to:
+# - always use the secure (https) version of the site
+# - not let other websites show your pages inside a frame (stops "clickjacking" tricks)
+# - only send your forms to your own site
+# - not guess file types, and keep visitor details private when they click links away
+# - block camera, microphone and location access (the site doesn't need them)
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+    Content-Security-Policy = "frame-ancestors 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests"
+
+# The editor and passport reader files can be cached for a long time by browsers.
+[[headers]]
+  for = "/ocr/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
