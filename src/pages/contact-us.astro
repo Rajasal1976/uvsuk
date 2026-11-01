@@ -33,7 +33,7 @@ const maps = `https://www.google.com/maps/search/?api=1&query=${encodeURICompone
       </div>
 
       <div class="panel" style="margin-top:24px">
-        <form class="enquiry" name="enquiry" method="POST" action="/thank-you/" data-netlify="true" netlify-honeypot="_gotcha">
+        <form class="enquiry" name="enquiry" method="POST" action="/thank-you/" data-netlify="true" netlify-honeypot="_gotcha" data-netlify-recaptcha="true">
           <input type="hidden" name="form-name" value="enquiry" />
           <h2>Book a consultation</h2>
           <div class="f-grid">
@@ -51,6 +51,8 @@ const maps = `https://www.google.com/maps/search/?api=1&query=${encodeURICompone
           </div>
           <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="f-trap" aria-hidden="true" />
           <label class="f-consent"><input type="checkbox" name="consent" required /><span>I agree to {site.name} contacting me about this enquiry. See our <a href="/privacy-policy/">privacy policy</a>.</span></label>
+          <!-- "I'm not a robot" check. Netlify adds Google reCAPTCHA here when the site is published. -->
+          <div class="f-captcha" data-netlify-recaptcha="true"></div>
           <button class="btn btn-primary" type="submit">Send enquiry</button>
         </form>
       </div>
@@ -68,5 +70,6 @@ const maps = `https://www.google.com/maps/search/?api=1&query=${encodeURICompone
   .f-consent { flex-direction: row; align-items: flex-start; gap: 10px; font-weight: 400; }
   .f-consent input { margin-top: 5px; }
   .f-trap { position: absolute; left: -9999px; }
+  .f-captcha { min-height: 78px; }
   .enquiry .btn { align-self: flex-start; }
 </style>
