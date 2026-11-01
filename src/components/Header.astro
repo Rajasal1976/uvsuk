@@ -1,11 +1,15 @@
 ---
 import { site } from '../data/site.js';
 import { menu } from '../data/nav.js';
+// The logo is uploaded in the editor: Business details › Website logo. Without one, the name shows as text.
+import settings from '../../content/settings.json';
 ---
 <div class="topbar"><div class="wrap"><span>Regulated by the Immigration Advice Authority · Ref {site.iaaRef}</span><span>{site.hours} · <a href={`tel:${site.phoneIntl}`}>{site.phone}</a></span></div></div>
 <header class="header">
   <div class="wrap header-row">
-    <a class="brand" href="/"><span class="brand-name">{site.name}</span><span class="brand-tag">UK immigration advisers in Manchester</span></a>
+    <a class="brand" href="/">{settings.siteLogo
+      ? <img class="brand-logo" src={settings.siteLogo} alt={site.name} height="72" />
+      : <><span class="brand-name">{site.name}</span><span class="brand-tag">UK immigration advisers in Manchester</span></>}</a>
     <button type="button" class="btn btn-outline menu-btn" aria-expanded="false" aria-controls="main-nav">Menu</button>
     <nav id="main-nav" class="nav" aria-label="Main">
       {menu.map((m) => (
@@ -48,3 +52,8 @@ import { menu } from '../data/nav.js';
     btn.setAttribute('aria-expanded', String(open));
   });
 </script>
+
+<style>
+  .brand-logo { display: block; height: 72px; width: auto; max-width: 260px; object-fit: contain; }
+  @media (max-width: 640px) { .brand-logo { height: 54px; } }
+</style>
