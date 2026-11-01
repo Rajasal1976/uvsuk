@@ -1,6 +1,6 @@
 {
-  "title": "Second UK Passport Applications for Business Travellers | UVS",
-  "description": "Frequent business traveller? Help applying for a second British passport so you can travel while visa applications are processed.",
+  "title": "Second UK Passport for Business Travellers | Application Help",
+  "description": "Apply for a second British passport if you travel often for work or need to travel while a visa is processed. We prepare your application.",
   "h1": "Second UK passport",
   "intro": "If you travel frequently for work, a second British passport lets you keep travelling while your other passport is with an embassy for a visa. We help prepare your application and supporting letter.",
   "eligibility": [],
@@ -9,9 +9,28 @@
     "Letter from your employer explaining the need",
     "Evidence of frequent travel"
   ],
-  "faqs": [],
+  "faqs": [
+    {
+      "q": "Can anyone get a second British passport?",
+      "a": "No. You must show a genuine need, usually frequent business travel or travel between countries with conflicting entry rules."
+    }
+  ],
   "govuk": "",
   "applyButton": "none",
   "country": "UK",
-  "sortKey": "1 uk 1 second uk passport"
+  "sortKey": "1 uk 1 second uk passport",
+  "sections": [
+    {
+      "heading": "Who can have a second British passport?",
+      "text": "HM Passport Office can issue a second passport to British citizens who have a genuine need for one. The most common reasons are:\n- You travel frequently for work and need to travel while your other passport is at an embassy or visa centre\n- You travel to countries that may refuse entry if your passport shows visits to certain other countries"
+    },
+    {
+      "heading": "What you will need",
+      "text": "The application needs a letter from your employer, or a statement if you are self-employed, explaining why you need a second passport, with details of your recent and planned travel. A second passport may be issued with a shorter validity than a standard passport."
+    },
+    {
+      "heading": "Second passport help in Manchester",
+      "text": "We prepare the application and supporting letter so the need is clear to HM Passport Office. We're based in Manchester city centre and help travellers and businesses across the North West and the rest of the UK. Most travel visa applications can be handled by post and email, so you don't need to visit us in person."
+    }
+  ]
 }

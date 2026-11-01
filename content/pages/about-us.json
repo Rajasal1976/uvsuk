@@ -13,5 +13,23 @@
   "govuk": "",
   "applyButton": "none",
   "country": "Company pages",
-  "sortKey": "2 company pages 1 about us"
+  "sortKey": "2 company pages 1 about us",
+  "sections": [
+    {
+      "heading": "Who we are",
+      "text": "Unique Visa Services is an immigration advice and visa practice in Manchester city centre, helping individuals, families and businesses since 2008. We are regulated by the Immigration Advice Authority (IAA), and our registration can be checked on the IAA's public register."
+    },
+    {
+      "heading": "What we do",
+      "text": "We help with UK immigration, including spouse and partner visas, Skilled Worker visas, student visas, Indefinite Leave to Remain and British citizenship, and with sponsor licences for employers. We also handle travel visas, eVisas, document legalisation and passport services for people travelling from the UK."
+    },
+    {
+      "heading": "How we work",
+      "text": "You deal with the same advisers from your first call to your decision. We tell you honestly whether you qualify, agree our fee in writing before we start, and check every document against the current rules before your application goes in."
+    },
+    {
+      "heading": "Where we are",
+      "text": "We're based at 61 Mosley Street in Manchester city centre and help clients across Greater Manchester, including Bury, Bolton, Oldham, Rochdale, Salford and Stockport. We also work with clients anywhere in the UK and overseas by phone, video call and email."
+    }
+  ]
 }

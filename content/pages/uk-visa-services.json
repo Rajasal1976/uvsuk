@@ -1,11 +1,38 @@
 {
-  "title": "UK Visa & Immigration Services | Unique Visa Services",
-  "description": "IAA-regulated help with UK spouse, work, student, visitor, ILR and citizenship applications from our Manchester office.",
+  "title": "UK Visa & Immigration Advisers in Manchester | UVS",
+  "description": "IAA-regulated UK immigration advisers in Manchester: spouse visas, Skilled Worker, students, ILR, citizenship and visitor visas. Clear advice, agreed fees.",
   "h1": "UK visa and immigration services",
   "intro": "Coming to the UK, extending your stay or settling permanently? Choose your route below. Every application is checked by a regulated adviser before it goes to the Home Office.",
-  "faqs": [],
+  "faqs": [
+    {
+      "q": "How do I know which visa is right for me?",
+      "a": "It depends on your reason for coming to the UK, your nationality and your current immigration status. At a consultation we look at your circumstances and tell you which routes are open to you, what you’ll need and what it will cost."
+    },
+    {
+      "q": "Are you regulated?",
+      "a": "Yes. We are regulated by the Immigration Advice Authority (IAA), the body that regulates immigration advisers in the UK. Our registration number is shown at the bottom of every page."
+    }
+  ],
   "govuk": "",
   "applyButton": "none",
   "country": "UK",
-  "sortKey": "1 uk 0 uk visa and immigration services"
+  "sortKey": "1 uk 0 uk visa and immigration services",
+  "sections": [
+    {
+      "heading": "UK immigration advice you can rely on",
+      "text": "UK immigration rules change often, and a small mistake can mean a refused application, a lost fee and months of delay. We help families, workers, students and employers choose the right route, prepare complete evidence and submit applications that meet the current rules.\n\nEvery application is prepared and checked by advisers regulated by the Immigration Advice Authority (IAA). You can check our registration on the IAA's public register."
+    },
+    {
+      "heading": "Which UK visa do you need?",
+      "text": "The right visa depends on why you want to come to or stay in the UK:\n- To join your husband, wife or partner: a spouse, partner or fiancé(e) visa\n- To work for a UK employer: usually a Skilled Worker visa, sponsored by a licensed employer\n- To study at a UK college or university: a Student visa, followed in many cases by the Graduate visa\n- To visit family, friends or for business: a Visitor visa or, for many nationalities, an Electronic Travel Authorisation (ETA)\n- To live in the UK permanently: Indefinite Leave to Remain, and later British citizenship\n\nIf you're not sure which applies to you, a consultation is the quickest way to find out."
+    },
+    {
+      "heading": "UK immigration changes in 2026",
+      "text": "Several important changes are under way. The government plans to move most routes to a 10-year \"earned settlement\" model for ILR, though the 5-year routes are still open for now. The Graduate visa drops from 2 years to 18 months for applications made from 1 January 2027. New Skilled Worker applicants have needed English at B2 level since January 2026.\n\nWe follow every change and will tell you how it affects your plans before you apply."
+    },
+    {
+      "heading": "UK visa help in Manchester and across the UK",
+      "text": "We're based at 61 Mosley Street in Manchester city centre and help clients across Greater Manchester, including Bury, Bolton, Oldham, Rochdale, Salford and Stockport. We also work with clients anywhere in the UK and overseas by phone, video call and email."
+    }
+  ]
 }

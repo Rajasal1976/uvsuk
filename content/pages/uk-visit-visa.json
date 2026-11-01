@@ -1,6 +1,6 @@
 {
-  "title": "UK Visitor Visa Help | Family & Business Visits | UVS",
-  "description": "Inviting family or business contacts to the UK? IAA-regulated help with UK Standard Visitor visas, invitation letters and sponsor documents.",
+  "title": "UK Visitor Visa Help | Family & Business Visits | Manchester",
+  "description": "UK Standard Visitor visa help: family visits, business trips, sponsor letters and evidence. IAA-regulated advisers in Manchester. ETA advice too.",
   "h1": "UK Visitor visa",
   "intro": "The Standard Visitor visa covers tourism, visiting family and friends, and business trips such as meetings and conferences. If you are inviting someone to the UK, we help prepare both their application and your sponsor documents.",
   "eligibility": [
@@ -18,10 +18,40 @@
     {
       "q": "Do I need a visa or an ETA?",
       "a": "It depends on nationality. Many nationalities need a visa; others need an Electronic Travel Authorisation (ETA). We check this first."
+    },
+    {
+      "q": "How long can a visitor stay in the UK?",
+      "a": "Usually up to 6 months per visit. Long-term visit visas of 2, 5 or 10 years are available for frequent visitors, but each stay is still limited to 6 months."
+    },
+    {
+      "q": "How long does a UK visit visa take?",
+      "a": "From outside the UK, most visit visa applications are decided within about 3 weeks. Priority services are available in many countries."
     }
   ],
   "govuk": "https://www.gov.uk/standard-visitor",
   "applyButton": "none",
   "country": "UK",
-  "sortKey": "1 uk 1 uk visitor visa"
+  "sortKey": "1 uk 1 uk visitor visa",
+  "sections": [
+    {
+      "heading": "Do your visitors need a visa or an ETA?",
+      "text": "It depends on their nationality. Visitors from many countries, including India, Pakistan, Bangladesh, Nigeria and Ghana, need a Standard Visitor visa before they travel. Visitors who don't need a visa, such as US, Canadian, Australian and EU citizens, must now have an Electronic Travel Authorisation (ETA) before travelling to the UK."
+    },
+    {
+      "heading": "What the Home Office looks for",
+      "text": "Visitor visas are refused more often than people expect, usually because the evidence doesn't convince the officer the visit is genuine. The application should show:\n- A clear reason for the visit and a realistic plan\n- Enough money to pay for the trip, or a sponsor who can\n- Strong reasons to return home, such as work, study, family or property\n- A good travel and immigration history\n\nA well-prepared invitation letter from the family member in the UK, with their own documents, makes a real difference."
+    },
+    {
+      "heading": "Inviting family to the UK",
+      "text": "If you are inviting parents or relatives, we prepare a sponsor letter and help you gather supporting evidence, such as your immigration status, payslips, bank statements and proof of accommodation. We also prepare a clear cover letter explaining the visit."
+    },
+    {
+      "heading": "Refused before?",
+      "text": "A previous refusal must be declared, and the new application should deal with the reasons for refusal directly. We review the refusal letter and help make a stronger application."
+    },
+    {
+      "heading": "Visitor visa help in Manchester",
+      "text": "We're based at 61 Mosley Street in Manchester city centre and help clients across Greater Manchester, including Bury, Bolton, Oldham, Rochdale, Salford and Stockport. We also work with clients anywhere in the UK and overseas by phone, video call and email."
+    }
+  ]
 }

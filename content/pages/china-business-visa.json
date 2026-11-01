@@ -1,8 +1,8 @@
 {
   "h1": "China business visa (M visa)",
   "intro": "The China business visa (M visa) is for commercial trips such as meetings, trade fairs, factory and supplier visits, and negotiating contracts. British passport holders can currently make short business trips visa-free, so you need an M visa if your stay is longer, you need multiple entries over a longer period, or you travel on another passport.",
-  "title": "China Business Visa (M Visa) from the UK | UVS",
-  "description": "China business visa help for UK residents: meetings, trade fairs and supplier visits. Invitation letter, forms and visa centre appointment.",
+  "title": "China Business Visa (M Visa) from the UK | Application Help",
+  "description": "China M visa help for UK businesses: invitation letters, trade fairs, supplier visits and longer stays. Visa-free rules for British citizens explained.",
   "faqHeading": "Common questions",
   "faqs": [
     {
@@ -16,6 +16,10 @@
     {
       "q": "Do I need to attend the visa centre?",
       "a": "Yes. Most applicants give fingerprints in person at a Chinese Visa Application Service Centre. We book the appointment and prepare everything you take with you."
+    },
+    {
+      "q": "Can I attend the Canton Fair visa-free?",
+      "a": "British passport holders can visit for business, including trade fairs, visa-free for up to 30 days until 31 December 2026. Other passport holders usually need an M visa."
     }
   ],
   "applyButton": "/apply/china-visa/",
@@ -46,5 +50,23 @@
     }
   ],
   "country": "China",
-  "sortKey": "1 china 1 china business visa (m visa)"
+  "sortKey": "1 china 1 china business visa (m visa)",
+  "sections": [
+    {
+      "heading": "Do you need a China business visa?",
+      "text": "British passport holders can make business trips to China visa-free for up to 30 days until 31 December 2026. An M visa is still needed for longer stays, for multiple-entry visas covering regular trips, for travel after the visa-free policy ends if it isn't extended, and for UK residents travelling on other passports."
+    },
+    {
+      "heading": "The invitation letter",
+      "text": "The most important document for an M visa is the invitation letter from the Chinese company or trade fair organiser. It should include your personal details, the purpose of the visit, the dates, where you'll go, who is paying, and the inviting company's details and signature. We check it against the visa centre's requirements before you apply."
+    },
+    {
+      "heading": "Regular travel to China",
+      "text": "If you visit suppliers or partners in China often, a multiple-entry business visa can save repeated applications. We also arrange second British passports for frequent travellers who need one passport for travelling while the other is at a visa centre."
+    },
+    {
+      "heading": "China business visa help in Manchester",
+      "text": "We're based in Manchester city centre and help travellers and businesses across the North West and the rest of the UK. Most travel visa applications can be handled by post and email, so you don't need to visit us in person."
+    }
+  ]
 }

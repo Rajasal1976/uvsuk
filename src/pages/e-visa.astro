@@ -2,6 +2,7 @@
 // eVisas page (same address as the old site: /e-visa/). Countries come from src/data/evisas.js.
 // Text, FAQs, prices and Google details are edited in the admin (content/pages/e-visa.json).
 import Page from '../layouts/Page.astro';
+import GuideSections from '../components/GuideSections.astro';
 import Faq from '../components/Faq.astro';
 import CtaBand from '../components/CtaBand.astro';
 import PriceTables from '../components/PriceTables.astro';
@@ -49,6 +50,7 @@ import content from '../../content/pages/e-visa.json';
           </ul>
         </section>
 
+<GuideSections sections={content.sections} />
         <PriceTables prices={content.prices} kind="evisa" />
 
         <Faq items={content.faqs} title={content.faqHeading || 'Common questions'} />

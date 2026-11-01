@@ -1,6 +1,6 @@
 {
-  "title": "India e-Business Visa from the UK | UVS",
-  "description": "India e-Business Visa help for UK residents attending meetings, trade fairs and supplier visits. Forms and documents checked.",
+  "title": "India e-Business Visa from the UK | Business Visa Help | UVS",
+  "description": "India e-Business visa for UK business travellers: meetings, trade fairs and sales trips. We prepare your application and invitation documents.",
   "h1": "India e-Business Visa",
   "intro": "For business meetings, trade fairs and visiting suppliers in India. We prepare your application and check your invitation and business documents.",
   "eligibility": [
@@ -13,7 +13,16 @@
     "Business card",
     "Invitation letter from the Indian company"
   ],
-  "faqs": [],
+  "faqs": [
+    {
+      "q": "How long does an India e-Business visa take?",
+      "a": "Usually a few working days, but apply at least 4 days before you travel. Leave more time if your trip is close to a public holiday."
+    },
+    {
+      "q": "Can I work in India on an e-Business visa?",
+      "a": "No. Paid employment in India requires an Employment visa."
+    }
+  ],
   "govuk": "",
   "applyButton": "/apply/india-visa/",
   "prices": [
@@ -35,5 +44,19 @@
     }
   ],
   "country": "India",
-  "sortKey": "1 india 1 india e-business visa"
+  "sortKey": "1 india 1 india e-business visa",
+  "sections": [
+    {
+      "heading": "What the e-Business visa covers",
+      "text": "The e-Business visa is for short business trips to India, such as attending meetings, trade fairs and conferences, selling or buying products, setting up business ventures, and technical visits. It is valid for 1 year with multiple entries.\n\nIt does not allow you to take up employment in India. If you are going to work for an Indian company, you need an Employment visa."
+    },
+    {
+      "heading": "What you will need",
+      "text": "As well as your passport scan and photo, you usually need:\n- Your business card, or an email signature with your details\n- An invitation letter from the Indian company, with their address and contact details\n- Details of your own employer or business\n\nMake sure the company details on the invitation match what you enter in the form."
+    },
+    {
+      "heading": "Business visa help for UK companies",
+      "text": "We handle Indian business visas for individuals and for companies that send staff to India regularly, including urgent applications. We're based in Manchester city centre and help travellers and businesses across the North West and the rest of the UK. Most travel visa applications can be handled by post and email, so you don't need to visit us in person."
+    }
+  ]
 }

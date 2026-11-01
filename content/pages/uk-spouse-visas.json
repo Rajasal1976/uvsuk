@@ -1,6 +1,6 @@
 {
-  "title": "UK Spouse & Partner Visas | Unique Visa Services",
-  "description": "Help with UK spouse, civil partner, fiancé and unmarried partner visas, including extensions. IAA-regulated advisers in Manchester.",
+  "title": "Spouse & Partner Visas UK | Manchester Immigration Advisers",
+  "description": "Spouse, partner, fiancé(e) and unmarried partner visas explained. IAA-regulated advice on the £29,000 financial requirement, evidence and extensions.",
   "h1": "Spouse and partner visas",
   "intro": "If your husband, wife, civil partner, fiancé or long-term partner is British or settled in the UK, a partner visa lets you live here together. We help you choose the right route, meet the financial requirement and put together strong relationship evidence.",
   "faqs": [
@@ -11,10 +11,36 @@
     {
       "q": "What is the most common reason partner visas are refused?",
       "a": "Missing or incorrect financial evidence. The Home Office is strict about which documents count and which dates they must cover, so we check this carefully before you apply."
+    },
+    {
+      "q": "Can we apply if my partner is on a Skilled Worker visa?",
+      "a": "Not as a spouse under the family route. Partners of Skilled Workers usually apply as dependants on the Skilled Worker route instead. The rules and costs are different, so ask us which applies."
+    },
+    {
+      "q": "What if we don’t meet the £29,000 requirement?",
+      "a": "You may be able to combine income with savings, use different income sources, or qualify under exemptions for some benefits. In some cases there are exceptional circumstances. We look at your full picture at a consultation."
     }
   ],
   "govuk": "https://www.gov.uk/uk-family-visa",
   "applyButton": "none",
   "country": "UK",
-  "sortKey": "1 uk 1 spouse and partner visas"
+  "sortKey": "1 uk 1 spouse and partner visas",
+  "sections": [
+    {
+      "heading": "Partner visas: which one fits your relationship?",
+      "text": "The UK has several family routes for couples, all under Appendix FM of the Immigration Rules:\n- Spouse or civil partner visa: if you are married or in a civil partnership\n- Unmarried partner visa: if you have lived together in a relationship like marriage for at least 2 years\n- Fiancé(e) or proposed civil partner visa: if you plan to marry in the UK within 6 months of arriving\n- Spouse visa extension: to extend after your first 2 years and 6 months or 2 years and 9 months\n\nYour UK partner must be British, Irish, settled in the UK, or have refugee or humanitarian protection."
+    },
+    {
+      "heading": "The requirements every couple must meet",
+      "text": "Whichever route you use, the Home Office checks the same main areas:\n- Financial requirement: £29,000 a year for most new applications, through income, savings or both\n- Genuine relationship: evidence that your relationship is real and continuing\n- English language: A1 for a first application, A2 when you extend, and B1 for settlement\n- Accommodation: suitable housing in the UK without public funds\n\nMost refusals come from evidence that doesn't meet the strict format the Home Office requires, rather than from couples who don't qualify."
+    },
+    {
+      "heading": "From partner visa to settlement",
+      "text": "Partner visas usually lead to Indefinite Leave to Remain after 5 years, in two stages of around 2 years and 6 months each. The government's settlement proposals indicate that partners of British citizens would keep a 5-year route, but the final rules haven't been published yet."
+    },
+    {
+      "heading": "Partner visa help in Manchester",
+      "text": "We're based at 61 Mosley Street in Manchester city centre and help clients across Greater Manchester, including Bury, Bolton, Oldham, Rochdale, Salford and Stockport. We also work with clients anywhere in the UK and overseas by phone, video call and email."
+    }
+  ]
 }

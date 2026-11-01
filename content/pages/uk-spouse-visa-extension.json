@@ -1,6 +1,6 @@
 {
-  "title": "Spouse Visa Extension (FLR(M)) | UVS Manchester",
-  "description": "Extend your UK spouse visa on time with an IAA-regulated adviser. We check your financial, relationship and English evidence before you apply.",
+  "title": "Spouse Visa Extension (FLR(M)) | Manchester Advisers",
+  "description": "Extend your UK spouse visa with IAA-regulated advisers. We check the financial requirement, A2 English and your evidence before you apply for FLR(M).",
   "h1": "Spouse visa extension",
   "intro": "If your spouse or partner visa is coming to an end, you need to apply to extend it (form FLR(M)) before it expires. We make sure your evidence covers the right dates and meets the current rules.",
   "eligibility": [
@@ -23,10 +23,36 @@
     {
       "q": "What if our circumstances have changed?",
       "a": "Tell us at your consultation. A change of job, address or income can affect which evidence you need, and we will adjust your application to fit."
+    },
+    {
+      "q": "Can I travel while my extension is being decided?",
+      "a": "If you leave the UK before a decision, your application will usually be treated as withdrawn. Plan any travel around the decision, or ask us about priority services."
+    },
+    {
+      "q": "My circumstances have changed since my first visa. Is that a problem?",
+      "a": "Not necessarily. A new job, a lower salary or a new address can all be dealt with if the evidence is right. Tell us early so we can plan the best way to meet the requirements."
     }
   ],
   "govuk": "https://www.gov.uk/uk-family-visa",
   "applyButton": "none",
   "country": "UK",
-  "sortKey": "1 uk 1 spouse visa extension"
+  "sortKey": "1 uk 1 spouse visa extension",
+  "sections": [
+    {
+      "heading": "When to extend your spouse visa",
+      "text": "Your first spouse visa lasts 2 years and 9 months if you applied from outside the UK, or 2 years and 6 months from inside. Before it expires, you apply to extend for another 2 years and 6 months using form FLR(M).\n\nDon't leave it late. If your visa expires before you apply, you could become an overstayer, which can seriously damage future applications. We recommend starting to gather evidence 2 to 3 months before your visa ends."
+    },
+    {
+      "heading": "What the Home Office checks at extension",
+      "text": "The extension is a full application, not a formality. You must show again that:\n- You are still in a genuine relationship and living together\n- You meet the financial requirement, at the level that applied when you started on the route\n- You have passed an English test at A2 level or above, or have an English-taught degree\n- You have suitable accommodation\n\nA big difference from the first application: your own UK earnings can now count towards the financial requirement, alongside your partner's."
+    },
+    {
+      "heading": "Evidence that you live together",
+      "text": "The Home Office usually wants to see letters and documents addressed to you both at the same address, spread across the period since your visa was granted. Good examples include council tax bills, bank statements, a joint tenancy or mortgage, GP letters, and utility bills.\n\nIf you have spent time apart, for example for work or family reasons, we help you explain it properly."
+    },
+    {
+      "heading": "Spouse visa extension help in Manchester",
+      "text": "We're based at 61 Mosley Street in Manchester city centre and help clients across Greater Manchester, including Bury, Bolton, Oldham, Rochdale, Salford and Stockport. We also work with clients anywhere in the UK and overseas by phone, video call and email."
+    }
+  ]
 }

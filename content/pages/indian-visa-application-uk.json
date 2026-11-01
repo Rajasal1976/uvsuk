@@ -1,11 +1,38 @@
 {
-  "title": "Indian Visa & eVisa from the UK | Unique Visa Services",
-  "description": "Indian visa and eVisa help for UK residents: tourist, business, employment and medical visas. Forms and photos checked to avoid rejections.",
+  "title": "Indian Visa from the UK | eVisa & Regular Visa Help | UVS",
+  "description": "Indian visa help for UK residents: e-Tourist, e-Business and regular visas. We check your form, photo and documents so you travel on time.",
   "h1": "Indian visa from the UK",
   "intro": "Most UK residents travelling to India need an eVisa or a regular visa. The official website can be difficult to use, and small mistakes with photos or forms often lead to rejections. We handle the application for you.",
-  "faqs": [],
+  "faqs": [
+    {
+      "q": "How long does an Indian eVisa take?",
+      "a": "Most eVisas are processed within a few working days, but apply at least 4 days before you travel, and earlier in busy periods."
+    },
+    {
+      "q": "Do I need a visa if I have an OCI card?",
+      "a": "No. An OCI card lets you visit India without a visa for as long as you like."
+    }
+  ],
   "govuk": "",
   "applyButton": "/apply/india-visa/",
   "country": "India",
-  "sortKey": "1 india 0 indian visa from the uk"
+  "sortKey": "1 india 0 indian visa from the uk",
+  "sections": [
+    {
+      "heading": "eVisa or regular visa?",
+      "text": "Most British citizens can use India's eVisa for tourism, business, medical and conference trips. The eVisa is applied for online, and you travel with the approval.\n\nYou'll need a regular paper visa through the Indian visa application centre instead if you are going to work in India, staying longer than the eVisa allows, or are not eligible for the eVisa. People of Pakistani origin, or who hold a Pakistani passport, can't use the eVisa and must apply for a regular visa."
+    },
+    {
+      "heading": "Common reasons Indian visa applications are delayed",
+      "text": "Indian visa forms are long and very detailed, and small mistakes cause delays or refusals:\n- A photo that doesn't meet the exact size and background rules\n- Names that don't match the passport exactly\n- Missing details of parents, spouse or previous visits\n- The wrong visa type for the purpose of the trip\n\nWe check every field against your passport and documents before submitting."
+    },
+    {
+      "heading": "OCI and Indian passport holders",
+      "text": "If you are of Indian origin and hold an Overseas Citizen of India (OCI) card, you don't need a visa. If you have recently become British, you must surrender your Indian passport and get a surrender certificate before applying for OCI. We help with all of these."
+    },
+    {
+      "heading": "Indian visa help in Manchester",
+      "text": "We're based in Manchester city centre and help travellers and businesses across the North West and the rest of the UK. Most travel visa applications can be handled by post and email, so you don't need to visit us in person."
+    }
+  ]
 }

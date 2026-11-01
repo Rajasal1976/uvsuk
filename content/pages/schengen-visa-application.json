@@ -1,6 +1,6 @@
 {
-  "title": "Schengen Visa from the UK | Unique Visa Services",
-  "description": "Schengen visa help for UK residents travelling to France, Spain, Italy, Germany and other Schengen countries. Documents and appointments.",
+  "title": "Schengen Visa from the UK | Application Help Manchester",
+  "description": "Schengen visa help for UK residents who need one: France, Spain, Italy, Germany and more. Appointments, insurance, bookings and cover letters.",
   "h1": "Schengen visa from the UK",
   "intro": "If you live in the UK on a non-EU passport, you may need a Schengen visa to visit Europe. We prepare your application for the right country and help book your appointment.",
   "eligibility": [
@@ -13,7 +13,16 @@
     "Flight and hotel bookings",
     "Bank statements and employment letter"
   ],
-  "faqs": [],
+  "faqs": [
+    {
+      "q": "How long does a Schengen visa take?",
+      "a": "Usually around 15 days from your appointment, but it can take longer in busy periods. Apply well ahead of your trip."
+    },
+    {
+      "q": "Do British citizens need ETIAS yet?",
+      "a": "No. ETIAS has been postponed and has no confirmed start date. British citizens can currently visit the Schengen area visa-free for up to 90 days in 180."
+    }
+  ],
   "govuk": "",
   "applyButton": "none",
   "prices": [
@@ -43,5 +52,27 @@
     }
   ],
   "country": "Schengen",
-  "sortKey": "1 schengen 0 schengen visa from the uk"
+  "sortKey": "1 schengen 0 schengen visa from the uk",
+  "sections": [
+    {
+      "heading": "Who needs a Schengen visa?",
+      "text": "British citizens don't need a visa to visit the Schengen area for up to 90 days in any 180-day period. Many UK residents who hold other passports do, including Indian, Pakistani, Bangladeshi, Nigerian, Ghanaian and Chinese nationals. The Schengen visa lets you visit all 29 Schengen countries on one visa."
+    },
+    {
+      "heading": "Where to apply",
+      "text": "You apply to the country where you will spend the most time, or the country you will enter first if you'll spend equal time in several. Applications are made through each country's visa centre in the UK. Appointments can be hard to get in spring and summer, so start early: you can usually apply up to 6 months before you travel."
+    },
+    {
+      "heading": "Documents for a Schengen visa",
+      "text": "Most applications need:\n- A passport issued in the last 10 years, valid for at least 3 months after you leave the Schengen area\n- Your UK residence permit or eVisa, usually valid for at least 3 months after your return\n- Travel medical insurance with at least €30,000 of cover\n- Flight and hotel bookings, or an invitation\n- Recent bank statements, payslips and an employer letter\n\nA clear cover letter explaining your trip helps the visa officer."
+    },
+    {
+      "heading": "New EU border systems",
+      "text": "The EU's Entry/Exit System (EES) now records non-EU travellers' fingerprints and photos at the border. ETIAS, the online travel authorisation British citizens will need, has been postponed and has no start date yet."
+    },
+    {
+      "heading": "Schengen visa help in Manchester",
+      "text": "We're based in Manchester city centre and help travellers and businesses across the North West and the rest of the UK. Most travel visa applications can be handled by post and email, so you don't need to visit us in person."
+    }
+  ]
 }

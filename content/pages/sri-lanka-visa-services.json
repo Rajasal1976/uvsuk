@@ -1,6 +1,6 @@
 {
-  "title": "Sri Lanka Visa & ETA from the UK | UVS",
-  "description": "Sri Lanka ETA and visa help for UK residents travelling for tourism or business.",
+  "title": "Sri Lanka Visa & ETA from the UK | Fast Online Help | UVS",
+  "description": "Sri Lanka ETA and visa help for UK residents: tourist, business and transit. We complete and check your online application before you travel.",
   "h1": "Sri Lanka visa and ETA",
   "intro": "Most visitors to Sri Lanka need an ETA or visa before they travel. We check what applies to you and complete the application.",
   "eligibility": [],
@@ -8,7 +8,12 @@
     "Passport",
     "Travel details"
   ],
-  "faqs": [],
+  "faqs": [
+    {
+      "q": "How long does a Sri Lanka ETA take?",
+      "a": "Usually 1 to 3 working days, but apply at least a week before you travel to be safe."
+    }
+  ],
   "govuk": "",
   "applyButton": "/apply/sri-lanka-eta/",
   "prices": [
@@ -30,5 +35,23 @@
     }
   ],
   "country": "Sri Lanka",
-  "sortKey": "1 sri lanka 0 sri lanka visa and eta"
+  "sortKey": "1 sri lanka 0 sri lanka visa and eta",
+  "sections": [
+    {
+      "heading": "Sri Lanka ETA for tourists",
+      "text": "Most visitors, including British citizens, need an Electronic Travel Authorisation (ETA) or eVisa before travelling to Sri Lanka. Tourist visits are usually granted for up to 30 days, and stays can be extended once you're in the country. Fees vary by nationality, and Sri Lanka has offered free tourist visas to some nationalities at times, so we confirm the current fee before you apply."
+    },
+    {
+      "heading": "Business and transit",
+      "text": "Business visitors need a business ETA, usually with a letter from the Sri Lankan company you're visiting. Travellers passing through Sri Lanka for up to 2 days may need a transit ETA."
+    },
+    {
+      "heading": "Apply before you fly",
+      "text": "Apply online before you travel and carry a copy of the approval. Make sure the passport number on your ETA matches the passport you travel with: if you renew your passport, you need a new ETA. Our online form reads your passport and fills in your details for you."
+    },
+    {
+      "heading": "Sri Lanka visa help in Manchester",
+      "text": "We're based in Manchester city centre and help travellers and businesses across the North West and the rest of the UK. Most travel visa applications can be handled by post and email, so you don't need to visit us in person."
+    }
+  ]
 }

@@ -1,6 +1,6 @@
 {
-  "title": "UK Graduate Visa (Post-Study Work) | UVS",
-  "description": "Stay and work in the UK after your degree. IAA-regulated help with Graduate visa applications from our Manchester office.",
+  "title": "UK Graduate Visa 2026 | Apply Before 18-Month Change",
+  "description": "Apply for the UK Graduate visa before 1 January 2027 to get 2 years instead of 18 months. IAA-regulated help in Manchester with eligibility and timing.",
   "h1": "Graduate visa",
   "intro": "The Graduate visa lets you stay in the UK to work or look for work after successfully completing an eligible UK degree. You apply from inside the UK, before your Student visa expires.",
   "eligibility": [
@@ -17,10 +17,40 @@
     {
       "q": "Do I need a job offer?",
       "a": "No. The Graduate visa does not need a sponsor or job offer. Many people later switch to a Skilled Worker visa."
+    },
+    {
+      "q": "When should I apply for my Graduate visa?",
+      "a": "As soon as your university has confirmed your successful completion, and before your Student visa expires. Apply by 31 December 2026 to get 2 years instead of 18 months."
+    },
+    {
+      "q": "Can I switch from a Graduate visa to a Skilled Worker visa?",
+      "a": "Yes, if you have a job offer from a licensed sponsor that meets the requirements. Recent graduates may qualify for lower new-entrant salary thresholds."
     }
   ],
   "govuk": "https://www.gov.uk/graduate-visa",
   "applyButton": "none",
   "country": "UK",
-  "sortKey": "1 uk 1 graduate visa"
+  "sortKey": "1 uk 1 graduate visa",
+  "sections": [
+    {
+      "heading": "Graduate visa changes from 1 January 2027",
+      "text": "The Graduate visa is being shortened. Applications made on or before 31 December 2026 are granted 2 years (3 years for PhD graduates). Applications made on or after 1 January 2027 are granted 18 months for bachelor's and master's graduates. PhD graduates will still get 3 years.\n\nIf you have completed your course, or will soon, apply as early as you can: the date the Home Office receives your application is what counts."
+    },
+    {
+      "heading": "Who can apply for the Graduate visa?",
+      "text": "You can usually apply if:\n- You are in the UK on a Student visa\n- You have successfully completed a UK bachelor's degree, master's degree, PhD or other eligible course\n- Your university has reported your successful completion to the Home Office\n- Your Student visa hasn't expired yet\n\nYou must apply from inside the UK. You can't apply until your university has confirmed your completion."
+    },
+    {
+      "heading": "What you can do on a Graduate visa",
+      "text": "You can work in almost any job, at any skill level, without needing a sponsor, and you can be self-employed. You can't extend the Graduate visa, and it doesn't lead directly to settlement. Many people use it to gain experience before switching to a Skilled Worker visa."
+    },
+    {
+      "heading": "Graduate visa costs",
+      "text": "The application fee is £937, and you also pay the Immigration Health Surcharge of £1,035 for each year of the visa. Fees are set by the Home Office and can change."
+    },
+    {
+      "heading": "Graduate visa help in Manchester",
+      "text": "We're based at 61 Mosley Street in Manchester city centre and help clients across Greater Manchester, including Bury, Bolton, Oldham, Rochdale, Salford and Stockport. We also work with clients anywhere in the UK and overseas by phone, video call and email."
+    }
+  ]
 }

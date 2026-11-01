@@ -1,11 +1,34 @@
 {
-  "title": "UK Work Visas | Unique Visa Services",
-  "description": "Help with Skilled Worker visas, extensions and changes of employer, plus other UK work routes. IAA-regulated advisers in Manchester.",
+  "title": "UK Work Visas Explained | Manchester Immigration Advisers",
+  "description": "UK work visas explained: Skilled Worker, Graduate, Global Talent and more. IAA-regulated help for workers and employers from our Manchester office.",
   "h1": "UK work visas",
   "intro": "Most people coming to work in the UK use the Skilled Worker visa. We also advise on other work routes, including religious workers, sportspeople, temporary work and the Youth Mobility Scheme. Call us to check which fits.",
-  "faqs": [],
+  "faqs": [
+    {
+      "q": "Do I need a job offer to work in the UK?",
+      "a": "For a Skilled Worker visa, yes, from an employer with a sponsor licence. Some routes, such as the Graduate visa and Global Talent visa, don’t need a job offer."
+    }
+  ],
   "govuk": "https://www.gov.uk/browse/visas-immigration/work-visas",
   "applyButton": "none",
   "country": "UK",
-  "sortKey": "1 uk 1 uk work visas"
+  "sortKey": "1 uk 1 uk work visas",
+  "sections": [
+    {
+      "heading": "The main UK work visas",
+      "text": "Most people who come to the UK to work use one of these routes:\n- Skilled Worker visa: for a job with a UK employer that holds a sponsor licence\n- Graduate visa: to work after completing a UK degree, without sponsorship\n- Global Talent visa: for leaders or emerging leaders in fields such as science, tech and the arts\n- Youth Mobility Scheme: for young people from participating countries\n- Temporary work routes: such as religious workers, creative workers and seasonal workers"
+    },
+    {
+      "heading": "Skilled Worker rules in 2026",
+      "text": "Since July 2025, most new Skilled Worker jobs must be at degree level and pay at least £41,700 a year, or the going rate for the job if higher. Since January 2026, new applicants need English at B2 level. Overseas recruitment for care worker roles has closed for new applicants."
+    },
+    {
+      "heading": "Work visas and settlement",
+      "text": "Some work routes lead to Indefinite Leave to Remain and some don't. The Skilled Worker route currently leads to settlement after 5 years, but the government plans to lengthen this under its earned settlement proposals. We'll explain how long your route is likely to take before you commit."
+    },
+    {
+      "heading": "Work visa help in Manchester",
+      "text": "We're based at 61 Mosley Street in Manchester city centre and help clients across Greater Manchester, including Bury, Bolton, Oldham, Rochdale, Salford and Stockport. We also work with clients anywhere in the UK and overseas by phone, video call and email."
+    }
+  ]
 }

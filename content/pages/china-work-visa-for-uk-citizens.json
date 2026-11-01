@@ -1,6 +1,6 @@
 {
-  "title": "China Work Visa (Z Visa) for UK Residents | UVS",
-  "description": "Taking a job in China? Help with China Z visa applications from the UK, including work permit notice and documents.",
+  "title": "China Work Visa (Z Visa) from the UK | Application Help | UVS",
+  "description": "China Z visa help for UK residents taking up work in China: work permit notification, documents, legalisation and the visa centre.",
   "h1": "China work visa (Z visa)",
   "intro": "To work in China you need a Z visa, based on a work permit notice issued by your employer in China. We prepare the application and book your appointment.",
   "eligibility": [],
@@ -10,7 +10,12 @@
     "Completed application form",
     "Photo"
   ],
-  "faqs": [],
+  "faqs": [
+    {
+      "q": "Can I work in China on visa-free entry?",
+      "a": "No. Visa-free entry covers tourism, business visits, family visits, exchanges and transit only. Work needs a Z visa and work permit."
+    }
+  ],
   "govuk": "",
   "applyButton": "none",
   "prices": [
@@ -40,5 +45,23 @@
     }
   ],
   "country": "China",
-  "sortKey": "1 china 1 china work visa (z visa)"
+  "sortKey": "1 china 1 china work visa (z visa)",
+  "sections": [
+    {
+      "heading": "How the China work visa process works",
+      "text": "Getting a Z visa is a two-stage process. First, your Chinese employer applies for your work permit, and you receive a Notification Letter of Foreigner's Work Permit. Then you apply for the Z visa in the UK with that notification. After you arrive, you must apply for a residence permit within 30 days."
+    },
+    {
+      "heading": "Documents you will usually need",
+      "text": "For the work permit stage, your employer will usually ask for:\n- Your degree certificate, often legalised or apostilled\n- A criminal record check from the UK, often legalised or apostilled\n- Your CV and proof of work experience\n- A medical examination report, in some cases\n\nWe arrange the apostilles and legalisation of UK documents as part of our service."
+    },
+    {
+      "heading": "Visa-free travel is not for work",
+      "text": "China's 30-day visa-free entry for British citizens doesn't allow you to work. Working in China without the right visa and permits can lead to fines, detention and deportation."
+    },
+    {
+      "heading": "China work visa help in Manchester",
+      "text": "We're based in Manchester city centre and help travellers and businesses across the North West and the rest of the UK. Most travel visa applications can be handled by post and email, so you don't need to visit us in person."
+    }
+  ]
 }

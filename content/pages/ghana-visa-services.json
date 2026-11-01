@@ -1,6 +1,6 @@
 {
-  "title": "Ghana Visa from the UK | Unique Visa Services",
-  "description": "Ghana tourist and business visa help for UK residents. Forms, photos and supporting documents checked before submission.",
+  "title": "Ghana Visa from the UK | Tourist & Business Visa Help | UVS",
+  "description": "Ghana visa help for UK residents: tourist and business visas, invitation letters and yellow fever certificate. Manchester visa agency.",
   "h1": "Ghana visa from the UK",
   "intro": "We help UK residents apply for Ghana tourist and business visas, including checking forms, photos and supporting documents.",
   "eligibility": [],
@@ -11,7 +11,12 @@
     "Invitation letter or hotel booking",
     "Yellow fever vaccination certificate"
   ],
-  "faqs": [],
+  "faqs": [
+    {
+      "q": "How long does a Ghana visa take?",
+      "a": "It varies. Allow several weeks, and longer around Christmas and festival periods. Express options may be available."
+    }
+  ],
   "govuk": "",
   "applyButton": "none",
   "prices": [
@@ -41,5 +46,23 @@
     }
   ],
   "country": "Ghana",
-  "sortKey": "1 ghana 0 ghana visa from the uk"
+  "sortKey": "1 ghana 0 ghana visa from the uk",
+  "sections": [
+    {
+      "heading": "Do you need a visa for Ghana?",
+      "text": "British citizens need a visa to visit Ghana. Ghana applications for UK residents are made through the Ghana High Commission in London, and processing times vary, so apply well before you travel."
+    },
+    {
+      "heading": "What you will usually need",
+      "text": "Most Ghana visa applications need:\n- Your passport, valid for at least 6 months, with blank pages\n- A completed application form and passport photos\n- A return flight booking\n- Hotel bookings, or an invitation letter from your host in Ghana with a copy of their ID\n- For business trips, a letter from your employer and an invitation from the Ghanaian company\n- A yellow fever vaccination certificate"
+    },
+    {
+      "heading": "Yellow fever certificate",
+      "text": "Ghana requires all arriving travellers to show a valid yellow fever vaccination certificate. Get vaccinated at least 10 days before you travel, at a registered yellow fever centre."
+    },
+    {
+      "heading": "Ghana visa help in Manchester",
+      "text": "We're based in Manchester city centre and help travellers and businesses across the North West and the rest of the UK. Most travel visa applications can be handled by post and email, so you don't need to visit us in person."
+    }
+  ]
 }

@@ -1,8 +1,8 @@
 {
   "h1": "Skilled Worker visa",
   "intro": "The Skilled Worker visa (formerly Tier 2 General) lets you work in the UK for an employer with a sponsor licence. We help with new applications, extensions and changing employer.",
-  "title": "Skilled Worker Visa UK | Applications & Extensions | UVS",
-  "description": "Skilled Worker visa applications, extensions and changes of employer, with Certificate of Sponsorship and salary checks. IAA-regulated, Manchester.",
+  "title": "Skilled Worker Visa UK 2026 | Manchester Immigration Advisers",
+  "description": "Skilled Worker visa help in Manchester: the £41,700 salary rule, B2 English, CoS, extensions and changing employer. IAA-regulated advisers.",
   "faqHeading": "Common questions",
   "faqs": [
     {
@@ -12,9 +12,35 @@
     {
       "q": "Can my family come with me?",
       "a": "Your partner and children can usually apply as dependants. Some roles have restrictions, so we check this for your case."
+    },
+    {
+      "q": "Can I switch to a Skilled Worker visa from inside the UK?",
+      "a": "Yes, from most visas, including the Student and Graduate visas. You can’t switch from a Visitor visa."
     }
   ],
   "applyButton": "none",
   "country": "UK",
-  "sortKey": "1 uk 1 skilled worker visa"
+  "sortKey": "1 uk 1 skilled worker visa",
+  "sections": [
+    {
+      "heading": "Skilled Worker visa requirements in 2026",
+      "text": "To get a Skilled Worker visa you need:\n- A job offer from a UK employer with a sponsor licence\n- A Certificate of Sponsorship (CoS) from that employer\n- A job at the required skill level, which is degree level (RQF 6) for most new roles since July 2025\n- A salary of at least £41,700 a year, or the going rate for the job if higher, unless a lower threshold applies\n- English at B2 level, for new applicants since January 2026\n- Savings of £1,270, unless your employer certifies your maintenance"
+    },
+    {
+      "heading": "Lower salary thresholds",
+      "text": "Some applicants can be paid less than the general threshold. These include new entrants, such as people under 26, recent UK graduates and people switching from a Student or Graduate visa, applicants with a relevant PhD, and jobs on the Immigration Salary List. Our free salary checker on this page gives you a quick answer before you apply."
+    },
+    {
+      "heading": "Extending, or changing employer",
+      "text": "You can extend your Skilled Worker visa with the same employer, but if you change employer you must make a new application with a new Certificate of Sponsorship before you start the new job. People first sponsored before 22 July 2025 may be able to continue on the older, lower thresholds in some situations. We check which rules apply to you."
+    },
+    {
+      "heading": "Skilled Worker visa and ILR",
+      "text": "The Skilled Worker route currently leads to Indefinite Leave to Remain after 5 years. The government has proposed lengthening this to 10 years under its earned settlement model, with possible reductions for higher earners. If you are close to 5 years, speak to us about applying as soon as you're eligible."
+    },
+    {
+      "heading": "Skilled Worker visa help in Manchester",
+      "text": "We're based at 61 Mosley Street in Manchester city centre and help clients across Greater Manchester, including Bury, Bolton, Oldham, Rochdale, Salford and Stockport. We also work with clients anywhere in the UK and overseas by phone, video call and email."
+    }
+  ]
 }

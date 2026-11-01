@@ -1,13 +1,21 @@
 {
   "h1": "China visa from the UK",
   "intro": "Not sure which China visa you need? Choose the purpose of your trip below and we will show you the right visa and what to prepare. We complete your application and book your appointment at the visa centre.",
-  "title": "China Visa from the UK | Business, Work & Family Visits | UVS",
-  "description": "China visa help for UK residents: business, work, family visit, crew and student visas, with forms and appointment booking.",
+  "title": "China Visa from the UK | Visa-Free Rules & Applications | UVS",
+  "description": "Do you need a China visa? British citizens can visit visa-free until 31 Dec 2026. Visa help for longer trips, work, study and non-British passports.",
   "faqHeading": "Common questions",
   "faqs": [
     {
       "q": "Do I need a visa for a short holiday?",
       "a": "If you travel on a British passport, probably not, for now. Check the current visa-free rules before you book, or ask us."
+    },
+    {
+      "q": "Do British citizens need a visa for China?",
+      "a": "Not for trips of up to 30 days for tourism, business, family visits or transit, until 31 December 2026. You still need a visa for longer stays, work or study."
+    },
+    {
+      "q": "What happens after 31 December 2026?",
+      "a": "The visa-free policy is due to end then unless China extends it. If you are travelling in 2027, check with us before you book."
     }
   ],
   "applyButton": "/apply/china-visa/",
@@ -38,5 +46,23 @@
     }
   ],
   "country": "China",
-  "sortKey": "1 china 0 china visa from the uk"
+  "sortKey": "1 china 0 china visa from the uk",
+  "sections": [
+    {
+      "heading": "China visa-free travel for British citizens",
+      "text": "Since 17 February 2026, holders of ordinary British passports can enter mainland China without a visa for up to 30 days for business, tourism, visiting family and friends, exchanges and transit. This policy currently runs until 31 December 2026.\n\nYou still need a visa if you plan to stay longer than 30 days, work, study or report as a journalist, or if your trip starts after the policy ends and it isn't extended."
+    },
+    {
+      "heading": "UK residents with other passports",
+      "text": "The visa-free policy depends on your passport, not where you live. If you live in the UK on an Indian, Pakistani, Nigerian or other passport, you may still need a Chinese visa. Applications are made through the Chinese Visa Application Service Centres in the UK."
+    },
+    {
+      "heading": "Which Chinese visa do you need?",
+      "text": "The main visa types are:\n- L visa: tourism\n- M visa: business and trade\n- Q1 and Q2 visas: visiting family members who are Chinese citizens or permanent residents\n- S1 and S2 visas: visiting family members who are working or studying in China\n- Z visa: work, with a work permit notification\n- X1 and X2 visas: study\n\nChoosing the right type and providing the matching invitation is the key to a smooth application."
+    },
+    {
+      "heading": "China visa help in Manchester",
+      "text": "We're based in Manchester city centre and help travellers and businesses across the North West and the rest of the UK. Most travel visa applications can be handled by post and email, so you don't need to visit us in person."
+    }
+  ]
 }

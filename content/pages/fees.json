@@ -11,5 +11,15 @@
   "govuk": "",
   "applyButton": "none",
   "country": "Company pages",
-  "sortKey": "2 company pages 1 our fees"
+  "sortKey": "2 company pages 1 our fees",
+  "sections": [
+    {
+      "heading": "How our fees work",
+      "text": "Our fee covers our advice and the preparation of your application. It is agreed in writing before we start, so there are no surprises. The fee depends on the type of application and how complex your circumstances are.\n\nGovernment fees, such as Home Office application fees, the Immigration Health Surcharge and embassy or visa centre fees, are paid separately, at cost. We tell you the total before you commit."
+    },
+    {
+      "heading": "Travel visa prices",
+      "text": "For travel visas and eVisas, our fees, the official fees and delivery charges are shown on each country's page."
+    }
+  ]
 }

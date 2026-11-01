@@ -1,6 +1,6 @@
 {
-  "title": "Sponsor Licence Application | Help for UK Employers | UVS",
-  "description": "Apply for or renew a UK sponsor licence with IAA-regulated advisers. Document preparation, Key Personnel set-up and compliance support.",
+  "title": "Sponsor Licence Application Help | Manchester & UK-wide",
+  "description": "Get your UK sponsor licence right first time. IAA-regulated help with documents, Key Personnel, 2026 fees and compliance. Based in Manchester.",
   "h1": "Sponsor licence application",
   "intro": "A sponsor licence lets your business employ workers from overseas on the Skilled Worker and other routes. We prepare your application, set up your Key Personnel and help you meet ongoing compliance duties. We also handle renewals.",
   "eligibility": [
@@ -23,10 +23,48 @@
     {
       "q": "Do we need to renew the licence?",
       "a": "Licence rules have changed and many licences no longer need routine renewal. We check the status of your licence and what applies to you."
+    },
+    {
+      "q": "How long does a sponsor licence application take?",
+      "a": "The Home Office aims to decide most applications within 8 weeks. A priority service is available for an extra £750 for a faster decision. Having your documents ready before you apply avoids delays."
+    },
+    {
+      "q": "Can we pass the sponsorship costs on to the worker?",
+      "a": "No. The licence fee, Certificate of Sponsorship and Immigration Skills Charge must be paid by the employer. Recovering them from the worker can lead to your licence being revoked."
+    },
+    {
+      "q": "What happens if our application is refused?",
+      "a": "Usually you must wait a set period before applying again, so it is worth getting it right first time. We check your documents and eligibility before you submit."
     }
   ],
   "govuk": "https://www.gov.uk/uk-visa-sponsorship-employers",
   "applyButton": "none",
   "country": "UK",
-  "sortKey": "1 uk 1 sponsor licence application"
+  "sortKey": "1 uk 1 sponsor licence application",
+  "sections": [
+    {
+      "heading": "Who needs a sponsor licence?",
+      "text": "Any UK employer that wants to hire someone from overseas on a Skilled Worker visa, or on most other work routes, needs a sponsor licence first. That includes workers who are already in the UK on another visa, such as a Student or Graduate visa, and want to switch to work for you.\n\nYou don't need a licence to employ British or Irish citizens, people with Indefinite Leave to Remain or settled status, or people whose visa already gives them the right to work for any employer."
+    },
+    {
+      "heading": "Sponsor licence costs in 2026",
+      "text": "Home Office fees from 8 April 2026:\n- Sponsor licence: £611 for small businesses and charities, or £1,682 for medium and large businesses\n- Certificate of Sponsorship: £525 for each Skilled Worker you sponsor\n- Immigration Skills Charge: £480 a year for small sponsors, or £1,320 a year for medium and large sponsors, paid upfront for the length of the visa\n- Optional priority service for the licence decision: £750\n\nThe licence fee, Certificate of Sponsorship and Immigration Skills Charge must be paid by the employer. Recovering them from the worker can lead to your licence being revoked. The worker usually pays their own visa fee and the Immigration Health Surcharge, although you can choose to cover these."
+    },
+    {
+      "heading": "Salary and skill rules for Skilled Worker roles",
+      "text": "Since 22 July 2025, most new Skilled Worker roles must be at degree level (RQF level 6) and pay at least £41,700 a year, or the going rate for the occupation if that is higher. Lower thresholds can apply to new entrants, some PhD-level roles and jobs on the Immigration Salary List.\n\nBefore you apply for a licence, we check that the roles you want to fill are eligible, so you don't pay for a licence you can't use. The free salary checker on our Skilled Worker visa page gives a quick first view."
+    },
+    {
+      "heading": "The application: documents and Key Personnel",
+      "text": "You apply online and then send supporting documents, usually within five working days. These normally include your company's bank details, insurance, VAT or PAYE registration and other proof that the business is genuine and trading.\n\nYou also appoint Key Personnel to run the licence: an Authorising Officer who is responsible for it, a Key Contact for the Home Office, and at least one Level 1 User who manages the online sponsor system. They must be based in the UK and have no unspent relevant convictions.\n\nThe Home Office aims to decide most applications within 8 weeks, and may visit your premises before deciding."
+    },
+    {
+      "heading": "Staying compliant once you have a licence",
+      "text": "A licence comes with ongoing duties, and the Home Office does carry out compliance visits. You must:\n- Carry out and keep right to work checks for every employee\n- Keep records on each sponsored worker\n- Report changes within the set deadlines, such as a worker leaving, a change of role or salary, or a change to your business\n- Pay sponsored workers what you said you would\n\nProblems can lead to a downgraded rating, suspension or revocation, which can affect every worker you sponsor. We set up simple record-keeping with you and can review your compliance regularly."
+    },
+    {
+      "heading": "Sponsor licence help for Manchester businesses",
+      "text": "We help employers across Manchester and the North West, from care providers and restaurants to tech, engineering and manufacturing firms, and businesses anywhere in the UK remotely. We prepare your application, check your documents, help set up your Key Personnel and assign your first Certificates of Sponsorship."
+    }
+  ]
 }

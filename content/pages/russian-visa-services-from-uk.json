@@ -1,6 +1,6 @@
 {
-  "title": "Russian Visa from the UK | Unique Visa Services",
-  "description": "Russian visa help for UK residents: tourist, business, private visit, work and student visas, including invitations.",
+  "title": "Russian Visa from the UK | Application Help | Manchester",
+  "description": "Russian visa help for UK residents: tourist, business, work and family visas, visa support letters and documents. FCDO travel advice explained.",
   "h1": "Russian visa from the UK",
   "intro": "We help UK residents with Russian tourist, business, private visit, work and student visas, including arranging the required invitation.",
   "eligibility": [],
@@ -11,7 +11,12 @@
     "Photo",
     "Medical insurance"
   ],
-  "faqs": [],
+  "faqs": [
+    {
+      "q": "Does the UK government advise against travel to Russia?",
+      "a": "Yes. The FCDO currently advises against all travel to Russia. Check the latest advice on GOV.UK before making plans."
+    }
+  ],
   "govuk": "",
   "applyButton": "none",
   "prices": [
@@ -41,5 +46,23 @@
     }
   ],
   "country": "Russia",
-  "sortKey": "1 russia 0 russian visa from the uk"
+  "sortKey": "1 russia 0 russian visa from the uk",
+  "sections": [
+    {
+      "heading": "UK government travel advice",
+      "text": "The UK Foreign, Commonwealth and Development Office (FCDO) currently advises against all travel to Russia. If you travel against this advice, your travel insurance may not be valid, and the UK's ability to help you in Russia is very limited. Please read the latest FCDO advice before you book."
+    },
+    {
+      "heading": "Russian visa types",
+      "text": "The main types are:\n- Tourist visa: needs a confirmation from a Russian tour operator or hotel\n- Business visa: needs an invitation from a Russian company\n- Private (family) visa: needs an invitation from your relative or friend in Russia\n- Work visa: needs a work permit and invitation arranged by the employer\n\nEvery Russian visa needs a visa support document from Russia, so arrange this first."
+    },
+    {
+      "heading": "Applying from the UK",
+      "text": "Applications are made through the official Russian visa application centre in the UK. The online form asks for detailed information about your employment, travel history and family, and every answer must match your documents."
+    },
+    {
+      "heading": "Russian visa help in Manchester",
+      "text": "We're based in Manchester city centre and help travellers and businesses across the North West and the rest of the UK. Most travel visa applications can be handled by post and email, so you don't need to visit us in person."
+    }
+  ]
 }

@@ -1,11 +1,34 @@
 {
-  "title": "Hire Overseas Workers | UK Sponsorship Help for Employers",
-  "description": "Help UK employers recruit from overseas: sponsor licence applications, renewals and compliance from IAA-regulated advisers in Manchester.",
+  "title": "Hire Overseas Workers UK | Sponsor Licence Help Manchester",
+  "description": "Hiring from overseas? IAA-regulated sponsorship help for UK employers: sponsor licences, Certificates of Sponsorship, 2026 costs and compliance.",
   "h1": "Hiring from overseas",
   "intro": "To employ most overseas workers, your business needs a Home Office sponsor licence. We help you apply, set up the systems the Home Office expects, and assign Certificates of Sponsorship to new hires.",
-  "faqs": [],
+  "faqs": [
+    {
+      "q": "Can we employ international students?",
+      "a": "Yes, within the limits of their visa: usually up to 20 hours a week in term time for degree-level students. To employ them full-time after their course, you can sponsor them on a Skilled Worker visa or they may have a Graduate visa."
+    }
+  ],
   "govuk": "https://www.gov.uk/uk-visa-sponsorship-employers",
   "applyButton": "none",
   "country": "UK",
-  "sortKey": "1 uk 1 hiring from overseas"
+  "sortKey": "1 uk 1 hiring from overseas",
+  "sections": [
+    {
+      "heading": "How UK employers hire from overseas",
+      "text": "To employ most workers from outside the UK, your business needs a sponsor licence from the Home Office. Once you have one, you assign a Certificate of Sponsorship to each worker, who then applies for their visa, usually a Skilled Worker visa."
+    },
+    {
+      "heading": "Check the role before you start",
+      "text": "Since July 2025, most new Skilled Worker roles must be at degree level and pay at least £41,700 a year, or the going rate if higher. Many roles that used to be eligible no longer are. Before you pay for a sponsor licence, we check that your roles qualify."
+    },
+    {
+      "heading": "The real cost of sponsoring a worker",
+      "text": "The employer pays the sponsor licence fee, the Certificate of Sponsorship and the Immigration Skills Charge, and these can't be passed on to the worker. For a small business hiring one worker for 3 years, the employer's Home Office costs come to over £2,500, before the worker's own visa fee and health surcharge."
+    },
+    {
+      "heading": "Sponsorship help for Manchester businesses",
+      "text": "We help employers across Manchester and the North West, and businesses anywhere in the UK remotely, with licence applications, assigning certificates, right to work checks and ongoing compliance."
+    }
+  ]
 }

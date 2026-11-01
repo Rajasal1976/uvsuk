@@ -1,6 +1,6 @@
 {
-  "title": "UK Spouse Visa Application Help | UVS Manchester",
-  "description": "Apply for a UK spouse visa with an IAA-regulated adviser. We check your financial requirement, relationship evidence and documents before you submit.",
+  "title": "Spouse Visa Manchester | UK Spouse Visa Application Help",
+  "description": "IAA-regulated spouse visa advisers in Manchester. We check the £29,000 financial requirement, relationship evidence and documents before you apply.",
   "h1": "UK spouse visa application",
   "intro": "A spouse visa lets you join your husband or wife in the UK if they are British, settled here, or have refugee or humanitarian protection. You can apply from outside the UK, or switch from some other visas inside the UK.",
   "eligibility": [
@@ -30,10 +30,44 @@
     {
       "q": "How long is the visa granted for?",
       "a": "A spouse visa is usually granted for an initial period, after which you apply to extend it. We explain the full timeline to settlement for your situation."
+    },
+    {
+      "q": "Can I use my partner’s overseas income?",
+      "a": "Not for a first application made from outside the UK. Only the UK-based partner’s income counts at that stage. When you extend from inside the UK, both of your UK earnings can usually be combined."
+    },
+    {
+      "q": "Do we need to be married?",
+      "a": "Not always. If you are not married but have lived together for at least two years, you may be able to apply as unmarried partners. Fiancé(e)s can apply to come to the UK to marry. We can tell you which route fits."
+    },
+    {
+      "q": "Can my partner work in the UK on a spouse visa?",
+      "a": "Yes. A spouse visa lets your partner work and study in the UK. They cannot claim most public funds while on the visa."
     }
   ],
   "govuk": "https://www.gov.uk/uk-family-visa",
   "applyButton": "none",
   "country": "UK",
-  "sortKey": "1 uk 1 uk spouse visa application"
+  "sortKey": "1 uk 1 uk spouse visa application",
+  "sections": [
+    {
+      "heading": "Spouse visa financial requirement in 2026",
+      "text": "For most new spouse and partner applications, the UK partner must show a gross income of at least £29,000 a year. The government had planned to raise this to £38,700, but that increase was paused, so £29,000 remains the figure for 2026.\n\nYou can meet the requirement in several ways, and you can often combine them:\n- Salaried or hourly employment in the UK\n- Self-employment or company director income, using your most recent tax year\n- Pension income\n- Rental and investment income\n- Cash savings held for at least six months\n\nIf you rely on savings alone, you need £88,500 for a first application. Savings can also top up a lower income: the amount needed is the shortfall multiplied by 2.5, plus £16,000.\n\nIf your partner receives certain disability or carer's benefits, a different and usually easier \"adequate maintenance\" test applies instead."
+    },
+    {
+      "heading": "Why spouse visa applications get refused",
+      "text": "Most refusals we see come down to evidence, not eligibility. The Home Office decides on the documents in front of it, and there is rarely a chance to fix a mistake after you submit.\n\nThe most common problems are:\n- Payslips and bank statements that don't match, or don't cover the full required period\n- Self-employed income shown with the wrong tax documents\n- Too little evidence that the relationship is genuine and continuing\n- An English test from a provider or centre the Home Office doesn't accept\n- Accommodation that is overcrowded, or with no proof you can live there\n\nWe check every document against the rules before your application goes in."
+    },
+    {
+      "heading": "English language, accommodation and relationship evidence",
+      "text": "For a first spouse visa, the applicant needs English at level A1 in speaking and listening, through an approved test or a degree taught in English. The level rises at each later stage: A2 when you extend, and B1 for settlement.\n\nYou must also show you will have suitable accommodation in the UK without public funds, such as a tenancy agreement or mortgage statement, and your landlord's permission if you'll live in someone else's home.\n\nFor the relationship, the Home Office wants to see that your marriage is genuine and that you intend to live together. Useful evidence includes photos together over time, messages and call logs, travel records, and letters showing a shared address."
+    },
+    {
+      "heading": "How long a spouse visa takes, and the route to settlement",
+      "text": "Applications made from outside the UK are usually decided within about 12 weeks, and applications from inside the UK within about 8 weeks. Priority services are available in some countries for an extra fee.\n\nA spouse visa is granted for 2 years and 9 months from outside the UK, or 2 years and 6 months from inside. You then extend for another 2 years and 6 months, and can usually apply for Indefinite Leave to Remain after 5 years.\n\nThe government has proposed moving most routes to a 10-year settlement period. Its proposals indicate that partners of British citizens would keep a 5-year route, but the final rules haven't been published. We'll tell you exactly where you stand at your consultation."
+    },
+    {
+      "heading": "Spouse visa help in Manchester and across the UK",
+      "text": "We're based at 61 Mosley Street in Manchester city centre, and we help couples across Greater Manchester, including Bury, Bolton, Oldham, Rochdale, Salford and Stockport. We also work with clients anywhere in the UK and overseas by phone, video call and email.\n\nYour application is prepared and checked by IAA-regulated advisers, and our fee is agreed in writing before we start."
+    }
+  ]
 }

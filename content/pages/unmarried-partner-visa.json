@@ -1,6 +1,6 @@
 {
-  "title": "UK Unmarried Partner Visa | Unique Visa Services",
-  "description": "Not married but living together? IAA-regulated help with UK unmarried partner visa applications, including cohabitation evidence.",
+  "title": "UK Unmarried Partner Visa | Manchester Immigration Advisers",
+  "description": "Unmarried partner visa help for couples who have lived together for 2 years. IAA-regulated advice on cohabitation evidence and the financial requirement.",
   "h1": "Unmarried partner visa",
   "intro": "If you are in a long-term relationship with a British or settled partner but not married, you can apply as an unmarried partner. The key is proving you have lived together in a relationship like a marriage.",
   "eligibility": [
@@ -17,10 +17,32 @@
     {
       "q": "What counts as proof we lived together?",
       "a": "Official letters addressed to you both at the same address, spread over the period, are strongest. We review what you have and tell you where the gaps are."
+    },
+    {
+      "q": "We have lived together for less than 2 years. What can we do?",
+      "a": "You may be able to marry and apply as spouses, or apply for a fiancé(e) visa if you plan to marry in the UK. We can explain the options."
     }
   ],
   "govuk": "https://www.gov.uk/uk-family-visa",
   "applyButton": "none",
   "country": "UK",
-  "sortKey": "1 uk 1 unmarried partner visa"
+  "sortKey": "1 uk 1 unmarried partner visa",
+  "sections": [
+    {
+      "heading": "Who can apply as an unmarried partner?",
+      "text": "If you aren't married or in a civil partnership, you can still apply as a couple if you have lived together in a relationship similar to marriage for at least 2 years before you apply. Your UK partner must be British, Irish, settled in the UK, or have protected status."
+    },
+    {
+      "heading": "Proving you have lived together for 2 years",
+      "text": "This is the hardest part for most couples. The Home Office expects documents addressed to you both, or to each of you, at the same address, spread across the full 2 years. Useful evidence includes:\n- A joint tenancy agreement or mortgage\n- Utility, council tax or broadband bills\n- Bank statements and official letters\n- Photos and travel records over time\n\nShort gaps can usually be explained, but gaps in the evidence are a common reason for refusal."
+    },
+    {
+      "heading": "Other requirements",
+      "text": "Unmarried partners must meet the same financial, English language and accommodation requirements as spouses: usually £29,000 a year for a new application, English at A1 level, and suitable accommodation without public funds. The route leads to settlement in the same way as a spouse visa."
+    },
+    {
+      "heading": "Unmarried partner visa help in Manchester",
+      "text": "We're based at 61 Mosley Street in Manchester city centre and help clients across Greater Manchester, including Bury, Bolton, Oldham, Rochdale, Salford and Stockport. We also work with clients anywhere in the UK and overseas by phone, video call and email."
+    }
+  ]
 }

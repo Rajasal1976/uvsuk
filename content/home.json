@@ -42,5 +42,23 @@
       "q": "Are you regulated?",
       "a": "Yes. Unique Visa Services Ltd is registered with the Immigration Advice Authority, reference F200700144. You can check this on the IAA's adviser finder."
     }
+  ],
+  "sections": [
+    {
+      "heading": "Immigration advisers in Manchester",
+      "text": "Unique Visa Services is an IAA-regulated immigration practice at 61 Mosley Street in Manchester city centre. Since 2008 we have helped people across Greater Manchester, including Bury, Bolton, Oldham, Rochdale, Salford and Stockport, and clients across the UK and overseas, with UK visas, settlement, citizenship and travel visas."
+    },
+    {
+      "heading": "UK visas, settlement and citizenship",
+      "text": "We prepare and check applications for spouse and partner visas, Skilled Worker visas, student and Graduate visas, visitor visas, Indefinite Leave to Remain and British citizenship. For employers, we handle sponsor licences and help you stay compliant once you have one.\n\nUK immigration rules are changing quickly in 2026, from the proposed 10-year route to settlement to the shorter Graduate visa from January 2027. We follow every change and tell you how it affects you before you apply."
+    },
+    {
+      "heading": "Travel visas and document services",
+      "text": "Travelling from the UK? We handle visas and eVisas for China, India, the Schengen area, the USA, Saudi Arabia, Ghana, Sri Lanka and more, as well as apostilles and embassy legalisation, Indian passport services and second British passports. You can apply online, and our forms read your passport details automatically."
+    },
+    {
+      "heading": "Why clients choose us",
+      "text": "- IAA-regulated advisers, with our registration shown on every page\n- A fee agreed in writing before we start\n- Every document checked against the current rules before submission\n- The same advisers from your first call to your decision"
+    }
   ]
 }

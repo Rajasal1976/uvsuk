@@ -1,6 +1,6 @@
 {
-  "title": "UK Student Visa Help | Applications & Extensions | UVS",
-  "description": "UK Student and Child Student visa applications and extensions, with CAS and financial evidence checks. IAA-regulated advisers in Manchester.",
+  "title": "UK Student Visa Help | CAS, Funds & Extensions | Manchester",
+  "description": "UK Student visa help from IAA-regulated advisers in Manchester: CAS, financial evidence, English, extensions and switching to work visas.",
   "h1": "UK Student visa",
   "intro": "The Student visa (formerly Tier 4) lets you study at a licensed UK university or college. We also help with Child Student visas for under-18s at independent schools.",
   "eligibility": [
@@ -23,10 +23,40 @@
     {
       "q": "Can I stay in the UK after my course?",
       "a": "You may be able to switch to the Graduate visa after you finish your course."
+    },
+    {
+      "q": "Can I bring my family on a Student visa?",
+      "a": "Usually only if you are on a postgraduate research course, such as a PhD. Students on taught courses, including most master’s degrees, can’t bring dependants."
+    },
+    {
+      "q": "How long does a Student visa take?",
+      "a": "From outside the UK, decisions usually take around 3 weeks. You can apply up to 6 months before your course starts."
     }
   ],
   "govuk": "https://www.gov.uk/student-visa",
   "applyButton": "none",
   "country": "UK",
-  "sortKey": "1 uk 1 uk student visa"
+  "sortKey": "1 uk 1 uk student visa",
+  "sections": [
+    {
+      "heading": "What you need for a UK Student visa",
+      "text": "To study in the UK you need:\n- An unconditional offer and a Confirmation of Acceptance for Studies (CAS) from a licensed student sponsor\n- Enough money to pay your course fees and living costs, held for at least 28 days\n- English at the required level, usually B2 for degree-level study\n- A valid passport, and a tuberculosis test certificate if you're from a listed country\n- Parental consent if you are under 18"
+    },
+    {
+      "heading": "Financial evidence: the most common problem",
+      "text": "Student visa refusals often come down to bank statements. The money must be held for 28 days in a row, end no more than 31 days before you apply, and be in an account the Home Office accepts. Funds held by parents need extra documents. We check your statements before you apply."
+    },
+    {
+      "heading": "Dependants and working while you study",
+      "text": "Most students on taught courses, including taught master's degrees, can no longer bring family members as dependants. Dependants are generally only allowed for postgraduate research courses such as PhDs.\n\nDegree-level students can usually work up to 20 hours a week in term time and full time in official vacations."
+    },
+    {
+      "heading": "After your course",
+      "text": "Many graduates switch to the Graduate visa, which lasts 2 years for applications made before 1 January 2027, and 18 months after that. Others switch to a Skilled Worker visa with a sponsoring employer."
+    },
+    {
+      "heading": "Student visa help in Manchester",
+      "text": "We're based at 61 Mosley Street in Manchester city centre and help clients across Greater Manchester, including Bury, Bolton, Oldham, Rochdale, Salford and Stockport. We also work with clients anywhere in the UK and overseas by phone, video call and email."
+    }
+  ]
 }

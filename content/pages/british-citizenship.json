@@ -1,6 +1,6 @@
 {
-  "title": "British Citizenship & Naturalisation | UVS Manchester",
-  "description": "Apply for British citizenship by naturalisation, including through marriage. IAA-regulated help with residence and good character checks.",
+  "title": "British Citizenship Application Help | Manchester Advisers",
+  "description": "Apply for British citizenship by naturalisation or through marriage. We check residence, time abroad and good character first. IAA-regulated, Manchester.",
   "h1": "British citizenship",
   "intro": "Once you have ILR or settled status, you may be able to apply to become a British citizen by naturalisation. If you are married to a British citizen, you may be able to apply sooner. We also advise on registering children as British.",
   "eligibility": [
@@ -19,10 +19,40 @@
     {
       "q": "Can my children become British?",
       "a": "Children born in the UK, or children of British or settled parents, may be able to register as British. The rules depend on when and where they were born."
+    },
+    {
+      "q": "Do I need to give up my current nationality?",
+      "a": "The UK allows dual nationality, but some countries don’t. Check the rules of your current country before you apply, as you could lose that nationality."
+    },
+    {
+      "q": "How long does a citizenship application take?",
+      "a": "Decisions usually take around 6 months. You then attend a citizenship ceremony, normally within 3 months of approval."
     }
   ],
   "govuk": "https://www.gov.uk/becoming-a-british-citizen",
   "applyButton": "none",
   "country": "UK",
-  "sortKey": "1 uk 1 british citizenship"
+  "sortKey": "1 uk 1 british citizenship",
+  "sections": [
+    {
+      "heading": "Who can apply for British citizenship?",
+      "text": "Most adults become British by naturalisation. You can usually apply if you:\n- Have Indefinite Leave to Remain, EU settled status or permanent residence\n- Have lived in the UK for at least 5 years (3 years if married to, or in a civil partnership with, a British citizen)\n- Have held your settled status for at least 12 months, unless you are married to a British citizen\n- Have passed the Life in the UK test\n- Have English at B1 level or above, through an approved test or a degree taught in English\n- Meet the good character requirement\n- Intend to keep living in the UK"
+    },
+    {
+      "heading": "Time abroad: the absence limits",
+      "text": "The residence rules are where many applications go wrong. For the standard 5-year route, you should not have spent more than 450 days outside the UK in the 5 years before you apply, or more than 90 days in the final 12 months. On the 3-year route through marriage, the limit is 270 days, with the same 90 days in the last year.\n\nYou must also have been physically in the UK on the date exactly 5 (or 3) years before the Home Office receives your application. The Home Office can use discretion for absences slightly over the limits, but this isn't guaranteed. The free absence calculator on our ILR page gives you a quick first check."
+    },
+    {
+      "heading": "Good character: what the Home Office checks",
+      "text": "The good character requirement looks at your whole history, not just criminal convictions. The Home Office also considers immigration breaches, unpaid tax, debts to the NHS, and how honestly you have dealt with immigration and other authorities.\n\nSince February 2025, people who entered the UK illegally are normally refused citizenship, regardless of how long ago they arrived. If there is anything in your history that worries you, talk to us before you apply. The application fee isn't refunded if you are refused."
+    },
+    {
+      "heading": "Citizenship through marriage",
+      "text": "If you are married to, or in a civil partnership with, a British citizen, you can apply after 3 years of living in the UK instead of 5. You don't need to wait 12 months after getting settled status: you can apply as soon as you have ILR, if you meet the other requirements."
+    },
+    {
+      "heading": "The application process and citizenship ceremony",
+      "text": "You apply online, give your fingerprints and photo at a UK Visa and Citizenship Application Services appointment, and provide two referees who can confirm your identity. Decisions usually take around 6 months.\n\nIf you are approved, you attend a citizenship ceremony, usually at your local council, within 3 months. You become a British citizen at the ceremony and can then apply for your British passport."
+    }
+  ]
 }

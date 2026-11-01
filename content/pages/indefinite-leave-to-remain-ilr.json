@@ -1,8 +1,8 @@
 {
   "h1": "Indefinite Leave to Remain (ILR)",
   "intro": "ILR means you can live, work and study in the UK without time limits. Most people qualify after a set period on a spouse, Skilled Worker or other route. Settlement rules are changing, so we check exactly where you stand before you apply.",
-  "title": "Indefinite Leave to Remain (ILR) Applications | UVS",
-  "description": "Apply for Indefinite Leave to Remain with an IAA-regulated adviser. We check your residence, Life in the UK and English requirements first.",
+  "title": "ILR Application Help Manchester | Settlement Changes 2026",
+  "description": "Apply for Indefinite Leave to Remain before settlement rules change. We check your qualifying date, time abroad, English and Life in the UK test.",
   "faqHeading": "Common questions",
   "faqs": [
     {
@@ -12,9 +12,39 @@
     {
       "q": "Does time abroad affect my application?",
       "a": "Yes. Too many days outside the UK can break continuous residence. We check your travel history before you apply."
+    },
+    {
+      "q": "Is ILR going to 10 years?",
+      "a": "The government has proposed a 10-year standard qualifying period under an \"earned settlement\" model, but it isn’t law yet. The 5-year routes remain open for now. If you are eligible, applying as soon as possible is the safest approach."
+    },
+    {
+      "q": "Will the new settlement rules apply to people already in the UK?",
+      "a": "The government has said it intends them to. It will publish the final rules, including any transitional arrangements, later in 2026. We follow every update and can tell you how it may affect you."
     }
   ],
   "applyButton": "none",
   "country": "UK",
-  "sortKey": "1 uk 1 indefinite leave to remain (ilr)"
+  "sortKey": "1 uk 1 indefinite leave to remain (ilr)",
+  "sections": [
+    {
+      "heading": "Settlement changes in 2026: what we know so far",
+      "text": "The government plans to replace most 5-year routes to Indefinite Leave to Remain with a new \"earned settlement\" model. Under its proposals, the standard qualifying period would rise to 10 years, with shorter periods for people who meet certain contribution criteria, such as higher earnings, and longer periods for people who have claimed public funds.\n\nThe proposals are not yet law. The existing 5-year routes remain open, and the government has said it will publish the final rules, including any arrangements for people already in the UK, later in 2026. It has also said the changes are intended to apply to people already on the path to settlement.\n\nIf you are eligible now, or will be soon, apply as soon as you can. We can confirm your exact qualifying date at a consultation."
+    },
+    {
+      "heading": "Who qualifies for ILR now",
+      "text": "Most people apply after 5 continuous years on a route that leads to settlement, such as:\n- Skilled Worker visa\n- Spouse or partner visa\n- Global Talent and some other work routes\n- Ancestry visa\n\nPeople who have lived in the UK lawfully for 10 years may qualify on the long residence route, which the government has also proposed to change. The exact rules depend on your route, so we check your immigration history line by line."
+    },
+    {
+      "heading": "Time outside the UK and continuous residence",
+      "text": "For most routes, you must not have spent more than 180 days outside the UK in any 12-month period during your qualifying time. This is counted on a rolling basis, not by calendar year, which catches many people out.\n\nSome absences, such as for serious illness, can be treated differently with evidence. Our free absence calculator on this page lets you check your trips in a couple of minutes."
+    },
+    {
+      "heading": "Life in the UK test and English language",
+      "text": "Most applicants aged 18 to 64 must pass the Life in the UK test and prove English at B1 level or above. You can use an approved English test or a degree taught in English. Book your Life in the UK test early, as places can fill up and you need your pass before you apply."
+    },
+    {
+      "heading": "ILR help in Manchester",
+      "text": "We help clients across Greater Manchester and the rest of the UK prepare their ILR applications: checking the qualifying date, calculating absences, preparing the evidence and reviewing everything before it goes to the Home Office. After ILR, we can help you apply for British citizenship."
+    }
+  ]
 }

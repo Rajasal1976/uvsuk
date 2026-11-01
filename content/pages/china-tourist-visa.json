@@ -55,9 +55,31 @@
     {
       "q": "Can I get a multiple-entry tourist visa?",
       "a": "Often, yes, especially if you have visited China before. Tell us how often you plan to travel and we’ll advise on the best visa to request."
+    },
+    {
+      "q": "How long is a Chinese tourist visa valid?",
+      "a": "It depends on what is granted, which can be single, double or multiple entry. Each stay is limited to the number of days printed on the visa."
     }
   ],
   "govuk": "",
-  "title": "China Tourist Visa (L Visa) from the UK | UVS",
-  "description": "China tourist visa help for UK residents: flights, hotels, application form and visa centre appointment, checked by an IAA-regulated adviser."
+  "title": "China Tourist Visa (L Visa) from the UK | Application Help",
+  "description": "China L visa help for UK residents who need one, and advice on visa-free travel for British citizens until 31 December 2026.",
+  "sections": [
+    {
+      "heading": "Do you need a China tourist visa?",
+      "text": "British passport holders can visit China visa-free for up to 30 days until 31 December 2026. You need an L visa if you want to stay longer than 30 days in one visit, if you travel after the visa-free policy ends and it isn't extended, or if your passport isn't eligible for visa-free entry."
+    },
+    {
+      "heading": "What the L visa application needs",
+      "text": "You'll usually need your passport, a completed online application form, a photo meeting Chinese visa rules, return flight bookings, hotel bookings for your whole stay or an invitation letter from a host, and proof of UK residence if you aren't British. Your fingerprints are taken at the visa centre."
+    },
+    {
+      "heading": "Tips for a smooth application",
+      "text": "Make sure your itinerary, bookings and form all match. Leave plenty of time before travel, especially around Chinese New Year and summer. Our online China visa form reads your passport, fills in your details and lists exactly the documents your visa type needs."
+    },
+    {
+      "heading": "China visa help in Manchester",
+      "text": "We're based in Manchester city centre and help travellers and businesses across the North West and the rest of the UK. Most travel visa applications can be handled by post and email, so you don't need to visit us in person."
+    }
+  ]
 }

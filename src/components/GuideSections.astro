@@ -1,0 +1,30 @@
+---
+// Longer guide sections on a page (good for Google). Edited in the admin: "Guide sections".
+// In the text, leave a blank line between paragraphs. Lines starting with "- " become bullet points.
+const { sections = [] } = Astro.props;
+const blocks = (text = '') => {
+  // Split into paragraphs and bullet lists. A run of lines starting with "- " becomes one list.
+  const out = [];
+  for (const chunk of text.trim().split(/\n\s*\n/)) {
+    let para = [];
+    let list = null;
+    const flushPara = () => { if (para.length) { out.push({ para: para.join(' ') }); para = []; } };
+    const flushList = () => { if (list) { out.push({ list }); list = null; } };
+    for (const raw of chunk.split('\n')) {
+      const line = raw.trim();
+      if (!line) continue;
+      if (line.startsWith('- ')) { flushPara(); (list ??= []).push(line.slice(2)); }
+      else { flushList(); para.push(line); }
+    }
+    flushPara(); flushList();
+  }
+  return out;
+};
+const items = sections.filter((s) => s && s.heading && s.text);
+---
+{items.map((s) => (
+  <section>
+    <h2>{s.heading}</h2>
+    {blocks(s.text).map((b) => (b.list ? <ul>{b.list.map((li) => <li>{li}</li>)}</ul> : <p>{b.para}</p>))}
+  </section>
+))}

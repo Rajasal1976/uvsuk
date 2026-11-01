@@ -1,6 +1,6 @@
 {
-  "title": "Document Legalisation & Attestation in the UK | UVS",
-  "description": "UK document legalisation and attestation for use abroad: certificates, degrees and company documents.",
+  "title": "Document Legalisation & Apostille UK | Manchester | UVS",
+  "description": "Apostille and embassy legalisation of UK documents: degrees, police checks, birth and company documents for use abroad. Manchester-based service.",
   "h1": "Document legalisation and attestation",
   "intro": "Many countries require UK documents, such as degree certificates, birth certificates and company documents, to be legalised before they are accepted. We handle the process from start to finish.",
   "eligibility": [],
@@ -8,9 +8,36 @@
     "The original documents to be legalised",
     "Details of the country they will be used in"
   ],
-  "faqs": [],
+  "faqs": [
+    {
+      "q": "Does China accept apostilles?",
+      "a": "Yes. China joined the Apostille Convention in November 2023, so UK documents for China now need an apostille rather than embassy legalisation."
+    },
+    {
+      "q": "Do I need to send original documents?",
+      "a": "For some documents yes, and for others a certified copy is used. We tell you which applies before you send anything."
+    }
+  ],
   "govuk": "",
   "applyButton": "none",
   "country": "Document legalisation",
-  "sortKey": "1 document legalisation 0 document legalisation and attestation"
+  "sortKey": "1 document legalisation 0 document legalisation and attestation",
+  "sections": [
+    {
+      "heading": "Apostille or embassy legalisation?",
+      "text": "If a UK document will be used abroad, the receiving country usually needs proof it is genuine. For countries in the Hague Apostille Convention, including India, China, Saudi Arabia and most of Europe, an apostille from the UK Foreign, Commonwealth and Development Office (FCDO) is enough.\n\nFor countries outside the Convention, such as the United Arab Emirates, Qatar and Kuwait, the document is apostilled first and then legalised by that country's embassy in London."
+    },
+    {
+      "heading": "Documents we legalise",
+      "text": "We regularly handle:\n- Degree certificates and transcripts\n- Police certificates (DBS and ACRO)\n- Birth, marriage and death certificates\n- Company documents, such as certificates of incorporation, powers of attorney and commercial invoices\n- Medical and employment letters\n\nSome documents must be certified by a UK solicitor or notary before the FCDO will apostille them. We arrange this for you."
+    },
+    {
+      "heading": "For work visas abroad",
+      "text": "Many work visas, such as for Saudi Arabia, the UAE and China, need degree certificates and police checks legalised before the visa is issued. We handle the legalisation and the visa together so nothing is missed."
+    },
+    {
+      "heading": "Document legalisation in Manchester",
+      "text": "We're based in Manchester city centre and help travellers and businesses across the North West and the rest of the UK. Most travel visa applications can be handled by post and email, so you don't need to visit us in person."
+    }
+  ]
 }

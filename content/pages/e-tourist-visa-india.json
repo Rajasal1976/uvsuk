@@ -1,6 +1,6 @@
 {
-  "title": "India e-Tourist Visa for UK Residents | UVS",
-  "description": "Apply for an India e-Tourist Visa from the UK with expert help. We complete the form and check your photo and passport scan.",
+  "title": "India e-Tourist Visa from the UK | Fast eVisa Help | UVS",
+  "description": "India e-Tourist visa for UK residents: 30-day, 1-year and 5-year options. We complete and check your application, photo and passport scan.",
   "h1": "India e-Tourist Visa",
   "intro": "The e-Tourist Visa covers holidays, visiting friends and family, and short yoga or wellness courses in India. It is applied for online, and we complete and check the whole application for you.",
   "eligibility": [
@@ -16,6 +16,10 @@
     {
       "q": "How quickly can I get it?",
       "a": "Many eVisas are issued within a few working days. Tell us your travel date and we will advise whether there is time."
+    },
+    {
+      "q": "Can I use an e-Tourist visa for a business trip?",
+      "a": "No. Business activities need an e-Business visa. Using the wrong visa type can lead to problems on arrival."
     }
   ],
   "govuk": "",
@@ -39,5 +43,23 @@
     }
   ],
   "country": "India",
-  "sortKey": "1 india 1 india e-tourist visa"
+  "sortKey": "1 india 1 india e-tourist visa",
+  "sections": [
+    {
+      "heading": "India e-Tourist visa options",
+      "text": "The e-Tourist visa covers holidays, visiting friends and family, short yoga courses and similar trips. There are three options:\n- 30 days, allowing two entries\n- 1 year, allowing multiple entries\n- 5 years, allowing multiple entries\n\nThe longer visas still limit how long you can stay on each visit, and the limit depends on your nationality. We'll tell you what applies to you."
+    },
+    {
+      "heading": "How to apply",
+      "text": "The application is made online with a scan of your passport photo page and a digital photo. You'll answer questions about your family, occupation, travel history and references in India and the UK. Once approved, the eVisa is linked to your passport and you show the approval when you arrive.\n\nApply at least 4 days before travelling. You must enter India through one of the designated airports or seaports."
+    },
+    {
+      "heading": "Avoid these common mistakes",
+      "text": "The most common problems are photos with the wrong background or size, passport scans that are blurred, and answers that don't match your passport exactly. If anything is wrong, the application can be rejected, and the fee isn't refunded. Our online form reads your passport and fills in your details automatically, then we check everything before submitting."
+    },
+    {
+      "heading": "India eVisa help from Manchester",
+      "text": "We're based in Manchester city centre and help travellers and businesses across the North West and the rest of the UK. Most travel visa applications can be handled by post and email, so you don't need to visit us in person."
+    }
+  ]
 }

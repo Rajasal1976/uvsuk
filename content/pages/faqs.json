@@ -24,10 +24,28 @@
     {
       "q": "Can you guarantee my visa?",
       "a": "No adviser can guarantee a decision. What we can do is make sure your application is complete, accurate and well evidenced."
+    },
+    {
+      "q": "Can you guarantee my visa will be approved?",
+      "a": "No adviser can guarantee a decision, as it is made by the Home Office or the embassy. What we can do is tell you honestly whether you qualify and make sure your application meets the rules, which gives you the best chance."
+    },
+    {
+      "q": "How do I check you are regulated?",
+      "a": "Search for us on the Immigration Advice Authority’s online register using our reference number, shown at the bottom of every page."
+    },
+    {
+      "q": "Do you translate documents?",
+      "a": "Documents not in English or Welsh usually need a certified translation. We can arrange this or tell you exactly what is needed."
     }
   ],
   "govuk": "",
   "applyButton": "none",
   "country": "Company pages",
-  "sortKey": "2 company pages 1 frequently asked questions"
+  "sortKey": "2 company pages 1 frequently asked questions",
+  "sections": [
+    {
+      "heading": "About our service",
+      "text": "We are regulated by the Immigration Advice Authority (IAA), the body that regulates immigration advisers in the UK. We help with UK visas, settlement and citizenship, sponsor licences for employers, and travel visas from the UK.\n\nOur fee is agreed in writing before we start. Government, embassy and visa centre fees are paid separately, at cost."
+    }
+  ]
 }

@@ -1,8 +1,8 @@
 {
   "h1": "eVisas",
   "intro": "Many countries now let you apply for your visa online, with no embassy visit and no need to post your passport. We complete and check your application so it isn’t rejected for a small mistake, and send your eVisa to you.",
-  "title": "eVisa Applications from the UK | Africa, Asia & More | UVS",
-  "description": "Help with eVisas, ETAs and ESTAs for over 25 countries, grouped by continent. We complete and check your application so it isn’t rejected.",
+  "title": "eVisa Applications from the UK | Fast, Checked eVisas | UVS",
+  "description": "eVisa help for UK residents: India, Sri Lanka, Saudi Arabia, Kenya and more. We complete and check your online application so it isn’t rejected.",
   "faqHeading": "Common questions",
   "faqs": [
     {
@@ -12,6 +12,10 @@
     {
       "q": "How long does an eVisa take?",
       "a": "It depends on the country. Many are issued within a few working days. Tell us your travel date and we’ll tell you whether there is enough time."
+    },
+    {
+      "q": "What if my eVisa is rejected?",
+      "a": "We review the reason and help you reapply correctly. Because we check applications before submitting, rejections are rare."
     }
   ],
   "applyButton": "/contact-us/",
@@ -34,5 +38,23 @@
     }
   ],
   "country": "eVisas (all countries)",
-  "sortKey": "1 evisas (all countries) 0 evisas"
+  "sortKey": "1 evisas (all countries) 0 evisas",
+  "sections": [
+    {
+      "heading": "Why use us for an eVisa?",
+      "text": "eVisas look simple, but a rejected application usually means paying again and waiting again, sometimes days before you fly. The most common reasons are photos that don't meet the rules, blurred passport scans, and answers that don't match the passport exactly. We complete the application, check every detail against your passport and keep you updated until the approval arrives."
+    },
+    {
+      "heading": "Unofficial websites and hidden charges",
+      "text": "Many websites look official but charge high fees for simply passing your details on. We are open about our fees: the official eVisa fee is shown separately from our service fee, and you see both before you pay."
+    },
+    {
+      "heading": "Before you travel",
+      "text": "Print or save your eVisa approval and travel with the same passport you used to apply. If you renew or replace your passport, you will usually need a new eVisa. Check how many days you can stay on each visit, as overstaying can lead to fines or bans."
+    },
+    {
+      "heading": "eVisa help from Manchester",
+      "text": "We are based in Manchester city centre and handle eVisas for travellers across the UK, entirely online."
+    }
+  ]
 }

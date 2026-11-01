@@ -1,5 +1,6 @@
 ---
 import Page from '../layouts/Page.astro';
+import GuideSections from '../components/GuideSections.astro';
 import Faq from '../components/Faq.astro';
 import ApplyButton from '../components/ApplyButton.astro';
 import PriceTables from '../components/PriceTables.astro';
@@ -38,6 +39,7 @@ const schemas = [];
 <tr><th scope="row" data-label="Document">UK residence evidence</th><td data-label="Details">Your UK visa, BRP or eVisa share code</td><td data-label="Needed"><span class="tag tag-opt">If not British</span></td></tr>
 <tr><th scope="row" data-label="Document">Previous Chinese visas</th><td data-label="Details">Copies of any Chinese visas you have held before</td><td data-label="Needed"><span class="tag tag-opt">If applicable</span></td></tr></tbody></table></div>
 <p class="soft" style="font-size:15px">We give you a full checklist for your circumstances at your consultation.</p></section>
+<GuideSections sections={content.sections} />
 <section>
 <h2>How we help</h2>
 <ul>

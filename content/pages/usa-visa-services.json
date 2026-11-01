@@ -1,6 +1,6 @@
 {
-  "title": "USA Visa & ESTA Help for UK Residents | UVS",
-  "description": "ESTA and US visa help for UK residents: visitor, student and work visas, DS-160 forms and US Embassy interview preparation.",
+  "title": "USA Visa & ESTA Help from the UK | Manchester Visa Advisers",
+  "description": "ESTA or US visa? Help for UK residents with ESTA applications, DS-160 forms and US Embassy interviews for B1/B2 visitor visas.",
   "h1": "USA visa and ESTA",
   "intro": "Many British citizens can travel to the USA with an ESTA. Others, and anyone travelling to work or study, need a visa and an interview at the US Embassy in London. We help with both.",
   "eligibility": [],
@@ -10,7 +10,16 @@
     "Photo",
     "Supporting documents for your trip purpose"
   ],
-  "faqs": [],
+  "faqs": [
+    {
+      "q": "How long is an ESTA valid?",
+      "a": "Usually 2 years, or until your passport expires if sooner. Each visit can last up to 90 days."
+    },
+    {
+      "q": "Can I use ESTA if I have a criminal record?",
+      "a": "It depends on the offence. Some arrests or convictions mean you must apply for a visa instead. Ask us before you apply, as a wrong answer on ESTA can cause serious problems."
+    }
+  ],
   "govuk": "",
   "applyButton": "none",
   "prices": [
@@ -40,5 +49,23 @@
     }
   ],
   "country": "USA",
-  "sortKey": "1 usa 0 usa visa and esta"
+  "sortKey": "1 usa 0 usa visa and esta",
+  "sections": [
+    {
+      "heading": "ESTA or visa?",
+      "text": "British citizens can usually visit the USA for up to 90 days for tourism or business using an ESTA, applied for online before travel. You'll need a visa instead if you're not eligible for ESTA. That includes people who have been to certain countries, such as Iran, Iraq, Syria and Cuba, after set dates, people with some arrests or convictions, and people who have been refused an ESTA or US visa before.\n\nUK residents travelling on other passports usually need a visa unless their country is in the Visa Waiver Program."
+    },
+    {
+      "heading": "Applying for a US visitor visa (B1/B2)",
+      "text": "A US visitor visa involves completing the online DS-160 form, paying the fee, and attending an interview at the US Embassy in London or the Consulate in Belfast. The form is long and every answer must be accurate and consistent with your documents. At the interview, you'll need to show the purpose of your trip and your ties to the UK."
+    },
+    {
+      "heading": "Previous refusals, arrests and convictions",
+      "text": "If you have any arrest or conviction, even if it is spent under UK law, you may not be able to use ESTA and should not guess. We help you understand which route applies and prepare the right documents."
+    },
+    {
+      "heading": "US visa help in Manchester",
+      "text": "We're based in Manchester city centre and help travellers and businesses across the North West and the rest of the UK. Most travel visa applications can be handled by post and email, so you don't need to visit us in person."
+    }
+  ]
 }

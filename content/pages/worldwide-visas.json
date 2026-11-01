@@ -1,11 +1,38 @@
 {
-  "title": "Worldwide Visas for UK Residents | Unique Visa Services",
-  "description": "Visa and eVisa help for UK residents travelling to India, China, the Schengen area, the USA, Saudi Arabia and more.",
+  "title": "Travel Visas from the UK | Visa Agency in Manchester | UVS",
+  "description": "Travel and business visas for UK residents: China, India, Schengen, USA, Saudi Arabia, Ghana, Sri Lanka and more. Manchester visa agency since 2008.",
   "h1": "Worldwide visas for UK residents",
   "intro": "Travelling abroad from the UK? We help with visa and eVisa applications, check your forms and documents, and book appointments where needed. We also offer document legalisation and Indian passport services.",
-  "faqs": [],
+  "faqs": [
+    {
+      "q": "Do you handle visas for non-British passport holders?",
+      "a": "Yes. Many of our clients live in the UK on other passports. We check the rules for your nationality and UK status before you apply."
+    },
+    {
+      "q": "How far in advance should I apply?",
+      "a": "As early as the country allows. Many visas can be applied for up to 3 months before travel, and some eVisas need at least 4 to 7 working days. Leave extra time in busy seasons."
+    }
+  ],
   "govuk": "",
   "applyButton": "none",
   "country": "Worldwide visas overview",
-  "sortKey": "1 worldwide visas overview 0 worldwide visas for uk residents"
+  "sortKey": "1 worldwide visas overview 0 worldwide visas for uk residents",
+  "sections": [
+    {
+      "heading": "Travel visas made simple",
+      "text": "Getting a visa for a trip abroad can mean confusing forms, appointments at visa centres and documents in exactly the right format. We prepare and check your application, book appointments where needed and keep you updated until your passport or eVisa comes back."
+    },
+    {
+      "heading": "Do British citizens need a visa?",
+      "text": "It depends on where you're going. British passport holders can currently visit many countries without a visa, including China for up to 30 days until 31 December 2026, and the Schengen area for up to 90 days in any 180. Others, such as India, Ghana and Russia, require a visa or eVisa.\n\nIf you live in the UK but hold another nationality, the rules depend on your passport, not where you live. Many UK residents need visas for trips where British citizens don't."
+    },
+    {
+      "heading": "Visas for business travellers and companies",
+      "text": "We handle business visas, work visas and document legalisation for companies sending staff abroad, including invitation letters, attestation of degree certificates and urgent applications. Frequent travellers can also apply for a second British passport so they can travel while a visa is being processed."
+    },
+    {
+      "heading": "A visa agency in Manchester",
+      "text": "We're based in Manchester city centre and help travellers and businesses across the North West and the rest of the UK. Most travel visa applications can be handled by post and email, so you don't need to visit us in person."
+    }
+  ]
 }

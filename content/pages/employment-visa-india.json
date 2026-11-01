@@ -1,6 +1,6 @@
 {
-  "title": "India Employment Visa from the UK | UVS",
-  "description": "Taking a job in India? Help with India Employment Visa applications for UK residents, including contract and company documents.",
+  "title": "India Employment Visa from the UK | Application Help | UVS",
+  "description": "India Employment visa help for UK residents taking up work in India. We prepare your application, employer documents and visa centre appointment.",
   "h1": "India Employment Visa",
   "intro": "If you are taking up a job with a company in India, you need an Employment Visa rather than a business visa. We prepare the application and supporting documents.",
   "eligibility": [],
@@ -11,7 +11,12 @@
     "Company registration documents from the Indian employer",
     "CV and qualifications"
   ],
-  "faqs": [],
+  "faqs": [
+    {
+      "q": "Can I apply for an India Employment visa online?",
+      "a": "No. It isn’t available as an eVisa. You apply through the Indian visa application centre, and we can prepare your forms and documents."
+    }
+  ],
   "govuk": "",
   "applyButton": "none",
   "prices": [
@@ -41,5 +46,23 @@
     }
   ],
   "country": "India",
-  "sortKey": "1 india 1 india employment visa"
+  "sortKey": "1 india 1 india employment visa",
+  "sections": [
+    {
+      "heading": "Who needs an India Employment visa?",
+      "text": "If you are going to work for an Indian company or organisation, or be posted to India by your employer for an assignment, you need an Employment visa. It can't be applied for online as an eVisa: you apply through the Indian visa application centre in the UK."
+    },
+    {
+      "heading": "Typical requirements",
+      "text": "Employment visas usually require:\n- An employment contract or appointment letter from the Indian employer\n- Proof of your qualifications and experience\n- Company registration documents from the employer\n- A salary above the minimum level set by the Indian government\n\nRequirements depend on the role and sector, so we confirm the current checklist before you apply."
+    },
+    {
+      "heading": "After you arrive",
+      "text": "Many Employment visa holders must register with the Foreigners Regional Registration Office (FRRO) after arriving in India. Your employer will usually help with this, and we can explain what to expect."
+    },
+    {
+      "heading": "Employment visa help from Manchester",
+      "text": "We're based in Manchester city centre and help travellers and businesses across the North West and the rest of the UK. Most travel visa applications can be handled by post and email, so you don't need to visit us in person."
+    }
+  ]
 }

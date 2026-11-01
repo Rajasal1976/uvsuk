@@ -1,5 +1,6 @@
 ---
 import Page from '../layouts/Page.astro';
+import GuideSections from '../components/GuideSections.astro';
 import Faq from '../components/Faq.astro';
 import ApplyButton from '../components/ApplyButton.astro';
 import PriceTables from '../components/PriceTables.astro';
@@ -174,6 +175,7 @@ const schemas = [];
 <li>Letter from your media organisation</li>
 <li>Approval from the Chinese authorities</li></ul></div>
 <div class="btn-row"><a class="btn btn-primary" href="/contact-us/">Get help with this visa</a></div></div></div></section>
+<GuideSections sections={content.sections} />
 <section>
 <h2>How we help</h2>
 <ul>

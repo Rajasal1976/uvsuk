@@ -1,6 +1,6 @@
 {
-  "title": "UK Fiancé Visa Application | Unique Visa Services",
-  "description": "Planning to marry in the UK? Get help with your fiancé or proposed civil partner visa from IAA-regulated advisers in Manchester.",
+  "title": "UK Fiancé Visa Application Help | Manchester Advisers",
+  "description": "Come to the UK to marry your partner on a fiancé(e) visa. IAA-regulated help with the £29,000 requirement, wedding plans and switching to a spouse visa.",
   "h1": "UK fiancé visa",
   "intro": "A fiancé or proposed civil partner visa lets you come to the UK to marry or form a civil partnership with your British or settled partner. After the wedding, you switch to a spouse visa without leaving the UK.",
   "eligibility": [
@@ -19,10 +19,32 @@
     {
       "q": "Can I work on a fiancé visa?",
       "a": "No. You cannot work on a fiancé visa. You can work once you switch to a spouse visa after the wedding."
+    },
+    {
+      "q": "What happens if the wedding is delayed?",
+      "a": "You must marry within the 6 months. If the wedding can’t go ahead in time, talk to us straight away about your options."
     }
   ],
   "govuk": "https://www.gov.uk/uk-family-visa",
   "applyButton": "none",
   "country": "UK",
-  "sortKey": "1 uk 1 uk fiancé visa"
+  "sortKey": "1 uk 1 uk fiancé visa",
+  "sections": [
+    {
+      "heading": "What a fiancé(e) visa allows",
+      "text": "A fiancé(e) or proposed civil partner visa lets you come to the UK to marry or enter a civil partnership with your British or settled partner. It lasts 6 months, and you must marry within that time.\n\nAfter the wedding, you switch to a spouse visa from inside the UK without leaving. You can't work while on a fiancé(e) visa."
+    },
+    {
+      "heading": "Requirements for a fiancé(e) visa",
+      "text": "You need to show:\n- You and your partner are both 18 or over and have met in person\n- Your relationship is genuine and you plan to live together permanently in the UK\n- You plan to marry within 6 months, with evidence such as a booked venue, registry office correspondence or wedding plans\n- Your partner meets the financial requirement, usually £29,000 a year\n- You meet the English language requirement at A1 level\n- You will have suitable accommodation\n\nAny previous marriages must have ended legally, with divorce or death certificates as evidence."
+    },
+    {
+      "heading": "Fiancé visa or spouse visa?",
+      "text": "If you can marry outside the UK first, applying directly for a spouse visa is often simpler and cheaper, as you only make one application before arriving. A fiancé(e) visa suits couples who want to marry in the UK. We'll help you compare costs and timings."
+    },
+    {
+      "heading": "Fiancé visa help in Manchester",
+      "text": "We're based at 61 Mosley Street in Manchester city centre and help clients across Greater Manchester, including Bury, Bolton, Oldham, Rochdale, Salford and Stockport. We also work with clients anywhere in the UK and overseas by phone, video call and email."
+    }
+  ]
 }

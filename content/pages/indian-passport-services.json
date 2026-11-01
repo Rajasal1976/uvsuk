@@ -1,6 +1,6 @@
 {
-  "title": "Indian Passport Renewal & Applications in the UK | UVS",
-  "description": "Help for Indian passport holders in the UK with passport renewals and new applications, including for children.",
+  "title": "Indian Passport Renewal & Surrender Certificate UK | UVS",
+  "description": "Indian passport renewal, surrender certificates and OCI help for Indians in the UK. We complete and check your forms and documents.",
   "h1": "Indian passport services",
   "intro": "Indian passport holder living in the UK? We help with renewals and new applications, including passports for children, completing the forms and preparing your documents.",
   "eligibility": [],
@@ -9,9 +9,32 @@
     "UK residence evidence",
     "Photos meeting the Indian specifications"
   ],
-  "faqs": [],
+  "faqs": [
+    {
+      "q": "Can I keep my Indian passport after becoming British?",
+      "a": "No. India doesn’t allow dual citizenship. You must surrender your Indian passport and get a surrender certificate."
+    }
+  ],
   "govuk": "",
   "applyButton": "none",
   "country": "India",
-  "sortKey": "1 india 1 indian passport services"
+  "sortKey": "1 india 1 indian passport services",
+  "sections": [
+    {
+      "heading": "Renewing an Indian passport in the UK",
+      "text": "Indian citizens living in the UK renew their passports through the Indian passport and visa centres, on behalf of the High Commission of India and its consulates. You complete the online form, book an appointment and submit your documents. We check your form and documents before your appointment, which avoids repeat visits."
+    },
+    {
+      "heading": "Became British? You must surrender your Indian passport",
+      "text": "India doesn't allow dual citizenship. When you become a British citizen, you lose Indian citizenship and must surrender your Indian passport and obtain a surrender certificate. Using an Indian passport after becoming British can lead to a penalty. You need the surrender certificate before applying for an OCI card."
+    },
+    {
+      "heading": "OCI cards",
+      "text": "An Overseas Citizen of India (OCI) card lets former Indian citizens and people of Indian origin visit India without a visa, for life. If you get a new passport, you may need to update your OCI details. We help with new OCI applications and updates."
+    },
+    {
+      "heading": "Indian passport help in Manchester",
+      "text": "We're based in Manchester city centre and help travellers and businesses across the North West and the rest of the UK. Most travel visa applications can be handled by post and email, so you don't need to visit us in person."
+    }
+  ]
 }
