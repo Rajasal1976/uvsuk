@@ -67,16 +67,6 @@ collections:
         required: false
         field: { name: document, label: Document, widget: string }
         hint: 'Visa pages only.'
-      - name: sections
-        label: Guide sections
-        label_singular: section
-        widget: list
-        required: false
-        summary: '{{fields.heading}}'
-        hint: 'Longer explanations that help Google rank the page. One heading per section. Leave a blank line between paragraphs; start a line with "- " for a bullet point.'
-        fields:
-          - { name: heading, label: Heading, widget: string, hint: 'Use the words people search for, e.g. "Spouse visa financial requirement 2026".' }
-          - { name: text, label: Text, widget: text }
       - name: prices
         label: Price table
         label_singular: price row
@@ -151,16 +141,6 @@ collections:
             fields:
               - { name: quote, label: Review, widget: text }
               - { name: source, label: Where it's from, widget: string, hint: 'e.g. Google review · UK visa' }
-          - name: sections
-            label: Guide sections
-            label_singular: section
-            widget: list
-            required: false
-            summary: '{{fields.heading}}'
-            hint: 'Shown above the FAQs. Leave a blank line between paragraphs; start a line with "- " for a bullet point.'
-            fields:
-              - { name: heading, label: Heading, widget: string }
-              - { name: text, label: Text, widget: text }
           - name: faqs
             label: FAQs
             label_singular: FAQ
@@ -182,6 +162,7 @@ collections:
         description: These appear across the whole site. Keep them identical to your Google Business Profile.
         file: content/settings.json
         fields:
+          - { name: siteLogo, label: Website logo, widget: image, required: false, choose_url: false, hint: 'Shown at the top of every page instead of the business name. A PNG with a transparent background works best, at least 400 pixels wide.' }
           - { name: phone, label: Phone number, widget: string }
           - { name: email, label: Email address, widget: string }
           - { name: addressLine1, label: Address, widget: string }
