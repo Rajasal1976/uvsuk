@@ -39,8 +39,8 @@ collections:
     identifier_field: h1
     summary: '{{country}}  ›  {{h1}}'
     sortable_fields:
-      fields: [sortKey, h1]
-      default: { field: sortKey, direction: ascending }
+      - { field: sortKey, label: Country, default_sort: asc }
+      - { field: h1, label: Page heading }
     view_groups:
       - { label: Country, field: country }
     editor: { preview: false }
@@ -67,6 +67,16 @@ collections:
         required: false
         field: { name: document, label: Document, widget: string }
         hint: 'Visa pages only.'
+      - name: sections
+        label: Guide sections
+        label_singular: section
+        widget: list
+        required: false
+        summary: '{{fields.heading}}'
+        hint: 'Longer explanations that help Google rank the page. One heading per section. Leave a blank line between paragraphs; start a line with "- " for a bullet point.'
+        fields:
+          - { name: heading, label: Heading, widget: string, hint: 'Use the words people search for, e.g. "Spouse visa financial requirement 2026".' }
+          - { name: text, label: Text, widget: text }
       - name: prices
         label: Price table
         label_singular: price row
@@ -137,10 +147,20 @@ collections:
             label_singular: review
             widget: list
             summary: '{{fields.quote}}'
-            hint: 'Use real reviews only, word for word.'
+            hint: 'Use real reviews only, word for word. These show on the homepage and above the footer on every other page. With more than three, they change every few seconds.'
             fields:
               - { name: quote, label: Review, widget: text }
               - { name: source, label: Where it's from, widget: string, hint: 'e.g. Google review · UK visa' }
+          - name: sections
+            label: Guide sections
+            label_singular: section
+            widget: list
+            required: false
+            summary: '{{fields.heading}}'
+            hint: 'Shown above the FAQs. Leave a blank line between paragraphs; start a line with "- " for a bullet point.'
+            fields:
+              - { name: heading, label: Heading, widget: string }
+              - { name: text, label: Text, widget: text }
           - name: faqs
             label: FAQs
             label_singular: FAQ
@@ -162,6 +182,7 @@ collections:
         description: These appear across the whole site. Keep them identical to your Google Business Profile.
         file: content/settings.json
         fields:
+          - { name: siteLogo, label: Website logo, widget: image, required: false, choose_url: false, hint: 'Shown at the top of every page instead of the business name. A PNG with a transparent background works best, at least 400 pixels wide.' }
           - { name: phone, label: Phone number, widget: string }
           - { name: email, label: Email address, widget: string }
           - { name: addressLine1, label: Address, widget: string }
@@ -174,6 +195,9 @@ collections:
           - { name: googleRating, label: Google rating, widget: string, hint: 'e.g. 4.8' }
           - { name: googleReviewCount, label: Number of Google reviews, widget: string }
           - { name: googleReviewsUrl, label: Link to your Google reviews, widget: string, required: false }
+          - { name: trustpilotUrl, label: Link to your Trustpilot page, widget: string, required: false, hint: 'e.g. https://uk.trustpilot.com/review/uvsuk.co.uk. Leave empty to hide the Trustpilot badge.' }
+          - { name: trustpilotRating, label: Trustpilot rating, widget: string, required: false, hint: 'Exactly as Trustpilot shows it, e.g. 4.7' }
+          - { name: trustpilotCount, label: Number of Trustpilot reviews, widget: string, required: false }
           - { name: companyNumber, label: Company number, widget: string }
           - name: delivery
             label: Passport return prices (travel visas)
@@ -185,3 +209,10 @@ collections:
               - { name: service, label: Delivery option, widget: string }
               - { name: price, label: Price, widget: string, hint: 'For example £15, or "We’ll quote".' }
           - { name: evisaDelivery, label: eVisa delivery price, widget: string, hint: 'Shown on every eVisa page, e.g. £5.' }
+          - { name: facebook, label: Facebook page link, widget: string, required: false, hint: 'The full web address, e.g. https://www.facebook.com/yourpage. Leave empty to hide the icon.' }
+          - { name: instagram, label: Instagram link, widget: string, required: false, hint: 'e.g. https://www.instagram.com/yourname' }
+          - { name: linkedin, label: LinkedIn link, widget: string, required: false, hint: 'e.g. https://www.linkedin.com/company/yourcompany' }
+          - { name: x, label: X (Twitter) link, widget: string, required: false, hint: 'e.g. https://x.com/yourname' }
+          - { name: tiktok, label: TikTok link, widget: string, required: false, hint: 'e.g. https://www.tiktok.com/@yourname' }
+          - { name: youtube, label: YouTube link, widget: string, required: false, hint: 'e.g. https://www.youtube.com/@yourchannel' }
+          - { name: whatsapp, label: WhatsApp link, widget: string, required: false, hint: 'e.g. https://wa.me/441619562003 (your number in international format, no + or spaces).' }
