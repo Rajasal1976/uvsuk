@@ -1,56 +1,30 @@
 {
-  "h1": "China business visa (M visa)",
-  "intro": "The China business visa (M visa) is for commercial trips such as meetings, trade fairs, factory and supplier visits, and negotiating contracts. British passport holders can currently make short business trips visa-free, so you need an M visa if your stay is longer, you need multiple entries over a longer period, or you travel on another passport.",
-  "title": "China Business Visa (M Visa) from the UK | Application Help",
-  "description": "China M visa help for UK businesses: invitation letters, trade fairs, supplier visits and longer stays. Visa-free rules for British citizens explained.",
-  "faqHeading": "Common questions",
-  "faqs": [
-    {
-      "q": "Do I need a visa for a short business trip?",
-      "a": "If you travel on a British passport, short business trips are currently visa-free. We check the latest rules for your dates and passport before you book."
-    },
-    {
-      "q": "Can I get a multiple-entry visa?",
-      "a": "Often, yes, especially if you have visited China before. Tell us how often you travel and we will advise on the best visa to request."
-    },
-    {
-      "q": "Do I need to attend the visa centre?",
-      "a": "Yes. Most applicants give fingerprints in person at a Chinese Visa Application Service Centre. We book the appointment and prepare everything you take with you."
-    },
-    {
-      "q": "Can I attend the Canton Fair visa-free?",
-      "a": "British passport holders can visit for business, including trade fairs, visa-free for up to 30 days until 31 December 2026. Other passport holders usually need an M visa."
-    }
-  ],
   "applyButton": "/apply/china-visa/",
+  "sortKey": "1 china 1 china business visa (m visa)",
+  "govuk": "https://manchester.china-consulate.gov.cn/eng/",
+  "h1": "China business visa (M visa)",
   "prices": [
     {
       "service": "Standard",
       "included": "Form completion, document check, visa centre appointment and submission support",
-      "processing": "",
-      "fee": "",
+      "processing": "5 Working Days",
+      "fee": "£150",
       "popular": false,
-      "processingFee": ""
+      "processingFee": "£151",
+      "total": "£301"
     },
     {
       "service": "Express",
       "included": "Everything in Standard, with faster processing at the visa centre",
-      "processing": "",
-      "fee": "",
+      "processing": "48 Working Hours",
+      "fee": "£200",
       "popular": true,
-      "processingFee": ""
-    },
-    {
-      "service": "Urgent",
-      "included": "Everything in Standard, with the fastest processing available",
-      "processing": "",
-      "fee": "",
-      "popular": false,
-      "processingFee": ""
+      "processingFee": "£182",
+      "total": "£382"
     }
   ],
-  "country": "China",
-  "sortKey": "1 china 1 china business visa (m visa)",
+  "faqHeading": "Common questions",
+  "intro": "The China business visa (M visa) is for commercial trips such as meetings, trade fairs, factory and supplier visits, and negotiating contracts. British passport holders can currently make short business trips visa-free, so you need an M visa if your stay is longer, you need multiple entries over a longer period, or you travel on another passport.",
   "sections": [
     {
       "heading": "Do you need a China business visa?",
@@ -67,6 +41,27 @@
     {
       "heading": "China business visa help in Manchester",
       "text": "We're based in Manchester city centre and help travellers and businesses across the North West and the rest of the UK. Most travel visa applications can be handled by post and email, so you don't need to visit us in person."
+    }
+  ],
+  "country": "China",
+  "title": "China Business Visa (M Visa) from the UK | Application Help",
+  "description": "China M visa help for UK businesses: invitation letters, trade fairs, supplier visits and longer stays. Visa-free rules for British citizens explained.",
+  "faqs": [
+    {
+      "q": "Do I need a visa for a short business trip?",
+      "a": "If you travel on a British passport, short business trips are currently visa-free. We check the latest rules for your dates and passport before you book."
+    },
+    {
+      "q": "Can I get a multiple-entry visa?",
+      "a": "Often, yes, especially if you have visited China before. Tell us how often you travel and we will advise on the best visa to request."
+    },
+    {
+      "q": "Do I need to attend the visa centre?",
+      "a": "Yes. Most applicants give fingerprints in person at a Chinese Visa Application Service Centre. We book the appointment and prepare everything you take with you."
+    },
+    {
+      "q": "Can I attend the Canton Fair visa-free?",
+      "a": "British passport holders can visit for business, including trade fairs, visa-free for up to 30 days until 31 December 2026. Other passport holders usually need an M visa."
     }
   ]
 }
