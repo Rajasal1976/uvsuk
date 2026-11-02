@@ -1,0 +1,74 @@
+{
+  "title": "Guinea-Bissau visa from the UK | Apply Online | UVS",
+  "description": "Apply for your Guinea-Bissau visa from the UK. We complete and check your application and documents before submitting, so nothing delays your trip.",
+  "h1": "Guinea-Bissau visa from the UK",
+  "intro": "British passport holders need a visa to visit Guinea-Bissau, applied for before you travel. We complete your Guinea-Bissau visa application and check every detail before submitting it.",
+  "eligibility": [
+    "Your passport is valid for at least 6 months from the date you arrive",
+    "You are travelling for tourism, business meetings, transit or to visit family or friends",
+    "You have a return or onward ticket and enough money for your stay"
+  ],
+  "documents": [
+    "Passport photo page scan",
+    "Recent passport-style photo",
+    "Return or onward flight booking",
+    "Hotel booking or invitation letter"
+  ],
+  "sections": [
+    {
+      "heading": "Do British citizens need a Guinea-Bissau visa?",
+      "text": "British passport holders need a visa to visit Guinea-Bissau, applied for before you travel."
+    },
+    {
+      "heading": "Guinea-Bissau visa for other passport holders",
+      "text": "UK residents on other passports also need to apply in advance. The process has changed several times, so we confirm the current route for your trip before applying."
+    },
+    {
+      "heading": "Before you travel to Guinea-Bissau",
+      "text": "Read the UK government travel advice for Guinea-Bissau, and check whether you need a yellow fever vaccination certificate. Have your invitation or hotel booking and return flight ready."
+    },
+    {
+      "heading": "Guinea-Bissau visa help from Manchester",
+      "text": "We're based in Manchester city centre and handle Guinea-Bissau visa applications for travellers across the UK, entirely online. We check the current rules for your nationality, complete your application and keep you updated until it's approved. Before you travel, read the UK government's [foreign travel advice](https://www.gov.uk/foreign-travel-advice) for Guinea-Bissau."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Do British citizens need a visa for Guinea-Bissau?",
+      "a": "Yes, a visa is needed and should be arranged before you travel. We confirm the current process for your trip."
+    },
+    {
+      "q": "How long does a Guinea-Bissau visa take?",
+      "a": "Usually a few working days, but processing times vary. Apply at least a week before you travel, and earlier in busy seasons."
+    },
+    {
+      "q": "Can you apply for my Guinea-Bissau visa for me?",
+      "a": "Yes. Use our online form: upload your passport and we fill in your details, then we complete and check the Guinea-Bissau visa application and submit it for you."
+    }
+  ],
+  "govuk": "https://www.gov.uk/foreign-travel-advice",
+  "applyButton": "/apply/evisa/?destination=Guinea-Bissau",
+  "country": "Guinea-Bissau",
+  "sortKey": "1 guinea-bissau 1 guinea-bissau visa",
+  "focusKeyword": "Guinea-Bissau visa",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Application completed and checked, photo and passport scan checked",
+      "processing": "",
+      "fee": "",
+      "popular": true,
+      "processingFee": "",
+      "total": ""
+    },
+    {
+      "service": "Urgent",
+      "included": "Everything in Standard, submitted the same working day",
+      "processing": "",
+      "fee": "",
+      "popular": false,
+      "processingFee": "",
+      "total": ""
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "title": "Ethiopia visa from the UK | Apply Online | UVS",
+  "description": "Apply for your Ethiopia visa from the UK. We complete and check your application and documents before submitting, so nothing delays your trip.",
+  "h1": "Ethiopia visa from the UK",
+  "intro": "British passport holders need a visa to visit Ethiopia. We complete your Ethiopia visa application and check every detail before submitting it.",
+  "eligibility": [
+    "Your passport is valid for at least 6 months from the date you arrive",
+    "You are travelling for tourism, business meetings, transit or to visit family or friends",
+    "You have a return or onward ticket and enough money for your stay"
+  ],
+  "documents": [
+    "Passport photo page scan",
+    "Recent passport-style photo",
+    "Return or onward flight booking",
+    "Hotel booking or invitation letter"
+  ],
+  "sections": [
+    {
+      "heading": "Do British citizens need a Ethiopia visa?",
+      "text": "British passport holders need a visa to visit Ethiopia. Tourist visas can be applied for online as an eVisa through Ethiopia's official immigration system."
+    },
+    {
+      "heading": "Ethiopia visa for other passport holders",
+      "text": "UK residents on other passports usually apply the same way. Business and work visits have their own visa types and need supporting letters."
+    },
+    {
+      "heading": "Ethiopia eVisa tips",
+      "text": "Apply through the official government system only, as several unofficial websites charge extra. Read the UK government travel advice for Ethiopia, as it advises against travel to some areas."
+    },
+    {
+      "heading": "Ethiopia visa help from Manchester",
+      "text": "We're based in Manchester city centre and handle Ethiopia visa applications for travellers across the UK, entirely online. We check the current rules for your nationality, complete your application and keep you updated until it's approved. Before you travel, read the UK government's [foreign travel advice](https://www.gov.uk/foreign-travel-advice) for Ethiopia."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Do British citizens need a visa for Ethiopia?",
+      "a": "Yes. Tourists can apply online for an Ethiopia eVisa before travelling."
+    },
+    {
+      "q": "Can I get an Ethiopia business visa online?",
+      "a": "Business visas have different requirements, including a letter from the Ethiopian company. We confirm the current process before you apply."
+    },
+    {
+      "q": "How long does a Ethiopia visa take?",
+      "a": "Usually a few working days, but processing times vary. Apply at least a week before you travel, and earlier in busy seasons."
+    }
+  ],
+  "govuk": "https://www.gov.uk/foreign-travel-advice",
+  "applyButton": "/apply/evisa/?destination=Ethiopia",
+  "country": "Ethiopia",
+  "sortKey": "1 ethiopia 1 ethiopia visa",
+  "focusKeyword": "Ethiopia visa",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Application completed and checked, photo and passport scan checked",
+      "processing": "",
+      "fee": "",
+      "popular": true,
+      "processingFee": "",
+      "total": ""
+    },
+    {
+      "service": "Urgent",
+      "included": "Everything in Standard, submitted the same working day",
+      "processing": "",
+      "fee": "",
+      "popular": false,
+      "processingFee": "",
+      "total": ""
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "title": "Tajikistan visa from the UK | Apply Online | UVS",
+  "description": "Apply for your Tajikistan visa from the UK. We complete and check your application and documents before submitting, so nothing delays your trip.",
+  "h1": "Tajikistan visa from the UK",
+  "intro": "British passport holders need a visa to visit Tajikistan, applied for online as an eVisa. We complete your Tajikistan visa application and check every detail before submitting it.",
+  "eligibility": [
+    "Your passport is valid for at least 6 months from the date you arrive",
+    "You are travelling for tourism, business meetings, transit or to visit family or friends",
+    "You have a return or onward ticket and enough money for your stay"
+  ],
+  "documents": [
+    "Passport photo page scan",
+    "Recent passport-style photo",
+    "Return or onward flight booking",
+    "Hotel booking or invitation letter"
+  ],
+  "sections": [
+    {
+      "heading": "Do British citizens need a Tajikistan visa?",
+      "text": "British passport holders need a visa to visit Tajikistan, applied for online as an eVisa."
+    },
+    {
+      "heading": "Tajikistan visa for other passport holders",
+      "text": "UK residents on other passports usually apply the same way."
+    },
+    {
+      "heading": "Travelling to the Pamirs",
+      "text": "If you plan to visit the Gorno-Badakhshan (Pamir) region, you need a separate permit, which can be requested with your eVisa. Read the UK government travel advice for Tajikistan, as it advises against travel to some border areas."
+    },
+    {
+      "heading": "Tajikistan visa help from Manchester",
+      "text": "We're based in Manchester city centre and handle Tajikistan visa applications for travellers across the UK, entirely online. We check the current rules for your nationality, complete your application and keep you updated until it's approved. Before you travel, read the UK government's [foreign travel advice](https://www.gov.uk/foreign-travel-advice) for Tajikistan."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Do I need a permit for the Pamir Highway?",
+      "a": "Yes. You need a GBAO permit for the Gorno-Badakhshan region, which can be requested with your eVisa."
+    },
+    {
+      "q": "How long does a Tajikistan visa take?",
+      "a": "Usually a few working days, but processing times vary. Apply at least a week before you travel, and earlier in busy seasons."
+    },
+    {
+      "q": "Can you apply for my Tajikistan visa for me?",
+      "a": "Yes. Use our online form: upload your passport and we fill in your details, then we complete and check the Tajikistan visa application and submit it for you."
+    }
+  ],
+  "govuk": "https://www.gov.uk/foreign-travel-advice",
+  "applyButton": "/apply/evisa/?destination=Tajikistan",
+  "country": "Tajikistan",
+  "sortKey": "1 tajikistan 1 tajikistan visa",
+  "focusKeyword": "Tajikistan visa",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Application completed and checked, photo and passport scan checked",
+      "processing": "",
+      "fee": "",
+      "popular": true,
+      "processingFee": "",
+      "total": ""
+    },
+    {
+      "service": "Urgent",
+      "included": "Everything in Standard, submitted the same working day",
+      "processing": "",
+      "fee": "",
+      "popular": false,
+      "processingFee": "",
+      "total": ""
+    }
+  ]
+}

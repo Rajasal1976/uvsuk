@@ -1,5 +1,5 @@
 // Old URLs that were merged into other pages. Each becomes a permanent (301) redirect.
-// Two pages from the plan are NOT here yet: /family-visa-uk/ and /japan-visa-services/.
+// One page from the plan is NOT here yet: /family-visa-uk/. (/japan-visa-services/ now has its own page.)
 // Check their traffic first, then add them if you decide to merge them.
 export const redirects = [
   ['/tier-2-work-visa-extension/', '/skilled-worker-visa-formally-tier-t2-general/'],

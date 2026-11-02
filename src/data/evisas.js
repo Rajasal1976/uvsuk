@@ -5,18 +5,18 @@ const c = (name, type = 'eVisa', page) => ({ name, type, page, id: name.toLowerC
 
 export const evisaContinents = [
   { id: 'africa', name: 'Africa', countries: [
-    c('Angola'), c('Benin'), c('Côte d’Ivoire'), c('Djibouti'), c('Ethiopia'), c('Gabon'), c('Guinea-Bissau'),
-    c('Kenya', 'eTA'), c('Rwanda'), c('Tanzania'), c('Uganda'), c('Zambia'), c('Zimbabwe'),
+    c('Angola', 'eVisa', '/angola-visa-uk/'), c('Benin', 'eVisa', '/benin-visa-uk/'), c('Côte d’Ivoire', 'eVisa', '/ivory-coast-visa-uk/'), c('Djibouti', 'eVisa', '/djibouti-visa-uk/'), c('Ethiopia', 'eVisa', '/ethiopia-visa-uk/'), c('Gabon', 'eVisa', '/gabon-visa-uk/'), c('Guinea-Bissau', 'eVisa', '/guinea-bissau-visa-uk/'),
+    c('Kenya', 'eTA', '/kenya-eta-uk/'), c('Nigeria', 'eVisa', '/nigeria-visa-uk/'), c('Rwanda', 'eVisa', '/rwanda-visa-uk/'), c('Tanzania', 'eVisa', '/tanzania-visa-uk/'), c('Uganda', 'eVisa', '/uganda-visa-uk/'), c('Zambia', 'eVisa', '/zambia-visa-uk/'), c('Zimbabwe', 'eVisa', '/zimbabwe-visa-uk/'),
   ] },
   { id: 'asia', name: 'Asia', countries: [
-    c('Azerbaijan'), c('Cambodia'), c('India', 'eVisa', '/indian-visa-application-uk/'), c('Myanmar'), c('Pakistan'),
-    c('Sri Lanka', 'ETA', '/sri-lanka-visa-services/'), c('Tajikistan'),
+    c('Azerbaijan', 'eVisa', '/azerbaijan-visa-uk/'), c('Cambodia', 'eVisa', '/cambodia-visa-uk/'), c('India', 'eVisa', '/indian-visa-application-uk/'), c('Myanmar', 'eVisa', '/myanmar-visa-uk/'), c('Pakistan', 'eVisa', '/pakistan-visa-uk/'),
+    c('Sri Lanka', 'ETA', '/sri-lanka-visa-services/'), c('Tajikistan', 'eVisa', '/tajikistan-visa-uk/'),
   ] },
   { id: 'middle-east', name: 'Middle East', countries: [
-    c('Bahrain'), c('Kuwait'), c('Oman'), c('Saudi Arabia', 'eVisa', '/saudi-arabia-visa-uk/'), c('Turkey'),
+    c('Bahrain', 'eVisa', '/bahrain-visa-uk/'), c('Kuwait', 'eVisa', '/kuwait-visa-uk/'), c('Oman', 'eVisa', '/oman-visa-uk/'), c('Saudi Arabia', 'eVisa', '/saudi-arabia-visa-uk/'), c('Turkey', 'eVisa', '/turkey-visa-uk/'),
   ] },
   { id: 'americas-oceania', name: 'Americas & Oceania', countries: [
-    c('USA', 'ESTA', '/usa-visa-services/'), c('Papua New Guinea'),
+    c('USA', 'ESTA', '/usa-visa-services/'), c('Papua New Guinea', 'eVisa', '/papua-new-guinea-visa-uk/'),
   ] },
 ];
 

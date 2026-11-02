@@ -1,0 +1,74 @@
+{
+  "title": "Kuwait visa from the UK | Apply Online | UVS",
+  "description": "Apply for your Kuwait visa from the UK. We complete and check your application and documents before submitting, so nothing delays your trip.",
+  "h1": "Kuwait visa from the UK",
+  "intro": "British passport holders need a visa to visit Kuwait, and can apply online for an eVisa or get one on arrival. We complete your Kuwait visa application and check every detail before submitting it.",
+  "eligibility": [
+    "Your passport is valid for at least 6 months from the date you arrive",
+    "You are travelling for tourism, business meetings, transit or to visit family or friends",
+    "You have a return or onward ticket and enough money for your stay"
+  ],
+  "documents": [
+    "Passport photo page scan",
+    "Recent passport-style photo",
+    "Return or onward flight booking",
+    "Hotel booking or invitation letter"
+  ],
+  "sections": [
+    {
+      "heading": "Do British citizens need a Kuwait visa?",
+      "text": "British passport holders need a visa to visit Kuwait, and can apply online for an eVisa or get one on arrival."
+    },
+    {
+      "heading": "Kuwait visa for other passport holders",
+      "text": "UK residents on other passports may need to apply through the Kuwaiti Embassy, depending on their nationality. Work and family visas need a sponsor in Kuwait."
+    },
+    {
+      "heading": "Working in Kuwait",
+      "text": "Work visas start with your employer in Kuwait, and usually need your degree certificate and police certificate legalised. We arrange the legalisation of UK documents as part of our service."
+    },
+    {
+      "heading": "Kuwait visa help from Manchester",
+      "text": "We're based in Manchester city centre and handle Kuwait visa applications for travellers across the UK, entirely online. We check the current rules for your nationality, complete your application and keep you updated until it's approved. Before you travel, read the UK government's [foreign travel advice](https://www.gov.uk/foreign-travel-advice) for Kuwait."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Do I need a visa for Kuwait from the UK?",
+      "a": "Yes. British citizens can apply online for an eVisa or get a visa on arrival."
+    },
+    {
+      "q": "How long does a Kuwait visa take?",
+      "a": "Usually a few working days, but processing times vary. Apply at least a week before you travel, and earlier in busy seasons."
+    },
+    {
+      "q": "Can you apply for my Kuwait visa for me?",
+      "a": "Yes. Use our online form: upload your passport and we fill in your details, then we complete and check the Kuwait visa application and submit it for you."
+    }
+  ],
+  "govuk": "https://www.gov.uk/foreign-travel-advice",
+  "applyButton": "/apply/evisa/?destination=Kuwait",
+  "country": "Kuwait",
+  "sortKey": "1 kuwait 1 kuwait visa",
+  "focusKeyword": "Kuwait visa",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Application completed and checked, photo and passport scan checked",
+      "processing": "",
+      "fee": "",
+      "popular": true,
+      "processingFee": "",
+      "total": ""
+    },
+    {
+      "service": "Urgent",
+      "included": "Everything in Standard, submitted the same working day",
+      "processing": "",
+      "fee": "",
+      "popular": false,
+      "processingFee": "",
+      "total": ""
+    }
+  ]
+}

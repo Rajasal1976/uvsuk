@@ -1,0 +1,74 @@
+{
+  "title": "Djibouti visa from the UK | Apply Online | UVS",
+  "description": "Apply for your Djibouti visa from the UK. We complete and check your application and documents before submitting, so nothing delays your trip.",
+  "h1": "Djibouti visa from the UK",
+  "intro": "British passport holders need a visa to visit Djibouti, and can apply online for an eVisa before travelling. We complete your Djibouti visa application and check every detail before submitting it.",
+  "eligibility": [
+    "Your passport is valid for at least 6 months from the date you arrive",
+    "You are travelling for tourism, business meetings, transit or to visit family or friends",
+    "You have a return or onward ticket and enough money for your stay"
+  ],
+  "documents": [
+    "Passport photo page scan",
+    "Recent passport-style photo",
+    "Return or onward flight booking",
+    "Hotel booking or invitation letter"
+  ],
+  "sections": [
+    {
+      "heading": "Do British citizens need a Djibouti visa?",
+      "text": "British passport holders need a visa to visit Djibouti, and can apply online for an eVisa before travelling."
+    },
+    {
+      "heading": "Djibouti visa for other passport holders",
+      "text": "UK residents on other passports usually apply the same way. The eVisa approval must match the passport you travel with."
+    },
+    {
+      "heading": "Before you travel to Djibouti",
+      "text": "Read the latest UK government travel advice for Djibouti before you book, and have your hotel booking and return flight ready, as they may be checked on arrival."
+    },
+    {
+      "heading": "Djibouti visa help from Manchester",
+      "text": "We're based in Manchester city centre and handle Djibouti visa applications for travellers across the UK, entirely online. We check the current rules for your nationality, complete your application and keep you updated until it's approved. Before you travel, read the UK government's [foreign travel advice](https://www.gov.uk/foreign-travel-advice) for Djibouti."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Do I need a visa for Djibouti from the UK?",
+      "a": "Yes. British citizens can apply online for a Djibouti eVisa before travelling."
+    },
+    {
+      "q": "How long does a Djibouti visa take?",
+      "a": "Usually a few working days, but processing times vary. Apply at least a week before you travel, and earlier in busy seasons."
+    },
+    {
+      "q": "Can you apply for my Djibouti visa for me?",
+      "a": "Yes. Use our online form: upload your passport and we fill in your details, then we complete and check the Djibouti visa application and submit it for you."
+    }
+  ],
+  "govuk": "https://www.gov.uk/foreign-travel-advice",
+  "applyButton": "/apply/evisa/?destination=Djibouti",
+  "country": "Djibouti",
+  "sortKey": "1 djibouti 1 djibouti visa",
+  "focusKeyword": "Djibouti visa",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Application completed and checked, photo and passport scan checked",
+      "processing": "",
+      "fee": "",
+      "popular": true,
+      "processingFee": "",
+      "total": ""
+    },
+    {
+      "service": "Urgent",
+      "included": "Everything in Standard, submitted the same working day",
+      "processing": "",
+      "fee": "",
+      "popular": false,
+      "processingFee": "",
+      "total": ""
+    }
+  ]
+}

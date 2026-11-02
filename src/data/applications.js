@@ -714,7 +714,9 @@ const indiaRegular = {
 };
 
 // ---------- eVisas for other countries ----------
-const evisaCountries = evisaContinents.flatMap((k) => k.countries).filter((x) => !x.page).map((x) => x.name);
+// Countries in the general eVisa form: every eVisa country except those with their own form.
+const ownForm = new Set(['India', 'Sri Lanka', 'Saudi Arabia', 'USA']);
+const evisaCountries = evisaContinents.flatMap((k) => k.countries).filter((x) => !ownForm.has(x.name)).map((x) => x.name);
 const evisa = {
   slug: 'evisa',
   title: 'eVisa application',
@@ -924,7 +926,57 @@ const indiaTransfer = {
   ],
 };
 
-export const applications = [china, india, indiaTransfer, sriLanka, schengen, usa, saudi, ghana, russia, indiaRegular, evisa, legalisation, indianPassport, secondPassport];
+// ---------- Japan ----------
+const japan = {
+  slug: 'japan-visa',
+  title: 'Japan visa application',
+  country: 'Japan',
+  code: 'JP',
+  pageUrl: '/japan-visa-services/',
+  description: 'Apply for your Japan visa from the UK. Upload your passport, tell us about your trip and add your documents. We prepare everything for your Embassy appointment.',
+  minutes: 8,
+  notice: 'British citizens don’t need a visa for short visits to Japan. This form is for UK residents travelling on other passports.',
+  steps: [
+    passportStep([], passportScanFields),
+    {
+      id: 'trip',
+      title: 'Your trip',
+      fields: [
+        { name: 'visaType', label: 'Purpose of your trip', type: 'radio', required: true, options: ['Tourism', 'Visiting family or friends', 'Business'] },
+        { name: 'arrivalDate', label: 'Date you plan to arrive', type: 'date', required: true, half: true },
+        { name: 'departureDate', label: 'Date you plan to leave', type: 'date', required: true, half: true },
+        { name: 'cities', label: 'Cities you plan to visit', type: 'text', required: true },
+        { name: 'hostName', label: 'Name of the person or company you’re visiting', type: 'text', required: true, showIf: { name: 'visaType', is: ['Visiting family or friends', 'Business'] } },
+        yesNo('visitedJapan', 'Have you been to Japan before?'),
+      ],
+    },
+    work,
+    contactStep(),
+  ],
+  docsIntro: {
+    Tourism: 'For a tourist visa you’ll need your flights, hotel bookings and proof of funds. We prepare your schedule of stay for you.',
+    'Visiting family or friends': 'You’ll need an invitation letter from your host in Japan and a copy of their residence card or passport.',
+    Business: 'You’ll need an invitation letter from the Japanese company and a letter from your employer.',
+  },
+  uploads: [
+    { name: 'photo', label: 'Passport photo (45mm × 35mm)', hint: 'Recent colour photo, plain background.', required: true },
+    ukStatusDoc('doc1'),
+    { name: 'doc2', label: 'Flight reservation', required: true },
+    ...byVisa('doc3', {
+      Tourism: { label: 'Hotel bookings for your whole stay', required: true },
+      'Visiting family or friends': { label: 'Invitation letter from your host in Japan', required: true },
+      Business: { label: 'Invitation letter from the Japanese company', required: true },
+    }),
+    ...byVisa('doc4', {
+      'Visiting family or friends': { label: 'Copy of your host’s residence card or passport', required: true },
+      Business: { label: 'Letter from your UK employer', required: true },
+    }),
+    bankDocs('doc5'),
+    other,
+  ],
+};
+
+export const applications = [china, india, indiaTransfer, sriLanka, japan, schengen, usa, saudi, ghana, russia, indiaRegular, evisa, legalisation, indianPassport, secondPassport];
 export const applicationBySlug = Object.fromEntries(applications.map((a) => [a.slug, a]));
 export const declaration = declarationNote;
 export const FILE_SLOTS = ['passport', 'photo', 'doc1', 'doc2', 'doc3', 'doc4', 'doc5', 'doc6', 'doc7', 'doc8'];

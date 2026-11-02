@@ -69,6 +69,14 @@ export function mountApplication(root, config, opts = {}) {
     const saved = JSON.parse(sessionStorage.getItem(storeKey) || 'null');
     if (saved?.answers) { answers = { ...answers, ...saved.answers }; current = saved.current || 0; furthest = saved.furthest || 0; autofilled = new Set(saved.autofilled || []); restored = true; }
   } catch {}
+  // Answers passed in the link, e.g. /apply/evisa/?destination=Kenya, are filled in for the client.
+  try {
+    const params = new URLSearchParams(location.search);
+    for (const f of allFields) {
+      const v = params.get(f.name);
+      if (v && (!f.options || f.options.includes(v))) answers[f.name] = v;
+    }
+  } catch {}
   const save = () => { try { sessionStorage.setItem(storeKey, JSON.stringify({ answers, current, furthest, autofilled: [...autofilled] })); } catch {} };
 
   const visible = (f, scope = answers) => {

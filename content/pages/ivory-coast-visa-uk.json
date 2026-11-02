@@ -1,0 +1,75 @@
+{
+  "title": "Ivory Coast visa from the UK | Application Help | UVS",
+  "description": "Apply for your Ivory Coast visa from the UK. We complete and check your application and documents before submitting, so nothing delays your trip.",
+  "h1": "Ivory Coast visa from the UK (Côte d’Ivoire)",
+  "intro": "British passport holders need a visa for Côte d’Ivoire (Ivory Coast). We complete your Ivory Coast visa application and check every detail before submitting it.",
+  "eligibility": [
+    "Your passport is valid for at least 6 months from the date you arrive",
+    "You are travelling for tourism, business meetings, transit or to visit family or friends",
+    "You have a return or onward ticket and enough money for your stay"
+  ],
+  "documents": [
+    "Passport photo page scan",
+    "Recent passport-style photo",
+    "Return or onward flight booking",
+    "Hotel booking or invitation letter",
+    "Yellow fever vaccination certificate"
+  ],
+  "sections": [
+    {
+      "heading": "Do British citizens need a Ivory Coast visa?",
+      "text": "British passport holders need a visa for Côte d’Ivoire (Ivory Coast). For air arrivals, you complete an online pre-registration and pay before you travel, then the visa is issued when you arrive at the airport in Abidjan."
+    },
+    {
+      "heading": "Ivory Coast visa for other passport holders",
+      "text": "UK residents on other passports usually follow the same process. Keep your pre-registration approval to show at check-in and on arrival."
+    },
+    {
+      "heading": "Ivory Coast visa: what to have ready",
+      "text": "You'll usually need your passport, a recent photo, your flight booking, details of where you'll stay or an invitation, and proof of yellow fever vaccination. We complete the online pre-registration and check your documents first."
+    },
+    {
+      "heading": "Ivory Coast visa help from Manchester",
+      "text": "We're based in Manchester city centre and handle Ivory Coast visa applications for travellers across the UK, entirely online. We check the current rules for your nationality, complete your application and keep you updated until it's approved. Before you travel, read the UK government's [foreign travel advice](https://www.gov.uk/foreign-travel-advice) for Côte d’Ivoire."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Do British citizens need a visa for Ivory Coast?",
+      "a": "Yes. You pre-register online and pay before you travel, and the visa is issued when you arrive at Abidjan airport."
+    },
+    {
+      "q": "Do I need a yellow fever certificate for Ivory Coast?",
+      "a": "Yes, proof of yellow fever vaccination is normally required for entry."
+    },
+    {
+      "q": "How long does a Ivory Coast visa take?",
+      "a": "Usually a few working days, but processing times vary. Apply at least a week before you travel, and earlier in busy seasons."
+    }
+  ],
+  "govuk": "https://www.gov.uk/foreign-travel-advice",
+  "applyButton": "/apply/evisa/?destination=C%C3%B4te%20d%E2%80%99Ivoire",
+  "country": "Ivory Coast",
+  "sortKey": "1 ivory coast 1 ivory coast visa",
+  "focusKeyword": "Ivory Coast visa",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Application completed and checked, photo and passport scan checked",
+      "processing": "",
+      "fee": "",
+      "popular": true,
+      "processingFee": "",
+      "total": ""
+    },
+    {
+      "service": "Urgent",
+      "included": "Everything in Standard, submitted the same working day",
+      "processing": "",
+      "fee": "",
+      "popular": false,
+      "processingFee": "",
+      "total": ""
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "title": "Tanzania visa from the UK | Apply Online | UVS",
+  "description": "Apply for your Tanzania visa from the UK. We complete and check your application and documents before submitting, so nothing delays your trip.",
+  "h1": "Tanzania visa from the UK",
+  "intro": "British passport holders need a visa to visit Tanzania, including Zanzibar. We complete your Tanzania visa application and check every detail before submitting it.",
+  "eligibility": [
+    "Your passport is valid for at least 6 months from the date you arrive",
+    "You are travelling for tourism, business meetings, transit or to visit family or friends",
+    "You have a return or onward ticket and enough money for your stay"
+  ],
+  "documents": [
+    "Passport photo page scan",
+    "Recent passport-style photo",
+    "Return or onward flight booking",
+    "Hotel booking or invitation letter"
+  ],
+  "sections": [
+    {
+      "heading": "Do British citizens need a Tanzania visa?",
+      "text": "British passport holders need a visa to visit Tanzania, including Zanzibar. You can apply online for an eVisa before travelling."
+    },
+    {
+      "heading": "Tanzania visa for other passport holders",
+      "text": "UK residents on other passports usually apply the same way. Business and volunteering trips have their own visa rules."
+    },
+    {
+      "heading": "Tanzania eVisa tips",
+      "text": "Apply well in advance, as processing can take longer in peak safari season. Check whether you need a yellow fever certificate, which depends on the countries you travel through."
+    },
+    {
+      "heading": "Safaris, Kilimanjaro and Zanzibar",
+      "text": "If you're going on safari or climbing Kilimanjaro, your tour operator usually arranges park and climbing permits, but you still need your own Tanzania visa. The same visa covers mainland Tanzania and Zanzibar, so one application is enough for a combined trip. Make sure the dates on your application cover your whole stay, including any time on Zanzibar at the end of a safari."
+    },
+    {
+      "heading": "Tanzania visa help from Manchester",
+      "text": "We're based in Manchester city centre and handle Tanzania visa applications for travellers across the UK, entirely online. We check the current rules for your nationality, complete your application and keep you updated until it's approved. Before you travel, read the UK government's [foreign travel advice](https://www.gov.uk/foreign-travel-advice) for Tanzania."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Do British citizens need a visa for Tanzania?",
+      "a": "Yes. You can apply online for a Tanzania eVisa before travelling."
+    },
+    {
+      "q": "Does the Tanzania visa cover Zanzibar?",
+      "a": "Yes. Zanzibar is part of Tanzania, so the same visa covers it."
+    },
+    {
+      "q": "How long does a Tanzania visa take?",
+      "a": "Usually a few working days, but processing times vary. Apply at least a week before you travel, and earlier in busy seasons."
+    }
+  ],
+  "govuk": "https://www.gov.uk/foreign-travel-advice",
+  "applyButton": "/apply/evisa/?destination=Tanzania",
+  "country": "Tanzania",
+  "sortKey": "1 tanzania 1 tanzania visa",
+  "focusKeyword": "Tanzania visa",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Application completed and checked, photo and passport scan checked",
+      "processing": "",
+      "fee": "",
+      "popular": true,
+      "processingFee": "",
+      "total": ""
+    },
+    {
+      "service": "Urgent",
+      "included": "Everything in Standard, submitted the same working day",
+      "processing": "",
+      "fee": "",
+      "popular": false,
+      "processingFee": "",
+      "total": ""
+    }
+  ]
+}

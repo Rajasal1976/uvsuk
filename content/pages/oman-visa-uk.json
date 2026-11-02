@@ -1,0 +1,74 @@
+{
+  "title": "Oman visa from the UK | Application Help | UVS",
+  "description": "Do you need a Oman visa from the UK? British citizens can visit visa-free, but other passport holders and workers may not. We check and apply for you.",
+  "h1": "Oman visa from the UK",
+  "intro": "British passport holders can visit Oman without a visa for short stays of up to 14 days. We check whether you need a Oman visa and apply for you if you do.",
+  "eligibility": [
+    "Your passport is valid for at least 6 months from the date you arrive",
+    "You are travelling for tourism, business meetings, transit or to visit family or friends",
+    "You have a return or onward ticket and enough money for your stay"
+  ],
+  "documents": [
+    "Passport photo page scan",
+    "Recent passport-style photo",
+    "Return or onward flight booking",
+    "Hotel booking or invitation letter"
+  ],
+  "sections": [
+    {
+      "heading": "Do British citizens need a Oman visa?",
+      "text": "British passport holders can visit Oman without a visa for short stays of up to 14 days. For longer visits, apply online for an Oman eVisa before travelling."
+    },
+    {
+      "heading": "Oman visa for other passport holders",
+      "text": "UK residents on other passports may need an eVisa, depending on their nationality. Work and family visas need a sponsor in Oman."
+    },
+    {
+      "heading": "Staying longer than 14 days",
+      "text": "If your visit to Oman is longer than the visa-free period, apply for an eVisa in advance. We'll check which type matches your trip."
+    },
+    {
+      "heading": "Oman visa help from Manchester",
+      "text": "We're based in Manchester city centre and handle Oman visa applications for travellers across the UK, entirely online. We check the current rules for your nationality, complete your application and keep you updated until it's approved. Before you travel, read the UK government's [foreign travel advice](https://www.gov.uk/foreign-travel-advice) for Oman."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Do British citizens need a visa for Oman?",
+      "a": "Not for short stays of up to 14 days. Longer visits need an eVisa."
+    },
+    {
+      "q": "Can you apply for my Oman visa for me?",
+      "a": "Yes. Use our online form: upload your passport and we fill in your details, then we complete and check the Oman visa application and submit it for you."
+    },
+    {
+      "q": "Which Oman visa do I need to work there?",
+      "a": "Working in Oman needs a work visa sponsored by your employer in Oman. Your degree and police certificate usually need legalising, which we can arrange."
+    }
+  ],
+  "govuk": "https://www.gov.uk/foreign-travel-advice",
+  "applyButton": "/apply/evisa/?destination=Oman",
+  "country": "Oman",
+  "sortKey": "1 oman 1 oman visa",
+  "focusKeyword": "Oman visa",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Application completed and checked, photo and passport scan checked",
+      "processing": "",
+      "fee": "",
+      "popular": true,
+      "processingFee": "",
+      "total": ""
+    },
+    {
+      "service": "Urgent",
+      "included": "Everything in Standard, submitted the same working day",
+      "processing": "",
+      "fee": "",
+      "popular": false,
+      "processingFee": "",
+      "total": ""
+    }
+  ]
+}

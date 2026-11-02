@@ -1,0 +1,77 @@
+{
+  "title": "Japan Visa from the UK | Japan Visa Application Help",
+  "description": "Japan visa help for UK residents who need one: tourist, business and family visits. We prepare your application for the Embassy of Japan in London.",
+  "h1": "Japan visa from the UK",
+  "intro": "British citizens don’t need a visa for short visits to Japan, but many UK residents on other passports do. We prepare your Japan visa application and check every document before you submit it at the Embassy.",
+  "eligibility": [
+    "You live in the UK and hold a passport that needs a visa for Japan",
+    "You are travelling for tourism, business meetings or to visit family or friends",
+    "Your passport is valid for your whole stay",
+    "You can show your UK residence status, such as your eVisa or BRP"
+  ],
+  "documents": [
+    "Passport and completed visa application form",
+    "Recent passport photo (45mm × 35mm)",
+    "Proof of your UK residence status, such as your eVisa share code or BRP",
+    "Schedule of stay (your day-by-day plan in Japan)",
+    "Flight reservation",
+    "Recent bank statements and a letter from your employer",
+    "Invitation letter, if you are visiting family, friends or a company"
+  ],
+  "sections": [
+    {
+      "heading": "Do you need a Japan visa?",
+      "text": "British passport holders don't need a visa for short visits to Japan for tourism or business. You'll need a Japan visa if you hold a passport from a country that isn't visa-exempt, such as India, Pakistan, Nigeria, Ghana, China or the Philippines, or if you're going to Japan to work or study."
+    },
+    {
+      "heading": "Where to apply for a Japan visa in the UK",
+      "text": "Japan visa applications from UK residents are made in person at the Embassy of Japan in London. If you live in Scotland or some parts of northern England, you apply at the Consulate-General of Japan in Edinburgh instead.\n\nOnly people who live in the UK can apply there. If you are in the UK as a visitor, you can't apply for a Japan visa in the UK."
+    },
+    {
+      "heading": "Japan visa documents: getting them right",
+      "text": "Japanese visa applications are checked closely, and missing or inconsistent documents are the most common reason for delays. Your schedule of stay should match your flights and hotels, the details on every document must match your passport, and your UK residence status must be valid for your trip.\n\nIf you're visiting family, friends or a company in Japan, the person or company inviting you usually provides an invitation letter, and sometimes a letter of guarantee and a copy of their residence card."
+    },
+    {
+      "heading": "How long does a Japan visa take?",
+      "text": "Short-stay visas are often processed within about a week of submitting your application, but allow longer in busy periods such as spring and the end of the year. Apply well before your travel date, and don't book non-refundable flights until your visa is approved."
+    },
+    {
+      "heading": "Japan visa help from Manchester",
+      "text": "We're based in Manchester city centre and help UK residents across the country with Japan visa applications. We check your documents, complete your application form and schedule of stay, and tell you exactly what to take to the Embassy."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Do British citizens need a visa for Japan?",
+      "a": "Not for short visits for tourism or business. British passport holders can visit visa-free. A visa is needed to work or study in Japan."
+    },
+    {
+      "q": "Where do I apply for a Japan visa in the UK?",
+      "a": "At the Embassy of Japan in London, or the Consulate-General of Japan in Edinburgh if you live in Scotland or parts of northern England."
+    },
+    {
+      "q": "Can I apply for a Japan visa while visiting the UK?",
+      "a": "No. Only UK residents can apply for a Japan visa in the UK. Visitors must apply in their home country."
+    },
+    {
+      "q": "What is a schedule of stay?",
+      "a": "A day-by-day plan of your trip, showing where you’ll be and where you’ll stay. The Embassy asks for it with short-stay visa applications."
+    }
+  ],
+  "govuk": "https://www.uk.emb-japan.go.jp/itpr_en/visa-cert-top.html",
+  "applyButton": "/apply/japan-visa/",
+  "country": "Japan",
+  "sortKey": "1 japan 1 japan visa",
+  "focusKeyword": "Japan visa",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Application form and schedule of stay completed, documents checked",
+      "processing": "",
+      "fee": "",
+      "popular": true,
+      "processingFee": "",
+      "total": ""
+    }
+  ]
+}

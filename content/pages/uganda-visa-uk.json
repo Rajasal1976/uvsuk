@@ -1,0 +1,75 @@
+{
+  "title": "Uganda visa from the UK | Apply Online | UVS",
+  "description": "Apply for your Uganda visa from the UK. We complete and check your application and documents before submitting, so nothing delays your trip.",
+  "h1": "Uganda visa from the UK",
+  "intro": "British passport holders need a visa to visit Uganda, applied for online as an eVisa before travelling. We complete your Uganda visa application and check every detail before submitting it.",
+  "eligibility": [
+    "Your passport is valid for at least 6 months from the date you arrive",
+    "You are travelling for tourism, business meetings, transit or to visit family or friends",
+    "You have a return or onward ticket and enough money for your stay"
+  ],
+  "documents": [
+    "Passport photo page scan",
+    "Recent passport-style photo",
+    "Return or onward flight booking",
+    "Hotel booking or invitation letter",
+    "Yellow fever vaccination certificate"
+  ],
+  "sections": [
+    {
+      "heading": "Do British citizens need a Uganda visa?",
+      "text": "British passport holders need a visa to visit Uganda, applied for online as an eVisa before travelling."
+    },
+    {
+      "heading": "Uganda visa for other passport holders",
+      "text": "UK residents on other passports usually apply the same way. The East Africa Tourist Visa, covering Uganda, Rwanda and Kenya, is also an option."
+    },
+    {
+      "heading": "Before you travel to Uganda",
+      "text": "You'll need proof of yellow fever vaccination. Have your passport scan, photo and itinerary ready, and print your eVisa approval to show on arrival."
+    },
+    {
+      "heading": "Uganda visa help from Manchester",
+      "text": "We're based in Manchester city centre and handle Uganda visa applications for travellers across the UK, entirely online. We check the current rules for your nationality, complete your application and keep you updated until it's approved. Before you travel, read the UK government's [foreign travel advice](https://www.gov.uk/foreign-travel-advice) for Uganda."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Do I need a visa for Uganda from the UK?",
+      "a": "Yes. British citizens apply online for a Uganda eVisa before travelling."
+    },
+    {
+      "q": "Do I need a yellow fever certificate for Uganda?",
+      "a": "Yes, proof of yellow fever vaccination is normally required."
+    },
+    {
+      "q": "How long does a Uganda visa take?",
+      "a": "Usually a few working days, but processing times vary. Apply at least a week before you travel, and earlier in busy seasons."
+    }
+  ],
+  "govuk": "https://www.gov.uk/foreign-travel-advice",
+  "applyButton": "/apply/evisa/?destination=Uganda",
+  "country": "Uganda",
+  "sortKey": "1 uganda 1 uganda visa",
+  "focusKeyword": "Uganda visa",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Application completed and checked, photo and passport scan checked",
+      "processing": "",
+      "fee": "",
+      "popular": true,
+      "processingFee": "",
+      "total": ""
+    },
+    {
+      "service": "Urgent",
+      "included": "Everything in Standard, submitted the same working day",
+      "processing": "",
+      "fee": "",
+      "popular": false,
+      "processingFee": "",
+      "total": ""
+    }
+  ]
+}

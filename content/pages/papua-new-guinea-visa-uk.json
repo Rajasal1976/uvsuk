@@ -1,0 +1,74 @@
+{
+  "title": "Papua New Guinea visa from the UK | Apply Online | UVS",
+  "description": "Apply for your Papua New Guinea visa from the UK. We complete and check your application and documents before submitting, so nothing delays your trip.",
+  "h1": "Papua New Guinea visa from the UK",
+  "intro": "British passport holders need a visa to visit Papua New Guinea. We complete your Papua New Guinea visa application and check every detail before submitting it.",
+  "eligibility": [
+    "Your passport is valid for at least 6 months from the date you arrive",
+    "You are travelling for tourism, business meetings, transit or to visit family or friends",
+    "You have a return or onward ticket and enough money for your stay"
+  ],
+  "documents": [
+    "Passport photo page scan",
+    "Recent passport-style photo",
+    "Return or onward flight booking",
+    "Hotel booking or invitation letter"
+  ],
+  "sections": [
+    {
+      "heading": "Do British citizens need a Papua New Guinea visa?",
+      "text": "British passport holders need a visa to visit Papua New Guinea. Tourist visas can be applied for online as an eVisa before travelling."
+    },
+    {
+      "heading": "Papua New Guinea visa for other passport holders",
+      "text": "UK residents on other passports usually apply the same way. Business visits and work need different visas and supporting letters."
+    },
+    {
+      "heading": "Before you travel to Papua New Guinea",
+      "text": "Read the UK government travel advice for Papua New Guinea, have your return flight and accommodation details ready, and allow plenty of time for processing."
+    },
+    {
+      "heading": "Papua New Guinea visa help from Manchester",
+      "text": "We're based in Manchester city centre and handle Papua New Guinea visa applications for travellers across the UK, entirely online. We check the current rules for your nationality, complete your application and keep you updated until it's approved. Before you travel, read the UK government's [foreign travel advice](https://www.gov.uk/foreign-travel-advice) for Papua New Guinea."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Do British citizens need a visa for Papua New Guinea?",
+      "a": "Yes. Tourists can apply online for an eVisa before travelling."
+    },
+    {
+      "q": "How long does a Papua New Guinea visa take?",
+      "a": "Usually a few working days, but processing times vary. Apply at least a week before you travel, and earlier in busy seasons."
+    },
+    {
+      "q": "Can you apply for my Papua New Guinea visa for me?",
+      "a": "Yes. Use our online form: upload your passport and we fill in your details, then we complete and check the Papua New Guinea visa application and submit it for you."
+    }
+  ],
+  "govuk": "https://www.gov.uk/foreign-travel-advice",
+  "applyButton": "/apply/evisa/?destination=Papua%20New%20Guinea",
+  "country": "Papua New Guinea",
+  "sortKey": "1 papua new guinea 1 papua new guinea visa",
+  "focusKeyword": "Papua New Guinea visa",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Application completed and checked, photo and passport scan checked",
+      "processing": "",
+      "fee": "",
+      "popular": true,
+      "processingFee": "",
+      "total": ""
+    },
+    {
+      "service": "Urgent",
+      "included": "Everything in Standard, submitted the same working day",
+      "processing": "",
+      "fee": "",
+      "popular": false,
+      "processingFee": "",
+      "total": ""
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "title": "Rwanda visa from the UK | Application Help | UVS",
+  "description": "Apply for your Rwanda visa from the UK. We complete and check your application and documents before submitting, so nothing delays your trip.",
+  "h1": "Rwanda visa from the UK",
+  "intro": "British passport holders can get a visa for Rwanda on arrival, or apply online in advance, which can make arrival quicker. We complete your Rwanda visa application and check every detail before submitting it.",
+  "eligibility": [
+    "Your passport is valid for at least 6 months from the date you arrive",
+    "You are travelling for tourism, business meetings, transit or to visit family or friends",
+    "You have a return or onward ticket and enough money for your stay"
+  ],
+  "documents": [
+    "Passport photo page scan",
+    "Recent passport-style photo",
+    "Return or onward flight booking",
+    "Hotel booking or invitation letter"
+  ],
+  "sections": [
+    {
+      "heading": "Do British citizens need a Rwanda visa?",
+      "text": "British passport holders can get a visa for Rwanda on arrival, or apply online in advance, which can make arrival quicker."
+    },
+    {
+      "heading": "Rwanda visa for other passport holders",
+      "text": "Rules for UK residents on other passports depend on their nationality. The East Africa Tourist Visa, which covers Rwanda, Uganda and Kenya, is also an option for some trips."
+    },
+    {
+      "heading": "East Africa Tourist Visa",
+      "text": "If you're visiting Rwanda, Uganda and Kenya on one trip, the East Africa Tourist Visa may cover all three. We'll tell you whether it suits your plans."
+    },
+    {
+      "heading": "Rwanda visa help from Manchester",
+      "text": "We're based in Manchester city centre and handle Rwanda visa applications for travellers across the UK, entirely online. We check the current rules for your nationality, complete your application and keep you updated until it's approved. Before you travel, read the UK government's [foreign travel advice](https://www.gov.uk/foreign-travel-advice) for Rwanda."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Do British citizens need a visa for Rwanda?",
+      "a": "Yes, but you can get it on arrival or apply online in advance."
+    },
+    {
+      "q": "Can one visa cover Rwanda, Uganda and Kenya?",
+      "a": "The East Africa Tourist Visa covers all three for tourist visits. We can check if it suits your trip."
+    },
+    {
+      "q": "How long does a Rwanda visa take?",
+      "a": "Usually a few working days, but processing times vary. Apply at least a week before you travel, and earlier in busy seasons."
+    }
+  ],
+  "govuk": "https://www.gov.uk/foreign-travel-advice",
+  "applyButton": "/apply/evisa/?destination=Rwanda",
+  "country": "Rwanda",
+  "sortKey": "1 rwanda 1 rwanda visa",
+  "focusKeyword": "Rwanda visa",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Application completed and checked, photo and passport scan checked",
+      "processing": "",
+      "fee": "",
+      "popular": true,
+      "processingFee": "",
+      "total": ""
+    },
+    {
+      "service": "Urgent",
+      "included": "Everything in Standard, submitted the same working day",
+      "processing": "",
+      "fee": "",
+      "popular": false,
+      "processingFee": "",
+      "total": ""
+    }
+  ]
+}

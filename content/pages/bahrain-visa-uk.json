@@ -1,0 +1,74 @@
+{
+  "title": "Bahrain visa from the UK | Apply Online | UVS",
+  "description": "Apply for your Bahrain visa from the UK. We complete and check your application and documents before submitting, so nothing delays your trip.",
+  "h1": "Bahrain visa from the UK",
+  "intro": "British passport holders need a visa to visit Bahrain, but can apply online for an eVisa or get a visa on arrival. We complete your Bahrain visa application and check every detail before submitting it.",
+  "eligibility": [
+    "Your passport is valid for at least 6 months from the date you arrive",
+    "You are travelling for tourism, business meetings, transit or to visit family or friends",
+    "You have a return or onward ticket and enough money for your stay"
+  ],
+  "documents": [
+    "Passport photo page scan",
+    "Recent passport-style photo",
+    "Return or onward flight booking",
+    "Hotel booking or invitation letter"
+  ],
+  "sections": [
+    {
+      "heading": "Do British citizens need a Bahrain visa?",
+      "text": "British passport holders need a visa to visit Bahrain, but can apply online for an eVisa or get a visa on arrival."
+    },
+    {
+      "heading": "Bahrain visa for other passport holders",
+      "text": "UK residents on other passports may need to apply in advance, depending on their nationality. Residents of other Gulf countries may also qualify for an eVisa."
+    },
+    {
+      "heading": "Bahrain eVisa or visa on arrival?",
+      "text": "Applying online in advance gives you certainty before you fly. Business visitors may need a letter from the Bahraini company they're visiting."
+    },
+    {
+      "heading": "Bahrain visa help from Manchester",
+      "text": "We're based in Manchester city centre and handle Bahrain visa applications for travellers across the UK, entirely online. We check the current rules for your nationality, complete your application and keep you updated until it's approved. Before you travel, read the UK government's [foreign travel advice](https://www.gov.uk/foreign-travel-advice) for Bahrain."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Do British citizens need a visa for Bahrain?",
+      "a": "Yes, but you can apply online for an eVisa or get a visa on arrival."
+    },
+    {
+      "q": "How long does a Bahrain visa take?",
+      "a": "Usually a few working days, but processing times vary. Apply at least a week before you travel, and earlier in busy seasons."
+    },
+    {
+      "q": "Can you apply for my Bahrain visa for me?",
+      "a": "Yes. Use our online form: upload your passport and we fill in your details, then we complete and check the Bahrain visa application and submit it for you."
+    }
+  ],
+  "govuk": "https://www.gov.uk/foreign-travel-advice",
+  "applyButton": "/apply/evisa/?destination=Bahrain",
+  "country": "Bahrain",
+  "sortKey": "1 bahrain 1 bahrain visa",
+  "focusKeyword": "Bahrain visa",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Application completed and checked, photo and passport scan checked",
+      "processing": "",
+      "fee": "",
+      "popular": true,
+      "processingFee": "",
+      "total": ""
+    },
+    {
+      "service": "Urgent",
+      "included": "Everything in Standard, submitted the same working day",
+      "processing": "",
+      "fee": "",
+      "popular": false,
+      "processingFee": "",
+      "total": ""
+    }
+  ]
+}

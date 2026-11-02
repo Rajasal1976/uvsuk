@@ -34,6 +34,7 @@ export const menu = [
       ['USA Visa & ESTA', '/usa-visa-services/'],
       ['Saudi Arabia Visa', '/saudi-arabia-visa-uk/'],
       ['Ghana Visa', '/ghana-visa-services/'],
+      ['Japan Visa', '/japan-visa-services/'],
       ['Russia Visa', '/russian-visa-services-from-uk/'],
       ['Sri Lanka Visa', '/sri-lanka-visa-services/'],
       ['Document Legalisation', '/document-legalisation/'],
