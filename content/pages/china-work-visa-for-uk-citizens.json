@@ -1,51 +1,30 @@
 {
-  "title": "China Work Visa (Z Visa) from the UK | Application Help | UVS",
-  "description": "China Z visa help for UK residents taking up work in China: work permit notification, documents, legalisation and the visa centre.",
-  "h1": "China work visa (Z visa)",
-  "intro": "To work in China you need a Z visa, based on a work permit notice issued by your employer in China. We prepare the application and book your appointment.",
-  "eligibility": [],
-  "documents": [
-    "Passport",
-    "Work permit notice from your employer",
-    "Completed application form",
-    "Photo"
-  ],
-  "faqs": [
-    {
-      "q": "Can I work in China on visa-free entry?",
-      "a": "No. Visa-free entry covers tourism, business visits, family visits, exchanges and transit only. Work needs a Z visa and work permit."
-    }
-  ],
-  "govuk": "",
   "applyButton": "/apply/china-visa/",
+  "sortKey": "1 china 1 china work visa (z visa)",
+  "govuk": "https://manchester.china-consulate.gov.cn/eng/",
+  "h1": "China work visa (Z visa)",
   "prices": [
     {
       "service": "Standard",
       "included": "Form completion, document check and submission",
-      "processing": "",
-      "fee": "",
+      "processing": "5 Working Days",
+      "fee": "£200",
       "popular": false,
-      "processingFee": ""
+      "processingFee": "£151",
+      "total": "£351"
     },
     {
       "service": "Express",
       "included": "Everything in Standard, with faster processing",
-      "processing": "",
-      "fee": "",
+      "processing": "48 Working Hours",
+      "fee": "£200",
       "popular": true,
-      "processingFee": ""
-    },
-    {
-      "service": "Urgent",
-      "included": "Everything in Standard, with the fastest processing available",
-      "processing": "",
-      "fee": "",
-      "popular": false,
-      "processingFee": ""
+      "processingFee": "£182",
+      "total": "£382"
     }
   ],
-  "country": "China",
-  "sortKey": "1 china 1 china work visa (z visa)",
+  "intro": "To work in China you need a Z visa, based on a work permit notice issued by your employer in China. We prepare the application and book your appointment.",
+  "eligibility": [],
   "sections": [
     {
       "heading": "How the China work visa process works",
@@ -62,6 +41,21 @@
     {
       "heading": "China work visa help in Manchester",
       "text": "We're based in Manchester city centre and help travellers and businesses across the North West and the rest of the UK. Most travel visa applications can be handled by post and email, so you don't need to visit us in person."
+    }
+  ],
+  "country": "China",
+  "title": "China Work Visa (Z Visa) from the UK | Application Help | UVS",
+  "documents": [
+    "Passport",
+    "Work permit notice from your employer",
+    "Completed application form",
+    "Photo"
+  ],
+  "description": "China Z visa help for UK residents taking up work in China: work permit notification, documents, legalisation and the visa centre.",
+  "faqs": [
+    {
+      "q": "Can I work in China on visa-free entry?",
+      "a": "No. Visa-free entry covers tourism, business visits, family visits, exchanges and transit only. Work needs a Z visa and work permit."
     }
   ]
 }
