@@ -16,10 +16,11 @@
     {
       "service": "Urgent",
       "included": "Everything in Standard, submitted the same working day",
-      "processing": "",
-      "fee": "",
+      "processing": "3 Working Days",
+      "fee": "£200",
       "popular": false,
-      "processingFee": ""
+      "processingFee": "£210",
+      "total": "£410"
     }
   ],
   "intro": "For business meetings, trade fairs and visiting suppliers in India. We prepare your application and check your invitation and business documents.",
