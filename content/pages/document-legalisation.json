@@ -1,8 +1,8 @@
 {
   "title": "Document Legalisation & Apostille UK | Manchester | UVS",
-  "description": "Apostille and embassy legalisation of UK documents: degrees, police checks, birth and company documents for use abroad. Manchester-based service.",
+  "description": "Document legalisation and apostille service in Manchester: degrees, police checks, birth certificates and company documents for use abroad.",
   "h1": "Document legalisation and attestation",
-  "intro": "Many countries require UK documents, such as degree certificates, birth certificates and company documents, to be legalised before they are accepted. We handle the process from start to finish.",
+  "intro": "Many countries require UK documents, such as degree certificates, birth certificates and company documents, to be legalised before they are accepted. We handle the process from start to finish. Our document legalisation service handles apostilles and embassy legalisation from start to finish.",
   "eligibility": [],
   "documents": [
     "The original documents to be legalised",
@@ -16,6 +16,10 @@
     {
       "q": "Do I need to send original documents?",
       "a": "For some documents yes, and for others a certified copy is used. We tell you which applies before you send anything."
+    },
+    {
+      "q": "How long does document legalisation take?",
+      "a": "An apostille usually takes a few working days. Embassy legalisation adds more time, depending on the embassy. Urgent services are available for many countries."
     }
   ],
   "govuk": "",
@@ -39,5 +43,6 @@
       "heading": "Document legalisation in Manchester",
       "text": "We're based in Manchester city centre and help travellers and businesses across the North West and the rest of the UK. Most travel visa applications can be handled by post and email, so you don't need to visit us in person."
     }
-  ]
+  ],
+  "focusKeyword": "document legalisation"
 }

@@ -1,8 +1,8 @@
 {
-  "h1": "Transfer an India eVisa to a New Passport",
-  "title": "Transfer India eVisa to New Passport | ETA Transfer Help UK",
-  "description": "Got a new passport but a valid India eVisa? Find out if you need to transfer it, and we’ll handle the transfer if your old passport is lost or kept.",
-  "intro": "If you’ve got a new passport while your India eVisa is still valid, you may not need to do anything. If your old passport has been lost, stolen or not returned, India’s new transfer service can move your eVisa onto your new passport.",
+  "h1": "Transfer India eVisa to a new passport",
+  "title": "Transfer India eVisa to a New Passport | ETA Transfer Help",
+  "description": "Transfer India eVisa to your new passport: find out if you need to, and we’ll handle the transfer if your old passport is lost, stolen or kept.",
+  "intro": "If you’ve got a new passport while your India eVisa is still valid, you may not need to do anything. If your old passport has been lost, stolen or not returned, India’s new transfer service can move your eVisa onto your new passport. Before you transfer India eVisa details, check whether you need to: often you don’t.",
   "eligibility": [
     "You hold a valid India eVisa or ETA",
     "You have a new passport, from the same country, issued after your eVisa",
@@ -33,7 +33,7 @@
       "text": "Don't leave the transfer until just before you fly. Processing times haven't been published, so submit the request as early as you can. If you're travelling soon and the transfer hasn't come through, a new eVisa may be the safer option, and we'll advise you."
     },
     {
-      "heading": "India eVisa transfer help from Manchester",
+      "heading": "Transfer India eVisa help in Manchester",
       "text": "We're based in Manchester city centre and handle Indian eVisas for clients across the UK, entirely online. We check whether you need a transfer at all, submit it if you do, and keep you updated."
     }
   ],
@@ -65,5 +65,6 @@
       "processingFee": "",
       "total": ""
     }
-  ]
+  ],
+  "focusKeyword": "transfer India eVisa"
 }

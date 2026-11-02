@@ -1,8 +1,8 @@
 {
   "title": "Sponsor Licence Application Help | Manchester & UK-wide",
-  "description": "Get your UK sponsor licence right first time. IAA-regulated help with documents, Key Personnel, 2026 fees and compliance. Based in Manchester.",
+  "description": "Get your sponsor licence application right first time. IAA-regulated help with documents, Key Personnel, 2026 fees and compliance. Based in Manchester.",
   "h1": "Sponsor licence application",
-  "intro": "A sponsor licence lets your business employ workers from overseas on the Skilled Worker and other routes. We prepare your application, set up your Key Personnel and help you meet ongoing compliance duties. We also handle renewals.",
+  "intro": "A sponsor licence lets your business employ workers from overseas on the Skilled Worker and other routes. We prepare your application, set up your Key Personnel and help you meet ongoing compliance duties. We also handle renewals. We prepare your sponsor licence application and check every document before you submit.",
   "eligibility": [
     "Your business is genuine and operating lawfully in the UK",
     "You have roles that meet the skill and salary requirements",
@@ -66,5 +66,6 @@
       "heading": "Sponsor licence help for Manchester businesses",
       "text": "We help employers across Manchester and the North West, from care providers and restaurants to tech, engineering and manufacturing firms, and businesses anywhere in the UK remotely. We prepare your application, check your documents, help set up your Key Personnel and assign your first Certificates of Sponsorship."
     }
-  ]
+  ],
+  "focusKeyword": "sponsor licence application"
 }

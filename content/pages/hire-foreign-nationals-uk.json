@@ -1,12 +1,20 @@
 {
   "title": "Hire Overseas Workers UK | Sponsor Licence Help Manchester",
-  "description": "Hiring from overseas? IAA-regulated sponsorship help for UK employers: sponsor licences, Certificates of Sponsorship, 2026 costs and compliance.",
-  "h1": "Hiring from overseas",
-  "intro": "To employ most overseas workers, your business needs a Home Office sponsor licence. We help you apply, set up the systems the Home Office expects, and assign Certificates of Sponsorship to new hires.",
+  "description": "Want to hire overseas workers? IAA-regulated help for UK employers: sponsor licences, Certificates of Sponsorship, 2026 costs and compliance.",
+  "h1": "Hire overseas workers",
+  "intro": "To employ most overseas workers, your business needs a Home Office sponsor licence. We help you apply, set up the systems the Home Office expects, and assign Certificates of Sponsorship to new hires. If you want to hire overseas workers, we guide you through sponsorship from start to finish.",
   "faqs": [
     {
       "q": "Can we employ international students?",
       "a": "Yes, within the limits of their visa: usually up to 20 hours a week in term time for degree-level students. To employ them full-time after their course, you can sponsor them on a Skilled Worker visa or they may have a Graduate visa."
+    },
+    {
+      "q": "How long does it take to hire overseas workers?",
+      "a": "Allow around 8 weeks for the sponsor licence, then a few weeks for the worker’s visa. A priority service can speed up the licence decision."
+    },
+    {
+      "q": "What does it cost to hire overseas workers?",
+      "a": "For a small business sponsoring one worker for 3 years, the Home Office charges paid by the employer come to over £2,500, plus our fee."
     }
   ],
   "govuk": "https://www.gov.uk/uk-visa-sponsorship-employers",
@@ -27,8 +35,9 @@
       "text": "The employer pays the sponsor licence fee, the Certificate of Sponsorship and the Immigration Skills Charge, and these can't be passed on to the worker. For a small business hiring one worker for 3 years, the employer's Home Office costs come to over £2,500, before the worker's own visa fee and health surcharge."
     },
     {
-      "heading": "Sponsorship help for Manchester businesses",
+      "heading": "Hire overseas workers help in Manchester",
       "text": "We help employers across Manchester and the North West, and businesses anywhere in the UK remotely, with licence applications, assigning certificates, right to work checks and ongoing compliance."
     }
-  ]
+  ],
+  "focusKeyword": "hire overseas workers"
 }

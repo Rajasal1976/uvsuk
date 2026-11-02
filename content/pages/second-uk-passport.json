@@ -1,8 +1,8 @@
 {
-  "title": "Second UK Passport for Business Travellers | Application Help",
-  "description": "Apply for a second British passport if you travel often for work or need to travel while a visa is processed. We prepare your application.",
+  "title": "Second UK Passport for Business Travellers | Apply",
+  "description": "Apply for a second UK passport if you travel often for work or need to travel while a visa is processed. We prepare your application and letter.",
   "h1": "Second UK passport",
-  "intro": "If you travel frequently for work, a second British passport lets you keep travelling while your other passport is with an embassy for a visa. We help prepare your application and supporting letter.",
+  "intro": "If you travel frequently for work, a second British passport lets you keep travelling while your other passport is with an embassy for a visa. We help prepare your application and supporting letter. A second UK passport lets you keep travelling while your other passport is at an embassy.",
   "eligibility": [],
   "documents": [
     "Current British passport",
@@ -13,6 +13,14 @@
     {
       "q": "Can anyone get a second British passport?",
       "a": "No. You must show a genuine need, usually frequent business travel or travel between countries with conflicting entry rules."
+    },
+    {
+      "q": "How long does a second UK passport take?",
+      "a": "It is processed by HM Passport Office like other passport applications. Allow several weeks."
+    },
+    {
+      "q": "Who can apply for a second UK passport?",
+      "a": "British citizens who travel frequently for work, or who need to travel between countries with conflicting entry rules."
     }
   ],
   "govuk": "",
@@ -29,8 +37,13 @@
       "text": "The application needs a letter from your employer, or a statement if you are self-employed, explaining why you need a second passport, with details of your recent and planned travel. A second passport may be issued with a shorter validity than a standard passport."
     },
     {
+      "heading": "When a second UK passport helps",
+      "text": "If you travel for work every few weeks, waiting for a visa can mean cancelling trips. With a second UK passport, one passport can be at an embassy while you travel on the other. It can also help if you travel to countries that may refuse entry because of stamps from certain other countries."
+    },
+    {
       "heading": "Second passport help in Manchester",
       "text": "We prepare the application and supporting letter so the need is clear to HM Passport Office. We're based in Manchester city centre and help travellers and businesses across the North West and the rest of the UK. Most travel visa applications can be handled by post and email, so you don't need to visit us in person."
     }
-  ]
+  ],
+  "focusKeyword": "second UK passport"
 }

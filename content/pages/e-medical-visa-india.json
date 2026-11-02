@@ -2,7 +2,7 @@
   "h1": "India e-Medical Visa",
   "title": "India e-Medical Visa from the UK | Medical eVisa Help | UVS",
   "description": "India e-Medical visa help for UK residents travelling for treatment. We prepare your application and check the hospital letter before you apply.",
-  "intro": "The e-Medical visa is for travelling to India for medical treatment at a recognised hospital. Up to two family members can travel with you on e-Medical Attendant visas.",
+  "intro": "The e-Medical visa is for travelling to India for medical treatment at a recognised hospital. Up to two family members can travel with you on e-Medical Attendant visas. We prepare your India e-Medical visa application and check the hospital letter before submitting.",
   "eligibility": [
     "You are travelling to India for medical treatment at a recognised hospital or treatment centre",
     "You have a letter from the hospital confirming your treatment",
@@ -44,6 +44,10 @@
     {
       "q": "Can my family come with me?",
       "a": "Yes. Up to two attendants can travel with you, each on their own e-Medical Attendant visa."
+    },
+    {
+      "q": "Do I need a hospital letter for an India e-Medical visa?",
+      "a": "Yes. A letter from the hospital in India, on its letterhead, confirming your treatment is essential."
     }
   ],
   "sortKey": "1 india 1 india e-medical visa",
@@ -69,5 +73,6 @@
       "processingFee": "",
       "total": ""
     }
-  ]
+  ],
+  "focusKeyword": "India e-Medical visa"
 }

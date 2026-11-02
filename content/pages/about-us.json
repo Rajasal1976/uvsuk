@@ -1,15 +1,28 @@
 {
-  "title": "About Unique Visa Services | Raj & Sunita, Manchester",
-  "description": "Unique Visa Services is an IAA-regulated immigration and visa practice in Manchester, run by Raj and Sunita since 2008.",
-  "h1": "About us",
-  "intro": "",
+  "title": "About Unique Visa Services | IAA-Regulated, Manchester",
+  "description": "Unique Visa Services is an IAA-regulated immigration and visa practice in Manchester, helping individuals, families and businesses since 2008.",
+  "h1": "About Unique Visa Services",
+  "intro": "Unique Visa Services has helped people with UK immigration and travel visas from our Manchester office since 2008.",
   "body": [
     "Unique Visa Services is a UK immigration and visa practice based at 61 Mosley Street in Manchester. We have helped individuals, families and employers since 2008.",
     "The practice is run by Raj and Sunita. When you work with us, you deal with them directly, from your first call to the Home Office decision.",
     "Unique Visa Services Ltd is regulated by the Immigration Advice Authority (IAA), registration reference F200700144. You can check our registration on the IAA adviser finder.",
     "[Add a short paragraph about Raj and Sunita: background, languages spoken, and why they started the business.]"
   ],
-  "faqs": [],
+  "faqs": [
+    {
+      "q": "Who runs Unique Visa Services?",
+      "a": "The practice is run by Raj and Sunita, who work on client cases themselves with the support of the team."
+    },
+    {
+      "q": "Is Unique Visa Services regulated?",
+      "a": "Yes. We are regulated by the Immigration Advice Authority (IAA). Our registration number is shown at the bottom of every page."
+    },
+    {
+      "q": "Where is Unique Visa Services based?",
+      "a": "Our office is at 61 Mosley Street in Manchester city centre. We also work with clients across the UK by phone, video call and email."
+    }
+  ],
   "govuk": "",
   "applyButton": "none",
   "country": "Company pages",
@@ -31,5 +44,6 @@
       "heading": "Where we are",
       "text": "We're based at 61 Mosley Street in Manchester city centre and help clients across Greater Manchester, including Bury, Bolton, Oldham, Rochdale, Salford and Stockport. We also work with clients anywhere in the UK and overseas by phone, video call and email."
     }
-  ]
+  ],
+  "focusKeyword": "Unique Visa Services"
 }

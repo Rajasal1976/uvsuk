@@ -13,7 +13,15 @@ interface Props {
   schemas?: string[];   // extra structured data, e.g. FAQ (JSON text)
   noindex?: boolean;    // hide from Google (draft pages)
 }
-const { title, description, schemas = [], noindex = false } = Astro.props;
+const { title, description, schemas = [], noindex: noindexProp = false } = Astro.props;
+// SEO settings from the editor: each page's own sharing image and "hide from Google" switch.
+import homeContent from '../../content/home.json';
+const pageContent = import.meta.glob('../../content/pages/*.json', { eager: true, import: 'default' });
+const pageSlug = Astro.url.pathname.replace(/^\/|\/$/g, '');
+const seo: any = pageSlug === '' ? homeContent : (pageContent[`../../content/pages/${pageSlug}.json`] ?? {});
+const noindex = noindexProp || seo.noindex === true;
+const shareImagePath = seo.shareImage || site.shareImage || '';
+const shareImage = shareImagePath ? new URL(shareImagePath, site.url).href : '';
 const canonical = new URL(Astro.url.pathname, site.url).href;
 
 // "Edit this page" button: only shown to someone logged in to the editor (/admin) in this browser.
@@ -48,7 +56,9 @@ const business = {
   <meta property="og:site_name" content={site.name} />
   <meta property="og:locale" content="en_GB" />
   <meta property="og:type" content="website" />
-  <meta name="twitter:card" content="summary" />
+  {shareImage && <meta property="og:image" content={shareImage} />}
+  <meta name="twitter:card" content={shareImage ? 'summary_large_image' : 'summary'} />
+  {shareImage && <meta name="twitter:image" content={shareImage} />}
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

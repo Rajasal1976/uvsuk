@@ -32,7 +32,7 @@
       "total": "£570"
     }
   ],
-  "intro": "The e-Tourist Visa covers holidays, visiting friends and family, and short yoga or wellness courses in India. It is applied for online, and we complete and check the whole application for you.",
+  "intro": "The e-Tourist Visa covers holidays, visiting friends and family, and short yoga or wellness courses in India. It is applied for online, and we complete and check the whole application for you. We complete your India e-Tourist visa application and check every detail against your passport before submitting.",
   "eligibility": [
     "Your nationality is eligible for the Indian eVisa",
     "Your passport is valid for at least six months from arrival"
@@ -71,6 +71,11 @@
     {
       "q": "Can I use an e-Tourist visa for a business trip?",
       "a": "No. Business activities need an e-Business visa. Using the wrong visa type can lead to problems on arrival."
+    },
+    {
+      "q": "How long does an India e-Tourist visa take?",
+      "a": "Most are processed within a few working days. Apply at least 4 days before you travel, and earlier in busy periods."
     }
-  ]
+  ],
+  "focusKeyword": "India e-Tourist visa"
 }

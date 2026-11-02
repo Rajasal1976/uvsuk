@@ -57,7 +57,7 @@
     "Your UK visa or eVisa share code, if you are not British",
     "Copies of any previous Chinese visas"
   ],
-  "description": "China L visa help for UK residents who need one, and advice on visa-free travel for British citizens until 31 December 2026.",
+  "description": "China tourist visa (L visa) help for UK residents who need one, plus clear advice on visa-free travel for British citizens until 31 December 2026.",
   "faqs": [
     {
       "q": "Do I need a visa for a holiday in China?",
@@ -75,5 +75,6 @@
       "q": "How long is a Chinese tourist visa valid?",
       "a": "It depends on what is granted, which can be single, double or multiple entry. Each stay is limited to the number of days printed on the visa."
     }
-  ]
+  ],
+  "focusKeyword": "China tourist visa"
 }

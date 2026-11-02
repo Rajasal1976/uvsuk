@@ -1,8 +1,8 @@
 {
-  "title": "Travel Visas from the UK | Visa Agency in Manchester | UVS",
-  "description": "Travel and business visas for UK residents: China, India, Schengen, USA, Saudi Arabia, Ghana, Sri Lanka and more. Manchester visa agency since 2008.",
-  "h1": "Worldwide visas for UK residents",
-  "intro": "Travelling abroad from the UK? We help with visa and eVisa applications, check your forms and documents, and book appointments where needed. We also offer document legalisation and Indian passport services.",
+  "title": "Travel Visas from the UK | Visa Agency in Manchester",
+  "description": "Travel visas for UK residents: China, India, Schengen, USA, Saudi Arabia, Ghana, Sri Lanka and more. A Manchester visa agency since 2008.",
+  "h1": "Travel visas for UK residents",
+  "intro": "Travelling abroad from the UK? We help with visa and eVisa applications, check your forms and documents, and book appointments where needed. We also offer document legalisation and Indian passport services. We handle travel visas for more than 30 countries.",
   "faqs": [
     {
       "q": "Do you handle visas for non-British passport holders?",
@@ -11,6 +11,10 @@
     {
       "q": "How far in advance should I apply?",
       "a": "As early as the country allows. Many visas can be applied for up to 3 months before travel, and some eVisas need at least 4 to 7 working days. Leave extra time in busy seasons."
+    },
+    {
+      "q": "Can you help with travel visas for any country?",
+      "a": "We handle the most popular destinations and many eVisas. If your destination isn’t listed, contact us and we’ll check."
     }
   ],
   "govuk": "",
@@ -34,5 +38,6 @@
       "heading": "A visa agency in Manchester",
       "text": "We're based in Manchester city centre and help travellers and businesses across the North West and the rest of the UK. Most travel visa applications can be handled by post and email, so you don't need to visit us in person."
     }
-  ]
+  ],
+  "focusKeyword": "travel visas"
 }

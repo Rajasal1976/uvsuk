@@ -1,8 +1,8 @@
 {
-  "title": "Indian Passport Renewal & Surrender Certificate UK | UVS",
-  "description": "Indian passport renewal, surrender certificates and OCI help for Indians in the UK. We complete and check your forms and documents.",
-  "h1": "Indian passport services",
-  "intro": "Indian passport holder living in the UK? We help with renewals and new applications, including passports for children, completing the forms and preparing your documents.",
+  "title": "Indian Passport Renewal UK | Surrender Certificate & OCI",
+  "description": "Indian passport renewal in the UK, surrender certificates and OCI cards. We complete and check your forms and documents before your appointment.",
+  "h1": "Indian passport renewal and services",
+  "intro": "Indian passport holder living in the UK? We help with renewals and new applications, including passports for children, completing the forms and preparing your documents. We help with Indian passport renewal, surrender certificates and OCI cards for Indians living in the UK.",
   "eligibility": [],
   "documents": [
     "Current passport",
@@ -13,6 +13,14 @@
     {
       "q": "Can I keep my Indian passport after becoming British?",
       "a": "No. India doesn’t allow dual citizenship. You must surrender your Indian passport and get a surrender certificate."
+    },
+    {
+      "q": "How long does Indian passport renewal take in the UK?",
+      "a": "It varies, but allow several weeks after your appointment. Apply well before you need to travel."
+    },
+    {
+      "q": "What do I need for Indian passport renewal?",
+      "a": "Usually your current Indian passport, proof of UK address, your UK visa or BRP, and photos. We confirm the full list for your situation."
     }
   ],
   "govuk": "",
@@ -33,8 +41,9 @@
       "text": "An Overseas Citizen of India (OCI) card lets former Indian citizens and people of Indian origin visit India without a visa, for life. If you get a new passport, you may need to update your OCI details. We help with new OCI applications and updates."
     },
     {
-      "heading": "Indian passport help in Manchester",
+      "heading": "Indian passport renewal help in Manchester",
       "text": "We're based in Manchester city centre and help travellers and businesses across the North West and the rest of the UK. Most travel visa applications can be handled by post and email, so you don't need to visit us in person."
     }
-  ]
+  ],
+  "focusKeyword": "Indian passport renewal"
 }

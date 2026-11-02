@@ -43,7 +43,7 @@ collections:
       - { field: h1, label: Page heading }
     view_groups:
       - { label: Country, field: country }
-    editor: { preview: false }
+    editor: { preview: true }
     fields:
       - { name: country, label: Country, widget: hidden }
       - { name: sortKey, label: Order in the list, widget: hidden }
@@ -121,12 +121,29 @@ collections:
         widget: text
         pattern: ['^[\s\S]{50,160}$', 'Keep it between 50 and 160 characters so Google shows it in full.']
         hint: 'The grey text under the headline in Google results.'
+      - name: focusKeyword
+        label: 'SEO: focus keyword'
+        widget: string
+        required: false
+        hint: 'The main search you want this page to rank for, e.g. "spouse visa Manchester". Your SEO score and tips appear on the right as you type.'
+      - name: shareImage
+        label: 'SEO: social sharing image (optional)'
+        widget: image
+        required: false
+        choose_url: false
+        hint: 'Shown when the page is shared on WhatsApp, Facebook or LinkedIn. Landscape, about 1200 × 630 pixels. If empty, the default image from Business details is used.'
+      - name: noindex
+        label: 'SEO: hide this page from Google'
+        widget: boolean
+        required: false
+        default: false
+        hint: 'Only switch this on for pages you don’t want in search results.'
 
   # ---------- Pages with calculators or special design ----------
   # ---------- Homepage ----------
   - name: homepage
     label: Homepage
-    editor: { preview: false }
+    editor: { preview: true }
     files:
       - name: home
         label: Homepage
@@ -171,6 +188,8 @@ collections:
               - { name: a, label: Answer, widget: text }
           - { name: title, label: 'Google: page title', widget: string, pattern: ['^.{10,65}$', 'Keep it between 10 and 65 characters.'] }
           - { name: description, label: 'Google: description', widget: text, pattern: ['^[\s\S]{50,160}$', 'Keep it between 50 and 160 characters.'] }
+          - { name: focusKeyword, label: 'SEO: focus keyword', widget: string, required: false, hint: 'e.g. "immigration advisers Manchester". Your SEO score appears on the right.' }
+          - { name: shareImage, label: 'SEO: social sharing image (optional)', widget: image, required: false, choose_url: false, hint: 'Landscape, about 1200 × 630 pixels.' }
 
   # ---------- Business details ----------
   - name: settings
@@ -182,6 +201,7 @@ collections:
         description: These appear across the whole site. Keep them identical to your Google Business Profile.
         file: content/settings.json
         fields:
+          - { name: shareImage, label: 'Default social sharing image', widget: image, required: false, choose_url: false, hint: 'Used when a page without its own image is shared on WhatsApp, Facebook or LinkedIn. Landscape, about 1200 × 630 pixels.' }
           - { name: siteLogo, label: Website logo, widget: image, required: false, choose_url: false, hint: 'Shown at the top of every page instead of the business name. A PNG with a transparent background works best, at least 400 pixels wide.' }
           - { name: phone, label: Phone number, widget: string }
           - { name: email, label: Email address, widget: string }

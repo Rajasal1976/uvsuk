@@ -1,8 +1,8 @@
 {
   "h1": "India e-Medical Attendant Visa",
-  "title": "India e-Medical Attendant Visa from the UK | Application Help",
-  "description": "Travelling with a patient for treatment in India? We prepare your e-Medical Attendant visa alongside the patient’s e-Medical visa.",
-  "intro": "The e-Medical Attendant visa is for family members travelling with a patient who holds an India e-Medical visa. Up to two attendants can travel with each patient.",
+  "title": "India e-Medical Attendant Visa from the UK | Apply Online",
+  "description": "India e-Medical Attendant visa help for family travelling with a patient to India. We prepare it alongside the patient’s e-Medical visa.",
+  "intro": "The e-Medical Attendant visa is for family members travelling with a patient who holds an India e-Medical visa. Up to two attendants can travel with each patient. The India e-Medical Attendant visa lets you stay with your relative throughout their treatment.",
   "eligibility": [
     "You are travelling with a patient who has, or is applying for, an India e-Medical visa",
     "You are usually a close family member of the patient",
@@ -37,6 +37,10 @@
     {
       "q": "Can I travel on an e-Tourist visa instead?",
       "a": "If you are going to India to accompany a patient for treatment, the e-Medical Attendant visa is the right visa. Using the wrong type can cause problems on arrival."
+    },
+    {
+      "q": "Who can apply for an India e-Medical Attendant visa?",
+      "a": "Usually close family members of the patient. Up to two attendants can travel with each patient."
     }
   ],
   "sortKey": "1 india 1 india e-medical attendant visa",
@@ -62,5 +66,6 @@
       "processingFee": "",
       "total": ""
     }
-  ]
+  ],
+  "focusKeyword": "India e-Medical Attendant visa"
 }

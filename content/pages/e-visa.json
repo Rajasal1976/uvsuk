@@ -1,8 +1,8 @@
 {
-  "h1": "eVisas",
-  "intro": "Many countries now let you apply for your visa online, with no embassy visit and no need to post your passport. We complete and check your application so it isn’t rejected for a small mistake, and send your eVisa to you.",
-  "title": "eVisa Applications from the UK | Fast, Checked eVisas | UVS",
-  "description": "eVisa help for UK residents: India, Sri Lanka, Saudi Arabia, Kenya and more. We complete and check your online application so it isn’t rejected.",
+  "h1": "eVisa applications from the UK",
+  "intro": "Many countries now let you apply for your visa online, with no embassy visit and no need to post your passport. We complete and check your application so it isn’t rejected for a small mistake, and send your eVisa to you. Every eVisa application is checked against your passport before we submit it.",
+  "title": "eVisa Applications from the UK | Checked eVisas | UVS",
+  "description": "eVisa help for UK residents: India, Sri Lanka, Saudi Arabia, Kenya and more. We complete and check every eVisa application so it isn’t rejected.",
   "faqHeading": "Common questions",
   "faqs": [
     {
@@ -16,6 +16,10 @@
     {
       "q": "What if my eVisa is rejected?",
       "a": "We review the reason and help you reapply correctly. Because we check applications before submitting, rejections are rare."
+    },
+    {
+      "q": "What do I need for an eVisa application?",
+      "a": "Usually a scan of your passport photo page and a digital photo. Some countries also ask for flight or hotel bookings, or an invitation letter for business trips. Our online form tells you exactly what your destination needs."
     }
   ],
   "applyButton": "/apply/evisa/",
@@ -56,5 +60,6 @@
       "heading": "eVisa help from Manchester",
       "text": "We are based in Manchester city centre and handle eVisas for travellers across the UK, entirely online."
     }
-  ]
+  ],
+  "focusKeyword": "eVisa application"
 }

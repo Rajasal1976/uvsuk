@@ -1,8 +1,8 @@
 {
-  "title": "British Citizenship Application Help | Manchester Advisers",
-  "description": "Apply for British citizenship by naturalisation or through marriage. We check residence, time abroad and good character first. IAA-regulated, Manchester.",
-  "h1": "British citizenship",
-  "intro": "Once you have ILR or settled status, you may be able to apply to become a British citizen by naturalisation. If you are married to a British citizen, you may be able to apply sooner. We also advise on registering children as British.",
+  "title": "British Citizenship Application Help | Manchester",
+  "description": "British citizenship application help in Manchester: naturalisation and citizenship through marriage. We check residence, absences and good character first.",
+  "h1": "British citizenship application",
+  "intro": "Once you have ILR or settled status, you may be able to apply to become a British citizen by naturalisation. If you are married to a British citizen, you may be able to apply sooner. We also advise on registering children as British. We prepare and check your British citizenship application so nothing delays your ceremony.",
   "eligibility": [
     "You hold ILR or settled status, usually for at least 12 months, unless married to a British citizen",
     "You meet the residence requirements, including limits on time abroad",
@@ -27,6 +27,10 @@
     {
       "q": "How long does a citizenship application take?",
       "a": "Decisions usually take around 6 months. You then attend a citizenship ceremony, normally within 3 months of approval."
+    },
+    {
+      "q": "What documents do I need for a British citizenship application?",
+      "a": "Usually your passport, proof of your settled status (such as ILR or EU settled status), your Life in the UK test pass, proof of English, evidence of where you have lived, and details of two referees. If you are applying through marriage, you also need your marriage or civil partnership certificate. We give you a full checklist."
     }
   ],
   "govuk": "https://www.gov.uk/becoming-a-british-citizen",
@@ -54,5 +58,6 @@
       "heading": "The application process and citizenship ceremony",
       "text": "You apply online, give your fingerprints and photo at a UK Visa and Citizenship Application Services appointment, and provide two referees who can confirm your identity. Decisions usually take around 6 months.\n\nIf you are approved, you attend a citizenship ceremony, usually at your local council, within 3 months. You become a British citizen at the ceremony and can then apply for your British passport."
     }
-  ]
+  ],
+  "focusKeyword": "British citizenship application"
 }

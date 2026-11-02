@@ -32,7 +32,7 @@
       "total": "£687.80"
     }
   ],
-  "intro": "If you are taking up a job with a company in India, you need an Employment Visa rather than a business visa. We prepare the application and supporting documents.",
+  "intro": "If you are taking up a job with a company in India, you need an Employment Visa rather than a business visa. We prepare the application and supporting documents. We prepare your India Employment visa application and the documents your Indian employer needs from you.",
   "eligibility": [],
   "sections": [
     {
@@ -46,6 +46,10 @@
     {
       "heading": "After you arrive",
       "text": "Many Employment visa holders must register with the Foreigners Regional Registration Office (FRRO) after arriving in India. Your employer will usually help with this, and we can explain what to expect."
+    },
+    {
+      "heading": "India Employment visa from the UK: step by step",
+      "text": "First, your Indian employer gives you an appointment letter or contract and its company registration documents. Next, you complete the online visa form and book an appointment at the Indian visa application centre in the UK. You then submit your passport, photo and documents at the appointment. Once the visa is issued, check whether you need to register with the FRRO after arriving in India."
     },
     {
       "heading": "Employment visa help from Manchester",
@@ -66,6 +70,11 @@
     {
       "q": "Can I apply for an India Employment visa online?",
       "a": "No. It isn’t available as an eVisa. You apply through the Indian visa application centre, and we can prepare your forms and documents."
+    },
+    {
+      "q": "How long does an India Employment visa take?",
+      "a": "It depends on the visa centre and your documents, but allow several weeks. Starting early, with your employer’s documents ready, avoids delays."
     }
-  ]
+  ],
+  "focusKeyword": "India Employment visa"
 }

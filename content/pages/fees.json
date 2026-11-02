@@ -1,13 +1,26 @@
 {
-  "title": "Our Fees | Unique Visa Services",
-  "description": "Our professional fees for UK immigration and worldwide visa services. Government fees are charged separately.",
-  "h1": "Our fees",
-  "intro": "",
+  "title": "Immigration Advice Fees | Unique Visa Services Manchester",
+  "description": "How our immigration advice fees work: agreed in writing before we start, with government and embassy fees paid separately at cost. No hidden charges.",
+  "h1": "Our immigration advice fees",
+  "intro": "Our immigration advice fees are agreed in writing before we start work.",
   "body": [
     "Our fees are agreed in writing before we start work. Government and consular fees, such as Home Office application fees and the Immigration Health Surcharge, are paid separately.",
     "[Add your fees here, for example: Consultation from £XX. Spouse visa application from £XXX. Indian eVisa service fee £XX.]"
   ],
-  "faqs": [],
+  "faqs": [
+    {
+      "q": "Are your immigration advice fees fixed?",
+      "a": "Yes. We agree a fixed fee in writing before we start, based on your application. If anything changes, we tell you before doing extra work."
+    },
+    {
+      "q": "Do your immigration advice fees include government fees?",
+      "a": "No. Home Office, embassy and visa centre fees are paid separately, at cost. We tell you the total before you commit."
+    },
+    {
+      "q": "When do I pay your immigration advice fees?",
+      "a": "Usually before we start work on your application. We confirm the payment arrangements when we agree your fee."
+    }
+  ],
   "govuk": "",
   "applyButton": "none",
   "country": "Company pages",
@@ -18,8 +31,13 @@
       "text": "Our fee covers our advice and the preparation of your application. It is agreed in writing before we start, so there are no surprises. The fee depends on the type of application and how complex your circumstances are.\n\nGovernment fees, such as Home Office application fees, the Immigration Health Surcharge and embassy or visa centre fees, are paid separately, at cost. We tell you the total before you commit."
     },
     {
+      "heading": "What affects immigration advice fees?",
+      "text": "The fee depends on the type of application and how much work your case needs. A straightforward visitor visa needs less time than a spouse visa with self-employed income, or a sponsor licence for a new business. Previous refusals, gaps in documents or tight deadlines can add work. We tell you which applies at your consultation, so you know the cost before deciding."
+    },
+    {
       "heading": "Travel visa prices",
       "text": "For travel visas and eVisas, our fees, the official fees and delivery charges are shown on each country's page."
     }
-  ]
+  ],
+  "focusKeyword": "immigration advice fees"
 }

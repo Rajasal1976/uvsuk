@@ -1,8 +1,8 @@
 {
-  "title": "UK Visa & Immigration Advisers in Manchester | UVS",
-  "description": "IAA-regulated UK immigration advisers in Manchester: spouse visas, Skilled Worker, students, ILR, citizenship and visitor visas. Clear advice, agreed fees.",
-  "h1": "UK visa and immigration services",
-  "intro": "Coming to the UK, extending your stay or settling permanently? Choose your route below. Every application is checked by a regulated adviser before it goes to the Home Office.",
+  "title": "UK Visa Services | Immigration Advisers in Manchester",
+  "description": "UK visa services from IAA-regulated advisers in Manchester: spouse visas, Skilled Worker, students, ILR, citizenship and visitor visas.",
+  "h1": "UK visa services",
+  "intro": "Coming to the UK, extending your stay or settling permanently? Choose your route below. Every application is checked by a regulated adviser before it goes to the Home Office. Our UK visa services cover every stage, from choosing the right visa to settlement and citizenship.",
   "faqs": [
     {
       "q": "How do I know which visa is right for me?",
@@ -11,6 +11,10 @@
     {
       "q": "Are you regulated?",
       "a": "Yes. We are regulated by the Immigration Advice Authority (IAA), the body that regulates immigration advisers in the UK. Our registration number is shown at the bottom of every page."
+    },
+    {
+      "q": "What UK visa services do you offer?",
+      "a": "Spouse and partner visas, Skilled Worker and other work visas, Student and Graduate visas, visitor visas, Indefinite Leave to Remain, British citizenship and sponsor licences for employers."
     }
   ],
   "govuk": "",
@@ -31,8 +35,9 @@
       "text": "Several important changes are under way. The government plans to move most routes to a 10-year \"earned settlement\" model for ILR, though the 5-year routes are still open for now. The Graduate visa drops from 2 years to 18 months for applications made from 1 January 2027. New Skilled Worker applicants have needed English at B2 level since January 2026.\n\nWe follow every change and will tell you how it affects your plans before you apply."
     },
     {
-      "heading": "UK visa help in Manchester and across the UK",
+      "heading": "UK visa services help in Manchester",
       "text": "We're based at 61 Mosley Street in Manchester city centre and help clients across Greater Manchester, including Bury, Bolton, Oldham, Rochdale, Salford and Stockport. We also work with clients anywhere in the UK and overseas by phone, video call and email."
     }
-  ]
+  ],
+  "focusKeyword": "UK visa services"
 }

@@ -1,8 +1,8 @@
 {
   "title": "UK Fiancé Visa Application Help | Manchester Advisers",
-  "description": "Come to the UK to marry your partner on a fiancé(e) visa. IAA-regulated help with the £29,000 requirement, wedding plans and switching to a spouse visa.",
+  "description": "Fiancé visa help in Manchester: come to the UK to marry your partner. We check the £29,000 requirement, wedding evidence and your switch to a spouse visa.",
   "h1": "UK fiancé visa",
-  "intro": "A fiancé or proposed civil partner visa lets you come to the UK to marry or form a civil partnership with your British or settled partner. After the wedding, you switch to a spouse visa without leaving the UK.",
+  "intro": "A fiancé or proposed civil partner visa lets you come to the UK to marry or form a civil partnership with your British or settled partner. After the wedding, you switch to a spouse visa without leaving the UK. We prepare your fiancé visa application and check every document before it goes to the Home Office.",
   "eligibility": [
     "You plan to marry or form a civil partnership within the visa period",
     "You have met each other in person",
@@ -23,6 +23,10 @@
     {
       "q": "What happens if the wedding is delayed?",
       "a": "You must marry within the 6 months. If the wedding can’t go ahead in time, talk to us straight away about your options."
+    },
+    {
+      "q": "How long does a fiancé visa take?",
+      "a": "Applications from outside the UK are usually decided within about 12 weeks."
     }
   ],
   "govuk": "https://www.gov.uk/uk-family-visa",
@@ -46,5 +50,6 @@
       "heading": "Fiancé visa help in Manchester",
       "text": "We're based at 61 Mosley Street in Manchester city centre and help clients across Greater Manchester, including Bury, Bolton, Oldham, Rochdale, Salford and Stockport. We also work with clients anywhere in the UK and overseas by phone, video call and email."
     }
-  ]
+  ],
+  "focusKeyword": "fiancé visa"
 }

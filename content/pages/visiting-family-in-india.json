@@ -1,8 +1,8 @@
 {
   "h1": "Visiting family in India: which visa do you need?",
-  "title": "Visa to Visit Family in India from the UK | e-Tourist Visa",
-  "description": "Visiting relatives in India? Most UK residents use the India e-Tourist visa. OCI holders don’t need a visa. We check which applies to you.",
-  "intro": "India doesn’t have a separate family visit visa. If you are visiting relatives or friends, the e-Tourist visa is usually the right one, and if you hold an OCI card you don’t need a visa at all.",
+  "title": "Visiting Family in India? Which Visa You Need from the UK",
+  "description": "Visiting family in India from the UK? Most people use the India e-Tourist visa, and OCI holders don’t need one. We check which applies to you.",
+  "intro": "India doesn’t have a separate family visit visa. If you are visiting relatives or friends, the e-Tourist visa is usually the right one, and if you hold an OCI card you don’t need a visa at all. If you are visiting family in India, we’ll make sure you apply for the right visa.",
   "eligibility": [
     "You are visiting relatives or friends in India for a short stay",
     "You hold a passport from a country eligible for India’s eVisa",
@@ -39,6 +39,10 @@
     {
       "q": "Which e-Tourist visa should I choose for family visits?",
       "a": "If you visit once, the 30-day visa is usually enough. If you visit family every year, the 1-year or 5-year visa is better value."
+    },
+    {
+      "q": "Can I stay with relatives when visiting family in India on an e-Tourist visa?",
+      "a": "Yes. Staying with relatives is fine on an e-Tourist visa. You can give their address in the application."
     }
   ],
   "sortKey": "1 india 1 india visiting family",
@@ -64,5 +68,6 @@
       "processingFee": "",
       "total": ""
     }
-  ]
+  ],
+  "focusKeyword": "visiting family in India"
 }

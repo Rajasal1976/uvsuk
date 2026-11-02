@@ -2,7 +2,7 @@
   "title": "Russian Visa from the UK | Application Help | Manchester",
   "description": "Russian visa help for UK residents: tourist, business, work and family visas, visa support letters and documents. FCDO travel advice explained.",
   "h1": "Russian visa from the UK",
-  "intro": "We help UK residents with Russian tourist, business, private visit, work and student visas, including arranging the required invitation.",
+  "intro": "We help UK residents with Russian tourist, business, private visit, work and student visas, including arranging the required invitation. We prepare your Russian visa application and check your visa support documents.",
   "eligibility": [],
   "documents": [
     "Passport",
@@ -15,6 +15,14 @@
     {
       "q": "Does the UK government advise against travel to Russia?",
       "a": "Yes. The FCDO currently advises against all travel to Russia. Check the latest advice on GOV.UK before making plans."
+    },
+    {
+      "q": "What is a Russian visa support document?",
+      "a": "An official invitation or tourist confirmation from Russia, needed for every Russian visa. Get it before applying."
+    },
+    {
+      "q": "How long does a Russian visa take?",
+      "a": "It varies with the visa type and service. Allow several weeks, and apply well before travel."
     }
   ],
   "govuk": "",
@@ -64,5 +72,6 @@
       "heading": "Russian visa help in Manchester",
       "text": "We're based in Manchester city centre and help travellers and businesses across the North West and the rest of the UK. Most travel visa applications can be handled by post and email, so you don't need to visit us in person."
     }
-  ]
+  ],
+  "focusKeyword": "Russian visa"
 }

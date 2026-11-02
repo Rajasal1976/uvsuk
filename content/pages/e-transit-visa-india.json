@@ -2,7 +2,7 @@
   "h1": "India e-Transit Visa",
   "title": "India e-Transit Visa from the UK | Transit eVisa Help | UVS",
   "description": "Passing through India on the way to another country? India e-Transit visa help for UK residents, with onward ticket checks.",
-  "intro": "The e-Transit visa is for passing through India on your way to another country. It was added to India’s eVisa scheme in late 2025 and allows up to two entries.",
+  "intro": "The e-Transit visa is for passing through India on your way to another country. It was added to India’s eVisa scheme in late 2025 and allows up to two entries. We complete your India e-Transit visa application and check your onward ticket.",
   "eligibility": [
     "You are travelling through India to a third country",
     "You have a confirmed onward ticket",
@@ -25,6 +25,10 @@
       "text": "The e-Transit visa allows up to two entries within a short validity period, so it can cover both legs of a journey that passes through India twice. It is only for transit: if you want to spend time in India as a tourist, apply for an e-Tourist visa instead."
     },
     {
+      "heading": "India e-Transit visa documents",
+      "text": "You'll need a scan of your passport photo page, a recent photo with a white background, and your onward ticket showing you're leaving India for another country. If your final destination needs a visa, have that ready too, as airlines may ask for it before you board."
+    },
+    {
       "heading": "India e-Transit visa help from Manchester",
       "text": "We're based in Manchester city centre and handle Indian eVisas for clients across the UK, entirely online. We complete your application, check every detail against your passport and keep you updated until your eVisa arrives."
     }
@@ -33,6 +37,14 @@
     {
       "q": "Can I visit India on an e-Transit visa?",
       "a": "Only for the purpose of transit. If you plan to spend time sightseeing or visiting people, apply for an e-Tourist visa."
+    },
+    {
+      "q": "Do I need an India e-Transit visa if I stay airside?",
+      "a": "Often not. If you change planes without leaving the airport, you may not need a visa. If you need to leave the airport or change airports, you need one."
+    },
+    {
+      "q": "How many entries does an India e-Transit visa allow?",
+      "a": "Up to two entries, which can cover both legs of a journey that passes through India twice."
     }
   ],
   "sortKey": "1 india 1 india e-transit visa",
@@ -58,5 +70,6 @@
       "processingFee": "",
       "total": ""
     }
-  ]
+  ],
+  "focusKeyword": "India e-Transit visa"
 }

@@ -2,7 +2,7 @@
   "title": "Ghana Visa from the UK | Tourist & Business Visa Help | UVS",
   "description": "Ghana visa help for UK residents: tourist and business visas, invitation letters and yellow fever certificate. Manchester visa agency.",
   "h1": "Ghana visa from the UK",
-  "intro": "We help UK residents apply for Ghana tourist and business visas, including checking forms, photos and supporting documents.",
+  "intro": "We help UK residents apply for Ghana tourist and business visas, including checking forms, photos and supporting documents. We prepare your Ghana visa application and check your documents, including your yellow fever certificate.",
   "eligibility": [],
   "documents": [
     "Passport",
@@ -15,6 +15,14 @@
     {
       "q": "How long does a Ghana visa take?",
       "a": "It varies. Allow several weeks, and longer around Christmas and festival periods. Express options may be available."
+    },
+    {
+      "q": "Do British citizens need a Ghana visa?",
+      "a": "Yes. British citizens need a visa to visit Ghana, applied for before travel."
+    },
+    {
+      "q": "Do I need a yellow fever certificate for a Ghana visa?",
+      "a": "Yes. Ghana requires a valid yellow fever vaccination certificate for entry, and visa applications usually ask for it."
     }
   ],
   "govuk": "",
@@ -64,5 +72,6 @@
       "heading": "Ghana visa help in Manchester",
       "text": "We're based in Manchester city centre and help travellers and businesses across the North West and the rest of the UK. Most travel visa applications can be handled by post and email, so you don't need to visit us in person."
     }
-  ]
+  ],
+  "focusKeyword": "Ghana visa"
 }

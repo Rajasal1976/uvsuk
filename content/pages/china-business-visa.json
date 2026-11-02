@@ -45,7 +45,7 @@
   ],
   "country": "China",
   "title": "China Business Visa (M Visa) from the UK | Application Help",
-  "description": "China M visa help for UK businesses: invitation letters, trade fairs, supplier visits and longer stays. Visa-free rules for British citizens explained.",
+  "description": "China business visa help for UK businesses: invitation letters, trade fairs, supplier visits, longer stays and visa-free rules for British citizens.",
   "faqs": [
     {
       "q": "Do I need a visa for a short business trip?",
@@ -63,5 +63,6 @@
       "q": "Can I attend the Canton Fair visa-free?",
       "a": "British passport holders can visit for business, including trade fairs, visa-free for up to 30 days until 31 December 2026. Other passport holders usually need an M visa."
     }
-  ]
+  ],
+  "focusKeyword": "China business visa"
 }

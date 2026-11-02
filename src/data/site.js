@@ -28,6 +28,8 @@ export const site = {
   trustpilotCount: s.trustpilotCount || '',
   companyNumber: s.companyNumber,
   bookingUrl: '/contact-us/',
+  // Default image shown when a page is shared on WhatsApp/Facebook (Business details in the admin)
+  shareImage: s.shareImage || '',
   // Passport return options for travel visas, and the single eVisa delivery charge (edited in the admin)
   delivery: s.delivery || [],
   evisaDelivery: s.evisaDelivery || '',

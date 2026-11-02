@@ -1,8 +1,8 @@
 {
-  "title": "UK Visitor Visa Help | Family & Business Visits | Manchester",
-  "description": "UK Standard Visitor visa help: family visits, business trips, sponsor letters and evidence. IAA-regulated advisers in Manchester. ETA advice too.",
-  "h1": "UK Visitor visa",
-  "intro": "The Standard Visitor visa covers tourism, visiting family and friends, and business trips such as meetings and conferences. If you are inviting someone to the UK, we help prepare both their application and your sponsor documents.",
+  "title": "UK Visit Visa Help | Family & Business Visits | Manchester",
+  "description": "UK visit visa help for family visits and business trips: sponsor letters, evidence and cover letters. IAA-regulated advisers in Manchester.",
+  "h1": "UK visit visa",
+  "intro": "The Standard Visitor visa covers tourism, visiting family and friends, and business trips such as meetings and conferences. If you are inviting someone to the UK, we help prepare both their application and your sponsor documents. We prepare your UK visit visa application, or the invitation for the family you’re inviting.",
   "eligibility": [
     "The visitor intends to leave the UK at the end of the visit",
     "They can support themselves, or be supported by their host, during the trip",
@@ -50,8 +50,9 @@
       "text": "A previous refusal must be declared, and the new application should deal with the reasons for refusal directly. We review the refusal letter and help make a stronger application."
     },
     {
-      "heading": "Visitor visa help in Manchester",
+      "heading": "UK visit visa help in Manchester",
       "text": "We're based at 61 Mosley Street in Manchester city centre and help clients across Greater Manchester, including Bury, Bolton, Oldham, Rochdale, Salford and Stockport. We also work with clients anywhere in the UK and overseas by phone, video call and email."
     }
-  ]
+  ],
+  "focusKeyword": "UK visit visa"
 }

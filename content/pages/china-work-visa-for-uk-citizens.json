@@ -23,7 +23,7 @@
       "total": "£382"
     }
   ],
-  "intro": "To work in China you need a Z visa, based on a work permit notice issued by your employer in China. We prepare the application and book your appointment.",
+  "intro": "To work in China you need a Z visa, based on a work permit notice issued by your employer in China. We prepare the application and book your appointment. We guide you through the China work visa process, including the legalisation of your UK documents.",
   "eligibility": [],
   "sections": [
     {
@@ -44,18 +44,27 @@
     }
   ],
   "country": "China",
-  "title": "China Work Visa (Z Visa) from the UK | Application Help | UVS",
+  "title": "China Work Visa (Z Visa) from the UK | Application Help",
   "documents": [
     "Passport",
     "Work permit notice from your employer",
     "Completed application form",
     "Photo"
   ],
-  "description": "China Z visa help for UK residents taking up work in China: work permit notification, documents, legalisation and the visa centre.",
+  "description": "China work visa (Z visa) help for UK residents taking up work in China: work permit notification, documents, legalisation and visa centre appointments.",
   "faqs": [
     {
       "q": "Can I work in China on visa-free entry?",
       "a": "No. Visa-free entry covers tourism, business visits, family visits, exchanges and transit only. Work needs a Z visa and work permit."
+    },
+    {
+      "q": "How long does a China work visa take?",
+      "a": "The work permit stage, handled by your employer in China, usually takes the longest, often several weeks. The Z visa application in the UK is normally quicker once you have the work permit notification."
+    },
+    {
+      "q": "Do I need my degree legalised for a China work visa?",
+      "a": "Usually yes. Your degree certificate and criminal record check normally need an apostille. We arrange this as part of our service."
     }
-  ]
+  ],
+  "focusKeyword": "China work visa"
 }

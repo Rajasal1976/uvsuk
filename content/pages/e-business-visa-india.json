@@ -23,7 +23,7 @@
       "total": "£410"
     }
   ],
-  "intro": "For business meetings, trade fairs and visiting suppliers in India. We prepare your application and check your invitation and business documents.",
+  "intro": "For business meetings, trade fairs and visiting suppliers in India. We prepare your application and check your invitation and business documents. We complete and check your India e-Business visa application, including your business card and invitation letter.",
   "eligibility": [
     "Your nationality is eligible for the Indian eVisa",
     "Your trip is for permitted business activities"
@@ -59,6 +59,11 @@
     {
       "q": "Can I work in India on an e-Business visa?",
       "a": "No. Paid employment in India requires an Employment visa."
+    },
+    {
+      "q": "How long is an India e-Business visa valid?",
+      "a": "It is valid for 1 year from the date it is granted, with multiple entries."
     }
-  ]
+  ],
+  "focusKeyword": "India e-Business visa"
 }

@@ -24,7 +24,7 @@
     }
   ],
   "faqHeading": "Common questions",
-  "intro": "Not sure which China visa you need? Choose the purpose of your trip below and we will show you the right visa and what to prepare. We complete your application and book your appointment at the visa centre.",
+  "intro": "Not sure which China visa you need? Choose the purpose of your trip below and we will show you the right visa and what to prepare. We complete your application and book your appointment at the visa centre. If you need a China visa from the UK, we prepare your application and book your visa centre appointment.",
   "sections": [
     {
       "heading": "China visa-free travel for British citizens",
@@ -39,13 +39,13 @@
       "text": "The main visa types are:\n- L visa: tourism\n- M visa: business and trade\n- Q1 and Q2 visas: visiting family members who are Chinese citizens or permanent residents\n- S1 and S2 visas: visiting family members who are working or studying in China\n- Z visa: work, with a work permit notification\n- X1 and X2 visas: study\n\nChoosing the right type and providing the matching invitation is the key to a smooth application."
     },
     {
-      "heading": "China visa help in Manchester",
+      "heading": "China visa from the UK help in Manchester",
       "text": "We're based in Manchester city centre and help travellers and businesses across the North West and the rest of the UK. Most travel visa applications can be handled by post and email, so you don't need to visit us in person."
     }
   ],
   "country": "China",
-  "title": "China Visa from the UK | Visa-Free Rules & Applications | UVS",
-  "description": "Do you need a China visa? British citizens can visit visa-free until 31 Dec 2026. Visa help for longer trips, work, study and non-British passports.",
+  "title": "China Visa from the UK | Visa-Free Rules & Applications",
+  "description": "Do you need a China visa from the UK? British citizens can visit visa-free until 31 Dec 2026. Help with longer trips, work, study and other passports.",
   "faqs": [
     {
       "q": "Do I need a visa for a short holiday?",
@@ -59,5 +59,6 @@
       "q": "What happens after 31 December 2026?",
       "a": "The visa-free policy is due to end then unless China extends it. If you are travelling in 2027, check with us before you book."
     }
-  ]
+  ],
+  "focusKeyword": "China visa from the UK"
 }

@@ -2,7 +2,7 @@
   "h1": "India e-Student Visa",
   "title": "India e-Student Visa from the UK | Study in India eVisa Help",
   "description": "India e-Student visa help for UK residents studying in India. We prepare your application with your admission letter and proof of funds.",
-  "intro": "The e-Student visa is for studying at a recognised educational institution in India. It was added to India’s eVisa scheme in January 2025, alongside the e-Student Dependent visa for family members.",
+  "intro": "The e-Student visa is for studying at a recognised educational institution in India. It was added to India’s eVisa scheme in January 2025, alongside the e-Student Dependent visa for family members. We prepare your India e-Student visa application with your admission letter and proof of funds.",
   "eligibility": [
     "You have been offered a place on a course at a recognised Indian educational institution",
     "You can show you can pay your course fees and living costs",
@@ -41,6 +41,10 @@
     {
       "q": "Can my family come with me?",
       "a": "Yes. Your spouse and children can apply for e-Student Dependent visas."
+    },
+    {
+      "q": "How long is an India e-Student visa valid?",
+      "a": "It is normally granted for up to one year, with multiple entries. Longer courses may need an extension in India."
     }
   ],
   "sortKey": "1 india 1 india e-student visa",
@@ -66,5 +70,6 @@
       "processingFee": "",
       "total": ""
     }
-  ]
+  ],
+  "focusKeyword": "India e-Student visa"
 }

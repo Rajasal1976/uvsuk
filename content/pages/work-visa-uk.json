@@ -2,11 +2,15 @@
   "title": "UK Work Visas Explained | Manchester Immigration Advisers",
   "description": "UK work visas explained: Skilled Worker, Graduate, Global Talent and more. IAA-regulated help for workers and employers from our Manchester office.",
   "h1": "UK work visas",
-  "intro": "Most people coming to work in the UK use the Skilled Worker visa. We also advise on other work routes, including religious workers, sportspeople, temporary work and the Youth Mobility Scheme. Call us to check which fits.",
+  "intro": "Most people coming to work in the UK use the Skilled Worker visa. We also advise on other work routes, including religious workers, sportspeople, temporary work and the Youth Mobility Scheme. Call us to check which fits. Whichever UK work visa route fits you, we prepare the application with you.",
   "faqs": [
     {
       "q": "Do I need a job offer to work in the UK?",
       "a": "For a Skilled Worker visa, yes, from an employer with a sponsor licence. Some routes, such as the Graduate visa and Global Talent visa, don’t need a job offer."
+    },
+    {
+      "q": "Which work visa is best for me?",
+      "a": "It depends on whether you have a job offer, your qualifications and how long you want to stay. A consultation is the quickest way to find out."
     }
   ],
   "govuk": "https://www.gov.uk/browse/visas-immigration/work-visas",
@@ -30,5 +34,6 @@
       "heading": "Work visa help in Manchester",
       "text": "We're based at 61 Mosley Street in Manchester city centre and help clients across Greater Manchester, including Bury, Bolton, Oldham, Rochdale, Salford and Stockport. We also work with clients anywhere in the UK and overseas by phone, video call and email."
     }
-  ]
+  ],
+  "focusKeyword": "work visa"
 }

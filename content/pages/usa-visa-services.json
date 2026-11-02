@@ -1,8 +1,8 @@
 {
   "title": "USA Visa & ESTA Help from the UK | Manchester Visa Advisers",
-  "description": "ESTA or US visa? Help for UK residents with ESTA applications, DS-160 forms and US Embassy interviews for B1/B2 visitor visas.",
+  "description": "USA visa and ESTA help from the UK: ESTA applications, DS-160 forms and US Embassy interviews for B1/B2 visitor visas. Manchester visa advisers.",
   "h1": "USA visa and ESTA",
-  "intro": "Many British citizens can travel to the USA with an ESTA. Others, and anyone travelling to work or study, need a visa and an interview at the US Embassy in London. We help with both.",
+  "intro": "Many British citizens can travel to the USA with an ESTA. Others, and anyone travelling to work or study, need a visa and an interview at the US Embassy in London. We help with both. Whether you need an ESTA or a USA visa, we prepare your application and check every answer.",
   "eligibility": [],
   "documents": [
     "Passport",
@@ -18,6 +18,10 @@
     {
       "q": "Can I use ESTA if I have a criminal record?",
       "a": "It depends on the offence. Some arrests or convictions mean you must apply for a visa instead. Ask us before you apply, as a wrong answer on ESTA can cause serious problems."
+    },
+    {
+      "q": "How long does a USA visa take?",
+      "a": "It depends on interview waiting times at the US Embassy, which vary. Apply as early as you can before travel."
     }
   ],
   "govuk": "",
@@ -64,8 +68,9 @@
       "text": "If you have any arrest or conviction, even if it is spent under UK law, you may not be able to use ESTA and should not guess. We help you understand which route applies and prepare the right documents."
     },
     {
-      "heading": "US visa help in Manchester",
+      "heading": "USA visa help in Manchester",
       "text": "We're based in Manchester city centre and help travellers and businesses across the North West and the rest of the UK. Most travel visa applications can be handled by post and email, so you don't need to visit us in person."
     }
-  ]
+  ],
+  "focusKeyword": "USA visa"
 }

@@ -2,7 +2,7 @@
   "title": "UK Unmarried Partner Visa | Manchester Immigration Advisers",
   "description": "Unmarried partner visa help for couples who have lived together for 2 years. IAA-regulated advice on cohabitation evidence and the financial requirement.",
   "h1": "Unmarried partner visa",
-  "intro": "If you are in a long-term relationship with a British or settled partner but not married, you can apply as an unmarried partner. The key is proving you have lived together in a relationship like a marriage.",
+  "intro": "If you are in a long-term relationship with a British or settled partner but not married, you can apply as an unmarried partner. The key is proving you have lived together in a relationship like a marriage. We prepare your unmarried partner visa application, including the evidence of living together.",
   "eligibility": [
     "You have lived together in a relationship akin to marriage for the required period",
     "You both intend to live together permanently in the UK",
@@ -21,6 +21,10 @@
     {
       "q": "We have lived together for less than 2 years. What can we do?",
       "a": "You may be able to marry and apply as spouses, or apply for a fiancé(e) visa if you plan to marry in the UK. We can explain the options."
+    },
+    {
+      "q": "How long does an unmarried partner visa take?",
+      "a": "Applications from outside the UK are usually decided within about 12 weeks, and from inside the UK within about 8 weeks."
     }
   ],
   "govuk": "https://www.gov.uk/uk-family-visa",
@@ -44,5 +48,6 @@
       "heading": "Unmarried partner visa help in Manchester",
       "text": "We're based at 61 Mosley Street in Manchester city centre and help clients across Greater Manchester, including Bury, Bolton, Oldham, Rochdale, Salford and Stockport. We also work with clients anywhere in the UK and overseas by phone, video call and email."
     }
-  ]
+  ],
+  "focusKeyword": "unmarried partner visa"
 }

@@ -3,7 +3,7 @@
   "sortKey": "1 india 0 indian visa from the uk",
   "govuk": "https://www.hcilondon.gov.in/",
   "h1": "Indian visa from the UK",
-  "intro": "Most UK residents travelling to India need an eVisa or a regular visa. The official website can be difficult to use, and small mistakes with photos or forms often lead to rejections. We handle the application for you.",
+  "intro": "Most UK residents travelling to India need an eVisa or a regular visa. The official website can be difficult to use, and small mistakes with photos or forms often lead to rejections. We handle the application for you. We handle every type of Indian visa, from eVisas to regular visas.",
   "sections": [
     {
       "heading": "eVisa or regular visa?",
@@ -34,5 +34,6 @@
       "q": "Do I need a visa if I have an OCI card?",
       "a": "No. An OCI card lets you visit India without a visa for as long as you like."
     }
-  ]
+  ],
+  "focusKeyword": "Indian visa"
 }

@@ -1,8 +1,8 @@
 {
-  "title": "Frequently Asked Questions | Unique Visa Services",
-  "description": "Answers to common questions about working with Unique Visa Services: fees, appointments, regulation and timescales.",
-  "h1": "Frequently asked questions",
-  "intro": "",
+  "title": "Visa and Immigration FAQs | Unique Visa Services",
+  "description": "Answers to common visa and immigration FAQs: regulation, fees, timescales, documents and how to start your application with Unique Visa Services.",
+  "h1": "Visa and immigration FAQs",
+  "intro": "These visa and immigration FAQs answer the questions our clients ask most often.",
   "body": [],
   "faqs": [
     {
@@ -36,6 +36,10 @@
     {
       "q": "Do you translate documents?",
       "a": "Documents not in English or Welsh usually need a certified translation. We can arrange this or tell you exactly what is needed."
+    },
+    {
+      "q": "Where can I find visa and immigration FAQs for a specific visa?",
+      "a": "Each visa page on our website has its own FAQs at the bottom, covering the questions clients ask about that visa."
     }
   ],
   "govuk": "",
@@ -47,5 +51,6 @@
       "heading": "About our service",
       "text": "We are regulated by the Immigration Advice Authority (IAA), the body that regulates immigration advisers in the UK. We help with UK visas, settlement and citizenship, sponsor licences for employers, and travel visas from the UK.\n\nOur fee is agreed in writing before we start. Government, embassy and visa centre fees are paid separately, at cost."
     }
-  ]
+  ],
+  "focusKeyword": "visa and immigration FAQs"
 }
