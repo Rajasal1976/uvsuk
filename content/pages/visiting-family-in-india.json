@@ -1,0 +1,68 @@
+{
+  "h1": "Visiting family in India: which visa do you need?",
+  "title": "Visa to Visit Family in India from the UK | e-Tourist Visa",
+  "description": "Visiting relatives in India? Most UK residents use the India e-Tourist visa. OCI holders don’t need a visa. We check which applies to you.",
+  "intro": "India doesn’t have a separate family visit visa. If you are visiting relatives or friends, the e-Tourist visa is usually the right one, and if you hold an OCI card you don’t need a visa at all.",
+  "eligibility": [
+    "You are visiting relatives or friends in India for a short stay",
+    "You hold a passport from a country eligible for India’s eVisa",
+    "You won’t work or study during your visit"
+  ],
+  "documents": [
+    "Passport photo page scan",
+    "Recent passport-style photo with a white background",
+    "Address of the relatives you’ll stay with (optional)"
+  ],
+  "sections": [
+    {
+      "heading": "The e-Tourist visa covers family visits",
+      "text": "Visiting friends and relatives is one of the purposes allowed on India's e-Tourist visa. You choose between a 30-day visa with two entries, or 1-year and 5-year visas with multiple entries. If you visit family regularly, a longer visa saves you applying every time."
+    },
+    {
+      "heading": "OCI card holders",
+      "text": "If you are a former Indian citizen or of Indian origin and hold an Overseas Citizen of India (OCI) card, you can visit India for as long as you like without a visa. If you have recently become British, you need to surrender your Indian passport and get a surrender certificate before applying for OCI. We help with both."
+    },
+    {
+      "heading": "People of Pakistani origin",
+      "text": "If you were born in Pakistan, hold Pakistani nationality, or your parents or grandparents did, you can't use the eVisa. You need to apply for a regular visa through the Indian visa application centre. We prepare these applications too."
+    },
+    {
+      "heading": "Visiting family? We can help",
+      "text": "We're based in Manchester city centre and handle Indian eVisas for clients across the UK, entirely online. We complete your application, check every detail against your passport and keep you updated until your eVisa arrives."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Is there a family visit visa for India?",
+      "a": "No separate one. Visiting relatives is covered by the e-Tourist visa, and OCI card holders don’t need a visa."
+    },
+    {
+      "q": "Which e-Tourist visa should I choose for family visits?",
+      "a": "If you visit once, the 30-day visa is usually enough. If you visit family every year, the 1-year or 5-year visa is better value."
+    }
+  ],
+  "sortKey": "1 india 1 india visiting family",
+  "country": "India",
+  "govuk": "https://www.hcilondon.gov.in/",
+  "applyButton": "/apply/india-visa/",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Application completed and checked, photo and passport scan checked",
+      "processing": "",
+      "fee": "",
+      "popular": true,
+      "processingFee": "",
+      "total": ""
+    },
+    {
+      "service": "Urgent",
+      "included": "Everything in Standard, submitted the same working day",
+      "processing": "",
+      "fee": "",
+      "popular": false,
+      "processingFee": "",
+      "total": ""
+    }
+  ]
+}

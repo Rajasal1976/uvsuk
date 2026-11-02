@@ -1,0 +1,66 @@
+{
+  "h1": "India e-Medical Attendant Visa",
+  "title": "India e-Medical Attendant Visa from the UK | Application Help",
+  "description": "Travelling with a patient for treatment in India? We prepare your e-Medical Attendant visa alongside the patient’s e-Medical visa.",
+  "intro": "The e-Medical Attendant visa is for family members travelling with a patient who holds an India e-Medical visa. Up to two attendants can travel with each patient.",
+  "eligibility": [
+    "You are travelling with a patient who has, or is applying for, an India e-Medical visa",
+    "You are usually a close family member of the patient",
+    "No more than two attendants travel with the same patient",
+    "Your passport is valid for at least 6 months from the date you arrive"
+  ],
+  "documents": [
+    "Passport photo page scan",
+    "Recent passport-style photo with a white background",
+    "Copy of the patient’s e-Medical visa or application",
+    "Letter from the hospital in India"
+  ],
+  "sections": [
+    {
+      "heading": "What the e-Medical Attendant visa allows",
+      "text": "The e-Medical Attendant visa lets you travel to India to support a family member receiving medical treatment. It has the same terms as the patient's e-Medical visa: up to three entries, valid for 60 days from first arrival. It doesn't allow you to work or study in India."
+    },
+    {
+      "heading": "Apply at the same time as the patient",
+      "text": "Your application is linked to the patient's e-Medical visa, so the details must match: the patient's name, the hospital and the treatment dates. The simplest way is to apply for everyone together, and we prepare all the applications as one booking."
+    },
+    {
+      "heading": "India e-Medical Attendant visa help from Manchester",
+      "text": "We're based in Manchester city centre and handle Indian eVisas for clients across the UK, entirely online. We complete your application, check every detail against your passport and keep you updated until your eVisa arrives."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "How many attendants can travel with a patient?",
+      "a": "Up to two attendants per patient, each with their own e-Medical Attendant visa."
+    },
+    {
+      "q": "Can I travel on an e-Tourist visa instead?",
+      "a": "If you are going to India to accompany a patient for treatment, the e-Medical Attendant visa is the right visa. Using the wrong type can cause problems on arrival."
+    }
+  ],
+  "sortKey": "1 india 1 india e-medical attendant visa",
+  "country": "India",
+  "govuk": "https://www.hcilondon.gov.in/",
+  "applyButton": "/apply/india-visa/",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Application completed and checked, photo and passport scan checked",
+      "processing": "",
+      "fee": "",
+      "popular": true,
+      "processingFee": "",
+      "total": ""
+    },
+    {
+      "service": "Urgent",
+      "included": "Everything in Standard, submitted the same working day",
+      "processing": "",
+      "fee": "",
+      "popular": false,
+      "processingFee": "",
+      "total": ""
+    }
+  ]
+}

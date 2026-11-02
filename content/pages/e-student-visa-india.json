@@ -1,0 +1,70 @@
+{
+  "h1": "India e-Student Visa",
+  "title": "India e-Student Visa from the UK | Study in India eVisa Help",
+  "description": "India e-Student visa help for UK residents studying in India. We prepare your application with your admission letter and proof of funds.",
+  "intro": "The e-Student visa is for studying at a recognised educational institution in India. It was added to India’s eVisa scheme in January 2025, alongside the e-Student Dependent visa for family members.",
+  "eligibility": [
+    "You have been offered a place on a course at a recognised Indian educational institution",
+    "You can show you can pay your course fees and living costs",
+    "Your passport is valid for at least 6 months from the date you arrive",
+    "You are eligible for India’s eVisa"
+  ],
+  "documents": [
+    "Passport photo page scan",
+    "Recent passport-style photo with a white background",
+    "Admission letter from the Indian institution",
+    "Proof of funds, such as bank statements or a sponsor letter"
+  ],
+  "sections": [
+    {
+      "heading": "What the e-Student visa allows",
+      "text": "The e-Student visa lets you study in India on a course at a recognised institution. It is normally granted for up to one year, with multiple entries, so you can travel home during holidays. Longer courses may need the visa extending in India."
+    },
+    {
+      "heading": "Bringing family: the e-Student Dependent visa",
+      "text": "Your spouse or children can apply for an e-Student Dependent visa to live with you in India during your course. They need a copy of your e-Student visa and proof of their relationship to you, such as a marriage or birth certificate."
+    },
+    {
+      "heading": "Documents that make the difference",
+      "text": "Your admission letter must come from a recognised institution and match the course and dates in your application. Proof of funds should clearly show you can cover your fees and living costs. We check both before submitting."
+    },
+    {
+      "heading": "India e-Student visa help from Manchester",
+      "text": "We're based in Manchester city centre and handle Indian eVisas for clients across the UK, entirely online. We complete your application, check every detail against your passport and keep you updated until your eVisa arrives."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "When was the India e-Student visa introduced?",
+      "a": "India added the e-Student visa and the e-Student Dependent visa to its eVisa scheme in January 2025."
+    },
+    {
+      "q": "Can my family come with me?",
+      "a": "Yes. Your spouse and children can apply for e-Student Dependent visas."
+    }
+  ],
+  "sortKey": "1 india 1 india e-student visa",
+  "country": "India",
+  "govuk": "https://www.hcilondon.gov.in/",
+  "applyButton": "/apply/india-visa/",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Application completed and checked, photo and passport scan checked",
+      "processing": "",
+      "fee": "",
+      "popular": true,
+      "processingFee": "",
+      "total": ""
+    },
+    {
+      "service": "Urgent",
+      "included": "Everything in Standard, submitted the same working day",
+      "processing": "",
+      "fee": "",
+      "popular": false,
+      "processingFee": "",
+      "total": ""
+    }
+  ]
+}

@@ -160,7 +160,12 @@ export const structure = [
     "children": [
       "e-tourist-visa-india",
       "e-business-visa-india",
-      "employment-visa-india"
+      "employment-visa-india",
+      "e-medical-visa-india",
+      "e-medical-attendant-visa-india",
+      "e-student-visa-india",
+      "e-transit-visa-india",
+      "visiting-family-in-india"
     ]
   },
   {
@@ -180,6 +185,36 @@ export const structure = [
     "type": "service",
     "group": "worldwide",
     "visa": "travel"
+  },
+  {
+    "slug": "e-medical-visa-india",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "evisa"
+  },
+  {
+    "slug": "e-medical-attendant-visa-india",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "evisa"
+  },
+  {
+    "slug": "e-student-visa-india",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "evisa"
+  },
+  {
+    "slug": "e-transit-visa-india",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "evisa"
+  },
+  {
+    "slug": "visiting-family-in-india",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "evisa"
   },
   {
     "slug": "china-visa-application",

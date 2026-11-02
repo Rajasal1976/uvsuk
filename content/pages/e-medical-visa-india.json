@@ -1,0 +1,73 @@
+{
+  "h1": "India e-Medical Visa",
+  "title": "India e-Medical Visa from the UK | Medical eVisa Help | UVS",
+  "description": "India e-Medical visa help for UK residents travelling for treatment. We prepare your application and check the hospital letter before you apply.",
+  "intro": "The e-Medical visa is for travelling to India for medical treatment at a recognised hospital. Up to two family members can travel with you on e-Medical Attendant visas.",
+  "eligibility": [
+    "You are travelling to India for medical treatment at a recognised hospital or treatment centre",
+    "You have a letter from the hospital confirming your treatment",
+    "Your passport is valid for at least 6 months from the date you arrive",
+    "You are eligible for India’s eVisa (people of Pakistani origin must apply for a regular visa)"
+  ],
+  "documents": [
+    "Passport photo page scan",
+    "Recent passport-style photo with a white background",
+    "Letter from the hospital in India, on its letterhead, confirming your treatment"
+  ],
+  "sections": [
+    {
+      "heading": "What the e-Medical visa allows",
+      "text": "The e-Medical visa lets you travel to India for medical treatment, including treatment under Indian systems of medicine at recognised centres. It allows up to three entries and is valid for 60 days from your first arrival, which helps if you need to return for follow-up treatment."
+    },
+    {
+      "heading": "The hospital letter",
+      "text": "The most important document is the letter from the hospital in India. It should be on the hospital's letterhead and confirm your name, the treatment you will receive and the expected dates. Make sure the name matches your passport exactly. We check the letter before applying."
+    },
+    {
+      "heading": "Travelling with family members",
+      "text": "Up to two people can travel with you as attendants, usually close family members. Each needs their own e-Medical Attendant visa, applied for alongside yours. We prepare all the applications together so the details match."
+    },
+    {
+      "heading": "When to apply",
+      "text": "Apply at least 4 days before you travel, and no more than 120 days before your planned arrival. If your treatment is urgent, tell us and we'll submit your application the same working day."
+    },
+    {
+      "heading": "India e-Medical visa help from Manchester",
+      "text": "We're based in Manchester city centre and handle Indian eVisas for clients across the UK, entirely online. We complete your application, check every detail against your passport and keep you updated until your eVisa arrives."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "How long can I stay on an India e-Medical visa?",
+      "a": "It is valid for 60 days from your first arrival and allows up to three entries."
+    },
+    {
+      "q": "Can my family come with me?",
+      "a": "Yes. Up to two attendants can travel with you, each on their own e-Medical Attendant visa."
+    }
+  ],
+  "sortKey": "1 india 1 india e-medical visa",
+  "country": "India",
+  "govuk": "https://www.hcilondon.gov.in/",
+  "applyButton": "/apply/india-visa/",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Application completed and checked, photo and passport scan checked",
+      "processing": "",
+      "fee": "",
+      "popular": true,
+      "processingFee": "",
+      "total": ""
+    },
+    {
+      "service": "Urgent",
+      "included": "Everything in Standard, submitted the same working day",
+      "processing": "",
+      "fee": "",
+      "popular": false,
+      "processingFee": "",
+      "total": ""
+    }
+  ]
+}
