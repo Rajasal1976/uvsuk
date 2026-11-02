@@ -1,0 +1,69 @@
+{
+  "h1": "Transfer an India eVisa to a New Passport",
+  "title": "Transfer India eVisa to New Passport | ETA Transfer Help UK",
+  "description": "Got a new passport but a valid India eVisa? Find out if you need to transfer it, and we’ll handle the transfer if your old passport is lost or kept.",
+  "intro": "If you’ve got a new passport while your India eVisa is still valid, you may not need to do anything. If your old passport has been lost, stolen or not returned, India’s new transfer service can move your eVisa onto your new passport.",
+  "eligibility": [
+    "You hold a valid India eVisa or ETA",
+    "You have a new passport, from the same country, issued after your eVisa",
+    "Your old passport has been lost, stolen or not returned to you",
+    "Nothing else about your eVisa needs to change"
+  ],
+  "documents": [
+    "Scan of your new passport photo page",
+    "Recent passport-style photo with a white background",
+    "Your current eVisa / ETA, or its reference number",
+    "Details of your old passport (number and expiry)"
+  ],
+  "sections": [
+    {
+      "heading": "Do you need to transfer your eVisa?",
+      "text": "Usually not, if you still have your old passport. India allows you to enter on your new passport even when your eVisa was issued on the old one, as long as you carry the old passport with you as well. Keep both passports together whenever you travel to India.\n\nYou need the transfer if you no longer have the old passport, for example because it was lost or stolen, or because the passport office didn't return it when you renewed."
+    },
+    {
+      "heading": "India’s new transfer service",
+      "text": "India added a \"Transfer of eVisa/ETA on New Passport\" service to its official eVisa portal in September 2026. You give the details of your current eVisa and old passport, choose the reason for the transfer (lost, stolen or not returned), and add the details and a copy of your new passport and a new photo.\n\nThe service only changes your passport details. If anything else needs to change, such as your name or the type of visa, you need a new eVisa application."
+    },
+    {
+      "heading": "Which eVisas can be transferred?",
+      "text": "Early users report that only longer eVisas, the 1-year and 5-year e-Tourist and e-Business visas, can currently be transferred, and that 30-day eVisas can't. India hasn't yet published official eligibility rules, fees or processing times for the service, so we confirm the position for your eVisa before you rely on it.\n\nIf your eVisa can't be transferred, we can apply for a new one on your new passport."
+    },
+    {
+      "heading": "Apply in good time",
+      "text": "Don't leave the transfer until just before you fly. Processing times haven't been published, so submit the request as early as you can. If you're travelling soon and the transfer hasn't come through, a new eVisa may be the safer option, and we'll advise you."
+    },
+    {
+      "heading": "India eVisa transfer help from Manchester",
+      "text": "We're based in Manchester city centre and handle Indian eVisas for clients across the UK, entirely online. We check whether you need a transfer at all, submit it if you do, and keep you updated."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "I renewed my passport but still have the old one. Do I need to transfer my India eVisa?",
+      "a": "No. You can travel on your new passport as long as you also carry the old passport your eVisa was issued on."
+    },
+    {
+      "q": "Can I transfer a 30-day India eVisa?",
+      "a": "Early reports suggest not: the transfer service appears to accept only 1-year and 5-year eVisas. If yours can’t be transferred, we can apply for a new eVisa on your new passport."
+    },
+    {
+      "q": "How long does an eVisa transfer take?",
+      "a": "India hasn’t published processing times yet. Apply as early as possible before you travel."
+    }
+  ],
+  "country": "India",
+  "govuk": "https://indianvisaonline.gov.in/evisa/",
+  "applyButton": "/apply/india-evisa-transfer/",
+  "sortKey": "1 india 1 india evisa transfer",
+  "prices": [
+    {
+      "service": "eVisa transfer",
+      "included": "We check whether you need a transfer, then complete and submit it",
+      "processing": "",
+      "fee": "",
+      "popular": true,
+      "processingFee": "",
+      "total": ""
+    }
+  ]
+}

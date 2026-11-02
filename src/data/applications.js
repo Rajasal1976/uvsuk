@@ -881,7 +881,50 @@ const secondPassport = {
   ],
 };
 
-export const applications = [china, india, sriLanka, schengen, usa, saudi, ghana, russia, indiaRegular, evisa, legalisation, indianPassport, secondPassport];
+// ---------- India eVisa transfer to a new passport ----------
+const indiaTransfer = {
+  slug: 'india-evisa-transfer',
+  title: 'Transfer your India eVisa to a new passport',
+  country: 'India',
+  code: 'IT',
+  pageUrl: '/transfer-india-evisa-new-passport/',
+  description: 'Move your valid India eVisa onto your new passport. Upload your new passport and tell us about your current eVisa. We’ll check whether you need a transfer at all.',
+  minutes: 4,
+  notice: 'If you still have your old passport, you usually don’t need a transfer: you can travel on your new passport as long as you carry the old one too.',
+  steps: [
+    { ...passportStep([], passportScanFields), title: 'Your new passport', intro: 'Upload a photo of your NEW passport photo page and we’ll fill in your details. Your passport is read on your own device.' },
+    {
+      id: 'current-evisa',
+      title: 'Your current eVisa',
+      fields: [
+        { name: 'visaType', label: 'Which eVisa do you have?', type: 'select', required: true, options: ['e-Tourist visa (1 year)', 'e-Tourist visa (5 years)', 'e-Business visa (1 year)', 'e-Tourist visa (30 days)', 'Other eVisa', 'Not sure'] },
+        { name: 'etaNumber', label: 'eVisa / ETA reference number', type: 'text', hint: 'On your eVisa approval email. Leave blank if you can’t find it.' },
+        { name: 'evisaExpiry', label: 'When does your eVisa expire?', type: 'date', half: true },
+        { name: 'oldPassportNumber', label: 'Old passport number', type: 'text', required: true, half: true },
+        { name: 'reason', label: 'Why don’t you have your old passport?', type: 'radio', required: true, options: ['It was lost', 'It was stolen', 'It wasn’t returned to me', 'I still have it'] },
+        { name: 'travelDate', label: 'When are you next travelling to India?', type: 'date', half: true },
+      ],
+    },
+    { ...contactStep(), fields: contactStep().fields.filter((f) => !['ukStatus', 'ukStatusExpiry'].includes(f.name)) },
+  ],
+  docsIntro: {
+    'e-Tourist visa (1 year)': 'Add a photo and your current eVisa. We’ll submit the transfer on India’s eVisa portal.',
+    'e-Tourist visa (5 years)': 'Add a photo and your current eVisa. We’ll submit the transfer on India’s eVisa portal.',
+    'e-Business visa (1 year)': 'Add a photo and your current eVisa. We’ll submit the transfer on India’s eVisa portal.',
+    'e-Tourist visa (30 days)': '30-day eVisas don’t currently appear to be transferable. Add your documents and we’ll check, or apply for a new eVisa for you.',
+    'Other eVisa': 'Add your documents and we’ll check whether your eVisa can be transferred.',
+    'Not sure': 'Add your current eVisa if you have it, and we’ll work out which type it is.',
+  },
+  uploads: [
+    { name: 'photo', label: 'Passport-style photo', hint: 'Square colour photo, plain white background.', required: true },
+    { name: 'doc1', label: 'Your current eVisa / ETA approval', hint: 'The email or PDF you received when it was granted.' },
+    { name: 'doc2', label: 'Copy of your old passport (if you have one)' },
+    { name: 'doc3', label: 'Police report (if your passport was stolen)', showIf: { name: 'reason', is: 'It was stolen' } },
+    { name: 'doc8', label: 'Any other supporting document (optional)' },
+  ],
+};
+
+export const applications = [china, india, indiaTransfer, sriLanka, schengen, usa, saudi, ghana, russia, indiaRegular, evisa, legalisation, indianPassport, secondPassport];
 export const applicationBySlug = Object.fromEntries(applications.map((a) => [a.slug, a]));
 export const declaration = declarationNote;
 export const FILE_SLOTS = ['passport', 'photo', 'doc1', 'doc2', 'doc3', 'doc4', 'doc5', 'doc6', 'doc7', 'doc8'];

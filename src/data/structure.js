@@ -165,7 +165,8 @@ export const structure = [
       "e-medical-attendant-visa-india",
       "e-student-visa-india",
       "e-transit-visa-india",
-      "visiting-family-in-india"
+      "visiting-family-in-india",
+      "transfer-india-evisa-new-passport"
     ]
   },
   {
@@ -212,6 +213,12 @@ export const structure = [
   },
   {
     "slug": "visiting-family-in-india",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "evisa"
+  },
+  {
+    "slug": "transfer-india-evisa-new-passport",
     "type": "service",
     "group": "worldwide",
     "visa": "evisa"
