@@ -1,22 +1,9 @@
 {
-  "title": "Indian Visa from the UK | eVisa & Regular Visa Help | UVS",
-  "description": "Indian visa help for UK residents: e-Tourist, e-Business and regular visas. We check your form, photo and documents so you travel on time.",
+  "applyButton": "/apply/india-visa/",
+  "sortKey": "1 india 0 indian visa from the uk",
+  "govuk": "https://www.hcilondon.gov.in/",
   "h1": "Indian visa from the UK",
   "intro": "Most UK residents travelling to India need an eVisa or a regular visa. The official website can be difficult to use, and small mistakes with photos or forms often lead to rejections. We handle the application for you.",
-  "faqs": [
-    {
-      "q": "How long does an Indian eVisa take?",
-      "a": "Most eVisas are processed within a few working days, but apply at least 4 days before you travel, and earlier in busy periods."
-    },
-    {
-      "q": "Do I need a visa if I have an OCI card?",
-      "a": "No. An OCI card lets you visit India without a visa for as long as you like."
-    }
-  ],
-  "govuk": "",
-  "applyButton": "/apply/india-visa/",
-  "country": "India",
-  "sortKey": "1 india 0 indian visa from the uk",
   "sections": [
     {
       "heading": "eVisa or regular visa?",
@@ -33,6 +20,19 @@
     {
       "heading": "Indian visa help in Manchester",
       "text": "We're based in Manchester city centre and help travellers and businesses across the North West and the rest of the UK. Most travel visa applications can be handled by post and email, so you don't need to visit us in person."
+    }
+  ],
+  "country": "India",
+  "title": "Indian Visa from the UK | eVisa & Regular Visa Help | UVS",
+  "description": "Indian visa help for UK residents: e-Tourist, e-Business and regular visas. We check your form, photo and documents so you travel on time.",
+  "faqs": [
+    {
+      "q": "How long does an Indian eVisa take?",
+      "a": "Most eVisas are processed within a few working days, but apply at least 4 days before you travel, and earlier in busy periods."
+    },
+    {
+      "q": "Do I need a visa if I have an OCI card?",
+      "a": "No. An OCI card lets you visit India without a visa for as long as you like."
     }
   ]
 }
