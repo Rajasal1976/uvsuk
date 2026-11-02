@@ -23,6 +23,7 @@ export const structure = [
     "children": [
       "uk-spouse-visa-application",
       "uk-spouse-visa-extension",
+      "civil-partner-visa",
       "fiance-visa-application",
       "unmarried-partner-visa"
     ]
@@ -38,6 +39,15 @@ export const structure = [
   },
   {
     "slug": "uk-spouse-visa-extension",
+    "type": "service",
+    "group": "uk",
+    "related": [
+      "uk-spouse-visa-application",
+      "indefinite-leave-to-remain-ilr"
+    ]
+  },
+  {
+    "slug": "civil-partner-visa",
     "type": "service",
     "group": "uk",
     "related": [

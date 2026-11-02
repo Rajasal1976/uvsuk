@@ -7,6 +7,7 @@ export const menu = [
     href: '/uk-visa-services/',
     items: [
       ['Spouse & Partner Visas', '/uk-spouse-visas/'],
+      ['Civil Partner Visa', '/civil-partner-visa/'],
       ['Skilled Worker Visa', '/skilled-worker-visa-formally-tier-t2-general/'],
       ['Student Visa', '/student-visa-uk/'],
       ['Graduate Visa', '/post-study-work-visa/'],

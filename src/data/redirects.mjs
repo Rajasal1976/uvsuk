@@ -2,7 +2,6 @@
 // Two pages from the plan are NOT here yet: /family-visa-uk/ and /japan-visa-services/.
 // Check their traffic first, then add them if you decide to merge them.
 export const redirects = [
-  ['/civil-partner-visa/', '/uk-spouse-visas/'],
   ['/tier-2-work-visa-extension/', '/skilled-worker-visa-formally-tier-t2-general/'],
   ['/change-of-employment/', '/skilled-worker-visa-formally-tier-t2-general/'],
   ['/tier-2-minister-of-religion-visa/', '/work-visa-uk/'],
