@@ -1,52 +1,39 @@
 {
-  "title": "India Employment Visa from the UK | Application Help | UVS",
-  "description": "India Employment visa help for UK residents taking up work in India. We prepare your application, employer documents and visa centre appointment.",
-  "h1": "India Employment Visa",
-  "intro": "If you are taking up a job with a company in India, you need an Employment Visa rather than a business visa. We prepare the application and supporting documents.",
-  "eligibility": [],
-  "documents": [
-    "Passport",
-    "Photo meeting the Indian specifications",
-    "Employment contract",
-    "Company registration documents from the Indian employer",
-    "CV and qualifications"
-  ],
-  "faqs": [
-    {
-      "q": "Can I apply for an India Employment visa online?",
-      "a": "No. It isn’t available as an eVisa. You apply through the Indian visa application centre, and we can prepare your forms and documents."
-    }
-  ],
-  "govuk": "",
   "applyButton": "/apply/india-regular-visa/",
+  "sortKey": "1 india 1 india employment visa",
+  "govuk": "",
+  "h1": "India Employment Visa",
   "prices": [
     {
-      "service": "Standard",
+      "service": "Multiple Entry 6 Months",
       "included": "Form completion, document check and submission",
-      "processing": "",
-      "fee": "",
+      "processing": "2-3 Weeks",
+      "fee": "£250",
       "popular": false,
-      "processingFee": ""
+      "processingFee": "£344.80",
+      "total": "£594.80"
     },
     {
-      "service": "Express",
-      "included": "Everything in Standard, with faster processing",
-      "processing": "",
-      "fee": "",
+      "service": "Multiple Entry 12 Months",
+      "included": "Everything in 6 Months.",
+      "processing": "2-3 Weeks",
+      "fee": "£250",
       "popular": true,
-      "processingFee": ""
+      "processingFee": "£424.49",
+      "total": "£674.49"
     },
     {
-      "service": "Urgent",
-      "included": "Everything in Standard, with the fastest processing available",
-      "processing": "",
-      "fee": "",
+      "service": "More Than 12 Months",
+      "included": "Everything in 6 Months.",
+      "processing": "2-3 Weeks",
+      "fee": "£250",
       "popular": false,
-      "processingFee": ""
+      "processingFee": "£437.80",
+      "total": "£687.80"
     }
   ],
-  "country": "India",
-  "sortKey": "1 india 1 india employment visa",
+  "intro": "If you are taking up a job with a company in India, you need an Employment Visa rather than a business visa. We prepare the application and supporting documents.",
+  "eligibility": [],
   "sections": [
     {
       "heading": "Who needs an India Employment visa?",
@@ -63,6 +50,22 @@
     {
       "heading": "Employment visa help from Manchester",
       "text": "We're based in Manchester city centre and help travellers and businesses across the North West and the rest of the UK. Most travel visa applications can be handled by post and email, so you don't need to visit us in person."
+    }
+  ],
+  "country": "India",
+  "title": "India Employment Visa from the UK | Application Help | UVS",
+  "documents": [
+    "Passport",
+    "Photo meeting the Indian specifications",
+    "Employment contract",
+    "Company registration documents from the Indian employer",
+    "CV and qualifications"
+  ],
+  "description": "India Employment visa help for UK residents taking up work in India. We prepare your application, employer documents and visa centre appointment.",
+  "faqs": [
+    {
+      "q": "Can I apply for an India Employment visa online?",
+      "a": "No. It isn’t available as an eVisa. You apply through the Indian visa application centre, and we can prepare your forms and documents."
     }
   ]
 }
