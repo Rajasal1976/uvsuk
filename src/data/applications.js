@@ -1,3 +1,4 @@
+import { evisaContinents } from './evisas.js';
 // Online application forms. Each form is a list of steps; each step a list of questions.
 // The questions follow what the official application asks, so we can transfer the answers.
 // CHECK these against the current official forms from time to time, as embassies change them.
@@ -395,7 +396,483 @@ const sriLanka = {
   ],
 };
 
-export const applications = [china, india, sriLanka];
+
+// ======================================================================
+// More travel forms. Kept short in the same style: a few key questions,
+// then the documents for the visa chosen. Our team reads the remaining
+// details from the uploaded documents.
+// ======================================================================
+
+const stay = (extra = []) => [
+  { name: 'arrivalDate', label: 'Date you plan to arrive', type: 'date', required: true, half: true },
+  { name: 'departureDate', label: 'Date you plan to leave', type: 'date', required: true, half: true },
+  ...extra,
+];
+const work = {
+  id: 'work',
+  title: 'Your work',
+  fields: [
+    { name: 'occupation', label: 'What do you currently do?', type: 'select', required: true, options: ['Employed', 'Self-employed / business owner', 'Student', 'Retired', 'Not working'] },
+    { name: 'employer', label: 'Employer or business name', type: 'text', required: true, half: true, showIf: { name: 'occupation', is: ['Employed', 'Self-employed / business owner'] } },
+    { name: 'jobTitle', label: 'Job title', type: 'text', required: true, half: true, showIf: { name: 'occupation', is: ['Employed', 'Self-employed / business owner'] } },
+  ],
+};
+const ukStatusDoc = (name) => ({ name, label: 'Your UK residence permit, BRP or eVisa share code page', hint: 'Because you’re not a British citizen.', required: true, showIf: { name: 'nationality', isNot: 'United Kingdom' } });
+const other = { name: 'doc8', label: 'Any other supporting document (optional)' };
+const bankDocs = (name, req = true) => ({ name, label: 'Bank statements for the last 3 months', hint: 'Showing your name and address. PDFs from online banking are fine.', required: req });
+
+// ---------- Schengen ----------
+const schengenCountries = ['Austria', 'Belgium', 'Bulgaria', 'Croatia', 'Czech Republic', 'Denmark', 'Estonia', 'Finland', 'France', 'Germany', 'Greece', 'Hungary', 'Iceland', 'Italy', 'Latvia', 'Liechtenstein', 'Lithuania', 'Luxembourg', 'Malta', 'Netherlands', 'Norway', 'Poland', 'Portugal', 'Romania', 'Slovakia', 'Slovenia', 'Spain', 'Sweden', 'Switzerland'];
+const schengen = {
+  slug: 'schengen-visa',
+  title: 'Schengen visa application',
+  country: 'Schengen area',
+  code: 'SC',
+  pageUrl: '/schengen-visa-application/',
+  description: 'Apply for your Schengen visa online. Upload your passport, tell us about your trip and add your documents. We prepare everything for your visa centre appointment.',
+  minutes: 10,
+  notice: 'British citizens don’t need a Schengen visa for visits of up to 90 days. This form is for UK residents travelling on other passports.',
+  steps: [
+    passportStep([], passportScanFields),
+    {
+      id: 'trip',
+      title: 'Your trip',
+      fields: [
+        { name: 'visaType', label: 'Main purpose of your trip', type: 'select', required: true, options: ['Tourism', 'Visiting family or friends', 'Business', 'Other'] },
+        { name: 'mainCountry', label: 'Country where you’ll spend the most time', type: 'select', required: true, options: schengenCountries, hint: 'You apply to this country’s visa centre.' },
+        { name: 'otherCountries', label: 'Other Schengen countries you’ll visit (optional)', type: 'text' },
+        ...stay(),
+        { name: 'purposeOther', label: 'Please describe the purpose', type: 'text', required: true, showIf: { name: 'visaType', is: 'Other' } },
+        yesNo('previousSchengen', 'Have you had a Schengen visa in the last 5 years?'),
+      ],
+    },
+    work,
+    contactStep(),
+  ],
+  docsIntro: {
+    Tourism: 'For a tourist visa you’ll need your flights, hotel bookings, travel insurance and proof of funds.',
+    'Visiting family or friends': 'For a family visit you’ll need an invitation from your host with a copy of their ID or residence permit, plus your flights, insurance and proof of funds.',
+    Business: 'For a business visa you’ll need an invitation from the company you’re visiting and a letter from your employer.',
+    Other: 'Add the documents that explain your trip. We’ll tell you if anything else is needed.',
+  },
+  uploads: [
+    { name: 'photo', label: 'Passport-style photo', hint: 'Recent colour photo, light background, 35 × 45 mm.', required: true },
+    ukStatusDoc('doc1'),
+    bankDocs('doc2'),
+    { name: 'doc3', label: 'Payslips for the last 3 months and an employer letter', hint: 'The letter should confirm your job, salary and approved holiday.', required: true, showIf: { name: 'occupation', is: 'Employed' } },
+    { name: 'doc4', label: 'Return flight booking', hint: 'A reservation is fine; you don’t need to have paid yet.', required: true },
+    ...byVisa('doc5', {
+      Tourism: { label: 'Hotel bookings for your whole stay', required: true },
+      'Visiting family or friends': { label: 'Invitation letter and a copy of your host’s ID or residence permit', required: true },
+      Business: { label: 'Invitation letter from the company you’re visiting', required: true },
+      Other: { label: 'Accommodation booking or invitation', required: true },
+    }),
+    { name: 'doc6', label: 'Travel medical insurance', hint: 'At least €30,000 of cover for your whole trip. We can tell you where to get it if you don’t have it yet.' },
+    { name: 'doc7', label: 'Previous Schengen visas (optional)', showIf: { name: 'previousSchengen', is: 'Yes' } },
+    other,
+  ],
+};
+
+// ---------- USA ----------
+const usa = {
+  slug: 'usa-visa',
+  title: 'USA ESTA or visa application',
+  country: 'USA',
+  code: 'US',
+  pageUrl: '/usa-visa-services/',
+  description: 'Apply for your US ESTA or visitor visa. Upload your passport, answer a few questions, and we’ll prepare your ESTA or DS-160 form.',
+  minutes: 8,
+  steps: [
+    passportStep([], passportScanFields),
+    {
+      id: 'trip',
+      title: 'Your trip',
+      fields: [
+        { name: 'visaType', label: 'What do you need?', type: 'radio', required: true, options: ['ESTA', 'Visitor visa (B1/B2)', 'Not sure'], hint: 'Most British citizens use an ESTA. We’ll confirm the right one.' },
+        { name: 'purpose', label: 'Purpose of your trip', type: 'select', required: true, options: ['Tourism', 'Visiting family or friends', 'Business', 'Transit', 'Other'] },
+        ...stay([{ name: 'usAddress', label: 'Where you’ll stay in the USA', type: 'textarea', required: true }]),
+        yesNo('restrictedTravel', 'Have you been to Iran, Iraq, Syria, Sudan, Libya, Somalia, Yemen, North Korea or Cuba since 2011?', { hint: 'This can affect whether you can use an ESTA.' }),
+        details('restrictedTravelDetails', 'restrictedTravel', 'Which countries, when and why'),
+        yesNo('arrests', 'Have you ever been arrested, cautioned or convicted, even if it is now spent?'),
+        details('arrestsDetails', 'arrests', 'Please give details. We treat this in confidence.'),
+        yesNo('refusedUS', 'Have you ever been refused an ESTA, a US visa or entry to the USA?'),
+        details('refusedUSDetails', 'refusedUS'),
+      ],
+    },
+    work,
+    contactStep(),
+  ],
+  docsIntro: {
+    ESTA: 'For an ESTA you only need your passport. We’ll check your answers before submitting.',
+    'Visitor visa (B1/B2)': 'For a visitor visa you’ll need a photo and documents showing your ties to the UK. You’ll also attend an interview at the US Embassy.',
+    'Not sure': 'Add your passport and anything you think is relevant. We’ll tell you which you need.',
+  },
+  uploads: [
+    { name: 'photo', label: 'Digital photo', hint: 'Square, white background, taken in the last 6 months, no glasses.', required: true, showIf: { name: 'visaType', is: ['Visitor visa (B1/B2)', 'Not sure'] } },
+    ukStatusDoc('doc1'),
+    { name: 'doc2', label: 'Letter from your employer or proof of your business', showIf: { name: 'visaType', is: ['Visitor visa (B1/B2)', 'Not sure'] } },
+    { ...bankDocs('doc3', false), showIf: { name: 'visaType', is: ['Visitor visa (B1/B2)', 'Not sure'] } },
+    { name: 'doc4', label: 'Previous US visas (optional)' },
+    { name: 'doc5', label: 'Court or police documents', hint: 'Only if you answered Yes about arrests or convictions.', showIf: { name: 'arrests', is: 'Yes' } },
+    other,
+  ],
+};
+
+// ---------- Saudi Arabia ----------
+const saudi = {
+  slug: 'saudi-visa',
+  title: 'Saudi Arabia visa application',
+  country: 'Saudi Arabia',
+  code: 'SA',
+  pageUrl: '/saudi-arabia-visa-uk/',
+  description: 'Apply for your Saudi tourist eVisa, Umrah, business or work visa. Upload your passport and documents and we’ll handle the rest.',
+  minutes: 8,
+  steps: [
+    passportStep([], passportScanFields),
+    {
+      id: 'trip',
+      title: 'Your trip',
+      fields: [
+        { name: 'visaType', label: 'Which visa do you need?', type: 'select', required: true, options: ['Tourist eVisa', 'Umrah (tourist eVisa)', 'Business visit', 'Family visit', 'Work visa'] },
+        ...stay(),
+        { name: 'employerSaudi', label: 'Name of your employer in Saudi Arabia', type: 'text', required: true, showIf: { name: 'visaType', is: 'Work visa' } },
+        { name: 'hostSaudi', label: 'Name of the company or person you’re visiting', type: 'text', required: true, showIf: { name: 'visaType', is: ['Business visit', 'Family visit'] } },
+        { name: 'religion', label: 'Religion', type: 'select', options: ['Islam', 'Christian', 'Hindu', 'Sikh', 'Other', 'Prefer not to say'], required: true, showIf: { name: 'visaType', is: 'Umrah (tourist eVisa)' }, hint: 'The Saudi form asks this for Umrah applicants.' },
+      ],
+    },
+    contactStep(),
+  ],
+  docsIntro: {
+    'Tourist eVisa': 'For a tourist eVisa you usually only need your passport and photo.',
+    'Umrah (tourist eVisa)': 'Umrah is allowed on the tourist eVisa outside the Hajj season. You usually only need your passport and photo.',
+    'Business visit': 'For a business visit you’ll need an invitation from the Saudi company and a letter from your employer.',
+    'Family visit': 'For a family visit you’ll need an invitation from your relative in Saudi Arabia and proof of your relationship.',
+    'Work visa': 'For a work visa you’ll need your visa authorisation from your employer, attested degree certificate, police certificate and medical report. We can arrange the attestation.',
+  },
+  uploads: [
+    { name: 'photo', label: 'Passport-style photo', hint: 'Colour photo, white background.', required: true },
+    ukStatusDoc('doc1'),
+    ...byVisa('doc2', {
+      'Business visit': { label: 'Invitation letter from the Saudi company', required: true },
+      'Family visit': { label: 'Invitation from your relative and a copy of their Saudi ID (Iqama)', required: true },
+      'Work visa': { label: 'Visa authorisation (wakala) or employment contract from your employer', required: true },
+    }),
+    ...byVisa('doc3', {
+      'Business visit': { label: 'Letter from your UK employer' },
+      'Family visit': { label: 'Proof of relationship, e.g. birth or marriage certificate', required: true },
+      'Work visa': { label: 'Degree certificate', hint: 'We arrange the apostille and attestation if needed.', required: true },
+    }),
+    ...byVisa('doc4', { 'Work visa': { label: 'Police certificate (ACRO or DBS)', required: true } }),
+    ...byVisa('doc5', { 'Work visa': { label: 'Medical report (if you already have it)' } }),
+    other,
+  ],
+};
+
+// ---------- Ghana ----------
+const ghana = {
+  slug: 'ghana-visa',
+  title: 'Ghana visa application',
+  country: 'Ghana',
+  code: 'GH',
+  pageUrl: '/ghana-visa-services/',
+  description: 'Apply for your Ghana tourist or business visa. Upload your passport and documents, including your yellow fever certificate.',
+  minutes: 8,
+  steps: [
+    passportStep([], passportScanFields),
+    {
+      id: 'trip',
+      title: 'Your trip',
+      fields: [
+        { name: 'visaType', label: 'Purpose of your trip', type: 'radio', required: true, options: ['Tourism', 'Visiting family or friends', 'Business'] },
+        { name: 'entries', label: 'Number of entries', type: 'radio', required: true, options: ['Single entry', 'Multiple entries'] },
+        ...stay([{ name: 'ghanaAddress', label: 'Address in Ghana (hotel or host)', type: 'textarea', required: true }]),
+        yesNo('visitedGhana', 'Have you been to Ghana before?'),
+      ],
+    },
+    work,
+    contactStep(),
+  ],
+  docsIntro: {
+    Tourism: 'For a tourist visa you’ll need your flights, hotel booking and yellow fever certificate.',
+    'Visiting family or friends': 'You’ll need an invitation from your host with a copy of their ID, your flights and yellow fever certificate.',
+    Business: 'You’ll need an invitation from the Ghanaian company, a letter from your employer and your yellow fever certificate.',
+  },
+  uploads: [
+    { name: 'photo', label: 'Passport-style photo', required: true },
+    ukStatusDoc('doc1'),
+    { name: 'doc2', label: 'Return flight booking', required: true },
+    ...byVisa('doc3', {
+      Tourism: { label: 'Hotel booking', required: true },
+      'Visiting family or friends': { label: 'Invitation letter and a copy of your host’s ID', required: true },
+      Business: { label: 'Invitation letter from the Ghanaian company', required: true },
+    }),
+    ...byVisa('doc4', { Business: { label: 'Letter from your UK employer', required: true } }),
+    { name: 'doc5', label: 'Yellow fever vaccination certificate', hint: 'Ghana requires this for entry.', required: true },
+    { ...bankDocs('doc6', false), label: 'Bank statements (optional)' },
+    other,
+  ],
+};
+
+// ---------- Russia ----------
+const russia = {
+  slug: 'russia-visa',
+  title: 'Russian visa application',
+  country: 'Russia',
+  code: 'RU',
+  pageUrl: '/russian-visa-services-from-uk/',
+  description: 'Apply for your Russian tourist, business, private or work visa. Upload your passport and visa support documents.',
+  minutes: 10,
+  notice: 'The UK Foreign, Commonwealth and Development Office currently advises against all travel to Russia. Please read the latest advice on GOV.UK before you apply.',
+  steps: [
+    passportStep([], passportScanFields),
+    {
+      id: 'trip',
+      title: 'Your trip',
+      fields: [
+        { name: 'visaType', label: 'Which visa do you need?', type: 'select', required: true, options: ['Tourist', 'Business', 'Private (visiting family or friends)', 'Work'] },
+        { name: 'entries', label: 'Number of entries', type: 'radio', required: true, options: ['Single entry', 'Double entry', 'Multiple entries'] },
+        ...stay([{ name: 'cities', label: 'Cities you’ll visit', type: 'text', required: true }]),
+        yesNo('hasSupport', 'Do you already have your visa support document (invitation or tourist voucher)?'),
+      ],
+    },
+    work,
+    contactStep(),
+  ],
+  docsIntro: {
+    Tourist: 'For a tourist visa you’ll need a tourist voucher and confirmation from a Russian tour operator or hotel, plus travel insurance.',
+    Business: 'For a business visa you’ll need an invitation from the Russian company and travel insurance.',
+    'Private (visiting family or friends)': 'For a private visa you’ll need an official invitation arranged by your relative or friend in Russia, plus travel insurance.',
+    Work: 'For a work visa you’ll need the invitation and work permit arranged by your employer in Russia.',
+  },
+  uploads: [
+    { name: 'photo', label: 'Passport-style photo', required: true },
+    ukStatusDoc('doc1'),
+    { name: 'doc2', label: 'Visa support document (invitation or tourist voucher)', hint: 'If you don’t have one yet, leave this empty and we’ll explain how to get it.', required: false },
+    { name: 'doc3', label: 'Travel medical insurance valid in Russia', required: true, showIf: { name: 'visaType', isNot: 'Work' } },
+    { name: 'doc4', label: 'Letter from your UK employer (optional)' },
+    other,
+  ],
+};
+
+// ---------- India regular visa (Employment and others) ----------
+const indiaRegular = {
+  slug: 'india-regular-visa',
+  title: 'India Employment and regular visa application',
+  country: 'India',
+  code: 'IR',
+  pageUrl: '/employment-visa-india/',
+  description: 'Apply for an India Employment visa or other regular (paper) visa. Upload your passport and documents and we’ll prepare your application.',
+  minutes: 10,
+  notice: 'For tourism and short business trips most British citizens can use the quicker eVisa instead. Use this form for Employment visas, or if you can’t use the eVisa.',
+  steps: [
+    passportStep([], passportScanFields),
+    {
+      id: 'trip',
+      title: 'Your visa',
+      fields: [
+        { name: 'visaType', label: 'Which visa do you need?', type: 'select', required: true, options: ['Employment visa', 'Business visa (regular)', 'Tourist visa (regular)', 'Other'] },
+        { name: 'whyRegular', label: 'Why can’t you use the eVisa?', type: 'select', required: true, options: ['I’m of Pakistani origin or hold a Pakistani passport', 'My trip is longer than the eVisa allows', 'Other reason'], showIf: { name: 'visaType', is: ['Business visa (regular)', 'Tourist visa (regular)'] } },
+        { name: 'indianEmployer', label: 'Name of your employer in India', type: 'text', required: true, showIf: { name: 'visaType', is: 'Employment visa' } },
+        { name: 'salary', label: 'Annual salary in India (approximate)', type: 'text', showIf: { name: 'visaType', is: 'Employment visa' } },
+        { name: 'arrivalDate', label: 'Date you plan to arrive', type: 'date', required: true, half: true },
+        { name: 'duration', label: 'How long will you stay?', type: 'text', required: true, half: true },
+      ],
+    },
+    contactStep(),
+  ],
+  docsIntro: {
+    'Employment visa': 'For an Employment visa you’ll need your contract or appointment letter, your qualifications, and registration documents from your Indian employer.',
+    'Business visa (regular)': 'You’ll need an invitation from the Indian company and a letter from your employer.',
+    'Tourist visa (regular)': 'You’ll need your travel plans and proof of address. People of Pakistani origin also need extra details, which we’ll help with.',
+    Other: 'Add the documents that explain your trip. We’ll tell you if anything else is needed.',
+  },
+  uploads: [
+    { name: 'photo', label: 'Passport-style photo', hint: 'Square, white background.', required: true },
+    ukStatusDoc('doc1'),
+    ...byVisa('doc2', {
+      'Employment visa': { label: 'Employment contract or appointment letter', required: true },
+      'Business visa (regular)': { label: 'Invitation letter from the Indian company', required: true },
+    }),
+    ...byVisa('doc3', {
+      'Employment visa': { label: 'Degree certificates and CV', required: true },
+      'Business visa (regular)': { label: 'Letter from your UK employer' },
+    }),
+    ...byVisa('doc4', { 'Employment visa': { label: 'Registration documents of the Indian employer', hint: 'Your employer can provide these.' } }),
+    { name: 'doc5', label: 'Proof of UK address', hint: 'A recent utility bill or council tax bill.', required: true },
+    { name: 'doc6', label: 'Previous Indian passport or visa (if you have one)' },
+    other,
+  ],
+};
+
+// ---------- eVisas for other countries ----------
+const evisaCountries = evisaContinents.flatMap((k) => k.countries).filter((x) => !x.page).map((x) => x.name);
+const evisa = {
+  slug: 'evisa',
+  title: 'eVisa application',
+  country: 'other countries',
+  code: 'EV',
+  pageUrl: '/e-visa/',
+  description: 'Apply for an eVisa for Kenya, Turkey, Cambodia, Tanzania and many more countries. Upload your passport and we’ll complete and check your application.',
+  minutes: 5,
+  steps: [
+    passportStep([], passportScanFields),
+    {
+      id: 'trip',
+      title: 'Your trip',
+      fields: [
+        { name: 'destination', label: 'Which country is the eVisa for?', type: 'select', required: true, options: evisaCountries },
+        { name: 'visaType', label: 'Purpose of your trip', type: 'radio', required: true, options: ['Tourism', 'Business', 'Transit'] },
+        ...stay([{ name: 'address', label: 'Hotel or address where you’ll stay', type: 'textarea', required: true }]),
+      ],
+    },
+    contactStep(),
+  ],
+  docsIntro: {
+    Tourism: 'Most tourist eVisas only need your passport and a photo. Flight and hotel bookings help.',
+    Business: 'Business eVisas usually also need an invitation letter from the company you’re visiting.',
+    Transit: 'Transit eVisas usually need your onward ticket.',
+  },
+  uploads: [
+    { name: 'photo', label: 'Passport-style photo', hint: 'Colour photo, plain light background.', required: true },
+    { name: 'doc1', label: 'Flight booking (optional)' },
+    { name: 'doc2', label: 'Hotel booking (optional)' },
+    ...byVisa('doc3', {
+      Business: { label: 'Invitation letter from the company you’re visiting', required: true },
+      Transit: { label: 'Onward flight ticket', required: true },
+    }),
+    ukStatusDoc('doc4'),
+    other,
+  ],
+};
+
+// ---------- Document legalisation ----------
+const legalisation = {
+  slug: 'document-legalisation',
+  title: 'Document legalisation request',
+  country: 'documents',
+  code: 'DL',
+  pageUrl: '/document-legalisation/',
+  description: 'Tell us which documents you need apostilled or legalised and where they’ll be used. Upload copies and we’ll confirm the price and what to send.',
+  minutes: 5,
+  noPassport: true,
+  steps: [
+    {
+      id: 'documents-needed',
+      title: 'Your documents',
+      fields: [
+        { name: 'givenNames', label: 'Your first name', type: 'text', required: true, half: true },
+        { name: 'surname', label: 'Your surname', type: 'text', required: true, half: true },
+        { name: 'companyName', label: 'Company name (if the documents are for a business)', type: 'text' },
+        { name: 'useCountry', label: 'Country where the documents will be used', type: 'country', required: true },
+        { name: 'visaType', label: 'What do you need?', type: 'radio', required: true, options: ['Apostille only', 'Apostille and embassy legalisation', 'Not sure'] },
+        { name: 'documentList', type: 'repeat', label: 'Documents', addLabel: 'Add another document', max: 8, fields: [
+          { name: 'type', label: 'Document', type: 'select', required: true, options: ['Degree certificate', 'Transcript', 'Police certificate (DBS/ACRO)', 'Birth certificate', 'Marriage certificate', 'Death certificate', 'Company document', 'Power of attorney', 'Medical or employment letter', 'Other'] },
+          { name: 'description', label: 'Details (optional)', type: 'text' },
+          { name: 'copies', label: 'How many copies?', type: 'number', required: true },
+        ] },
+        { name: 'speed', label: 'How quickly do you need them?', type: 'radio', required: true, options: ['Standard', 'Urgent'] },
+      ],
+    },
+    { ...contactStep(), fields: contactStep().fields.filter((f) => !['ukStatus', 'ukStatusExpiry'].includes(f.name)) },
+  ],
+  docsIntro: {
+    'Apostille only': 'Upload a clear copy of each document so we can check it can be apostilled as it is, or needs certifying first.',
+    'Apostille and embassy legalisation': 'Upload a clear copy of each document. We’ll check the embassy’s rules and tell you what to send us.',
+    'Not sure': 'Upload a clear copy of each document and we’ll tell you exactly what’s needed for the country.',
+  },
+  uploads: [
+    { name: 'doc1', label: 'Copy of document 1', required: true },
+    { name: 'doc2', label: 'Copy of document 2 (optional)' },
+    { name: 'doc3', label: 'Copy of document 3 (optional)' },
+    { name: 'doc4', label: 'Copy of document 4 (optional)' },
+    { name: 'doc5', label: 'Copy of document 5 (optional)' },
+    { name: 'doc6', label: 'Letter or instructions from the organisation abroad (optional)' },
+    other,
+  ],
+};
+
+// ---------- Indian passport, surrender certificate and OCI ----------
+const indianPassport = {
+  slug: 'indian-passport-oci',
+  title: 'Indian passport, surrender certificate and OCI request',
+  country: 'Indian passport services',
+  code: 'IP',
+  pageUrl: '/indian-passport-services/',
+  description: 'Renew your Indian passport, get a surrender certificate or apply for OCI. Upload your passport and documents and we’ll prepare your application.',
+  minutes: 8,
+  steps: [
+    passportStep([], passportScanFields),
+    {
+      id: 'service',
+      title: 'What you need',
+      fields: [
+        { name: 'visaType', label: 'Which service do you need?', type: 'select', required: true, options: ['Indian passport renewal', 'Surrender certificate', 'New OCI card', 'OCI update (new passport)', 'Lost or damaged Indian passport'] },
+        { name: 'britishSince', label: 'When did you become a British citizen?', type: 'date', required: true, showIf: { name: 'visaType', is: ['Surrender certificate', 'New OCI card'] } },
+        yesNo('usedIndianPassport', 'Have you travelled on your Indian passport since becoming British?', { showIf: { name: 'visaType', is: 'Surrender certificate' } }),
+      ],
+    },
+    contactStep(),
+  ],
+  docsIntro: {
+    'Indian passport renewal': 'You’ll need your current Indian passport, proof of UK address and your UK visa or BRP.',
+    'Surrender certificate': 'You’ll need your Indian passport, your British passport and your naturalisation certificate.',
+    'New OCI card': 'You’ll need your British passport, your surrender certificate and proof of Indian origin.',
+    'OCI update (new passport)': 'You’ll need your new passport, your old passport and your current OCI card.',
+    'Lost or damaged Indian passport': 'You’ll need a police report and any copy of the old passport you have.',
+  },
+  uploads: [
+    { name: 'photo', label: 'Passport-style photo', hint: 'Square, white background.', required: true },
+    ...byVisa('doc1', {
+      'Indian passport renewal': { label: 'All pages of your current Indian passport', required: true },
+      'Surrender certificate': { label: 'All pages of your Indian passport', required: true },
+      'New OCI card': { label: 'Surrender certificate', required: true },
+      'OCI update (new passport)': { label: 'Your current OCI card', required: true },
+      'Lost or damaged Indian passport': { label: 'Police report', required: true },
+    }),
+    ...byVisa('doc2', {
+      'Surrender certificate': { label: 'British naturalisation certificate', required: true },
+      'New OCI card': { label: 'Proof of Indian origin, e.g. old Indian passport or parents’ documents', required: true },
+      'OCI update (new passport)': { label: 'Your old passport', required: true },
+      'Lost or damaged Indian passport': { label: 'Copy of the lost passport (if you have one)' },
+    }),
+    ...byVisa('doc3', { 'Indian passport renewal': { label: 'UK visa, BRP or eVisa share code page', required: true } }),
+    { name: 'doc4', label: 'Proof of UK address', hint: 'A recent utility bill or council tax bill.', required: true },
+    other,
+  ],
+};
+
+// ---------- Second UK passport ----------
+const secondPassport = {
+  slug: 'second-uk-passport',
+  title: 'Second British passport application',
+  country: 'second UK passport',
+  code: 'SP',
+  pageUrl: '/second-uk-passport/',
+  description: 'Apply for a second British passport if you travel often for work. Upload your current passport and your employer’s letter.',
+  minutes: 5,
+  steps: [
+    passportStep([], passportScanFields),
+    {
+      id: 'reason',
+      title: 'Why you need a second passport',
+      fields: [
+        { name: 'visaType', label: 'Main reason', type: 'radio', required: true, options: ['I travel often for work and need to travel while my passport is at a visa centre', 'I travel to countries with conflicting entry rules', 'Other'] },
+        { name: 'employer', label: 'Employer or business name', type: 'text', required: true },
+        { name: 'tripsPerYear', label: 'Roughly how many work trips abroad a year?', type: 'number', required: true },
+        { name: 'reasonDetails', label: 'Anything else we should know?', type: 'textarea' },
+      ],
+    },
+    { ...contactStep(), fields: contactStep().fields.filter((f) => !['ukStatus', 'ukStatusExpiry'].includes(f.name)) },
+  ],
+  uploads: [
+    { name: 'photo', label: 'Passport photo', hint: 'Recent colour photo, plain light grey or cream background.', required: true },
+    { name: 'doc1', label: 'Letter from your employer explaining why you need a second passport', hint: 'We can send you a template.', required: true },
+    { name: 'doc2', label: 'Evidence of recent or planned travel (optional)', hint: 'For example visas or travel bookings.' },
+    other,
+  ],
+};
+
+export const applications = [china, india, sriLanka, schengen, usa, saudi, ghana, russia, indiaRegular, evisa, legalisation, indianPassport, secondPassport];
 export const applicationBySlug = Object.fromEntries(applications.map((a) => [a.slug, a]));
 export const declaration = declarationNote;
 export const FILE_SLOTS = ['passport', 'photo', 'doc1', 'doc2', 'doc3', 'doc4', 'doc5', 'doc6', 'doc7', 'doc8'];

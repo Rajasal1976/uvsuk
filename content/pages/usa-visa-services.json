@@ -21,7 +21,7 @@
     }
   ],
   "govuk": "",
-  "applyButton": "none",
+  "applyButton": "/apply/usa-visa/",
   "prices": [
     {
       "service": "Standard",

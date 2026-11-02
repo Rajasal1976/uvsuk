@@ -24,7 +24,7 @@
     }
   ],
   "govuk": "",
-  "applyButton": "none",
+  "applyButton": "/apply/schengen-visa/",
   "prices": [
     {
       "service": "Standard",

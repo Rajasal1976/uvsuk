@@ -23,7 +23,7 @@
     }
   ],
   "govuk": "",
-  "applyButton": "none",
+  "applyButton": "/apply/saudi-visa/",
   "prices": [
     {
       "service": "Standard",

@@ -50,7 +50,7 @@ collections:
       - { name: faqHeading, label: FAQ heading, widget: hidden, required: false }
       - { name: h1, label: Page heading, widget: string, hint: 'The big heading at the top of the page.' }
       - { name: intro, label: Introduction, widget: text, required: false, hint: 'One or two sentences under the heading.' }
-      - { name: applyButton, label: Apply button, widget: select, default: none, options: [{ label: 'No button', value: 'none' }, { label: 'Apply online → China visa form', value: '/apply/china-visa/' }, { label: 'Apply online → India eVisa form', value: '/apply/india-visa/' }, { label: 'Apply online → Sri Lanka ETA form', value: '/apply/sri-lanka-eta/' }, { label: 'Apply now → contact / enquiry form', value: '/contact-us/' }], hint: 'A gold button under the introduction. Pick the form it should open.' }
+      - { name: applyButton, label: Apply button, widget: select, default: none, options: [{ label: 'No button', value: 'none' }, { label: 'Apply online → China visa form', value: '/apply/china-visa/' }, { label: 'Apply online → India eVisa form', value: '/apply/india-visa/' }, { label: 'Apply online → Sri Lanka ETA form', value: '/apply/sri-lanka-eta/' }, { label: 'Apply online → Schengen visa form', value: '/apply/schengen-visa/' }, { label: 'Apply online → USA ESTA or visa form', value: '/apply/usa-visa/' }, { label: 'Apply online → Saudi Arabia visa form', value: '/apply/saudi-visa/' }, { label: 'Apply online → Ghana visa form', value: '/apply/ghana-visa/' }, { label: 'Apply online → Russian visa form', value: '/apply/russia-visa/' }, { label: 'Apply online → India Employment / regular visa form', value: '/apply/india-regular-visa/' }, { label: 'Apply online → eVisa form (other countries)', value: '/apply/evisa/' }, { label: 'Apply online → Document legalisation form', value: '/apply/document-legalisation/' }, { label: 'Apply online → Indian passport / OCI form', value: '/apply/indian-passport-oci/' }, { label: 'Apply online → Second UK passport form', value: '/apply/second-uk-passport/' }, { label: 'Apply online → list of all forms', value: '/apply/' }, { label: 'Apply now → contact / enquiry form', value: '/contact-us/' }], hint: 'A gold button under the introduction. Pick the form it should open.' }
       - name: eligibility
         label: '"Do you qualify?" points'
         label_singular: point
@@ -67,6 +67,16 @@ collections:
         required: false
         field: { name: document, label: Document, widget: string }
         hint: 'Visa pages only.'
+      - name: sections
+        label: Guide sections
+        label_singular: section
+        widget: list
+        required: false
+        summary: '{{fields.heading}}'
+        hint: 'Longer explanations that help Google rank the page. One heading per section. Leave a blank line between paragraphs; start a line with "- " for a bullet point.'
+        fields:
+          - { name: heading, label: Heading, widget: string, hint: 'Use the words people search for, e.g. "Spouse visa financial requirement 2026".' }
+          - { name: text, label: Text, widget: text }
       - name: prices
         label: Price table
         label_singular: price row
@@ -141,6 +151,16 @@ collections:
             fields:
               - { name: quote, label: Review, widget: text }
               - { name: source, label: Where it's from, widget: string, hint: 'e.g. Google review · UK visa' }
+          - name: sections
+            label: Guide sections
+            label_singular: section
+            widget: list
+            required: false
+            summary: '{{fields.heading}}'
+            hint: 'Shown above the FAQs. Leave a blank line between paragraphs; start a line with "- " for a bullet point.'
+            fields:
+              - { name: heading, label: Heading, widget: string }
+              - { name: text, label: Text, widget: text }
           - name: faqs
             label: FAQs
             label_singular: FAQ

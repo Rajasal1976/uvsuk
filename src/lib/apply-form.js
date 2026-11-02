@@ -4,6 +4,9 @@ import { countries, commonCountries } from '../data/countries.js';
 
 const MAX_TOTAL = 7.5 * 1024 * 1024; // Netlify Forms accepts up to 8 MB per submission
 const MAX_PDF = 4 * 1024 * 1024;
+// File types clients can upload: JPG, PNG, GIF and PDF
+const ACCEPT = '.jpg,.jpeg,.png,.gif,.pdf,image/jpeg,image/png,image/gif,application/pdf';
+const FILE_OK = (f) => /\.(jpe?g|png|gif|pdf)$/i.test(f.name) || /^(image\/(jpeg|png|gif)|application\/pdf)$/.test(f.type);
 
 // ---------- small helpers ----------
 function h(tag, attrs = {}, ...children) {
@@ -80,7 +83,8 @@ export function mountApplication(root, config, opts = {}) {
   };
   const visibleUploads = () => config.uploads.filter((u) => visible(u));
   const PASSPORT_SLOT = { name: 'passport', label: 'Passport photo page' };
-  const slotInfo = (slot) => (slot === 'passport' ? PASSPORT_SLOT : visibleUploads().find((u) => u.name === slot));
+  // Forms without a passport (e.g. document legalisation) set noPassport: true in their settings.
+  const slotInfo = (slot) => (slot === 'passport' ? (config.noPassport ? null : PASSPORT_SLOT) : visibleUploads().find((u) => u.name === slot));
   // Only files for documents that still apply (e.g. if the client changed their visa type)
   const SLOT_ORDER = ['passport', 'photo', 'doc1', 'doc2', 'doc3', 'doc4', 'doc5', 'doc6', 'doc7', 'doc8'];
   const activeFiles = () => Object.entries(files).filter(([slot]) => slotInfo(slot)).sort(([a], [b]) => SLOT_ORDER.indexOf(a) - SLOT_ORDER.indexOf(b));
@@ -221,12 +225,12 @@ export function mountApplication(root, config, opts = {}) {
   function passportScanBlock() {
     const status = h('div', { class: 'ap-scan-status', 'aria-live': 'polite' });
     const thumb = h('div', { class: 'ap-scan-thumb' });
-    const input = h('input', { type: 'file', accept: 'image/*,application/pdf', id: 'passport-file', class: 'ap-file-input' });
+    const input = h('input', { type: 'file', accept: ACCEPT, id: 'passport-file', class: 'ap-file-input' });
     const drop = h('label', { class: 'ap-scan', for: 'passport-file' },
       h('span', { class: 'ap-scan-icon', 'aria-hidden': 'true' }, passportIcon()),
       h('span', { class: 'ap-scan-text' },
         h('strong', {}, 'Upload or take a photo of your passport photo page'),
-        h('small', {}, 'The page with your photo. Include the two lines of letters and <<< at the bottom. JPG, PNG or PDF.')),
+        h('small', {}, 'The page with your photo. Include the two lines of letters and <<< at the bottom. JPG, PNG, GIF or PDF.')),
       h('span', { class: 'btn btn-primary' }, 'Choose photo'));
     const showThumb = () => {
       thumb.innerHTML = '';
@@ -239,6 +243,7 @@ export function mountApplication(root, config, opts = {}) {
       const file = input.files[0];
       if (!file) return;
       input.value = '';
+      if (!FILE_OK(file)) { status.className = 'ap-scan-status warn'; status.textContent = 'Please upload a JPG, PNG, GIF or PDF file.'; return; }
       drop.classList.add('busy');
       status.className = 'ap-scan-status working';
       status.textContent = 'Preparing the passport reader…';
@@ -251,7 +256,7 @@ export function mountApplication(root, config, opts = {}) {
         const result = await readPassport(file, (s) => { status.textContent = s; });
         if (result.ok) {
           const d = result.data;
-          for (const f of config.steps[0].fields) {
+          for (const f of allFields) {
             if (f.autofill && d[f.autofill]) { answers[f.name] = d[f.autofill]; autofilled.add(f.name); }
           }
           save();
@@ -282,7 +287,8 @@ export function mountApplication(root, config, opts = {}) {
     const total = h('p', { class: 'ap-total' });
     const intro = config.docsIntro?.[answers.visaType];
     if (intro) wrap.append(h('div', { class: 'ap-docs-intro' }, h('strong', {}, answers.visaType), h('p', {}, intro)));
-    const slots = [{ name: 'passport', label: 'Passport photo page', required: true, hint: 'Added in step 1. You can replace it here.' }, ...visibleUploads()];
+    const passportHint = config.steps.some((st) => st.passportScan) ? 'Added earlier in the form. You can replace it here.' : 'The page with your photo and details.';
+    const slots = [...(config.noPassport ? [] : [{ name: 'passport', label: 'Passport photo page', required: true, hint: passportHint }]), ...visibleUploads()];
     const updateTotal = () => {
       const sum = activeFiles().reduce((a, [, f]) => a + f.size, 0);
       total.textContent = `Total size: ${fmtSize(sum)} of ${fmtSize(MAX_TOTAL)}`;
@@ -292,7 +298,7 @@ export function mountApplication(root, config, opts = {}) {
       const id = `up-${u.name}`;
       const info = h('div', { class: 'ap-up-file' });
       const err = h('p', { class: 'ap-err', role: 'alert' });
-      const input = h('input', { type: 'file', id, accept: 'image/*,application/pdf', class: 'ap-file-input' });
+      const input = h('input', { type: 'file', id, accept: ACCEPT, class: 'ap-file-input' });
       const card = h('div', { class: 'ap-up', 'data-slot': u.name },
         h('div', { class: 'ap-up-text' }, h('strong', {}, u.label, u.required || /optional/i.test(u.label) ? null : h('span', { class: 'ap-optional' }, ' (optional)')), u.hint ? h('small', {}, u.hint) : null),
         info, input, h('label', { for: id, class: 'btn btn-outline' }, 'Choose file'), err);
@@ -307,7 +313,7 @@ export function mountApplication(root, config, opts = {}) {
       input.addEventListener('change', async () => {
         const file = input.files[0]; input.value = ''; err.textContent = '';
         if (!file) return;
-        if (!/^image\/|application\/pdf/.test(file.type)) { err.textContent = 'Please upload a photo (JPG or PNG) or a PDF.'; return; }
+        if (!FILE_OK(file)) { err.textContent = 'Please upload a JPG, PNG, GIF or PDF file.'; return; }
         if (file.type === 'application/pdf' && file.size > MAX_PDF) { err.textContent = `This PDF is ${fmtSize(file.size)}. Please upload one under ${fmtSize(MAX_PDF)}, or a photo of the page instead.`; return; }
         card.classList.add('busy');
         files[u.name] = await compressImage(file);

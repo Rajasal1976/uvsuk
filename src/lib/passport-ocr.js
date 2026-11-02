@@ -125,7 +125,7 @@ function band(page, top, height) {
  */
 export async function readPassport(file, onStatus = () => {}) {
   if (!file.type.startsWith('image/')) {
-    return { ok: false, message: 'To read your details automatically, upload a photo or scan (JPG or PNG) of your passport photo page.' };
+    return { ok: false, message: 'To read your details automatically, upload a photo or scan of your passport photo page as a JPG, PNG or GIF. A PDF is still attached to your application, but can’t be read automatically.' };
   }
   onStatus('Preparing the passport reader…');
   let bitmap;

@@ -14,7 +14,7 @@
     }
   ],
   "govuk": "",
-  "applyButton": "none",
+  "applyButton": "/apply/",
   "country": "Worldwide visas overview",
   "sortKey": "1 worldwide visas overview 0 worldwide visas for uk residents",
   "sections": [

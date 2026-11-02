@@ -16,7 +16,7 @@
     }
   ],
   "govuk": "",
-  "applyButton": "none",
+  "applyButton": "/apply/second-uk-passport/",
   "country": "UK",
   "sortKey": "1 uk 1 second uk passport",
   "sections": [

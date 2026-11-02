@@ -19,7 +19,7 @@
     }
   ],
   "govuk": "",
-  "applyButton": "none",
+  "applyButton": "/apply/document-legalisation/",
   "country": "Document legalisation",
   "sortKey": "1 document legalisation 0 document legalisation and attestation",
   "sections": [
