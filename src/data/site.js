@@ -16,6 +16,7 @@ export const site = {
   hours: s.hours,
   hoursSchema: s.hoursForGoogle,
   iaaRef: 'F200700144',
+  iaaLevel: 'Level 1, Immigration', // your IAA authorisation level, shown in the footer
   iaaFinder: 'https://portal.immigrationadviceauthority.gov.uk/s/adviser-finder',
   since: 2008,
   yearsInPractice: s.yearsInPractice,

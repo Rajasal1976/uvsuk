@@ -1,14 +1,75 @@
 {
-  "title": "Terms of Use | Unique Visa Services",
-  "description": "Terms of use for the Unique Visa Services website.",
-  "h1": "Terms of use",
-  "intro": "",
-  "body": [
-    "[Insert your website terms of use.]"
-  ],
+  "title": "Terms and Conditions | Unique Visa Services Ltd",
+  "description": "The terms that apply when you use our website or our visa and immigration services: fees, cancellation, your documents, liability and complaints.",
+  "h1": "Terms and conditions",
+  "intro": "These terms apply when you use our website and when you use our visa and immigration services. Please read them before asking us to act for you. Last updated: November 2026.",
+  "body": [],
   "faqs": [],
   "govuk": "",
   "applyButton": "none",
   "country": "Company pages",
-  "sortKey": "2 company pages 1 terms of use"
+  "sortKey": "2 company pages 1 terms of use",
+  "focusKeyword": "",
+  "sections": [
+    {
+      "heading": "1. About us",
+      "text": "Unique Visa Services Ltd is a company registered in England and Wales, company number 06471423. Our office is at Suite 6, 61 Mosley Street, Manchester M2 3HZ. You can contact us on 0161 956 2003 or at hello@uvsuk.com.\n\nWe are registered with and regulated by the Immigration Advice Authority (IAA), reference F200700144, at Level 1 in the Immigration category. You can check our registration on the [IAA register](https://portal.immigrationadviceauthority.gov.uk/s/adviser-finder).\n\nIn these terms, \"we\", \"us\" and \"our\" mean Unique Visa Services Ltd, and \"you\" means the person or business using our website or services."
+    },
+    {
+      "heading": "2. How these terms apply",
+      "text": "These terms apply to your use of our website and to all our services. For UK immigration matters, we will also send you a client care letter setting out the work we will do, our fee and how we will work together, as our regulator requires. If anything in your client care letter differs from these terms, the client care letter applies.\n\nNo member of our staff or anyone acting for us can change these terms unless the change is agreed with you in writing."
+    },
+    {
+      "heading": "3. Our services",
+      "text": "We provide:\n- UK immigration advice and applications, within our IAA authorisation (Level 1, Immigration), such as straightforward visa, settlement and citizenship applications and sponsor licence applications\n- Travel visa, eVisa and ETA applications for other countries\n- Document legalisation, apostille and embassy attestation\n- Passport-related services, such as Indian passport and OCI applications and second British passports\n\nWe are a private company and are not part of, or connected to, any government, embassy or consulate. You can apply directly through official government websites without using our services.\n\nIf your matter needs advice or representation beyond our authorisation, for example an appeal, an administrative review or a complex case, we will tell you and recommend that you seek help from a solicitor or a suitably authorised adviser."
+    },
+    {
+      "heading": "4. What we will do",
+      "text": "We will act with reasonable care and skill, prepare your application based on the information and documents you give us, check it against the requirements that apply at the time, and keep you informed of its progress. We will return your documents to you promptly once they are no longer needed."
+    },
+    {
+      "heading": "5. Your responsibilities",
+      "text": "You agree to:\n- Give us complete, accurate and honest information, and tell us straight away if anything changes\n- Provide genuine documents only\n- Check the application we prepare before it is submitted, and tell us if anything is wrong\n- Meet any deadlines we give you and attend any appointments, such as biometrics or interviews\n- Not book non-refundable travel until your visa has been issued\n\nWe rely on the information you give us. We are not responsible for refusals, delays or extra costs caused by information or documents that are incomplete, inaccurate or not genuine. If we find that information or documents are false, we will stop acting for you, and we may be legally required to report it to the relevant authorities."
+    },
+    {
+      "heading": "6. Fees and payment",
+      "text": "Our fee is agreed with you in writing before we start work. It covers our service only. Government, embassy, visa centre, courier and other third-party fees are charged separately and are paid at cost.\n\nThe prices shown on our website may change from time to time, but the fee agreed with you will not change unless the work you ask us to do changes, and we will always agree any extra fee with you first.\n\nPayment is usually due before we start work or before we submit your application. Government and embassy fees are set by those bodies, can change at short notice, and are normally non-refundable once paid, whatever the outcome."
+    },
+    {
+      "heading": "7. Your right to cancel",
+      "text": "If you are a consumer and you agree our service by phone, email, online or anywhere other than our office, you have the right to cancel within 14 days of the day you agree to it, without giving a reason. To cancel, contact us by email or in writing.\n\nIf you ask us to start work within the 14 days, you will need to pay for the work we have done up to the time you cancel. You cannot cancel once the service has been fully completed. Government, embassy and other third-party fees already paid on your behalf cannot be refunded by us.\n\nAfter the 14 days, you can still end our service at any time. We will charge for the work done up to that point and refund any balance."
+    },
+    {
+      "heading": "8. Decisions, timescales and travel",
+      "text": "Visa, passport and immigration decisions are made by governments, embassies and other authorities, not by us. We cannot guarantee that an application will be approved, or how long the authority will take to decide it. Processing times given on our website or by us are estimates based on the authority's published information or our experience.\n\nWe are not responsible for losses caused by an authority's decision or delay, such as travel or accommodation costs. This is why we strongly advise against booking non-refundable travel before your visa is issued."
+    },
+    {
+      "heading": "9. Your documents",
+      "text": "We will keep your documents safe while they are in our care. If a document is lost or damaged while in our care because of our fault, we will pay the reasonable cost of replacing it.\n\nWe return passports and documents using the delivery option you choose, such as Royal Mail Special Delivery. Delivery charges are shown on our website. If a delivery company loses or delays an item, we will help you make a claim with them.\n\nWe will never hold on to your passport or documents as security for unpaid fees."
+    },
+    {
+      "heading": "10. Our liability",
+      "text": "We are responsible for loss or damage you suffer that is a foreseeable result of our failure to follow these terms or to use reasonable care and skill. We are not responsible for loss or damage that was not foreseeable, or that was caused by a decision or delay of a government, embassy or other authority, or by information you gave us that was incomplete or inaccurate.\n\nIf you are a business client, our total liability to you is limited to the fees you paid us for the service concerned, and we are not liable for loss of profit, business or opportunity.\n\nNothing in these terms limits or excludes our liability for death or personal injury caused by our negligence, for fraud, or for anything else that cannot be limited or excluded by law. Your legal rights as a consumer are not affected."
+    },
+    {
+      "heading": "11. When we may refuse or stop acting for you",
+      "text": "We may decline to act for you, or stop acting for you, if we believe you have given us false information or documents, if acting would break the law or our regulator's rules, if the work is outside our authorisation, or if you are abusive to our staff. If we stop acting for you, we will explain why, return your documents, and refund any fee for work we have not done."
+    },
+    {
+      "heading": "12. Using our website",
+      "text": "The information on our website is general guidance, not advice on your individual circumstances. Immigration and visa rules change often, and we work to keep our website up to date, but please contact us or check official sources before relying on it.\n\nThe content and design of our website belong to Unique Visa Services Ltd. You may view and print pages for your own use, but you may not copy or reuse our content for commercial purposes without our written permission. Links to other websites are provided for convenience; we are not responsible for their content."
+    },
+    {
+      "heading": "13. Complaints",
+      "text": "If you are unhappy with our service, please tell us so we can put it right. Our [complaints procedure](/complaints/) explains how we handle complaints.\n\nIf your complaint is about UK immigration advice or services and we have not resolved it, you can complain to the Immigration Advice Authority. You can find details on [GOV.UK](https://www.gov.uk/find-an-immigration-adviser/complain-about-an-adviser)."
+    },
+    {
+      "heading": "14. Your personal information",
+      "text": "We handle your personal information as explained in our [privacy policy](/privacy-policy/)."
+    },
+    {
+      "heading": "15. Changes and governing law",
+      "text": "We may update these terms from time to time. The version on our website when you agree to our service will apply to that service.\n\nThese terms are governed by the law of England and Wales. If you are a consumer, you can bring legal proceedings in the courts of England and Wales, or, if you live in Scotland or Northern Ireland, in the courts of the part of the UK where you live."
+    }
+  ]
 }
