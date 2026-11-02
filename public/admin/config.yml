@@ -201,6 +201,7 @@ collections:
         description: These appear across the whole site. Keep them identical to your Google Business Profile.
         file: content/settings.json
         fields:
+          - { name: disclaimerShort, label: 'Disclaimer (short version, shown on every page)', widget: text, required: false, hint: 'Shown above the footer on every page, with a link to the full Disclaimer page. Keep it to two or three sentences. Leave empty to use the standard wording.' }
           - { name: shareImage, label: 'Default social sharing image', widget: image, required: false, choose_url: false, hint: 'Used when a page without its own image is shared on WhatsApp, Facebook or LinkedIn. Landscape, about 1200 × 630 pixels.' }
           - { name: siteLogo, label: Website logo, widget: image, required: false, choose_url: false, hint: 'Shown at the top of every page instead of the business name. A PNG with a transparent background works best, at least 400 pixels wide.' }
           - { name: phone, label: Phone number, widget: string }

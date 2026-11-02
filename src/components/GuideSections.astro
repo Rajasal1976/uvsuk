@@ -1,6 +1,7 @@
 ---
 // Longer guide sections on a page (good for Google). Edited in the admin: "Guide sections".
 // In the text, leave a blank line between paragraphs. Lines starting with "- " become bullet points.
+// Links: write [link text](https://example.com). Links to other websites open in a new tab.
 const { sections = [] } = Astro.props;
 const blocks = (text = '') => {
   // Split into paragraphs and bullet lists. A run of lines starting with "- " becomes one list.
@@ -21,10 +22,25 @@ const blocks = (text = '') => {
   return out;
 };
 const items = sections.filter((s) => s && s.heading && s.text);
+// Split text into plain parts and [text](url) links
+const parts = (text = '') => {
+  const out = [];
+  const re = /\[([^\]]+)\]\(((?:https?:\/\/|\/)[^\s)]+)\)/g;
+  let last = 0, m;
+  while ((m = re.exec(text))) {
+    if (m.index > last) out.push({ t: text.slice(last, m.index) });
+    out.push({ label: m[1], href: m[2], ext: m[2].startsWith('http') });
+    last = re.lastIndex;
+  }
+  if (last < text.length) out.push({ t: text.slice(last) });
+  return out;
+};
 ---
 {items.map((s) => (
   <section>
     <h2>{s.heading}</h2>
-    {blocks(s.text).map((b) => (b.list ? <ul>{b.list.map((li) => <li>{li}</li>)}</ul> : <p>{b.para}</p>))}
+    {blocks(s.text).map((b) => (b.list
+      ? <ul>{b.list.map((li) => <li>{parts(li).map((x) => (x.href ? <a href={x.href} target={x.ext ? '_blank' : undefined} rel={x.ext ? 'noopener' : undefined}>{x.label}</a> : x.t))}</li>)}</ul>
+      : <p>{parts(b.para).map((x) => (x.href ? <a href={x.href} target={x.ext ? '_blank' : undefined} rel={x.ext ? 'noopener' : undefined}>{x.label}</a> : x.t))}</p>))}
   </section>
 ))}
