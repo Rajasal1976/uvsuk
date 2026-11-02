@@ -1,49 +1,42 @@
 {
-  "title": "India e-Tourist Visa from the UK | Fast eVisa Help | UVS",
-  "description": "India e-Tourist visa for UK residents: 30-day, 1-year and 5-year options. We complete and check your application, photo and passport scan.",
+  "applyButton": "/apply/india-visa/",
+  "sortKey": "1 india 1 india e-tourist visa",
+  "govuk": "https://www.hcilondon.gov.in/",
   "h1": "India e-Tourist Visa",
+  "prices": [
+    {
+      "service": "30 Days Visa",
+      "included": "Application completed and checked, photo and passport scan checked",
+      "processing": "Up to 5 Working Days",
+      "fee": "£53",
+      "popular": true,
+      "processingFee": "£27",
+      "total": "£80"
+    },
+    {
+      "service": "12 Months Multiple Employer",
+      "included": "Everything in 30 Days Visa, submitted the same working day",
+      "processing": "Upto 5 Working Days",
+      "fee": "£63",
+      "popular": false,
+      "processingFee": "£47",
+      "total": "£110"
+    },
+    {
+      "popular": false,
+      "service": "5 Year Multiple Entry Visa",
+      "included": "Everything in 30 Days Visa, submitted the same working day",
+      "processing": "Up to 5 Working Days",
+      "processingFee": "£420",
+      "fee": "£150",
+      "total": "£570"
+    }
+  ],
   "intro": "The e-Tourist Visa covers holidays, visiting friends and family, and short yoga or wellness courses in India. It is applied for online, and we complete and check the whole application for you.",
   "eligibility": [
     "Your nationality is eligible for the Indian eVisa",
     "Your passport is valid for at least six months from arrival"
   ],
-  "documents": [
-    "Passport bio page scan",
-    "Recent passport-style photo meeting the Indian specifications",
-    "Travel details"
-  ],
-  "faqs": [
-    {
-      "q": "How quickly can I get it?",
-      "a": "Many eVisas are issued within a few working days. Tell us your travel date and we will advise whether there is time."
-    },
-    {
-      "q": "Can I use an e-Tourist visa for a business trip?",
-      "a": "No. Business activities need an e-Business visa. Using the wrong visa type can lead to problems on arrival."
-    }
-  ],
-  "govuk": "",
-  "applyButton": "/apply/india-visa/",
-  "prices": [
-    {
-      "service": "Standard",
-      "included": "Application completed and checked, photo and passport scan checked",
-      "processing": "",
-      "fee": "",
-      "popular": true,
-      "processingFee": ""
-    },
-    {
-      "service": "Urgent",
-      "included": "Everything in Standard, submitted the same working day",
-      "processing": "",
-      "fee": "",
-      "popular": false,
-      "processingFee": ""
-    }
-  ],
-  "country": "India",
-  "sortKey": "1 india 1 india e-tourist visa",
   "sections": [
     {
       "heading": "India e-Tourist visa options",
@@ -60,6 +53,24 @@
     {
       "heading": "India eVisa help from Manchester",
       "text": "We're based in Manchester city centre and help travellers and businesses across the North West and the rest of the UK. Most travel visa applications can be handled by post and email, so you don't need to visit us in person."
+    }
+  ],
+  "country": "India",
+  "title": "India e-Tourist Visa from the UK | Fast eVisa Help | UVS",
+  "documents": [
+    "Passport bio page scan",
+    "Recent passport-style photo meeting the Indian specifications",
+    "Travel details"
+  ],
+  "description": "India e-Tourist visa for UK residents: 30-day, 1-year and 5-year options. We complete and check your application, photo and passport scan.",
+  "faqs": [
+    {
+      "q": "How quickly can I get it?",
+      "a": "Many eVisas are issued within a few working days. Tell us your travel date and we will advise whether there is time."
+    },
+    {
+      "q": "Can I use an e-Tourist visa for a business trip?",
+      "a": "No. Business activities need an e-Business visa. Using the wrong visa type can lead to problems on arrival."
     }
   ]
 }
