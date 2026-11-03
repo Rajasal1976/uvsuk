@@ -1,18 +1,34 @@
 {
+  "applyButton": "/apply/india-visa/",
+  "sortKey": "1 india 1 india e-medical visa",
+  "govuk": "https://www.hcilondon.gov.in/",
   "h1": "India e-Medical Visa",
-  "title": "India e-Medical Visa from the UK | Medical eVisa Help | UVS",
-  "description": "India e-Medical visa help for UK residents travelling for treatment. We prepare your application and check the hospital letter before you apply.",
+  "prices": [
+    {
+      "service": "60 Days Triple Entry",
+      "included": "Application completed and checked, photo and passport scan checked",
+      "processing": "Up to 5 Working Days",
+      "fee": "£85",
+      "popular": false,
+      "processingFee": "£115",
+      "total": "£200"
+    },
+    {
+      "service": "Medical Attendant",
+      "included": "Everything in Standard, submitted the same working day",
+      "processing": "up to 5 Working Days",
+      "fee": "From £60",
+      "popular": false,
+      "processingFee": "£115",
+      "total": "From £175"
+    }
+  ],
   "intro": "The e-Medical visa is for travelling to India for medical treatment at a recognised hospital. Up to two family members can travel with you on e-Medical Attendant visas. We prepare your India e-Medical visa application and check the hospital letter before submitting.",
   "eligibility": [
     "You are travelling to India for medical treatment at a recognised hospital or treatment centre",
     "You have a letter from the hospital confirming your treatment",
     "Your passport is valid for at least 6 months from the date you arrive",
     "You are eligible for India’s eVisa (people of Pakistani origin must apply for a regular visa)"
-  ],
-  "documents": [
-    "Passport photo page scan",
-    "Recent passport-style photo with a white background",
-    "Letter from the hospital in India, on its letterhead, confirming your treatment"
   ],
   "sections": [
     {
@@ -36,6 +52,15 @@
       "text": "We're based in Manchester city centre and handle Indian eVisas for clients across the UK, entirely online. We complete your application, check every detail against your passport and keep you updated until your eVisa arrives."
     }
   ],
+  "focusKeyword": "India e-Medical visa",
+  "country": "India",
+  "title": "India e-Medical Visa from the UK | Medical eVisa Help | UVS",
+  "documents": [
+    "Passport photo page scan",
+    "Recent passport-style photo with a white background",
+    "Letter from the hospital in India, on its letterhead, confirming your treatment"
+  ],
+  "description": "India e-Medical visa help for UK residents travelling for treatment. We prepare your application and check the hospital letter before you apply.",
   "faqs": [
     {
       "q": "How long can I stay on an India e-Medical visa?",
@@ -49,30 +74,5 @@
       "q": "Do I need a hospital letter for an India e-Medical visa?",
       "a": "Yes. A letter from the hospital in India, on its letterhead, confirming your treatment is essential."
     }
-  ],
-  "sortKey": "1 india 1 india e-medical visa",
-  "country": "India",
-  "govuk": "https://www.hcilondon.gov.in/",
-  "applyButton": "/apply/india-visa/",
-  "prices": [
-    {
-      "service": "Standard",
-      "included": "Application completed and checked, photo and passport scan checked",
-      "processing": "",
-      "fee": "",
-      "popular": true,
-      "processingFee": "",
-      "total": ""
-    },
-    {
-      "service": "Urgent",
-      "included": "Everything in Standard, submitted the same working day",
-      "processing": "",
-      "fee": "",
-      "popular": false,
-      "processingFee": "",
-      "total": ""
-    }
-  ],
-  "focusKeyword": "India e-Medical visa"
+  ]
 }
