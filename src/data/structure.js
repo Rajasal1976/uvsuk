@@ -134,6 +134,7 @@ export const structure = [
     "group": "employer",
     "children": [
       "sponsor-licence-application",
+      "sponsor-licence-compliance",
       "skilled-worker-visa-formally-tier-t2-general"
     ]
   },
@@ -143,6 +144,15 @@ export const structure = [
     "group": "employer",
     "related": [
       "skilled-worker-visa-formally-tier-t2-general"
+    ]
+  },
+  {
+    "slug": "sponsor-licence-compliance",
+    "type": "service",
+    "group": "employer",
+    "related": [
+      "sponsor-licence-application",
+      "corporate-clients"
     ]
   },
   {

@@ -1,0 +1,62 @@
+{
+  "title": "Sponsor Licence Compliance | Audits & Support | Manchester",
+  "description": "Sponsor licence compliance support for UK employers: mock audits, record-keeping, reporting duties and Home Office compliance visit preparation.",
+  "h1": "Sponsor licence compliance support",
+  "intro": "Getting a sponsor licence is only the start. Our sponsor licence compliance service helps you meet your duties every day, so you are ready for a Home Office visit and your sponsored workers are protected.",
+  "eligibility": [
+    "You hold a sponsor licence, or are applying for one",
+    "You employ, or plan to employ, sponsored workers",
+    "You want independent checks that your records and processes meet Home Office rules"
+  ],
+  "documents": [
+    "Your sponsor licence details and Key Personnel",
+    "Records for each sponsored worker, such as contracts, payslips and right to work checks",
+    "Your current HR processes for absence, changes and reporting"
+  ],
+  "sections": [
+    {
+      "heading": "Your duties as a sponsor",
+      "text": "When you hold a sponsor licence, the Home Office expects you to:\n- Carry out and keep right to work checks for every employee, not just sponsored workers\n- Keep the records set out in Appendix D of the sponsor guidance for each sponsored worker\n- Report certain changes through the Sponsor Management System, usually within 10 working days, such as a worker not starting, leaving, taking long unpaid absence, or a change to their job, salary or work location\n- Pay sponsored workers at least the salary on their Certificate of Sponsorship, and make sure the role is genuine\n- Not pass sponsorship costs, such as the licence fee, Certificate of Sponsorship or Immigration Skills Charge, on to workers\n- Keep your Key Personnel and business details up to date"
+    },
+    {
+      "heading": "Home Office compliance visits",
+      "text": "The Home Office can visit sponsors before or after granting a licence, and visits can be unannounced. Officers usually check your HR records, interview Key Personnel and sometimes speak to sponsored workers. They look at whether your records are complete, whether reporting has been done on time, and whether each sponsored role matches what was stated on the Certificate of Sponsorship."
+    },
+    {
+      "heading": "What happens if you are not compliant?",
+      "text": "If the Home Office finds problems, it can:\n- Downgrade your licence to a B rating, with an action plan you must follow and pay for\n- Suspend your licence while it investigates\n- Revoke your licence, which usually means your sponsored workers' permission is cut short, typically to 60 days, unless they find another sponsor\n\nEmploying someone without the right to work can also lead to a civil penalty of up to £60,000 per illegal worker."
+    },
+    {
+      "heading": "Our sponsor licence compliance service",
+      "text": "We help you stay compliant, with support that fits your business:\n- Mock compliance audits: we review your records and processes as a Home Office officer would, and give you a clear report and action list\n- HR record set-up: simple record-keeping that matches Appendix D\n- Reporting support: we help you report changes on the Sponsor Management System on time\n- Right to work checks: guidance and training for your HR team\n- Compliance visit preparation: we prepare your team and records before a Home Office visit\n- Ongoing support: regular reviews for businesses that sponsor workers year-round"
+    },
+    {
+      "heading": "Sponsor licence compliance help in Manchester",
+      "text": "We're IAA-regulated and based in Manchester city centre, supporting employers across the North West and the rest of the UK. Contact us to arrange a compliance review, or to discuss ongoing support for your business."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "What is a sponsor licence compliance audit?",
+      "a": "A review of your HR records and processes against the Home Office sponsor guidance, carried out the way a compliance officer would. You get a report of any gaps and how to fix them."
+    },
+    {
+      "q": "How quickly must sponsors report changes?",
+      "a": "Most changes, such as a sponsored worker leaving or a change to their role or salary, must be reported on the Sponsor Management System within 10 working days."
+    },
+    {
+      "q": "Can the Home Office visit without warning?",
+      "a": "Yes. Compliance visits can be unannounced, so your records need to be up to date at all times."
+    },
+    {
+      "q": "What happens to sponsored workers if a licence is revoked?",
+      "a": "Their permission to stay is usually cut short, typically to 60 days, unless they find a new sponsor or another way to stay."
+    }
+  ],
+  "govuk": "https://www.gov.uk/government/publications/workers-and-temporary-workers-guidance-for-sponsors-part-3-sponsor-duties-and-compliance",
+  "applyButton": "/contact-us/",
+  "country": "Employers",
+  "sortKey": "2 employer 1 sponsor licence compliance",
+  "focusKeyword": "sponsor licence compliance",
+  "prices": []
+}

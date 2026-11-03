@@ -20,6 +20,7 @@ export const menu = [
     href: '/hire-foreign-nationals-uk/',
     items: [
       ['Sponsor Licence', '/sponsor-licence-application/'],
+      ['Sponsor Licence Compliance', '/sponsor-licence-compliance/'],
       ['Skilled Worker Visa', '/skilled-worker-visa-formally-tier-t2-general/'],
       ['Corporate Clients', '/corporate-clients/'],
     ],
