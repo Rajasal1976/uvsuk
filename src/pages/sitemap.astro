@@ -4,6 +4,7 @@
 import Page from '../layouts/Page.astro';
 import { pages } from '../data/pages.js';
 import { applications } from '../data/applications.js';
+import { posts } from '../data/blog.js';
 
 const visible = pages.filter((p) => !p.noindex);
 const byGroup = (g) => visible.filter((p) => p.group === g).sort((a, b) => (a.sortKey || a.h1 || '').localeCompare(b.sortKey || b.h1 || ''));
@@ -16,6 +17,7 @@ const groups = [
   { title: 'Employers', links: byGroup('employer').map((p) => [name(p), `/${p.slug}/`]) },
   { title: 'Worldwide visas and travel services', links: byGroup('worldwide').map((p) => [name(p), `/${p.slug}/`]) },
   { title: 'Online application forms', links: applications.map((a) => [a.title, `/apply/${a.slug}/`]) },
+  { title: 'Blog', links: [['All blog posts', '/blog/'], ...posts.map((p) => [p.h1, `/blog/${p.slug}/`])] },
   { title: 'About us', links: byGroup('company').filter((p) => !legal.includes(p.slug)).map((p) => [name(p), `/${p.slug}/`]) },
   { title: 'Legal', links: legal.map((s) => visible.find((p) => p.slug === s)).filter(Boolean).map((p) => [name(p), `/${p.slug}/`]) },
 ].filter((g) => g.links.length);

@@ -1,0 +1,74 @@
+{
+  "title": "Japan Work Visa from the UK | Certificate of Eligibility Help",
+  "description": "Japan work visa help for UK residents, including British citizens: the Certificate of Eligibility, visa types and your Embassy application.",
+  "h1": "Japan work visa from the UK",
+  "intro": "Everyone who goes to Japan to work needs a Japan work visa, including British citizens, as visa-free entry doesn’t allow work. We prepare your visa application once your employer has your Certificate of Eligibility, and check every document before you submit it.",
+  "eligibility": [
+    "You have a job offer from an employer in Japan",
+    "Your employer has obtained, or is applying for, your Certificate of Eligibility (COE)",
+    "You live in the UK and can apply at the Embassy of Japan in London or the Consulate in Edinburgh",
+    "Your passport is valid for your planned stay"
+  ],
+  "documents": [
+    "Passport and completed visa application form",
+    "Recent passport photo (45mm × 35mm)",
+    "Your Certificate of Eligibility, or the electronic COE email from your employer",
+    "Proof of your UK residence status, if you are not a British citizen"
+  ],
+  "sections": [
+    {
+      "heading": "How the Japan work visa process works",
+      "text": "Getting a Japan work visa is a two-stage process:\n- Your employer in Japan applies to the Immigration Services Agency of Japan for your Certificate of Eligibility (COE). This confirms you meet the conditions for your type of work.\n- Once the COE is issued, you apply for your work visa in the UK, at the Embassy of Japan in London or the Consulate-General in Edinburgh, depending on where you live.\n\nJapan now issues electronic COEs, which your employer can send you by email instead of posting a paper certificate."
+    },
+    {
+      "heading": "Japan work visa types",
+      "text": "The right visa depends on your job. The most common types for UK applicants are:\n- Engineer / Specialist in Humanities / International Services: for professional roles such as IT, engineering, marketing, finance, translation and teaching at private language schools\n- Intra-company Transferee: if your employer is moving you to its office in Japan\n- Instructor: for teaching at state schools\n- Highly Skilled Professional: a points-based visa with extra benefits for highly qualified people\n- Business Manager: if you are starting or running a business in Japan\n\nYour employer chooses the category when applying for your COE, so it's worth checking it matches your role."
+    },
+    {
+      "heading": "Timing: don’t let your COE expire",
+      "text": "Your Certificate of Eligibility is usually valid for 3 months from the date it is issued, and you must enter Japan within that time. Apply for your visa as soon as you receive it. The Embassy usually decides work visa applications with a valid COE within a few working days, but allow extra time in busy periods."
+    },
+    {
+      "heading": "When you arrive in Japan",
+      "text": "When you arrive at a major airport, you'll usually be issued a residence card, which you must carry while you live in Japan. You must then register your address at your local city office within 14 days of moving in."
+    },
+    {
+      "heading": "Japan work visa help from Manchester",
+      "text": "We're based in Manchester city centre and help UK residents across the country with Japan work visa applications. We check your COE and documents, complete your application form, and tell you exactly what to take to the Embassy. If your employer needs degree certificates or police checks legalised, we can arrange that too."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Do British citizens need a Japan work visa?",
+      "a": "Yes. British citizens can visit Japan visa-free for short stays, but working in Japan always needs a work visa."
+    },
+    {
+      "q": "What is a Certificate of Eligibility?",
+      "a": "A certificate issued by the Immigration Services Agency of Japan, applied for by your employer. You need it before applying for most Japan work visas."
+    },
+    {
+      "q": "How long does a Japan work visa take?",
+      "a": "The COE stage, handled by your employer, often takes 1 to 3 months. Once you have it, the visa itself is usually decided within a few working days."
+    },
+    {
+      "q": "Can I apply for a Japan work visa without a COE?",
+      "a": "It is possible in some cases, but it takes much longer and is less certain. Almost all employers apply for a COE first."
+    }
+  ],
+  "govuk": "https://www.uk.emb-japan.go.jp/itpr_en/visa-cert-top.html",
+  "applyButton": "/apply/japan-visa/?visaType=Work%20(Certificate%20of%20Eligibility)",
+  "country": "Japan",
+  "sortKey": "1 japan 1 japan work visa",
+  "focusKeyword": "Japan work visa",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Application form completed, COE and documents checked",
+      "processing": "",
+      "fee": "",
+      "popular": true,
+      "processingFee": "",
+      "total": ""
+    }
+  ]
+}

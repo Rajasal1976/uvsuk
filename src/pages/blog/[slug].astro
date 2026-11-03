@@ -1,0 +1,51 @@
+---
+import Page from '../../layouts/Page.astro';
+import GuideSections from '../../components/GuideSections.astro';
+import Faq from '../../components/Faq.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { posts, fmtDate } from '../../data/blog.js';
+import { site } from '../../data/site.js';
+
+export function getStaticPaths() {
+  return posts.map((p) => ({ params: { slug: p.slug }, props: { p } }));
+}
+const { p } = Astro.props;
+const schema = JSON.stringify({
+  '@context': 'https://schema.org', '@type': 'BlogPosting', headline: p.h1, description: p.description,
+  datePublished: p.date, dateModified: p.updated || p.date,
+  author: { '@type': 'Organization', name: site.legalName }, publisher: { '@type': 'Organization', name: site.legalName },
+  mainEntityOfPage: new URL(`/blog/${p.slug}/`, site.url).href,
+});
+const others = posts.filter((x) => x.slug !== p.slug).slice(0, 3);
+---
+<Page title={p.title} description={p.description} schemas={[schema]}>
+  <main>
+    <div class="page-head">
+      <div class="wrap">
+        <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/blog/">Blog</a></nav>
+        <h1>{p.h1}</h1>
+        <p class="blog-meta"><time datetime={p.date}>{fmtDate(p.date)}</time>{p.updated && <> · Updated <time datetime={p.updated}>{fmtDate(p.updated)}</time></>}{p.category && <> · {p.category}</>}</p>
+        {p.intro && <p class="lead">{p.intro}</p>}
+      </div>
+    </div>
+    <div class="wrap section page-body" style="padding-top:56px">
+      <div class="content">
+        <GuideSections sections={p.sections} />
+        <Faq items={p.faqs || []} />
+        {p.relatedPage && <p><a class="btn btn-primary" href={p.relatedPage}>{p.relatedLabel || 'Find out more'}</a></p>}
+        <p class="soft" style="font-size:14px">This article is general information, correct when published. Rules change often, so please contact us for advice on your situation.</p>
+        {others.length > 0 && (
+          <section>
+            <h2>More from our blog</h2>
+            <ul>{others.map((o) => <li><a href={`/blog/${o.slug}/`}>{o.h1}</a></li>)}</ul>
+          </section>
+        )}
+      </div>
+    </div>
+    <CtaBand />
+  </main>
+</Page>
+
+<style>
+  .blog-meta { color: var(--ink-mute); font-size: 15px; margin: 6px 0 10px; }
+</style>

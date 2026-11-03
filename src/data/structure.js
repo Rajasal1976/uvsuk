@@ -146,6 +146,11 @@ export const structure = [
     ]
   },
   {
+    "slug": "corporate-clients",
+    "type": "service",
+    "group": "employer"
+  },
+  {
     "slug": "worldwide-visas",
     "type": "hub",
     "group": "worldwide",
@@ -461,6 +466,15 @@ export const structure = [
     "slug": "japan-visa-services",
     "type": "service",
     "group": "worldwide",
+    "visa": "travel",
+    "related": [
+      "japan-work-visa-uk"
+    ]
+  },
+  {
+    "slug": "japan-work-visa-uk",
+    "type": "service",
+    "group": "worldwide",
     "visa": "travel"
   },
   {
@@ -496,6 +510,11 @@ export const structure = [
   {
     "slug": "disclaimer",
     "type": "info",
+    "group": "company"
+  },
+  {
+    "slug": "partner-with-us",
+    "type": "service",
     "group": "company"
   }
 ];

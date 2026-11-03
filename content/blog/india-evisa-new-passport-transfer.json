@@ -1,0 +1,39 @@
+{
+  "h1": "New passport but a valid India eVisa? What to do",
+  "date": "2026-11-03",
+  "category": "Travel visas",
+  "title": "India eVisa and a New Passport: Do You Need a Transfer? | UVS",
+  "focusKeyword": "India eVisa",
+  "description": "Got a new passport while your India eVisa is still valid? You may not need to do anything. Here is when India’s new eVisa transfer service is needed.",
+  "intro": "If you have renewed your passport but your India eVisa is still valid, you may be wondering whether the eVisa still works. For an India eVisa and a new passport, the answer depends on whether you still have your old passport.",
+  "sections": [
+    {
+      "heading": "If you still have your old passport",
+      "text": "You usually don't need to do anything. India allows you to travel on your new passport even though your eVisa was issued on the old one, as long as you carry the old passport with you. Keep both passports together whenever you travel to India."
+    },
+    {
+      "heading": "If your old passport was lost, stolen or kept",
+      "text": "In September 2026, India added a new \"Transfer of eVisa/ETA on New Passport\" service to its official eVisa portal. It is for travellers whose old passport has been lost, stolen or not returned. You provide your current eVisa details and old passport details, choose the reason for the transfer, and add a copy of your new passport and a new photo."
+    },
+    {
+      "heading": "Which eVisas can be transferred?",
+      "text": "Early users report that only the longer eVisas, the 1-year and 5-year e-Tourist and e-Business visas, can currently be transferred. India hasn't yet published official eligibility rules, fees or processing times. If your eVisa can't be transferred, you can apply for a new eVisa on your new passport."
+    },
+    {
+      "heading": "Only passport details can change",
+      "text": "The transfer service only updates your passport details. If anything else needs to change, such as your name or the type of visa, you need a new eVisa application."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Do I need a new India eVisa after renewing my passport?",
+      "a": "Not if you still have your old passport. Carry both passports when you travel to India."
+    },
+    {
+      "q": "Can I transfer a 30-day India eVisa to a new passport?",
+      "a": "Early reports suggest not. Only 1-year and 5-year eVisas appear to be transferable at the moment."
+    }
+  ],
+  "relatedPage": "/transfer-india-evisa-new-passport/",
+  "relatedLabel": "India eVisa transfer: how we can help"
+}

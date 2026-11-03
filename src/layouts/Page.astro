@@ -19,7 +19,10 @@ const { title, description, schemas = [], noindex: noindexProp = false } = Astro
 import homeContent from '../../content/home.json';
 const pageContent = import.meta.glob('../../content/pages/*.json', { eager: true, import: 'default' });
 const pageSlug = Astro.url.pathname.replace(/^\/|\/$/g, '');
-const seo: any = pageSlug === '' ? homeContent : (pageContent[`../../content/pages/${pageSlug}.json`] ?? {});
+const blogContent = import.meta.glob('../../content/blog/*.json', { eager: true, import: 'default' });
+const seo: any = pageSlug === '' ? homeContent
+  : pageSlug.startsWith('blog/') ? (blogContent[`../../content/blog/${pageSlug.slice(5)}.json`] ?? {})
+  : (pageContent[`../../content/pages/${pageSlug}.json`] ?? {});
 const noindex = noindexProp || seo.noindex === true;
 const shareImagePath = seo.shareImage || site.shareImage || '';
 const shareImage = shareImagePath ? new URL(shareImagePath, site.url).href : '';

@@ -153,6 +153,7 @@
     { raw: true }
   );
   CMS.registerPreviewTemplate('pages', makePanel(false));
+  CMS.registerPreviewTemplate('blog', makePanel(false));
   CMS.registerPreviewTemplate('home', makePanel(true));
   CMS.registerPreviewTemplate('homepage', makePanel(true));
 })();
