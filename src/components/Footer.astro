@@ -1,5 +1,9 @@
 ---
 import { site } from '../data/site.js';
+import { menu } from '../data/nav.js';
+// UK immigration column: the UK Visas menu, plus sponsor licences from the Employers menu
+const ukMenu = menu.find((m) => m.label === 'UK Visas');
+const ukLinks = [...(ukMenu?.items ?? []), ['Sponsor Licence', '/sponsor-licence-application/']];
 const year = new Date().getFullYear();
 // Simple icons for the social links (drawn in the footer's white)
 const icons = {
@@ -25,8 +29,8 @@ const icons = {
           </ul>
         )}
       </div>
-      <div><span class="footer-title">Visit us</span><span>{site.address.line1}<br />{site.address.city} {site.address.postcode}</span><span>{site.hours}</span></div>
-      <div><span class="footer-title">Contact</span><a href={`tel:${site.phoneIntl}`}>{site.phone}</a><a href={`mailto:${site.email}`}>{site.email}</a></div>
+      <div><span class="footer-title">Visit or contact us</span><span>{site.address.line1}<br />{site.address.city} {site.address.postcode}</span><span>{site.hours}</span><a href={`tel:${site.phoneIntl}`}>{site.phone}</a><a href={`mailto:${site.email}`}>{site.email}</a></div>
+      <div><span class="footer-title">UK Immigration Services</span>{ukLinks.map(([label, href]) => <a href={href}>{label}</a>)}<a href={ukMenu?.href ?? '/uk-visa-services/'}>All UK visa services</a></div>
       <div><span class="footer-title">Company</span><a href="/about-us/">About us</a><a href="/blog/">Blog</a><a href="/partner-with-us/">Partner with us</a><a href="/corporate-clients/">Corporate clients</a><a href="/fees/">Fees</a><a href="/faqs/">FAQs</a><a href="/complaints/">Complaints procedure</a><a href="/privacy-policy/">Privacy policy</a><a href="/terms/">Terms and conditions</a><a href="/sitemap/">Sitemap</a></div>
     </div>
     <div class="footer-legal">
