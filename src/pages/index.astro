@@ -74,10 +74,10 @@ const placeholder = 'background: #D6E3DA; border-radius: 12px; display: flex; al
 </div>
 </div>
 </div>
-<div style="max-width: 1200px; margin: 0 auto; padding: 0 24px 72px; display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px">
-<div style="background: #FFFFFF; border: 1px solid #DCE6DF; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 14px">
-<h2 style="margin: 0; font-size: 22px; color: #14532D">Check your visa requirements</h2>
-<p style="margin: 0; color: #3A4552; font-size: 16px">Choose the country, then the type of visa. For coming to or staying in the UK, choose UK visas.</p>
+<div class="finder-row">
+<div class="finder-card">
+<h2>Check your visa requirements</h2>
+<p>Choose the country, then the type of visa. For coming to or staying in the UK, choose UK visas.</p>
 <div style="display: flex; flex-wrap: wrap; gap: 10px">
 <div class="visa-finder" data-finder={JSON.stringify(visaFinder)}>
 <label for="visa-country">1. Country</label>
@@ -94,12 +94,12 @@ const placeholder = 'background: #D6E3DA; border-radius: 12px; display: flex; al
 </div>
 </div>
 </div>
-<div style="background: #FFFFFF; border: 1px solid #DCE6DF; border-radius: 12px; padding: 28px; display: flex; flex-wrap: wrap; gap: 20px; align-items: center">
+<div class="iaa-card">
 {home.iaaLogo
-  ? <img src={home.iaaLogo} alt="Immigration Advice Authority logo" width="120" height="120" loading="lazy" style="flex: 0 0 120px; width: 120px; height: 120px; object-fit: contain" />
-  : <div style="flex: 0 0 120px; height: 120px; background: #D6E3DA; border-radius: 8px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 13px; color: #3A4552; padding: 8px; box-sizing: border-box">Add the IAA logo in the admin: Homepage › IAA logo</div>}
+  ? <img src={home.iaaLogo} alt="Immigration Advice Authority logo" width="84" height="84" loading="lazy" style="flex: 0 0 84px; width: 84px; height: 84px; object-fit: contain" />
+  : <div style="flex: 0 0 84px; height: 84px; background: #D6E3DA; border-radius: 8px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 13px; color: #3A4552; padding: 8px; box-sizing: border-box">Add the IAA logo in the admin: Homepage › IAA logo</div>}
 <div style="flex: 1 1 220px; min-width: 0; display: flex; flex-direction: column; gap: 8px">
-<h2 style="margin: 0; font-size: 22px; color: #14532D">Regulated by the Immigration Advice Authority</h2>
+<h2 style="margin: 0; font-size: 18px; line-height: 1.3; color: #14532D">Regulated by the Immigration Advice Authority</h2>
 <p style="margin: 0; color: #3A4552; font-size: 16px">Unique Visa Services Ltd is registered with the IAA, the UK body that regulates immigration advisers. Registration ref {site.iaaRef}.</p>
 <a href="https://portal.immigrationadviceauthority.gov.uk/s/adviser-finder" style="font-weight: 600; font-size: 15px">Check our registration on the IAA register →</a>
 </div>
@@ -334,12 +334,28 @@ const placeholder = 'background: #D6E3DA; border-radius: 12px; display: flex; al
 </style>
 
 <style is:global>
-  .visa-finder { width: 100%; display: grid; grid-template-columns: 1fr 1fr auto; gap: 8px 10px; align-items: end; }
-  .visa-finder label { grid-row: 1; font-size: 14px; font-weight: 600; color: #14532D; }
-  .visa-finder select { grid-row: 2; min-width: 0; padding: 13px 14px; font-size: 16px; font-family: inherit; border: 1px solid #8FAE99; border-radius: 6px; background: #FFFFFF; color: #1B2430; }
-  .visa-finder select:disabled { background: #F2F4F3; color: #6B7A72; }
-  .visa-finder button { grid-row: 2; background: #14532D; color: #FFFFFF; border: 0; padding: 13px 22px; border-radius: 6px; font-size: 16px; font-weight: 600; font-family: inherit; cursor: pointer; }
-  @media (max-width: 640px) { .visa-finder { grid-template-columns: 1fr; } .visa-finder label, .visa-finder select, .visa-finder button { grid-row: auto; } }
+  .finder-row { max-width: 1200px; margin: 0 auto; padding: 0 24px 72px; display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 24px; align-items: stretch; }
+  @media (max-width: 900px) { .finder-row { grid-template-columns: 1fr; } }
+  .finder-card { background: linear-gradient(135deg, #14532D 0%, #0E3B20 100%); border-radius: 14px; padding: 30px 32px; display: flex; flex-direction: column; justify-content: center; gap: 14px; box-shadow: 0 10px 30px rgba(14, 59, 32, .18); }
+  .finder-card h2 { margin: 0; font-size: 26px; color: #FFFFFF; }
+  .finder-card > p { margin: 0; color: #DDEBE1; font-size: 16px; }
+  .iaa-card { background: #FFFFFF; border: 1px solid #DCE6DF; border-radius: 12px; padding: 22px; display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+  .iaa-card p { font-size: 15px !important; }
+  .visa-finder { width: 100%; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto; gap: 8px 12px; align-items: end; }
+  .visa-finder label { grid-row: 1; font-size: 14px; font-weight: 600; color: #F2C46D; letter-spacing: .02em; }
+  .visa-finder select {
+    grid-row: 2; min-width: 0; height: 52px; padding: 0 60px 0 14px; font-size: 16px; font-family: inherit; color: #1B2430;
+    border: 0; border-radius: 6px; cursor: pointer; appearance: none; -webkit-appearance: none;
+    background-color: #FFFFFF;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='20' height='20'%3E%3Cpath d='M6 9l6 6 6-6' fill='none' stroke='%23FFFFFF' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"), linear-gradient(#2E8B57, #2E8B57);
+    background-repeat: no-repeat; background-size: 20px 20px, 46px 100%; background-position: right 13px center, right center;
+  }
+  .visa-finder select:focus-visible { outline: 3px solid #F2C46D; outline-offset: 2px; }
+  .visa-finder select:disabled { cursor: not-allowed; color: #6B7A72; background-color: #EEF2EF; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='20' height='20'%3E%3Cpath d='M6 9l6 6 6-6' fill='none' stroke='%23FFFFFF' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"), linear-gradient(#A9B8AE, #A9B8AE); }
+  .visa-finder button { grid-row: 2; height: 52px; background: #F2C46D; color: #0E3B20; border: 0; padding: 0 24px; border-radius: 6px; font-size: 16px; font-weight: 700; font-family: inherit; cursor: pointer; white-space: nowrap; }
+  .visa-finder button:hover { background: #F6D48E; }
+  .visa-finder button:focus-visible { outline: 3px solid #FFFFFF; outline-offset: 2px; }
+  @media (max-width: 640px) { .finder-card { padding: 24px 20px; } .visa-finder { grid-template-columns: 1fr; } .visa-finder label, .visa-finder select, .visa-finder button { grid-row: auto; } }
   .hero-points { list-style: none; margin: 4px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
   .hero-points li { display: flex; gap: 12px; align-items: flex-start; }
   .hero-points strong { display: block; color: #14532D; font-size: 16px; line-height: 1.3; margin-bottom: 3px; }
