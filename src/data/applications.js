@@ -979,7 +979,52 @@ const japan = {
   ],
 };
 
-export const applications = [china, india, indiaTransfer, sriLanka, japan, schengen, usa, saudi, ghana, russia, indiaRegular, evisa, legalisation, indianPassport, secondPassport];
+// ---------- Nigeria regular visa (tourist and business) ----------
+const nigeria = {
+  slug: 'nigeria-visa',
+  title: 'Nigeria visa application (regular visa)',
+  country: 'Nigeria',
+  code: 'NG',
+  pageUrl: '/nigeria-visa-uk/',
+  description: 'Apply for a regular Nigeria tourist or business visa, for longer stays or repeat trips. Upload your passport and documents and we’ll prepare your application and appointment.',
+  minutes: 8,
+  notice: 'For a single short trip, the quicker Nigeria eVisa may suit you better. Use this form for the regular visa, for longer stays or repeat trips.',
+  steps: [
+    passportStep([], passportScanFields),
+    {
+      id: 'trip',
+      title: 'Your trip',
+      fields: [
+        { name: 'visaType', label: 'Type of visa', type: 'radio', required: true, options: ['Tourist', 'Business'] },
+        { name: 'entries', label: 'Number of entries', type: 'radio', required: true, options: ['Single entry', 'Multiple entries'] },
+        ...stay([{ name: 'nigeriaAddress', label: 'Address in Nigeria (hotel, host or company)', type: 'textarea', required: true }]),
+        { name: 'company', label: 'Name of the Nigerian company you’re visiting', type: 'text', required: true, showIf: { name: 'visaType', is: 'Business' } },
+        yesNo('visitedNigeria', 'Have you been to Nigeria before?'),
+      ],
+    },
+    work,
+    contactStep(),
+  ],
+  docsIntro: {
+    Tourist: 'For a tourist visa you’ll need your flights, hotel booking or an invitation from your host, bank statements and your yellow fever certificate.',
+    Business: 'For a business visa you’ll need an invitation letter from the Nigerian company accepting immigration responsibility for you, a letter from your employer, and your yellow fever certificate.',
+  },
+  uploads: [
+    { name: 'photo', label: 'Passport-style photo', required: true },
+    ukStatusDoc('doc1'),
+    { name: 'doc2', label: 'Return flight booking', required: true },
+    ...byVisa('doc3', {
+      Tourist: { label: 'Hotel booking, or invitation letter and a copy of your host’s ID', required: true },
+      Business: { label: 'Invitation letter from the Nigerian company', hint: 'On company letterhead, accepting immigration responsibility for you.', required: true },
+    }),
+    ...byVisa('doc4', { Business: { label: 'Letter from your UK employer', required: true } }),
+    { name: 'doc5', label: 'Yellow fever vaccination certificate', required: true },
+    bankDocs('doc6'),
+    other,
+  ],
+};
+
+export const applications = [china, india, indiaTransfer, sriLanka, japan, nigeria, schengen, usa, saudi, ghana, russia, indiaRegular, evisa, legalisation, indianPassport, secondPassport];
 export const applicationBySlug = Object.fromEntries(applications.map((a) => [a.slug, a]));
 export const declaration = declarationNote;
 export const FILE_SLOTS = ['passport', 'photo', 'doc1', 'doc2', 'doc3', 'doc4', 'doc5', 'doc6', 'doc7', 'doc8'];

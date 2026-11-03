@@ -330,144 +330,556 @@ export const structure = [
   },
   {
     "slug": "angola-visa-uk",
+    "type": "hub",
+    "group": "worldwide",
+    "visa": "evisa",
+    "children": [
+      "angola-tourist-visa-uk",
+      "angola-business-visa-uk"
+    ]
+  },
+  {
+    "slug": "angola-tourist-visa-uk",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "evisa"
+  },
+  {
+    "slug": "angola-business-visa-uk",
     "type": "service",
     "group": "worldwide",
     "visa": "evisa"
   },
   {
     "slug": "benin-visa-uk",
+    "type": "hub",
+    "group": "worldwide",
+    "visa": "evisa",
+    "children": [
+      "benin-tourist-visa-uk",
+      "benin-business-visa-uk"
+    ]
+  },
+  {
+    "slug": "benin-tourist-visa-uk",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "evisa"
+  },
+  {
+    "slug": "benin-business-visa-uk",
     "type": "service",
     "group": "worldwide",
     "visa": "evisa"
   },
   {
     "slug": "ivory-coast-visa-uk",
+    "type": "hub",
+    "group": "worldwide",
+    "visa": "evisa",
+    "children": [
+      "ivory-coast-tourist-visa-uk",
+      "ivory-coast-business-visa-uk"
+    ]
+  },
+  {
+    "slug": "ivory-coast-tourist-visa-uk",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "evisa"
+  },
+  {
+    "slug": "ivory-coast-business-visa-uk",
     "type": "service",
     "group": "worldwide",
     "visa": "evisa"
   },
   {
     "slug": "djibouti-visa-uk",
+    "type": "hub",
+    "group": "worldwide",
+    "visa": "evisa",
+    "children": [
+      "djibouti-tourist-visa-uk",
+      "djibouti-business-visa-uk"
+    ]
+  },
+  {
+    "slug": "djibouti-tourist-visa-uk",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "evisa"
+  },
+  {
+    "slug": "djibouti-business-visa-uk",
     "type": "service",
     "group": "worldwide",
     "visa": "evisa"
   },
   {
     "slug": "ethiopia-visa-uk",
+    "type": "hub",
+    "group": "worldwide",
+    "visa": "evisa",
+    "children": [
+      "ethiopia-tourist-visa-uk",
+      "ethiopia-business-visa-uk"
+    ]
+  },
+  {
+    "slug": "ethiopia-tourist-visa-uk",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "evisa"
+  },
+  {
+    "slug": "ethiopia-business-visa-uk",
     "type": "service",
     "group": "worldwide",
     "visa": "evisa"
   },
   {
     "slug": "gabon-visa-uk",
+    "type": "hub",
+    "group": "worldwide",
+    "visa": "evisa",
+    "children": [
+      "gabon-tourist-visa-uk",
+      "gabon-business-visa-uk"
+    ]
+  },
+  {
+    "slug": "gabon-tourist-visa-uk",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "evisa"
+  },
+  {
+    "slug": "gabon-business-visa-uk",
     "type": "service",
     "group": "worldwide",
     "visa": "evisa"
   },
   {
     "slug": "guinea-bissau-visa-uk",
+    "type": "hub",
+    "group": "worldwide",
+    "visa": "evisa",
+    "children": [
+      "guinea-bissau-tourist-visa-uk",
+      "guinea-bissau-business-visa-uk"
+    ]
+  },
+  {
+    "slug": "guinea-bissau-tourist-visa-uk",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "evisa"
+  },
+  {
+    "slug": "guinea-bissau-business-visa-uk",
     "type": "service",
     "group": "worldwide",
     "visa": "evisa"
   },
   {
     "slug": "kenya-eta-uk",
+    "type": "hub",
+    "group": "worldwide",
+    "visa": "evisa",
+    "children": [
+      "kenya-tourist-visa-uk",
+      "kenya-business-visa-uk"
+    ]
+  },
+  {
+    "slug": "kenya-tourist-visa-uk",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "evisa"
+  },
+  {
+    "slug": "kenya-business-visa-uk",
     "type": "service",
     "group": "worldwide",
     "visa": "evisa"
   },
   {
     "slug": "rwanda-visa-uk",
+    "type": "hub",
+    "group": "worldwide",
+    "visa": "evisa",
+    "children": [
+      "rwanda-tourist-visa-uk",
+      "rwanda-business-visa-uk"
+    ]
+  },
+  {
+    "slug": "rwanda-tourist-visa-uk",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "evisa"
+  },
+  {
+    "slug": "rwanda-business-visa-uk",
     "type": "service",
     "group": "worldwide",
     "visa": "evisa"
   },
   {
     "slug": "tanzania-visa-uk",
+    "type": "hub",
+    "group": "worldwide",
+    "visa": "evisa",
+    "children": [
+      "tanzania-tourist-visa-uk",
+      "tanzania-business-visa-uk"
+    ]
+  },
+  {
+    "slug": "tanzania-tourist-visa-uk",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "evisa"
+  },
+  {
+    "slug": "tanzania-business-visa-uk",
     "type": "service",
     "group": "worldwide",
     "visa": "evisa"
   },
   {
     "slug": "uganda-visa-uk",
+    "type": "hub",
+    "group": "worldwide",
+    "visa": "evisa",
+    "children": [
+      "uganda-tourist-visa-uk",
+      "uganda-business-visa-uk"
+    ]
+  },
+  {
+    "slug": "uganda-tourist-visa-uk",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "evisa"
+  },
+  {
+    "slug": "uganda-business-visa-uk",
     "type": "service",
     "group": "worldwide",
     "visa": "evisa"
   },
   {
     "slug": "zambia-visa-uk",
+    "type": "hub",
+    "group": "worldwide",
+    "visa": "evisa",
+    "children": [
+      "zambia-tourist-visa-uk",
+      "zambia-business-visa-uk"
+    ]
+  },
+  {
+    "slug": "zambia-tourist-visa-uk",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "evisa"
+  },
+  {
+    "slug": "zambia-business-visa-uk",
     "type": "service",
     "group": "worldwide",
     "visa": "evisa"
   },
   {
     "slug": "zimbabwe-visa-uk",
+    "type": "hub",
+    "group": "worldwide",
+    "visa": "evisa",
+    "children": [
+      "zimbabwe-tourist-visa-uk",
+      "zimbabwe-business-visa-uk"
+    ]
+  },
+  {
+    "slug": "zimbabwe-tourist-visa-uk",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "evisa"
+  },
+  {
+    "slug": "zimbabwe-business-visa-uk",
     "type": "service",
     "group": "worldwide",
     "visa": "evisa"
   },
   {
     "slug": "nigeria-visa-uk",
+    "type": "hub",
+    "group": "worldwide",
+    "visa": "evisa",
+    "children": [
+      "nigeria-tourist-evisa-uk",
+      "nigeria-business-evisa-uk",
+      "nigeria-tourist-visa-uk",
+      "nigeria-business-visa-uk",
+      "nigeria-str-work-visa-uk",
+      "nigeria-temporary-work-permit-uk"
+    ]
+  },
+  {
+    "slug": "nigeria-tourist-visa-uk",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "travel"
+  },
+  {
+    "slug": "nigeria-business-evisa-uk",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "evisa"
+  },
+  {
+    "slug": "nigeria-tourist-evisa-uk",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "evisa"
+  },
+  {
+    "slug": "nigeria-business-visa-uk",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "travel"
+  },
+  {
+    "slug": "nigeria-str-work-visa-uk",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "evisa"
+  },
+  {
+    "slug": "nigeria-temporary-work-permit-uk",
     "type": "service",
     "group": "worldwide",
     "visa": "evisa"
   },
   {
     "slug": "azerbaijan-visa-uk",
+    "type": "hub",
+    "group": "worldwide",
+    "visa": "evisa",
+    "children": [
+      "azerbaijan-tourist-visa-uk",
+      "azerbaijan-business-visa-uk"
+    ]
+  },
+  {
+    "slug": "azerbaijan-tourist-visa-uk",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "evisa"
+  },
+  {
+    "slug": "azerbaijan-business-visa-uk",
     "type": "service",
     "group": "worldwide",
     "visa": "evisa"
   },
   {
     "slug": "cambodia-visa-uk",
+    "type": "hub",
+    "group": "worldwide",
+    "visa": "evisa",
+    "children": [
+      "cambodia-tourist-visa-uk",
+      "cambodia-business-visa-uk"
+    ]
+  },
+  {
+    "slug": "cambodia-tourist-visa-uk",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "evisa"
+  },
+  {
+    "slug": "cambodia-business-visa-uk",
     "type": "service",
     "group": "worldwide",
     "visa": "evisa"
   },
   {
     "slug": "myanmar-visa-uk",
+    "type": "hub",
+    "group": "worldwide",
+    "visa": "evisa",
+    "children": [
+      "myanmar-tourist-visa-uk",
+      "myanmar-business-visa-uk"
+    ]
+  },
+  {
+    "slug": "myanmar-tourist-visa-uk",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "evisa"
+  },
+  {
+    "slug": "myanmar-business-visa-uk",
     "type": "service",
     "group": "worldwide",
     "visa": "evisa"
   },
   {
     "slug": "pakistan-visa-uk",
+    "type": "hub",
+    "group": "worldwide",
+    "visa": "evisa",
+    "children": [
+      "pakistan-tourist-visa-uk",
+      "pakistan-business-visa-uk"
+    ]
+  },
+  {
+    "slug": "pakistan-tourist-visa-uk",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "evisa"
+  },
+  {
+    "slug": "pakistan-business-visa-uk",
     "type": "service",
     "group": "worldwide",
     "visa": "evisa"
   },
   {
     "slug": "tajikistan-visa-uk",
+    "type": "hub",
+    "group": "worldwide",
+    "visa": "evisa",
+    "children": [
+      "tajikistan-tourist-visa-uk",
+      "tajikistan-business-visa-uk"
+    ]
+  },
+  {
+    "slug": "tajikistan-tourist-visa-uk",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "evisa"
+  },
+  {
+    "slug": "tajikistan-business-visa-uk",
     "type": "service",
     "group": "worldwide",
     "visa": "evisa"
   },
   {
     "slug": "bahrain-visa-uk",
+    "type": "hub",
+    "group": "worldwide",
+    "visa": "evisa",
+    "children": [
+      "bahrain-tourist-visa-uk",
+      "bahrain-business-visa-uk"
+    ]
+  },
+  {
+    "slug": "bahrain-tourist-visa-uk",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "evisa"
+  },
+  {
+    "slug": "bahrain-business-visa-uk",
     "type": "service",
     "group": "worldwide",
     "visa": "evisa"
   },
   {
     "slug": "kuwait-visa-uk",
+    "type": "hub",
+    "group": "worldwide",
+    "visa": "evisa",
+    "children": [
+      "kuwait-tourist-visa-uk",
+      "kuwait-business-visa-uk"
+    ]
+  },
+  {
+    "slug": "kuwait-tourist-visa-uk",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "evisa"
+  },
+  {
+    "slug": "kuwait-business-visa-uk",
     "type": "service",
     "group": "worldwide",
     "visa": "evisa"
   },
   {
     "slug": "oman-visa-uk",
+    "type": "hub",
+    "group": "worldwide",
+    "visa": "evisa",
+    "children": [
+      "oman-tourist-visa-uk",
+      "oman-business-visa-uk"
+    ]
+  },
+  {
+    "slug": "oman-tourist-visa-uk",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "evisa"
+  },
+  {
+    "slug": "oman-business-visa-uk",
     "type": "service",
     "group": "worldwide",
     "visa": "evisa"
   },
   {
     "slug": "turkey-visa-uk",
+    "type": "hub",
+    "group": "worldwide",
+    "visa": "evisa",
+    "children": [
+      "turkey-tourist-visa-uk",
+      "turkey-business-visa-uk"
+    ]
+  },
+  {
+    "slug": "turkey-tourist-visa-uk",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "evisa"
+  },
+  {
+    "slug": "turkey-business-visa-uk",
     "type": "service",
     "group": "worldwide",
     "visa": "evisa"
   },
   {
     "slug": "papua-new-guinea-visa-uk",
+    "type": "hub",
+    "group": "worldwide",
+    "visa": "evisa",
+    "children": [
+      "papua-new-guinea-tourist-visa-uk",
+      "papua-new-guinea-business-visa-uk"
+    ]
+  },
+  {
+    "slug": "papua-new-guinea-tourist-visa-uk",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "evisa"
+  },
+  {
+    "slug": "papua-new-guinea-business-visa-uk",
     "type": "service",
     "group": "worldwide",
     "visa": "evisa"

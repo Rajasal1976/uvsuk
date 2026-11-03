@@ -1,0 +1,75 @@
+{
+  "title": "Myanmar tourist visa from the UK | Apply Online | UVS",
+  "description": "Myanmar tourist visa from the UK: who needs one, what it covers and the documents you need. We check and apply for you, so nothing delays your trip.",
+  "h1": "Myanmar tourist visa from the UK",
+  "purposeLabel": "Tourist visa",
+  "intro": "Planning a holiday or a visit to family or friends in Myanmar? This page explains the Myanmar tourist visa, who needs one and what to prepare. We check the rules for your passport and apply for you.",
+  "eligibility": [
+    "You are travelling for a holiday, sightseeing or to visit family or friends",
+    "You won’t work or do business during your visit",
+    "You have a return ticket and enough money for your stay"
+  ],
+  "documents": [
+    "Passport photo page scan, valid for at least 6 months",
+    "Recent passport-style photo",
+    "Return flight booking",
+    "Hotel booking, or an invitation from the people you’re visiting"
+  ],
+  "sections": [
+    {
+      "heading": "Do you need a Myanmar tourist visa?",
+      "text": "British passport holders need a visa to visit Myanmar (Burma), which can be applied for online as an eVisa."
+    },
+    {
+      "heading": "What a Myanmar tourist visa covers",
+      "text": "A Myanmar tourist visa is for holidays, sightseeing and visiting family or friends in Myanmar. It doesn't cover business meetings or paid work. If you're travelling for business, see our [Myanmar business visa](/myanmar-business-visa-uk/) page."
+    },
+    {
+      "heading": "UK residents on other passports",
+      "text": "UK residents on other passports usually apply the same way."
+    },
+    {
+      "heading": "Myanmar tourist visa help from Manchester",
+      "text": "We're based in Manchester city centre and handle Myanmar tourist visa applications for travellers across the UK, entirely online. Before you travel, read the UK government's [foreign travel advice](https://www.gov.uk/foreign-travel-advice) for Myanmar."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Can I visit family on a Myanmar tourist visa?",
+      "a": "Yes. Visiting family or friends is covered by the Myanmar tourist visa."
+    },
+    {
+      "q": "Can I work in Myanmar on a Myanmar tourist visa?",
+      "a": "No. Working needs a work visa or permit. Contact us and we’ll explain the options."
+    },
+    {
+      "q": "How long does a Myanmar tourist visa take?",
+      "a": "Usually a few working days, but processing times vary. Apply at least a week before you travel, and earlier in busy seasons."
+    }
+  ],
+  "govuk": "https://www.gov.uk/foreign-travel-advice",
+  "applyButton": "/apply/evisa/?destination=Myanmar&visaType=Tourism",
+  "country": "Myanmar",
+  "sortKey": "1 myanmar 2 myanmar tourist",
+  "focusKeyword": "Myanmar tourist visa",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Tourist application completed and checked",
+      "processing": "",
+      "fee": "",
+      "popular": true,
+      "processingFee": "",
+      "total": ""
+    },
+    {
+      "service": "Urgent",
+      "included": "Everything in Standard, submitted the same working day",
+      "processing": "",
+      "fee": "",
+      "popular": false,
+      "processingFee": "",
+      "total": ""
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "h1": "Nigeria tourist visa from the UK",
+  "purposeLabel": "Tourist visa (regular)",
+  "focusKeyword": "Nigeria tourist visa",
+  "title": "Nigeria Tourist Visa from the UK | Regular Visa Help | UVS",
+  "description": "Nigeria tourist visa (regular visa) for longer or repeat visits than the eVisa allows. Who needs one, the documents, and how we apply for you.",
+  "intro": "The regular Nigeria tourist visa is for visitors who need more than the eVisa offers, such as a longer stay or more than one trip. It is applied for online and completed at a visa application appointment in the UK.",
+  "eligibility": [
+    "You are visiting Nigeria for tourism or to see family or friends",
+    "You need a longer stay or more entries than the eVisa allows",
+    "You have somewhere to stay and enough money for your visit"
+  ],
+  "documents": [
+    "Passport, valid for at least 6 months, with blank pages",
+    "Recent passport-style photos",
+    "Return flight booking",
+    "Recent bank statements",
+    "Yellow fever vaccination certificate",
+    "Hotel booking, or an invitation letter and ID from your host in Nigeria"
+  ],
+  "sections": [
+    {
+      "heading": "eVisa or regular Nigeria tourist visa?",
+      "text": "The [Nigeria tourist eVisa](/nigeria-tourist-evisa-uk/) is quick and fully online, but it is single entry, valid for 30 to 90 days, and can't be extended. The regular Nigeria tourist visa suits you better if you're planning a longer stay, or several visits to family. We'll tell you which fits your plans."
+    },
+    {
+      "heading": "How to apply for a Nigeria tourist visa",
+      "text": "You apply online through the Nigeria Immigration Service portal and pay the visa fee. You then attend an appointment at the Nigerian visa application centre in the UK to submit your passport, documents and biometrics. Your passport is returned once the visa is issued."
+    },
+    {
+      "heading": "Visiting family in Nigeria",
+      "text": "If you're staying with family or friends, an invitation letter from your host with a copy of their Nigerian ID or passport helps your application. It should give their address and confirm they'll host you."
+    },
+    {
+      "heading": "Nigeria tourist visa help from Manchester",
+      "text": "We complete your online application, check your documents, and tell you exactly what to take to your appointment. Before you travel, read the UK government's [foreign travel advice](https://www.gov.uk/foreign-travel-advice) for Nigeria."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "How is the regular Nigeria tourist visa different from the eVisa?",
+      "a": "The eVisa is single entry, valid for 30 to 90 days and can’t be extended. The regular visa is for longer stays or more entries, and needs an appointment in the UK."
+    },
+    {
+      "q": "Do I need to attend an appointment for a Nigeria tourist visa?",
+      "a": "Yes, for the regular visa you attend an appointment at the Nigerian visa application centre to submit your passport and biometrics."
+    },
+    {
+      "q": "Do I need a yellow fever certificate?",
+      "a": "Yes, a valid yellow fever vaccination certificate is required for entry to Nigeria."
+    }
+  ],
+  "govuk": "https://immigration.gov.ng/",
+  "applyButton": "/apply/nigeria-visa/?visaType=Tourist",
+  "country": "Nigeria",
+  "sortKey": "1 nigeria 2 b tourist visa",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Online application completed, documents checked, appointment guidance",
+      "processing": "",
+      "fee": "",
+      "popular": true,
+      "processingFee": "",
+      "total": ""
+    }
+  ]
+}

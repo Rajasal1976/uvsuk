@@ -1,0 +1,68 @@
+{
+  "title": "Nigeria STR Work Visa from the UK | Application Help | UVS",
+  "description": "Nigeria STR work visa (Subject to Regularisation) help for UK residents taking up a job in Nigeria. Approval, documents and your application.",
+  "h1": "Nigeria STR work visa from the UK",
+  "purposeLabel": "STR work visa",
+  "focusKeyword": "Nigeria STR work visa",
+  "intro": "The Nigeria STR work visa (Subject to Regularisation) is the visa for taking up long-term employment in Nigeria. Your employer obtains approval first, then you apply from the UK, and you regularise your status after you arrive.",
+  "eligibility": [
+    "You have a job offer from an employer in Nigeria",
+    "Your employer has obtained, or is applying for, STR approval from the Nigeria Immigration Service",
+    "You are taking up long-term employment, not a short assignment"
+  ],
+  "documents": [
+    "Passport, valid for at least 6 months",
+    "Recent passport-style photos",
+    "STR approval letter from the Nigeria Immigration Service, obtained by your employer",
+    "Letter of employment or contract",
+    "Your CV and degree certificates",
+    "Yellow fever vaccination certificate"
+  ],
+  "sections": [
+    {
+      "heading": "How the Nigeria STR work visa works",
+      "text": "Getting a Nigeria STR visa is a staged process:\n- Your employer in Nigeria applies to the Nigeria Immigration Service for approval to employ you\n- Once approval is granted, you apply for the STR visa from the UK, with the approval letter and your documents\n- After you arrive in Nigeria, you regularise your status and obtain your residence permit, known as CERPAC, within the time allowed"
+    },
+    {
+      "heading": "Documents for a Nigeria STR visa",
+      "text": "Your employer usually provides the approval letter and your employment documents. You provide your passport, photos, CV and qualifications. Degree certificates sometimes need to be legalised first, which we can arrange."
+    },
+    {
+      "heading": "STR visa or Temporary Work Permit?",
+      "text": "The STR visa is for long-term jobs. If you're going to Nigeria for a short specialist assignment, such as installing or repairing equipment, a [Temporary Work Permit](/nigeria-temporary-work-permit-uk/) is usually the right route instead."
+    },
+    {
+      "heading": "Nigeria STR visa help from Manchester",
+      "text": "We help UK residents and employers with Nigeria STR visa applications, checking your approval and documents before you apply. Requirements can change, so we confirm the current process for your application."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "What does STR stand for?",
+      "a": "Subject to Regularisation. You enter Nigeria on the STR visa and then regularise your status by obtaining a residence permit."
+    },
+    {
+      "q": "Who applies for STR approval?",
+      "a": "Your employer in Nigeria applies to the Nigeria Immigration Service. You apply for the visa once approval is granted."
+    },
+    {
+      "q": "Can I work in Nigeria on a business eVisa?",
+      "a": "No. Taking up employment in Nigeria needs the right work visa, such as the STR visa."
+    }
+  ],
+  "govuk": "https://immigration.gov.ng/",
+  "applyButton": "/contact-us/",
+  "country": "Nigeria",
+  "sortKey": "1 nigeria 3 nigeria-str-work-visa-uk",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Documents checked and application prepared",
+      "processing": "",
+      "fee": "",
+      "popular": true,
+      "processingFee": "",
+      "total": ""
+    }
+  ]
+}

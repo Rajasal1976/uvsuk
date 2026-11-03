@@ -1,0 +1,75 @@
+{
+  "title": "Kenya tourist ETA from the UK | Apply Online | UVS",
+  "description": "Kenya tourist ETA from the UK: who needs one, what it covers and the documents you need. We check and apply for you, so nothing delays your trip.",
+  "h1": "Kenya tourist ETA from the UK",
+  "purposeLabel": "Tourist ETA",
+  "intro": "Planning a holiday or a visit to family or friends in Kenya? This page explains the Kenya tourist ETA, who needs one and what to prepare. We check the rules for your passport and apply for you.",
+  "eligibility": [
+    "You are travelling for a holiday, sightseeing or to visit family or friends",
+    "You won’t work or do business during your visit",
+    "You have a return ticket and enough money for your stay"
+  ],
+  "documents": [
+    "Passport photo page scan, valid for at least 6 months",
+    "Recent passport-style photo",
+    "Return flight booking",
+    "Hotel booking, or an invitation from the people you’re visiting"
+  ],
+  "sections": [
+    {
+      "heading": "Do you need a Kenya tourist ETA?",
+      "text": "Kenya replaced its visa system with an Electronic Travel Authorisation (ETA) in January 2024. British passport holders need a Kenya ETA before travelling, applied for online."
+    },
+    {
+      "heading": "What a Kenya tourist ETA covers",
+      "text": "A Kenya tourist ETA is for holidays, sightseeing and visiting family or friends in Kenya. It doesn't cover business meetings or paid work. If you're travelling for business, see our [Kenya business visa](/kenya-business-visa-uk/) page."
+    },
+    {
+      "heading": "UK residents on other passports",
+      "text": "UK residents on other passports also need a Kenya ETA unless their nationality is exempt. The ETA covers tourism, business visits, transit and visiting family."
+    },
+    {
+      "heading": "Kenya tourist ETA help from Manchester",
+      "text": "We're based in Manchester city centre and handle Kenya tourist ETA applications for travellers across the UK, entirely online. Before you travel, read the UK government's [foreign travel advice](https://www.gov.uk/foreign-travel-advice) for Kenya."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Can I visit family on a Kenya tourist ETA?",
+      "a": "Yes. Visiting family or friends is covered by the Kenya tourist ETA."
+    },
+    {
+      "q": "Can I work in Kenya on a Kenya tourist ETA?",
+      "a": "No. Working needs a work visa or permit. Contact us and we’ll explain the options."
+    },
+    {
+      "q": "How long does a Kenya tourist ETA take?",
+      "a": "Usually a few working days, but processing times vary. Apply at least a week before you travel, and earlier in busy seasons."
+    }
+  ],
+  "govuk": "https://www.gov.uk/foreign-travel-advice",
+  "applyButton": "/apply/evisa/?destination=Kenya&visaType=Tourism",
+  "country": "Kenya",
+  "sortKey": "1 kenya 2 kenya tourist",
+  "focusKeyword": "Kenya tourist ETA",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Tourist application completed and checked",
+      "processing": "",
+      "fee": "",
+      "popular": true,
+      "processingFee": "",
+      "total": ""
+    },
+    {
+      "service": "Urgent",
+      "included": "Everything in Standard, submitted the same working day",
+      "processing": "",
+      "fee": "",
+      "popular": false,
+      "processingFee": "",
+      "total": ""
+    }
+  ]
+}

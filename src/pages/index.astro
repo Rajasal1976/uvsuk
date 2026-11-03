@@ -11,18 +11,27 @@ const schemas = [JSON.stringify({
   mainEntity: home.faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
 })];
 const tel = `tel:${site.phoneIntl}`;
-// "Check your visa requirements" dropdown: one entry per country page, built automatically,
-// so new country pages appear here without any changes. The main page wins where a country has several.
+// "Check your visa requirements": choose a country, then the visa type. Built automatically from
+// the pages on the site, so new country or visa-type pages appear here without any changes.
 import { pages as allPages } from '../data/pages.js';
 const notCountries = new Set(['UK', 'Document legalisation', 'Worldwide visas overview', 'Employers', 'Company pages']);
-const visaCountries = Object.entries(
-  allPages
-    .filter((pg) => pg.group === 'worldwide' && pg.country && !notCountries.has(pg.country))
-    .reduce((acc, pg) => {
-      if (!acc[pg.country] || (pg.type === 'hub' && acc[pg.country].type !== 'hub')) acc[pg.country] = pg;
-      return acc;
-    }, {})
-).map(([name, pg]) => [name, `/${pg.slug}/`]).sort((a, b) => a[0].localeCompare(b[0]));
+const shortLabel = (pg, country) => pg.purposeLabel || (pg.h1 || '').replace(/ from the UK.*$/i, '').replace(new RegExp('^' + country + '\\s+', 'i'), '').replace(/^(?!e-)\w/, (c) => c.toUpperCase());
+const byCountry = {};
+for (const pg of allPages) {
+  if (pg.group !== 'worldwide' || !pg.country || notCountries.has(pg.country)) continue;
+  (byCountry[pg.country] ??= []).push(pg);
+}
+const visaFinder = Object.entries(byCountry).map(([country, list]) => {
+  const hub = list.find((x) => x.type === 'hub');
+  const main = hub || list[0];
+  // Use the order set on the country's main page, then any other pages for that country
+  const ordered = hub ? [...(hub.children || []).map((c) => list.find((x) => x.slug === c)).filter(Boolean), ...list.filter((x) => x !== hub && !(hub.children || []).includes(x.slug))] : list.filter((x) => x !== main);
+  const types = ordered.map((x) => [shortLabel(x, country), `/${x.slug}/`]);
+  if (country === 'China') types.push(['Business visa (M)', '/china-business-visa/']);
+  return [country, `/${main.slug}/`, types];
+}).sort((a, b) => a[0].localeCompare(b[0]));
+const ukTypes = allPages.filter((x) => x.group === 'uk' && x.type === 'service').map((x) => [x.h1.replace(/^UK /, '').replace(/^\w/, (c) => c.toUpperCase()), `/${x.slug}/`]);
+visaFinder.unshift(['UK visas', '/uk-visa-services/', ukTypes]);
 // Icons for the three selling points in the banner (edited in the admin: Homepage › Selling points)
 const pointIcons = [
   '<svg viewBox="0 0 24 24" width="22" height="22"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M8.5 12l2.5 2.5 4.5-5"/></svg>',
@@ -68,16 +77,21 @@ const placeholder = 'background: #D6E3DA; border-radius: 12px; display: flex; al
 <div style="max-width: 1200px; margin: 0 auto; padding: 0 24px 72px; display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px">
 <div style="background: #FFFFFF; border: 1px solid #DCE6DF; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 14px">
 <h2 style="margin: 0; font-size: 22px; color: #14532D">Check your visa requirements</h2>
-<p style="margin: 0; color: #3A4552; font-size: 16px">Choose where you're travelling to, or select UK Visa if you're coming to or staying in the UK.</p>
+<p style="margin: 0; color: #3A4552; font-size: 16px">Choose the country, then the type of visa. For coming to or staying in the UK, choose UK visas.</p>
 <div style="display: flex; flex-wrap: wrap; gap: 10px">
-<label for="visa-country" style="position: absolute; left: -9999px">Destination country</label>
-<select id="visa-country" style="flex: 1 1 220px; min-width: 0; padding: 13px 14px; font-size: 16px; font-family: inherit; border: 1px solid #8FAE99; border-radius: 6px; background: #FFFFFF; color: #1B2430">
+<div class="visa-finder" data-finder={JSON.stringify(visaFinder)}>
+<label for="visa-country">1. Country</label>
+<select id="visa-country">
 <option value="">Select a country…</option>
-<option value="/uk-visa-services/">UK Visa</option>
-{visaCountries.map(([name, url]) => <option value={url}>{name}</option>)}
-<option value="/worldwide-visas/">Other countries</option>
+{visaFinder.map(([country]) => <option value={country}>{country}</option>)}
+<option value="__other">Other countries</option>
 </select>
-<button id="visa-check" type="button" style="background: #14532D; color: #FFFFFF; border: 0; padding: 13px 24px; border-radius: 6px; font-size: 16px; font-weight: 600; font-family: inherit; cursor: pointer">Check requirements</button>
+<label for="visa-type">2. Type of visa</label>
+<select id="visa-type" disabled>
+<option value="">Select a country first</option>
+</select>
+<button id="visa-check" type="button">Check requirements</button>
+</div>
 </div>
 </div>
 <div style="background: #FFFFFF; border: 1px solid #DCE6DF; border-radius: 12px; padding: 28px; display: flex; flex-wrap: wrap; gap: 20px; align-items: center">
@@ -284,11 +298,31 @@ const placeholder = 'background: #D6E3DA; border-radius: 12px; display: flex; al
 </Page>
 
 <script>
-  // Worldwide visa picker: go to the chosen country page
-  document.getElementById('visa-check')?.addEventListener('click', () => {
-    const url = (document.getElementById('visa-country') as HTMLSelectElement).value;
-    if (url) window.location.href = url;
-  });
+  // Visa finder: choose a country, then the visa type, then go to that page
+  const box = document.querySelector<HTMLElement>('.visa-finder');
+  if (box) {
+    const data: [string, string, [string, string][]][] = JSON.parse(box.dataset.finder || '[]');
+    const country = box.querySelector<HTMLSelectElement>('#visa-country')!;
+    const type = box.querySelector<HTMLSelectElement>('#visa-type')!;
+    country.addEventListener('change', () => {
+      const row = data.find((r) => r[0] === country.value);
+      type.innerHTML = '';
+      if (!row) {
+        type.disabled = true;
+        type.add(new Option(country.value === '__other' ? 'See all countries' : 'Select a country first', ''));
+        return;
+      }
+      type.disabled = false;
+      type.add(new Option(row[2].length ? `All ${row[0].replace(/ visas$/, '')} visa options` : `${row[0]} visa`, row[1]));
+      for (const [label, url] of row[2]) type.add(new Option(label, url));
+    });
+    box.querySelector('#visa-check')!.addEventListener('click', () => {
+      if (country.value === '__other') return void (window.location.href = '/worldwide-visas/');
+      const url = type.value || data.find((r) => r[0] === country.value)?.[1];
+      if (url) window.location.href = url;
+      else country.focus();
+    });
+  }
 </script>
 
 <style is:global>
@@ -300,6 +334,12 @@ const placeholder = 'background: #D6E3DA; border-radius: 12px; display: flex; al
 </style>
 
 <style is:global>
+  .visa-finder { width: 100%; display: grid; grid-template-columns: 1fr 1fr auto; gap: 8px 10px; align-items: end; }
+  .visa-finder label { grid-row: 1; font-size: 14px; font-weight: 600; color: #14532D; }
+  .visa-finder select { grid-row: 2; min-width: 0; padding: 13px 14px; font-size: 16px; font-family: inherit; border: 1px solid #8FAE99; border-radius: 6px; background: #FFFFFF; color: #1B2430; }
+  .visa-finder select:disabled { background: #F2F4F3; color: #6B7A72; }
+  .visa-finder button { grid-row: 2; background: #14532D; color: #FFFFFF; border: 0; padding: 13px 22px; border-radius: 6px; font-size: 16px; font-weight: 600; font-family: inherit; cursor: pointer; }
+  @media (max-width: 640px) { .visa-finder { grid-template-columns: 1fr; } .visa-finder label, .visa-finder select, .visa-finder button { grid-row: auto; } }
   .hero-points { list-style: none; margin: 4px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
   .hero-points li { display: flex; gap: 12px; align-items: flex-start; }
   .hero-points strong { display: block; color: #14532D; font-size: 16px; line-height: 1.3; margin-bottom: 3px; }

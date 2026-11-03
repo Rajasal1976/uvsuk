@@ -1,0 +1,76 @@
+{
+  "title": "Azerbaijan business visa from the UK | Apply Online | UVS",
+  "description": "Azerbaijan business visa from the UK for meetings, conferences and trade fairs. Who needs one, the documents you need, and how we apply for you.",
+  "h1": "Azerbaijan business visa from the UK",
+  "purposeLabel": "Business visa",
+  "intro": "Travelling to Azerbaijan for meetings, a conference or a trade fair? This page explains the Azerbaijan business visa, who needs one and what to prepare. We check the rules for your passport and apply for you.",
+  "eligibility": [
+    "You are travelling for meetings, conferences, trade fairs, negotiations or site visits",
+    "You won’t be paid by a company in Azerbaijan",
+    "You have an invitation from the company or event you’re visiting"
+  ],
+  "documents": [
+    "Passport photo page scan, valid for at least 6 months",
+    "Recent passport-style photo",
+    "Invitation letter from the company you’re visiting in Azerbaijan",
+    "Letter from your UK employer confirming your role and the trip",
+    "Return flight and hotel booking"
+  ],
+  "sections": [
+    {
+      "heading": "Do you need a Azerbaijan business visa?",
+      "text": "British passport holders need a visa for short business visits to Azerbaijan, applied for online through the official ASAN Visa system."
+    },
+    {
+      "heading": "What counts as a business visit?",
+      "text": "Business visits usually include:\n- Meetings with clients, suppliers or partners\n- Conferences, exhibitions and trade fairs\n- Negotiating or signing contracts\n- Site visits and inspections\n\nThey don't include taking up paid work for a company in Azerbaijan. That needs a work visa or permit."
+    },
+    {
+      "heading": "Documents for a Azerbaijan business visa",
+      "text": "The key document is the invitation letter from the company you're visiting. It should include your name and passport number, the purpose and dates of your visit, the company's address and contact details, and who is paying for the trip. A letter from your UK employer confirming your role helps too."
+    },
+    {
+      "heading": "Azerbaijan business visa help from Manchester",
+      "text": "We handle Azerbaijan business visa applications for individuals and companies across the UK, including urgent trips. See our [corporate visa services](/corporate-clients/) if your staff travel regularly. Before you travel, read the UK government's [foreign travel advice](https://www.gov.uk/foreign-travel-advice) for Azerbaijan."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Can I attend a conference on a Azerbaijan business visa?",
+      "a": "Yes. Conferences, exhibitions and trade fairs are business visits."
+    },
+    {
+      "q": "Can I work in Azerbaijan on a Azerbaijan business visa?",
+      "a": "No. Being paid by a local company, or doing hands-on work, usually needs a work visa or permit."
+    },
+    {
+      "q": "What should the invitation letter include?",
+      "a": "Your name and passport number, the purpose and dates of your visit, the company’s details, and who is paying for the trip."
+    }
+  ],
+  "govuk": "https://www.gov.uk/foreign-travel-advice",
+  "applyButton": "/apply/evisa/?destination=Azerbaijan&visaType=Business",
+  "country": "Azerbaijan",
+  "sortKey": "1 azerbaijan 2 azerbaijan business",
+  "focusKeyword": "Azerbaijan business visa",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Business application completed and checked",
+      "processing": "",
+      "fee": "",
+      "popular": true,
+      "processingFee": "",
+      "total": ""
+    },
+    {
+      "service": "Urgent",
+      "included": "Everything in Standard, submitted the same working day",
+      "processing": "",
+      "fee": "",
+      "popular": false,
+      "processingFee": "",
+      "total": ""
+    }
+  ]
+}

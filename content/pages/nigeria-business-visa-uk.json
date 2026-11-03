@@ -1,0 +1,73 @@
+{
+  "h1": "Nigeria business visa from the UK",
+  "purposeLabel": "Business visa (regular)",
+  "focusKeyword": "Nigeria business visa",
+  "title": "Nigeria Business Visa from the UK | Longer & Multiple Entry",
+  "description": "Nigeria business visa (regular visa) for longer stays and repeat business trips than the eVisa allows. Documents, invitation letter and how we apply.",
+  "intro": "The regular Nigeria business visa is for business travellers who need more than the eVisa offers, such as longer stays or repeat trips. It is applied for online and completed at a visa application appointment in the UK.",
+  "eligibility": [
+    "You are travelling to Nigeria for meetings, negotiations, conferences or site visits",
+    "You need a longer stay, or several trips, beyond what the eVisa allows",
+    "You won’t be employed by a Nigerian company (that needs a work visa)"
+  ],
+  "documents": [
+    "Passport, valid for at least 6 months, with blank pages",
+    "Recent passport-style photos",
+    "Return flight booking",
+    "Recent bank statements",
+    "Yellow fever vaccination certificate",
+    "Invitation letter from the Nigerian company, accepting immigration responsibility for you",
+    "Letter from your UK employer confirming your role and the purpose of your trips"
+  ],
+  "sections": [
+    {
+      "heading": "eVisa or regular Nigeria business visa?",
+      "text": "The [Nigeria business eVisa](/nigeria-business-evisa-uk/) is quick and fully online, but it is single entry, valid for 30 to 90 days, and can't be extended. If you travel to Nigeria regularly, or need to stay longer for a project, the regular Nigeria business visa is usually the better choice, and multiple-entry visas may be granted. We'll advise on the best option for your trips."
+    },
+    {
+      "heading": "The invitation letter",
+      "text": "The key document is a letter from the Nigerian company you're visiting. It should be on company letterhead, give your name and passport number, explain the purpose and length of your visits, and confirm the company accepts immigration responsibility for you while you're in Nigeria. Company registration details help too."
+    },
+    {
+      "heading": "How to apply for a Nigeria business visa",
+      "text": "You apply online through the Nigeria Immigration Service portal and pay the visa fee. You then attend an appointment at the Nigerian visa application centre in the UK to submit your passport, documents and biometrics."
+    },
+    {
+      "heading": "Working in Nigeria?",
+      "text": "A business visa doesn't allow you to take up a job or do hands-on work. For long-term employment, see the [Nigeria STR work visa](/nigeria-str-work-visa-uk/); for short technical assignments, see the [Temporary Work Permit](/nigeria-temporary-work-permit-uk/)."
+    },
+    {
+      "heading": "Nigeria business visa help from Manchester",
+      "text": "We handle Nigeria business visas for individuals and companies across the UK, including staff who travel regularly. See our [corporate visa services](/corporate-clients/) for business accounts."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Can I get a multiple-entry Nigeria business visa?",
+      "a": "Multiple-entry business visas may be granted on the regular visa route, depending on your circumstances. The eVisa is single entry only."
+    },
+    {
+      "q": "How is the regular Nigeria business visa different from the eVisa?",
+      "a": "The eVisa is single entry, valid for 30 to 90 days and can’t be extended. The regular visa suits longer stays and repeat trips, and needs an appointment in the UK."
+    },
+    {
+      "q": "What should the invitation letter include?",
+      "a": "Your name and passport number, the purpose and length of your visits, the company’s details, and confirmation that the company accepts immigration responsibility for you."
+    }
+  ],
+  "govuk": "https://immigration.gov.ng/",
+  "applyButton": "/apply/nigeria-visa/?visaType=Business",
+  "country": "Nigeria",
+  "sortKey": "1 nigeria 2 b business visa",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Online application completed, documents checked, appointment guidance",
+      "processing": "",
+      "fee": "",
+      "popular": true,
+      "processingFee": "",
+      "total": ""
+    }
+  ]
+}

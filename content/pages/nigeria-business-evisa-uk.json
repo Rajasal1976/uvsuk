@@ -1,0 +1,81 @@
+{
+  "title": "Nigeria business eVisa from the UK | Apply Online | UVS",
+  "description": "Nigeria business eVisa from the UK: single entry, valid for 30 to 90 days and decided in about 48 hours. Who needs one, the documents and how we apply.",
+  "h1": "Nigeria business eVisa from the UK",
+  "purposeLabel": "Business eVisa",
+  "intro": "Travelling to Nigeria for meetings, a conference or a trade fair? This page explains the Nigeria business eVisa, who needs one and what to prepare. We check the rules for your passport and apply for you.",
+  "eligibility": [
+    "You are travelling for meetings, conferences, trade fairs, negotiations or site visits",
+    "You won’t be paid by a company in Nigeria",
+    "You have an invitation from the company or event you’re visiting"
+  ],
+  "documents": [
+    "Passport photo page scan, valid for at least 6 months",
+    "Recent passport-style photo",
+    "Invitation letter from the company you’re visiting in Nigeria",
+    "Letter from your UK employer confirming your role and the trip",
+    "Return flight and hotel booking",
+    "Yellow fever vaccination certificate"
+  ],
+  "sections": [
+    {
+      "heading": "Do you need a Nigeria business eVisa?",
+      "text": "British passport holders need a visa for business visits to Nigeria. Short business trips can be applied for online as a Nigeria Business eVisa, usually with an invitation letter from the Nigerian company."
+    },
+    {
+      "heading": "eVisa or regular visa?",
+      "text": "The Nigeria eVisa is single entry, valid for between 30 and 90 days depending on the type, and can't be extended. If you need a longer stay or several trips, apply for the regular [Nigeria business visa](/nigeria-business-visa-uk/) instead."
+    },
+    {
+      "heading": "What counts as a business visit?",
+      "text": "Business visits usually include:\n- Meetings with clients, suppliers or partners\n- Conferences, exhibitions and trade fairs\n- Negotiating or signing contracts\n- Site visits and inspections\n\nThey don't include taking up paid work for a company in Nigeria. That needs a work visa or permit."
+    },
+    {
+      "heading": "Documents for a Nigeria business eVisa",
+      "text": "The key document is the invitation letter from the company you're visiting. It should include your name and passport number, the purpose and dates of your visit, the company's address and contact details, and who is paying for the trip. A letter from your UK employer confirming your role helps too."
+    },
+    {
+      "heading": "Nigeria business eVisa help from Manchester",
+      "text": "We handle Nigeria business eVisa applications for individuals and companies across the UK, including urgent trips. See our [corporate visa services](/corporate-clients/) if your staff travel regularly. Before you travel, read the UK government's [foreign travel advice](https://www.gov.uk/foreign-travel-advice) for Nigeria."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Can I attend a conference on a Nigeria business eVisa?",
+      "a": "Yes. Conferences, exhibitions and trade fairs are business visits."
+    },
+    {
+      "q": "Can I work in Nigeria on a Nigeria business eVisa?",
+      "a": "No. Being paid by a local company, or doing hands-on work, usually needs a work visa or permit."
+    },
+    {
+      "q": "What should the invitation letter include?",
+      "a": "Your name and passport number, the purpose and dates of your visit, the company’s details, and who is paying for the trip."
+    }
+  ],
+  "govuk": "https://www.gov.uk/foreign-travel-advice",
+  "applyButton": "/apply/evisa/?destination=Nigeria&visaType=Business",
+  "country": "Nigeria",
+  "sortKey": "1 nigeria 2 a business evisa",
+  "focusKeyword": "Nigeria business eVisa",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Business application completed and checked",
+      "processing": "",
+      "fee": "",
+      "popular": true,
+      "processingFee": "",
+      "total": ""
+    },
+    {
+      "service": "Urgent",
+      "included": "Everything in Standard, submitted the same working day",
+      "processing": "",
+      "fee": "",
+      "popular": false,
+      "processingFee": "",
+      "total": ""
+    }
+  ]
+}

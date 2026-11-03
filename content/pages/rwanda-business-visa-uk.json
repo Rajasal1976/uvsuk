@@ -1,0 +1,76 @@
+{
+  "title": "Rwanda business visa from the UK | Apply Online | UVS",
+  "description": "Rwanda business visa from the UK for meetings, conferences and trade fairs. Who needs one, the documents you need, and how we apply for you.",
+  "h1": "Rwanda business visa from the UK",
+  "purposeLabel": "Business visa",
+  "intro": "Travelling to Rwanda for meetings, a conference or a trade fair? This page explains the Rwanda business visa, who needs one and what to prepare. We check the rules for your passport and apply for you.",
+  "eligibility": [
+    "You are travelling for meetings, conferences, trade fairs, negotiations or site visits",
+    "You won’t be paid by a company in Rwanda",
+    "You have an invitation from the company or event you’re visiting"
+  ],
+  "documents": [
+    "Passport photo page scan, valid for at least 6 months",
+    "Recent passport-style photo",
+    "Invitation letter from the company you’re visiting in Rwanda",
+    "Letter from your UK employer confirming your role and the trip",
+    "Return flight and hotel booking"
+  ],
+  "sections": [
+    {
+      "heading": "Do you need a Rwanda business visa?",
+      "text": "British passport holders can get a visa for business visits to Rwanda on arrival, or apply online in advance."
+    },
+    {
+      "heading": "What counts as a business visit?",
+      "text": "Business visits usually include:\n- Meetings with clients, suppliers or partners\n- Conferences, exhibitions and trade fairs\n- Negotiating or signing contracts\n- Site visits and inspections\n\nThey don't include taking up paid work for a company in Rwanda. That needs a work visa or permit."
+    },
+    {
+      "heading": "Documents for a Rwanda business visa",
+      "text": "The key document is the invitation letter from the company you're visiting. It should include your name and passport number, the purpose and dates of your visit, the company's address and contact details, and who is paying for the trip. A letter from your UK employer confirming your role helps too."
+    },
+    {
+      "heading": "Rwanda business visa help from Manchester",
+      "text": "We handle Rwanda business visa applications for individuals and companies across the UK, including urgent trips. See our [corporate visa services](/corporate-clients/) if your staff travel regularly. Before you travel, read the UK government's [foreign travel advice](https://www.gov.uk/foreign-travel-advice) for Rwanda."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Can I attend a conference on a Rwanda business visa?",
+      "a": "Yes. Conferences, exhibitions and trade fairs are business visits."
+    },
+    {
+      "q": "Can I work in Rwanda on a Rwanda business visa?",
+      "a": "No. Being paid by a local company, or doing hands-on work, usually needs a work visa or permit."
+    },
+    {
+      "q": "What should the invitation letter include?",
+      "a": "Your name and passport number, the purpose and dates of your visit, the company’s details, and who is paying for the trip."
+    }
+  ],
+  "govuk": "https://www.gov.uk/foreign-travel-advice",
+  "applyButton": "/apply/evisa/?destination=Rwanda&visaType=Business",
+  "country": "Rwanda",
+  "sortKey": "1 rwanda 2 rwanda business",
+  "focusKeyword": "Rwanda business visa",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Business application completed and checked",
+      "processing": "",
+      "fee": "",
+      "popular": true,
+      "processingFee": "",
+      "total": ""
+    },
+    {
+      "service": "Urgent",
+      "included": "Everything in Standard, submitted the same working day",
+      "processing": "",
+      "fee": "",
+      "popular": false,
+      "processingFee": "",
+      "total": ""
+    }
+  ]
+}
