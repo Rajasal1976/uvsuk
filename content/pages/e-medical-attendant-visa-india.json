@@ -1,19 +1,25 @@
 {
+  "applyButton": "/apply/india-visa/",
+  "sortKey": "1 india 1 india e-medical attendant visa",
+  "govuk": "https://www.hcilondon.gov.in/",
   "h1": "India e-Medical Attendant Visa",
-  "title": "India e-Medical Attendant Visa from the UK | Apply Online",
-  "description": "India e-Medical Attendant visa help for family travelling with a patient to India. We prepare it alongside the patient’s e-Medical visa.",
+  "prices": [
+    {
+      "service": "E Medical Attendant Visa",
+      "included": "Application completed and checked, photo and passport scan checked",
+      "processing": "Up to 5 Working Days",
+      "fee": "From £60",
+      "popular": true,
+      "processingFee": "£115",
+      "total": "From £175"
+    }
+  ],
   "intro": "The e-Medical Attendant visa is for family members travelling with a patient who holds an India e-Medical visa. Up to two attendants can travel with each patient. The India e-Medical Attendant visa lets you stay with your relative throughout their treatment.",
   "eligibility": [
     "You are travelling with a patient who has, or is applying for, an India e-Medical visa",
     "You are usually a close family member of the patient",
     "No more than two attendants travel with the same patient",
     "Your passport is valid for at least 6 months from the date you arrive"
-  ],
-  "documents": [
-    "Passport photo page scan",
-    "Recent passport-style photo with a white background",
-    "Copy of the patient’s e-Medical visa or application",
-    "Letter from the hospital in India"
   ],
   "sections": [
     {
@@ -29,6 +35,16 @@
       "text": "We're based in Manchester city centre and handle Indian eVisas for clients across the UK, entirely online. We complete your application, check every detail against your passport and keep you updated until your eVisa arrives."
     }
   ],
+  "focusKeyword": "India e-Medical Attendant visa",
+  "country": "India",
+  "title": "India e-Medical Attendant Visa from the UK | Apply Online",
+  "documents": [
+    "Passport photo page scan",
+    "Recent passport-style photo with a white background",
+    "Copy of the patient’s e-Medical visa or application",
+    "Letter from the hospital in India"
+  ],
+  "description": "India e-Medical Attendant visa help for family travelling with a patient to India. We prepare it alongside the patient’s e-Medical visa.",
   "faqs": [
     {
       "q": "How many attendants can travel with a patient?",
@@ -42,30 +58,5 @@
       "q": "Who can apply for an India e-Medical Attendant visa?",
       "a": "Usually close family members of the patient. Up to two attendants can travel with each patient."
     }
-  ],
-  "sortKey": "1 india 1 india e-medical attendant visa",
-  "country": "India",
-  "govuk": "https://www.hcilondon.gov.in/",
-  "applyButton": "/apply/india-visa/",
-  "prices": [
-    {
-      "service": "Standard",
-      "included": "Application completed and checked, photo and passport scan checked",
-      "processing": "",
-      "fee": "",
-      "popular": true,
-      "processingFee": "",
-      "total": ""
-    },
-    {
-      "service": "Urgent",
-      "included": "Everything in Standard, submitted the same working day",
-      "processing": "",
-      "fee": "",
-      "popular": false,
-      "processingFee": "",
-      "total": ""
-    }
-  ],
-  "focusKeyword": "India e-Medical Attendant visa"
+  ]
 }
