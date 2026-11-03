@@ -11,6 +11,12 @@ const schemas = [JSON.stringify({
   mainEntity: home.faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
 })];
 const tel = `tel:${site.phoneIntl}`;
+// Icons for the three selling points in the banner (edited in the admin: Homepage › Selling points)
+const pointIcons = [
+  '<svg viewBox="0 0 24 24" width="22" height="22"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M8.5 12l2.5 2.5 4.5-5"/></svg>',
+  '<svg viewBox="0 0 24 24" width="22" height="22"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M15.5 6.5A3.5 3.5 0 0 0 9 8.3c0 3.2 1.4 4.6.4 8.7h7.1M7 12.5h6"/></svg>',
+  '<svg viewBox="0 0 24 24" width="22" height="22"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M13 2.5L4.5 13.5H11l-1 8 8.5-11H12z"/></svg>',
+];
 const photo = 'width: 100%; border-radius: 12px; object-fit: cover; display: block';
 const placeholder = 'background: #D6E3DA; border-radius: 12px; display: flex; align-items: center; justify-content: center; text-align: center; color: #3A4552; font-size: 15px; padding: 24px; box-sizing: border-box';
 ---
@@ -27,16 +33,24 @@ const placeholder = 'background: #D6E3DA; border-radius: 12px; display: flex; al
 <a href={site.bookingUrl} style="background: #14532D; color: #FFFFFF; text-decoration: none; padding: 16px 28px; border-radius: 6px; font-weight: 600">Book a consultation</a>
 <a href={tel} style="background: #FFFFFF; color: #14532D; text-decoration: none; padding: 15px 27px; border-radius: 6px; font-weight: 600; border: 1px solid #14532D">Call {site.phone}</a>
 </div>
-<div style="display: flex; flex-wrap: wrap; gap: 12px 32px; font-size: 15px; color: #3A4552; padding-top: 8px">
-<span><strong style="color: #14532D">{site.googleRating} ★</strong> on Google, Trustpilot &amp; Trustindex</span>
-<span><strong style="color: #14532D">{site.yearsInPractice}</strong> years in practice</span>
-<span><strong style="color: #14532D">{site.applicationsHandled}</strong> applications handled</span>
-</div>
+<ul class="hero-points">
+{(home.heroPoints ?? []).slice(0, 3).map((pt, i) => (
+<li>
+<span class="hero-point-icon" aria-hidden="true" set:html={pointIcons[i % pointIcons.length]} />
+<span><strong>{pt.title}</strong><span>{pt.text}</span></span>
+</li>
+))}
+</ul>
 </div>
 <div style="flex: 1 1 400px; min-width: 0">
 {home.heroPhoto
   ? <img src={home.heroPhoto} alt={home.heroPhotoAlt} width="1200" height="880" fetchpriority="high" style={`${photo}; height: 440px`} />
   : <div style={`${placeholder}; height: 440px`}>Add a photo in the admin: Homepage › Main photo</div>}
+<div class="hero-stats">
+<span><strong>{site.googleRating} ★</strong> on Google, Trustpilot &amp; Trustindex</span>
+<span><strong>{site.yearsInPractice}</strong> years in practice</span>
+<span><strong>{site.applicationsHandled}</strong> applications handled</span>
+</div>
 </div>
 </div>
 <div style="max-width: 1200px; margin: 0 auto; padding: 0 24px 72px; display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px">
@@ -278,4 +292,16 @@ const placeholder = 'background: #D6E3DA; border-radius: 12px; display: flex; al
   .home-guide p { margin: 0; color: #3A4552; font-size: 17px; line-height: 1.65; }
   .home-guide ul { margin: 0; padding-left: 22px; color: #3A4552; font-size: 17px; line-height: 1.65; }
   .home-guide li { margin-bottom: 6px; }
+</style>
+
+<style is:global>
+  .hero-points { list-style: none; margin: 4px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+  .hero-points li { display: flex; gap: 12px; align-items: flex-start; }
+  .hero-points strong { display: block; color: #14532D; font-size: 16px; line-height: 1.3; margin-bottom: 3px; }
+  .hero-points li > span:last-child > span { display: block; color: #3A4552; font-size: 14.5px; line-height: 1.45; }
+  .hero-point-icon { flex: none; width: 40px; height: 40px; border-radius: 50%; background: #FFFFFF; border: 1px solid #DCE6DF; color: #8A5A12; display: flex; align-items: center; justify-content: center; }
+  .hero-point-icon svg { display: block; }
+  .hero-stats { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 28px; font-size: 15px; color: #3A4552; padding-top: 16px; }
+  .hero-stats strong { color: #14532D; }
+  @media (max-width: 760px) { .hero-points { grid-template-columns: 1fr; gap: 14px; } }
 </style>

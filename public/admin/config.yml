@@ -200,6 +200,16 @@ collections:
           - { name: heroEyebrow, label: Small line above the heading, widget: string }
           - { name: heroHeading, label: Main heading, widget: string }
           - { name: heroIntro, label: Introduction, widget: text }
+          - name: heroPoints
+            label: Selling points (under the buttons)
+            label_singular: selling point
+            widget: list
+            max: 3
+            summary: '{{fields.title}}'
+            hint: 'Up to three short reasons to choose you. Keep each title to a few words and the text to one line.'
+            fields:
+              - { name: title, label: Title, widget: string }
+              - { name: text, label: Text, widget: string }
           - { name: heroPhoto, label: Main photo, widget: image, required: false, choose_url: false, hint: 'A landscape photo, about 1200 pixels wide. JPG under 300 KB keeps the site fast.' }
           - { name: heroPhotoAlt, label: Main photo description, widget: string, hint: 'Describe the photo for blind visitors and Google, e.g. "Raj and Sunita with a client in our office".' }
           - { name: advisersPhoto, label: Advisers photo, widget: image, required: false, choose_url: false, hint: 'About 1000 pixels wide. JPG under 300 KB.' }
