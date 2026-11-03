@@ -5,7 +5,6 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import ReviewsBand from '../components/ReviewsBand.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
-import DisclaimerBar from '../components/DisclaimerBar.astro';
 import { site } from '../data/site.js';
 
 interface Props {
@@ -75,7 +74,6 @@ const business = {
   <Header />
   <slot />
   {slug !== '' && <ReviewsBand />}
-  <DisclaimerBar />
   <Footer />
   <WhatsAppButton pageTitle={title} />
   <a id="edit-page" href={editUrl} rel="nofollow" style="position:fixed;left:16px;bottom:16px;z-index:50;display:none;align-items:center;gap:8px;padding:12px 18px;border-radius:999px;background:#0D3B21;color:#fff;font:600 15px/1 Inter,system-ui,sans-serif;text-decoration:none;box-shadow:0 6px 18px rgba(0,0,0,.25)">
