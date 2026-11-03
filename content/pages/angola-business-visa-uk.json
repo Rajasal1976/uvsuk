@@ -1,20 +1,24 @@
 {
-  "title": "Angola business visa from the UK | Apply Online | UVS",
-  "description": "Angola business visa from the UK for meetings, conferences and trade fairs. Who needs one, the documents you need, and how we apply for you.",
+  "applyButton": "/apply/evisa/?destination=Angola&visaType=Business",
+  "sortKey": "1 angola 2 angola business",
+  "govuk": "https://www.gov.uk/foreign-travel-advice",
   "h1": "Angola business visa from the UK",
-  "purposeLabel": "Business visa",
+  "prices": [
+    {
+      "service": "Single Entry 30 Days",
+      "included": "Business application completed and checked",
+      "processing": "Upto 72 Hours",
+      "fee": "£200",
+      "popular": false,
+      "processingFee": "£105",
+      "total": "£305"
+    }
+  ],
   "intro": "Travelling to Angola for meetings, a conference or a trade fair? This page explains the Angola business visa, who needs one and what to prepare. We check the rules for your passport and apply for you.",
   "eligibility": [
     "You are travelling for meetings, conferences, trade fairs, negotiations or site visits",
     "You won’t be paid by a company in Angola",
     "You have an invitation from the company or event you’re visiting"
-  ],
-  "documents": [
-    "Passport photo page scan, valid for at least 6 months",
-    "Recent passport-style photo",
-    "Invitation letter from the company you’re visiting in Angola",
-    "Letter from your UK employer confirming your role and the trip",
-    "Return flight and hotel booking"
   ],
   "sections": [
     {
@@ -34,6 +38,18 @@
       "text": "We handle Angola business visa applications for individuals and companies across the UK, including urgent trips. See our [corporate visa services](/corporate-clients/) if your staff travel regularly. Before you travel, read the UK government's [foreign travel advice](https://www.gov.uk/foreign-travel-advice) for Angola."
     }
   ],
+  "focusKeyword": "Angola business visa",
+  "purposeLabel": "Business visa",
+  "country": "Angola",
+  "title": "Angola business visa from the UK | Apply Online | UVS",
+  "documents": [
+    "Passport photo page scan, valid for at least 6 months",
+    "Recent passport-style photo",
+    "Invitation letter from the company you’re visiting in Angola",
+    "Letter from your UK employer confirming your role and the trip",
+    "Return flight and hotel booking"
+  ],
+  "description": "Angola business visa from the UK for meetings, conferences and trade fairs. Who needs one, the documents you need, and how we apply for you.",
   "faqs": [
     {
       "q": "Can I attend a conference on a Angola business visa?",
@@ -46,31 +62,6 @@
     {
       "q": "What should the invitation letter include?",
       "a": "Your name and passport number, the purpose and dates of your visit, the company’s details, and who is paying for the trip."
-    }
-  ],
-  "govuk": "https://www.gov.uk/foreign-travel-advice",
-  "applyButton": "/apply/evisa/?destination=Angola&visaType=Business",
-  "country": "Angola",
-  "sortKey": "1 angola 2 angola business",
-  "focusKeyword": "Angola business visa",
-  "prices": [
-    {
-      "service": "Standard",
-      "included": "Business application completed and checked",
-      "processing": "",
-      "fee": "",
-      "popular": true,
-      "processingFee": "",
-      "total": ""
-    },
-    {
-      "service": "Urgent",
-      "included": "Everything in Standard, submitted the same working day",
-      "processing": "",
-      "fee": "",
-      "popular": false,
-      "processingFee": "",
-      "total": ""
     }
   ]
 }
