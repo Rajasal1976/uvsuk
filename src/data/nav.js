@@ -21,6 +21,7 @@ export const menu = [
     items: [
       ['Sponsor Licence', '/sponsor-licence-application/'],
       ['Sponsor Licence Compliance', '/sponsor-licence-compliance/'],
+      ['Sponsor Licence by Industry', '/sponsor-licence-by-industry/'],
       ['Skilled Worker Visa', '/skilled-worker-visa-formally-tier-t2-general/'],
       ['Corporate Clients', '/corporate-clients/'],
     ],

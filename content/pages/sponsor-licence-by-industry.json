@@ -1,0 +1,43 @@
+{
+  "h1": "Sponsor licence by industry",
+  "focusKeyword": "sponsor licence by industry",
+  "title": "Sponsor Licence by Industry | Sector Guides for UK Employers",
+  "description": "Sponsor licence by industry: guides for restaurants and hospitality, IT and technology, construction and engineering, and care homes, with 2026 rules.",
+  "intro": "The sponsorship rules affect each industry differently. Our sponsor licence by industry guides explain which roles you can still sponsor in 2026, the risks for your sector, and how to stay compliant.",
+  "sections": [
+    {
+      "heading": "Why sponsor licence rules differ by industry",
+      "text": "Since July 2025, most new sponsored jobs must be at degree level (RQF 6) and pay at least £41,700 a year, or the going rate if higher. That still covers most tech and engineering roles, but it rules out many hospitality and care roles. Construction trades depend on the temporary shortage list, which runs until 31 December 2026 unless extended."
+    },
+    {
+      "heading": "Sponsor licence by industry: what each guide covers",
+      "text": "Each guide explains:\n- Which roles in that sector can still be sponsored, and at what salary\n- What has changed since July 2025, and what is changing next\n- The compliance risks that matter most in that industry\n- Practical ways to recruit legally, including people already in the UK"
+    },
+    {
+      "heading": "Compliance applies to every industry",
+      "text": "Whatever your sector, a sponsor licence comes with duties: right to work checks, record-keeping, reporting changes on time, and paying sponsored workers what you promised. Our [sponsor licence compliance](/sponsor-licence-compliance/) service helps employers in every industry stay ready for Home Office visits."
+    },
+    {
+      "heading": "Not sure where your business fits?",
+      "text": "Contact us with the roles you want to fill and we'll check them against the current rules before you spend anything on a licence. We're IAA-regulated and based in Manchester, working with employers across the UK."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Which industries can still sponsor overseas workers?",
+      "a": "Any industry can, if the role is at the required skill level and salary. In practice, tech, engineering and professional roles qualify most often, while many hospitality and care roles no longer do."
+    },
+    {
+      "q": "Is my industry covered by a sponsor licence by industry guide?",
+      "a": "We currently have guides for restaurants and hospitality, IT and technology, construction and engineering, and care homes. If your sector isn’t listed, contact us and we’ll check your roles."
+    },
+    {
+      "q": "Do I need a different sponsor licence for each industry?",
+      "a": "No. There is one sponsor licence for all Skilled Worker roles. What differs between industries is which roles can be sponsored."
+    }
+  ],
+  "applyButton": "/contact-us/",
+  "country": "Employers",
+  "sortKey": "2 employer 2 a industry",
+  "govuk": ""
+}

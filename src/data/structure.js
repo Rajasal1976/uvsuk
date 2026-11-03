@@ -135,6 +135,7 @@ export const structure = [
     "children": [
       "sponsor-licence-application",
       "sponsor-licence-compliance",
+      "sponsor-licence-by-industry",
       "skilled-worker-visa-formally-tier-t2-general"
     ]
   },
@@ -153,6 +154,53 @@ export const structure = [
     "related": [
       "sponsor-licence-application",
       "corporate-clients"
+    ]
+  },
+  {
+    "slug": "sponsor-licence-by-industry",
+    "type": "hub",
+    "group": "employer",
+    "children": [
+      "sponsor-licence-restaurants",
+      "sponsor-licence-it-technology",
+      "sponsor-licence-construction",
+      "sponsor-licence-care-homes"
+    ]
+  },
+  {
+    "slug": "sponsor-licence-restaurants",
+    "type": "service",
+    "group": "employer",
+    "related": [
+      "sponsor-licence-application",
+      "sponsor-licence-compliance"
+    ]
+  },
+  {
+    "slug": "sponsor-licence-it-technology",
+    "type": "service",
+    "group": "employer",
+    "related": [
+      "sponsor-licence-application",
+      "sponsor-licence-compliance"
+    ]
+  },
+  {
+    "slug": "sponsor-licence-construction",
+    "type": "service",
+    "group": "employer",
+    "related": [
+      "sponsor-licence-application",
+      "sponsor-licence-compliance"
+    ]
+  },
+  {
+    "slug": "sponsor-licence-care-homes",
+    "type": "service",
+    "group": "employer",
+    "related": [
+      "sponsor-licence-application",
+      "sponsor-licence-compliance"
     ]
   },
   {
