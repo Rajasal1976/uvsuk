@@ -173,7 +173,10 @@ export const structure = [
     "group": "employer",
     "related": [
       "sponsor-licence-application",
-      "sponsor-licence-compliance"
+      "sponsor-licence-compliance",
+      "sponsor-licence-it-technology",
+      "sponsor-licence-construction",
+      "sponsor-licence-care-homes"
     ]
   },
   {
@@ -182,7 +185,10 @@ export const structure = [
     "group": "employer",
     "related": [
       "sponsor-licence-application",
-      "sponsor-licence-compliance"
+      "sponsor-licence-compliance",
+      "sponsor-licence-restaurants",
+      "sponsor-licence-construction",
+      "sponsor-licence-care-homes"
     ]
   },
   {
@@ -191,7 +197,10 @@ export const structure = [
     "group": "employer",
     "related": [
       "sponsor-licence-application",
-      "sponsor-licence-compliance"
+      "sponsor-licence-compliance",
+      "sponsor-licence-restaurants",
+      "sponsor-licence-it-technology",
+      "sponsor-licence-care-homes"
     ]
   },
   {
@@ -200,7 +209,10 @@ export const structure = [
     "group": "employer",
     "related": [
       "sponsor-licence-application",
-      "sponsor-licence-compliance"
+      "sponsor-licence-compliance",
+      "sponsor-licence-restaurants",
+      "sponsor-licence-it-technology",
+      "sponsor-licence-construction"
     ]
   },
   {

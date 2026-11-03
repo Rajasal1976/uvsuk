@@ -1,7 +1,8 @@
 // Menu structure, shared by the header and footer.
 import { evisaContinents, evisaLink } from './evisas.js';
+import { isShown } from './pages.js';
 
-export const menu = [
+const fullMenu = [
   {
     label: 'UK Visas',
     href: '/uk-visa-services/',
@@ -55,3 +56,6 @@ export const menu = [
     })),
   },
 ];
+
+// Menu without links to pages hidden in the admin
+export const menu = fullMenu.map((m) => (Array.isArray(m.items) ? { ...m, items: m.items.filter(([, href]) => isShown(href)) } : m));

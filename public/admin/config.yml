@@ -35,7 +35,7 @@ collections:
     format: json
     extension: json
     create: false
-    delete: false
+    delete: true
     identifier_field: h1
     summary: '{{country}}  ›  {{h1}}'
     sortable_fields:
@@ -132,6 +132,12 @@ collections:
         required: false
         choose_url: false
         hint: 'Shown when the page is shared on WhatsApp, Facebook or LinkedIn. Landscape, about 1200 × 630 pixels. If empty, the default image from Business details is used.'
+      - name: hidden
+        label: 'Hide this page from the website'
+        widget: boolean
+        required: false
+        default: false
+        hint: 'Removes the page from the website, menus, page cards and the visa finder, and sends anyone visiting its address to the page above it. Switch off again to bring the page back. (Doesn’t apply to the ILR, Skilled Worker, China, China business and eVisas pages, which have special designs.)'
       - name: noindex
         label: 'SEO: hide this page from Google'
         widget: boolean
