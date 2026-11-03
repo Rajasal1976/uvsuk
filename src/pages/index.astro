@@ -11,6 +11,18 @@ const schemas = [JSON.stringify({
   mainEntity: home.faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
 })];
 const tel = `tel:${site.phoneIntl}`;
+// "Check your visa requirements" dropdown: one entry per country page, built automatically,
+// so new country pages appear here without any changes. The main page wins where a country has several.
+import { pages as allPages } from '../data/pages.js';
+const notCountries = new Set(['UK', 'Document legalisation', 'Worldwide visas overview', 'Employers', 'Company pages']);
+const visaCountries = Object.entries(
+  allPages
+    .filter((pg) => pg.group === 'worldwide' && pg.country && !notCountries.has(pg.country))
+    .reduce((acc, pg) => {
+      if (!acc[pg.country] || (pg.type === 'hub' && acc[pg.country].type !== 'hub')) acc[pg.country] = pg;
+      return acc;
+    }, {})
+).map(([name, pg]) => [name, `/${pg.slug}/`]).sort((a, b) => a[0].localeCompare(b[0]));
 // Icons for the three selling points in the banner (edited in the admin: Homepage › Selling points)
 const pointIcons = [
   '<svg viewBox="0 0 24 24" width="22" height="22"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M8.5 12l2.5 2.5 4.5-5"/></svg>',
@@ -62,14 +74,7 @@ const placeholder = 'background: #D6E3DA; border-radius: 12px; display: flex; al
 <select id="visa-country" style="flex: 1 1 220px; min-width: 0; padding: 13px 14px; font-size: 16px; font-family: inherit; border: 1px solid #8FAE99; border-radius: 6px; background: #FFFFFF; color: #1B2430">
 <option value="">Select a country…</option>
 <option value="/uk-visa-services/">UK Visa</option>
-<option value="/china-visa-application/">China</option>
-<option value="/ghana-visa-services/">Ghana</option>
-<option value="/indian-visa-application-uk/">India</option>
-<option value="/russian-visa-services-from-uk/">Russia</option>
-<option value="/saudi-arabia-visa-uk/">Saudi Arabia</option>
-<option value="/schengen-visa-application/">Schengen</option>
-<option value="/sri-lanka-visa-services/">Sri Lanka</option>
-<option value="/usa-visa-services/">USA</option>
+{visaCountries.map(([name, url]) => <option value={url}>{name}</option>)}
 <option value="/worldwide-visas/">Other countries</option>
 </select>
 <button id="visa-check" type="button" style="background: #14532D; color: #FFFFFF; border: 0; padding: 13px 24px; border-radius: 6px; font-size: 16px; font-weight: 600; font-family: inherit; cursor: pointer">Check requirements</button>
