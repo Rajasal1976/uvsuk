@@ -1,7 +1,19 @@
 {
-  "title": "Australia eVisitor & ETA from the UK | Visit Australia",
-  "description": "Australia eVisitor (subclass 651) and ETA for British citizens: which to choose, how long you can stay and how we apply for you.",
+  "applyButton": "/apply/evisa/?destination=Australia",
+  "sortKey": "1 australia 1 australia eta",
+  "govuk": "https://www.gov.uk/foreign-travel-advice",
   "h1": "Australia eVisitor and ETA from the UK",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Application completed and documents checked",
+      "processing": "1 Working Days",
+      "fee": "£50",
+      "popular": true,
+      "processingFee": "£20",
+      "total": ""
+    }
+  ],
   "intro": "British citizens visiting Australia need either a free eVisitor visa (subclass 651) or an Electronic Travel Authority (ETA), applied for online before travel. We prepare your Australia eVisitor application and check every detail before it is submitted.",
   "sections": [
     {
@@ -17,6 +29,22 @@
       "text": "We're based in Manchester city centre and help travellers and businesses across the UK. We check the rules for your passport, prepare your application and keep you updated until it's decided."
     }
   ],
+  "focusKeyword": "Australia eVisitor",
+  "country": "Australia",
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Valid for at least 6 months, with a copy of the photo page",
+      "needed": "Required"
+    },
+    {
+      "document": "eVisitor or ETA application",
+      "details": "Completed online and checked by us",
+      "needed": "We prepare"
+    }
+  ],
+  "title": "Australia eVisitor & ETA from the UK | Visit Australia",
+  "description": "Australia eVisitor (subclass 651) and ETA for British citizens: which to choose, how long you can stay and how we apply for you.",
   "faqs": [
     {
       "q": "Do British citizens need a visa for Australia?",
@@ -29,34 +57,6 @@
     {
       "q": "How long does a Australia eVisitor take?",
       "a": "Processing times vary with the authority and the time of year. Apply as early as you can, and don’t book non-refundable travel until your visa or authorisation is approved."
-    }
-  ],
-  "govuk": "https://www.gov.uk/foreign-travel-advice",
-  "applyButton": "/apply/evisa/?destination=Australia",
-  "country": "Australia",
-  "focusKeyword": "Australia eVisitor",
-  "sortKey": "1 australia 1 australia eta",
-  "prices": [
-    {
-      "service": "Standard",
-      "included": "Application completed and documents checked",
-      "processing": "",
-      "fee": "",
-      "popular": true,
-      "processingFee": "",
-      "total": ""
-    }
-  ],
-  "documentsTable": [
-    {
-      "document": "Passport",
-      "details": "Valid for at least 6 months, with a copy of the photo page",
-      "needed": "Required"
-    },
-    {
-      "document": "eVisitor or ETA application",
-      "details": "Completed online and checked by us",
-      "needed": "We prepare"
     }
   ]
 }
