@@ -9,12 +9,6 @@
     "You have HR systems to monitor sponsored workers",
     "Your Key Personnel have no unspent relevant convictions"
   ],
-  "documents": [
-    "Company registration and recent accounts or bank statements",
-    "Employer liability insurance certificate",
-    "Business premises evidence, such as a lease",
-    "Details of the roles you want to fill"
-  ],
   "faqs": [
     {
       "q": "What are our duties once we have a licence?",
@@ -71,5 +65,27 @@
       "text": "We help employers across Manchester and the North West, from care providers and restaurants to tech, engineering and manufacturing firms, and businesses anywhere in the UK remotely. We prepare your application, check your documents, help set up your Key Personnel and assign your first Certificates of Sponsorship."
     }
   ],
-  "focusKeyword": "sponsor licence application"
+  "focusKeyword": "sponsor licence application",
+  "documentsTable": [
+    {
+      "document": "Financial evidence",
+      "details": "Company registration and recent accounts or bank statements",
+      "needed": "Required"
+    },
+    {
+      "document": "Employer liability insurance certificate",
+      "details": "",
+      "needed": "Required"
+    },
+    {
+      "document": "Business premises evidence",
+      "details": "Business premises evidence, such as a lease",
+      "needed": "Required"
+    },
+    {
+      "document": "Details of the roles you want to fill",
+      "details": "",
+      "needed": "Required"
+    }
+  ]
 }

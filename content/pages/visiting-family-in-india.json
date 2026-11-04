@@ -8,11 +8,6 @@
     "You hold a passport from a country eligible for India’s eVisa",
     "You won’t work or study during your visit"
   ],
-  "documents": [
-    "Passport photo page scan",
-    "Recent passport-style photo with a white background",
-    "Address of the relatives you’ll stay with (optional)"
-  ],
   "sections": [
     {
       "heading": "The e-Tourist visa covers family visits",
@@ -70,5 +65,27 @@
     }
   ],
   "focusKeyword": "visiting family in India",
-  "purposeLabel": "Visiting family"
+  "purposeLabel": "Visiting family",
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Passport photo page scan",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent passport-style photo with a white background",
+      "needed": "Required"
+    },
+    {
+      "document": "Address of the relatives you’ll stay with",
+      "details": "Address of the relatives you’ll stay with (optional)",
+      "needed": "Optional"
+    }
+  ]
 }

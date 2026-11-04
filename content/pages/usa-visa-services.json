@@ -4,12 +4,6 @@
   "h1": "USA visa and ESTA",
   "intro": "Many British citizens can travel to the USA with an ESTA. Others, and anyone travelling to work or study, need a visa and an interview at the US Embassy in London. We help with both. Whether you need an ESTA or a USA visa, we prepare your application and check every answer.",
   "eligibility": [],
-  "documents": [
-    "Passport",
-    "DS-160 form (for visas)",
-    "Photo",
-    "Supporting documents for your trip purpose"
-  ],
   "faqs": [
     {
       "q": "How long is an ESTA valid?",
@@ -72,5 +66,32 @@
       "text": "We're based in Manchester city centre and help travellers and businesses across the North West and the rest of the UK. Most travel visa applications can be handled by post and email, so you don't need to visit us in person."
     }
   ],
-  "focusKeyword": "USA visa"
+  "focusKeyword": "USA visa",
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Valid for at least 6 months, with a copy of the photo page",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "DS-160 form",
+      "details": "DS-160 form (for visas)",
+      "needed": "Required"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent colour photo meeting the visa photo rules",
+      "needed": "Required"
+    },
+    {
+      "document": "Supporting documents for your trip purpose",
+      "details": "",
+      "needed": "Required"
+    }
+  ]
 }

@@ -8,12 +8,6 @@
     "They can support themselves, or be supported by their host, during the trip",
     "The purpose of the visit is allowed under visitor rules"
   ],
-  "documents": [
-    "Passport and travel history",
-    "Bank statements and evidence of employment or study at home",
-    "Invitation letter from the UK host",
-    "Host's ID, address proof and financial evidence, if they are supporting the trip"
-  ],
   "faqs": [
     {
       "q": "Do I need a visa or an ETA?",
@@ -54,5 +48,32 @@
       "text": "We're based at 61 Mosley Street in Manchester city centre and help clients across Greater Manchester, including Bury, Bolton, Oldham, Rochdale, Salford and Stockport. We also work with clients anywhere in the UK and overseas by phone, video call and email."
     }
   ],
-  "focusKeyword": "UK visit visa"
+  "focusKeyword": "UK visit visa",
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Passport and travel history",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Financial evidence",
+      "details": "Bank statements and evidence of employment or study at home",
+      "needed": "Required"
+    },
+    {
+      "document": "Accommodation or invitation",
+      "details": "Invitation letter from the UK host",
+      "needed": "Required"
+    },
+    {
+      "document": "Financial evidence",
+      "details": "Host's ID, address proof and financial evidence, if they are supporting the trip",
+      "needed": "Required"
+    }
+  ]
 }

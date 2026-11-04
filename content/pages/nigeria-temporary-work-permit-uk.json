@@ -10,14 +10,6 @@
     "The Nigerian company has requested a Temporary Work Permit approval for you",
     "You are not taking up long-term employment in Nigeria"
   ],
-  "documents": [
-    "Passport, valid for at least 6 months",
-    "Recent passport-style photos",
-    "Temporary Work Permit approval, arranged by the Nigerian company",
-    "Letter from your UK employer explaining the assignment",
-    "Return flight booking",
-    "Yellow fever vaccination certificate"
-  ],
   "sections": [
     {
       "heading": "How the Nigeria Temporary Work Permit works",
@@ -63,6 +55,43 @@
       "popular": true,
       "processingFee": "",
       "total": ""
+    }
+  ],
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Passport, valid for at least 6 months",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent passport-style photos",
+      "needed": "Required"
+    },
+    {
+      "document": "Approval letter",
+      "details": "Temporary Work Permit approval, arranged by the Nigerian company",
+      "needed": "Required"
+    },
+    {
+      "document": "Employer letter",
+      "details": "Letter from your UK employer explaining the assignment",
+      "needed": "Required"
+    },
+    {
+      "document": "Flight booking",
+      "details": "Return flight booking",
+      "needed": "Required"
+    },
+    {
+      "document": "Yellow fever certificate",
+      "details": "Yellow fever vaccination certificate",
+      "needed": "Required"
     }
   ]
 }

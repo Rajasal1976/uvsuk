@@ -8,11 +8,6 @@
     "You both intend to live together permanently in the UK",
     "You meet the financial and English language requirements"
   ],
-  "documents": [
-    "Evidence of living at the same address, spread across the whole period",
-    "Joint bills, tenancy agreements or bank accounts",
-    "Financial and English language evidence"
-  ],
   "faqs": [
     {
       "q": "What counts as proof we lived together?",
@@ -49,5 +44,27 @@
       "text": "We're based at 61 Mosley Street in Manchester city centre and help clients across Greater Manchester, including Bury, Bolton, Oldham, Rochdale, Salford and Stockport. We also work with clients anywhere in the UK and overseas by phone, video call and email."
     }
   ],
-  "focusKeyword": "unmarried partner visa"
+  "focusKeyword": "unmarried partner visa",
+  "documentsTable": [
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Evidence of living at the same address",
+      "details": "Evidence of living at the same address, spread across the whole period",
+      "needed": "Required"
+    },
+    {
+      "document": "Proof of address",
+      "details": "Joint bills, tenancy agreements or bank accounts",
+      "needed": "Required"
+    },
+    {
+      "document": "Financial and English evidence",
+      "details": "Financial and English language evidence",
+      "needed": "Required"
+    }
+  ]
 }

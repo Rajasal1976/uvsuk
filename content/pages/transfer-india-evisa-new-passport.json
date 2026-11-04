@@ -9,12 +9,6 @@
     "Your old passport has been lost, stolen or not returned to you",
     "Nothing else about your eVisa needs to change"
   ],
-  "documents": [
-    "Scan of your new passport photo page",
-    "Recent passport-style photo with a white background",
-    "Your current eVisa / ETA, or its reference number",
-    "Details of your old passport (number and expiry)"
-  ],
   "sections": [
     {
       "heading": "Do you need to transfer your eVisa?",
@@ -67,5 +61,32 @@
     }
   ],
   "focusKeyword": "transfer India eVisa",
-  "purposeLabel": "eVisa transfer to a new passport"
+  "purposeLabel": "eVisa transfer to a new passport",
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Scan of your new passport photo page",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent passport-style photo with a white background",
+      "needed": "Required"
+    },
+    {
+      "document": "Your current eVisa / ETA",
+      "details": "Your current eVisa / ETA, or its reference number",
+      "needed": "Required"
+    },
+    {
+      "document": "Passport",
+      "details": "Details of your old passport (number and expiry)",
+      "needed": "Required"
+    }
+  ]
 }

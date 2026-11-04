@@ -7,12 +7,6 @@
     "You hold a valid UK visa or residence status",
     "You are applying to the country where you will spend the most time"
   ],
-  "documents": [
-    "Passport and UK residence evidence",
-    "Travel insurance",
-    "Flight and hotel bookings",
-    "Bank statements and employment letter"
-  ],
   "faqs": [
     {
       "q": "How long does a Schengen visa take?",
@@ -75,5 +69,32 @@
       "text": "We're based in Manchester city centre and help travellers and businesses across the North West and the rest of the UK. Most travel visa applications can be handled by post and email, so you don't need to visit us in person."
     }
   ],
-  "focusKeyword": "Schengen visa"
+  "focusKeyword": "Schengen visa",
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Passport and UK residence evidence",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Travel insurance",
+      "details": "",
+      "needed": "Required"
+    },
+    {
+      "document": "Flight and hotel bookings",
+      "details": "",
+      "needed": "Required"
+    },
+    {
+      "document": "Financial evidence",
+      "details": "Bank statements and employment letter",
+      "needed": "Required"
+    }
+  ]
 }

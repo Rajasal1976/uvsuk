@@ -43,5 +43,37 @@
       "text": "We're based at 61 Mosley Street in Manchester city centre and help clients across Greater Manchester, including Bury, Bolton, Oldham, Rochdale, Salford and Stockport. We also work with clients anywhere in the UK and overseas by phone, video call and email."
     }
   ],
-  "focusKeyword": "Skilled Worker visa"
+  "focusKeyword": "Skilled Worker visa",
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Valid for at least 6 months, with a copy of the photo page",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Certificate of Sponsorship",
+      "details": "Certificate of Sponsorship reference number",
+      "needed": "Required"
+    },
+    {
+      "document": "English language evidence",
+      "details": "",
+      "needed": "Required"
+    },
+    {
+      "document": "TB test certificate",
+      "details": "Tuberculosis test results, if required for your country",
+      "needed": "If applicable"
+    },
+    {
+      "document": "Criminal record certificate",
+      "details": "Criminal record certificate, for some roles",
+      "needed": "If applicable"
+    }
+  ]
 }

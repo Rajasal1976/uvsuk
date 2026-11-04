@@ -4,10 +4,6 @@
   "h1": "Sri Lanka visa and ETA",
   "intro": "Most visitors to Sri Lanka need an ETA or visa before they travel. We check what applies to you and complete the application. We complete your Sri Lanka visa or ETA application and check it before submitting.",
   "eligibility": [],
-  "documents": [
-    "Passport",
-    "Travel details"
-  ],
   "faqs": [
     {
       "q": "How long does a Sri Lanka ETA take?",
@@ -66,5 +62,22 @@
       "text": "We're based in Manchester city centre and help travellers and businesses across the North West and the rest of the UK. Most travel visa applications can be handled by post and email, so you don't need to visit us in person."
     }
   ],
-  "focusKeyword": "Sri Lanka visa"
+  "focusKeyword": "Sri Lanka visa",
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Valid for at least 6 months, with a copy of the photo page",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Travel details",
+      "details": "",
+      "needed": "Required"
+    }
+  ]
 }

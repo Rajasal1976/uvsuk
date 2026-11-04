@@ -8,12 +8,6 @@
     "You are travelling for tourism, business meetings, transit or to visit family or friends",
     "You have a return or onward ticket and enough money for your stay"
   ],
-  "documents": [
-    "Passport photo page scan",
-    "Recent passport-style photo",
-    "Return or onward flight booking",
-    "Hotel booking or invitation letter"
-  ],
   "sections": [
     {
       "heading": "Do British citizens need a Papua New Guinea visa?",
@@ -69,6 +63,33 @@
       "popular": false,
       "processingFee": "",
       "total": ""
+    }
+  ],
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Passport photo page scan",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent passport-style colour photo",
+      "needed": "Required"
+    },
+    {
+      "document": "Flight booking",
+      "details": "Return or onward flight booking",
+      "needed": "Required"
+    },
+    {
+      "document": "Accommodation or invitation",
+      "details": "Hotel booking or invitation letter",
+      "needed": "Required"
     }
   ]
 }

@@ -8,11 +8,6 @@
     "You employ, or plan to employ, sponsored workers",
     "You want independent checks that your records and processes meet Home Office rules"
   ],
-  "documents": [
-    "Your sponsor licence details and Key Personnel",
-    "Records for each sponsored worker, such as contracts, payslips and right to work checks",
-    "Your current HR processes for absence, changes and reporting"
-  ],
   "sections": [
     {
       "heading": "Your duties as a sponsor",
@@ -62,5 +57,22 @@
   "country": "Employers",
   "sortKey": "2 employer 1 sponsor licence compliance",
   "focusKeyword": "sponsor licence compliance",
-  "prices": []
+  "prices": [],
+  "documentsTable": [
+    {
+      "document": "Your sponsor licence details and Key Personnel",
+      "details": "",
+      "needed": "Required"
+    },
+    {
+      "document": "Financial evidence",
+      "details": "Records for each sponsored worker, such as contracts, payslips and right to work checks",
+      "needed": "Required"
+    },
+    {
+      "document": "Your current HR processes for absence",
+      "details": "Your current HR processes for absence, changes and reporting",
+      "needed": "Required"
+    }
+  ]
 }

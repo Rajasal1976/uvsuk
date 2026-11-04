@@ -4,13 +4,6 @@
   "h1": "Russian visa from the UK",
   "intro": "We help UK residents with Russian tourist, business, private visit, work and student visas, including arranging the required invitation. We prepare your Russian visa application and check your visa support documents.",
   "eligibility": [],
-  "documents": [
-    "Passport",
-    "Invitation or tourist voucher",
-    "Completed application form",
-    "Photo",
-    "Medical insurance"
-  ],
   "faqs": [
     {
       "q": "Does the UK government advise against travel to Russia?",
@@ -73,5 +66,32 @@
       "text": "We're based in Manchester city centre and help travellers and businesses across the North West and the rest of the UK. Most travel visa applications can be handled by post and email, so you don't need to visit us in person."
     }
   ],
-  "focusKeyword": "Russian visa"
+  "focusKeyword": "Russian visa",
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Valid for at least 6 months, with a copy of the photo page",
+      "needed": "Required"
+    },
+    {
+      "document": "Accommodation or invitation",
+      "details": "Invitation or tourist voucher",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed application form",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent colour photo meeting the visa photo rules",
+      "needed": "Required"
+    },
+    {
+      "document": "Medical insurance",
+      "details": "",
+      "needed": "Required"
+    }
+  ]
 }

@@ -9,12 +9,6 @@
     "You meet the financial requirement at the time you apply",
     "You meet the English language requirement at the higher level needed for an extension"
   ],
-  "documents": [
-    "Current passport and visa or eVisa details",
-    "Evidence you have lived together, spread across your visa period",
-    "Up-to-date financial evidence",
-    "English language test certificate, if needed"
-  ],
   "faqs": [
     {
       "q": "When should I apply?",
@@ -55,5 +49,32 @@
       "text": "We're based at 61 Mosley Street in Manchester city centre and help clients across Greater Manchester, including Bury, Bolton, Oldham, Rochdale, Salford and Stockport. We also work with clients anywhere in the UK and overseas by phone, video call and email."
     }
   ],
-  "focusKeyword": "spouse visa extension"
+  "focusKeyword": "spouse visa extension",
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Current passport and visa or eVisa details",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Relationship evidence",
+      "details": "Evidence you have lived together, spread across your visa period",
+      "needed": "Required"
+    },
+    {
+      "document": "Financial evidence",
+      "details": "Up-to-date financial evidence",
+      "needed": "Required"
+    },
+    {
+      "document": "English language evidence",
+      "details": "English language test certificate, if needed",
+      "needed": "If applicable"
+    }
+  ]
 }

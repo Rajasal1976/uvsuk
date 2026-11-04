@@ -8,11 +8,6 @@
     "Your university has confirmed to the Home Office that you completed your course",
     "You apply before your Student visa expires"
   ],
-  "documents": [
-    "Passport",
-    "Your CAS number from your course",
-    "Current visa or eVisa details"
-  ],
   "faqs": [
     {
       "q": "Do I need a job offer?",
@@ -53,5 +48,27 @@
       "text": "We're based at 61 Mosley Street in Manchester city centre and help clients across Greater Manchester, including Bury, Bolton, Oldham, Rochdale, Salford and Stockport. We also work with clients anywhere in the UK and overseas by phone, video call and email."
     }
   ],
-  "focusKeyword": "Graduate visa"
+  "focusKeyword": "Graduate visa",
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Valid for at least 6 months, with a copy of the photo page",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Your CAS number from your course",
+      "details": "",
+      "needed": "Required"
+    },
+    {
+      "document": "Current visa or eVisa details",
+      "details": "",
+      "needed": "Required"
+    }
+  ]
 }

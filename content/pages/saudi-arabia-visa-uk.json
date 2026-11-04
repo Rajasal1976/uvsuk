@@ -7,11 +7,6 @@
     "Tourist eVisa: available to eligible nationalities only",
     "Work visa: requires sponsorship from a Saudi employer"
   ],
-  "documents": [
-    "Passport",
-    "Photo",
-    "Supporting documents for your visa type"
-  ],
   "faqs": [
     {
       "q": "Can you help with Umrah?",
@@ -82,5 +77,27 @@
       "text": "We're based in Manchester city centre and help travellers and businesses across the North West and the rest of the UK. Most travel visa applications can be handled by post and email, so you don't need to visit us in person."
     }
   ],
-  "focusKeyword": "Saudi Arabia visa"
+  "focusKeyword": "Saudi Arabia visa",
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Valid for at least 6 months, with a copy of the photo page",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent colour photo meeting the visa photo rules",
+      "needed": "Required"
+    },
+    {
+      "document": "Supporting documents for your visa type",
+      "details": "",
+      "needed": "Required"
+    }
+  ]
 }

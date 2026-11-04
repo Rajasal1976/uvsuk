@@ -1,0 +1,95 @@
+{
+  "title": "Zambia visa from the UK | Application Help | UVS",
+  "description": "Do you need a Zambia visa from the UK? British citizens can visit visa-free, but other passport holders and workers may not. We check and apply for you.",
+  "h1": "Zambia visa from the UK",
+  "intro": "British passport holders don't need a visa to visit Zambia for short stays. We check whether you need a Zambia visa and apply for you if you do. Choose the visa that matches your trip below.",
+  "eligibility": [
+    "Your passport is valid for at least 6 months from the date you arrive",
+    "You are travelling for tourism, business meetings, transit or to visit family or friends",
+    "You have a return or onward ticket and enough money for your stay"
+  ],
+  "sections": [
+    {
+      "heading": "Do British citizens need a Zambia visa?",
+      "text": "British passport holders don't need a visa to visit Zambia for short stays. You'll still need a visa if you're going to work, or staying longer than visa-free entry allows."
+    },
+    {
+      "heading": "Zambia visa for other passport holders",
+      "text": "UK residents travelling on other passports may need a visa, depending on their nationality. Travellers who do need a visa can ask us about the KAZA visa, which has covered both Zambia and Zimbabwe."
+    },
+    {
+      "heading": "Visiting Victoria Falls",
+      "text": "If you're visiting both the Zambian and Zimbabwean sides of Victoria Falls, remember that British citizens still need a visa for Zimbabwe. We can arrange it with the rest of your trip."
+    },
+    {
+      "heading": "Zambia visa help from Manchester",
+      "text": "We're based in Manchester city centre and handle Zambia visa applications for travellers across the UK, entirely online. We check the current rules for your nationality, complete your application and keep you updated until it's approved. Before you travel, read the UK government's [foreign travel advice](https://www.gov.uk/foreign-travel-advice) for Zambia."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Do British citizens need a visa for Zambia?",
+      "a": "No, not for short visits. A visa is needed to work in Zambia or for longer stays."
+    },
+    {
+      "q": "Who needs a Zambia visa?",
+      "a": "Some UK residents travelling on other passports, and anyone going to work in Zambia. We check the rules for your nationality."
+    },
+    {
+      "q": "Can you apply for my Zambia visa for me?",
+      "a": "Yes. Use our online form: upload your passport and we fill in your details, then we complete and check the Zambia visa application and submit it for you."
+    }
+  ],
+  "govuk": "https://www.gov.uk/foreign-travel-advice",
+  "applyButton": "/apply/evisa/?destination=Zambia",
+  "country": "Zambia",
+  "sortKey": "1 zambia 1 zambia visa",
+  "focusKeyword": "Zambia visa",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Application completed and checked, photo and passport scan checked",
+      "processing": "",
+      "fee": "",
+      "popular": true,
+      "processingFee": "",
+      "total": ""
+    },
+    {
+      "service": "Urgent",
+      "included": "Everything in Standard, submitted the same working day",
+      "processing": "",
+      "fee": "",
+      "popular": false,
+      "processingFee": "",
+      "total": ""
+    }
+  ],
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Passport photo page scan",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent passport-style colour photo",
+      "needed": "Required"
+    },
+    {
+      "document": "Flight booking",
+      "details": "Return or onward flight booking",
+      "needed": "Required"
+    },
+    {
+      "document": "Accommodation or invitation",
+      "details": "Hotel booking or invitation letter",
+      "needed": "Required"
+    }
+  ]
+}

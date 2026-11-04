@@ -10,14 +10,6 @@
     "You meet the English language requirement",
     "You have suitable accommodation in the UK"
   ],
-  "documents": [
-    "Passports and any previous visas or BRPs",
-    "Marriage certificate",
-    "Evidence of your relationship, such as photos, messages and travel records",
-    "Financial evidence: payslips, bank statements, employer letter or savings statements",
-    "English language test certificate or degree evidence",
-    "Proof of accommodation, such as a tenancy agreement or mortgage statement"
-  ],
   "faqs": [
     {
       "q": "How much do we need to earn?",
@@ -70,5 +62,42 @@
       "text": "We're based at 61 Mosley Street in Manchester city centre, and we help couples across Greater Manchester, including Bury, Bolton, Oldham, Rochdale, Salford and Stockport. We also work with clients anywhere in the UK and overseas by phone, video call and email.\n\nYour application is prepared and checked by IAA-regulated advisers, and our fee is agreed in writing before we start."
     }
   ],
-  "focusKeyword": "spouse visa application"
+  "focusKeyword": "spouse visa application",
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Passports and any previous visas or BRPs",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Marriage certificate",
+      "details": "Your marriage certificate, with a certified translation if it is not in English",
+      "needed": "Required"
+    },
+    {
+      "document": "Relationship evidence",
+      "details": "Evidence of your relationship, such as photos, messages and travel records",
+      "needed": "Required"
+    },
+    {
+      "document": "Financial evidence",
+      "details": "Financial evidence: payslips, bank statements, employer letter or savings statements",
+      "needed": "Required"
+    },
+    {
+      "document": "English language evidence",
+      "details": "English language test certificate or degree evidence",
+      "needed": "Required"
+    },
+    {
+      "document": "Proof of address",
+      "details": "Proof of accommodation, such as a tenancy agreement or mortgage statement",
+      "needed": "Required"
+    }
+  ]
 }

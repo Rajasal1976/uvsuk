@@ -9,12 +9,6 @@
     "You meet the English language requirement",
     "For under-18s: parental consent and suitable care arrangements"
   ],
-  "documents": [
-    "Passport",
-    "Confirmation of Acceptance for Studies (CAS)",
-    "Bank statements showing the required funds, held for the required time",
-    "Tuberculosis test results, if required for your country"
-  ],
   "faqs": [
     {
       "q": "Can I bring my family?",
@@ -59,5 +53,32 @@
       "text": "We're based at 61 Mosley Street in Manchester city centre and help clients across Greater Manchester, including Bury, Bolton, Oldham, Rochdale, Salford and Stockport. We also work with clients anywhere in the UK and overseas by phone, video call and email."
     }
   ],
-  "focusKeyword": "Student visa"
+  "focusKeyword": "Student visa",
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Valid for at least 6 months, with a copy of the photo page",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Confirmation of Acceptance for Studies",
+      "details": "Confirmation of Acceptance for Studies (CAS)",
+      "needed": "Required"
+    },
+    {
+      "document": "Financial evidence",
+      "details": "Bank statements showing the required funds, held for the required time",
+      "needed": "Required"
+    },
+    {
+      "document": "Tuberculosis test results",
+      "details": "Tuberculosis test results, if required for your country",
+      "needed": "Required"
+    }
+  ]
 }
