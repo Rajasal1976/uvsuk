@@ -149,7 +149,9 @@
     '.seo-small{font-size:13px;color:#6B7A72}.seo-warn{background:#FFF4E5;border-left:4px solid #E37400;padding:10px 12px;border-radius:6px}' +
     '.checks{list-style:none;margin:0;padding:0}.checks li{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid #EEF1EF;font-size:14px;line-height:1.45}' +
     '.ic{width:20px;height:20px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;flex:none;margin-top:1px}' +
-    '.pass .ic{background:#1E8E3E}.half .ic{background:#E37400}.fail .ic{background:#C5221F}',
+    '.pass .ic{background:#1E8E3E}.half .ic{background:#E37400}.fail .ic{background:#C5221F}' +
+    '.cf-box{display:flex;gap:10px;align-items:center;flex-wrap:wrap;background:#F4F8F5;border:1px solid #D5E6DA;border-radius:10px;padding:12px 14px}.cf-box code{flex:1 1 260px;word-break:break-all;font-size:15px;color:#14532D}' +
+    '.cf-copy{padding:8px 14px;border-radius:6px;border:0;background:#14532D;color:#fff;font-weight:600;cursor:pointer}.cf-steps{padding-left:20px;line-height:1.7;font-size:14px}',
     { raw: true }
   );
   // ---------- Password field with a "Generate password" button (Client forms) ----------
@@ -171,6 +173,48 @@
           onClick: function () { try { navigator.clipboard.writeText(value); } catch (e) {} } }, 'Copy') : null);
     },
   }), createClass({ render: function () { return h('span', {}, this.props.value ? '••••••••' : '(no password)'); } }));
+
+  // ---------- Client forms: the link and password to send to the client ----------
+  var SITE_ORIGIN = window.location.origin; // the website this editor belongs to
+  function slugify(t) { return String(t || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, ''); }
+  function copyBtn(text, label) {
+    return h('button', { type: 'button', className: 'cf-copy', onClick: function (e) {
+      try { navigator.clipboard.writeText(text); } catch (err) {}
+      var b = e.target; b.textContent = 'Copied'; setTimeout(function () { b.textContent = label; }, 1500);
+    } }, label);
+  }
+  var ClientFormPanel = createClass({
+    render: function () {
+      var entry = this.props.entry;
+      var d = toJS(entry.get('data')) || {};
+      var saved = entry.get('slug');
+      var slug = saved || slugify(d.title);
+      var link = SITE_ORIGIN + '/client-forms/' + slug + '/';
+      var pw = (d.password || '').trim();
+      var status = d.template ? 'template' : d.active === false ? 'closed' : 'open';
+      return h('div', { className: 'seo' },
+        h('h2', {}, 'Send this form to your client'),
+        status === 'template'
+          ? h('p', { className: 'seo-warn' }, 'This is a template, so it has no link. Click Published, then Duplicate, to make a form for a client from it.')
+          : h('div', {},
+              status === 'closed' ? h('p', { className: 'seo-warn' }, 'This form is closed. Switch on "Form is open" and publish to let the client use it.') : null,
+              !saved ? h('p', { className: 'seo-warn' }, 'Publish the form first. About 2 minutes after publishing, this link will work.') : null,
+              h('h3', {}, 'Link'),
+              h('div', { className: 'cf-box' }, h('code', {}, link), copyBtn(link, 'Copy link')),
+              h('h3', {}, 'Password'),
+              pw ? h('div', { className: 'cf-box' }, h('code', {}, pw), copyBtn(pw, 'Copy password'))
+                 : h('p', { className: 'seo-warn' }, 'No password yet. Click Generate password on the left, then publish.'),
+              h('h3', {}, 'How to send it'),
+              h('ol', { className: 'cf-steps' },
+                h('li', {}, 'Publish the form and wait about 2 minutes.'),
+                h('li', {}, 'Open the link yourself to check it works.'),
+                h('li', {}, 'Email the link to your client.'),
+                h('li', {}, 'Send the password separately, by text or WhatsApp.'),
+                h('li', {}, 'When the client has finished, switch off "Form is open" and publish.')),
+              h('p', { className: 'seo-small' }, 'Completed forms arrive by email (if notifications are on) and in Netlify under Forms, named client-' + slug + '.')));
+    },
+  });
+  CMS.registerPreviewTemplate('client_forms', ClientFormPanel);
 
   CMS.registerPreviewTemplate('pages', makePanel(false));
   CMS.registerPreviewTemplate('blog', makePanel(false));

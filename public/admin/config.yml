@@ -209,6 +209,7 @@ collections:
     slug: '{{slug}}'
     identifier_field: title
     summary: '{{title}}'
+    editor: { preview: true }
     fields:
       - { name: title, label: Form title, widget: string, hint: 'Shown at the top of the form, e.g. Spouse visa application: your details. Also used for the address.' }
       - { name: template, label: 'This is a template (not a live form)', widget: boolean, default: false, required: false, hint: 'Templates are never shown to clients. To use one: open it, choose Duplicate from the Publish menu, then change the title, switch this off, generate a password and publish.' }
