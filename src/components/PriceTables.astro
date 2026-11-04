@@ -7,12 +7,12 @@ const { prices = [], kind = 'travel' } = Astro.props;
 const rows = prices.filter((r) => r && r.service);
 const amount = (v) => { const m = String(v || '').replace(/,/g, '').match(/^\s*£?\s*(\d+(?:\.\d{1,2})?)\s*$/); return m ? Number(m[1]) : null; };
 const money = (n) => `£${Number.isInteger(n) ? n.toLocaleString('en-GB') : n.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+// The total always adds itself up from the embassy fee and our fee
 const totalFor = (r) => {
-  if (r.total) return r.total;
   const a = amount(r.processingFee), b = amount(r.fee);
   return a !== null && b !== null ? money(a + b) : '';
 };
-const feeName = kind === 'evisa' ? 'Official fee' : 'Processing fee';
+const feeName = kind === 'evisa' ? 'Official fee' : 'Embassy fee (incl. VAT)';
 const call = `tel:${site.phoneIntl}`;
 ---
 <section id="fees">
@@ -43,7 +43,7 @@ const call = `tel:${site.phoneIntl}`;
   )}
   <p class="soft" style="font-size:15px">{kind === 'evisa'
     ? 'The official fee is the fee charged by the country’s eVisa system. It can change, so we confirm it before you pay.'
-    : 'The processing fee is the embassy or visa centre fee. It can depend on your nationality and the number of entries, so we confirm it before you pay.'}</p>
+    : 'The embassy fee includes the visa centre charges and VAT. It can depend on your nationality and the number of entries, so we confirm it before you pay.'}</p>
 
   {kind === 'travel' && site.delivery.length > 0 && (
     <>

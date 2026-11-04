@@ -86,14 +86,13 @@ collections:
         widget: list
         required: false
         summary: '{{fields.service}}: {{fields.fee}}'
-        hint: 'Travel visa and eVisa pages only.'
+        hint: 'Shown on country visa pages only (tourist, business, work and so on). The total adds itself up from the embassy fee and our fee.'
         fields:
           - { name: service, label: Service, widget: string, hint: 'For example Standard, Express or Urgent.' }
           - { name: included, label: "What's included", widget: string, required: false }
           - { name: processing, label: Processing time, widget: string, required: false, hint: 'For example 5 working days.' }
-          - { name: processingFee, label: Processing fee, widget: string, required: false, hint: 'The embassy, visa centre or official eVisa fee, for example £85.' }
+          - { name: processingFee, label: 'Embassy fee (incl. VAT)', widget: string, required: false, hint: 'The full embassy or visa centre fee including VAT, or the official eVisa fee, for example £151.50.' }
           - { name: fee, label: Our fee, widget: string, required: false, hint: 'For example £95. Leave empty to show "Call for price".' }
-          - { name: total, label: Total (optional), widget: string, required: false, hint: 'Leave empty and it''s added up for you from the two fees.' }
           - { name: popular, label: Mark as most popular, widget: boolean, required: false, default: false }
       - name: body
         label: Page text

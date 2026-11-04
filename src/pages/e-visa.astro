@@ -6,7 +6,6 @@ import ApplyButton from '../components/ApplyButton.astro';
 import GuideSections from '../components/GuideSections.astro';
 import Faq from '../components/Faq.astro';
 import CtaBand from '../components/CtaBand.astro';
-import PriceTables from '../components/PriceTables.astro';
 import { site } from '../data/site.js';
 import { evisaContinents } from '../data/evisas.js';
 import content from '../../content/pages/e-visa.json';
@@ -53,7 +52,6 @@ import content from '../../content/pages/e-visa.json';
         </section>
 
 <GuideSections sections={content.sections} />
-        <PriceTables prices={content.prices} kind="evisa" />
 
         <Faq items={content.faqs} title={content.faqHeading || 'Common questions'} />
       </div>

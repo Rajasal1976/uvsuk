@@ -4,7 +4,6 @@ import { site } from '../data/site.js';
 import GuideSections from '../components/GuideSections.astro';
 import Faq from '../components/Faq.astro';
 import ApplyButton from '../components/ApplyButton.astro';
-import PriceTables from '../components/PriceTables.astro';
 // SEO title, description and FAQs for this page are edited in the admin (content/pages/china-visa-application.json).
 import content from '../../content/pages/china-visa-application.json';
 import '../styles/china-chooser.css';
@@ -185,7 +184,6 @@ const schemas = [];
 <li>Prepare and complete your application forms</li>
 <li>Review all evidence against the current rules before submission</li>
 <li>Keep you updated until you have a decision</li></ul></section>
-<PriceTables prices={content.prices} kind="travel" />
 
 <Faq items={content.faqs} title={content.faqHeading || 'Common questions'} />
 
