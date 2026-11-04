@@ -57,11 +57,6 @@
   ],
   "country": "India",
   "title": "India e-Tourist Visa from the UK | Fast eVisa Help | UVS",
-  "documents": [
-    "Passport bio page scan",
-    "Recent passport-style photo meeting the Indian specifications",
-    "Travel details"
-  ],
   "description": "India e-Tourist visa for UK residents: 30-day, 1-year and 5-year options. We complete and check your application, photo and passport scan.",
   "faqs": [
     {
@@ -77,5 +72,27 @@
       "a": "Most are processed within a few working days. Apply at least 4 days before you travel, and earlier in busy periods."
     }
   ],
-  "focusKeyword": "India e-Tourist visa"
+  "focusKeyword": "India e-Tourist visa",
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Passport bio page scan",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent passport-style photo meeting the Indian specifications",
+      "needed": "Required"
+    },
+    {
+      "document": "Travel details",
+      "details": "",
+      "needed": "Required"
+    }
+  ]
 }

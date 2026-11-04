@@ -9,13 +9,6 @@
     "You won’t be paid by a company in Kenya",
     "You have an invitation from the company or event you’re visiting"
   ],
-  "documents": [
-    "Passport photo page scan, valid for at least 6 months",
-    "Recent passport-style photo",
-    "Invitation letter from the company you’re visiting in Kenya",
-    "Letter from your UK employer confirming your role and the trip",
-    "Return flight and hotel booking"
-  ],
   "sections": [
     {
       "heading": "Do you need a Kenya business ETA?",
@@ -71,6 +64,38 @@
       "popular": false,
       "processingFee": "",
       "total": ""
+    }
+  ],
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Passport photo page scan, valid for at least 6 months",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent passport-style colour photo",
+      "needed": "Required"
+    },
+    {
+      "document": "Invitation letter",
+      "details": "Invitation letter from the company you’re visiting in Kenya",
+      "needed": "Required"
+    },
+    {
+      "document": "Employer letter",
+      "details": "Letter from your UK employer confirming your role and the trip",
+      "needed": "Required"
+    },
+    {
+      "document": "Flight and hotel bookings",
+      "details": "Return flight and hotel booking",
+      "needed": "Required"
     }
   ]
 }

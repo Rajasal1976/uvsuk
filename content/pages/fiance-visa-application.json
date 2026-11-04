@@ -9,12 +9,6 @@
     "You meet the financial and English language requirements",
     "You can show your wedding plans are genuine"
   ],
-  "documents": [
-    "Passports for both of you",
-    "Evidence of your relationship",
-    "Evidence of wedding plans, such as a booking or venue confirmation",
-    "Financial and English language evidence"
-  ],
   "faqs": [
     {
       "q": "Can I work on a fiancé visa?",
@@ -51,5 +45,32 @@
       "text": "We're based at 61 Mosley Street in Manchester city centre and help clients across Greater Manchester, including Bury, Bolton, Oldham, Rochdale, Salford and Stockport. We also work with clients anywhere in the UK and overseas by phone, video call and email."
     }
   ],
-  "focusKeyword": "fiancé visa"
+  "focusKeyword": "fiancé visa",
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Passports for both of you",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Relationship evidence",
+      "details": "Evidence of your relationship",
+      "needed": "Required"
+    },
+    {
+      "document": "Wedding plans",
+      "details": "Evidence of wedding plans, such as a booking or venue confirmation",
+      "needed": "Required"
+    },
+    {
+      "document": "Financial and English evidence",
+      "details": "Financial and English language evidence",
+      "needed": "Required"
+    }
+  ]
 }

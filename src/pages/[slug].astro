@@ -9,6 +9,7 @@ import CtaBand from '../components/CtaBand.astro';
 import ApplyButton from '../components/ApplyButton.astro';
 import PriceTables from '../components/PriceTables.astro';
 import GuideSections from '../components/GuideSections.astro';
+import DocumentsTable from '../components/DocumentsTable.astro';
 import { pages, pageBySlug } from '../data/pages.js';
 import { site } from '../data/site.js';
 
@@ -62,13 +63,7 @@ const howWeHelp = [
             {p.eligibility?.length > 0 && (
               <section><h2>Do you qualify?</h2><ul>{p.eligibility.map((e) => <li>{e}</li>)}</ul></section>
             )}
-            {p.documents?.length > 0 && (
-              <section>
-                <h2>Documents you'll usually need</h2>
-                <ul>{p.documents.map((d) => <li>{d}</li>)}</ul>
-                <p class="soft" style="font-size:15px">We give you a full checklist for your circumstances at your consultation.</p>
-              </section>
-            )}
+            <DocumentsTable rows={p.documentsTable} />
             <GuideSections sections={p.sections} />
             <section><h2>How we help</h2><ul>{howWeHelp.map((h) => <li>{h}</li>)}</ul></section>
             {p.visa ? <PriceTables prices={p.prices} kind={p.visa} /> : (

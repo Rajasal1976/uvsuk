@@ -9,12 +9,6 @@
     "You have a visa for your final destination, if it needs one",
     "Your passport is valid for at least 6 months from the date you arrive"
   ],
-  "documents": [
-    "Passport photo page scan",
-    "Recent passport-style photo with a white background",
-    "Onward flight ticket to your final destination",
-    "Visa for your final destination, if needed"
-  ],
   "sections": [
     {
       "heading": "Do you need a transit visa for India?",
@@ -71,5 +65,32 @@
       "total": ""
     }
   ],
-  "focusKeyword": "India e-Transit visa"
+  "focusKeyword": "India e-Transit visa",
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Passport photo page scan",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent passport-style photo with a white background",
+      "needed": "Required"
+    },
+    {
+      "document": "Flight booking",
+      "details": "Onward flight ticket to your final destination",
+      "needed": "Required"
+    },
+    {
+      "document": "Visa for your final destination",
+      "details": "Visa for your final destination, if needed",
+      "needed": "If applicable"
+    }
+  ]
 }

@@ -38,12 +38,6 @@
   "focusKeyword": "India e-Medical Attendant visa",
   "country": "India",
   "title": "India e-Medical Attendant Visa from the UK | Apply Online",
-  "documents": [
-    "Passport photo page scan",
-    "Recent passport-style photo with a white background",
-    "Copy of the patient’s e-Medical visa or application",
-    "Letter from the hospital in India"
-  ],
   "description": "India e-Medical Attendant visa help for family travelling with a patient to India. We prepare it alongside the patient’s e-Medical visa.",
   "faqs": [
     {
@@ -57,6 +51,33 @@
     {
       "q": "Who can apply for an India e-Medical Attendant visa?",
       "a": "Usually close family members of the patient. Up to two attendants can travel with each patient."
+    }
+  ],
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Passport photo page scan",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent passport-style photo with a white background",
+      "needed": "Required"
+    },
+    {
+      "document": "Copy of the patient’s e-Medical visa or application",
+      "details": "",
+      "needed": "Required"
+    },
+    {
+      "document": "Hospital letter",
+      "details": "Letter from the hospital in India",
+      "needed": "Required"
     }
   ]
 }

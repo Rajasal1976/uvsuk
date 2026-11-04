@@ -10,14 +10,6 @@
     "Your employer has obtained, or is applying for, STR approval from the Nigeria Immigration Service",
     "You are taking up long-term employment, not a short assignment"
   ],
-  "documents": [
-    "Passport, valid for at least 6 months",
-    "Recent passport-style photos",
-    "STR approval letter from the Nigeria Immigration Service, obtained by your employer",
-    "Letter of employment or contract",
-    "Your CV and degree certificates",
-    "Yellow fever vaccination certificate"
-  ],
   "sections": [
     {
       "heading": "How the Nigeria STR work visa works",
@@ -63,6 +55,43 @@
       "popular": true,
       "processingFee": "",
       "total": ""
+    }
+  ],
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Passport, valid for at least 6 months",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent passport-style photos",
+      "needed": "Required"
+    },
+    {
+      "document": "Employer letter",
+      "details": "STR approval letter from the Nigeria Immigration Service, obtained by your employer",
+      "needed": "Required"
+    },
+    {
+      "document": "Employment contract",
+      "details": "Letter of employment or contract",
+      "needed": "Required"
+    },
+    {
+      "document": "Qualifications",
+      "details": "Your CV and degree certificates",
+      "needed": "Required"
+    },
+    {
+      "document": "Yellow fever certificate",
+      "details": "Yellow fever vaccination certificate",
+      "needed": "Required"
     }
   ]
 }

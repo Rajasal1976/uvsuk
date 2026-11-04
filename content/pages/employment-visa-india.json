@@ -58,13 +58,6 @@
   ],
   "country": "India",
   "title": "India Employment Visa from the UK | Application Help | UVS",
-  "documents": [
-    "Passport",
-    "Photo meeting the Indian specifications",
-    "Employment contract",
-    "Company registration documents from the Indian employer",
-    "CV and qualifications"
-  ],
   "description": "India Employment visa help for UK residents taking up work in India. We prepare your application, employer documents and visa centre appointment.",
   "faqs": [
     {
@@ -76,5 +69,37 @@
       "a": "It depends on the visa centre and your documents, but allow several weeks. Starting early, with your employer’s documents ready, avoids delays."
     }
   ],
-  "focusKeyword": "India Employment visa"
+  "focusKeyword": "India Employment visa",
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Valid for at least 6 months, with a copy of the photo page",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Photo",
+      "details": "Photo meeting the Indian specifications",
+      "needed": "Required"
+    },
+    {
+      "document": "Employment contract",
+      "details": "",
+      "needed": "Required"
+    },
+    {
+      "document": "Company registration documents from the Indian employer",
+      "details": "",
+      "needed": "Required"
+    },
+    {
+      "document": "Qualifications",
+      "details": "CV and qualifications",
+      "needed": "Required"
+    }
+  ]
 }

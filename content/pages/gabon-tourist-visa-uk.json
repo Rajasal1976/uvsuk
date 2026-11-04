@@ -9,13 +9,6 @@
     "You won’t work or do business during your visit",
     "You have a return ticket and enough money for your stay"
   ],
-  "documents": [
-    "Passport photo page scan, valid for at least 6 months",
-    "Recent passport-style photo",
-    "Return flight booking",
-    "Hotel booking, or an invitation from the people you’re visiting",
-    "Yellow fever vaccination certificate"
-  ],
   "sections": [
     {
       "heading": "Do you need a Gabon tourist visa?",
@@ -71,6 +64,38 @@
       "popular": false,
       "processingFee": "",
       "total": ""
+    }
+  ],
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Passport photo page scan, valid for at least 6 months",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent passport-style colour photo",
+      "needed": "Required"
+    },
+    {
+      "document": "Flight booking",
+      "details": "Return flight booking",
+      "needed": "Required"
+    },
+    {
+      "document": "Accommodation or invitation",
+      "details": "Hotel booking, or an invitation from the people you’re visiting",
+      "needed": "Required"
+    },
+    {
+      "document": "Yellow fever certificate",
+      "details": "Yellow fever vaccination certificate",
+      "needed": "Required"
     }
   ]
 }

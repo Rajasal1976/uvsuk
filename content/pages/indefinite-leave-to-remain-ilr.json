@@ -47,5 +47,37 @@
       "text": "We help clients across Greater Manchester and the rest of the UK prepare their ILR applications: checking the qualifying date, calculating absences, preparing the evidence and reviewing everything before it goes to the Home Office. After ILR, we can help you apply for British citizenship."
     }
   ],
-  "focusKeyword": "Indefinite Leave to Remain"
+  "focusKeyword": "Indefinite Leave to Remain",
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Passports covering the whole qualifying period",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Life in the UK test",
+      "details": "Life in the UK test pass reference",
+      "needed": "Required"
+    },
+    {
+      "document": "English language evidence",
+      "details": "",
+      "needed": "Required"
+    },
+    {
+      "document": "Evidence for your route",
+      "details": "Evidence relevant to your route, such as payslips or relationship evidence",
+      "needed": "Required"
+    },
+    {
+      "document": "Travel history",
+      "details": "A record of all trips abroad",
+      "needed": "Required"
+    }
+  ]
 }

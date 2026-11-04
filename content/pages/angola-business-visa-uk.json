@@ -42,13 +42,6 @@
   "purposeLabel": "Business visa",
   "country": "Angola",
   "title": "Angola business visa from the UK | Apply Online | UVS",
-  "documents": [
-    "Passport photo page scan, valid for at least 6 months",
-    "Recent passport-style photo",
-    "Invitation letter from the company you’re visiting in Angola",
-    "Letter from your UK employer confirming your role and the trip",
-    "Return flight and hotel booking"
-  ],
   "description": "Angola business visa from the UK for meetings, conferences and trade fairs. Who needs one, the documents you need, and how we apply for you.",
   "faqs": [
     {
@@ -62,6 +55,38 @@
     {
       "q": "What should the invitation letter include?",
       "a": "Your name and passport number, the purpose and dates of your visit, the company’s details, and who is paying for the trip."
+    }
+  ],
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Passport photo page scan, valid for at least 6 months",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent passport-style colour photo",
+      "needed": "Required"
+    },
+    {
+      "document": "Invitation letter",
+      "details": "Invitation letter from the company you’re visiting in Angola",
+      "needed": "Required"
+    },
+    {
+      "document": "Employer letter",
+      "details": "Letter from your UK employer confirming your role and the trip",
+      "needed": "Required"
+    },
+    {
+      "document": "Flight and hotel bookings",
+      "details": "Return flight and hotel booking",
+      "needed": "Required"
     }
   ]
 }

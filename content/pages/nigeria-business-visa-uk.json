@@ -10,15 +10,6 @@
     "You need a longer stay, or several trips, beyond what the eVisa allows",
     "You won’t be employed by a Nigerian company (that needs a work visa)"
   ],
-  "documents": [
-    "Passport, valid for at least 6 months, with blank pages",
-    "Recent passport-style photos",
-    "Return flight booking",
-    "Recent bank statements",
-    "Yellow fever vaccination certificate",
-    "Invitation letter from the Nigerian company, accepting immigration responsibility for you",
-    "Letter from your UK employer confirming your role and the purpose of your trips"
-  ],
   "sections": [
     {
       "heading": "eVisa or regular Nigeria business visa?",
@@ -68,6 +59,48 @@
       "popular": true,
       "processingFee": "",
       "total": ""
+    }
+  ],
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Passport, valid for at least 6 months, with blank pages",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent passport-style photos",
+      "needed": "Required"
+    },
+    {
+      "document": "Flight booking",
+      "details": "Return flight booking",
+      "needed": "Required"
+    },
+    {
+      "document": "Financial evidence",
+      "details": "Recent bank statements",
+      "needed": "Required"
+    },
+    {
+      "document": "Yellow fever certificate",
+      "details": "Yellow fever vaccination certificate",
+      "needed": "Required"
+    },
+    {
+      "document": "Invitation letter",
+      "details": "Invitation letter from the Nigerian company, accepting immigration responsibility for you",
+      "needed": "Required"
+    },
+    {
+      "document": "Employer letter",
+      "details": "Letter from your UK employer confirming your role and the purpose of your trips",
+      "needed": "Required"
     }
   ]
 }

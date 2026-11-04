@@ -10,14 +10,6 @@
     "You meet the English language requirement",
     "You have suitable accommodation in the UK"
   ],
-  "documents": [
-    "Passports and any previous visas or BRPs",
-    "Civil partnership certificate",
-    "Evidence of your relationship, such as photos, messages and travel records",
-    "Financial evidence: payslips, bank statements, employer letter or savings statements",
-    "English language test certificate or degree evidence",
-    "Proof of accommodation, such as a tenancy agreement or mortgage statement"
-  ],
   "sections": [
     {
       "heading": "Civil partner visa: who can apply?",
@@ -70,5 +62,42 @@
   "applyButton": "none",
   "country": "UK",
   "sortKey": "1 uk 1 uk civil partner visa",
-  "focusKeyword": "civil partner visa"
+  "focusKeyword": "civil partner visa",
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Passports and any previous visas or BRPs",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Civil partnership certificate",
+      "details": "",
+      "needed": "Required"
+    },
+    {
+      "document": "Relationship evidence",
+      "details": "Evidence of your relationship, such as photos, messages and travel records",
+      "needed": "Required"
+    },
+    {
+      "document": "Financial evidence",
+      "details": "Financial evidence: payslips, bank statements, employer letter or savings statements",
+      "needed": "Required"
+    },
+    {
+      "document": "English language evidence",
+      "details": "English language test certificate or degree evidence",
+      "needed": "Required"
+    },
+    {
+      "document": "Proof of address",
+      "details": "Proof of accommodation, such as a tenancy agreement or mortgage statement",
+      "needed": "Required"
+    }
+  ]
 }

@@ -45,12 +45,6 @@
   ],
   "country": "China",
   "title": "China Work Visa (Z Visa) from the UK | Application Help",
-  "documents": [
-    "Passport",
-    "Work permit notice from your employer",
-    "Completed application form",
-    "Photo"
-  ],
   "description": "China work visa (Z visa) help for UK residents taking up work in China: work permit notification, documents, legalisation and visa centre appointments.",
   "faqs": [
     {
@@ -66,5 +60,27 @@
       "a": "Usually yes. Your degree certificate and criminal record check normally need an apostille. We arrange this as part of our service."
     }
   ],
-  "focusKeyword": "China work visa"
+  "focusKeyword": "China work visa",
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Valid for at least 6 months, with a copy of the photo page",
+      "needed": "Required"
+    },
+    {
+      "document": "Work permit notice from your employer",
+      "details": "",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed application form",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent colour photo meeting the visa photo rules",
+      "needed": "Required"
+    }
+  ]
 }

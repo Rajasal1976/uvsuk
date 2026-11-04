@@ -2,6 +2,7 @@
 import Page from '../layouts/Page.astro';
 import { site } from '../data/site.js';
 import GuideSections from '../components/GuideSections.astro';
+import DocumentsTable from '../components/DocumentsTable.astro';
 import Faq from '../components/Faq.astro';
 import ApplyButton from '../components/ApplyButton.astro';
 // SEO title, description and FAQs for this page are edited in the admin (content/pages/skilled-worker-visa-formally-tier-t2-general.json).
@@ -30,15 +31,7 @@ const schemas = [];
 <li>You have a valid Certificate of Sponsorship for the role</li>
 <li>The job is at the required skill level and meets the salary threshold</li>
 <li>You meet the English language requirement</li></ul></section>
-<section>
-<h2>Documents you&#x27;ll usually need</h2>
-<ul>
-<li>Passport</li>
-<li>Certificate of Sponsorship reference number</li>
-<li>English language evidence</li>
-<li>Tuberculosis test results, if required for your country</li>
-<li>Criminal record certificate, for some roles</li></ul>
-<p class="soft" style="font-size:15px">We give you a full checklist for your circumstances at your consultation.</p></section>
+<DocumentsTable rows={content.documentsTable} />
 <GuideSections sections={content.sections} />
 <section>
 <h2>How we help</h2>

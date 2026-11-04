@@ -207,3 +207,18 @@ const schemas = [];
 <p>Book a consultation and we&#x27;ll tell you your options, what you&#x27;ll need and what it will cost.</p></div>
 <div class="btn-row"><a class="btn btn-gold" href="/contact-us/">Book a consultation</a><a href="tel:+441619562003" class="btn btn-ghost-light">0161 956 2003</a></div></div></section></main>
 </Page>
+
+<script>
+  // Links like /china-visa-application/#vc-family open the chooser with that visa type selected
+  const pick = () => {
+    const id = location.hash.slice(1);
+    if (!/^vc-[a-z]+$/.test(id)) return;
+    const radio = document.getElementById(id) as HTMLInputElement | null;
+    if (!radio) return;
+    radio.checked = true;
+    radio.dispatchEvent(new Event('change', { bubbles: true }));
+    document.querySelector(`label[for="${id}"]`)?.scrollIntoView({ block: 'center' });
+  };
+  pick();
+  window.addEventListener('hashchange', pick);
+</script>

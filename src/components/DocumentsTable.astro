@@ -1,0 +1,27 @@
+---
+// "Documents you'll need" table: Document | Details | Needed, with coloured labels.
+// Edited in the admin as "Documents table" on each page.
+const { rows = [], note = true } = Astro.props;
+const tagClass = (n = '') => (n === 'Required' ? 'tag-req' : n === 'We prepare' ? 'tag-us' : 'tag-opt');
+const items = rows.filter((r) => r && r.document);
+---
+{items.length > 0 && (
+  <section>
+    <h2>Documents you'll need</h2>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th scope="col">Document</th><th scope="col">Details</th><th scope="col">Needed</th></tr></thead>
+        <tbody>
+          {items.map((r) => (
+            <tr>
+              <th scope="row" data-label="Document">{r.document}</th>
+              <td data-label="Details">{r.details}</td>
+              <td data-label="Needed">{r.needed && <span class={`tag ${tagClass(r.needed)}`}>{r.needed}</span>}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    {note && <p class="soft" style="font-size:15px">We give you a full checklist for your circumstances at your consultation.</p>}
+  </section>
+)}

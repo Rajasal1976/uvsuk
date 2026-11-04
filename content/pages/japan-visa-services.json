@@ -9,15 +9,6 @@
     "Your passport is valid for your whole stay",
     "You can show your UK residence status, such as your eVisa or BRP"
   ],
-  "documents": [
-    "Passport and completed visa application form",
-    "Recent passport photo (45mm × 35mm)",
-    "Proof of your UK residence status, such as your eVisa share code or BRP",
-    "Schedule of stay (your day-by-day plan in Japan)",
-    "Flight reservation",
-    "Recent bank statements and a letter from your employer",
-    "Invitation letter, if you are visiting family, friends or a company"
-  ],
   "sections": [
     {
       "heading": "Do you need a Japan visa?",
@@ -72,6 +63,48 @@
       "popular": true,
       "processingFee": "",
       "total": ""
+    }
+  ],
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Passport and completed visa application form",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent passport photo (45mm × 35mm)",
+      "needed": "Required"
+    },
+    {
+      "document": "UK residence evidence",
+      "details": "Proof of your UK residence status, such as your eVisa share code or BRP",
+      "needed": "Required"
+    },
+    {
+      "document": "Schedule of stay",
+      "details": "Schedule of stay (your day-by-day plan in Japan)",
+      "needed": "Required"
+    },
+    {
+      "document": "Flight booking",
+      "details": "Flight reservation",
+      "needed": "Required"
+    },
+    {
+      "document": "Financial evidence",
+      "details": "Recent bank statements and a letter from your employer",
+      "needed": "Required"
+    },
+    {
+      "document": "Invitation letter",
+      "details": "Invitation letter, if you are visiting family, friends or a company",
+      "needed": "Required"
     }
   ]
 }

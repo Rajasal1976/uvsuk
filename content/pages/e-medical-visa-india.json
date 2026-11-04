@@ -46,11 +46,6 @@
   "focusKeyword": "India e-Medical visa",
   "country": "India",
   "title": "India e-Medical Visa from the UK | Medical eVisa Help | UVS",
-  "documents": [
-    "Passport photo page scan",
-    "Recent passport-style photo with a white background",
-    "Letter from the hospital in India, on its letterhead, confirming your treatment"
-  ],
   "description": "India e-Medical visa help for UK residents travelling for treatment. We prepare your application and check the hospital letter before you apply.",
   "faqs": [
     {
@@ -64,6 +59,28 @@
     {
       "q": "Do I need a hospital letter for an India e-Medical visa?",
       "a": "Yes. A letter from the hospital in India, on its letterhead, confirming your treatment is essential."
+    }
+  ],
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Passport photo page scan",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent passport-style photo with a white background",
+      "needed": "Required"
+    },
+    {
+      "document": "Hospital letter",
+      "details": "Letter from the hospital in India, on its letterhead, confirming your treatment",
+      "needed": "Required"
     }
   ]
 }

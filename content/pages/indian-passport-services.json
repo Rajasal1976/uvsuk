@@ -4,11 +4,6 @@
   "h1": "Indian passport renewal and services",
   "intro": "Indian passport holder living in the UK? We help with renewals and new applications, including passports for children, completing the forms and preparing your documents. We help with Indian passport renewal, surrender certificates and OCI cards for Indians living in the UK.",
   "eligibility": [],
-  "documents": [
-    "Current passport",
-    "UK residence evidence",
-    "Photos meeting the Indian specifications"
-  ],
   "faqs": [
     {
       "q": "Can I keep my Indian passport after becoming British?",
@@ -46,5 +41,27 @@
     }
   ],
   "focusKeyword": "Indian passport renewal",
-  "purposeLabel": "Indian passport & OCI services"
+  "purposeLabel": "Indian passport & OCI services",
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Current passport",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "UK residence evidence",
+      "details": "",
+      "needed": "Required"
+    },
+    {
+      "document": "Photo",
+      "details": "Photos meeting the Indian specifications",
+      "needed": "Required"
+    }
+  ]
 }

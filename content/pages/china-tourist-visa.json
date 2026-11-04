@@ -49,14 +49,6 @@
   ],
   "country": "China",
   "title": "China Tourist Visa (L Visa) from the UK | Application Help",
-  "documents": [
-    "Original passport, plus a copy of the photo page",
-    "Recent colour photo on a white background, meeting Chinese visa specifications",
-    "Return flight booking",
-    "Hotel bookings for your whole stay, or an invitation letter if you’re staying with someone in China",
-    "Your UK visa or eVisa share code, if you are not British",
-    "Copies of any previous Chinese visas"
-  ],
   "description": "China tourist visa (L visa) help for UK residents who need one, plus clear advice on visa-free travel for British citizens until 31 December 2026.",
   "faqs": [
     {
@@ -76,5 +68,42 @@
       "a": "It depends on what is granted, which can be single, double or multiple entry. Each stay is limited to the number of days printed on the visa."
     }
   ],
-  "focusKeyword": "China tourist visa"
+  "focusKeyword": "China tourist visa",
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Original passport, plus a copy of the photo page",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent colour photo on a white background, meeting Chinese visa specifications",
+      "needed": "Required"
+    },
+    {
+      "document": "Flight booking",
+      "details": "Return flight booking",
+      "needed": "Required"
+    },
+    {
+      "document": "Accommodation or invitation",
+      "details": "Hotel bookings for your whole stay, or an invitation letter if you’re staying with someone in China",
+      "needed": "Required"
+    },
+    {
+      "document": "UK residence evidence",
+      "details": "Your UK visa or eVisa share code, if you are not British",
+      "needed": "If not British"
+    },
+    {
+      "document": "Previous visas",
+      "details": "Copies of any previous Chinese visas",
+      "needed": "If applicable"
+    }
+  ]
 }

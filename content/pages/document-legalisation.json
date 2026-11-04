@@ -4,10 +4,6 @@
   "h1": "Document legalisation and attestation",
   "intro": "Many countries require UK documents, such as degree certificates, birth certificates and company documents, to be legalised before they are accepted. We handle the process from start to finish. Our document legalisation service handles apostilles and embassy legalisation from start to finish.",
   "eligibility": [],
-  "documents": [
-    "The original documents to be legalised",
-    "Details of the country they will be used in"
-  ],
   "faqs": [
     {
       "q": "Does China accept apostilles?",
@@ -44,5 +40,22 @@
       "text": "We're based in Manchester city centre and help travellers and businesses across the North West and the rest of the UK. Most travel visa applications can be handled by post and email, so you don't need to visit us in person."
     }
   ],
-  "focusKeyword": "document legalisation"
+  "focusKeyword": "document legalisation",
+  "documentsTable": [
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "The original documents to be legalised",
+      "details": "",
+      "needed": "Required"
+    },
+    {
+      "document": "Details of the country they will be used in",
+      "details": "",
+      "needed": "Required"
+    }
+  ]
 }

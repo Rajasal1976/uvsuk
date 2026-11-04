@@ -44,12 +44,6 @@
   ],
   "country": "India",
   "title": "India e-Business Visa from the UK | Business Visa Help | UVS",
-  "documents": [
-    "Passport bio page scan",
-    "Photo meeting the Indian specifications",
-    "Business card",
-    "Invitation letter from the Indian company"
-  ],
   "description": "India e-Business visa for UK business travellers: meetings, trade fairs and sales trips. We prepare your application and invitation documents.",
   "faqs": [
     {
@@ -65,5 +59,32 @@
       "a": "It is valid for 1 year from the date it is granted, with multiple entries."
     }
   ],
-  "focusKeyword": "India e-Business visa"
+  "focusKeyword": "India e-Business visa",
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Passport bio page scan",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Photo",
+      "details": "Photo meeting the Indian specifications",
+      "needed": "Required"
+    },
+    {
+      "document": "Business card",
+      "details": "",
+      "needed": "Required"
+    },
+    {
+      "document": "Invitation letter",
+      "details": "Invitation letter from the Indian company",
+      "needed": "Required"
+    }
+  ]
 }

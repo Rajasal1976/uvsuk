@@ -9,12 +9,6 @@
     "Your passport is valid for at least 6 months from the date you arrive",
     "You are eligible for India’s eVisa"
   ],
-  "documents": [
-    "Passport photo page scan",
-    "Recent passport-style photo with a white background",
-    "Admission letter from the Indian institution",
-    "Proof of funds, such as bank statements or a sponsor letter"
-  ],
   "sections": [
     {
       "heading": "What the e-Student visa allows",
@@ -71,5 +65,32 @@
       "total": ""
     }
   ],
-  "focusKeyword": "India e-Student visa"
+  "focusKeyword": "India e-Student visa",
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Passport photo page scan",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent passport-style photo with a white background",
+      "needed": "Required"
+    },
+    {
+      "document": "Admission letter",
+      "details": "Admission letter from the Indian institution",
+      "needed": "Required"
+    },
+    {
+      "document": "Financial evidence",
+      "details": "Proof of funds, such as bank statements or a sponsor letter",
+      "needed": "Required"
+    }
+  ]
 }

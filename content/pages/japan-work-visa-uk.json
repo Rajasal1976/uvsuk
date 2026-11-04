@@ -9,12 +9,6 @@
     "You live in the UK and can apply at the Embassy of Japan in London or the Consulate in Edinburgh",
     "Your passport is valid for your planned stay"
   ],
-  "documents": [
-    "Passport and completed visa application form",
-    "Recent passport photo (45mm × 35mm)",
-    "Your Certificate of Eligibility, or the electronic COE email from your employer",
-    "Proof of your UK residence status, if you are not a British citizen"
-  ],
   "sections": [
     {
       "heading": "How the Japan work visa process works",
@@ -69,6 +63,33 @@
       "popular": true,
       "processingFee": "",
       "total": ""
+    }
+  ],
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Passport and completed visa application form",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent passport photo (45mm × 35mm)",
+      "needed": "Required"
+    },
+    {
+      "document": "Certificate of Eligibility",
+      "details": "Your Certificate of Eligibility, or the electronic COE email from your employer",
+      "needed": "Required"
+    },
+    {
+      "document": "Proof of your UK residence status",
+      "details": "Proof of your UK residence status, if you are not a British citizen",
+      "needed": "If not British"
     }
   ]
 }

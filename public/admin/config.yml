@@ -35,7 +35,7 @@ collections:
     format: json
     extension: json
     create: false
-    delete: true
+    delete: false
     identifier_field: h1
     summary: '{{country}}  ›  {{h1}}'
     sortable_fields:
@@ -59,14 +59,17 @@ collections:
         required: false
         field: { name: point, label: Point, widget: string }
         hint: 'Visa pages only (not used on the China, ILR, Skilled Worker and eVisas pages, which have their own layout). One requirement per line.'
-      - name: documents
-        label: '"Documents you''ll usually need" list'
+      - name: documentsTable
+        label: Documents table
         label_singular: document
         widget: list
-        collapsed: false
         required: false
-        field: { name: document, label: Document, widget: string }
-        hint: 'Visa pages only.'
+        summary: '{{fields.document}} · {{fields.needed}}'
+        hint: 'Shown as the "Documents you’ll need" table. Drag to reorder.'
+        fields:
+          - { name: document, label: Document, widget: string, hint: 'Short name, e.g. Passport, Invitation letter' }
+          - { name: details, label: Details, widget: text, required: false }
+          - { name: needed, label: Needed, widget: select, options: ['Required', 'We prepare', 'If not British', 'If applicable', 'Optional'], default: 'Required' }
       - name: sections
         label: Guide sections
         label_singular: section
@@ -132,12 +135,18 @@ collections:
         required: false
         choose_url: false
         hint: 'Shown when the page is shared on WhatsApp, Facebook or LinkedIn. Landscape, about 1200 × 630 pixels. If empty, the default image from Business details is used.'
-      - name: hidden
-        label: 'Hide this page from the website'
+      - name: hideFromMenus
+        label: 'Remove from menus and drop-downs'
         widget: boolean
         required: false
         default: false
-        hint: 'Removes the page from the website, menus, page cards and the visa finder, and sends anyone visiting its address to the page above it. Switch off again to bring the page back. (Doesn’t apply to the ILR, Skilled Worker, China, China business and eVisas pages, which have special designs.)'
+        hint: 'The page stays on the website, but is taken out of the menus, the eVisa menu and the homepage visa finder. On a country’s main page, this removes the whole country from them.'
+      - name: hidden
+        label: 'Move to bin (hide this page)'
+        widget: boolean
+        required: false
+        default: false
+        hint: 'Like the WordPress bin: the page disappears from the website, menus, page cards and the visa finder, and anyone visiting its address is sent to the page above it. Switch off again to restore it. Pages can’t be permanently deleted here, so nothing is lost by mistake. (Doesn’t apply to the ILR, Skilled Worker, China, China business and eVisas pages, which have special designs.)'
       - name: noindex
         label: 'SEO: hide this page from Google'
         widget: boolean

@@ -9,12 +9,6 @@
     "You meet the good character requirement",
     "You have passed the Life in the UK test and meet the English requirement"
   ],
-  "documents": [
-    "Passports covering the residence period",
-    "Proof of ILR or settled status",
-    "Life in the UK and English language evidence",
-    "Two referees who meet the Home Office criteria"
-  ],
   "faqs": [
     {
       "q": "Can my children become British?",
@@ -59,5 +53,32 @@
       "text": "You apply online, give your fingerprints and photo at a UK Visa and Citizenship Application Services appointment, and provide two referees who can confirm your identity. Decisions usually take around 6 months.\n\nIf you are approved, you attend a citizenship ceremony, usually at your local council, within 3 months. You become a British citizen at the ceremony and can then apply for your British passport."
     }
   ],
-  "focusKeyword": "British citizenship application"
+  "focusKeyword": "British citizenship application",
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Passports covering the residence period",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Proof of ILR or settled status",
+      "details": "",
+      "needed": "Required"
+    },
+    {
+      "document": "English language evidence",
+      "details": "Life in the UK and English language evidence",
+      "needed": "Required"
+    },
+    {
+      "document": "Two referees who meet the Home Office criteria",
+      "details": "",
+      "needed": "Required"
+    }
+  ]
 }

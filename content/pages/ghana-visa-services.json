@@ -4,13 +4,6 @@
   "h1": "Ghana visa from the UK",
   "intro": "We help UK residents apply for Ghana tourist and business visas, including checking forms, photos and supporting documents. We prepare your Ghana visa application and check your documents, including your yellow fever certificate.",
   "eligibility": [],
-  "documents": [
-    "Passport",
-    "Photos",
-    "Flight booking",
-    "Invitation letter or hotel booking",
-    "Yellow fever vaccination certificate"
-  ],
   "faqs": [
     {
       "q": "How long does a Ghana visa take?",
@@ -73,5 +66,37 @@
       "text": "We're based in Manchester city centre and help travellers and businesses across the North West and the rest of the UK. Most travel visa applications can be handled by post and email, so you don't need to visit us in person."
     }
   ],
-  "focusKeyword": "Ghana visa"
+  "focusKeyword": "Ghana visa",
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Valid for at least 6 months, with a copy of the photo page",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Photo",
+      "details": "Photos",
+      "needed": "Required"
+    },
+    {
+      "document": "Flight booking",
+      "details": "",
+      "needed": "Required"
+    },
+    {
+      "document": "Accommodation or invitation",
+      "details": "Invitation letter or hotel booking",
+      "needed": "Required"
+    },
+    {
+      "document": "Yellow fever certificate",
+      "details": "Yellow fever vaccination certificate",
+      "needed": "Required"
+    }
+  ]
 }

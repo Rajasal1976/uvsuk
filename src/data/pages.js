@@ -32,3 +32,10 @@ export const isShown = (href) => {
   const slug = (href || '').replace(/^\/|\/$/g, '').split(/[?#]/)[0];
   return !structural.has(slug) || visible.has(slug);
 };
+// Pages switched to "Remove from menus and drop-downs" stay on the website but are left out of
+// the header menus, the eVisa menu and the homepage visa finder.
+const listed = new Set(all.filter((p) => p.hidden !== true && p.hideFromMenus !== true).map((p) => p.slug));
+export const isListed = (href) => {
+  const slug = (href || '').replace(/^\/|\/$/g, '').split(/[?#]/)[0];
+  return !structural.has(slug) || listed.has(slug);
+};
