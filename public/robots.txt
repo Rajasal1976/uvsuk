@@ -1,3 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /client-forms/
+Disallow: /forms-register/
 Sitemap: https://www.uvsuk.co.uk/sitemap-index.xml

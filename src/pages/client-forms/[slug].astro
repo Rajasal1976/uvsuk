@@ -1,0 +1,114 @@
+---
+// Client forms built in the admin under "Client forms". Each one is at /client-forms/<name>/,
+// is hidden from Google, and can be protected with a password you share with the client.
+import { createHash } from 'node:crypto';
+import Page from '../../layouts/Page.astro';
+import { passportStep, passportScanFields, contactStep, declaration } from '../../data/applications.js';
+import { customStep } from '../../lib/custom-questions.js';
+import { site } from '../../data/site.js';
+import '../../styles/apply.css';
+
+export function getStaticPaths() {
+  const forms = import.meta.glob('../../../content/client-forms/*.json', { eager: true, import: 'default' });
+  return Object.entries(forms).map(([path, d]: [string, any]) => ({ params: { slug: path.split('/').pop()!.replace('.json', '') }, props: { d } }));
+}
+const { d } = Astro.props as { d: any };
+const { slug } = Astro.params;
+const includePassport = d.includePassport !== false;
+const people = Math.max(1, Math.min(5, Number(d.maxPeople) || 1));
+const nameStep = {
+  id: 'you', title: 'About you',
+  fields: [
+    { name: 'givenNames', label: 'First name(s)', type: 'text', required: true, half: true },
+    { name: 'surname', label: 'Surname (family name)', type: 'text', required: true, half: true },
+    { name: 'dateOfBirth', label: 'Date of birth', type: 'date', required: true, half: true },
+  ],
+};
+const questions = customStep({ title: d.questionsTitle || 'Your details', intro: d.questionsIntro, questions: d.questions, askOnce: d.askOnce }, 'q');
+const config = {
+  slug: `client-${slug}`,
+  title: d.title || 'Client form',
+  country: 'UK immigration',
+  code: 'CL',
+  pageUrl: '/contact-us/',
+  description: d.intro || '',
+  minutes: 10,
+  noPassport: !includePassport,
+  maxPeople: people,
+  extraUploads: true,
+  steps: [includePassport ? passportStep([], passportScanFields) : nameStep, contactStep(), questions].filter(Boolean),
+  uploads: (d.uploads || []).filter((u: any) => u && u.label).slice(0, 8).map((u: any, i: number) => ({ name: `doc${i + 1}`, label: u.label, required: !!u.required, ...(u.hint ? { hint: u.hint } : {}) })),
+};
+// Only a fingerprint (hash) of the password goes into the page, not the password itself
+const hash = d.password ? createHash('sha256').update(String(d.password).trim()).digest('hex') : '';
+const opts = { declaration, phone: site.phone, phoneIntl: site.phoneIntl };
+const open = d.active !== false;
+---
+<Page title={`${config.title} | Unique Visa Services`} description="Secure client form" noindex>
+  <main>
+    <div class="page-head ap-pagehead">
+      <div class="wrap">
+        <h1>{config.title}</h1>
+        {d.intro && <p class="lead">{d.intro}</p>}
+        <ul class="ap-facts">
+          <li>Your answers are saved in this browser tab as you go</li>
+          {includePassport && <li>Passport details filled in for you</li>}
+          <li>Reviewed by an IAA-regulated adviser</li>
+        </ul>
+      </div>
+    </div>
+    <div class="wrap section ap-section">
+      {!open ? (
+        <p class="ap-notice">This form is now closed. Please contact us on {site.phone} if you need help.</p>
+      ) : (
+        <>
+          {hash && (
+            <form class="cf-gate" id="cf-gate" data-hash={hash}>
+              <h2>Enter your password</h2>
+              <p>Enter the password we sent you to open this form.</p>
+              <label for="cf-pw">Password</label>
+              <div class="cf-row">
+                <input id="cf-pw" type="password" autocomplete="off" required />
+                <button class="btn btn-primary" type="submit">Open form</button>
+              </div>
+              <p class="ap-err" id="cf-err" role="alert"></p>
+            </form>
+          )}
+          <div id="application" data-config={JSON.stringify(config)} data-opts={JSON.stringify(opts)} hidden={!!hash}>
+            <noscript><p>This form needs JavaScript. Please turn it on, or call us on {site.phone}.</p></noscript>
+          </div>
+        </>
+      )}
+    </div>
+  </main>
+</Page>
+
+<style>
+  .cf-gate { max-width: 520px; padding: 28px; border: 1px solid #DCE6DF; border-radius: 12px; background: #FFFFFF; }
+  .cf-gate h2 { margin: 0 0 6px; }
+  .cf-gate label { display: block; margin: 14px 0 6px; font-weight: 600; }
+  .cf-row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .cf-row input { flex: 1 1 220px; padding: 12px 14px; font: inherit; font-size: 16px; border: 1px solid #8FAE99; border-radius: 6px; }
+</style>
+
+<script>
+  import { mountApplication } from '../../lib/apply-form.js';
+  const root = document.getElementById('application');
+  const start = () => { if (root) { root.hidden = false; mountApplication(root, JSON.parse(root.dataset.config!), JSON.parse(root.dataset.opts!)); } };
+  const gate = document.getElementById('cf-gate') as HTMLFormElement | null;
+  const sha256 = async (t: string) => [...new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(t)))].map((b) => b.toString(16).padStart(2, '0')).join('');
+  if (gate) {
+    const key = `cf-open-${location.pathname}`;
+    if (sessionStorage.getItem(key) === gate.dataset.hash) { gate.remove(); start(); }
+    gate.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const pw = (document.getElementById('cf-pw') as HTMLInputElement).value.trim();
+      if ((await sha256(pw)) === gate.dataset.hash) {
+        sessionStorage.setItem(key, gate.dataset.hash!);
+        gate.remove(); start();
+      } else {
+        document.getElementById('cf-err')!.textContent = 'That password isn’t right. Please check it and try again, or call us.';
+      }
+    });
+  } else if (root) start();
+</script>

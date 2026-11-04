@@ -5,8 +5,16 @@ import { applications, declaration } from '../../data/applications.js';
 import { site } from '../../data/site.js';
 import '../../styles/apply.css';
 
+import { customStep } from '../../lib/custom-questions.js';
+
 export function getStaticPaths() {
-  return applications.map((a) => ({ params: { form: a.slug }, props: { app: a } }));
+  // Extra questions added in the admin under "Form questions" are added to the form as an extra step
+  const extras = Object.values(import.meta.glob('../../../content/form-extras/*.json', { eager: true, import: 'default' }));
+  return applications.map((a) => {
+    const extra = extras.find((x: any) => x.form === a.slug);
+    const step = extra ? customStep(extra, 'custom') : null;
+    return { params: { form: a.slug }, props: { app: step ? { ...a, steps: [...a.steps, step] } : a } };
+  });
 }
 const { app } = Astro.props;
 const opts = { declaration, phone: site.phone, phoneIntl: site.phoneIntl };

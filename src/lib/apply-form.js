@@ -4,6 +4,9 @@ import { countries, commonCountries } from '../data/countries.js';
 
 const MAX_TOTAL = 7.5 * 1024 * 1024; // Netlify Forms accepts up to 8 MB per submission
 const MAX_PDF = 4 * 1024 * 1024;
+const MAX_PERSON_TOTAL = 60 * 1024 * 1024; // documents per person; larger sets are sent in several parts
+// Extra "Add another document" upload slots (registered for Netlify in forms-register.astro)
+const EXTRA_SLOTS = Array.from({ length: 20 }, (_, i) => `extra${i + 1}`);
 // File types clients can upload: JPG, PNG, GIF and PDF
 const ACCEPT = '.jpg,.jpeg,.png,.gif,.pdf,image/jpeg,image/png,image/gif,application/pdf';
 const FILE_OK = (f) => /\.(jpe?g|png|gif|pdf)$/i.test(f.name) || /^(image\/(jpeg|png|gif)|application\/pdf)$/.test(f.type);
@@ -47,8 +50,16 @@ export function mountApplication(root, config, opts = {}) {
   const storeKey = `uvs-apply-${config.slug}`;
   const allFields = config.steps.flatMap((s) => s.fields);
   const fieldByName = Object.fromEntries(allFields.map((f) => [f.name, f]));
-  const steps = [
-    ...config.steps,
+  // ---------- people ----------
+  // Up to 5 people can be on one application. people[0] is the main applicant. Shared sections
+  // (e.g. the trip) are answered once; other sections default to "same as the main applicant".
+  const isPassportStep = (s) => !!s.passportScan || s.id === 'passport';
+  const isShared = (s) => (s.shared != null ? !!s.shared : ['trip', 'eligibility'].includes(s.id));
+  const MAX_PEOPLE = config.noPassport ? 1 : Math.max(1, Math.min(5, config.maxPeople ?? 5));
+  const passportFieldNames = new Set(config.steps.filter(isPassportStep).flatMap((s) => s.fields.map((f) => f.name)));
+  const sharedFieldNames = new Set(config.steps.filter(isShared).flatMap((s) => s.fields.map((f) => f.name)));
+  const buildSteps = (person) => [
+    ...(person === 0 ? config.steps : config.steps.filter((s) => !isShared(s))),
     { id: 'documents', title: 'Documents' },
     { id: 'review', title: 'Check and send' },
   ];
@@ -59,6 +70,9 @@ export function mountApplication(root, config, opts = {}) {
   let current = 0;
   let furthest = 0;
   let passportPreview = null;
+  let people = [{ answers, files, autofilled, same: {}, labels: {}, furthest: 0 }];
+  let p = 0;
+  let steps = buildSteps(0);
 
   // defaults
   for (const f of allFields) if (f.default && answers[f.name] == null) answers[f.name] = f.default;
@@ -67,7 +81,20 @@ export function mountApplication(root, config, opts = {}) {
   let restored = false;
   try {
     const saved = JSON.parse(sessionStorage.getItem(storeKey) || 'null');
-    if (saved?.answers) { answers = { ...answers, ...saved.answers }; current = saved.current || 0; furthest = saved.furthest || 0; autofilled = new Set(saved.autofilled || []); restored = true; }
+    if (saved?.people?.length) {
+      people = saved.people.map((x) => ({ answers: x.answers || {}, files: {}, autofilled: new Set(x.autofilled || []), same: x.same || {}, labels: x.labels || {}, furthest: x.furthest || 0 }));
+      p = Math.min(saved.p || 0, people.length - 1);
+      ({ answers, files, autofilled } = people[p]);
+      steps = buildSteps(p);
+      current = Math.min(saved.current || 0, steps.length - 1);
+      furthest = Math.max(people[p].furthest || 0, current);
+      restored = true;
+    } else if (saved?.answers) {
+      answers = { ...answers, ...saved.answers }; people[0].answers = answers;
+      current = saved.current || 0; furthest = saved.furthest || 0;
+      autofilled = new Set(saved.autofilled || []); people[0].autofilled = autofilled;
+      restored = true;
+    }
   } catch {}
   // Answers passed in the link, e.g. /apply/evisa/?destination=Kenya, are filled in for the client.
   try {
@@ -77,7 +104,34 @@ export function mountApplication(root, config, opts = {}) {
       if (v && (!f.options || f.options.includes(v))) answers[f.name] = v;
     }
   } catch {}
-  const save = () => { try { sessionStorage.setItem(storeKey, JSON.stringify({ answers, current, furthest, autofilled: [...autofilled] })); } catch {} };
+  const save = () => {
+    try {
+      people[p].furthest = furthest;
+      sessionStorage.setItem(storeKey, JSON.stringify({ p, current, people: people.map((x) => ({ answers: x.answers, autofilled: [...x.autofilled], same: x.same, labels: x.labels, furthest: x.furthest })) }));
+    } catch {}
+  };
+  const personName = (i) => {
+    const a = people[i]?.answers || {};
+    const n = `${(a.givenNames || '').trim()} ${(a.surname || '').trim()}`.trim();
+    return n || (i === 0 ? 'the main applicant' : `Person ${i + 1}`);
+  };
+  // Shared answers (e.g. the trip) always come from the main applicant
+  const syncShared = () => {
+    if (p === 0) return;
+    for (const k of sharedFieldNames) { const v = people[0].answers[k]; if (v === undefined) delete answers[k]; else answers[k] = v; }
+  };
+  // The answers sent for person i: their own, plus shared and "same as" sections from the main applicant
+  const mergedAnswers = (i) => {
+    if (i === 0) return people[0].answers;
+    const main = people[0].answers;
+    const out = { ...people[i].answers };
+    for (const st of config.steps) {
+      if (isShared(st) || (!isPassportStep(st) && people[i].same[st.id] !== false)) {
+        for (const f of st.fields) { if (main[f.name] === undefined) delete out[f.name]; else out[f.name] = main[f.name]; }
+      }
+    }
+    return out;
+  };
 
   const visible = (f, scope = answers) => {
     const c = f.showIf;
@@ -89,24 +143,28 @@ export function mountApplication(root, config, opts = {}) {
     if (c.isNot !== undefined) return !isEmpty(v) && v !== c.isNot;
     return Array.isArray(c.is) ? c.is.includes(v) : v === c.is;
   };
-  const visibleUploads = () => config.uploads.filter((u) => visible(u));
+  // Extra people: only their photo (and passport) are required; shared documents cover everyone
+  const visibleUploads = () => (config.uploads || []).filter((u) => visible(u)).map((u) => (p > 0 && u.name !== 'photo' ? { ...u, required: false } : u));
   const PASSPORT_SLOT = { name: 'passport', label: 'Passport photo page' };
   // Forms without a passport (e.g. document legalisation) set noPassport: true in their settings.
-  const slotInfo = (slot) => (slot === 'passport' ? (config.noPassport ? null : PASSPORT_SLOT) : visibleUploads().find((u) => u.name === slot));
+  const slotInfo = (slot) => (slot === 'passport' ? (config.noPassport ? null : PASSPORT_SLOT)
+    : slot.startsWith('extra') ? { name: slot, label: (people[p].labels[slot] || '').trim() || 'Additional document' }
+    : visibleUploads().find((u) => u.name === slot));
   // Only files for documents that still apply (e.g. if the client changed their visa type)
-  const SLOT_ORDER = ['passport', 'photo', 'doc1', 'doc2', 'doc3', 'doc4', 'doc5', 'doc6', 'doc7', 'doc8'];
+  const SLOT_ORDER = ['passport', 'photo', 'doc1', 'doc2', 'doc3', 'doc4', 'doc5', 'doc6', 'doc7', 'doc8', ...EXTRA_SLOTS];
   const activeFiles = () => Object.entries(files).filter(([slot]) => slotInfo(slot)).sort(([a], [b]) => SLOT_ORDER.indexOf(a) - SLOT_ORDER.indexOf(b));
   const safeName = (t) => t.replace(/[^\w\s().,-]/g, '').replace(/\s+/g, ' ').trim().slice(0, 80);
 
   // ---------- layout ----------
   root.innerHTML = '';
   const sideList = h('ol', { class: 'ap-steps' });
+  const sideHead = h('p', { class: 'ap-person' });
   const progressText = h('p', { class: 'ap-progress-text' });
   const progressBar = h('div', { class: 'ap-progress-bar' }, h('span'));
   const stage = h('div', { class: 'ap-stage' });
   root.append(
     h('div', { class: 'ap-layout' },
-      h('aside', { class: 'ap-side', 'aria-label': 'Steps' }, sideList),
+      h('aside', { class: 'ap-side', 'aria-label': 'Steps' }, sideHead, sideList),
       h('div', { class: 'ap-main' },
         h('div', { class: 'ap-progress' }, progressText, progressBar),
         restored ? h('div', { class: 'ap-note' }, 'We’ve kept the answers you gave earlier in this browser tab. ',
@@ -115,6 +173,8 @@ export function mountApplication(root, config, opts = {}) {
   );
 
   function renderSide() {
+    sideHead.hidden = people.length < 2;
+    sideHead.textContent = people.length > 1 ? `Person ${p + 1} of ${people.length}: ${personName(p)}` : '';
     sideList.innerHTML = '';
     steps.forEach((s, i) => {
       const state = i === current ? 'current' : i <= furthest ? 'done' : 'todo';
@@ -125,6 +185,33 @@ export function mountApplication(root, config, opts = {}) {
     });
     progressText.textContent = `Step ${current + 1} of ${steps.length}: ${steps[current].title}`;
     progressBar.firstChild.style.width = `${((current + 1) / steps.length) * 100}%`;
+  }
+
+  // ---------- switching between people ----------
+  function switchPerson(i, stepIndex = 0) {
+    people[p].furthest = furthest;
+    p = i;
+    ({ answers, files, autofilled } = people[p]);
+    passportPreview = null;
+    steps = buildSteps(p);
+    syncShared();
+    current = Math.max(0, Math.min(steps.length - 1, stepIndex));
+    furthest = Math.max(people[p].furthest || 0, current);
+    save();
+    renderStep();
+  }
+  function addPerson() {
+    // Start from the main applicant's answers (except passport details), so only differences need changing
+    const copy = {};
+    for (const [k, v] of Object.entries(people[0].answers)) if (!passportFieldNames.has(k)) copy[k] = JSON.parse(JSON.stringify(v));
+    people.push({ answers: copy, files: {}, autofilled: new Set(), same: {}, labels: {}, furthest: 0 });
+    switchPerson(people.length - 1, 0);
+  }
+  function removePerson(i) {
+    if (i === 0) return;
+    people.splice(i, 1);
+    p = 0;
+    switchPerson(0, buildSteps(0).length - 1);
   }
 
   // ---------- inputs ----------
@@ -299,8 +386,8 @@ export function mountApplication(root, config, opts = {}) {
     const slots = [...(config.noPassport ? [] : [{ name: 'passport', label: 'Passport photo page', required: true, hint: passportHint }]), ...visibleUploads()];
     const updateTotal = () => {
       const sum = activeFiles().reduce((a, [, f]) => a + f.size, 0);
-      total.textContent = `Total size: ${fmtSize(sum)} of ${fmtSize(MAX_TOTAL)}`;
-      total.classList.toggle('over', sum > MAX_TOTAL);
+      total.textContent = `Total size: ${fmtSize(sum)}.${sum > MAX_TOTAL ? ' Your documents will be sent in several parts automatically.' : ''}`;
+      total.classList.toggle('over', sum > MAX_PERSON_TOTAL);
     };
     for (const u of slots) {
       const id = `up-${u.name}`;
@@ -332,6 +419,54 @@ export function mountApplication(root, config, opts = {}) {
       card._upload = u;
       draw();
       wrap.append(card);
+    }
+    // "Add another document": as many extra uploads as needed
+    if (config.extraUploads !== false) {
+      const extras = h('div', { class: 'ap-extras' });
+      const labels = people[p].labels;
+      const extraCard = (slot) => {
+        const id = `up-${slot}`;
+        const info = h('div', { class: 'ap-up-file' });
+        const err = h('p', { class: 'ap-err', role: 'alert' });
+        const desc = h('input', { type: 'text', class: 'ap-desc', placeholder: 'What is this document? e.g. Payslips for March to May', 'aria-label': 'Describe this document' });
+        desc.value = labels[slot] || '';
+        desc.addEventListener('input', () => { labels[slot] = desc.value; save(); });
+        const input = h('input', { type: 'file', id, accept: ACCEPT, class: 'ap-file-input' });
+        const card = h('div', { class: 'ap-up ap-up-extra', 'data-slot': slot }, desc, info, input, h('label', { for: id, class: 'btn btn-outline' }, 'Choose file'),
+          h('button', { type: 'button', class: 'ap-link ap-remove-extra', onclick: () => { delete files[slot]; delete labels[slot]; card.remove(); save(); updateTotal(); addBtn.disabled = false; } }, 'Remove'), err);
+        const draw = () => {
+          info.innerHTML = '';
+          const f = files[slot];
+          card.classList.toggle('has-file', !!f);
+          card.querySelector('label.btn').textContent = f ? 'Replace' : 'Choose file';
+          if (f) info.append(h('span', { class: 'ap-tick', 'aria-hidden': 'true' }, '✓'), h('span', {}, f.name, h('small', {}, fmtSize(f.size))));
+        };
+        input.addEventListener('change', async () => {
+          const file = input.files[0]; input.value = ''; err.textContent = '';
+          if (!file) return;
+          if (!FILE_OK(file)) { err.textContent = 'Please upload a JPG, PNG, GIF or PDF file.'; return; }
+          if (file.type === 'application/pdf' && file.size > MAX_PDF) { err.textContent = `This PDF is ${fmtSize(file.size)}. Please upload one under ${fmtSize(MAX_PDF)}, or split it into smaller files.`; return; }
+          card.classList.add('busy');
+          files[slot] = await compressImage(file);
+          card.classList.remove('busy');
+          draw(); updateTotal();
+        });
+        card._upload = { required: false, label: 'Additional document' };
+        draw();
+        return card;
+      };
+      for (const slot of EXTRA_SLOTS) if (slot in files || slot in labels) extras.append(extraCard(slot));
+      const addBtn = h('button', { type: 'button', class: 'btn btn-outline ap-add-doc', onclick: () => {
+        const free = EXTRA_SLOTS.find((x) => !(x in files) && !(x in labels));
+        if (!free) { addBtn.disabled = true; return; }
+        labels[free] = '';
+        const card = extraCard(free);
+        extras.append(card);
+        card.querySelector('.ap-desc').focus();
+        save();
+      } }, '+ Add another document');
+      wrap.append(h('h3', { class: 'ap-extras-title' }, 'Other documents'),
+        h('p', { class: 'ap-hint' }, 'Add any other documents that support your application. You can add as many as you need.'), extras, addBtn);
     }
     updateTotal();
     wrap.append(total, h('p', { class: 'ap-hint' }, 'Photos are made smaller automatically. If a document has several pages, a PDF is best.'));
@@ -388,6 +523,23 @@ export function mountApplication(root, config, opts = {}) {
       h('div', { class: 'ap-review-head' }, h('h3', {}, 'Documents'), h('button', { type: 'button', class: 'ap-link', onclick: () => go(steps.length - 2) }, 'Change', h('span', { class: 'sr-only' }, ' documents'))),
       activeFiles().length ? docs : h('p', { class: 'ap-hint' }, 'No documents added.')));
 
+    if (MAX_PEOPLE > 1) {
+      const list = h('ul', { class: 'ap-people' });
+      people.forEach((x, i) => {
+        const docs = Object.values(x.files).filter(Boolean).length;
+        list.append(h('li', {},
+          h('span', {}, h('strong', {}, `${i + 1}. ${personName(i)}`), i === 0 ? ' (main applicant)' : '', h('small', {}, ` · ${docs} document${docs === 1 ? '' : 's'}`)),
+          h('span', { class: 'ap-people-actions' },
+            h('button', { type: 'button', class: 'ap-link', onclick: () => switchPerson(i, 0) }, 'Change', h('span', { class: 'sr-only' }, ` ${personName(i)}`)),
+            i > 0 ? h('button', { type: 'button', class: 'ap-link', onclick: () => { if (confirm(`Remove ${personName(i)} from this application?`)) removePerson(i); } }, 'Remove', h('span', { class: 'sr-only' }, ` ${personName(i)}`)) : null)));
+      });
+      wrap.append(h('section', { class: 'ap-review-sec ap-people-sec' },
+        h('div', { class: 'ap-review-head' }, h('h3', {}, people.length > 1 ? `People on this application (${people.length})` : 'Applying for family or colleagues too?')),
+        h('p', { class: 'ap-hint' }, `You can add up to ${MAX_PEOPLE - 1} more people, such as family members or colleagues travelling with you. Each person scans their own passport, and you only change the answers that are different.`),
+        list,
+        people.length < MAX_PEOPLE ? h('button', { type: 'button', class: 'btn btn-outline ap-add-person', onclick: addPerson }, '+ Add another person') : null));
+    }
+
     const c1 = h('input', { type: 'checkbox', id: 'decl-true' });
     const c2 = h('input', { type: 'checkbox', id: 'decl-privacy' });
     wrap.append(h('div', { class: 'ap-declare' },
@@ -414,10 +566,11 @@ export function mountApplication(root, config, opts = {}) {
         if (u.required && !files[card.dataset.slot]) flag(card, `Add your ${u.label.toLowerCase()}`, card.querySelector('label.btn'));
       });
       const sum = activeFiles().reduce((a, [, f]) => a + f.size, 0);
-      if (sum > MAX_TOTAL) errors.push({ msg: `Your documents add up to ${fmtSize(sum)}. Please remove or shrink some so they total under ${fmtSize(MAX_TOTAL)}.`, el: null });
+      if (sum > MAX_PERSON_TOTAL) errors.push({ msg: `Your documents add up to ${fmtSize(sum)}. Please remove or shrink some so they total under ${fmtSize(MAX_PERSON_TOTAL)}.`, el: null });
       return errors;
     }
     if (step.id === 'review') {
+      if (!config.noPassport) people.forEach((x, i) => { if (!x.files.passport) errors.push({ msg: `Add the passport photo page for ${personName(i)} (Documents step${people.length > 1 ? `, person ${i + 1}` : ''})`, el: null }); });
       const ok = stage.querySelector('#decl-true').checked && stage.querySelector('#decl-privacy').checked;
       if (!ok) { stage.querySelector('#decl-err').textContent = 'Please tick both boxes to send your application.'; errors.push({ msg: 'Please tick both declaration boxes', el: stage.querySelector('#decl-true') }); }
       return errors;
@@ -462,7 +615,9 @@ export function mountApplication(root, config, opts = {}) {
   function renderStep(focus = true) {
     const step = steps[current];
     stage.innerHTML = '';
-    const head = h('div', { class: 'ap-head' }, h('h2', { tabindex: '-1' }, step.title), step.intro ? h('p', { class: 'ap-intro' }, step.intro) : null);
+    const head = h('div', { class: 'ap-head' },
+      people.length > 1 && step.id !== 'review' ? h('p', { class: 'ap-person-tag' }, `Person ${p + 1} of ${people.length}: ${personName(p)}`) : null,
+      h('h2', { tabindex: '-1' }, step.title), step.intro ? h('p', { class: 'ap-intro' }, step.intro) : null);
     stage.append(head);
 
     if (step.id === 'documents') {
@@ -481,6 +636,16 @@ export function mountApplication(root, config, opts = {}) {
         el.hidden = !visible(f);
         grid.append(el);
       });
+      // Extra people: each section starts as "Same as the main applicant"; untick to change it
+      if (p > 0 && !isPassportStep(step) && step.fields?.length) {
+        const same = people[p].same[step.id] !== false;
+        const cb = h('input', { type: 'checkbox', id: 'ap-same' });
+        cb.checked = same;
+        cb.addEventListener('change', () => { people[p].same[step.id] = cb.checked; grid.hidden = cb.checked; save(); });
+        stage.append(h('label', { class: 'ap-check ap-same', for: 'ap-same' }, cb,
+          h('span', {}, h('strong', {}, `Same as ${personName(0)}`), h('small', {}, `Untick to change any answers in this section for ${personName(p)}.`))));
+        grid.hidden = same;
+      }
       stage.append(grid);
     }
 
@@ -506,6 +671,7 @@ export function mountApplication(root, config, opts = {}) {
     const errors = validateStep();
     if (errors.length) return showErrors(errors);
     if (steps[current].id === 'review') return submit();
+    if (p > 0 && steps[current + 1]?.id === 'review') return switchPerson(0, buildSteps(0).length - 1);
     go(current + 1);
   }
 
@@ -513,42 +679,72 @@ export function mountApplication(root, config, opts = {}) {
   async function submit() {
     const btn = stage.querySelector('.ap-next');
     btn.disabled = true; btn.textContent = 'Sending…';
-    const ref = `UVS-${config.code}-${Date.now().toString(36).toUpperCase().slice(-6)}`;
-    const name = `${(answers.givenNames || '').trim()} ${(answers.surname || '').trim()}`.trim();
-    const fd = new FormData();
-    fd.append('form-name', config.slug);
-    fd.append('applicant_name', name);
-    fd.append('email', answers.email || '');
-    fd.append('phone', answers.phone || '');
-    fd.append('visa_type', answers.visaType || '');
-    fd.append('reference', ref);
-    fd.append('subject', `${config.title}: ${name} (${ref})`);
-    fd.append('summary', [`${config.title}`, `Reference: ${ref}`, `Submitted: ${new Date().toLocaleString('en-GB')}`, ...summaryLines(), '', '== DOCUMENTS ==', ...activeFiles().map(([k, f]) => `${slotInfo(k).label}: ${f.name} (${fmtSize(f.size)})`)].join('\n'));
-    fd.append('answers_json', JSON.stringify(answers));
-    fd.append('bot-field', '');
-    // Name each file after the document it is, e.g. "KHAN - Invitation letter from the Chinese company.pdf"
-    for (const [slot, f] of activeFiles()) {
-      const ext = (f.name.match(/\.\w+$/) || [''])[0];
-      fd.append(slot, f, `${safeName(answers.surname || 'Applicant')} - ${safeName(slotInfo(slot).label.replace(/\s*\((optional|if [^)]*)\)/gi, ''))}${ext}`);
-    }
+    const base = `UVS-${config.code}-${Date.now().toString(36).toUpperCase().slice(-6)}`;
+    const total = people.length;
+    const names = people.map((_, i) => personName(i));
+    const keep = { p, answers, files, autofilled };
     try {
-      const res = await fetch('/', { method: 'POST', body: fd });
-      if (!res.ok) throw new Error(String(res.status));
+      for (let i = 0; i < total; i++) {
+        // Work as person i, with shared and "same as" answers taken from the main applicant
+        p = i; answers = mergedAnswers(i); files = people[i].files;
+        const ref = total > 1 ? `${base}-P${i + 1}` : base;
+        const name = `${(answers.givenNames || '').trim()} ${(answers.surname || '').trim()}`.trim() || names[i];
+        const list = activeFiles();
+        // Netlify accepts up to 8 MB per submission, so larger sets of documents are sent in parts
+        const batches = [[]];
+        let size = 0;
+        for (const item of list) {
+          if (size + item[1].size > MAX_TOTAL && batches[batches.length - 1].length) { batches.push([]); size = 0; }
+          batches[batches.length - 1].push(item);
+          size += item[1].size;
+        }
+        const parts = batches.length;
+        const header = [config.title, `Reference: ${ref}`,
+          total > 1 ? `Group reference: ${base} (person ${i + 1} of ${total}: ${names.join(', ')})` : null,
+          `Submitted: ${new Date().toLocaleString('en-GB')}`].filter(Boolean);
+        for (let k = 0; k < parts; k++) {
+          const fd = new FormData();
+          fd.append('form-name', config.slug);
+          fd.append('applicant_name', name);
+          fd.append('email', answers.email || people[0].answers.email || '');
+          fd.append('phone', answers.phone || people[0].answers.phone || '');
+          fd.append('visa_type', answers.visaType || '');
+          fd.append('reference', ref);
+          const partTag = parts > 1 ? ` – documents part ${k + 1} of ${parts}` : '';
+          fd.append('subject', `${config.title}: ${name} (${ref})${partTag}`);
+          fd.append('summary', (k === 0
+            ? [...header, ...summaryLines(), '', '== DOCUMENTS ==', ...list.map(([slot, f]) => `${slotInfo(slot).label}: ${f.name} (${fmtSize(f.size)})`), parts > 1 ? `(Documents sent in ${parts} parts with the same reference.)` : '']
+            : [...header, `Documents part ${k + 1} of ${parts}.`]).join('\n'));
+          fd.append('answers_json', k === 0 ? JSON.stringify(answers) : '{}');
+          fd.append('bot-field', '');
+          // Name each file after the document it is, e.g. "KHAN - Invitation letter from the Chinese company.pdf"
+          for (const [slot, f] of batches[k]) {
+            const ext = (f.name.match(/\.\w+$/) || [''])[0];
+            fd.append(slot, f, `${safeName(answers.surname || 'Applicant')} - ${safeName(slotInfo(slot).label.replace(/\s*\((optional|if [^)]*)\)/gi, '')) || 'Document'}${ext}`);
+          }
+          if (total > 1 || parts > 1) btn.textContent = `Sending${total > 1 ? ` person ${i + 1} of ${total}` : ''}${parts > 1 ? `, part ${k + 1} of ${parts}` : ''}…`;
+          const res = await fetch('/', { method: 'POST', body: fd });
+          if (!res.ok) throw new Error(String(res.status));
+        }
+      }
+      ({ p, answers, files, autofilled } = keep);
       sessionStorage.removeItem(storeKey);
-      done(ref, name);
+      done(base, names[0], total);
     } catch (e) {
+      ({ p, answers, files, autofilled } = keep);
       btn.disabled = false; btn.textContent = 'Send application';
       showErrors([{ msg: `Your application couldn’t be sent (${e.message}). Please check your internet connection and try again, or call us on ${opts.phone}.`, el: null }]);
     }
   }
 
-  function done(ref, name) {
+  function done(ref, name, total = 1) {
     root.innerHTML = '';
     root.append(h('div', { class: 'ap-done' },
       h('div', { class: 'ap-done-icon', 'aria-hidden': 'true' }, '✓'),
       h('h2', { tabindex: '-1' }, 'Application sent'),
       h('p', { class: 'ap-ref' }, 'Your reference: ', h('strong', {}, ref)),
-      h('p', {}, `Thank you${name ? ', ' + name.split(' ')[0] : ''}. We’ll check everything and contact you within one working day about the next steps and our fee.`),
+      total > 1 ? h('p', {}, `Your application for ${total} people has been sent. Each person has their own reference, from ${ref}-P1 to ${ref}-P${total}.`) : null,
+      h('p', {}, `Thank you${name && !/^(the main applicant|Person \d)/.test(name) ? ', ' + name.split(' ')[0] : ''}. We’ll check everything and contact you within one working day about the next steps and our fee.`),
       h('p', {}, 'If anything is urgent, call us on ', h('a', { href: `tel:${opts.phoneIntl}` }, opts.phone), '.'),
       h('a', { class: 'btn btn-primary', href: '/' }, 'Back to the homepage')));
     root.querySelector('h2').focus();

@@ -152,6 +152,26 @@
     '.pass .ic{background:#1E8E3E}.half .ic{background:#E37400}.fail .ic{background:#C5221F}',
     { raw: true }
   );
+  // ---------- Password field with a "Generate password" button (Client forms) ----------
+  var ALPHABET = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789';
+  function newPassword() {
+    var bytes = new Uint32Array(12); window.crypto.getRandomValues(bytes);
+    var out = ''; for (var i = 0; i < 12; i++) { out += ALPHABET[bytes[i] % ALPHABET.length]; if (i === 3 || i === 7) out += '-'; }
+    return out;
+  }
+  CMS.registerWidget('password', createClass({
+    render: function () {
+      var self = this, value = this.props.value || '';
+      return h('div', { className: this.props.classNameWrapper, style: { display: 'flex', gap: '10px', alignItems: 'center', flexWrap: 'wrap' } },
+        h('input', { id: this.props.forID, type: 'text', value: value, autoComplete: 'off', style: { flex: '1 1 220px', fontFamily: 'monospace', fontSize: '16px', border: 0, outline: 'none', background: 'transparent' },
+          onChange: function (e) { self.props.onChange(e.target.value); } }),
+        h('button', { type: 'button', style: { padding: '8px 14px', borderRadius: '6px', border: '1px solid #14532D', background: '#14532D', color: '#fff', cursor: 'pointer' },
+          onClick: function () { self.props.onChange(newPassword()); } }, 'Generate password'),
+        value ? h('button', { type: 'button', style: { padding: '8px 14px', borderRadius: '6px', border: '1px solid #14532D', background: '#fff', color: '#14532D', cursor: 'pointer' },
+          onClick: function () { try { navigator.clipboard.writeText(value); } catch (e) {} } }, 'Copy') : null);
+    },
+  }), createClass({ render: function () { return h('span', {}, this.props.value ? '••••••••' : '(no password)'); } }));
+
   CMS.registerPreviewTemplate('pages', makePanel(false));
   CMS.registerPreviewTemplate('blog', makePanel(false));
   CMS.registerPreviewTemplate('home', makePanel(true));

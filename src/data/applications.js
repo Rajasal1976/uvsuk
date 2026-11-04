@@ -1027,4 +1027,7 @@ const nigeria = {
 export const applications = [china, india, indiaTransfer, sriLanka, japan, nigeria, schengen, usa, saudi, ghana, russia, indiaRegular, evisa, legalisation, indianPassport, secondPassport];
 export const applicationBySlug = Object.fromEntries(applications.map((a) => [a.slug, a]));
 export const declaration = declarationNote;
-export const FILE_SLOTS = ['passport', 'photo', 'doc1', 'doc2', 'doc3', 'doc4', 'doc5', 'doc6', 'doc7', 'doc8'];
+// Upload fields registered with Netlify. extra1–extra20 are the "Add another document" uploads.
+export const FILE_SLOTS = ['passport', 'photo', 'doc1', 'doc2', 'doc3', 'doc4', 'doc5', 'doc6', 'doc7', 'doc8', ...Array.from({ length: 20 }, (_, i) => `extra${i + 1}`)];
+// Building blocks shared with the client forms built in the admin
+export { passportStep, passportScanFields, contactStep, declarationNote };

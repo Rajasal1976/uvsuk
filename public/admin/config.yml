@@ -155,6 +155,89 @@ collections:
         hint: 'Only switch this on for pages you don’t want in search results.'
 
   # ---------- Pages with calculators or special design ----------
+  # ---------- Extra questions on the online application forms ----------
+  - name: form_extras
+    label: Form questions
+    label_singular: form's extra questions
+    description: >-
+      Add your own questions to any online application form. They appear as an extra step before the documents.
+      Click "New form's extra questions", choose the form, and add your questions.
+    folder: content/form-extras
+    format: json
+    extension: json
+    create: true
+    delete: false
+    slug: '{{fields.form}}'
+    identifier_field: form
+    summary: '{{form}} · {{title}}'
+    fields:
+      - { name: form, label: Form, widget: select, options: [{ label: 'China visa application', value: 'china-visa' }, { label: 'India eVisa application', value: 'india-visa' }, { label: 'Transfer your India eVisa to a new passport', value: 'india-evisa-transfer' }, { label: 'Sri Lanka ETA application', value: 'sri-lanka-eta' }, { label: 'Japan visa application', value: 'japan-visa' }, { label: 'Nigeria visa application (regular visa)', value: 'nigeria-visa' }, { label: 'Schengen visa application', value: 'schengen-visa' }, { label: 'USA ESTA or visa application', value: 'usa-visa' }, { label: 'Saudi Arabia visa application', value: 'saudi-visa' }, { label: 'Ghana visa application', value: 'ghana-visa' }, { label: 'Russian visa application', value: 'russia-visa' }, { label: 'India Employment and regular visa application', value: 'india-regular-visa' }, { label: 'eVisa application', value: 'evisa' }, { label: 'Document legalisation request', value: 'document-legalisation' }, { label: 'Indian passport, surrender certificate and OCI request', value: 'indian-passport-oci' }, { label: 'Second British passport application', value: 'second-uk-passport' }] }
+      - { name: title, label: Step title, widget: string, default: 'Additional questions' }
+      - { name: askOnce, label: 'Ask once for the whole application (not for each person)', widget: boolean, default: false, required: false }
+      - name: questions
+        label: Questions
+        label_singular: question
+        widget: list
+        required: false
+        summary: '{{fields.label}} ({{fields.type}})'
+        hint: 'Remove all questions to take the step off the form.'
+        fields:
+          - { name: label, label: Question, widget: string }
+          - { name: type, label: Type of answer, widget: select, options: ['Short answer', 'Long answer', 'Date', 'Yes / No', 'Choice list', 'Number', 'Email address', 'Phone number', 'Country'], default: 'Short answer' }
+          - { name: options, label: 'Choices (for a choice list)', widget: text, required: false, hint: 'One choice per line.' }
+          - { name: required, label: Answer required, widget: boolean, default: true, required: false }
+          - { name: hint, label: Help text (optional), widget: string, required: false }
+
+  # ---------- Client forms (send a link and password to a client) ----------
+  - name: client_forms
+    label: Client forms
+    label_singular: client form
+    description: >-
+      Build a form to send to a client. Its address is www.uvsuk.co.uk/client-forms/ followed by the form's file name,
+      which is made from the title when you first save (for example /client-forms/khan-family-spouse-visa/).
+      Generate a password, then send the client the link and the password separately.
+    folder: content/client-forms
+    format: json
+    extension: json
+    create: true
+    delete: false
+    slug: '{{slug}}'
+    identifier_field: title
+    summary: '{{title}}{{active}}'
+    fields:
+      - { name: title, label: Form title, widget: string, hint: 'Shown at the top of the form, e.g. Spouse visa application: your details. Also used for the address.' }
+      - { name: active, label: Form is open, widget: boolean, default: true, required: false, hint: 'Switch off to close the form once the client has finished.' }
+      - { name: password, label: Password, widget: password, required: false, hint: 'Click Generate password, then copy it to send to your client. Leave empty for no password.' }
+      - { name: intro, label: Introduction, widget: text, required: false }
+      - { name: includePassport, label: Ask for a passport scan (fills in their details), widget: boolean, default: true, required: false }
+      - { name: maxPeople, label: People on one form (1 to 5), widget: number, value_type: int, min: 1, max: 5, default: 1, hint: 'More than 1 lets the client add family members, each with their own passport and documents.' }
+      - { name: questionsTitle, label: Questions step title, widget: string, default: 'Your details', required: false }
+      - { name: askOnce, label: 'Ask the questions once (not for each person)', widget: boolean, default: false, required: false }
+      - name: questions
+        label: Questions
+        label_singular: question
+        widget: list
+        required: false
+        summary: '{{fields.label}} ({{fields.type}})'
+        fields:
+          - { name: label, label: Question, widget: string }
+          - { name: type, label: Type of answer, widget: select, options: ['Short answer', 'Long answer', 'Date', 'Yes / No', 'Choice list', 'Number', 'Email address', 'Phone number', 'Country'], default: 'Short answer' }
+          - { name: options, label: 'Choices (for a choice list)', widget: text, required: false, hint: 'One choice per line.' }
+          - { name: required, label: Answer required, widget: boolean, default: true, required: false }
+          - { name: hint, label: Help text (optional), widget: string, required: false }
+      - name: uploads
+        label: Named document uploads (up to 8)
+        label_singular: document
+        widget: list
+        required: false
+        max: 8
+        summary: '{{fields.label}}'
+        hint: 'Clients can always add as many other documents as they need with "Add another document".'
+        fields:
+          - { name: label, label: Document, widget: string }
+          - { name: required, label: Required, widget: boolean, default: true, required: false }
+          - { name: hint, label: Help text (optional), widget: string, required: false }
+
   # ---------- Blog ----------
   - name: blog
     label: Blog posts

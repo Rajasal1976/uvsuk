@@ -1,0 +1,22 @@
+{
+  "title": "Example: spouse visa client form",
+  "active": true,
+  "password": "Demo-1234-Form",
+  "intro": "Please answer these questions and upload your documents. Your adviser will review everything and contact you.",
+  "includePassport": true,
+  "maxPeople": 2,
+  "questionsTitle": "Your relationship and finances",
+  "askOnce": false,
+  "questions": [
+    { "label": "When did you and your partner first meet?", "type": "Date", "required": true },
+    { "label": "Where did you meet?", "type": "Short answer", "required": true },
+    { "label": "Are you married?", "type": "Yes / No", "required": true },
+    { "label": "How does your partner meet the financial requirement?", "type": "Choice list", "options": "Employment\nSelf-employment\nSavings\nPension\nNot sure", "required": true },
+    { "label": "Anything else we should know?", "type": "Long answer", "required": false }
+  ],
+  "uploads": [
+    { "label": "Marriage certificate", "required": true },
+    { "label": "Partner's last 6 months of payslips", "required": true, "hint": "A single PDF is best." },
+    { "label": "English language test certificate", "required": false }
+  ]
+}

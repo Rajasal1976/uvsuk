@@ -161,3 +161,20 @@
 .ap-docs-intro { background: #FFF8E8; border-left: 4px solid var(--gold); border-radius: 6px; padding: 14px 18px; margin-bottom: 6px; }
 .ap-docs-intro strong { color: var(--green-800); display: block; margin-bottom: 4px; }
 .ap-docs-intro p { margin: 0; }
+
+/* ---------- several people on one application ---------- */
+.ap-person { margin: 0 0 12px; padding: 8px 12px; border-radius: 8px; background: #FFF4DC; color: #6B4A0E; font-size: 14px; font-weight: 600; }
+.ap-person-tag { margin: 0 0 6px; color: #8A5A12; font-size: 14px; font-weight: 700; letter-spacing: .02em; }
+.ap-same { display: flex; gap: 12px; align-items: flex-start; margin: 4px 0 18px; padding: 14px 16px; border: 1px solid #DCE6DF; border-radius: 10px; background: #F4F8F5; cursor: pointer; }
+.ap-same input { width: 20px; height: 20px; margin-top: 2px; flex: none; }
+.ap-same strong { display: block; color: #14532D; }
+.ap-same small { display: block; color: #4A5A51; font-size: 14px; margin-top: 2px; }
+.ap-people { list-style: none; margin: 8px 0 14px; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.ap-people li { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 16px; padding: 12px 14px; border: 1px solid #DCE6DF; border-radius: 10px; background: #FFFFFF; }
+.ap-people small { color: #6B7A72; }
+.ap-people-actions { display: flex; gap: 14px; }
+/* ---------- "Add another document" ---------- */
+.ap-extras-title { margin: 22px 0 4px; font-size: 18px; color: #14532D; }
+.ap-extras { display: flex; flex-direction: column; gap: 12px; margin: 10px 0 12px; }
+.ap-up-extra .ap-desc { flex: 1 1 260px; min-width: 0; padding: 10px 12px; font: inherit; font-size: 15px; border: 1px solid #8FAE99; border-radius: 6px; }
+.ap-add-doc, .ap-add-person { margin-top: 4px; }
