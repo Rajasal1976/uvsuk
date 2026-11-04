@@ -41,6 +41,7 @@ const fullMenu = [
       ['Japan Visa', '/japan-visa-services/'],
       ['Russia Visa', '/russian-visa-services-from-uk/'],
       ['Sri Lanka Visa', '/sri-lanka-visa-services/'],
+      ['Thailand Visa', '/thailand-visa-uk/'],
       ['Document Legalisation', '/document-legalisation/'],
       ['All countries', '/worldwide-visas/'],
     ],

@@ -1,0 +1,80 @@
+{
+  "title": "Template: Indefinite Leave to Remain (ILR)",
+  "maxPeople": 4,
+  "questionsTitle": "Your time in the UK",
+  "questions": [
+    {
+      "label": "Which visa route are you applying through?",
+      "type": "Choice list",
+      "required": true,
+      "options": "Skilled Worker\nSpouse or partner\nLong residence (10 years)\nOther"
+    },
+    {
+      "label": "Date you were first granted permission on this route",
+      "type": "Date",
+      "required": true
+    },
+    {
+      "label": "Date your current visa expires",
+      "type": "Date",
+      "required": true
+    },
+    {
+      "label": "List all trips outside the UK in the last 5 years (dates and reasons)",
+      "type": "Long answer",
+      "required": true
+    },
+    {
+      "label": "Have you passed the Life in the UK test?",
+      "type": "Yes / No",
+      "required": true
+    },
+    {
+      "label": "Life in the UK test reference",
+      "type": "Short answer",
+      "required": false
+    },
+    {
+      "label": "Do you have any criminal convictions, cautions or pending charges?",
+      "type": "Yes / No",
+      "required": true
+    },
+    {
+      "label": "Anything else we should know?",
+      "type": "Long answer",
+      "required": false
+    }
+  ],
+  "uploads": [
+    {
+      "label": "All passports covering the qualifying period",
+      "required": true
+    },
+    {
+      "label": "BRP or eVisa share code",
+      "required": true
+    },
+    {
+      "label": "Life in the UK test pass letter",
+      "required": false
+    },
+    {
+      "label": "English language evidence",
+      "required": false
+    },
+    {
+      "label": "Payslips or relationship evidence for your route",
+      "required": false
+    },
+    {
+      "label": "Record of absences",
+      "required": false
+    }
+  ],
+  "template": true,
+  "active": true,
+  "password": "",
+  "intro": "Please answer these questions and upload your documents. Your adviser will review everything and contact you.",
+  "includePassport": true,
+  "askOnce": false
+}

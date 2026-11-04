@@ -1,0 +1,81 @@
+{
+  "title": "Thailand Visa-Free 30 Days for UK Citizens | TDAC Help",
+  "description": "Thailand visa-free travel for British citizens: 30 days for tourism since September 2026, the Digital Arrival Card, extensions and when you need a visa.",
+  "h1": "Thailand visa-free travel (up to 30 days)",
+  "intro": "British passport holders can visit Thailand without a visa for up to 30 days for tourism. You still need to complete the free Thailand Digital Arrival Card before you travel. We prepare your Thailand visa-free application and check every detail before it is submitted.",
+  "sections": [
+    {
+      "heading": "Thailand visa-free stays since September 2026",
+      "text": "Since 15 September 2026, British and Irish passport holders can enter Thailand without a visa for up to 30 days, for tourism only. Before then, the visa-free stay was 60 days. Travellers who entered before the change keep the stay they were given."
+    },
+    {
+      "heading": "Extending a visa-free stay",
+      "text": "A visa-exempt stay can usually be extended once by up to 30 days at a Thai immigration office in Thailand, for a fee. If you know before you travel that you'll stay longer than 30 days, a Tourist e-Visa is usually the better choice."
+    },
+    {
+      "heading": "What you need at the border",
+      "text": "Have a passport valid for at least 6 months, your completed Thailand Digital Arrival Card, proof of onward or return travel, and details of where you'll stay. Immigration officers can ask to see proof of funds."
+    },
+    {
+      "heading": "Thailand visa-free help from Manchester",
+      "text": "We're based in Manchester city centre and help travellers and businesses across the UK. We check the rules for your passport, prepare your application and keep you updated until it's decided."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "How long can British citizens stay in Thailand without a visa?",
+      "a": "Up to 30 days for tourism, since 15 September 2026."
+    },
+    {
+      "q": "Can I do business on visa-free entry?",
+      "a": "No. The visa exemption now covers tourism only. Business trips need a visa."
+    },
+    {
+      "q": "How long does a Thailand visa-free take?",
+      "a": "Processing times vary with the authority and the time of year. Apply as early as you can, and don’t book non-refundable travel until your visa or authorisation is approved."
+    },
+    {
+      "q": "Can you help with my Thailand visa-free application?",
+      "a": "Yes. We check which visa fits your trip, prepare your Thailand visa-free application and documents, and keep you updated. Contact us or call 0161 956 2003."
+    }
+  ],
+  "govuk": "https://www.gov.uk/foreign-travel-advice",
+  "applyButton": "/contact-us/",
+  "country": "Thailand",
+  "focusKeyword": "Thailand visa-free",
+  "sortKey": "1 thailand 2 thailand-visa-exemption-uk",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Application completed and documents checked",
+      "processing": "",
+      "fee": "",
+      "popular": true,
+      "processingFee": "",
+      "total": ""
+    }
+  ],
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Valid for at least 6 months, with a copy of the photo page",
+      "needed": "Required"
+    },
+    {
+      "document": "Thailand Digital Arrival Card",
+      "details": "Completed online within 72 hours before arrival (free)",
+      "needed": "Required"
+    },
+    {
+      "document": "Return or onward ticket",
+      "details": "Proof you will leave Thailand",
+      "needed": "Required"
+    },
+    {
+      "document": "Accommodation details",
+      "details": "Hotel booking or address",
+      "needed": "Required"
+    }
+  ],
+  "purposeLabel": "Tourist (up to 30 days, visa-free)"
+}

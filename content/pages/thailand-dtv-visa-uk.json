@@ -1,0 +1,87 @@
+{
+  "title": "Destination Thailand Visa (DTV) from the UK | Remote Workers",
+  "description": "Destination Thailand Visa (DTV) for remote workers and long stays for activities like Muay Thai or cooking courses. Who qualifies and how we apply.",
+  "h1": "Destination Thailand Visa (DTV)",
+  "intro": "The Destination Thailand Visa (DTV) is a long-term, multiple-entry visa for remote workers and people taking part in activities such as Muay Thai, cooking or wellness courses in Thailand.",
+  "sections": [
+    {
+      "heading": "Who the Destination Thailand Visa is for",
+      "text": "The DTV suits digital nomads and remote workers employed or self-employed outside Thailand, and people staying for longer activities such as Muay Thai training, cooking courses or medical treatment. It allows long stays on each entry and multiple entries over several years."
+    },
+    {
+      "heading": "What you need for a DTV",
+      "text": "You'll need proof of funds at the required level, and evidence of your remote work (such as an employment contract or company documents) or your activity (such as a booking with a Muay Thai camp or cooking school). You can't work for a Thai employer on a DTV."
+    },
+    {
+      "heading": "Destination Thailand Visa help from Manchester",
+      "text": "We're based in Manchester city centre and help travellers and businesses across the UK. We check the rules for your passport, prepare your application and keep you updated until it's decided."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Can I work remotely in Thailand on a DTV?",
+      "a": "Yes, for an employer or clients outside Thailand. You can’t work for a Thai company."
+    },
+    {
+      "q": "Do I need proof of funds?",
+      "a": "Yes, at the level set by the Thai authorities. We confirm the current amount before you apply."
+    },
+    {
+      "q": "How long does a Destination Thailand Visa take?",
+      "a": "Processing times vary with the authority and the time of year. Apply as early as you can, and don’t book non-refundable travel until your visa or authorisation is approved."
+    },
+    {
+      "q": "Can you help with my Destination Thailand Visa application?",
+      "a": "Yes. We check which visa fits your trip, prepare your Destination Thailand Visa application and documents, and keep you updated. Contact us or call 0161 956 2003."
+    }
+  ],
+  "govuk": "https://www.gov.uk/foreign-travel-advice",
+  "applyButton": "/contact-us/",
+  "country": "Thailand",
+  "focusKeyword": "Destination Thailand Visa",
+  "sortKey": "1 thailand 2 thailand-dtv-visa-uk",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Application completed and documents checked",
+      "processing": "",
+      "fee": "",
+      "popular": true,
+      "processingFee": "",
+      "total": ""
+    }
+  ],
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Valid for at least 6 months, with a copy of the photo page",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent colour passport photo",
+      "needed": "Required"
+    },
+    {
+      "document": "Proof of funds",
+      "details": "Bank statements at the required level",
+      "needed": "Required"
+    },
+    {
+      "document": "Remote work or activity evidence",
+      "details": "Employment contract, company documents, or a booking with a course or camp",
+      "needed": "Required"
+    },
+    {
+      "document": "UK residence evidence",
+      "details": "Your UK visa, BRP or eVisa share code",
+      "needed": "If not British"
+    }
+  ],
+  "purposeLabel": "Destination Thailand Visa (DTV)"
+}

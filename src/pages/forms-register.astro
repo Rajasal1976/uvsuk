@@ -4,7 +4,7 @@
 // Field names must match exactly what src/lib/apply-form.js sends.
 import { applications, FILE_SLOTS } from '../data/applications.js';
 // Client forms built in the admin are registered too, as client-<name>
-const clientForms = Object.keys(import.meta.glob('../../content/client-forms/*.json')).map((p) => ({ slug: `client-${p.split('/').pop()!.replace('.json', '')}` }));
+const clientForms = Object.entries(import.meta.glob('../../content/client-forms/*.json', { eager: true, import: 'default' })).filter(([, d]: [string, any]) => d.template !== true).map(([p]) => ({ slug: `client-${p.split('/').pop()!.replace('.json', '')}` }));
 const allForms = [...applications, ...clientForms];
 ---
 <!doctype html>

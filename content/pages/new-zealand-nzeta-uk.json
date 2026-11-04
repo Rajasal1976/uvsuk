@@ -1,0 +1,67 @@
+{
+  "title": "New Zealand NZeTA from the UK | Visitor Levy Explained",
+  "description": "New Zealand NZeTA for British citizens: the electronic travel authority and the NZ$100 International Visitor Levy. We apply for you.",
+  "h1": "New Zealand NZeTA from the UK",
+  "intro": "British citizens visiting New Zealand need a New Zealand Electronic Travel Authority (NZeTA) before travel. Most travellers also pay the International Visitor Levy at the same time. We prepare your New Zealand NZeTA application and check every detail before it is submitted.",
+  "sections": [
+    {
+      "heading": "What the NZeTA covers",
+      "text": "The NZeTA lets visitors from visa-waiver countries, including the UK, visit New Zealand for tourism, business visits or transit. It is valid for up to 2 years and allows multiple visits."
+    },
+    {
+      "heading": "The International Visitor Levy",
+      "text": "Most NZeTA applicants also pay the International Visitor Conservation and Tourism Levy (IVL), currently NZ$100, at the same time. The levy lasts as long as your NZeTA."
+    },
+    {
+      "heading": "New Zealand NZeTA help from Manchester",
+      "text": "We're based in Manchester city centre and help travellers and businesses across the UK. We check the rules for your passport, prepare your application and keep you updated until it's decided."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Do British citizens need an NZeTA?",
+      "a": "Yes, to visit New Zealand without a visa."
+    },
+    {
+      "q": "How long is the NZeTA valid?",
+      "a": "Up to 2 years, with multiple visits allowed."
+    },
+    {
+      "q": "How long does a New Zealand NZeTA take?",
+      "a": "Processing times vary with the authority and the time of year. Apply as early as you can, and don’t book non-refundable travel until your visa or authorisation is approved."
+    }
+  ],
+  "govuk": "https://www.gov.uk/foreign-travel-advice",
+  "applyButton": "/apply/evisa/?destination=New%20Zealand",
+  "country": "New Zealand",
+  "focusKeyword": "New Zealand NZeTA",
+  "sortKey": "1 new zealand 1 nzeta",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Application completed and documents checked",
+      "processing": "",
+      "fee": "",
+      "popular": true,
+      "processingFee": "",
+      "total": ""
+    }
+  ],
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Valid for at least 6 months, with a copy of the photo page",
+      "needed": "Required"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent colour passport photo",
+      "needed": "Required"
+    },
+    {
+      "document": "NZeTA application",
+      "details": "Completed online and checked by us",
+      "needed": "We prepare"
+    }
+  ]
+}

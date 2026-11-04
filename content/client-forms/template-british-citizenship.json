@@ -1,0 +1,80 @@
+{
+  "title": "Template: British citizenship",
+  "maxPeople": 4,
+  "questionsTitle": "Your residence and background",
+  "questions": [
+    {
+      "label": "Date you were granted ILR or settled status",
+      "type": "Date",
+      "required": true
+    },
+    {
+      "label": "Are you married to, or in a civil partnership with, a British citizen?",
+      "type": "Yes / No",
+      "required": true
+    },
+    {
+      "label": "Date you first arrived to live in the UK",
+      "type": "Date",
+      "required": true
+    },
+    {
+      "label": "List all trips outside the UK in the last 5 years (dates and reasons)",
+      "type": "Long answer",
+      "required": true
+    },
+    {
+      "label": "Have you passed the Life in the UK test?",
+      "type": "Yes / No",
+      "required": true
+    },
+    {
+      "label": "Have you ever had any convictions, cautions, fines or immigration breaches?",
+      "type": "Yes / No",
+      "required": true
+    },
+    {
+      "label": "Names and contact details of your two referees",
+      "type": "Long answer",
+      "required": false,
+      "options": "One should be a professional person; neither can be a relative."
+    },
+    {
+      "label": "Anything else we should know?",
+      "type": "Long answer",
+      "required": false
+    }
+  ],
+  "uploads": [
+    {
+      "label": "Current passport",
+      "required": true
+    },
+    {
+      "label": "ILR or settled status evidence",
+      "required": true
+    },
+    {
+      "label": "Life in the UK test pass letter",
+      "required": true
+    },
+    {
+      "label": "English language evidence",
+      "required": false
+    },
+    {
+      "label": "Marriage or civil partnership certificate",
+      "required": false
+    },
+    {
+      "label": "Evidence of residence (e.g. P60s or council tax)",
+      "required": false
+    }
+  ],
+  "template": true,
+  "active": true,
+  "password": "",
+  "intro": "Please answer these questions and upload your documents. Your adviser will review everything and contact you.",
+  "includePassport": true,
+  "askOnce": false
+}

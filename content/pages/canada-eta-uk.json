@@ -1,0 +1,67 @@
+{
+  "title": "Canada eTA from the UK | Electronic Travel Authorisation",
+  "description": "Canada eTA for British citizens flying to Canada: who needs one, how long it lasts, and how we complete and check your application.",
+  "h1": "Canada eTA from the UK",
+  "intro": "British citizens flying to Canada need an Electronic Travel Authorisation (eTA), applied for online before travel. It usually lasts up to 5 years or until your passport expires. We prepare your Canada eTA application and check every detail before it is submitted.",
+  "sections": [
+    {
+      "heading": "Who needs a Canada eTA?",
+      "text": "Visa-exempt travellers, including British citizens, need an eTA to fly to or transit through a Canadian airport. You don't need one if you arrive by land or sea. UK residents on other passports may need a visitor visa instead, depending on their nationality."
+    },
+    {
+      "heading": "How the Canada eTA works",
+      "text": "The eTA is linked to your passport and is usually valid for up to 5 years, or until your passport expires. Most applications are approved within minutes, but some take several days, so apply before you book your flights."
+    },
+    {
+      "heading": "Canada eTA help from Manchester",
+      "text": "We're based in Manchester city centre and help travellers and businesses across the UK. We check the rules for your passport, prepare your application and keep you updated until it's decided."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Do British citizens need a visa for Canada?",
+      "a": "Not for short visits. British citizens flying to Canada need an eTA instead."
+    },
+    {
+      "q": "How long does a Canada eTA last?",
+      "a": "Usually up to 5 years, or until your passport expires if sooner."
+    },
+    {
+      "q": "How long does a Canada eTA take?",
+      "a": "Processing times vary with the authority and the time of year. Apply as early as you can, and don’t book non-refundable travel until your visa or authorisation is approved."
+    }
+  ],
+  "govuk": "https://www.gov.uk/foreign-travel-advice",
+  "applyButton": "/apply/evisa/?destination=Canada",
+  "country": "Canada",
+  "focusKeyword": "Canada eTA",
+  "sortKey": "1 canada 1 canada eta",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Application completed and documents checked",
+      "processing": "",
+      "fee": "",
+      "popular": true,
+      "processingFee": "",
+      "total": ""
+    }
+  ],
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Valid for at least 6 months, with a copy of the photo page",
+      "needed": "Required"
+    },
+    {
+      "document": "eTA application",
+      "details": "Completed online and checked by us",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Email address",
+      "details": "For your eTA confirmation",
+      "needed": "Required"
+    }
+  ]
+}

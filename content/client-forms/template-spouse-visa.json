@@ -1,0 +1,102 @@
+{
+  "title": "Template: spouse or partner visa",
+  "maxPeople": 3,
+  "questionsTitle": "Your relationship and finances",
+  "questions": [
+    {
+      "label": "When did you and your partner first meet?",
+      "type": "Date",
+      "required": true
+    },
+    {
+      "label": "Where did you meet?",
+      "type": "Short answer",
+      "required": true
+    },
+    {
+      "label": "When did you marry or enter your civil partnership?",
+      "type": "Date",
+      "required": false,
+      "hint": "Leave blank if you are not married."
+    },
+    {
+      "label": "Have you lived together?",
+      "type": "Yes / No",
+      "required": true
+    },
+    {
+      "label": "How does your partner meet the financial requirement?",
+      "type": "Choice list",
+      "required": true,
+      "options": "Employment\nSelf-employment\nSavings\nPension\nNot sure"
+    },
+    {
+      "label": "Your partner’s employer and job title",
+      "type": "Short answer",
+      "required": false
+    },
+    {
+      "label": "Your partner’s annual salary before tax",
+      "type": "Number",
+      "required": false
+    },
+    {
+      "label": "How will you meet the English language requirement?",
+      "type": "Choice list",
+      "required": true,
+      "options": "English test\nDegree taught in English\nNationality of an English-speaking country\nNot sure"
+    },
+    {
+      "label": "Where will you live in the UK?",
+      "type": "Long answer",
+      "required": true
+    },
+    {
+      "label": "Have you ever been refused a visa for any country?",
+      "type": "Yes / No",
+      "required": true
+    },
+    {
+      "label": "Anything else we should know?",
+      "type": "Long answer",
+      "required": false
+    }
+  ],
+  "uploads": [
+    {
+      "label": "Marriage or civil partnership certificate",
+      "required": false
+    },
+    {
+      "label": "Partner’s last 6 months of payslips",
+      "required": true,
+      "hint": "A single PDF is best."
+    },
+    {
+      "label": "Partner’s last 6 months of bank statements",
+      "required": true
+    },
+    {
+      "label": "Partner’s employer letter",
+      "required": true
+    },
+    {
+      "label": "English language test certificate or degree",
+      "required": false
+    },
+    {
+      "label": "Evidence of living together (bills, tenancy)",
+      "required": false
+    },
+    {
+      "label": "Photos of you together",
+      "required": false
+    }
+  ],
+  "template": true,
+  "active": true,
+  "password": "",
+  "intro": "Please answer these questions and upload your documents. Your adviser will review everything and contact you.",
+  "includePassport": true,
+  "askOnce": false
+}

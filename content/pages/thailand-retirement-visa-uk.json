@@ -1,0 +1,92 @@
+{
+  "title": "Thailand Retirement Visa from the UK | O-A & O-X Long Stay",
+  "description": "Thailand retirement visas from the UK: the O-A long-stay visa and the 10-year O-X visa for people aged 50 and over. Requirements and documents.",
+  "h1": "Thailand retirement visa (O-A and O-X) from the UK",
+  "intro": "Thailand offers long-stay visas for retirees aged 50 and over: the O-A visa, usually granted for a year, and the O-X visa, which can cover up to 10 years for nationals of eligible countries, including the UK. We prepare your Thailand retirement visa application and check every detail before it is submitted.",
+  "sections": [
+    {
+      "heading": "O-A and O-X long-stay visas",
+      "text": "Both visas are for people aged 50 or over who want to retire in Thailand. They require proof of income or savings at set levels, health insurance meeting Thai requirements, and, for the O-A, a police certificate and medical certificate. The O-X allows a longer stay overall but has higher financial requirements."
+    },
+    {
+      "heading": "Getting your documents right",
+      "text": "Long-stay applications are checked closely. Bank evidence must meet the exact amounts and dates required, and your police and medical certificates must be recent. UK documents may need legalising, which we can arrange."
+    },
+    {
+      "heading": "Thailand retirement visa help from Manchester",
+      "text": "We're based in Manchester city centre and help travellers and businesses across the UK. We check the rules for your passport, prepare your application and keep you updated until it's decided."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "How old do I need to be for a Thailand retirement visa?",
+      "a": "50 or over, for both the O-A and O-X visas."
+    },
+    {
+      "q": "Do I need health insurance?",
+      "a": "Yes, insurance meeting Thai requirements is part of the application."
+    },
+    {
+      "q": "How long does a Thailand retirement visa take?",
+      "a": "Processing times vary with the authority and the time of year. Apply as early as you can, and don’t book non-refundable travel until your visa or authorisation is approved."
+    },
+    {
+      "q": "Can you help with my Thailand retirement visa application?",
+      "a": "Yes. We check which visa fits your trip, prepare your Thailand retirement visa application and documents, and keep you updated. Contact us or call 0161 956 2003."
+    }
+  ],
+  "govuk": "https://www.gov.uk/foreign-travel-advice",
+  "applyButton": "/contact-us/",
+  "country": "Thailand",
+  "focusKeyword": "Thailand retirement visa",
+  "sortKey": "1 thailand 2 thailand-retirement-visa-uk",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Application completed and documents checked",
+      "processing": "",
+      "fee": "",
+      "popular": true,
+      "processingFee": "",
+      "total": ""
+    }
+  ],
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Valid for at least 6 months, with a copy of the photo page",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent colour passport photo",
+      "needed": "Required"
+    },
+    {
+      "document": "Proof of income or savings",
+      "details": "Bank statements or pension evidence at the required level",
+      "needed": "Required"
+    },
+    {
+      "document": "Health insurance",
+      "details": "Meeting the Thai requirements for long stays",
+      "needed": "Required"
+    },
+    {
+      "document": "Police certificate",
+      "details": "Recent ACRO police certificate",
+      "needed": "If applicable"
+    },
+    {
+      "document": "Medical certificate",
+      "details": "Recent medical certificate",
+      "needed": "If applicable"
+    }
+  ],
+  "purposeLabel": "Retirement (O-A / O-X)"
+}

@@ -1,0 +1,96 @@
+{
+  "title": "USA B1/B2 Visitor Visa from the UK | Interview Help",
+  "description": "USA B1/B2 visitor visa help for UK residents who can’t use ESTA: DS-160, interview preparation and documents. Manchester visa advisers.",
+  "h1": "USA B1/B2 visitor visa from the UK",
+  "intro": "The B1/B2 visa is the US visitor visa for business (B1) and tourism (B2). You need it if you can’t use an ESTA, for example because of past travel, an arrest or a previous refusal, or if your passport isn’t eligible. We prepare your B1/B2 visitor visa application and check every detail before it is submitted.",
+  "sections": [
+    {
+      "heading": "Who needs a B1/B2 visa?",
+      "text": "Anyone who isn't eligible for an ESTA needs a B1/B2 visa to visit the USA, including many UK residents on non-British passports, and British citizens with certain travel history, arrests or convictions, or a previous ESTA or visa refusal."
+    },
+    {
+      "heading": "Showing your ties to the UK",
+      "text": "At the interview, the officer will want to see that your visit is temporary and that you'll return. Evidence of your job, home, family and finances in the UK helps."
+    },
+    {
+      "heading": "The US visa interview",
+      "text": "Most US visas involve the online DS-160 form, paying the visa fee, and an interview at the US Embassy in London or the US Consulate in Belfast. Every answer on the DS-160 must be accurate and match your documents. We prepare your form and tell you what to take to the interview."
+    },
+    {
+      "heading": "B1/B2 visa help from Manchester",
+      "text": "We're based in Manchester city centre and help travellers and businesses across the UK. We check the rules for your passport, prepare your application and keep you updated until it's decided."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Is the B1/B2 visa for business or tourism?",
+      "a": "Both. B1 covers business visits and B2 covers tourism and visiting family. Most people are issued a combined B1/B2 visa."
+    },
+    {
+      "q": "Do I need an interview?",
+      "a": "Most applicants do, at the US Embassy in London or the Consulate in Belfast."
+    },
+    {
+      "q": "How long does a B1/B2 visitor visa take?",
+      "a": "Processing times vary with the authority and the time of year. Apply as early as you can, and don’t book non-refundable travel until your visa or authorisation is approved."
+    },
+    {
+      "q": "Can you help with my B1/B2 visitor visa application?",
+      "a": "Yes. We check which visa fits your trip, prepare your B1/B2 visitor visa application and documents, and keep you updated. Contact us or call 0161 956 2003."
+    }
+  ],
+  "govuk": "https://www.gov.uk/foreign-travel-advice",
+  "applyButton": "/apply/usa-visa/?visaType=Visitor%20visa%20(B1%2FB2)",
+  "country": "USA",
+  "focusKeyword": "B1/B2 visitor visa",
+  "sortKey": "1 usa 2 usa-b1-b2-visa-uk",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Application completed and documents checked",
+      "processing": "",
+      "fee": "",
+      "popular": true,
+      "processingFee": "",
+      "total": ""
+    }
+  ],
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Valid for at least 6 months, with a copy of the photo page",
+      "needed": "Required"
+    },
+    {
+      "document": "DS-160 form",
+      "details": "Completed online and checked by us",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent colour passport photo",
+      "needed": "Required"
+    },
+    {
+      "document": "Interview appointment",
+      "details": "At the US Embassy in London or Consulate in Belfast",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Employer letter",
+      "details": "Confirming your job and approved leave",
+      "needed": "Required"
+    },
+    {
+      "document": "Bank statements",
+      "details": "Recent statements",
+      "needed": "Required"
+    },
+    {
+      "document": "UK residence evidence",
+      "details": "Your UK visa, BRP or eVisa share code",
+      "needed": "If not British"
+    }
+  ],
+  "purposeLabel": "B1/B2 visitor visa"
+}

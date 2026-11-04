@@ -1,0 +1,92 @@
+{
+  "title": "Template: Skilled Worker visa",
+  "maxPeople": 4,
+  "questionsTitle": "Your job and employer",
+  "questions": [
+    {
+      "label": "Employer’s name",
+      "type": "Short answer",
+      "required": true
+    },
+    {
+      "label": "Your job title",
+      "type": "Short answer",
+      "required": true
+    },
+    {
+      "label": "Annual salary",
+      "type": "Number",
+      "required": true
+    },
+    {
+      "label": "Certificate of Sponsorship reference number",
+      "type": "Short answer",
+      "required": false
+    },
+    {
+      "label": "Start date",
+      "type": "Date",
+      "required": true
+    },
+    {
+      "label": "Is your highest qualification a degree?",
+      "type": "Yes / No",
+      "required": true
+    },
+    {
+      "label": "How will you meet the English language requirement?",
+      "type": "Choice list",
+      "required": true,
+      "options": "English test\nDegree taught in English\nNationality of an English-speaking country\nNot sure"
+    },
+    {
+      "label": "Are you applying from inside the UK?",
+      "type": "Yes / No",
+      "required": true
+    },
+    {
+      "label": "Your current UK visa type, if in the UK",
+      "type": "Short answer",
+      "required": false
+    },
+    {
+      "label": "Anything else we should know?",
+      "type": "Long answer",
+      "required": false
+    }
+  ],
+  "uploads": [
+    {
+      "label": "Job offer or employment contract",
+      "required": true
+    },
+    {
+      "label": "Certificate of Sponsorship (if issued)",
+      "required": false
+    },
+    {
+      "label": "Degree certificate",
+      "required": false
+    },
+    {
+      "label": "English language evidence",
+      "required": false
+    },
+    {
+      "label": "Bank statements (last 28 days)",
+      "required": false,
+      "hint": "If your employer is not certifying maintenance."
+    },
+    {
+      "label": "TB test certificate",
+      "required": false,
+      "hint": "If required for your country."
+    }
+  ],
+  "template": true,
+  "active": true,
+  "password": "",
+  "intro": "Please answer these questions and upload your documents. Your adviser will review everything and contact you.",
+  "includePassport": true,
+  "askOnce": false
+}

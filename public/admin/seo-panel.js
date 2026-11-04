@@ -11,13 +11,13 @@
   function toJS(v) { return v && v.toJS ? v.toJS() : v; }
   // Text as plain lowercase-able ASCII: accents removed so "fiancé" matches "fiance"
   function str(v) { return typeof v === 'string' ? v.normalize('NFD').replace(/[\u0300-\u036f]/g, '') : ''; }
-  function words(text) { return (text.toLowerCase().match(/[a-z0-9£'’-]+/g) || []); }
+  function words(text) { return (text.toLowerCase().match(/[a-z0-9£'’]+(?:-[a-z0-9£'’]+)*/g) || []); }
   function esc(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
   // Matches the keyword as a phrase, allowing plurals ("visa" ~ "visas") and hyphens/spaces.
   function kwRegex(kw) {
     var parts = words(kw).map(function (w) { return esc(w.replace(/(es|s)$/, '')) + '(?:s|es)?'; });
     if (!parts.length) return null;
-    return new RegExp('(^|[^a-z0-9])' + parts.join('[\\s-]+') + '(?=$|[^a-z0-9])', 'gi');
+    return new RegExp('(^|[^a-z0-9])' + parts.join('[\\s/-]+') + '(?=$|[^a-z0-9])', 'gi');
   }
   function has(text, kw) { var r = kwRegex(kw); return !!(r && str(text) && r.test(text)); }
   function count(text, kw) { var r = kwRegex(kw); if (!r) return 0; var m = str(text).match(r); return m ? m.length : 0; }

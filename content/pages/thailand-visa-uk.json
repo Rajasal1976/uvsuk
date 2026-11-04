@@ -1,0 +1,58 @@
+{
+  "title": "Thailand Visa from the UK | 30-Day Rule, e-Visas & More",
+  "description": "Thailand visa help for UK residents: the new 30-day visa-free rule, Tourist e-Visas, business, family and long-stay visas, and the TDAC.",
+  "h1": "Thailand visa from the UK",
+  "intro": "Since 15 September 2026, British passport holders can visit Thailand without a visa for up to 30 days, for tourism only. For longer stays, business, family or retirement, you need a Thailand visa. Choose the visa that matches your trip below.",
+  "sections": [
+    {
+      "heading": "Thailand visa rules changed in September 2026",
+      "text": "From 15 September 2026, Thailand cut its visa exemption for British passport holders from 60 days to 30 days, and it now covers tourism only. Business trips, longer holidays, family stays and retirement all need a visa, applied for in advance through Thailand's official e-Visa system."
+    },
+    {
+      "heading": "Thailand Digital Arrival Card (TDAC)",
+      "text": "Every traveller must complete the free Thailand Digital Arrival Card online within 72 hours before arriving, whether or not they need a visa. It replaced the old paper arrival card. Beware of websites charging for it: the official card is free."
+    },
+    {
+      "heading": "Which Thailand visa do you need?",
+      "text": "- Up to 30 days' holiday on a British passport: no visa, just the TDAC\n- A longer holiday: the 60-day Tourist e-Visa\n- Business meetings or work: a Non-Immigrant B visa\n- Living with a Thai spouse or family: a Non-Immigrant O visa\n- Retirement: the O-A or O-X long-stay visa\n- Remote work or long stays for activities like Muay Thai: the Destination Thailand Visa (DTV)"
+    },
+    {
+      "heading": "Thailand visa help from Manchester",
+      "text": "We're based in Manchester city centre and help travellers and businesses across the UK. We check the rules for your passport, prepare your application and keep you updated until it's decided."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Do British citizens need a visa for Thailand?",
+      "a": "Not for tourist visits of up to 30 days since 15 September 2026. Longer stays, business and other purposes need a visa."
+    },
+    {
+      "q": "What is the Thailand Digital Arrival Card?",
+      "a": "A free online form every traveller must complete within 72 hours before arriving in Thailand."
+    },
+    {
+      "q": "Can I extend my stay in Thailand?",
+      "a": "Visa-exempt stays can usually be extended once by 30 days at a Thai immigration office, for a fee."
+    },
+    {
+      "q": "Can you help with my Thailand visa application?",
+      "a": "Yes. We check which visa fits your trip, prepare your Thailand visa application and documents, and keep you updated. Contact us or call 0161 956 2003."
+    }
+  ],
+  "govuk": "https://www.gov.uk/foreign-travel-advice",
+  "applyButton": "/apply/evisa/?destination=Thailand",
+  "country": "Thailand",
+  "focusKeyword": "Thailand visa",
+  "sortKey": "1 thailand 1 thailand visa",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Application completed and documents checked",
+      "processing": "",
+      "fee": "",
+      "popular": true,
+      "processingFee": "",
+      "total": ""
+    }
+  ]
+}

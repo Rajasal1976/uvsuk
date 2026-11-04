@@ -1,0 +1,87 @@
+{
+  "title": "USA L-1 Visa from the UK | Intracompany Transfer Help",
+  "description": "USA L-1 visa for managers, executives and specialists transferring to a US branch of their employer. Petition, DS-160 and interview help.",
+  "h1": "USA L-1 visa (intracompany transfer) from the UK",
+  "intro": "The L-1 visa lets companies transfer managers, executives (L-1A) and staff with specialised knowledge (L-1B) from a UK office to a related company in the USA.",
+  "sections": [
+    {
+      "heading": "How the L-1 visa works",
+      "text": "Your employer first files a petition with US Citizenship and Immigration Services (USCIS), or uses an approved blanket L petition. You must usually have worked for the company abroad for at least one continuous year in the last three. You then apply for the visa with the approval and attend an interview."
+    },
+    {
+      "heading": "The US visa interview",
+      "text": "Most US visas involve the online DS-160 form, paying the visa fee, and an interview at the US Embassy in London or the US Consulate in Belfast. Every answer on the DS-160 must be accurate and match your documents. We prepare your form and tell you what to take to the interview."
+    },
+    {
+      "heading": "L-1 visa help from Manchester",
+      "text": "We're based in Manchester city centre and help travellers and businesses across the UK. We check the rules for your passport, prepare your application and keep you updated until it's decided."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Who files the L-1 petition?",
+      "a": "Your employer, with US Citizenship and Immigration Services, or through an approved blanket L petition."
+    },
+    {
+      "q": "Can my family come with me?",
+      "a": "Spouses and children can usually apply for L-2 visas."
+    },
+    {
+      "q": "How long does a L-1 visa take?",
+      "a": "Processing times vary with the authority and the time of year. Apply as early as you can, and don’t book non-refundable travel until your visa or authorisation is approved."
+    },
+    {
+      "q": "Can you help with my L-1 visa application?",
+      "a": "Yes. We check which visa fits your trip, prepare your L-1 visa application and documents, and keep you updated. Contact us or call 0161 956 2003."
+    }
+  ],
+  "govuk": "https://www.gov.uk/foreign-travel-advice",
+  "applyButton": "/contact-us/",
+  "country": "USA",
+  "focusKeyword": "L-1 visa",
+  "sortKey": "1 usa 2 usa-l-intracompany-visa-uk",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Application completed and documents checked",
+      "processing": "",
+      "fee": "",
+      "popular": true,
+      "processingFee": "",
+      "total": ""
+    }
+  ],
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Valid for at least 6 months, with a copy of the photo page",
+      "needed": "Required"
+    },
+    {
+      "document": "DS-160 form",
+      "details": "Completed online and checked by us",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent colour passport photo",
+      "needed": "Required"
+    },
+    {
+      "document": "Interview appointment",
+      "details": "At the US Embassy in London or Consulate in Belfast",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Petition approval",
+      "details": "USCIS approval notice or blanket L documents from your employer",
+      "needed": "Required"
+    },
+    {
+      "document": "Employer letter",
+      "details": "Describing your role in the UK and in the USA",
+      "needed": "Required"
+    }
+  ],
+  "purposeLabel": "L-1 intracompany transfer"
+}

@@ -1,0 +1,10 @@
+{
+  "form": "india-visa",
+  "title": "Additional questions",
+  "askOnce": false,
+  "hideDocs": ["Flight booking", "Hotel booking"],
+  "optionalDocs": [],
+  "hideQuestions": [],
+  "optionalQuestions": [],
+  "questions": []
+}

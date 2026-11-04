@@ -1,0 +1,76 @@
+{
+  "title": "USA ESTA from the UK | Fast, Checked ESTA Applications",
+  "description": "USA ESTA for British citizens: who can use it, who needs a visa instead, and how we complete and check your ESTA so it isn’t refused.",
+  "h1": "USA ESTA from the UK",
+  "intro": "British citizens can usually visit the USA for up to 90 days for tourism or business with an ESTA, applied for online before travel. We complete and check your ESTA so a mistake doesn’t leave you unable to fly. We prepare your USA ESTA application and check every detail before it is submitted.",
+  "sections": [
+    {
+      "heading": "Who can use an ESTA?",
+      "text": "The ESTA is for citizens of Visa Waiver Program countries, including the UK, visiting for up to 90 days for tourism, business or transit. It is usually valid for 2 years, or until your passport expires if sooner."
+    },
+    {
+      "heading": "When you need a visa instead",
+      "text": "You can't use an ESTA, and need a visa, if you have travelled to certain countries such as Iran, Iraq, Syria or Cuba after set dates, have some arrests or convictions, have been refused an ESTA or US visa before, or want to study, work or stay longer than 90 days. If any of these apply, see our [B1/B2 visa](/usa-b1-b2-visa-uk/) page."
+    },
+    {
+      "heading": "Answer every question carefully",
+      "text": "A wrong answer on an ESTA can lead to a refusal, or problems at the US border later. Questions about arrests and travel history are where most people go wrong. We check your answers with you before submitting."
+    },
+    {
+      "heading": "USA ESTA help from Manchester",
+      "text": "We're based in Manchester city centre and help travellers and businesses across the UK. We check the rules for your passport, prepare your application and keep you updated until it's decided."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "How long is a USA ESTA valid?",
+      "a": "Usually 2 years, or until your passport expires if sooner. Each visit can be up to 90 days."
+    },
+    {
+      "q": "Can I work on an ESTA?",
+      "a": "No. ESTA covers tourism, business meetings and transit, not paid work."
+    },
+    {
+      "q": "My ESTA was refused. What now?",
+      "a": "You will usually need to apply for a B1/B2 visitor visa at the US Embassy. We can help."
+    },
+    {
+      "q": "Can you help with my USA ESTA application?",
+      "a": "Yes. We check which visa fits your trip, prepare your USA ESTA application and documents, and keep you updated. Contact us or call 0161 956 2003."
+    }
+  ],
+  "govuk": "https://www.gov.uk/foreign-travel-advice",
+  "applyButton": "/apply/usa-visa/?visaType=ESTA",
+  "country": "USA",
+  "focusKeyword": "USA ESTA",
+  "sortKey": "1 usa 2 usa-esta-uk",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Application completed and documents checked",
+      "processing": "",
+      "fee": "",
+      "popular": true,
+      "processingFee": "",
+      "total": ""
+    }
+  ],
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Valid for at least 6 months, with a copy of the photo page",
+      "needed": "Required"
+    },
+    {
+      "document": "ESTA application",
+      "details": "Completed online and checked by us",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Travel details",
+      "details": "Your US address and contact details",
+      "needed": "Required"
+    }
+  ],
+  "purposeLabel": "ESTA"
+}

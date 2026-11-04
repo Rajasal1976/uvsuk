@@ -1,0 +1,82 @@
+{
+  "title": "USA C1/D Crew Visa from the UK | Air & Sea Crew Help",
+  "description": "USA C1/D crew visa for airline and ship crew working on aircraft or vessels travelling to the USA. Documents, DS-160 and interview help.",
+  "h1": "USA C1/D crew visa from the UK",
+  "intro": "The C1/D visa is for crew members working on commercial aircraft or ships travelling to or through the USA. C1 covers transit and D covers crew duties; most crew receive a combined C1/D visa. We prepare your C1/D crew visa application and check every detail before it is submitted.",
+  "sections": [
+    {
+      "heading": "Who needs a C1/D visa?",
+      "text": "Pilots, cabin crew, ship's crew and other crew members working on international flights or vessels serving the USA need a C1/D visa. Your employer usually provides a letter confirming your role and the routes or vessels you work on."
+    },
+    {
+      "heading": "The US visa interview",
+      "text": "Most US visas involve the online DS-160 form, paying the visa fee, and an interview at the US Embassy in London or the US Consulate in Belfast. Every answer on the DS-160 must be accurate and match your documents. We prepare your form and tell you what to take to the interview."
+    },
+    {
+      "heading": "C1/D crew visa help from Manchester",
+      "text": "We're based in Manchester city centre and help travellers and businesses across the UK. We check the rules for your passport, prepare your application and keep you updated until it's decided."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Do airline crew need a US visa?",
+      "a": "Yes, crew working on flights or ships to the USA usually need a C1/D visa."
+    },
+    {
+      "q": "What does my employer need to provide?",
+      "a": "A letter confirming your job, the airline or vessel, and your duties."
+    },
+    {
+      "q": "How long does a C1/D crew visa take?",
+      "a": "Processing times vary with the authority and the time of year. Apply as early as you can, and don’t book non-refundable travel until your visa or authorisation is approved."
+    },
+    {
+      "q": "Can you help with my C1/D crew visa application?",
+      "a": "Yes. We check which visa fits your trip, prepare your C1/D crew visa application and documents, and keep you updated. Contact us or call 0161 956 2003."
+    }
+  ],
+  "govuk": "https://www.gov.uk/foreign-travel-advice",
+  "applyButton": "/contact-us/",
+  "country": "USA",
+  "focusKeyword": "C1/D crew visa",
+  "sortKey": "1 usa 2 usa-c1-d-crew-visa-uk",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Application completed and documents checked",
+      "processing": "",
+      "fee": "",
+      "popular": true,
+      "processingFee": "",
+      "total": ""
+    }
+  ],
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Valid for at least 6 months, with a copy of the photo page",
+      "needed": "Required"
+    },
+    {
+      "document": "DS-160 form",
+      "details": "Completed online and checked by us",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent colour passport photo",
+      "needed": "Required"
+    },
+    {
+      "document": "Interview appointment",
+      "details": "At the US Embassy in London or Consulate in Belfast",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Employer letter",
+      "details": "From your airline or shipping company, confirming your role",
+      "needed": "Required"
+    }
+  ],
+  "purposeLabel": "C1/D crew visa"
+}

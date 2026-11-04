@@ -1,0 +1,92 @@
+{
+  "title": "Thailand Family Visa from the UK | Non-Immigrant O Help",
+  "description": "Thailand family visa (Non-Immigrant O) for joining a Thai spouse or family member. Who qualifies, the documents and how we apply for you.",
+  "h1": "Thailand family visa (Non-Immigrant O) from the UK",
+  "intro": "The Non-Immigrant O visa lets you stay in Thailand with a Thai spouse, child or parent, or with family members who live there. We prepare your Thailand family visa application and check every detail before it is submitted.",
+  "sections": [
+    {
+      "heading": "Who the Non-Immigrant O visa is for",
+      "text": "The family category of the Non-Immigrant O visa is for people joining a Thai spouse, a Thai child or parent, or family members who hold long-term permission in Thailand. Once in Thailand, it can usually be extended for longer stays."
+    },
+    {
+      "heading": "Documents for a Thailand family visa",
+      "text": "You'll usually need your marriage or birth certificate showing the relationship, your family member's Thai ID or passport, and proof of funds. Certificates issued in the UK often need legalising, which we can arrange."
+    },
+    {
+      "heading": "Thailand family visa help from Manchester",
+      "text": "We're based in Manchester city centre and help travellers and businesses across the UK. We check the rules for your passport, prepare your application and keep you updated until it's decided."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Can I live in Thailand with my Thai spouse?",
+      "a": "Yes. The Non-Immigrant O visa is designed for this, and can usually be extended in Thailand."
+    },
+    {
+      "q": "Do my UK certificates need legalising?",
+      "a": "Often yes. We arrange apostilles and legalisation of UK documents."
+    },
+    {
+      "q": "How long does a Thailand family visa take?",
+      "a": "Processing times vary with the authority and the time of year. Apply as early as you can, and don’t book non-refundable travel until your visa or authorisation is approved."
+    },
+    {
+      "q": "Can you help with my Thailand family visa application?",
+      "a": "Yes. We check which visa fits your trip, prepare your Thailand family visa application and documents, and keep you updated. Contact us or call 0161 956 2003."
+    }
+  ],
+  "govuk": "https://www.gov.uk/foreign-travel-advice",
+  "applyButton": "/contact-us/",
+  "country": "Thailand",
+  "focusKeyword": "Thailand family visa",
+  "sortKey": "1 thailand 2 thailand-family-visa-uk",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Application completed and documents checked",
+      "processing": "",
+      "fee": "",
+      "popular": true,
+      "processingFee": "",
+      "total": ""
+    }
+  ],
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Valid for at least 6 months, with a copy of the photo page",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent colour passport photo",
+      "needed": "Required"
+    },
+    {
+      "document": "Marriage or birth certificate",
+      "details": "Showing your relationship to your Thai family member",
+      "needed": "Required"
+    },
+    {
+      "document": "Family member’s ID",
+      "details": "Thai ID card or passport of your spouse or family member",
+      "needed": "Required"
+    },
+    {
+      "document": "Bank statements",
+      "details": "Recent statements",
+      "needed": "Required"
+    },
+    {
+      "document": "UK residence evidence",
+      "details": "Your UK visa, BRP or eVisa share code",
+      "needed": "If not British"
+    }
+  ],
+  "purposeLabel": "Family visa (O)"
+}

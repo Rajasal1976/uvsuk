@@ -345,9 +345,19 @@ export const structure = [
   },
   {
     "slug": "usa-visa-services",
-    "type": "service",
+    "type": "hub",
     "group": "worldwide",
-    "visa": "travel"
+    "children": [
+      "usa-esta-uk",
+      "usa-b1-b2-visa-uk",
+      "usa-f-student-visa-uk",
+      "usa-j-exchange-visa-uk",
+      "usa-i-media-visa-uk",
+      "usa-c1-d-crew-visa-uk",
+      "usa-l-intracompany-visa-uk",
+      "usa-o-visa-uk",
+      "usa-p-visa-uk"
+    ]
   },
   {
     "slug": "saudi-arabia-visa-uk",
@@ -958,6 +968,127 @@ export const structure = [
     "type": "service",
     "group": "worldwide",
     "visa": "travel"
+  },
+  {
+    "slug": "thailand-visa-uk",
+    "type": "hub",
+    "group": "worldwide",
+    "children": [
+      "thailand-visa-exemption-uk",
+      "thailand-tourist-visa-uk",
+      "thailand-business-visa-uk",
+      "thailand-family-visa-uk",
+      "thailand-retirement-visa-uk",
+      "thailand-dtv-visa-uk"
+    ]
+  },
+  {
+    "slug": "thailand-visa-exemption-uk",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "travel"
+  },
+  {
+    "slug": "thailand-tourist-visa-uk",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "evisa"
+  },
+  {
+    "slug": "thailand-business-visa-uk",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "travel"
+  },
+  {
+    "slug": "thailand-family-visa-uk",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "travel"
+  },
+  {
+    "slug": "thailand-retirement-visa-uk",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "travel"
+  },
+  {
+    "slug": "thailand-dtv-visa-uk",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "travel"
+  },
+  {
+    "slug": "usa-esta-uk",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "evisa"
+  },
+  {
+    "slug": "usa-b1-b2-visa-uk",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "travel"
+  },
+  {
+    "slug": "usa-f-student-visa-uk",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "travel"
+  },
+  {
+    "slug": "usa-j-exchange-visa-uk",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "travel"
+  },
+  {
+    "slug": "usa-i-media-visa-uk",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "travel"
+  },
+  {
+    "slug": "usa-c1-d-crew-visa-uk",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "travel"
+  },
+  {
+    "slug": "usa-l-intracompany-visa-uk",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "travel"
+  },
+  {
+    "slug": "usa-o-visa-uk",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "travel"
+  },
+  {
+    "slug": "usa-p-visa-uk",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "travel"
+  },
+  {
+    "slug": "canada-eta-uk",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "evisa"
+  },
+  {
+    "slug": "australia-eta-evisitor-uk",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "evisa"
+  },
+  {
+    "slug": "new-zealand-nzeta-uk",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "evisa"
   },
   {
     "slug": "about-us",

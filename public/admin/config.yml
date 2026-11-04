@@ -157,11 +157,11 @@ collections:
   # ---------- Pages with calculators or special design ----------
   # ---------- Extra questions on the online application forms ----------
   - name: form_extras
-    label: Form questions
-    label_singular: form's extra questions
+    label: Form settings
+    label_singular: form's settings
     description: >-
-      Add your own questions to any online application form. They appear as an extra step before the documents.
-      Click "New form's extra questions", choose the form, and add your questions.
+      Change any online application form: add your own questions, or remove documents and questions you don't need.
+      Click "+ form's settings" and choose the form, or open a form that is already listed.
     folder: content/form-extras
     format: json
     extension: json
@@ -173,9 +173,13 @@ collections:
     fields:
       - { name: form, label: Form, widget: select, options: [{ label: 'China visa application', value: 'china-visa' }, { label: 'India eVisa application', value: 'india-visa' }, { label: 'Transfer your India eVisa to a new passport', value: 'india-evisa-transfer' }, { label: 'Sri Lanka ETA application', value: 'sri-lanka-eta' }, { label: 'Japan visa application', value: 'japan-visa' }, { label: 'Nigeria visa application (regular visa)', value: 'nigeria-visa' }, { label: 'Schengen visa application', value: 'schengen-visa' }, { label: 'USA ESTA or visa application', value: 'usa-visa' }, { label: 'Saudi Arabia visa application', value: 'saudi-visa' }, { label: 'Ghana visa application', value: 'ghana-visa' }, { label: 'Russian visa application', value: 'russia-visa' }, { label: 'India Employment and regular visa application', value: 'india-regular-visa' }, { label: 'eVisa application', value: 'evisa' }, { label: 'Document legalisation request', value: 'document-legalisation' }, { label: 'Indian passport, surrender certificate and OCI request', value: 'indian-passport-oci' }, { label: 'Second British passport application', value: 'second-uk-passport' }] }
       - { name: title, label: Step title, widget: string, default: 'Additional questions' }
+      - { name: hideDocs, label: 'Documents to remove', widget: list, required: false, hint: 'Type part of the document name as it appears on the form, e.g. Flight or Hotel. One per row.' }
+      - { name: optionalDocs, label: 'Documents to make optional', widget: list, required: false, hint: 'The document stays on the form, but clients can send without it.' }
+      - { name: hideQuestions, label: 'Questions to remove', widget: list, required: false, hint: 'Type part of the question as it appears on the form. Name, passport, email, phone and visa type can’t be removed.' }
+      - { name: optionalQuestions, label: 'Questions to make optional', widget: list, required: false }
       - { name: askOnce, label: 'Ask once for the whole application (not for each person)', widget: boolean, default: false, required: false }
       - name: questions
-        label: Questions
+        label: Extra questions
         label_singular: question
         widget: list
         required: false
@@ -193,7 +197,8 @@ collections:
     label: Client forms
     label_singular: client form
     description: >-
-      Build a form to send to a client. Its address is www.uvsuk.co.uk/client-forms/ followed by the form's file name,
+      Build a form to send to a client, or start from a template: open a template, choose Duplicate from the Publish menu,
+      and change the title. Its address is www.uvsuk.co.uk/client-forms/ followed by the form's file name,
       which is made from the title when you first save (for example /client-forms/khan-family-spouse-visa/).
       Generate a password, then send the client the link and the password separately.
     folder: content/client-forms
@@ -203,9 +208,10 @@ collections:
     delete: false
     slug: '{{slug}}'
     identifier_field: title
-    summary: '{{title}}{{active}}'
+    summary: '{{title}}'
     fields:
       - { name: title, label: Form title, widget: string, hint: 'Shown at the top of the form, e.g. Spouse visa application: your details. Also used for the address.' }
+      - { name: template, label: 'This is a template (not a live form)', widget: boolean, default: false, required: false, hint: 'Templates are never shown to clients. To use one: open it, choose Duplicate from the Publish menu, then change the title, switch this off, generate a password and publish.' }
       - { name: active, label: Form is open, widget: boolean, default: true, required: false, hint: 'Switch off to close the form once the client has finished.' }
       - { name: password, label: Password, widget: password, required: false, hint: 'Click Generate password, then copy it to send to your client. Leave empty for no password.' }
       - { name: intro, label: Introduction, widget: text, required: false }
@@ -298,6 +304,17 @@ collections:
           - { name: heroEyebrow, label: Small line above the heading, widget: string }
           - { name: heroHeading, label: Main heading, widget: string }
           - { name: heroIntro, label: Introduction, widget: text }
+          - name: popularLinks
+            label: Popular links (beside the visa search)
+            label_singular: link
+            widget: list
+            max: 8
+            required: false
+            summary: '{{fields.label}}'
+            hint: 'Up to 8 buttons. Leave empty to use the standard list.'
+            fields:
+              - { name: label, label: Button text, widget: string }
+              - { name: url, label: Page address, widget: string, hint: 'e.g. /china-visa-application/' }
           - name: heroPoints
             label: Selling points (under the buttons)
             label_singular: selling point

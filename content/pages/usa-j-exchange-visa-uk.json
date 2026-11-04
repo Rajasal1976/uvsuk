@@ -1,0 +1,96 @@
+{
+  "title": "USA J-1 Visa from the UK | Exchange Visitor Visa Help",
+  "description": "USA J-1 visa for exchange visitors: internships, camp counsellors, au pairs, researchers and exchange programmes. DS-2019 and interview help.",
+  "h1": "USA J-1 visa (exchange visitor) from the UK",
+  "intro": "The J-1 visa is for approved exchange programmes, such as internships, summer camps, au pair placements, research and teaching. Your programme sponsor issues a Form DS-2019.",
+  "sections": [
+    {
+      "heading": "How the J-1 visa works",
+      "text": "You first need a place on a programme run by a US-designated sponsor, which issues your Form DS-2019. You then pay the SEVIS fee, complete the DS-160 and attend an interview. Some J-1 visitors must return home for two years after their programme."
+    },
+    {
+      "heading": "The US visa interview",
+      "text": "Most US visas involve the online DS-160 form, paying the visa fee, and an interview at the US Embassy in London or the US Consulate in Belfast. Every answer on the DS-160 must be accurate and match your documents. We prepare your form and tell you what to take to the interview."
+    },
+    {
+      "heading": "Common J-1 visa programmes",
+      "text": "J-1 programmes cover many kinds of exchange, including:\n- Summer camp counsellors and summer work and travel\n- Interns and trainees with US companies\n- Au pairs living with US families\n- Research scholars, professors and short-term scholars\n- Teachers and students on exchange schemes\n\nEach programme has its own rules on length of stay and work, set by your sponsor."
+    },
+    {
+      "heading": "J-1 visa help from Manchester",
+      "text": "We're based in Manchester city centre and help travellers and businesses across the UK. We check the rules for your passport, prepare your application and keep you updated until it's decided."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "What is a DS-2019?",
+      "a": "The form your J-1 programme sponsor issues to confirm your place. You need it to apply."
+    },
+    {
+      "q": "Can I work on a J-1 visa?",
+      "a": "Only as part of your approved programme."
+    },
+    {
+      "q": "How long does a J-1 visa take?",
+      "a": "Processing times vary with the authority and the time of year. Apply as early as you can, and don’t book non-refundable travel until your visa or authorisation is approved."
+    },
+    {
+      "q": "Can you help with my J-1 visa application?",
+      "a": "Yes. We check which visa fits your trip, prepare your J-1 visa application and documents, and keep you updated. Contact us or call 0161 956 2003."
+    }
+  ],
+  "govuk": "https://www.gov.uk/foreign-travel-advice",
+  "applyButton": "/contact-us/",
+  "country": "USA",
+  "focusKeyword": "J-1 visa",
+  "sortKey": "1 usa 2 usa-j-exchange-visa-uk",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Application completed and documents checked",
+      "processing": "",
+      "fee": "",
+      "popular": true,
+      "processingFee": "",
+      "total": ""
+    }
+  ],
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Valid for at least 6 months, with a copy of the photo page",
+      "needed": "Required"
+    },
+    {
+      "document": "DS-160 form",
+      "details": "Completed online and checked by us",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent colour passport photo",
+      "needed": "Required"
+    },
+    {
+      "document": "Interview appointment",
+      "details": "At the US Embassy in London or Consulate in Belfast",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Form DS-2019",
+      "details": "Issued by your programme sponsor",
+      "needed": "Required"
+    },
+    {
+      "document": "SEVIS fee receipt",
+      "details": "Proof you have paid the SEVIS fee",
+      "needed": "Required"
+    },
+    {
+      "document": "Programme details",
+      "details": "Your placement offer or programme letter",
+      "needed": "Required"
+    }
+  ],
+  "purposeLabel": "J-1 exchange visa"
+}

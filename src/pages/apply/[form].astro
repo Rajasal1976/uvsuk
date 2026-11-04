@@ -8,12 +8,30 @@ import '../../styles/apply.css';
 import { customStep } from '../../lib/custom-questions.js';
 
 export function getStaticPaths() {
-  // Extra questions added in the admin under "Form questions" are added to the form as an extra step
+  // Form settings from the admin ("Form settings"): extra questions, and documents or questions
+  // to remove or make optional. Essential details can't be removed.
   const extras = Object.values(import.meta.glob('../../../content/form-extras/*.json', { eager: true, import: 'default' }));
+  const norm = (t) => String(t || '').toLowerCase().replace(/\s+/g, ' ').trim();
+  const list = (x) => (Array.isArray(x) ? x : []).map((v) => norm(typeof v === 'string' ? v : v?.text)).filter(Boolean);
+  const hits = (label, words) => words.some((w) => norm(label).includes(w));
+  const PROTECTED = new Set(['surname', 'givenNames', 'dateOfBirth', 'sex', 'nationality', 'passportNumber', 'passportExpiry', 'passportIssuingCountry', 'email', 'phone', 'visaType', 'destination']);
   return applications.map((a) => {
-    const extra = extras.find((x: any) => x.form === a.slug);
-    const step = extra ? customStep(extra, 'custom') : null;
-    return { params: { form: a.slug }, props: { app: step ? { ...a, steps: [...a.steps, step] } : a } };
+    const extra: any = extras.find((x: any) => x.form === a.slug) || {};
+    const hideDocs = list(extra.hideDocs), optDocs = list(extra.optionalDocs);
+    const hideQs = list(extra.hideQuestions), optQs = list(extra.optionalQuestions);
+    const uploads = (a.uploads || [])
+      .filter((u) => !hits(u.label, hideDocs))
+      .map((u) => (hits(u.label, optDocs) ? { ...u, required: false } : u));
+    const steps = a.steps
+      .map((st) => ({
+        ...st,
+        fields: st.fields
+          .filter((f) => PROTECTED.has(f.name) || !hits(f.label, hideQs))
+          .map((f) => (!PROTECTED.has(f.name) && hits(f.label, optQs) ? { ...f, required: false } : f)),
+      }))
+      .filter((st) => st.fields.length || st.passportScan);
+    const step = customStep(extra, 'custom');
+    return { params: { form: a.slug }, props: { app: { ...a, uploads, steps: step ? [...steps, step] : steps } } };
   });
 }
 const { app } = Astro.props;

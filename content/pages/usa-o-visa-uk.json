@@ -1,0 +1,91 @@
+{
+  "title": "USA O-1 Visa from the UK | Extraordinary Ability Visa Help",
+  "description": "USA O-1 visa for people with extraordinary ability in the arts, sciences, business, education or sport, and their essential support staff.",
+  "h1": "USA O-1 visa from the UK",
+  "intro": "The O-1 visa is for individuals with extraordinary ability or achievement in fields such as the arts, film, sciences, business or sport. Essential support staff can apply for O-2 visas.",
+  "sections": [
+    {
+      "heading": "How the O-1 visa works",
+      "text": "A US employer or agent files a petition with US Citizenship and Immigration Services, with evidence of your achievements, such as awards, press coverage and expert letters. Once approved, you apply for the visa and attend an interview."
+    },
+    {
+      "heading": "The US visa interview",
+      "text": "Most US visas involve the online DS-160 form, paying the visa fee, and an interview at the US Embassy in London or the US Consulate in Belfast. Every answer on the DS-160 must be accurate and match your documents. We prepare your form and tell you what to take to the interview."
+    },
+    {
+      "heading": "Evidence for an O-1 visa petition",
+      "text": "The petition must show sustained national or international recognition. Typical evidence includes:\n- Major awards or nominations in your field\n- Press coverage of you or your work\n- A high salary compared with others in your field\n- Letters from recognised experts\n- Lead or critical roles for distinguished organisations or productions\n\nWe help you gather and organise this evidence with your US employer or agent."
+    },
+    {
+      "heading": "O-1 visa help from Manchester",
+      "text": "We're based in Manchester city centre and help travellers and businesses across the UK. We check the rules for your passport, prepare your application and keep you updated until it's decided."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Who files the O-1 petition?",
+      "a": "A US employer or agent, with US Citizenship and Immigration Services."
+    },
+    {
+      "q": "What evidence is needed?",
+      "a": "Evidence of extraordinary ability, such as major awards, press coverage, high earnings or expert letters."
+    },
+    {
+      "q": "How long does a O-1 visa take?",
+      "a": "Processing times vary with the authority and the time of year. Apply as early as you can, and don’t book non-refundable travel until your visa or authorisation is approved."
+    },
+    {
+      "q": "Can you help with my O-1 visa application?",
+      "a": "Yes. We check which visa fits your trip, prepare your O-1 visa application and documents, and keep you updated. Contact us or call 0161 956 2003."
+    }
+  ],
+  "govuk": "https://www.gov.uk/foreign-travel-advice",
+  "applyButton": "/contact-us/",
+  "country": "USA",
+  "focusKeyword": "O-1 visa",
+  "sortKey": "1 usa 2 usa-o-visa-uk",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Application completed and documents checked",
+      "processing": "",
+      "fee": "",
+      "popular": true,
+      "processingFee": "",
+      "total": ""
+    }
+  ],
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Valid for at least 6 months, with a copy of the photo page",
+      "needed": "Required"
+    },
+    {
+      "document": "DS-160 form",
+      "details": "Completed online and checked by us",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent colour passport photo",
+      "needed": "Required"
+    },
+    {
+      "document": "Interview appointment",
+      "details": "At the US Embassy in London or Consulate in Belfast",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Petition approval",
+      "details": "USCIS approval notice (Form I-797)",
+      "needed": "Required"
+    },
+    {
+      "document": "Evidence of achievements",
+      "details": "Awards, press, contracts or expert letters",
+      "needed": "Required"
+    }
+  ],
+  "purposeLabel": "O-1 extraordinary ability"
+}

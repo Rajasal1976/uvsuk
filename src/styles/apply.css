@@ -178,3 +178,36 @@
 .ap-extras { display: flex; flex-direction: column; gap: 12px; margin: 10px 0 12px; }
 .ap-up-extra .ap-desc { flex: 1 1 260px; min-width: 0; padding: 10px 12px; font: inherit; font-size: 15px; border: 1px solid #8FAE99; border-radius: 6px; }
 .ap-add-doc, .ap-add-person { margin-top: 4px; }
+
+/* ---------- Colour: light green background, white form card, green step heading ---------- */
+.ap-section { position: relative; padding-bottom: 72px; }
+.ap-section::before { content: ""; position: absolute; inset: 0 -100vmax; z-index: -1; background: linear-gradient(180deg, #EAF4EC 0%, #F3F9F4 100%); }
+.ap-layout { gap: 32px; }
+.ap-side { background: #FFFFFF; border: 1px solid #D5E6DA; border-radius: 14px; padding: 20px 18px 14px 26px; box-shadow: 0 4px 16px rgba(20, 83, 45, .06); }
+.ap-steps { border-left-color: #CFE3D5; }
+.ap-step.current { background: #EAF4EC; margin-left: 0; border-radius: 0 8px 8px 0; }
+.ap-progress { background: #FFFFFF; border: 1px solid #D5E6DA; border-radius: 12px; padding: 12px 18px 14px; margin-bottom: 16px; }
+.ap-progress-text { color: #14532D; font-weight: 600; }
+.ap-progress-bar { background: #DCEBE0; height: 8px; border-radius: 4px; }
+.ap-progress-bar span { background: linear-gradient(90deg, #1B6B3A, #2E8B57); }
+.ap-stage { max-width: none; background: #FFFFFF; border: 1px solid #D5E6DA; border-radius: 16px; padding: 0 32px 28px; box-shadow: 0 8px 28px rgba(20, 83, 45, .08); overflow: hidden; }
+.ap-stage > .ap-head { margin: 0 -32px 24px; padding: 24px 32px 20px; background: linear-gradient(135deg, #14532D 0%, #1B6B3A 100%); }
+.ap-stage > .ap-head h2 { color: #FFFFFF; margin: 0; }
+.ap-stage > .ap-head .ap-intro { color: #DDEBE1; margin: 8px 0 0; }
+.ap-stage > .ap-head .ap-person-tag { color: #F2C46D; }
+.ap-stage input[type="text"], .ap-stage input[type="email"], .ap-stage input[type="tel"], .ap-stage input[type="date"], .ap-stage input[type="number"], .ap-stage select, .ap-stage textarea { border-color: #A9C7B3; background: #FBFDFB; }
+.ap-stage input:focus, .ap-stage select:focus, .ap-stage textarea:focus { border-color: #1B6B3A; box-shadow: 0 0 0 3px rgba(46, 139, 87, .18); outline: none; background: #FFFFFF; }
+.ap-scan { background: #F4FAF5; border-color: #8FBF9F; }
+.ap-up { background: #FBFDFB; border-color: #D5E6DA; }
+.ap-up.has-file { background: #EEF7F0; border-color: #8FBF9F; }
+.ap-review-sec { background: #F7FBF8; border: 1px solid #DCEBE0; border-radius: 12px; padding: 16px 18px; }
+.ap-nav { border-top-color: #DCEBE0; }
+.ap-note { background: #FFF4DC; border-color: #F2C46D; }
+@media (max-width: 760px) {
+  .ap-stage { padding: 0 18px 22px; }
+  .ap-stage > .ap-head { margin: 0 -18px 20px; padding: 20px 18px 16px; }
+}
+
+/* On form pages the WhatsApp button is the round icon only, so it doesn't cover Continue */
+body:has(.ap-layout) .wa-float { width: 58px; padding: 0; }
+body:has(.ap-layout) .wa-label { display: none; }

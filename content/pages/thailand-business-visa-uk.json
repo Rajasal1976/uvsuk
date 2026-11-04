@@ -1,0 +1,101 @@
+{
+  "title": "Thailand Business Visa from the UK | Non-Immigrant B Help",
+  "description": "Thailand business visa (Non-Immigrant B) for meetings, conferences and work in Thailand. Since September 2026, business trips need a visa.",
+  "h1": "Thailand business visa (Non-Immigrant B) from the UK",
+  "intro": "Visa-free entry to Thailand now covers tourism only, so business visits need a visa. The Non-Immigrant B visa covers business trips and is also the first step for people taking up work in Thailand. We prepare your Thailand business visa application and check every detail before it is submitted.",
+  "sections": [
+    {
+      "heading": "Business trips to Thailand since September 2026",
+      "text": "The 30-day visa exemption for British passport holders is now limited to tourism, so meetings, conferences and other business activities need a visa. We'll confirm the right visa for your trip before you apply."
+    },
+    {
+      "heading": "Working in Thailand",
+      "text": "If you are taking up a job in Thailand, the Non-Immigrant B visa is usually the starting point, and your employer then arranges a work permit after you arrive. You must not work in Thailand without a work permit."
+    },
+    {
+      "heading": "Documents for a Thailand business visa",
+      "text": "You'll usually need a letter from your UK employer, an invitation from the Thai company with its registration documents, recent bank statements and your travel plans. For employment, the Thai employer provides additional company documents."
+    },
+    {
+      "heading": "Thailand business visa help from Manchester",
+      "text": "We're based in Manchester city centre and help travellers and businesses across the UK. We check the rules for your passport, prepare your application and keep you updated until it's decided."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Can I attend meetings in Thailand without a visa?",
+      "a": "Not any more. Since 15 September 2026, visa-free entry covers tourism only, so business visits need a visa."
+    },
+    {
+      "q": "Do I need a work permit?",
+      "a": "Yes, to work in Thailand. Your Thai employer arranges it, usually after you arrive on a Non-Immigrant B visa."
+    },
+    {
+      "q": "How long does a Thailand business visa take?",
+      "a": "Processing times vary with the authority and the time of year. Apply as early as you can, and don’t book non-refundable travel until your visa or authorisation is approved."
+    },
+    {
+      "q": "Can you help with my Thailand business visa application?",
+      "a": "Yes. We check which visa fits your trip, prepare your Thailand business visa application and documents, and keep you updated. Contact us or call 0161 956 2003."
+    }
+  ],
+  "govuk": "https://www.gov.uk/foreign-travel-advice",
+  "applyButton": "/contact-us/",
+  "country": "Thailand",
+  "focusKeyword": "Thailand business visa",
+  "sortKey": "1 thailand 2 thailand-business-visa-uk",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Application completed and documents checked",
+      "processing": "",
+      "fee": "",
+      "popular": true,
+      "processingFee": "",
+      "total": ""
+    }
+  ],
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Valid for at least 6 months, with a copy of the photo page",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent colour passport photo",
+      "needed": "Required"
+    },
+    {
+      "document": "Invitation letter",
+      "details": "From the Thai company, with its registration documents",
+      "needed": "Required"
+    },
+    {
+      "document": "Employer letter",
+      "details": "From your UK employer, confirming your role and the trip",
+      "needed": "Required"
+    },
+    {
+      "document": "Bank statements",
+      "details": "Recent statements",
+      "needed": "Required"
+    },
+    {
+      "document": "Flight booking",
+      "details": "Return or onward flights",
+      "needed": "Required"
+    },
+    {
+      "document": "UK residence evidence",
+      "details": "Your UK visa, BRP or eVisa share code",
+      "needed": "If not British"
+    }
+  ],
+  "purposeLabel": "Business visa (Non-B)"
+}

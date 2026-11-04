@@ -11,13 +11,13 @@ const allContinents = [
   ] },
   { id: 'asia', name: 'Asia', countries: [
     c('Azerbaijan', 'eVisa', '/azerbaijan-visa-uk/'), c('Cambodia', 'eVisa', '/cambodia-visa-uk/'), c('India', 'eVisa', '/indian-visa-application-uk/'), c('Myanmar', 'eVisa', '/myanmar-visa-uk/'), c('Pakistan', 'eVisa', '/pakistan-visa-uk/'),
-    c('Sri Lanka', 'ETA', '/sri-lanka-visa-services/'), c('Tajikistan', 'eVisa', '/tajikistan-visa-uk/'),
+    c('Sri Lanka', 'ETA', '/sri-lanka-visa-services/'), c('Tajikistan', 'eVisa', '/tajikistan-visa-uk/'), c('Thailand', 'eVisa', '/thailand-visa-uk/'),
   ] },
   { id: 'middle-east', name: 'Middle East', countries: [
     c('Bahrain', 'eVisa', '/bahrain-visa-uk/'), c('Kuwait', 'eVisa', '/kuwait-visa-uk/'), c('Oman', 'eVisa', '/oman-visa-uk/'), c('Saudi Arabia', 'eVisa', '/saudi-arabia-visa-uk/'), c('Turkey', 'eVisa', '/turkey-visa-uk/'),
   ] },
   { id: 'americas-oceania', name: 'Americas & Oceania', countries: [
-    c('USA', 'ESTA', '/usa-visa-services/'), c('Papua New Guinea', 'eVisa', '/papua-new-guinea-visa-uk/'),
+    c('Australia', 'eVisitor / ETA', '/australia-eta-evisitor-uk/'), c('Canada', 'eTA', '/canada-eta-uk/'), c('New Zealand', 'NZeTA', '/new-zealand-nzeta-uk/'), c('USA', 'ESTA', '/usa-visa-services/'), c('Papua New Guinea', 'eVisa', '/papua-new-guinea-visa-uk/'),
   ] },
 ];
 

@@ -1,0 +1,92 @@
+{
+  "title": "Thailand Tourist Visa from the UK | 60-Day e-Visa Help",
+  "description": "Thailand tourist visa from the UK: the 60-day Tourist e-Visa for stays longer than visa-free entry allows. Documents, timing and how we apply.",
+  "h1": "Thailand tourist visa (60-day e-Visa) from the UK",
+  "intro": "The Thailand Tourist e-Visa lets you stay up to 60 days, twice the visa-free period for British passport holders. It is applied for online before you travel. We prepare your Thailand tourist visa application and check every detail before it is submitted.",
+  "sections": [
+    {
+      "heading": "When you need a Thailand tourist visa",
+      "text": "Since visa-free stays were cut to 30 days in September 2026, the 60-day Tourist e-Visa is the easiest way to enjoy a longer holiday. It can usually be extended by a further 30 days in Thailand. Holders of passports that aren't visa-exempt need a tourist visa for any holiday."
+    },
+    {
+      "heading": "Applying for the Thailand tourist e-Visa",
+      "text": "Applications from the UK are made online through Thailand's official e-Visa system. You'll need recent bank statements (usually no older than 30 days), your flight and accommodation bookings, and a passport photo. Allow at least two to four weeks before you travel."
+    },
+    {
+      "heading": "Thailand tourist visa help from Manchester",
+      "text": "We're based in Manchester city centre and help travellers and businesses across the UK. We check the rules for your passport, prepare your application and keep you updated until it's decided."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "How long does a Thailand tourist e-Visa take?",
+      "a": "Allow two to four weeks. Apply well before you travel."
+    },
+    {
+      "q": "Do I still need the Digital Arrival Card with a visa?",
+      "a": "Yes. Every traveller must complete the TDAC, whatever their visa."
+    },
+    {
+      "q": "How long does a Thailand tourist visa take?",
+      "a": "Processing times vary with the authority and the time of year. Apply as early as you can, and don’t book non-refundable travel until your visa or authorisation is approved."
+    },
+    {
+      "q": "Can you help with my Thailand tourist visa application?",
+      "a": "Yes. We check which visa fits your trip, prepare your Thailand tourist visa application and documents, and keep you updated. Contact us or call 0161 956 2003."
+    }
+  ],
+  "govuk": "https://www.gov.uk/foreign-travel-advice",
+  "applyButton": "/apply/evisa/?destination=Thailand&visaType=Tourism",
+  "country": "Thailand",
+  "focusKeyword": "Thailand tourist visa",
+  "sortKey": "1 thailand 2 thailand-tourist-visa-uk",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Application completed and documents checked",
+      "processing": "",
+      "fee": "",
+      "popular": true,
+      "processingFee": "",
+      "total": ""
+    }
+  ],
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Valid for at least 6 months, with a copy of the photo page",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent colour passport photo",
+      "needed": "Required"
+    },
+    {
+      "document": "Bank statements",
+      "details": "Recent statements, usually no older than 30 days",
+      "needed": "Required"
+    },
+    {
+      "document": "Flight booking",
+      "details": "Return or onward flights",
+      "needed": "Required"
+    },
+    {
+      "document": "Accommodation",
+      "details": "Hotel bookings or an invitation",
+      "needed": "Required"
+    },
+    {
+      "document": "UK residence evidence",
+      "details": "Your UK visa, BRP or eVisa share code",
+      "needed": "If not British"
+    }
+  ],
+  "purposeLabel": "Tourist e-Visa (60 days)"
+}

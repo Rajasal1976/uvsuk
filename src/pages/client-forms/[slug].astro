@@ -10,7 +10,8 @@ import '../../styles/apply.css';
 
 export function getStaticPaths() {
   const forms = import.meta.glob('../../../content/client-forms/*.json', { eager: true, import: 'default' });
-  return Object.entries(forms).map(([path, d]: [string, any]) => ({ params: { slug: path.split('/').pop()!.replace('.json', '') }, props: { d } }));
+  // Templates aren't live forms: copy one (Duplicate in the admin) to make a form for a client
+  return Object.entries(forms).filter(([, d]: [string, any]) => d.template !== true).map(([path, d]: [string, any]) => ({ params: { slug: path.split('/').pop()!.replace('.json', '') }, props: { d } }));
 }
 const { d } = Astro.props as { d: any };
 const { slug } = Astro.params;
