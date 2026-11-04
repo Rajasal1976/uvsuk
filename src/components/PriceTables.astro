@@ -20,17 +20,17 @@ const call = `tel:${site.phoneIntl}`;
   {rows.length > 0 && (
     <div class="table-wrap">
       <table class="data-table price-table">
-        <thead><tr><th scope="col">Service</th><th scope="col">Processing time</th><th scope="col">{feeName}</th><th scope="col">Our fee</th><th scope="col">Total</th></tr></thead>
+        <thead><tr><th scope="col">Service</th><th scope="col">Visa length</th><th scope="col">{feeName}</th><th scope="col">Our fee</th><th scope="col">Total</th></tr></thead>
         <tbody>
           {rows.map((r) => {
             const total = totalFor(r);
             return (
-              <tr class={r.popular ? 'popular' : undefined}>
+              <tr>
                 <th scope="row" data-label="Service">
-                  {r.service}{r.popular && <span class="tag tag-pop">Most popular</span>}
+                  {r.service}
                   {r.included && <span style="display:block;font-weight:400;font-size:15px;color:var(--ink-soft);white-space:normal;margin-top:4px">{r.included}</span>}
                 </th>
-                <td data-label="Processing time">{r.processing || 'Ask us'}</td>
+                <td data-label="Visa length">{r.validity || 'Ask us'}</td>
                 <td data-label={feeName}>{r.processingFee || '–'}</td>
                 <td data-label="Our fee">{r.fee || <a href={call}>Call for price</a>}</td>
                 <td data-label="Total" class={total ? 'price' : undefined}>{total || '–'}</td>
