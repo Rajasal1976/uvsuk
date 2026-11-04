@@ -479,22 +479,26 @@ export function mountApplication(root, config, opts = {}) {
     if (f.type === 'date') return fmtDate(v);
     return String(v);
   }
+  // The answers as they appear in the email: a heading for each section, then numbered
+  // questions with the answer on the line below, easy to read and copy.
   function summaryLines() {
     const lines = [];
     for (const s of config.steps) {
-      lines.push('', `== ${s.title.toUpperCase()} ==`);
+      const items = [];
       for (const f of s.fields) {
         if (!visible(f)) continue;
         if (f.type === 'repeat') {
           const rows = (answers[f.name] || []).filter((r) => Object.values(r).some((x) => !isEmpty(x)));
           if (!rows.length) continue;
-          lines.push(`${f.label}:`);
-          rows.forEach((r, i) => lines.push(`  ${i + 1}. ` + f.fields.map((sf) => `${sf.label}: ${answerText(sf, r[sf.name]) ?? '-'}`).join('; ')));
+          items.push([f.label, rows.map((r, n) => `(${n + 1}) ` + f.fields.map((sf) => `${sf.label}: ${answerText(sf, r[sf.name]) ?? '-'}`).join(', ')).join('\n')]);
         } else {
           const t = answerText(f, answers[f.name]);
-          if (t) lines.push(`${f.label}: ${t}`);
+          if (t) items.push([f.label, t]);
         }
       }
+      if (!items.length) continue;
+      lines.push('', s.title.toUpperCase(), '');
+      items.forEach(([q, a], n) => lines.push(`${n + 1}. ${q}`, a, ''));
     }
     return lines;
   }
@@ -713,9 +717,8 @@ export function mountApplication(root, config, opts = {}) {
           const partTag = parts > 1 ? ` – documents part ${k + 1} of ${parts}` : '';
           fd.append('subject', `${config.title}: ${name} (${ref})${partTag}`);
           fd.append('summary', (k === 0
-            ? [...header, ...summaryLines(), '', '== DOCUMENTS ==', ...list.map(([slot, f]) => `${slotInfo(slot).label}: ${f.name} (${fmtSize(f.size)})`), parts > 1 ? `(Documents sent in ${parts} parts with the same reference.)` : '']
+            ? [...header, ...summaryLines(), '', 'DOCUMENTS ATTACHED', '', ...list.map(([slot, f], n) => `${n + 1}. ${slotInfo(slot).label}\n${f.name}\n`), parts > 1 ? `\n(Documents sent in ${parts} parts with the same reference.)` : '']
             : [...header, `Documents part ${k + 1} of ${parts}.`]).join('\n'));
-          fd.append('answers_json', k === 0 ? JSON.stringify(answers) : '{}');
           fd.append('bot-field', '');
           // Name each file after the document it is, e.g. "KHAN - Invitation letter from the Chinese company.pdf"
           for (const [slot, f] of batches[k]) {
