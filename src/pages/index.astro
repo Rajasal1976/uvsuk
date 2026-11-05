@@ -11,6 +11,14 @@ const schemas = [JSON.stringify({
   mainEntity: home.faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
 })];
 const tel = `tel:${site.phoneIntl}`;
+// "Get directions" opens Google Maps at the office address
+const directionsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${site.address.line1}, ${site.address.city} ${site.address.postcode}`)}`;
+// Service tiles in the "Visit us" card. The last one (document legalisation) is highlighted in gold.
+const serviceTiles = [
+  ['UK immigration', 'Spouse, work, ILR and citizenship', '/uk-visa-services/', false],
+  ['Worldwide visas', 'Visas and eVisas for travel', '/worldwide-visas/', false],
+  ['Document legalisation', 'Apostilles and attestation', '/document-legalisation/', true],
+];
 // "Popular" buttons beside the visa search (edited in the admin: Homepage › Popular links)
 const popularLinks = (home.popularLinks?.length ? home.popularLinks.map((x) => [x.label, x.url]) : [
   ['UK Immigration', '/uk-visa-services/'], ['2nd Passport', '/second-uk-passport/'], ['Schengen Visa', '/schengen-visa-application/'], ['China Visa', '/china-visa-application/'],
@@ -121,18 +129,29 @@ const placeholder = 'background: #D6E3DA; border-radius: 12px; display: flex; al
 </ul>
 </section>
 
-<!-- Visit our office: photo with contact details -->
+<!-- Visit our office: photo with contact details and the three service areas -->
 <section class="office">
 <div class="office-inner">
 {home.heroPhoto
   ? <img src={home.heroPhoto} alt={home.heroPhotoAlt} width="1200" height="880" loading="lazy" class="office-photo" />
   : <div class="office-photo office-placeholder">Add a photo in the admin: Homepage › Main photo</div>}
-<div class="office-details">
-<h2>Visit or contact us</h2>
-<p class="fr-item"><span class="fr-label">Office</span>{site.address.line1}<br />{site.address.city} {site.address.postcode}</p>
+<div class="office-card">
+<h2>Visit us in Manchester</h2>
+<p class="office-lead">Meet an adviser at our city-centre office, or contact us by phone or email.</p>
+<div class="office-grid">
+<p class="fr-item"><span class="fr-label">Office</span>{site.address.line1}<br />{site.address.city} {site.address.postcode}<br /><a class="office-directions" href={directionsUrl} target="_blank" rel="noopener"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg>Get directions</a></p>
+<p class="fr-item"><span class="fr-label">Opening hours</span>{site.hours}</p>
 <p class="fr-item"><span class="fr-label">Telephone</span><a href={`tel:${site.phoneIntl}`}>{site.phone}</a></p>
 <p class="fr-item"><span class="fr-label">Email</span><a href={`mailto:${site.email}`}>{site.email}</a></p>
-<p class="fr-item"><span class="fr-label">Opening hours</span>{site.hours}</p>
+</div>
+<div class="office-services">
+<h3>How we can help</h3>
+<ul>
+{serviceTiles.map(([title, text, href, featured]) => (
+<li><a href={href} class={featured ? 'service-tile service-tile-featured' : 'service-tile'}><strong>{title}<span aria-hidden="true">→</span></strong><span>{text}</span></a></li>
+))}
+</ul>
+</div>
 </div>
 </div>
 </section>
@@ -417,11 +436,25 @@ const placeholder = 'background: #D6E3DA; border-radius: 12px; display: flex; al
   .trust-icon svg { display: block; }
 
   .office { background: #F2F6F1; }
-  .office-inner { max-width: 1200px; margin: 0 auto; padding: 64px 24px; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 48px; align-items: center; }
-  .office-photo { width: 100%; height: 360px; object-fit: cover; border-radius: 12px; display: block; }
+  .office-inner { max-width: 1200px; margin: 0 auto; padding: 72px 24px; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); align-items: center; }
+  .office-photo { width: 100%; height: 440px; object-fit: cover; border-radius: 12px; display: block; }
   .office-placeholder { background: #D6E3DA; display: flex; align-items: center; justify-content: center; text-align: center; color: #3A4552; padding: 24px; box-sizing: border-box; }
-  .office-details { display: flex; flex-direction: column; gap: 14px; }
-  .office-details h2 { margin: 0 0 4px; font-family: 'Source Serif 4', Georgia, serif; font-size: 32px; color: #14532D; }
+  .office-card { position: relative; margin-left: -80px; background: #FFFFFF; border: 1px solid #DCE6DF; border-radius: 14px; padding: 32px; box-shadow: 0 18px 40px rgba(14, 59, 32, .12); }
+  .office-card h2 { margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 30px; line-height: 1.2; color: #14532D; }
+  .office-lead { margin: 6px 0 20px; color: #3A4552; font-size: 16px; }
+  .office-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 24px; }
+  .office-directions { display: inline-flex; align-items: center; gap: 5px; margin-top: 6px; }
+  .office-services { margin-top: 24px; padding-top: 20px; border-top: 1px solid #E3E9E5; }
+  .office-services h3 { margin: 0 0 10px; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #8A5A12; }
+  .office-services ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+  .service-tile { display: flex; flex-direction: column; gap: 4px; height: 100%; box-sizing: border-box; padding: 12px 14px; border: 1px solid #D5E6DA; border-radius: 10px; background: #F4F8F5; text-decoration: none; }
+  .service-tile strong { display: flex; justify-content: space-between; gap: 6px; color: #14532D; font-size: 15px; line-height: 1.3; }
+  .service-tile strong span { color: #8A5A12; }
+  .service-tile > span { color: #3A4552; font-size: 13.5px; line-height: 1.4; }
+  .service-tile:hover { border-color: #14532D; background: #EAF4EC; }
+  .service-tile:focus-visible { outline: 3px solid #F2C46D; outline-offset: 2px; }
+  .service-tile-featured { border: 2px solid #F2C46D; background: #FFF9EC; }
+  .service-tile-featured:hover { border-color: #E0AE4F; background: #FDF1D6; }
   .fr-item { margin: 0; color: #3A4552; font-size: 16px; line-height: 1.5; }
   .fr-label { display: block; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #8A5A12; }
   .fr-item a { color: #14532D; font-weight: 600; }
@@ -430,12 +463,16 @@ const placeholder = 'background: #D6E3DA; border-radius: 12px; display: flex; al
     .hero-inner { grid-template-columns: 1fr; gap: 32px; padding-top: 32px; }
     .finder-card { order: -1; }
     .trust-strip ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .office-inner { grid-template-columns: 1fr; gap: 28px; }
+    .office-inner { grid-template-columns: 1fr; padding: 48px 24px; }
+    .office-card { margin: -48px 16px 0; }
+    .office-photo { height: 320px; }
   }
   @media (max-width: 600px) {
     .home-hero h1 { font-size: 34px; }
     .finder-card { padding: 22px 18px; }
     .trust-strip ul { grid-template-columns: 1fr; gap: 18px; }
     .office-photo { height: 240px; }
+    .office-card { margin: -32px 8px 0; padding: 22px 18px; }
+    .office-grid, .office-services ul { grid-template-columns: 1fr; }
   }
 </style>
