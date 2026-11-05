@@ -1,0 +1,101 @@
+{
+  "title": "Ghana Business Visa from the UK | Application Help | UVS",
+  "description": "Ghana business visa from the UK: for meetings, conferences and business trips. We prepare your application for the Ghana High Commission in London.",
+  "h1": "Ghana business visa from the UK",
+  "purposeLabel": "Business visa",
+  "intro": "Travelling to Ghana for meetings, conferences or other business? The Ghana business visa is applied for through the Ghana High Commission in London. We prepare your application, check your invitation and employer letters and submit it for you.",
+  "eligibility": [
+    "You are travelling for meetings, conferences or other business activities",
+    "You have an invitation from a company in Ghana",
+    "You have a letter from your UK employer and a yellow fever certificate"
+  ],
+  "sections": [
+    {
+      "heading": "What a Ghana business visa covers",
+      "text": "The Ghana business visa is for meetings, negotiations, conferences and similar short business trips. It doesn't allow you to take up paid work in Ghana. For holidays, see our [Ghana tourist visa](/ghana-tourist-visa/) page."
+    },
+    {
+      "heading": "Business visa or e-Business visa?",
+      "text": "Ghana also offers an [e-Business visa](/ghana-e-business-visa/), applied for online so you keep your passport. The High Commission visa can suit travellers who prefer a visa in their passport or whose case doesn't fit the eVisa. We'll tell you which is best for your trip."
+    },
+    {
+      "heading": "Yellow fever certificate",
+      "text": "Ghana requires all arriving travellers to show a valid yellow fever vaccination certificate. Get vaccinated at least 10 days before you travel, at a registered yellow fever centre."
+    },
+    {
+      "heading": "Ghana business visa help from Manchester",
+      "text": "We're based in Manchester city centre and handle Ghana business visa applications for travellers across the UK. Before you travel, read the UK government's [foreign travel advice](https://www.gov.uk/foreign-travel-advice/ghana) for Ghana."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "What should the Ghana invitation letter include?",
+      "a": "It should come from the Ghanaian company, explain the purpose and dates of your visit, and confirm who is responsible for you while you're there. We check it before we submit."
+    },
+    {
+      "q": "How long does a Ghana business visa take?",
+      "a": "High Commission processing times vary. Allow several weeks, and longer around Christmas and festival periods."
+    },
+    {
+      "q": "Do I need a yellow fever certificate?",
+      "a": "Yes. Ghana requires a valid yellow fever vaccination certificate for entry, and you'll need to upload it with your application."
+    }
+  ],
+  "govuk": "https://www.gov.uk/foreign-travel-advice/ghana",
+  "applyButton": "/apply/ghana-visa/?visaType=Business%20visa",
+  "country": "Ghana",
+  "sortKey": "1 ghana 3 ghana business",
+  "focusKeyword": "Ghana business visa",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Business visa application completed and checked",
+      "processing": "",
+      "fee": "",
+      "popular": true,
+      "processingFee": "",
+      "total": ""
+    },
+    {
+      "service": "Urgent",
+      "included": "Everything in Standard, with the fastest processing available",
+      "processing": "",
+      "fee": "",
+      "popular": false,
+      "processingFee": "",
+      "total": ""
+    }
+  ],
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Valid for at least 6 months, with blank pages",
+      "needed": "Required"
+    },
+    {
+      "document": "Photo",
+      "details": "Passport-style photo",
+      "needed": "Required"
+    },
+    {
+      "document": "Return flight booking",
+      "details": "",
+      "needed": "Required"
+    },
+    {
+      "document": "Invitation letter",
+      "details": "From the Ghanaian company you're visiting",
+      "needed": "Required"
+    },
+    {
+      "document": "Employer letter",
+      "details": "From your UK employer, explaining the purpose of the trip",
+      "needed": "Required"
+    },
+    {
+      "document": "Yellow fever certificate",
+      "details": "Yellow fever vaccination certificate",
+      "needed": "Required"
+    }
+  ]
+}

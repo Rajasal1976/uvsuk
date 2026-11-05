@@ -1,0 +1,101 @@
+{
+  "title": "Ghana e-Business Visa from the UK | Apply Online | UVS",
+  "description": "Ghana e-Business visa from the UK: apply online for meetings and business trips, with no need to send your passport. We complete and check it for you.",
+  "h1": "Ghana e-Business visa from the UK",
+  "purposeLabel": "e-Business visa",
+  "intro": "Ghana's e-Business visa lets you apply online for meetings, conferences and short business trips, without sending your passport away. We complete your eVisa application, check your invitation and employer letters and keep you updated until it's approved.",
+  "eligibility": [
+    "You are travelling for meetings, conferences or other business activities",
+    "You have an invitation from a company in Ghana",
+    "You have a letter from your UK employer and a yellow fever certificate"
+  ],
+  "sections": [
+    {
+      "heading": "How the Ghana e-Business visa works",
+      "text": "Ghana launched its eVisa system in May 2026. Your application, documents and payment are all sent online, and the approved eVisa is emailed to you. You keep your passport, which helps if you travel often for work."
+    },
+    {
+      "heading": "e-Business visa or business visa?",
+      "text": "The e-Business visa is usually the quicker option. If you'd prefer a visa in your passport, or your case doesn't fit the eVisa, we can apply for a [Ghana business visa](/ghana-business-visa/) through the High Commission instead."
+    },
+    {
+      "heading": "Yellow fever certificate",
+      "text": "Ghana requires all arriving travellers to show a valid yellow fever vaccination certificate. Get vaccinated at least 10 days before you travel, at a registered yellow fever centre."
+    },
+    {
+      "heading": "Ghana e-Business visa help from Manchester",
+      "text": "We're based in Manchester city centre and handle Ghana e-Business visa applications for travellers across the UK. Before you travel, read the UK government's [foreign travel advice](https://www.gov.uk/foreign-travel-advice/ghana) for Ghana."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Do I need to send my passport for a Ghana e-Business visa?",
+      "a": "No. Everything is done online. You'll just need a clear scan of your passport photo page."
+    },
+    {
+      "q": "How long does a Ghana e-Business visa take?",
+      "a": "Complete applications are often decided within a few working days. Apply at least a couple of weeks before you travel to be safe."
+    },
+    {
+      "q": "Do I need a yellow fever certificate?",
+      "a": "Yes. Ghana requires a valid yellow fever vaccination certificate for entry, and you'll need to upload it with your application."
+    }
+  ],
+  "govuk": "https://www.gov.uk/foreign-travel-advice/ghana",
+  "applyButton": "/apply/ghana-visa/?visaType=e-Business%20visa",
+  "country": "Ghana",
+  "sortKey": "1 ghana 5 ghana e-business",
+  "focusKeyword": "Ghana e-Business visa",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "e-Business visa application completed and checked",
+      "processing": "",
+      "fee": "",
+      "popular": true,
+      "processingFee": "",
+      "total": ""
+    },
+    {
+      "service": "Urgent",
+      "included": "Everything in Standard, with the fastest processing available",
+      "processing": "",
+      "fee": "",
+      "popular": false,
+      "processingFee": "",
+      "total": ""
+    }
+  ],
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Valid for at least 6 months, with blank pages",
+      "needed": "Required"
+    },
+    {
+      "document": "Photo",
+      "details": "Passport-style photo",
+      "needed": "Required"
+    },
+    {
+      "document": "Return flight booking",
+      "details": "",
+      "needed": "Required"
+    },
+    {
+      "document": "Invitation letter",
+      "details": "From the Ghanaian company you're visiting",
+      "needed": "Required"
+    },
+    {
+      "document": "Employer letter",
+      "details": "From your UK employer, explaining the purpose of the trip",
+      "needed": "Required"
+    },
+    {
+      "document": "Yellow fever certificate",
+      "details": "Yellow fever vaccination certificate",
+      "needed": "Required"
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "title": "Ghana Tourist Visa from the UK | Application Help | UVS",
+  "description": "Ghana tourist visa from the UK: for holidays and visiting family or friends. We prepare your application for the Ghana High Commission in London.",
+  "h1": "Ghana tourist visa from the UK",
+  "purposeLabel": "Tourist visa",
+  "intro": "Going to Ghana for a holiday or to visit family or friends? The Ghana tourist visa is applied for through the Ghana High Commission in London. We prepare your application, check your documents and submit it for you.",
+  "eligibility": [
+    "You are travelling for a holiday, sightseeing or to visit family or friends",
+    "You won’t work or do business during your visit",
+    "You have a return ticket and a yellow fever certificate"
+  ],
+  "sections": [
+    {
+      "heading": "What a Ghana tourist visa covers",
+      "text": "The Ghana tourist visa is for holidays, sightseeing and visiting family or friends. It doesn't cover business meetings or work. For business trips, see our [Ghana business visa](/ghana-business-visa/) page."
+    },
+    {
+      "heading": "Tourist visa or e-Tourist visa?",
+      "text": "Ghana also offers an [e-Tourist visa](/ghana-e-tourist-visa/), applied for online so you keep your passport. The High Commission visa suits travellers who prefer a visa in their passport or whose case doesn't fit the eVisa. We'll tell you which is best for your trip."
+    },
+    {
+      "heading": "Yellow fever certificate",
+      "text": "Ghana requires all arriving travellers to show a valid yellow fever vaccination certificate. Get vaccinated at least 10 days before you travel, at a registered yellow fever centre."
+    },
+    {
+      "heading": "Ghana tourist visa help from Manchester",
+      "text": "We're based in Manchester city centre and handle Ghana tourist visa applications for travellers across the UK. Before you travel, read the UK government's [foreign travel advice](https://www.gov.uk/foreign-travel-advice/ghana) for Ghana."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Can I visit family on a Ghana tourist visa?",
+      "a": "Yes. Visiting family or friends is covered by the Ghana tourist visa. You'll need an invitation letter from your host with a copy of their ID."
+    },
+    {
+      "q": "How long does a Ghana tourist visa take?",
+      "a": "High Commission processing times vary. Allow several weeks, and longer around Christmas and festival periods."
+    },
+    {
+      "q": "Do I need a yellow fever certificate?",
+      "a": "Yes. Ghana requires a valid yellow fever vaccination certificate for entry, and you'll need to upload it with your application."
+    }
+  ],
+  "govuk": "https://www.gov.uk/foreign-travel-advice/ghana",
+  "applyButton": "/apply/ghana-visa/?visaType=Tourist%20visa",
+  "country": "Ghana",
+  "sortKey": "1 ghana 2 ghana tourist",
+  "focusKeyword": "Ghana tourist visa",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Tourist visa application completed and checked",
+      "processing": "",
+      "fee": "",
+      "popular": true,
+      "processingFee": "",
+      "total": ""
+    },
+    {
+      "service": "Urgent",
+      "included": "Everything in Standard, with the fastest processing available",
+      "processing": "",
+      "fee": "",
+      "popular": false,
+      "processingFee": "",
+      "total": ""
+    }
+  ],
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Valid for at least 6 months, with blank pages",
+      "needed": "Required"
+    },
+    {
+      "document": "Photo",
+      "details": "Passport-style photo",
+      "needed": "Required"
+    },
+    {
+      "document": "Return flight booking",
+      "details": "",
+      "needed": "Required"
+    },
+    {
+      "document": "Accommodation or invitation",
+      "details": "Hotel booking, or an invitation letter from your host with a copy of their ID",
+      "needed": "Required"
+    },
+    {
+      "document": "Yellow fever certificate",
+      "details": "Yellow fever vaccination certificate",
+      "needed": "Required"
+    }
+  ]
+}
