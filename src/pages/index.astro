@@ -63,52 +63,24 @@ const pointIcons = [
   '<svg viewBox="0 0 24 24" width="22" height="22"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M15.5 6.5A3.5 3.5 0 0 0 9 8.3c0 3.2 1.4 4.6.4 8.7h7.1M7 12.5h6"/></svg>',
   '<svg viewBox="0 0 24 24" width="22" height="22"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M13 2.5L4.5 13.5H11l-1 8 8.5-11H12z"/></svg>',
 ];
+const starIcon = '<svg viewBox="0 0 24 24" width="22" height="22"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg>';
 const photo = 'width: 100%; border-radius: 12px; object-fit: cover; display: block';
 const placeholder = 'background: #D6E3DA; border-radius: 12px; display: flex; align-items: center; justify-content: center; text-align: center; color: #3A4552; font-size: 15px; padding: 24px; box-sizing: border-box';
 ---
 <Page title={title} description={description} schemas={schemas}>
 <main id="main">
-<!-- Hero -->
-<section style="background: #F2F6F1">
-<div style="max-width: 1200px; margin: 0 auto; padding: 80px 24px; display: flex; flex-wrap: wrap; gap: 56px; align-items: center">
-<div style="flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 24px">
-<p style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: 0.08em; color: #8A5A12">{home.heroEyebrow}</p>
-<h1 style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 54px; line-height: 1.1; font-weight: 600; color: #14532D">{home.heroHeading}</h1>
-<p style="margin: 0; font-size: 19px; color: #3A4552; max-width: 560px">{home.heroIntro}</p>
-<div style="display: flex; flex-wrap: wrap; gap: 14px">
-<a href={site.bookingUrl} style="background: #14532D; color: #FFFFFF; text-decoration: none; padding: 16px 28px; border-radius: 6px; font-weight: 600">Book a consultation</a>
-<a href={tel} style="background: #FFFFFF; color: #14532D; text-decoration: none; padding: 15px 27px; border-radius: 6px; font-weight: 600; border: 1px solid #14532D">Call {site.phone}</a>
-</div>
-<ul class="hero-points">
-{(home.heroPoints ?? []).slice(0, 3).map((pt, i) => (
-<li>
-<span class="hero-point-icon" aria-hidden="true" set:html={pointIcons[i % pointIcons.length]} />
-<span><strong>{pt.title}</strong><span>{pt.text}</span></span>
-</li>
-))}
-</ul>
-</div>
-<div style="flex: 1 1 400px; min-width: 0">
-{home.heroPhoto
-  ? <img src={home.heroPhoto} alt={home.heroPhotoAlt} width="1200" height="880" fetchpriority="high" style={`${photo}; height: 440px`} />
-  : <div style={`${placeholder}; height: 440px`}>Add a photo in the admin: Homepage › Main photo</div>}
-<div class="hero-stats">
-<span><strong>{site.googleRating} ★</strong> on Google, Trustpilot &amp; Trustindex</span>
-<span><strong>{site.yearsInPractice}</strong> years in practice</span>
-<span><strong>{site.applicationsHandled}</strong> applications handled</span>
+<!-- Hero: visa search first, beside the main heading -->
+<section class="home-hero">
+<div class="hero-inner">
+<div class="hero-text">
+<p class="hero-eyebrow">{home.heroEyebrow}</p>
+<h1>{home.heroHeading}</h1>
+<p class="hero-intro">{home.heroIntro}</p>
+<div class="hero-actions">
+<a href={site.bookingUrl} class="hero-book">Book a consultation</a>
+<a href={tel} class="hero-call">or call {site.phone}</a>
 </div>
 </div>
-</div>
-<div class="finder-row">
-<!-- 1. Contact details -->
-<div class="fr-box fr-contact">
-<h2>Visit or contact us</h2>
-<p class="fr-item"><span class="fr-label">Office</span>{site.address.line1}<br />{site.address.city} {site.address.postcode}</p>
-<p class="fr-item"><span class="fr-label">Telephone</span><a href={`tel:${site.phoneIntl}`}>{site.phone}</a></p>
-<p class="fr-item"><span class="fr-label">Email</span><a href={`mailto:${site.email}`}>{site.email}</a></p>
-<p class="fr-item"><span class="fr-label">Opening hours</span>{site.hours}</p>
-</div>
-<!-- 2. Visa search -->
 <div class="finder-card">
 <h2>Visa search</h2>
 <p>Choose the country, then the type of visa. For the UK, choose UK visas.</p>
@@ -116,7 +88,7 @@ const placeholder = 'background: #D6E3DA; border-radius: 12px; display: flex; al
 <label for="visa-country">1. Country</label>
 <select id="visa-country">
 <option value="">Select a country…</option>
-{visaFinder.map(([country]) => <option value={country}>{country}</option>)}
+{visaFinder.map(([country], i) => <option value={country} selected={i === 0}>{country}</option>)}
 <option value="__other">Other countries</option>
 </select>
 <label for="visa-type">2. Type of visa</label>
@@ -126,16 +98,41 @@ const placeholder = 'background: #D6E3DA; border-radius: 12px; display: flex; al
 <button id="visa-check" type="button">Check requirements</button>
 </div>
 </div>
-<!-- 3. Popular countries and IAA -->
-<div class="fr-box fr-popular">
-<h2>Popular</h2>
-<div class="fr-links">
-{popularLinks.map(([label, href]) => <a href={href}>{label}<span aria-hidden="true">→</span></a>)}
 </div>
-<div class="fr-iaa">
-{home.iaaLogo && <img src={home.iaaLogo} alt="Immigration Advice Authority logo" width="52" height="52" loading="lazy" />}
-<p><strong>Regulated by the IAA</strong> Ref {site.iaaRef}. <a href="https://portal.immigrationadviceauthority.gov.uk/s/adviser-finder">Check our registration</a></p>
-</div>
+<nav class="hero-popular" aria-label="Popular visas">
+<span>Popular visas</span>
+{popularLinks.map(([label, href]) => <a href={href}>{label}</a>)}
+</nav>
+</section>
+
+<!-- Why choose us: selling points and ratings -->
+<section class="trust-strip">
+<ul>
+{(home.heroPoints ?? []).slice(0, 3).map((pt, i) => (
+<li>
+<span class="trust-icon" aria-hidden="true" set:html={pointIcons[i % pointIcons.length]} />
+<span><strong>{pt.title}</strong><span>{pt.text}</span></span>
+</li>
+))}
+<li>
+<span class="trust-icon" aria-hidden="true" set:html={starIcon} />
+<span><strong>{site.googleRating} ★ rating</strong><span>On Google, Trustpilot and Trustindex. {site.yearsInPractice} years in practice, {site.applicationsHandled} applications handled.</span></span>
+</li>
+</ul>
+</section>
+
+<!-- Visit our office: photo with contact details -->
+<section class="office">
+<div class="office-inner">
+{home.heroPhoto
+  ? <img src={home.heroPhoto} alt={home.heroPhotoAlt} width="1200" height="880" loading="lazy" class="office-photo" />
+  : <div class="office-photo office-placeholder">Add a photo in the admin: Homepage › Main photo</div>}
+<div class="office-details">
+<h2>Visit or contact us</h2>
+<p class="fr-item"><span class="fr-label">Office</span>{site.address.line1}<br />{site.address.city} {site.address.postcode}</p>
+<p class="fr-item"><span class="fr-label">Telephone</span><a href={`tel:${site.phoneIntl}`}>{site.phone}</a></p>
+<p class="fr-item"><span class="fr-label">Email</span><a href={`mailto:${site.email}`}>{site.email}</a></p>
+<p class="fr-item"><span class="fr-label">Opening hours</span>{site.hours}</p>
 </div>
 </div>
 </section>
@@ -355,6 +352,8 @@ const placeholder = 'background: #D6E3DA; border-radius: 12px; display: flex; al
       type.add(new Option(row[2].length ? `All ${row[0].replace(/ visas$/, '')} visa options` : (row[3] || `${row[0]} visa`), row[1]));
       for (const [label, url] of row[2]) type.add(new Option(label, url));
     });
+    // UK visas is selected when the page loads, so fill in its visa types straight away
+    if (country.value) country.dispatchEvent(new Event('change'));
     box.querySelector('#visa-check')!.addEventListener('click', () => {
       if (country.value === '__other') return void (window.location.href = '/worldwide-visas/');
       const url = type.value || data.find((r) => r[0] === country.value)?.[1];
@@ -376,52 +375,67 @@ const placeholder = 'background: #D6E3DA; border-radius: 12px; display: flex; al
   .industry-links { display: flex; flex-wrap: wrap; gap: 10px; }
   .industry-links a { color: #FFFFFF; text-decoration: none; border: 1px solid rgba(255,255,255,.45); border-radius: 999px; padding: 8px 16px; font-size: 15px; font-weight: 500; }
   .industry-links a:hover, .industry-links a:focus-visible { background: #F2C46D; border-color: #F2C46D; color: #14532D; }
-  .finder-row { max-width: 1200px; margin: 0 auto; padding: 0 24px 72px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr) minmax(0, 1.3fr); align-items: stretch; filter: drop-shadow(0 10px 24px rgba(14, 59, 32, .14)); }
-  .fr-box { background: #FFFFFF; padding: 26px 24px; display: flex; flex-direction: column; gap: 12px; border: 1px solid #DCE6DF; }
-  .fr-box h2 { margin: 0; font-size: 20px; color: #14532D; }
-  .fr-contact { border-radius: 14px 0 0 14px; border-right: 0; }
-  .fr-popular { border-radius: 0 14px 14px 0; border-left: 0; background: #F4F8F5; }
-  .fr-item { margin: 0; color: #3A4552; font-size: 15px; line-height: 1.5; }
-  .fr-label { display: block; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #8A5A12; }
-  .fr-item a { color: #14532D; font-weight: 600; }
-  .finder-card { background: linear-gradient(160deg, #14532D 0%, #0E3B20 100%); padding: 30px 28px; display: flex; flex-direction: column; justify-content: center; gap: 12px; }
-  .finder-card h2 { margin: 0; font-size: 26px; color: #FFFFFF; }
-  .finder-card > p { margin: 0; color: #DDEBE1; font-size: 15px; }
-  .fr-links { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  .fr-links a { display: flex; justify-content: space-between; align-items: center; gap: 8px; background: #FFFFFF; border: 1px solid #D5E6DA; border-radius: 8px; padding: 10px 12px; font-size: 15px; font-weight: 600; color: #14532D; text-decoration: none; }
-  .fr-links a:hover { border-color: #14532D; background: #EAF4EC; }
-  .fr-links a span { color: #8A5A12; }
-  .fr-iaa { display: flex; gap: 12px; align-items: center; margin-top: auto; padding-top: 12px; border-top: 1px solid #DCE6DF; }
-  .fr-iaa img { flex: none; width: 52px; height: 52px; object-fit: contain; border-radius: 6px; }
-  .fr-iaa p { margin: 0; font-size: 13.5px; line-height: 1.45; color: #3A4552; }
-  .fr-iaa strong { color: #14532D; }
-  @media (max-width: 1000px) {
-    .finder-row { grid-template-columns: 1fr; }
-    .fr-contact { border-radius: 14px 14px 0 0; border-right: 1px solid #DCE6DF; border-bottom: 0; }
-    .fr-popular { border-radius: 0 0 14px 14px; border-left: 1px solid #DCE6DF; border-top: 0; }
-  }
+  .home-hero { background: #14532D; color: #DDEBE1; }
+  .hero-inner { max-width: 1200px; margin: 0 auto; padding: 64px 24px 28px; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 48px; align-items: center; }
+  .hero-text { display: flex; flex-direction: column; gap: 18px; }
+  .hero-eyebrow { margin: 0; font-size: 14px; font-weight: 600; letter-spacing: .08em; color: #F2C46D; }
+  .home-hero h1 { margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 44px; line-height: 1.12; font-weight: 600; color: #FFFFFF; }
+  .hero-intro { margin: 0; font-size: 18px; line-height: 1.6; color: #DDEBE1; max-width: 600px; }
+  .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 22px; }
+  .hero-book { background: #F2C46D; color: #0E3B20; text-decoration: none; padding: 16px 28px; border-radius: 6px; font-weight: 700; }
+  .hero-book:hover { background: #F6D48E; }
+  .hero-book:focus-visible, .hero-call:focus-visible { outline: 3px solid #FFFFFF; outline-offset: 3px; }
+  .hero-call { color: #FFFFFF; font-weight: 600; text-underline-offset: 3px; }
+  .finder-card { background: #EEF4EF; border-radius: 14px; padding: 28px; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 18px 40px rgba(0, 0, 0, .22); }
+  .finder-card h2 { margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 28px; color: #14532D; }
+  .finder-card > p { margin: 0; color: #3A4552; font-size: 15px; }
+  .hero-popular { max-width: 1200px; margin: 0 auto; padding: 0 24px 40px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+  .hero-popular span { font-size: 14px; font-weight: 700; color: #F2C46D; margin-right: 4px; }
+  .hero-popular a { color: #FFFFFF; text-decoration: none; border: 1px solid rgba(255,255,255,.45); border-radius: 999px; padding: 7px 15px; font-size: 14.5px; font-weight: 500; }
+  .hero-popular a:hover, .hero-popular a:focus-visible { background: #F2C46D; border-color: #F2C46D; color: #14532D; outline: none; }
   .visa-finder { width: 100%; display: grid; grid-template-columns: 1fr; gap: 6px; }
-  .visa-finder label { margin-top: 6px; font-size: 14px; font-weight: 600; color: #F2C46D; letter-spacing: .02em; }
+  .visa-finder label { margin-top: 6px; font-size: 14px; font-weight: 700; color: #14532D; }
   .visa-finder select {
     min-width: 0; height: 52px; padding: 0 60px 0 14px; font-size: 16px; font-family: inherit; color: #1B2430;
-    border: 0; border-radius: 6px; cursor: pointer; appearance: none; -webkit-appearance: none;
+    border: 1px solid #C9D6CC; border-radius: 6px; cursor: pointer; appearance: none; -webkit-appearance: none;
     background-color: #FFFFFF;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='20' height='20'%3E%3Cpath d='M6 9l6 6 6-6' fill='none' stroke='%23FFFFFF' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"), linear-gradient(#2E8B57, #2E8B57);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='20' height='20'%3E%3Cpath d='M6 9l6 6 6-6' fill='none' stroke='%2314532D' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"), linear-gradient(#F2C46D, #F2C46D);
     background-repeat: no-repeat; background-size: 20px 20px, 46px 100%; background-position: right 13px center, right center;
   }
-  .visa-finder select:focus-visible { outline: 3px solid #F2C46D; outline-offset: 2px; }
-  .visa-finder select:disabled { cursor: not-allowed; color: #6B7A72; background-color: #EEF2EF; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='20' height='20'%3E%3Cpath d='M6 9l6 6 6-6' fill='none' stroke='%23FFFFFF' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"), linear-gradient(#A9B8AE, #A9B8AE); }
-  .visa-finder button { margin-top: 12px; height: 54px; background: #F2C46D; color: #0E3B20; border: 0; padding: 0 24px; border-radius: 6px; font-size: 16px; font-weight: 700; font-family: inherit; cursor: pointer; white-space: nowrap; }
-  .visa-finder button:hover { background: #F6D48E; }
-  .visa-finder button:focus-visible { outline: 3px solid #FFFFFF; outline-offset: 2px; }
+  .visa-finder select:focus-visible { outline: 3px solid #14532D; outline-offset: 2px; }
+  .visa-finder select:disabled { cursor: not-allowed; color: #6B7A72; background-color: #F4F6F4; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='20' height='20'%3E%3Cpath d='M6 9l6 6 6-6' fill='none' stroke='%23FFFFFF' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"), linear-gradient(#A9B8AE, #A9B8AE); }
+  .visa-finder button { margin-top: 12px; height: 54px; background: #14532D; color: #FFFFFF; border: 0; padding: 0 24px; border-radius: 6px; font-size: 16px; font-weight: 700; font-family: inherit; cursor: pointer; white-space: nowrap; }
+  .visa-finder button:hover { background: #0E3B20; }
+  .visa-finder button:focus-visible { outline: 3px solid #F2C46D; outline-offset: 2px; }
 
-  .hero-points { list-style: none; margin: 4px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
-  .hero-points li { display: flex; gap: 12px; align-items: flex-start; }
-  .hero-points strong { display: block; color: #14532D; font-size: 16px; line-height: 1.3; margin-bottom: 3px; }
-  .hero-points li > span:last-child > span { display: block; color: #3A4552; font-size: 14.5px; line-height: 1.45; }
-  .hero-point-icon { flex: none; width: 40px; height: 40px; border-radius: 50%; background: #FFFFFF; border: 1px solid #DCE6DF; color: #8A5A12; display: flex; align-items: center; justify-content: center; }
-  .hero-point-icon svg { display: block; }
-  .hero-stats { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 28px; font-size: 15px; color: #3A4552; padding-top: 16px; }
-  .hero-stats strong { color: #14532D; }
-  @media (max-width: 760px) { .hero-points { grid-template-columns: 1fr; gap: 14px; } }
+  .trust-strip { background: #FFFFFF; border-bottom: 1px solid #DCE6DF; }
+  .trust-strip ul { max-width: 1200px; margin: 0 auto; padding: 32px 24px; list-style: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+  .trust-strip li { display: flex; gap: 12px; align-items: flex-start; }
+  .trust-strip strong { display: block; color: #14532D; font-size: 16px; line-height: 1.3; margin-bottom: 3px; }
+  .trust-strip li > span:last-child > span { display: block; color: #3A4552; font-size: 14.5px; line-height: 1.45; }
+  .trust-icon { flex: none; width: 40px; height: 40px; border-radius: 50%; background: #F2F6F1; border: 1px solid #DCE6DF; color: #8A5A12; display: flex; align-items: center; justify-content: center; }
+  .trust-icon svg { display: block; }
+
+  .office { background: #F2F6F1; }
+  .office-inner { max-width: 1200px; margin: 0 auto; padding: 64px 24px; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 48px; align-items: center; }
+  .office-photo { width: 100%; height: 360px; object-fit: cover; border-radius: 12px; display: block; }
+  .office-placeholder { background: #D6E3DA; display: flex; align-items: center; justify-content: center; text-align: center; color: #3A4552; padding: 24px; box-sizing: border-box; }
+  .office-details { display: flex; flex-direction: column; gap: 14px; }
+  .office-details h2 { margin: 0 0 4px; font-family: 'Source Serif 4', Georgia, serif; font-size: 32px; color: #14532D; }
+  .fr-item { margin: 0; color: #3A4552; font-size: 16px; line-height: 1.5; }
+  .fr-label { display: block; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #8A5A12; }
+  .fr-item a { color: #14532D; font-weight: 600; }
+
+  @media (max-width: 1000px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 32px; padding-top: 32px; }
+    .finder-card { order: -1; }
+    .trust-strip ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .office-inner { grid-template-columns: 1fr; gap: 28px; }
+  }
+  @media (max-width: 600px) {
+    .home-hero h1 { font-size: 34px; }
+    .finder-card { padding: 22px 18px; }
+    .trust-strip ul { grid-template-columns: 1fr; gap: 18px; }
+    .office-photo { height: 240px; }
+  }
 </style>
