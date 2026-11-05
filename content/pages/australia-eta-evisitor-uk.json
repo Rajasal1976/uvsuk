@@ -5,9 +5,9 @@
   "h1": "Australia eVisitor and ETA from the UK",
   "prices": [
     {
-      "service": "Standard",
+      "service": "Standard 1 Working Days",
       "included": "Application completed and documents checked",
-      "processing": "1 Working Days",
+      "processing": "12 Months-3 Month Stay",
       "fee": "£50",
       "popular": true,
       "processingFee": "£20",
