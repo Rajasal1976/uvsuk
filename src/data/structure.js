@@ -367,9 +367,39 @@ export const structure = [
   },
   {
     "slug": "ghana-visa-services",
+    "type": "hub",
+    "group": "worldwide",
+    "visa": "travel",
+    "children": [
+      "ghana-tourist-visa",
+      "ghana-business-visa",
+      "ghana-e-tourist-visa",
+      "ghana-e-business-visa"
+    ]
+  },
+  {
+    "slug": "ghana-tourist-visa",
     "type": "service",
     "group": "worldwide",
     "visa": "travel"
+  },
+  {
+    "slug": "ghana-business-visa",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "travel"
+  },
+  {
+    "slug": "ghana-e-tourist-visa",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "evisa"
+  },
+  {
+    "slug": "ghana-e-business-visa",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "evisa"
   },
   {
     "slug": "russian-visa-services-from-uk",

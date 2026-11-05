@@ -28,8 +28,6 @@ export const redirects = [
   ['/china-non-business-f-visa/', '/china-visa-application/'],
   ['/china-student-visa/', '/china-visa-application/'],
   ['/schengen-visa/', '/schengen-visa-application/'],
-  ['/ghana-business-visa/', '/ghana-visa-services/'],
-  ['/ghana-tourist-visa/', '/ghana-visa-services/'],
   ['/russia-business-visa/', '/russian-visa-services-from-uk/'],
   ['/russian-work-visa/', '/russian-visa-services-from-uk/'],
   ['/russia-family-visa/', '/russian-visa-services-from-uk/'],
