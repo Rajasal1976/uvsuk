@@ -4,27 +4,34 @@ import { isListed } from './pages.js';
 
 const fullMenu = [
   {
+    // Two columns: visas for people, and sponsor licences for businesses
     label: 'UK Visas',
     href: '/uk-visa-services/',
-    items: [
-      ['Spouse & Partner Visas', '/uk-spouse-visas/'],
-      ['Skilled Worker Visa', '/skilled-worker-visa-formally-tier-t2-general/'],
-      ['Student Visa', '/student-visa-uk/'],
-      ['Graduate Visa', '/post-study-work-visa/'],
-      ['Indefinite Leave to Remain', '/indefinite-leave-to-remain-ilr/'],
-      ['British Citizenship', '/british-citizenship/'],
-      ['UK Visitor Visa', '/uk-visit-visa/'],
-    ],
-  },
-  {
-    label: 'Employers',
-    href: '/hire-foreign-nationals-uk/',
-    items: [
-      ['Sponsor Licence', '/sponsor-licence-application/'],
-      ['Sponsor Licence Compliance', '/sponsor-licence-compliance/'],
-      ['Sponsor Licence by Industry', '/sponsor-licence-by-industry/'],
-      ['Skilled Worker Visa', '/skilled-worker-visa-formally-tier-t2-general/'],
-      ['Corporate Clients', '/corporate-clients/'],
+    columns: true,
+    groups: [
+      {
+        label: 'For individuals',
+        href: '/uk-visa-services/',
+        items: [
+          ['Spouse & Partner Visas', '/uk-spouse-visas/'],
+          ['Skilled Worker Visa', '/skilled-worker-visa-formally-tier-t2-general/'],
+          ['Student Visa', '/student-visa-uk/'],
+          ['Graduate Visa', '/post-study-work-visa/'],
+          ['Indefinite Leave to Remain', '/indefinite-leave-to-remain-ilr/'],
+          ['British Citizenship', '/british-citizenship/'],
+          ['UK Visitor Visa', '/uk-visit-visa/'],
+        ],
+      },
+      {
+        label: 'For employers',
+        href: '/hire-foreign-nationals-uk/',
+        items: [
+          ['Sponsor Licence', '/sponsor-licence-application/'],
+          ['Sponsor Licence Compliance', '/sponsor-licence-compliance/'],
+          ['Sponsor Licence by Industry', '/sponsor-licence-by-industry/'],
+          ['Hiring from overseas', '/hire-foreign-nationals-uk/'],
+        ],
+      },
     ],
   },
   {
@@ -56,7 +63,20 @@ const fullMenu = [
       items: g.countries.map((k) => [k.name, evisaLink(k)]),
     })),
   },
+  {
+    label: 'About us',
+    href: '/about-us/',
+    items: [
+      ['About us', '/about-us/'],
+      ['Blog', '/blog/'],
+      ['Corporate Clients', '/corporate-clients/'],
+      ['Partner with us', '/partner-with-us/'],
+    ],
+  },
 ];
 
 // Menu without links to pages hidden in the admin
-export const menu = fullMenu.map((m) => (Array.isArray(m.items) ? { ...m, items: m.items.filter(([, href]) => isListed(href)) } : m));
+const listedOnly = (items) => items.filter(([, href]) => isListed(href));
+export const menu = fullMenu.map((m) => (Array.isArray(m.items)
+  ? { ...m, items: listedOnly(m.items) }
+  : m.columns ? { ...m, groups: m.groups.map((g) => ({ ...g, items: listedOnly(g.items) })) } : m));
