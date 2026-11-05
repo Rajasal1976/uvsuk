@@ -1,9 +1,10 @@
 ---
 import { site } from '../data/site.js';
 import { menu } from '../data/nav.js';
+import home from '../../content/home.json';
 // UK immigration column: the UK Visas menu, plus sponsor licences from the Employers menu
 const ukMenu = menu.find((m) => m.label === 'UK Visas');
-const ukLinks = [...(ukMenu?.items ?? []), ['Sponsor Licence', '/sponsor-licence-application/']];
+const ukLinks = [...(ukMenu?.items ?? ukMenu?.groups?.[0]?.items ?? []), ['Sponsor Licence', '/sponsor-licence-application/']];
 const year = new Date().getFullYear();
 // Simple icons for the social links (drawn in the footer's white)
 const icons = {
@@ -28,6 +29,10 @@ const icons = {
             ))}
           </ul>
         )}
+        <div class="footer-iaa">
+          {home.iaaLogo && <img src={home.iaaLogo} alt="Immigration Advice Authority logo" width="52" height="52" loading="lazy" />}
+          <span><strong>Regulated by the IAA</strong> Ref {site.iaaRef}. <a href={site.iaaFinder}>Check our registration</a></span>
+        </div>
       </div>
       <div><span class="footer-title">Visit or contact us</span><span>{site.address.line1}<br />{site.address.city} {site.address.postcode}</span><span>{site.hours}</span><a href={`tel:${site.phoneIntl}`}>{site.phone}</a><a href={`mailto:${site.email}`}>{site.email}</a></div>
       <div><span class="footer-title">UK Immigration Services</span>{ukLinks.map(([label, href]) => <a href={href}>{label}</a>)}<a href={ukMenu?.href ?? '/uk-visa-services/'}>All UK visa services</a></div>
@@ -41,6 +46,9 @@ const icons = {
 </footer>
 
 <style>
+  .footer-iaa { display: flex; gap: 12px; align-items: center; margin-top: 18px; padding-top: 16px; border-top: 1px solid #2C5E40; font-size: 14px; line-height: 1.45; }
+  .footer-iaa img { flex: none; width: 52px; height: 52px; object-fit: contain; border-radius: 6px; background: #fff; }
+  .footer-iaa strong { color: #fff; }
   .footer-social { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; margin: 12px 0 0; padding: 0; }
   .footer-social a { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; border: 1px solid #2C5E40; color: #fff; }
   .footer-social a:hover { background: #fff; color: var(--green-900); border-color: #fff; }
