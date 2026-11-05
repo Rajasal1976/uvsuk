@@ -403,6 +403,43 @@ export const structure = [
   },
   {
     "slug": "russian-visa-services-from-uk",
+    "type": "hub",
+    "group": "worldwide",
+    "visa": "travel",
+    "children": [
+      "russia-business-visa",
+      "russia-tourist-visa",
+      "russian-work-visa",
+      "russia-student-visa",
+      "russia-family-visa"
+    ]
+  },
+  {
+    "slug": "russia-business-visa",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "travel"
+  },
+  {
+    "slug": "russia-tourist-visa",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "travel"
+  },
+  {
+    "slug": "russian-work-visa",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "travel"
+  },
+  {
+    "slug": "russia-student-visa",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "travel"
+  },
+  {
+    "slug": "russia-family-visa",
     "type": "service",
     "group": "worldwide",
     "visa": "travel"

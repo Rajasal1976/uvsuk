@@ -90,10 +90,9 @@ collections:
         fields:
           - { name: service, label: Service, widget: string, hint: 'For example Standard, Express or Urgent.' }
           - { name: included, label: "What's included", widget: string, required: false }
-          - { name: processing, label: Processing time, widget: string, required: false, hint: 'For example 5 working days.' }
+          - { name: processing, label: Visa length, widget: string, required: false, hint: 'Shown in the Visa length column, for example 30 days, single entry. Leave empty to show "Ask us".' }
           - { name: processingFee, label: 'Embassy fee (incl. VAT)', widget: string, required: false, hint: 'The full embassy or visa centre fee including VAT, or the official eVisa fee, for example £151.50.' }
           - { name: fee, label: Our fee, widget: string, required: false, hint: 'For example £95. Leave empty to show "Call for price".' }
-          - { name: popular, label: Mark as most popular, widget: boolean, required: false, default: false }
       - name: body
         label: Page text
         label_singular: paragraph

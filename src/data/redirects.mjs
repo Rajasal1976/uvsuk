@@ -28,10 +28,5 @@ export const redirects = [
   ['/china-non-business-f-visa/', '/china-visa-application/'],
   ['/china-student-visa/', '/china-visa-application/'],
   ['/schengen-visa/', '/schengen-visa-application/'],
-  ['/russia-business-visa/', '/russian-visa-services-from-uk/'],
-  ['/russian-work-visa/', '/russian-visa-services-from-uk/'],
-  ['/russia-family-visa/', '/russian-visa-services-from-uk/'],
-  ['/russia-tourist-visa/', '/russian-visa-services-from-uk/'],
-  ['/russia-student-visa/', '/russian-visa-services-from-uk/'],
   ['/terms-of-use/', '/terms/'],
 ];

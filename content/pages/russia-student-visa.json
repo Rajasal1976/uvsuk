@@ -1,0 +1,95 @@
+{
+    "title": "Russian Student Visa from the UK | Study in Russia",
+    "description": "Russian student visa for UK residents: university invitation, HIV certificate, visa length and extending it in Russia. We prepare your application.",
+    "h1": "Russian student visa from the UK",
+    "purposeLabel": "Student visa",
+    "intro": "For studying at a university, college or language school in Russia. Your place of study arranges an official invitation. We prepare your application and check your documents.",
+    "eligibility": [
+        "You have a place at a Russian university, college or language school",
+        "Your place of study has arranged an official invitation",
+        "You have an HIV test certificate if staying over 3 months"
+    ],
+    "sections": [
+        {
+            "heading": "UK government travel advice",
+            "text": "The UK Foreign, Commonwealth and Development Office (FCDO) currently advises against all travel to Russia. If you travel against this advice, your travel insurance may not be valid, and the UK's ability to help you in Russia is very limited. Please read the [latest FCDO advice](https://www.gov.uk/foreign-travel-advice/russia) before you book."
+        },
+        {
+            "heading": "How the Russian student visa works",
+            "text": "Your university or school arranges your official invitation. The first visa is usually single entry for 90 days, and your university then helps you extend it in Russia for the length of your course."
+        },
+        {
+            "heading": "HIV test certificate",
+            "text": "For stays of more than 3 months you usually need an HIV test certificate. We'll tell you the exact requirements when you apply."
+        },
+        {
+            "heading": "Russian student visa help in Manchester",
+            "text": "We're based in Manchester city centre and help with Russian student visa applications for clients across the UK. Most applications can be handled by post and email, so you don't need to visit us in person."
+        }
+    ],
+    "faqs": [
+        {
+            "q": "Can I study a short language course in Russia?",
+            "a": "Yes. Language schools can also arrange student invitations. For a very short course, ask us whether another visa suits you better."
+        },
+        {
+            "q": "How do I extend my student visa?",
+            "a": "Your university usually arranges the extension with the Russian migration authorities after you arrive."
+        },
+        {
+            "q": "Does the UK government advise against travel to Russia?",
+            "a": "Yes. The FCDO currently advises against all travel to Russia. Check the latest advice on GOV.UK before making plans."
+        }
+    ],
+    "govuk": "https://www.gov.uk/foreign-travel-advice/russia",
+    "applyButton": "/apply/russia-visa/?visaType=Student",
+    "country": "Russia",
+    "sortKey": "1 russia 4 russia student",
+    "focusKeyword": "Russian student visa",
+    "prices": [
+        {
+            "service": "Single entry",
+            "included": "Student visa application completed and checked",
+            "processing": "90 days, extended in Russia",
+            "fee": "",
+            "processingFee": ""
+        }
+    ],
+    "documentsTable": [
+        {
+            "document": "Passport",
+            "details": "Valid for at least 6 months after your visa ends, with at least 2 blank pages",
+            "needed": "Required"
+        },
+        {
+            "document": "Photo",
+            "details": "Recent colour photo meeting the Russian visa photo rules",
+            "needed": "Required"
+        },
+        {
+            "document": "Application form",
+            "details": "The online Russian visa application form",
+            "needed": "We prepare"
+        },
+        {
+            "document": "Student invitation",
+            "details": "Official invitation arranged by your Russian university, college or school",
+            "needed": "Required"
+        },
+        {
+            "document": "HIV test certificate",
+            "details": "Usually needed for stays of more than 3 months",
+            "needed": "Required"
+        },
+        {
+            "document": "Medical insurance",
+            "details": "Travel medical insurance valid in Russia for your whole stay",
+            "needed": "Required"
+        },
+        {
+            "document": "UK residence status",
+            "details": "If you're not a British citizen: your UK eVisa share code page, BRP or settlement document",
+            "needed": "If not British"
+        }
+    ]
+}

@@ -1,0 +1,113 @@
+{
+    "title": "Russian Business Visa from the UK | Invitation & Apply",
+    "description": "Russian business visa for UK residents: invitation from the Russian company, single, double or multiple entry, documents and how we help.",
+    "h1": "Russian business visa from the UK",
+    "purposeLabel": "Business visa",
+    "intro": "For meetings, negotiations, trade fairs and other business trips to Russia. You need an official invitation from the Russian company. We prepare your application and check the invitation matches your details.",
+    "eligibility": [
+        "You are travelling for business meetings, negotiations or trade fairs",
+        "You have an official invitation from a Russian company",
+        "You won’t take paid work in Russia"
+    ],
+    "sections": [
+        {
+            "heading": "UK government travel advice",
+            "text": "The UK Foreign, Commonwealth and Development Office (FCDO) currently advises against all travel to Russia. If you travel against this advice, your travel insurance may not be valid, and the UK's ability to help you in Russia is very limited. Please read the [latest FCDO advice](https://www.gov.uk/foreign-travel-advice/russia) before you book."
+        },
+        {
+            "heading": "The business invitation",
+            "text": "Russian business visas need an official invitation, arranged by the Russian company through the Russian migration authorities. It states your details, the purpose of the trip and the number of entries. Every detail must match your passport exactly, so check it before you apply."
+        },
+        {
+            "heading": "Single, double or multiple entry?",
+            "text": "Single and double entry business visas usually last up to 90 days. Multiple entry business visas can last up to a year, but you can normally stay no more than 90 days in any 180-day period. The visa you get follows your invitation."
+        },
+        {
+            "heading": "Working in Russia?",
+            "text": "Taking paid work in Russia needs a [Russian work visa](/russian-work-visa/), not a business visa."
+        },
+        {
+            "heading": "Russian business visa help in Manchester",
+            "text": "We're based in Manchester city centre and help with Russian business visa applications for clients across the UK. Most applications can be handled by post and email, so you don't need to visit us in person."
+        }
+    ],
+    "faqs": [
+        {
+            "q": "Who arranges the Russian business invitation?",
+            "a": "The Russian company you're visiting, through the Russian migration authorities. We can explain to them exactly what's needed."
+        },
+        {
+            "q": "Can I work in Russia on a business visa?",
+            "a": "No. Paid work needs a work visa."
+        },
+        {
+            "q": "Does the UK government advise against travel to Russia?",
+            "a": "Yes. The FCDO currently advises against all travel to Russia. Check the latest advice on GOV.UK before making plans."
+        }
+    ],
+    "govuk": "https://www.gov.uk/foreign-travel-advice/russia",
+    "applyButton": "/apply/russia-visa/?visaType=Business",
+    "country": "Russia",
+    "sortKey": "1 russia 1 russia business",
+    "focusKeyword": "Russian business visa",
+    "prices": [
+        {
+            "service": "Single entry",
+            "included": "Business visa application completed and checked",
+            "processing": "Up to 90 days",
+            "fee": "",
+            "processingFee": ""
+        },
+        {
+            "service": "Double entry",
+            "included": "For two trips within the visa dates",
+            "processing": "Up to 90 days",
+            "fee": "",
+            "processingFee": ""
+        },
+        {
+            "service": "Multiple entry",
+            "included": "Up to 90 days in any 180 days",
+            "processing": "Up to 1 year",
+            "fee": "",
+            "processingFee": ""
+        }
+    ],
+    "documentsTable": [
+        {
+            "document": "Passport",
+            "details": "Valid for at least 6 months after your visa ends, with at least 2 blank pages",
+            "needed": "Required"
+        },
+        {
+            "document": "Photo",
+            "details": "Recent colour photo meeting the Russian visa photo rules",
+            "needed": "Required"
+        },
+        {
+            "document": "Application form",
+            "details": "The online Russian visa application form",
+            "needed": "We prepare"
+        },
+        {
+            "document": "Business invitation",
+            "details": "Official invitation arranged by the Russian company",
+            "needed": "Required"
+        },
+        {
+            "document": "Letter from your employer",
+            "details": "Confirming your job and the purpose of your trip",
+            "needed": "If applicable"
+        },
+        {
+            "document": "Medical insurance",
+            "details": "Travel medical insurance valid in Russia for your whole stay",
+            "needed": "Required"
+        },
+        {
+            "document": "UK residence status",
+            "details": "If you're not a British citizen: your UK eVisa share code page, BRP or settlement document",
+            "needed": "If not British"
+        }
+    ]
+}

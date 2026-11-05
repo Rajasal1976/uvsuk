@@ -634,7 +634,7 @@ const russia = {
   country: 'Russia',
   code: 'RU',
   pageUrl: '/russian-visa-services-from-uk/',
-  description: 'Apply for your Russian tourist, business, private or work visa. Upload your passport and visa support documents.',
+  description: 'Apply for your Russian tourist, business, private, student or work visa. Upload your passport and visa support documents.',
   minutes: 10,
   notice: 'The UK Foreign, Commonwealth and Development Office currently advises against all travel to Russia. Please read the latest advice on GOV.UK before you apply.',
   steps: [
@@ -643,7 +643,7 @@ const russia = {
       id: 'trip',
       title: 'Your trip',
       fields: [
-        { name: 'visaType', label: 'Which visa do you need?', type: 'select', required: true, options: ['Tourist', 'Business', 'Private (visiting family or friends)', 'Work'] },
+        { name: 'visaType', label: 'Which visa do you need?', type: 'select', required: true, options: ['Tourist', 'Business', 'Private (visiting family or friends)', 'Student', 'Work'] },
         { name: 'entries', label: 'Number of entries', type: 'radio', required: true, options: ['Single entry', 'Double entry', 'Multiple entries'] },
         ...stay([{ name: 'cities', label: 'Cities you’ll visit', type: 'text', required: true }]),
         yesNo('hasSupport', 'Do you already have your visa support document (invitation or tourist voucher)?'),
@@ -656,7 +656,8 @@ const russia = {
     Tourist: 'For a tourist visa you’ll need a tourist voucher and confirmation from a Russian tour operator or hotel, plus travel insurance.',
     Business: 'For a business visa you’ll need an invitation from the Russian company and travel insurance.',
     'Private (visiting family or friends)': 'For a private visa you’ll need an official invitation arranged by your relative or friend in Russia, plus travel insurance.',
-    Work: 'For a work visa you’ll need the invitation and work permit arranged by your employer in Russia.',
+    Student: 'For a student visa you’ll need the official invitation from your Russian university or college and, for stays over 3 months, an HIV test certificate.',
+    Work: 'For a work visa you’ll need the invitation and work permit arranged by your employer in Russia, and an HIV test certificate.',
   },
   uploads: [
     { name: 'photo', label: 'Passport-style photo', required: true },

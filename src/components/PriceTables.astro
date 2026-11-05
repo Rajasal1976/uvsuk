@@ -30,7 +30,7 @@ const call = `tel:${site.phoneIntl}`;
                   {r.service}
                   {r.included && <span style="display:block;font-weight:400;font-size:15px;color:var(--ink-soft);white-space:normal;margin-top:4px">{r.included}</span>}
                 </th>
-                <td data-label="Visa length">{r.validity || 'Ask us'}</td>
+                <td data-label="Visa length">{r.validity || r.processing || 'Ask us'}</td>
                 <td data-label={feeName}>{r.processingFee || '–'}</td>
                 <td data-label="Our fee">{r.fee || <a href={call}>Call for price</a>}</td>
                 <td data-label="Total" class={total ? 'price' : undefined}>{total || '–'}</td>

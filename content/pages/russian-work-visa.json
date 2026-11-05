@@ -1,0 +1,95 @@
+{
+    "title": "Russian Work Visa from the UK | Work Permit & Apply",
+    "description": "Russian work visa for UK residents: work permit, employer invitation, HIV certificate and how the visa is extended in Russia. We help you apply.",
+    "h1": "Russian work visa from the UK",
+    "purposeLabel": "Work visa",
+    "intro": "For taking a job in Russia. Your employer arranges your work permit and official invitation first. We prepare your visa application and check your documents.",
+    "eligibility": [
+        "You have a job offer from an employer in Russia",
+        "Your employer has arranged a work permit and official invitation",
+        "You have an HIV test certificate"
+    ],
+    "sections": [
+        {
+            "heading": "UK government travel advice",
+            "text": "The UK Foreign, Commonwealth and Development Office (FCDO) currently advises against all travel to Russia. If you travel against this advice, your travel insurance may not be valid, and the UK's ability to help you in Russia is very limited. Please read the [latest FCDO advice](https://www.gov.uk/foreign-travel-advice/russia) before you book."
+        },
+        {
+            "heading": "How the Russian work visa works",
+            "text": "Your employer applies for your work permit and invitation through the Russian migration authorities. With the invitation, you apply for your work visa. The first visa is usually single entry for 90 days, and your employer then extends it in Russia for the length of your work permit."
+        },
+        {
+            "heading": "Highly qualified specialists",
+            "text": "Senior and specialist staff may qualify for a highly qualified specialist (HQS) work permit, which is usually quicker and longer. Your employer will know which applies to you."
+        },
+        {
+            "heading": "Russian work visa help in Manchester",
+            "text": "We're based in Manchester city centre and help with Russian work visa applications for clients across the UK. Most applications can be handled by post and email, so you don't need to visit us in person."
+        }
+    ],
+    "faqs": [
+        {
+            "q": "Who arranges the Russian work permit?",
+            "a": "Your employer in Russia, through the Russian migration authorities."
+        },
+        {
+            "q": "Can I start work on a business visa?",
+            "a": "No. Paid work in Russia needs a work visa."
+        },
+        {
+            "q": "Does the UK government advise against travel to Russia?",
+            "a": "Yes. The FCDO currently advises against all travel to Russia. Check the latest advice on GOV.UK before making plans."
+        }
+    ],
+    "govuk": "https://www.gov.uk/foreign-travel-advice/russia",
+    "applyButton": "/apply/russia-visa/?visaType=Work",
+    "country": "Russia",
+    "sortKey": "1 russia 3 russia work",
+    "focusKeyword": "Russian work visa",
+    "prices": [
+        {
+            "service": "Single entry",
+            "included": "Work visa application completed and checked",
+            "processing": "90 days, extended in Russia",
+            "fee": "",
+            "processingFee": ""
+        }
+    ],
+    "documentsTable": [
+        {
+            "document": "Passport",
+            "details": "Valid for at least 6 months after your visa ends, with at least 2 blank pages",
+            "needed": "Required"
+        },
+        {
+            "document": "Photo",
+            "details": "Recent colour photo meeting the Russian visa photo rules",
+            "needed": "Required"
+        },
+        {
+            "document": "Application form",
+            "details": "The online Russian visa application form",
+            "needed": "We prepare"
+        },
+        {
+            "document": "Work invitation",
+            "details": "Official invitation arranged by your employer, based on your work permit",
+            "needed": "Required"
+        },
+        {
+            "document": "HIV test certificate",
+            "details": "Usually needed for stays of more than 3 months",
+            "needed": "Required"
+        },
+        {
+            "document": "Qualifications",
+            "details": "Degree certificates, if your employer asks for them",
+            "needed": "If applicable"
+        },
+        {
+            "document": "UK residence status",
+            "details": "If you're not a British citizen: your UK eVisa share code page, BRP or settlement document",
+            "needed": "If not British"
+        }
+    ]
+}
