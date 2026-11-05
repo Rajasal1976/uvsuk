@@ -1,8 +1,19 @@
 {
-  "title": "Bahrain tourist visa from the UK | Apply Online | UVS",
-  "description": "Bahrain tourist visa from the UK: who needs one, what it covers and the documents you need. We check and apply for you, so nothing delays your trip.",
+  "applyButton": "/apply/evisa/?destination=Bahrain&visaType=Tourism",
+  "sortKey": "1 bahrain 2 bahrain tourist",
+  "govuk": "https://www.gov.uk/foreign-travel-advice",
   "h1": "Bahrain tourist visa from the UK",
-  "purposeLabel": "Tourist visa",
+  "prices": [
+    {
+      "service": "1-3 Working Days",
+      "included": "Tourist application completed and checked",
+      "processing": "Single Entry 14 Days",
+      "fee": "£50",
+      "popular": true,
+      "processingFee": "£25",
+      "total": ""
+    }
+  ],
   "intro": "Planning a holiday or a visit to family or friends in Bahrain? This page explains the Bahrain tourist visa, who needs one and what to prepare. We check the rules for your passport and apply for you.",
   "eligibility": [
     "You are travelling for a holiday, sightseeing or to visit family or friends",
@@ -27,45 +38,9 @@
       "text": "We're based in Manchester city centre and handle Bahrain tourist visa applications for travellers across the UK, entirely online. Before you travel, read the UK government's [foreign travel advice](https://www.gov.uk/foreign-travel-advice) for Bahrain."
     }
   ],
-  "faqs": [
-    {
-      "q": "Can I visit family on a Bahrain tourist visa?",
-      "a": "Yes. Visiting family or friends is covered by the Bahrain tourist visa."
-    },
-    {
-      "q": "Can I work in Bahrain on a Bahrain tourist visa?",
-      "a": "No. Working needs a work visa or permit. Contact us and we’ll explain the options."
-    },
-    {
-      "q": "How long does a Bahrain tourist visa take?",
-      "a": "Usually a few working days, but processing times vary. Apply at least a week before you travel, and earlier in busy seasons."
-    }
-  ],
-  "govuk": "https://www.gov.uk/foreign-travel-advice",
-  "applyButton": "/apply/evisa/?destination=Bahrain&visaType=Tourism",
-  "country": "Bahrain",
-  "sortKey": "1 bahrain 2 bahrain tourist",
   "focusKeyword": "Bahrain tourist visa",
-  "prices": [
-    {
-      "service": "Standard",
-      "included": "Tourist application completed and checked",
-      "processing": "",
-      "fee": "",
-      "popular": true,
-      "processingFee": "",
-      "total": ""
-    },
-    {
-      "service": "Urgent",
-      "included": "Everything in Standard, submitted the same working day",
-      "processing": "",
-      "fee": "",
-      "popular": false,
-      "processingFee": "",
-      "total": ""
-    }
-  ],
+  "purposeLabel": "Tourist visa",
+  "country": "Bahrain",
   "documentsTable": [
     {
       "document": "Passport",
@@ -91,6 +66,22 @@
       "document": "Accommodation or invitation",
       "details": "Hotel booking, or an invitation from the people you’re visiting",
       "needed": "Required"
+    }
+  ],
+  "title": "Bahrain tourist visa from the UK | Apply Online | UVS",
+  "description": "Bahrain tourist visa from the UK: who needs one, what it covers and the documents you need. We check and apply for you, so nothing delays your trip.",
+  "faqs": [
+    {
+      "q": "Can I visit family on a Bahrain tourist visa?",
+      "a": "Yes. Visiting family or friends is covered by the Bahrain tourist visa."
+    },
+    {
+      "q": "Can I work in Bahrain on a Bahrain tourist visa?",
+      "a": "No. Working needs a work visa or permit. Contact us and we’ll explain the options."
+    },
+    {
+      "q": "How long does a Bahrain tourist visa take?",
+      "a": "Usually a few working days, but processing times vary. Apply at least a week before you travel, and earlier in busy seasons."
     }
   ]
 }
