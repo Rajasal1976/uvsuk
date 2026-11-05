@@ -1,8 +1,36 @@
 {
-  "title": "Azerbaijan tourist visa from the UK | Apply Online | UVS",
-  "description": "Azerbaijan tourist visa from the UK: who needs one, what it covers and the documents you need. We check and apply for you, so nothing delays your trip.",
+  "applyButton": "/apply/evisa/?destination=Azerbaijan&visaType=Tourism",
+  "sortKey": "1 azerbaijan 2 azerbaijan tourist",
+  "govuk": "https://www.gov.uk/foreign-travel-advice",
   "h1": "Azerbaijan tourist visa from the UK",
-  "purposeLabel": "Tourist visa",
+  "prices": [
+    {
+      "service": "Express- 4 Working Days",
+      "included": "Tourist application completed and checked",
+      "processing": "90 Days Single Entry",
+      "fee": "£200",
+      "popular": true,
+      "processingFee": "£158",
+      "total": ""
+    },
+    {
+      "service": "Urgent- 7 Working Days",
+      "included": "Everything in Standard, submitted the same working day",
+      "processing": "90 Days Single Entry",
+      "fee": "£200",
+      "popular": false,
+      "processingFee": "£278",
+      "total": ""
+    },
+    {
+      "popular": false,
+      "service": "Normal- 15 Working Days",
+      "included": "Tourist application completed and checked",
+      "processing": "90 Days Single Entry",
+      "processingFee": "£158",
+      "fee": "£200"
+    }
+  ],
   "intro": "Planning a holiday or a visit to family or friends in Azerbaijan? This page explains the Azerbaijan tourist visa, who needs one and what to prepare. We check the rules for your passport and apply for you.",
   "eligibility": [
     "You are travelling for a holiday, sightseeing or to visit family or friends",
@@ -27,45 +55,9 @@
       "text": "We're based in Manchester city centre and handle Azerbaijan tourist visa applications for travellers across the UK, entirely online. Before you travel, read the UK government's [foreign travel advice](https://www.gov.uk/foreign-travel-advice) for Azerbaijan."
     }
   ],
-  "faqs": [
-    {
-      "q": "Can I visit family on a Azerbaijan tourist visa?",
-      "a": "Yes. Visiting family or friends is covered by the Azerbaijan tourist visa."
-    },
-    {
-      "q": "Can I work in Azerbaijan on a Azerbaijan tourist visa?",
-      "a": "No. Working needs a work visa or permit. Contact us and we’ll explain the options."
-    },
-    {
-      "q": "How long does a Azerbaijan tourist visa take?",
-      "a": "Usually a few working days, but processing times vary. Apply at least a week before you travel, and earlier in busy seasons."
-    }
-  ],
-  "govuk": "https://www.gov.uk/foreign-travel-advice",
-  "applyButton": "/apply/evisa/?destination=Azerbaijan&visaType=Tourism",
-  "country": "Azerbaijan",
-  "sortKey": "1 azerbaijan 2 azerbaijan tourist",
   "focusKeyword": "Azerbaijan tourist visa",
-  "prices": [
-    {
-      "service": "Standard",
-      "included": "Tourist application completed and checked",
-      "processing": "",
-      "fee": "",
-      "popular": true,
-      "processingFee": "",
-      "total": ""
-    },
-    {
-      "service": "Urgent",
-      "included": "Everything in Standard, submitted the same working day",
-      "processing": "",
-      "fee": "",
-      "popular": false,
-      "processingFee": "",
-      "total": ""
-    }
-  ],
+  "purposeLabel": "Tourist visa",
+  "country": "Azerbaijan",
   "documentsTable": [
     {
       "document": "Passport",
@@ -91,6 +83,22 @@
       "document": "Accommodation or invitation",
       "details": "Hotel booking, or an invitation from the people you’re visiting",
       "needed": "Required"
+    }
+  ],
+  "title": "Azerbaijan tourist visa from the UK | Apply Online | UVS",
+  "description": "Azerbaijan tourist visa from the UK: who needs one, what it covers and the documents you need. We check and apply for you, so nothing delays your trip.",
+  "faqs": [
+    {
+      "q": "Can I visit family on a Azerbaijan tourist visa?",
+      "a": "Yes. Visiting family or friends is covered by the Azerbaijan tourist visa."
+    },
+    {
+      "q": "Can I work in Azerbaijan on a Azerbaijan tourist visa?",
+      "a": "No. Working needs a work visa or permit. Contact us and we’ll explain the options."
+    },
+    {
+      "q": "How long does a Azerbaijan tourist visa take?",
+      "a": "Usually a few working days, but processing times vary. Apply at least a week before you travel, and earlier in busy seasons."
     }
   ]
 }
