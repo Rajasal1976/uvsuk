@@ -1,8 +1,60 @@
 {
-  "title": "Azerbaijan business visa from the UK | Apply Online | UVS",
-  "description": "Azerbaijan business visa from the UK for meetings, conferences and trade fairs. Who needs one, the documents you need, and how we apply for you.",
+  "applyButton": "/apply/evisa/?destination=Azerbaijan&visaType=Business",
+  "sortKey": "1 azerbaijan 2 azerbaijan business",
+  "govuk": "https://www.gov.uk/foreign-travel-advice",
   "h1": "Azerbaijan business visa from the UK",
-  "purposeLabel": "Business visa",
+  "prices": [
+    {
+      "service": "Express- 4 Working Days",
+      "included": "Business application completed and checked",
+      "processing": "Single Entry 90 Days",
+      "fee": "£200",
+      "popular": false,
+      "processingFee": "£158",
+      "total": ""
+    },
+    {
+      "service": "Urgent- 7 Working Days",
+      "included": "Everything in Standard, submitted the same working day",
+      "processing": "Single Entry 90 Days",
+      "fee": "£200",
+      "popular": false,
+      "processingFee": "£278",
+      "total": ""
+    },
+    {
+      "popular": false,
+      "service": "Normal- 15 Working Days",
+      "included": "Business application completed and checked",
+      "processing": "Single Entry 90 Days",
+      "processingFee": "£158",
+      "fee": "£200"
+    },
+    {
+      "popular": false,
+      "included": "Business application completed and checked",
+      "service": "Express- 4Working Days ",
+      "processing": "1 Year Multiple Entry",
+      "processingFee": "£610",
+      "fee": "£200"
+    },
+    {
+      "popular": false,
+      "included": "Business application completed and checked",
+      "service": "Urgent- 7 Working Days",
+      "processing": "1 Year Multiple Entry Visa",
+      "processingFee": "£550",
+      "fee": "£200"
+    },
+    {
+      "popular": false,
+      "included": "Business application completed and checked",
+      "service": "Normal- 15 Working Days",
+      "processingFee": "£490",
+      "fee": "£200",
+      "processing": "Multiple Entry for 1 Year"
+    }
+  ],
   "intro": "Travelling to Azerbaijan for meetings, a conference or a trade fair? This page explains the Azerbaijan business visa, who needs one and what to prepare. We check the rules for your passport and apply for you.",
   "eligibility": [
     "You are travelling for meetings, conferences, trade fairs, negotiations or site visits",
@@ -27,45 +79,9 @@
       "text": "We handle Azerbaijan business visa applications for individuals and companies across the UK, including urgent trips. See our [corporate visa services](/corporate-clients/) if your staff travel regularly. Before you travel, read the UK government's [foreign travel advice](https://www.gov.uk/foreign-travel-advice) for Azerbaijan."
     }
   ],
-  "faqs": [
-    {
-      "q": "Can I attend a conference on a Azerbaijan business visa?",
-      "a": "Yes. Conferences, exhibitions and trade fairs are business visits."
-    },
-    {
-      "q": "Can I work in Azerbaijan on a Azerbaijan business visa?",
-      "a": "No. Being paid by a local company, or doing hands-on work, usually needs a work visa or permit."
-    },
-    {
-      "q": "What should the invitation letter include?",
-      "a": "Your name and passport number, the purpose and dates of your visit, the company’s details, and who is paying for the trip."
-    }
-  ],
-  "govuk": "https://www.gov.uk/foreign-travel-advice",
-  "applyButton": "/apply/evisa/?destination=Azerbaijan&visaType=Business",
-  "country": "Azerbaijan",
-  "sortKey": "1 azerbaijan 2 azerbaijan business",
   "focusKeyword": "Azerbaijan business visa",
-  "prices": [
-    {
-      "service": "Standard",
-      "included": "Business application completed and checked",
-      "processing": "",
-      "fee": "",
-      "popular": true,
-      "processingFee": "",
-      "total": ""
-    },
-    {
-      "service": "Urgent",
-      "included": "Everything in Standard, submitted the same working day",
-      "processing": "",
-      "fee": "",
-      "popular": false,
-      "processingFee": "",
-      "total": ""
-    }
-  ],
+  "purposeLabel": "Business visa",
+  "country": "Azerbaijan",
   "documentsTable": [
     {
       "document": "Passport",
@@ -96,6 +112,22 @@
       "document": "Flight and hotel bookings",
       "details": "Return flight and hotel booking",
       "needed": "Required"
+    }
+  ],
+  "title": "Azerbaijan business visa from the UK | Apply Online | UVS",
+  "description": "Azerbaijan business visa from the UK for meetings, conferences and trade fairs. Who needs one, the documents you need, and how we apply for you.",
+  "faqs": [
+    {
+      "q": "Can I attend a conference on a Azerbaijan business visa?",
+      "a": "Yes. Conferences, exhibitions and trade fairs are business visits."
+    },
+    {
+      "q": "Can I work in Azerbaijan on a Azerbaijan business visa?",
+      "a": "No. Being paid by a local company, or doing hands-on work, usually needs a work visa or permit."
+    },
+    {
+      "q": "What should the invitation letter include?",
+      "a": "Your name and passport number, the purpose and dates of your visit, the company’s details, and who is paying for the trip."
     }
   ]
 }
