@@ -5,9 +5,9 @@
   "h1": "Angola business visa from the UK",
   "prices": [
     {
-      "service": "Single Entry 30 Days",
+      "service": " Upto 72 Hours",
       "included": "Business application completed and checked",
-      "processing": "Upto 72 Hours",
+      "processing": "Single Entry 30 Days",
       "fee": "£200",
       "popular": false,
       "processingFee": "£105",
@@ -41,22 +41,6 @@
   "focusKeyword": "Angola business visa",
   "purposeLabel": "Business visa",
   "country": "Angola",
-  "title": "Angola business visa from the UK | Apply Online | UVS",
-  "description": "Angola business visa from the UK for meetings, conferences and trade fairs. Who needs one, the documents you need, and how we apply for you.",
-  "faqs": [
-    {
-      "q": "Can I attend a conference on a Angola business visa?",
-      "a": "Yes. Conferences, exhibitions and trade fairs are business visits."
-    },
-    {
-      "q": "Can I work in Angola on a Angola business visa?",
-      "a": "No. Being paid by a local company, or doing hands-on work, usually needs a work visa or permit."
-    },
-    {
-      "q": "What should the invitation letter include?",
-      "a": "Your name and passport number, the purpose and dates of your visit, the company’s details, and who is paying for the trip."
-    }
-  ],
   "documentsTable": [
     {
       "document": "Passport",
@@ -87,6 +71,22 @@
       "document": "Flight and hotel bookings",
       "details": "Return flight and hotel booking",
       "needed": "Required"
+    }
+  ],
+  "title": "Angola business visa from the UK | Apply Online | UVS",
+  "description": "Angola business visa from the UK for meetings, conferences and trade fairs. Who needs one, the documents you need, and how we apply for you.",
+  "faqs": [
+    {
+      "q": "Can I attend a conference on a Angola business visa?",
+      "a": "Yes. Conferences, exhibitions and trade fairs are business visits."
+    },
+    {
+      "q": "Can I work in Angola on a Angola business visa?",
+      "a": "No. Being paid by a local company, or doing hands-on work, usually needs a work visa or permit."
+    },
+    {
+      "q": "What should the invitation letter include?",
+      "a": "Your name and passport number, the purpose and dates of your visit, the company’s details, and who is paying for the trip."
     }
   ]
 }
