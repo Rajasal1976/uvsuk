@@ -1,0 +1,171 @@
+{
+  "layout": "visa",
+  "group": "regular",
+  "order": 20,
+  "navLabel": "Regular business visa",
+  "h1": "Indian business visa",
+  "h1Accent": "(regular, paper visa).",
+  "applyButton": "/apply/india-regular-visa/?visaType=Business%20visa%20(regular)",
+  "applyLabel": "Start business visa application",
+  "intro": "The regular Indian business visa is for business trips when you can’t use the e-Business visa, or need a longer or more flexible arrangement. We prepare the form and check your company letters.",
+  "cardText": "For business trips when the e-Business visa isn’t available or doesn’t fit.",
+  "facts": [
+    {
+      "value": "Paper visa",
+      "label": "Stuck into your passport"
+    },
+    {
+      "value": "Company letters",
+      "label": "From you and the Indian company"
+    },
+    {
+      "value": "Longer options",
+      "label": "Than the e-Business visa"
+    },
+    {
+      "value": "Visa centre",
+      "label": "Passport submitted"
+    }
+  ],
+  "checklist": [
+    {
+      "item": "Passport photo page",
+      "hint": "Valid for 6 months, with at least 2 blank pages"
+    },
+    {
+      "item": "A recent photo",
+      "hint": "Plain light background, face fully visible. We’ll crop it"
+    },
+    {
+      "item": "Invitation from the Indian company"
+    },
+    {
+      "item": "Letter from your UK employer"
+    }
+  ],
+  "purposesTitle": "When to use the regular business visa",
+  "purposes": [
+    {
+      "icon": "family",
+      "title": "Pakistani origin",
+      "text": "You can’t use the e-Business visa."
+    },
+    {
+      "icon": "shield",
+      "title": "Military or police background",
+      "text": "Serving or retired."
+    },
+    {
+      "icon": "clock",
+      "title": "Longer business arrangements",
+      "text": "Where the e-Business limits don’t fit."
+    }
+  ],
+  "notCoveredTitle": "Not covered",
+  "notCovered": [
+    "Working for an Indian company, which needs an Employment visa",
+    "Journalism"
+  ],
+  "documentsTable": [
+    {
+      "document": "Passport photo page",
+      "details": "A clear scan or photo of the page with your photo and details. Your passport must be valid for at least 6 months and have at least 2 blank pages.",
+      "needed": "Required"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent, in colour, front-facing with eyes open and no glasses. Plain white or light background, no shadows or borders. We crop and resize it for you.",
+      "needed": "Required"
+    },
+    {
+      "document": "Invitation letter",
+      "details": "From the Indian company, on its letterhead, explaining your visit.",
+      "needed": "Required"
+    },
+    {
+      "document": "Employer letter",
+      "details": "From your UK employer, confirming your job and the purpose of the trip.",
+      "needed": "Required"
+    },
+    {
+      "document": "Proof of UK address",
+      "details": "A recent utility bill, council tax bill or bank statement.",
+      "needed": "Required"
+    },
+    {
+      "document": "UK residence status",
+      "details": "If you’re not a British citizen: your UK eVisa share code page, BRP or settlement document.",
+      "needed": "If applicable"
+    }
+  ],
+  "rules": [
+    {
+      "title": "Your passport goes to the visa centre",
+      "text": "Regular visas are stuck into your passport, so you’ll need to submit it at the Indian visa application centre. Don’t book travel you can’t change until it’s back."
+    },
+    {
+      "title": "Allow more time",
+      "text": "Regular visas take longer than e-Visas, and much longer for people of Pakistani origin. Apply as early as you can."
+    },
+    {
+      "title": "The form must be exact",
+      "text": "Any mismatch between your form, passport and documents can delay or refuse the application. We check everything line by line."
+    },
+    {
+      "title": "Arrive anywhere",
+      "text": "Unlike e-Visas, regular visas can be used at any immigration checkpoint in India."
+    }
+  ],
+  "boxTitle": "Can you use the e-Business visa instead?",
+  "boxText": "For most short business trips it’s quicker and fully online.",
+  "boxButton": "e-Business visa",
+  "boxLink": "/india-e-business-visa-for-uk-citizens/",
+  "sections": [
+    {
+      "heading": "Indian business visa or e-Business visa?",
+      "text": "The [e-Business visa](/india-e-business-visa-for-uk-citizens/) covers most short trips for a year. The regular business visa is for people who can’t use the e-Visa, or who need a longer or different arrangement. If you’ll be employed by an Indian company, you need an [Employment visa](/indian-work-visa/)."
+    },
+    {
+      "heading": "What letters does an Indian business visa need?",
+      "text": "Usually an invitation from the Indian company on its letterhead, explaining who you are meeting and why, and a letter from your UK employer confirming your job and the purpose of the trip. We’ll check both letters match your Indian business visa application exactly."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Which letters do I need?",
+      "a": "Usually an invitation from the Indian company and a letter from your UK employer. We’ll tell you exactly what yours should say."
+    },
+    {
+      "q": "Can I apply myself instead of using you?",
+      "a": "Yes. You can apply on the official website, indianvisaonline.gov.in, and pay only the government fee. People use us when they want a person to check their eligibility, fix their photo and documents, and handle the form for them so nothing goes wrong."
+    },
+    {
+      "q": "How long does an Indian business visa take?",
+      "a": "Regular visas take longer than e-Visas. Allow a few weeks, and longer for people of Pakistani origin."
+    },
+    {
+      "q": "Can I make several trips on an Indian business visa?",
+      "a": "Regular business visas can allow multiple entries. The length and entries depend on your nationality and case."
+    }
+  ],
+  "related": [
+    "india-e-business-visa-for-uk-citizens",
+    "indian-work-visa",
+    "indian-regular-visa"
+  ],
+  "title": "Indian Business Visa (Regular) from the UK | Apply With Help",
+  "description": "Regular Indian business visa for UK residents who can’t use the e-Business visa or need longer: letters, documents and how we help you apply.",
+  "focusKeyword": "Indian business visa",
+  "prices": [
+    {
+      "service": "Regular business visa",
+      "included": "",
+      "processing": "",
+      "entries": "",
+      "govFee": "",
+      "fee": ""
+    }
+  ],
+  "feesNote": "The government fee for a regular visa is set by India and includes the visa application centre’s charges. It isn’t refundable, even if the visa is refused. Our fee is per person and includes preparing your form and checking every document.",
+  "shareImage": "/images/share.jpg"
+}

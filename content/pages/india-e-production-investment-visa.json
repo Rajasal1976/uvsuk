@@ -1,0 +1,151 @@
+{
+  "layout": "visa",
+  "group": "evisa",
+  "order": 61,
+  "navLabel": "e-Production Investment visa",
+  "h1": "India e-Production Investment visa",
+  "h1Accent": "for investors.",
+  "applyButton": "/apply/india-visa/?visaType=e-Production%20Investment%20visa",
+  "applyLabel": "Start application",
+  "intro": "The e-Production Investment visa is for investors visiting India in connection with production or manufacturing investment. We’ll confirm the current requirements for your case before you apply.",
+  "cardText": "For investors visiting India in connection with production investment. Valid for 6 months.",
+  "facts": [
+    {
+      "value": "6 months",
+      "label": "Validity"
+    },
+    {
+      "value": "Multiple entries",
+      "label": "Within that time"
+    },
+    {
+      "value": "Investment link",
+      "label": "Documents to support it"
+    },
+    {
+      "value": "We confirm",
+      "label": "The current requirements"
+    }
+  ],
+  "checklist": [
+    {
+      "item": "Passport photo page",
+      "hint": "Valid for 6 months, with at least 2 blank pages"
+    },
+    {
+      "item": "A recent photo",
+      "hint": "Plain light background, face fully visible. We’ll crop it"
+    },
+    {
+      "item": "Details of your investment plans"
+    }
+  ],
+  "purposesTitle": "What it covers",
+  "purposes": [
+    {
+      "icon": "chart",
+      "title": "Production investment",
+      "text": "Visits linked to investing in production in India."
+    },
+    {
+      "icon": "factory",
+      "title": "Site visits",
+      "text": "Seeing facilities connected with your investment."
+    }
+  ],
+  "notCoveredTitle": "Not covered",
+  "notCovered": [
+    "Paid employment",
+    "General business meetings, which use the e-Business visa"
+  ],
+  "documentsTable": [
+    {
+      "document": "Passport photo page",
+      "details": "A clear scan or photo of the page with your photo and details. Your passport must be valid for at least 6 months and have at least 2 blank pages.",
+      "needed": "Required"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent, in colour, front-facing with eyes open and no glasses. Plain white or light background, no shadows or borders. We crop and resize it for you.",
+      "needed": "Required"
+    },
+    {
+      "document": "Investment documents",
+      "details": "Letters or documents about your investment or production plans. We’ll confirm exactly what is needed.",
+      "needed": "Required"
+    },
+    {
+      "document": "UK residence status",
+      "details": "If you’re not a British citizen: your UK eVisa share code page, BRP or settlement document.",
+      "needed": "If applicable"
+    }
+  ],
+  "rules": [
+    {
+      "title": "How long you can stay",
+      "text": "The visa is valid for 6 months with multiple entries."
+    },
+    {
+      "title": "It can’t be extended or changed",
+      "text": "An e-Visa can’t be extended or switched to another type of visa once you’re in India, so choose the right one before you travel."
+    },
+    {
+      "title": "Arrive at an approved airport or seaport",
+      "text": "You must enter India through one of the airports or seaports approved for e-Visas. All the main international airports are included, such as Delhi, Mumbai, Bengaluru, Chennai, Kolkata, Hyderabad, Goa and Kochi. You can leave from any immigration checkpoint."
+    },
+    {
+      "title": "Who can’t use an e-Visa",
+      "text": "People of Pakistani origin, anyone with a military, police or security background (serving or retired), and holders of diplomatic or official passports must apply for a regular visa instead."
+    },
+    {
+      "title": "Fill in the e-Arrival card",
+      "text": "Before you fly, complete India’s free e-Arrival card online within 72 hours of arrival. It’s arrival information, not a visa. [How the e-Arrival card works](/india-e-arrival-card/)"
+    },
+    {
+      "title": "No protected areas",
+      "text": "An e-Visa isn’t valid for protected, restricted or cantonment areas. Visiting places such as parts of the North East, Sikkim or the Andaman Islands may need a separate permit."
+    }
+  ],
+  "boxTitle": "Can’t use an e-Visa?",
+  "boxText": "Pakistani origin, a military or police background, work, journalism or a longer stay all need a regular visa. We help with those too.",
+  "boxButton": "Regular Indian visas",
+  "boxLink": "/indian-regular-visa/",
+  "sections": [
+    {
+      "heading": "Is the e-Production Investment visa right for me?",
+      "text": "Most business visits, including meetings with potential partners, use the [e-Business visa](/india-e-business-visa-for-uk-citizens/). The e-Production Investment visa is a newer category for investment in production. Call us and we’ll tell you which fits your trip."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "How long is the e-Production Investment visa valid?",
+      "a": "The official e-Visa site lists it as valid for 6 months with multiple entries."
+    },
+    {
+      "q": "How early should I apply?",
+      "a": "At least 4 days before you arrive in India, and no more than 120 days before. We recommend applying 2 to 3 weeks ahead in case anything needs correcting."
+    },
+    {
+      "q": "Is the e-Visa fee refundable if I’m refused?",
+      "a": "No. The Government of India’s e-Visa fee pays for processing your application, so it isn’t refunded if the visa is refused or you cancel your trip. That’s why we check everything before you pay it."
+    }
+  ],
+  "related": [
+    "india-e-business-visa-for-uk-citizens",
+    "indian-business-visa"
+  ],
+  "title": "India e-Production Investment Visa from the UK",
+  "description": "India e-Production Investment visa for investors: validity, documents and how it compares with the e-Business visa. Apply from the UK with us.",
+  "focusKeyword": "Production Investment visa",
+  "prices": [
+    {
+      "service": "e-Production Investment visa",
+      "included": "6 months",
+      "processing": "",
+      "entries": "Multiple entries",
+      "govFee": "",
+      "fee": ""
+    }
+  ],
+  "shareImage": "/images/share.jpg"
+}

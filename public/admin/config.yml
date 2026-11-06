@@ -1,98 +1,151 @@
 # Website editor settings (Decap CMS). https://decapcms.org/docs/
-#
-# Connected to the GitHub repository Rajasal1976/uvsuk.
+# Connected to the GitHub repository below. If you name your repository differently, change "repo".
 
 backend:
   name: github
-  repo: Rajasal1976/uvsuk
+  repo: Rajasal1976/indianvisa
   branch: main
   base_url: https://api.netlify.com
   commit_messages:
+    create: 'Add {{collection}}: {{slug}}'
     update: 'Edit {{collection}}: {{slug}}'
+    delete: 'Delete {{collection}}: {{slug}}'
     uploadMedia: 'Upload photo {{path}}'
 
 # Lets the editor work on a computer for testing (only when the site runs on localhost)
 local_backend: true
 
-site_url: https://www.uvsuk.co.uk
-display_url: https://www.uvsuk.co.uk
-logo_url: /favicon.svg
+site_url: https://indianevisaonline.org.uk
+display_url: https://indianevisaonline.org.uk
+logo_url: /favicon.png
 locale: en
 
 media_folder: public/images/uploads
 public_folder: /images/uploads
 
 collections:
-  # ---------- Visa and service pages ----------
+  # ---------- Pages ----------
   - name: pages
-    label: Visa & service pages
+    label: Pages
     label_singular: Page
     description: >-
-      Every page on the website, grouped by country (A to Z), with UK pages under UK and company pages at the end.
-      Click a page to edit its text, prices and FAQs, then click Publish. The website updates in about a minute.
-      To add a brand-new page, ask your developer.
+      Every page on the website. Click a page to edit it, then click Publish: the website updates in about a minute.
+      To add a page, click "New Page" (the quickest way is to open a similar page and choose Duplicate from the Publish menu).
+      To remove a page, open it and switch on "Move to bin", or delete it. Menus, the homepage tiles, the sitemap and
+      search update themselves.
     folder: content/pages
     format: json
     extension: json
-    create: false
-    delete: false
+    create: true
+    delete: true
+    slug: '{{slug}}'
     identifier_field: h1
-    summary: '{{country}}  ›  {{h1}}'
+    summary: '{{group}} › {{h1}}'
     sortable_fields:
-      - { field: sortKey, label: Country, default_sort: asc }
+      - { field: group, label: Section, default_sort: asc }
+      - { field: order, label: Order in menus }
       - { field: h1, label: Page heading }
     view_groups:
-      - { label: Country, field: country }
+      - { label: Section, field: group }
+    preview_path: '{{slug}}/'
     editor: { preview: true }
     fields:
-      - { name: country, label: Country, widget: hidden }
-      - { name: sortKey, label: Order in the list, widget: hidden }
-      - { name: faqHeading, label: FAQ heading, widget: hidden, required: false }
-      - { name: h1, label: Page heading, widget: string, hint: 'The big heading at the top of the page.' }
+      - { name: layout, label: Page layout, widget: select, default: visa, options: [{ label: 'Visa page (banner, checklist, documents, steps, rules, fees)', value: visa }, { label: 'Section main page (banner and cards for every page in the section)', value: section }, { label: 'Guide or help page', value: guide }, { label: 'Company page (about, privacy, terms...)', value: company }], hint: 'Changes how the page is laid out. Parts you leave empty are not shown.' }
+      - { name: group, label: Section of the site, widget: select, default: evisa, options: [{ label: 'e-Visas', value: evisa }, { label: 'Regular visas', value: regular }, { label: 'Help and guides', value: guide }, { label: 'About us', value: company }], hint: 'Decides which menu the page appears in.' }
+      - { name: navLabel, label: Name in menus, widget: string, required: false, hint: 'Short name for menus and buttons, e.g. "e-Business visa". If empty, the page heading is used.' }
+      - { name: order, label: Order in menus, widget: number, value_type: int, default: 50, required: false, hint: 'Lower numbers come first.' }
+      - { name: h1, label: Page heading, widget: string, hint: 'The big heading at the top. When you create a page, the web address is made from this.' }
+      - { name: h1Accent, label: Heading second line (saffron), widget: string, required: false, hint: 'Visa and section pages: shown in saffron under the heading, e.g. "from the UK."' }
       - { name: intro, label: Introduction, widget: text, required: false, hint: 'One or two sentences under the heading.' }
-      - { name: applyButton, label: Apply button, widget: select, default: none, options: [{ label: 'No button', value: 'none' }, { label: 'Apply online → China visa form', value: '/apply/china-visa/' }, { label: 'Apply online → India eVisa form', value: '/apply/india-visa/' }, { label: 'Apply online → Sri Lanka ETA form', value: '/apply/sri-lanka-eta/' }, { label: 'Apply online → Schengen visa form', value: '/apply/schengen-visa/' }, { label: 'Apply online → USA ESTA or visa form', value: '/apply/usa-visa/' }, { label: 'Apply online → Saudi Arabia visa form', value: '/apply/saudi-visa/' }, { label: 'Apply online → Ghana visa form', value: '/apply/ghana-visa/' }, { label: 'Apply online → Nigeria regular visa form', value: '/apply/nigeria-visa/' }, { label: 'Apply online → Russian visa form', value: '/apply/russia-visa/' }, { label: 'Apply online → India Employment / regular visa form', value: '/apply/india-regular-visa/' }, { label: 'Apply online → India eVisa transfer to new passport', value: '/apply/india-evisa-transfer/' }, { label: 'Apply online → eVisa form (other countries)', value: '/apply/evisa/' }, { label: 'Apply online → Document legalisation form', value: '/apply/document-legalisation/' }, { label: 'Apply online → Indian passport / OCI form', value: '/apply/indian-passport-oci/' }, { label: 'Apply online → Second UK passport form', value: '/apply/second-uk-passport/' }, { label: 'Apply online → list of all forms', value: '/apply/' }, { label: 'Apply now → contact / enquiry form', value: '/contact-us/' }], hint: 'A gold button under the introduction. Pick the form it should open.' }
-      - name: eligibility
-        label: '"Do you qualify?" points'
-        label_singular: point
+      - { name: cardText, label: Short summary for cards, widget: text, required: false, hint: 'Shown on cards and homepage tiles. If empty, the Google description is used.' }
+      - { name: highlight, label: Highlight this page's homepage tile in pink, widget: boolean, required: false, default: false }
+      - { name: applyButton, label: Apply button, widget: select, default: none, options: [{ label: 'No button', value: 'none' }, { label: 'e-Visa form (any type)', value: '/apply/india-visa/' }, { label: 'e-Visa form: e-Tourist 30 days', value: '/apply/india-visa/?visaType=e-Tourist%20visa%20(30%20days)' }, { label: 'e-Visa form: e-Tourist 1 year', value: '/apply/india-visa/?visaType=e-Tourist%20visa%20(1%20year)' }, { label: 'e-Visa form: e-Tourist 5 years', value: '/apply/india-visa/?visaType=e-Tourist%20visa%20(5%20years)' }, { label: 'e-Visa form: e-Business', value: '/apply/india-visa/?visaType=e-Business%20visa' }, { label: 'e-Visa form: e-Conference', value: '/apply/india-visa/?visaType=e-Conference%20visa' }, { label: 'e-Visa form: e-Medical', value: '/apply/india-visa/?visaType=e-Medical%20visa' }, { label: 'e-Visa form: e-Medical Attendant', value: '/apply/india-visa/?visaType=e-Medical%20Attendant%20visa' }, { label: 'e-Visa form: e-Ayush', value: '/apply/india-visa/?visaType=e-Ayush%20visa' }, { label: 'e-Visa form: e-Ayush Attendant', value: '/apply/india-visa/?visaType=e-Ayush%20Attendant%20visa' }, { label: 'e-Visa form: e-Student', value: '/apply/india-visa/?visaType=e-Student%20visa' }, { label: 'e-Visa form: e-Student Dependent (e-Family)', value: '/apply/india-visa/?visaType=e-Student%20Dependent%20visa' }, { label: 'e-Visa form: e-Transit', value: '/apply/india-visa/?visaType=e-Transit%20visa' }, { label: 'e-Visa form: e-Miscellaneous (e-Entry)', value: '/apply/india-visa/?visaType=e-Miscellaneous%20(e-Entry)%20visa' }, { label: 'e-Visa form: e-Film', value: '/apply/india-visa/?visaType=e-Film%20visa' }, { label: 'e-Visa form: e-Production Investment', value: '/apply/india-visa/?visaType=e-Production%20Investment%20visa' }, { label: 'Regular / Employment visa form', value: '/apply/india-regular-visa/' }, { label: 'Regular visa form: Employment', value: '/apply/india-regular-visa/?visaType=Employment%20visa' }, { label: 'Regular visa form: Business', value: '/apply/india-regular-visa/?visaType=Business%20visa%20(regular)' }, { label: 'Regular visa form: Tourist', value: '/apply/india-regular-visa/?visaType=Tourist%20visa%20(regular)' }, { label: 'e-Visa transfer to a new passport form', value: '/apply/india-evisa-transfer/' }, { label: 'Contact / question form', value: '/contact-us/' }], hint: 'Which form the Start buttons on this page open.' }
+      - { name: applyLabel, label: Apply button text, widget: string, required: false, hint: 'e.g. Start e-Business application' }
+      - name: facts
+        label: Quick facts in the banner
+        label_singular: fact
         widget: list
-        collapsed: false
         required: false
-        field: { name: point, label: Point, widget: string }
-        hint: 'Visa pages only (not used on the China, ILR, Skilled Worker and eVisas pages, which have their own layout). One requirement per line.'
+        max: 4
+        summary: '{{fields.value}}: {{fields.label}}'
+        hint: 'Up to 4 boxes, e.g. "1 year" / "Valid from the date it’s granted". The first one also shows on the homepage tile.'
+        fields:
+          - { name: value, label: Big text, widget: string }
+          - { name: label, label: Small text, widget: string }
+      - { name: checklistTitle, label: Checklist title, widget: string, required: false, default: 'Have these ready' }
+      - name: checklist
+        label: '"Have these ready" checklist'
+        label_singular: item
+        widget: list
+        required: false
+        summary: '{{fields.item}}'
+        hint: 'Visa pages: the tick list in the banner. Also shown as "What you’ll need" on the homepage tile.'
+        fields:
+          - { name: item, label: Item, widget: string }
+          - { name: hint, label: Small text, widget: string, required: false }
+      - { name: purposesTitle, label: '"What you can do" heading', widget: string, required: false }
+      - { name: purposesIntro, label: '"What you can do" introduction', widget: text, required: false }
+      - name: purposes
+        label: '"What you can do" cards'
+        label_singular: card
+        widget: list
+        required: false
+        summary: '{{fields.title}}'
+        fields:
+          - { name: icon, label: Icon, widget: select, options: ['briefcase','trade','factory','stall','people','tool','mic','map','book','sun','heart','home','medical','leaf','yoga','school','plane','passport','camera','film','mountain','chart','family','check','info','shield','clock','pin'], default: check }
+          - { name: title, label: Title, widget: string }
+          - { name: text, label: Text, widget: string }
+      - { name: notCoveredTitle, label: '"Not covered" box heading', widget: string, required: false }
+      - { name: notCovered, label: '"Not covered" points', widget: list, required: false, hint: 'One point per row. Shown in a pink box.' }
       - name: documentsTable
         label: Documents table
         label_singular: document
         widget: list
         required: false
         summary: '{{fields.document}} · {{fields.needed}}'
-        hint: 'Shown as the "Documents you’ll need" table. Drag to reorder.'
         fields:
-          - { name: document, label: Document, widget: string, hint: 'Short name, e.g. Passport, Invitation letter' }
+          - { name: document, label: Document, widget: string }
           - { name: details, label: Details, widget: text, required: false }
-          - { name: needed, label: Needed, widget: select, options: ['Required', 'We prepare', 'If not British', 'If applicable', 'Optional'], default: 'Required' }
-      - name: sections
-        label: Guide sections
-        label_singular: section
+          - { name: needed, label: Needed, widget: select, options: ['Required', 'If applicable', 'Helpful', 'Optional', 'We prepare'], default: 'Required' }
+      - { name: documentsNote, label: Note under the documents table, widget: text, required: false }
+      - { name: showSteps, label: 'Show "four steps" band', widget: boolean, default: true, required: false }
+      - { name: rulesTitle, label: Rules heading, widget: string, required: false }
+      - { name: rulesIntro, label: Rules introduction, widget: text, required: false }
+      - name: rules
+        label: Rules to know
+        label_singular: rule
         widget: list
         required: false
-        summary: '{{fields.heading}}'
-        hint: 'Longer explanations that help Google rank the page. One heading per section. Leave a blank line between paragraphs; start a line with "- " for a bullet point.'
+        summary: '{{fields.title}}'
         fields:
-          - { name: heading, label: Heading, widget: string, hint: 'Use the words people search for, e.g. "Spouse visa financial requirement 2026".' }
+          - { name: title, label: Title, widget: string }
           - { name: text, label: Text, widget: text }
+      - { name: boxTitle, label: Teal box heading (under the rules), widget: string, required: false, hint: 'e.g. Need a regular visa? Leave empty for no box.' }
+      - { name: boxText, label: Teal box text, widget: text, required: false }
+      - { name: boxButton, label: Teal box button text, widget: string, required: false }
+      - { name: boxLink, label: Teal box button link, widget: string, required: false, hint: 'e.g. /indian-regular-visa/. Empty = call us.' }
+      - { name: showFees, label: Show the fees section, widget: boolean, default: true, required: false }
       - name: prices
         label: Price table
         label_singular: price row
         widget: list
         required: false
-        summary: '{{fields.service}}: {{fields.fee}}'
-        hint: 'Shown on country visa pages only (tourist, business, work and so on). The total adds itself up from the embassy fee and our fee.'
+        summary: '{{fields.service}} · {{fields.entries}} · {{fields.fee}}'
+        hint: 'One row per option, e.g. 30 days, 1 year, 5 years. The total adds itself up when both fees are amounts in pounds. Leave the table empty to show the two fee boxes instead.'
         fields:
-          - { name: service, label: Service, widget: string, hint: 'For example Standard, Express or Urgent.' }
-          - { name: included, label: "What's included", widget: string, required: false }
-          - { name: processing, label: Visa length, widget: string, required: false, hint: 'Shown in the Visa length column, for example 30 days, single entry. Leave empty to show "Ask us".' }
-          - { name: processingFee, label: 'Embassy fee (incl. VAT)', widget: string, required: false, hint: 'The full embassy or visa centre fee including VAT, or the official eVisa fee, for example £151.50.' }
-          - { name: fee, label: Our fee, widget: string, required: false, hint: 'For example £95. Leave empty to show "Call for price".' }
+          - { name: service, label: Visa, widget: string, hint: 'e.g. e-Tourist visa, 1 year' }
+          - { name: included, label: Small text under the name, widget: string, required: false, hint: 'e.g. Up to 180 days a year' }
+          - { name: processing, label: Processing time, widget: string, required: false, hint: 'e.g. Usually 3 to 5 working days. Empty shows "Ask us".' }
+          - { name: entries, label: Entries, widget: select, required: false, options: ['Single entry', 'Double entry', 'Multiple entries', 'Same as your e-Visa'] }
+          - { name: govFee, label: Government fee, widget: string, required: false, hint: 'In pounds, e.g. £40 or 40. Include the bank charge if you pass it on.' }
+          - { name: fee, label: Our fee, widget: string, required: false, hint: 'In pounds, e.g. £79. Empty shows "Call for price".' }
+      - { name: feesNote, label: Note under the price table, widget: text, required: false }
+      - { name: feesTitle, label: Fees heading, widget: string, required: false }
+      - { name: govFee, label: Government fee (big text), widget: string, required: false, hint: 'e.g. Set by India. Leave empty for the default.' }
+      - { name: govFeeText, label: Government fee explanation, widget: text, required: false }
+      - { name: ourFee, label: Our fee for this visa, widget: string, required: false, hint: 'e.g. £79. Leave empty to use the fee in Business details.' }
+      - { name: ourFeeText, label: Our fee explanation, widget: text, required: false }
+      - { name: widget, label: Special tool on this page, widget: select, required: false, default: '', options: [{ label: 'None', value: '' }, { label: 'Nationality checker and list of eligible countries', value: 'eligibility' }] }
       - name: body
         label: Page text
         label_singular: paragraph
@@ -100,18 +153,29 @@ collections:
         collapsed: false
         required: false
         field: { name: paragraph, label: Paragraph, widget: text }
-        hint: 'Company pages only (About, Fees, Privacy policy and so on). One paragraph per box.'
+        hint: 'Company pages (privacy policy, terms...): one paragraph per box.'
+      - name: sections
+        label: Guide sections
+        label_singular: section
+        widget: list
+        required: false
+        summary: '{{fields.heading}}'
+        hint: 'Longer explanations that help Google rank the page. Leave a blank line between paragraphs; start a line with "- " for a bullet point; links: [text](/page-address/).'
+        fields:
+          - { name: heading, label: Heading, widget: string, hint: 'Use the words people search for, e.g. "Indian business visa requirements".' }
+          - { name: text, label: Text, widget: text }
+      - { name: faqHeading, label: FAQ heading, widget: string, required: false }
       - name: faqs
         label: FAQs
         label_singular: FAQ
         widget: list
         required: false
         summary: '{{fields.q}}'
-        hint: 'Questions clients really ask. Google can show these in search results. Drag to reorder.'
+        hint: 'Questions clients really ask. Google can show these in search results.'
         fields:
           - { name: q, label: Question, widget: string }
           - { name: a, label: Answer, widget: text }
-      - { name: govuk, label: GOV.UK link (optional), widget: string, required: false, hint: 'Link to the official rules or fees page, if there is one.' }
+      - { name: related, label: Related pages, widget: relation, collection: pages, value_field: '{{slug}}', search_fields: [h1], display_fields: [h1], multiple: true, required: false, hint: 'Links shown near the bottom of the page. Good for Google too.' }
       - name: title
         label: 'Google: page title'
         widget: string
@@ -122,55 +186,101 @@ collections:
         widget: text
         pattern: ['^[\s\S]{50,160}$', 'Keep it between 50 and 160 characters so Google shows it in full.']
         hint: 'The grey text under the headline in Google results.'
-      - name: focusKeyword
-        label: 'SEO: focus keyword'
-        widget: string
-        required: false
-        hint: 'The main search you want this page to rank for, e.g. "spouse visa Manchester". Your SEO score and tips appear on the right as you type.'
-      - name: shareImage
-        label: 'SEO: social sharing image (optional)'
-        widget: image
-        required: false
-        choose_url: false
-        hint: 'Shown when the page is shared on WhatsApp, Facebook or LinkedIn. Landscape, about 1200 × 630 pixels. If empty, the default image from Business details is used.'
-      - name: hideFromMenus
-        label: 'Remove from menus and drop-downs'
-        widget: boolean
-        required: false
-        default: false
-        hint: 'The page stays on the website, but is taken out of the menus, the eVisa menu and the homepage visa finder. On a country’s main page, this removes the whole country from them.'
-      - name: hidden
-        label: 'Move to bin (hide this page)'
-        widget: boolean
-        required: false
-        default: false
-        hint: 'Like the WordPress bin: the page disappears from the website, menus, page cards and the visa finder, and anyone visiting its address is sent to the page above it. Switch off again to restore it. Pages can’t be permanently deleted here, so nothing is lost by mistake. (Doesn’t apply to the ILR, Skilled Worker, China, China business and eVisas pages, which have special designs.)'
-      - name: noindex
-        label: 'SEO: hide this page from Google'
-        widget: boolean
-        required: false
-        default: false
-        hint: 'Only switch this on for pages you don’t want in search results.'
+      - { name: focusKeyword, label: 'SEO: focus keyword', widget: string, required: false, hint: 'The main search you want this page to rank for, e.g. "india business visa uk". Your SEO score and tips appear on the right as you type.' }
+      - { name: shareImage, label: 'SEO: social sharing image (optional)', widget: image, required: false, choose_url: false, hint: 'Shown when the page is shared on WhatsApp, Facebook or LinkedIn. Landscape, about 1200 × 630 pixels.' }
+      - { name: noindex, label: 'SEO: hide this page from Google', widget: boolean, required: false, default: false, hint: 'The page stays on the website but Google won’t list it.' }
+      - { name: hideFromMenus, label: Remove from menus, widget: boolean, required: false, default: false, hint: 'The page stays on the website but is left out of the menus and homepage tiles.' }
+      - { name: hidden, label: Move to bin (remove this page from the website), widget: boolean, required: false, default: false, hint: 'Takes the page off the website. Its address then sends visitors to the main page of its section. Switch off to bring it back.' }
 
-  # ---------- Pages with calculators or special design ----------
-  # ---------- Extra questions on the online application forms ----------
+  # ---------- Homepage ----------
+  - name: homepage
+    label: Homepage
+    editor: { preview: true }
+    files:
+      - name: home
+        label: Homepage
+        file: content/home.json
+        fields:
+          - { name: heroEyebrow, label: Small label above the heading, widget: string, required: false }
+          - { name: heroHeading, label: Main heading, widget: string }
+          - { name: heroAccent, label: Main heading second line (saffron), widget: string, required: false }
+          - { name: heroIntro, label: Introduction, widget: text }
+          - name: steps
+            label: The four steps
+            label_singular: step
+            widget: list
+            max: 4
+            summary: '{{fields.title}}'
+            hint: 'Shown under the banner on the homepage and on every visa page.'
+            fields:
+              - { name: title, label: Title, widget: string }
+              - { name: short, label: Short version (banner), widget: string, required: false }
+              - { name: text, label: Text, widget: text }
+          - name: heroOptions
+            label: Visa options in the banner card
+            label_singular: option
+            widget: list
+            max: 8
+            summary: '{{fields.label}} {{fields.sub}}'
+            fields:
+              - { name: label, label: Name, widget: string, hint: 'e.g. e-Tourist' }
+              - { name: sub, label: Small text, widget: string, hint: 'e.g. 30 days' }
+              - { name: note, label: What it’s for and what’s needed, widget: text }
+              - { name: button, label: Button text, widget: string }
+              - { name: link, label: Button link, widget: string, hint: 'e.g. /apply/india-visa/?visaType=e-Business%20visa or tel:+441619562003' }
+          - { name: tilesTitle, label: Visa tiles heading, widget: string }
+          - { name: tilesIntro, label: Visa tiles introduction, widget: text }
+          - { name: checksTitle, label: '"What we check" heading', widget: string }
+          - { name: checksIntro, label: '"What we check" introduction', widget: text }
+          - name: checks
+            label: '"What we check" cards'
+            label_singular: card
+            widget: list
+            summary: '{{fields.title}}'
+            fields:
+              - { name: icon, label: Icon, widget: select, options: ['briefcase','trade','factory','stall','people','tool','mic','map','book','sun','heart','home','medical','leaf','yoga','school','plane','passport','camera','film','mountain','chart','family','check','info','shield','clock','pin'], default: check }
+              - { name: title, label: Title, widget: string }
+              - { name: text, label: Text, widget: text }
+          - name: sections
+            label: Guide sections
+            label_singular: section
+            widget: list
+            required: false
+            summary: '{{fields.heading}}'
+            fields:
+              - { name: heading, label: Heading, widget: string }
+              - { name: text, label: Text, widget: text }
+          - name: faqs
+            label: FAQs
+            label_singular: FAQ
+            widget: list
+            summary: '{{fields.q}}'
+            fields:
+              - { name: q, label: Question, widget: string }
+              - { name: a, label: Answer, widget: text }
+          - { name: title, label: 'Google: page title', widget: string, pattern: ['^.{10,65}$', 'Keep it between 10 and 65 characters.'] }
+          - { name: description, label: 'Google: description', widget: text, pattern: ['^[\s\S]{50,160}$', 'Keep it between 50 and 160 characters.'] }
+          - { name: focusKeyword, label: 'SEO: focus keyword', widget: string, required: false }
+          - { name: shareImage, label: 'SEO: social sharing image (optional)', widget: image, required: false, choose_url: false }
+
+  # ---------- Form settings ----------
   - name: form_extras
     label: Form settings
     label_singular: form's settings
     description: >-
-      Change any online application form: add your own questions, or remove documents and questions you don't need.
-      Click "+ form's settings" and choose the form, or open a form that is already listed.
+      Change any online application form: add your own questions, or remove documents and questions you don't need,
+      or make them optional. Click "+ form's settings" and choose the form, or open a form that is already listed.
     folder: content/form-extras
     format: json
     extension: json
     create: true
-    delete: false
+    delete: true
     slug: '{{fields.form}}'
     identifier_field: form
     summary: '{{form}} · {{title}}'
     fields:
-      - { name: form, label: Form, widget: select, options: [{ label: 'China visa application', value: 'china-visa' }, { label: 'India eVisa application', value: 'india-visa' }, { label: 'Transfer your India eVisa to a new passport', value: 'india-evisa-transfer' }, { label: 'Sri Lanka ETA application', value: 'sri-lanka-eta' }, { label: 'Japan visa application', value: 'japan-visa' }, { label: 'Nigeria visa application (regular visa)', value: 'nigeria-visa' }, { label: 'Schengen visa application', value: 'schengen-visa' }, { label: 'USA ESTA or visa application', value: 'usa-visa' }, { label: 'Saudi Arabia visa application', value: 'saudi-visa' }, { label: 'Ghana visa application', value: 'ghana-visa' }, { label: 'Russian visa application', value: 'russia-visa' }, { label: 'India Employment and regular visa application', value: 'india-regular-visa' }, { label: 'eVisa application', value: 'evisa' }, { label: 'Document legalisation request', value: 'document-legalisation' }, { label: 'Indian passport, surrender certificate and OCI request', value: 'indian-passport-oci' }, { label: 'Second British passport application', value: 'second-uk-passport' }] }
-      - { name: title, label: Step title, widget: string, default: 'Additional questions' }
+      - { name: form, label: Form, widget: select, options: [{ label: 'India e-Visa application (all e-Visa types)', value: 'india-visa' }, { label: 'India regular / Employment visa application', value: 'india-regular-visa' }, { label: 'Transfer an India e-Visa to a new passport', value: 'india-evisa-transfer' }] }
+      - { name: title, label: Step title for your extra questions, widget: string, default: 'Additional questions' }
       - { name: hideDocs, label: 'Documents to remove', widget: list, required: false, hint: 'Type part of the document name as it appears on the form, e.g. Flight or Hotel. One per row.' }
       - { name: optionalDocs, label: 'Documents to make optional', widget: list, required: false, hint: 'The document stays on the form, but clients can send without it.' }
       - { name: hideQuestions, label: 'Questions to remove', widget: list, required: false, hint: 'Type part of the question as it appears on the form. Name, passport, email, phone and visa type can’t be removed.' }
@@ -196,8 +306,8 @@ collections:
     label_singular: client form
     description: >-
       Build a form to send to a client, or start from a template: open a template, choose Duplicate from the Publish menu,
-      and change the title. Its address is www.uvsuk.co.uk/client-forms/ followed by the form's file name,
-      which is made from the title when you first save (for example /client-forms/khan-family-spouse-visa/).
+      and change the title. Its address is indianevisaonline.org.uk/client-forms/ followed by the form's file name,
+      which is made from the title when you first save (for example /client-forms/patel-family-evisa/).
       Generate a password, then send the client the link and the password separately.
     folder: content/client-forms
     format: json
@@ -248,7 +358,7 @@ collections:
     label: Blog posts
     label_singular: Blog post
     description: >-
-      News and guides for your blog. Click "New Blog post" to write a new one. Posts appear at /blog/ newest first.
+      News and guides for your blog. Click "New Blog post" to write one. Posts appear at /blog/, newest first.
     folder: content/blog
     format: json
     extension: json
@@ -257,20 +367,18 @@ collections:
     slug: '{{fields.h1}}'
     identifier_field: h1
     summary: '{{date}} · {{h1}}'
-    sortable_fields: ['date', 'h1']
-    editor: { preview: true }
+    preview_path: 'blog/{{slug}}/'
     fields:
       - { name: h1, label: Post title (heading), widget: string, hint: 'The headline readers see. Also used for the post’s web address when you first save it.' }
       - { name: date, label: Date published, widget: datetime, format: 'YYYY-MM-DD', date_format: 'DD/MM/YYYY', time_format: false, picker_utc: true }
       - { name: updated, label: Date updated (optional), widget: datetime, format: 'YYYY-MM-DD', date_format: 'DD/MM/YYYY', time_format: false, picker_utc: true, required: false }
-      - { name: category, label: Category, widget: select, options: ['UK immigration', 'Travel visas', 'News'], default: 'News' }
+      - { name: category, label: Category, widget: select, options: ['e-Visa guides', 'Rule changes', 'Travel tips', 'News'], default: 'e-Visa guides' }
       - { name: intro, label: Summary, widget: text, hint: 'Two or three sentences shown on the blog page and under the headline.' }
       - name: sections
         label: Post sections
         label_singular: section
         widget: list
         summary: '{{fields.heading}}'
-        hint: 'Leave a blank line between paragraphs. Start a line with "- " for a bullet point. Links: [link text](https://example.com).'
         fields:
           - { name: heading, label: Heading, widget: string }
           - { name: text, label: Text, widget: text }
@@ -283,85 +391,14 @@ collections:
         fields:
           - { name: q, label: Question, widget: string }
           - { name: a, label: Answer, widget: text }
-      - { name: relatedPage, label: Button link (optional), widget: string, required: false, hint: 'A page on your site to send readers to, e.g. /post-study-work-visa/' }
-      - { name: relatedLabel, label: Button text (optional), widget: string, required: false, hint: 'e.g. Apply for your Graduate visa' }
+      - { name: relatedPage, label: Button link (optional), widget: string, required: false, hint: 'A page on your site to send readers to, e.g. /india-e-business-visa-for-uk-citizens/' }
+      - { name: relatedLabel, label: Button text (optional), widget: string, required: false, hint: 'e.g. Apply for your e-Business visa' }
       - { name: title, label: 'Google: page title', widget: string, pattern: ['^.{10,65}$', 'Keep it between 10 and 65 characters.'] }
       - { name: description, label: 'Google: description', widget: text, pattern: ['^[\s\S]{50,160}$', 'Keep it between 50 and 160 characters.'] }
       - { name: focusKeyword, label: 'SEO: focus keyword', widget: string, required: false }
       - { name: shareImage, label: 'SEO: social sharing image (optional)', widget: image, required: false, choose_url: false }
+      - { name: noindex, label: 'SEO: hide this post from Google', widget: boolean, required: false, default: false }
       - { name: draft, label: 'Draft (hide from the website)', widget: boolean, required: false, default: false }
-
-  # ---------- Homepage ----------
-  - name: homepage
-    label: Homepage
-    editor: { preview: true }
-    files:
-      - name: home
-        label: Homepage
-        file: content/home.json
-        fields:
-          - { name: heroEyebrow, label: Small line above the heading, widget: string }
-          - { name: heroHeading, label: Main heading, widget: string }
-          - { name: heroIntro, label: Introduction, widget: text }
-          - name: popularLinks
-            label: Popular links (beside the visa search)
-            label_singular: link
-            widget: list
-            max: 8
-            required: false
-            summary: '{{fields.label}}'
-            hint: 'Up to 8 buttons. Leave empty to use the standard list.'
-            fields:
-              - { name: label, label: Button text, widget: string }
-              - { name: url, label: Page address, widget: string, hint: 'e.g. /china-visa-application/' }
-          - name: heroPoints
-            label: Selling points (under the buttons)
-            label_singular: selling point
-            widget: list
-            max: 3
-            summary: '{{fields.title}}'
-            hint: 'Up to three short reasons to choose you. Keep each title to a few words and the text to one line.'
-            fields:
-              - { name: title, label: Title, widget: string }
-              - { name: text, label: Text, widget: string }
-          - { name: heroPhoto, label: Main photo, widget: image, required: false, choose_url: false, hint: 'A landscape photo, about 1200 pixels wide. JPG under 300 KB keeps the site fast.' }
-          - { name: heroPhotoAlt, label: Main photo description, widget: string, hint: 'Describe the photo for blind visitors and Google, e.g. "Raj and Sunita with a client in our office".' }
-          - { name: advisersPhoto, label: Advisers photo, widget: image, required: false, choose_url: false, hint: 'About 1000 pixels wide. JPG under 300 KB.' }
-          - { name: advisersPhotoAlt, label: Advisers photo description, widget: string }
-          - { name: advisersIntro, label: '"Meet your advisers" text', widget: text }
-          - { name: iaaLogo, label: IAA logo, widget: image, required: false, choose_url: false, hint: 'The official logo file the Immigration Advice Authority gave you, as PNG or SVG. Shown next to your registration details.' }
-          - { name: consultationFrom, label: Consultation price, widget: string, hint: 'Shown as "Consultations from …", e.g. £50.' }
-          - name: reviews
-            label: Client reviews
-            label_singular: review
-            widget: list
-            summary: '{{fields.quote}}'
-            hint: 'Use real reviews only, word for word. These show on the homepage and above the footer on every other page. With more than three, they change every few seconds.'
-            fields:
-              - { name: quote, label: Review, widget: text }
-              - { name: source, label: Where it's from, widget: string, hint: 'e.g. Google review · UK visa' }
-          - name: sections
-            label: Guide sections
-            label_singular: section
-            widget: list
-            required: false
-            summary: '{{fields.heading}}'
-            hint: 'Shown above the FAQs. Leave a blank line between paragraphs; start a line with "- " for a bullet point.'
-            fields:
-              - { name: heading, label: Heading, widget: string }
-              - { name: text, label: Text, widget: text }
-          - name: faqs
-            label: FAQs
-            label_singular: FAQ
-            widget: list
-            summary: '{{fields.q}}'
-            fields:
-              - { name: q, label: Question, widget: string }
-              - { name: a, label: Answer, widget: text }
-          - { name: title, label: 'Google: page title', widget: string, pattern: ['^.{10,65}$', 'Keep it between 10 and 65 characters.'] }
-          - { name: description, label: 'Google: description', widget: text, pattern: ['^[\s\S]{50,160}$', 'Keep it between 50 and 160 characters.'] }
-          - { name: focusKeyword, label: 'SEO: focus keyword', widget: string, required: false, hint: 'e.g. "immigration advisers Manchester". Your SEO score appears on the right.' }
-          - { name: shareImage, label: 'SEO: social sharing image (optional)', widget: image, required: false, choose_url: false, hint: 'Landscape, about 1200 × 630 pixels.' }
 
   # ---------- Business details ----------
   - name: settings
@@ -373,8 +410,13 @@ collections:
         description: These appear across the whole site. Keep them identical to your Google Business Profile.
         file: content/settings.json
         fields:
-          - { name: shareImage, label: 'Default social sharing image', widget: image, required: false, choose_url: false, hint: 'Used when a page without its own image is shared on WhatsApp, Facebook or LinkedIn. Landscape, about 1200 × 630 pixels.' }
-          - { name: siteLogo, label: Website logo, widget: image, required: false, choose_url: false, hint: 'Shown at the top of every page instead of the business name. A PNG with a transparent background works best, at least 400 pixels wide.' }
+          - { name: siteName, label: Website name, widget: string, hint: 'Used in page titles and Google, e.g. Indian Visa Online Service.' }
+          - { name: legalName, label: Company name, widget: string, hint: 'Your registered company, shown in the footer.' }
+          - { name: groupName, label: Group name, widget: string, required: false, hint: 'Shown in the footer as "part of the … group". Leave empty to hide.' }
+          - { name: companyNumber, label: Company number, widget: string, required: false, hint: 'Only fill in if this company is registered under its own number.' }
+          - { name: siteLogo, label: Website logo, widget: image, required: false, choose_url: false }
+          - { name: shareImage, label: 'Default social sharing image', widget: image, required: false, choose_url: false, hint: 'Landscape, about 1200 × 630 pixels.' }
+          - { name: serviceFee, label: Our standard service fee, widget: string, required: false, hint: 'e.g. £79. Shown in the fees boxes. Each page can set its own fee too. Empty = "Call for a quote".' }
           - { name: phone, label: Phone number, widget: string }
           - { name: email, label: Email address, widget: string }
           - { name: addressLine1, label: Address, widget: string }
@@ -383,28 +425,15 @@ collections:
           - { name: hours, label: Opening hours, widget: string, hint: 'As shown on the site, e.g. Mon–Fri 9am–5pm' }
           - { name: hoursForGoogle, label: Opening hours for Google, widget: string, hint: 'Same hours in Google''s format, e.g. Mo-Fr 09:00-17:00' }
           - { name: yearsInPractice, label: Years in practice, widget: string }
-          - { name: applicationsHandled, label: Applications handled, widget: string, hint: 'e.g. 5,000+' }
-          - { name: googleRating, label: Google rating, widget: string, hint: 'e.g. 4.8' }
-          - { name: googleReviewCount, label: Number of Google reviews, widget: string }
+          - { name: applicationsHandled, label: Applications handled, widget: string }
+          - { name: googleRating, label: Google rating, widget: string, required: false }
+          - { name: googleReviewCount, label: Number of Google reviews, widget: string, required: false, hint: 'Your star rating is only shown to Google when this is filled in.' }
           - { name: googleReviewsUrl, label: Link to your Google reviews, widget: string, required: false }
-          - { name: trustpilotUrl, label: Link to your Trustpilot page, widget: string, required: false, hint: 'e.g. https://uk.trustpilot.com/review/uvsuk.co.uk. Leave empty to hide the Trustpilot badge.' }
-          - { name: trustpilotRating, label: Trustpilot rating, widget: string, required: false, hint: 'Exactly as Trustpilot shows it, e.g. 4.7' }
-          - { name: trustpilotCount, label: Number of Trustpilot reviews, widget: string, required: false }
-          - { name: companyNumber, label: Company number, widget: string }
-          - name: delivery
-            label: Passport return prices (travel visas)
-            label_singular: delivery option
-            widget: list
-            summary: '{{fields.service}}: {{fields.price}}'
-            hint: 'Shown on every travel visa page. Not shown on eVisa pages.'
-            fields:
-              - { name: service, label: Delivery option, widget: string }
-              - { name: price, label: Price, widget: string, hint: 'For example £15, or "We’ll quote".' }
-          - { name: evisaDelivery, label: eVisa delivery price, widget: string, hint: 'Shown on every eVisa page, e.g. £5.' }
-          - { name: facebook, label: Facebook page link, widget: string, required: false, hint: 'The full web address, e.g. https://www.facebook.com/yourpage. Leave empty to hide the icon.' }
-          - { name: instagram, label: Instagram link, widget: string, required: false, hint: 'e.g. https://www.instagram.com/yourname' }
-          - { name: linkedin, label: LinkedIn link, widget: string, required: false, hint: 'e.g. https://www.linkedin.com/company/yourcompany' }
-          - { name: x, label: X (Twitter) link, widget: string, required: false, hint: 'e.g. https://x.com/yourname' }
-          - { name: tiktok, label: TikTok link, widget: string, required: false, hint: 'e.g. https://www.tiktok.com/@yourname' }
-          - { name: youtube, label: YouTube link, widget: string, required: false, hint: 'e.g. https://www.youtube.com/@yourchannel' }
-          - { name: whatsapp, label: WhatsApp link, widget: string, required: false, hint: 'e.g. https://wa.me/441619562003 (your number in international format, no + or spaces).' }
+          - { name: disclaimerShort, label: Disclaimer (footer), widget: text }
+          - { name: facebook, label: Facebook page link, widget: string, required: false }
+          - { name: instagram, label: Instagram link, widget: string, required: false }
+          - { name: linkedin, label: LinkedIn link, widget: string, required: false }
+          - { name: x, label: X (Twitter) link, widget: string, required: false }
+          - { name: tiktok, label: TikTok link, widget: string, required: false }
+          - { name: youtube, label: YouTube link, widget: string, required: false }
+          - { name: whatsapp, label: WhatsApp link, widget: string, required: false, hint: 'e.g. https://wa.me/447908242929. Empty = no WhatsApp button.' }

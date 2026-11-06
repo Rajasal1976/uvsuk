@@ -1,0 +1,54 @@
+{
+  "layout": "guide",
+  "group": "guide",
+  "order": 30,
+  "navLabel": "e-Arrival card",
+  "h1": "India e-Arrival card",
+  "applyButton": "none",
+  "intro": "The India e-Arrival card is a free online form that foreign visitors and OCI cardholders can fill in within 72 hours before arriving. It’s arrival information, not a visa, so you still need your e-Visa or visa.",
+  "cardText": "India’s free online arrival card: who fills it in, when, and how.",
+  "sections": [
+    {
+      "heading": "What is the India e-Arrival card?",
+      "text": "It’s the online version of the landing card you used to fill in on the plane. It collects your arrival details for India’s immigration authorities. It doesn’t replace a visa."
+    },
+    {
+      "heading": "When and where to fill it in",
+      "text": "Complete it within 72 hours before you arrive, on the Bureau of Immigration website (boi.gov.in), on indianvisaonline.gov.in, or in the official “Indian Visa Su-Swagatam” mobile app. It’s free."
+    },
+    {
+      "heading": "Watch out for fake e-Arrival card websites",
+      "text": "Some websites charge fees for the e-Arrival card. The official service is free. You don’t need to pay anyone, including us, to fill it in."
+    },
+    {
+      "heading": "Do I still need a visa?",
+      "text": "Yes. You still need your e-Visa or regular visa. The e-Arrival card is extra information, not permission to enter."
+    },
+    {
+      "heading": "What the India e-Arrival card asks for",
+      "text": "Your passport details, your flight or travel details, your address in India and your contact details. Have your passport and visa to hand. Fill in a separate India e-Arrival card for each traveller, including children."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Is the India e-Arrival card free?",
+      "a": "Yes. The official e-Arrival card is free."
+    },
+    {
+      "q": "When should I fill in the e-Arrival card?",
+      "a": "Within 72 hours before you arrive in India."
+    },
+    {
+      "q": "Is the e-Arrival card a visa?",
+      "a": "No. It’s arrival information. You still need a valid visa or e-Visa."
+    }
+  ],
+  "related": [
+    "indian-e-visa",
+    "india-evisa-airports"
+  ],
+  "title": "India e-Arrival Card 2026: Who Needs It and How",
+  "description": "The India e-Arrival card is free: foreign visitors and OCI cardholders complete it online within 72 hours before arrival. It isn’t a visa.",
+  "focusKeyword": "India e-Arrival card",
+  "shareImage": "/images/share.jpg"
+}

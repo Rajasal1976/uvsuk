@@ -1,0 +1,165 @@
+{
+  "layout": "visa",
+  "group": "evisa",
+  "order": 60,
+  "navLabel": "e-Film visa",
+  "h1": "India e-Film visa",
+  "h1Accent": "for filming in India.",
+  "applyButton": "/apply/india-visa/?visaType=e-Film%20visa",
+  "applyLabel": "Start e-Film application",
+  "intro": "The India e-Film visa is for shooting a film, series or advert in India. It needs clearance from India’s Ministry of Information and Broadcasting, and we’ll guide you through it.",
+  "cardText": "For shooting films, series and adverts, with clearance from India’s broadcasting ministry.",
+  "facts": [
+    {
+      "value": "Clearance",
+      "label": "From the Ministry of Information and Broadcasting"
+    },
+    {
+      "value": "Letter of intent",
+      "label": "About your shoot"
+    },
+    {
+      "value": "Cast and crew",
+      "label": "Each needs a visa"
+    },
+    {
+      "value": "We guide you",
+      "label": "Through every step"
+    }
+  ],
+  "checklist": [
+    {
+      "item": "Passport photo page",
+      "hint": "Valid for 6 months, with at least 2 blank pages"
+    },
+    {
+      "item": "A recent photo",
+      "hint": "Plain light background, face fully visible. We’ll crop it"
+    },
+    {
+      "item": "Ministry clearance letter"
+    },
+    {
+      "item": "Letter of intent",
+      "hint": "Schedule, cast and crew, locations and equipment"
+    }
+  ],
+  "purposesTitle": "What it covers",
+  "purposes": [
+    {
+      "icon": "film",
+      "title": "Feature films and series",
+      "text": "Shooting on location in India."
+    },
+    {
+      "icon": "camera",
+      "title": "Adverts and documentaries",
+      "text": "Commercial and documentary filming."
+    }
+  ],
+  "notCoveredTitle": "Not covered",
+  "notCovered": [
+    "News journalism, which needs a Journalist visa",
+    "Filming in protected areas without permits",
+    "Paid work for an Indian company"
+  ],
+  "documentsTable": [
+    {
+      "document": "Passport photo page",
+      "details": "A clear scan or photo of the page with your photo and details. Your passport must be valid for at least 6 months and have at least 2 blank pages.",
+      "needed": "Required"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent, in colour, front-facing with eyes open and no glasses. Plain white or light background, no shadows or borders. We crop and resize it for you.",
+      "needed": "Required"
+    },
+    {
+      "document": "Clearance letter",
+      "details": "From India’s Ministry of Information and Broadcasting.",
+      "needed": "Required"
+    },
+    {
+      "document": "Letter of intent",
+      "details": "About the shoot: production schedule, cast and crew coming to India, locations and any filming equipment you’re bringing.",
+      "needed": "Required"
+    },
+    {
+      "document": "UK residence status",
+      "details": "If you’re not a British citizen: your UK eVisa share code page, BRP or settlement document.",
+      "needed": "If applicable"
+    }
+  ],
+  "rules": [
+    {
+      "title": "How long you can stay",
+      "text": "The dates on your e-Visa will match your approved shoot. We’ll confirm them with you."
+    },
+    {
+      "title": "It can’t be extended or changed",
+      "text": "An e-Visa can’t be extended or switched to another type of visa once you’re in India, so choose the right one before you travel."
+    },
+    {
+      "title": "Arrive at an approved airport or seaport",
+      "text": "You must enter India through one of the airports or seaports approved for e-Visas. All the main international airports are included, such as Delhi, Mumbai, Bengaluru, Chennai, Kolkata, Hyderabad, Goa and Kochi. You can leave from any immigration checkpoint."
+    },
+    {
+      "title": "Who can’t use an e-Visa",
+      "text": "People of Pakistani origin, anyone with a military, police or security background (serving or retired), and holders of diplomatic or official passports must apply for a regular visa instead."
+    },
+    {
+      "title": "Fill in the e-Arrival card",
+      "text": "Before you fly, complete India’s free e-Arrival card online within 72 hours of arrival. It’s arrival information, not a visa. [How the e-Arrival card works](/india-e-arrival-card/)"
+    },
+    {
+      "title": "No protected areas",
+      "text": "An e-Visa isn’t valid for protected, restricted or cantonment areas. Visiting places such as parts of the North East, Sikkim or the Andaman Islands may need a separate permit."
+    }
+  ],
+  "boxTitle": "Filming news or a documentary as a journalist?",
+  "boxText": "Journalists need a regular Journalist visa. We can help.",
+  "boxButton": "Journalist visa",
+  "boxLink": "/indian-journalist-visa/",
+  "sections": [
+    {
+      "heading": "How to get an India e-Film visa",
+      "text": "Foreign productions apply for clearance through India’s Ministry of Information and Broadcasting before applying for the e-Film visa. Plan this well ahead, as the clearance must be in place before you apply."
+    },
+    {
+      "heading": "What the India e-Film visa covers",
+      "text": "Feature films, television series, web series, adverts and documentaries shot on location in India by foreign productions. Every member of the cast and crew travelling to India needs their own India e-Film visa, and the details must match the production’s approved list."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Do all the crew need a visa?",
+      "a": "Yes, each member of the cast and crew coming to India needs their own visa."
+    },
+    {
+      "q": "How early should I apply?",
+      "a": "At least 4 days before you arrive in India, and no more than 120 days before. We recommend applying 2 to 3 weeks ahead in case anything needs correcting."
+    },
+    {
+      "q": "Is the e-Visa fee refundable if I’m refused?",
+      "a": "No. The Government of India’s e-Visa fee pays for processing your application, so it isn’t refunded if the visa is refused or you cancel your trip. That’s why we check everything before you pay it."
+    }
+  ],
+  "related": [
+    "india-e-business-visa-for-uk-citizens",
+    "indian-journalist-visa"
+  ],
+  "title": "India e-Film Visa from the UK | Filming Permission & Apply",
+  "description": "India e-Film visa for film, series and advert shoots: ministry clearance, letter of intent and how to apply for cast and crew from the UK.",
+  "focusKeyword": "India e-Film visa",
+  "prices": [
+    {
+      "service": "e-Film visa",
+      "included": "",
+      "processing": "",
+      "entries": "",
+      "govFee": "",
+      "fee": ""
+    }
+  ],
+  "shareImage": "/images/share.jpg"
+}

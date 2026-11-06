@@ -1,0 +1,55 @@
+{
+  "layout": "guide",
+  "group": "guide",
+  "order": 50,
+  "navLabel": "e-Visa fees",
+  "applyButton": "/apply/india-visa/",
+  "applyLabel": "Start my application",
+  "h1": "Indian e-Visa fees explained",
+  "intro": "Indian e-Visa fees come in two parts: the government fee, paid to India, and our service fee if you apply through us. Here’s how each works, with no surprises.",
+  "cardText": "The government fee and our service fee, and what each pays for.",
+  "sections": [
+    {
+      "heading": "The government part of Indian e-Visa fees",
+      "text": "The Government of India sets the e-Visa fee. It depends on your nationality and the type of e-Visa. A bank charge of around 3% is added for card payments. The fee pays for processing, so it isn’t refunded if the visa is refused or you don’t travel."
+    },
+    {
+      "heading": "Our service fee",
+      "text": "If you apply through us, our service fee pays for checking your eligibility, fixing your photo and scans, completing the official form and submitting it. We show it separately from the government fee, before you pay."
+    },
+    {
+      "heading": "No express or emergency fees",
+      "text": "The Government of India says it doesn’t charge any express or emergency fee for e-Visas. Be wary of any website offering a guaranteed faster e-Visa for an extra charge."
+    },
+    {
+      "heading": "Regular visa fees",
+      "text": "Regular (paper) visas have their own government fee and a visa centre service charge. We’ll tell you the current amounts when you contact us."
+    },
+    {
+      "heading": "When do I pay Indian e-Visa fees?",
+      "text": "The government fee is paid online once the application form is complete. It must be paid at least 4 days before you arrive in India, otherwise the application isn’t processed. Our service fee is agreed with you before we start."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Is the e-Visa fee refundable if I’m refused?",
+      "a": "No. The Government of India’s e-Visa fee pays for processing your application, so it isn’t refunded if the visa is refused or you cancel your trip. That’s why we check everything before you pay it."
+    },
+    {
+      "q": "Can I pay extra to get my e-Visa faster?",
+      "a": "No. The Indian government doesn’t sell faster e-Visas. Applying early and getting it right first time is what speeds things up."
+    },
+    {
+      "q": "Do children pay Indian e-Visa fees?",
+      "a": "Yes. Every traveller needs their own e-Visa, and fees apply per person. Some nationalities pay a reduced fee or none at all; we’ll tell you what applies."
+    }
+  ],
+  "related": [
+    "indian-e-visa",
+    "indian-evisa-rejected"
+  ],
+  "title": "Indian e-Visa Fees 2026 | Government Fee & Service Fee",
+  "description": "Indian e-Visa fees explained: the government fee by nationality, card charges, refunds and our separate service fee. No hidden extras.",
+  "focusKeyword": "Indian e-Visa fees",
+  "shareImage": "/images/share.jpg"
+}

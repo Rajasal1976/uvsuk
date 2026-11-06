@@ -1,0 +1,60 @@
+{
+  "layout": "guide",
+  "group": "regular",
+  "order": 50,
+  "navLabel": "Pakistani origin applicants",
+  "h1": "Indian visa for people of Pakistani origin",
+  "applyButton": "/apply/india-regular-visa/?visaType=Tourist%20visa%20(regular)",
+  "applyLabel": "Start regular visa application",
+  "intro": "Getting an Indian visa for people of Pakistani origin works differently. If you, your parents or grandparents were born in or lived permanently in Pakistan, you can’t use India’s e-Visa, even with a British passport. Here’s how the regular visa works, and how we help.",
+  "cardText": "Why you can’t use the e-Visa, and how the regular visa works for you.",
+  "sections": [
+    {
+      "heading": "Why can’t I use the e-Visa?",
+      "text": "India’s e-Visa rules exclude anyone of Pakistani origin. This includes people who aren’t Pakistani nationals but whose parents or grandparents, on either side, were born in or lived permanently in Pakistan. It applies even if you were born in the UK and hold only a British passport.\n\nIf you apply for an e-Visa anyway, it’s likely to be refused and the fee isn’t refunded. In some cases you could be refused entry when you arrive."
+    },
+    {
+      "heading": "Which Indian visa for people of Pakistani origin?",
+      "text": "You need a regular (paper) visa: a tourist visa for holidays and family visits, or a business visa for business trips. The process takes longer than an e-Visa and asks for more details about your family history."
+    },
+    {
+      "heading": "How long does it take?",
+      "text": "Allow several weeks, and longer around busy periods such as Diwali, Christmas and the summer holidays. Don’t book non-refundable travel until your visa is approved."
+    },
+    {
+      "heading": "How we help",
+      "text": "We check that the regular visa is right for you, complete the online form, help with the extra details about your parents and grandparents, check every document and tell you exactly what to submit. This avoids the mistakes that cause long delays."
+    },
+    {
+      "heading": "Documents you may be asked for",
+      "text": "Along with your passport, photo and proof of UK address, you may be asked for details of your parents and grandparents: names, places of birth and nationalities. Have these ready before you start, as mistakes here cause the longest delays."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "My grandparents were born in what is now Pakistan before 1947. Does this apply to me?",
+      "a": "It can do. The rule refers to Pakistan, and families affected by Partition are often asked about it. Call us and we’ll look at your family history."
+    },
+    {
+      "q": "Can I get an OCI card instead?",
+      "a": "OCI cards aren’t available to people who are, or whose parents or grandparents were, citizens of Pakistan. Ask us about your situation."
+    },
+    {
+      "q": "Will I be refused?",
+      "a": "Many people of Pakistani origin get Indian visas. Applying through the right route, with complete and accurate details, gives you the best chance."
+    },
+    {
+      "q": "Can I apply myself instead of using you?",
+      "a": "Yes. You can apply on the official website, indianvisaonline.gov.in, and pay only the government fee. People use us when they want a person to check their eligibility, fix their photo and documents, and handle the form for them so nothing goes wrong."
+    }
+  ],
+  "related": [
+    "indian-tourist-visa",
+    "indian-business-visa",
+    "india-evisa-eligibility"
+  ],
+  "title": "Indian Visa for People of Pakistani Origin | UK Guide",
+  "description": "Indian visa for people of Pakistani origin: why British citizens with Pakistani heritage can’t use the e-Visa, and how the regular visa works.",
+  "focusKeyword": "Indian visa for people of Pakistani origin",
+  "shareImage": "/images/share.jpg"
+}

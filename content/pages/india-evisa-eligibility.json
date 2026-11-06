@@ -1,0 +1,53 @@
+{
+  "layout": "guide",
+  "group": "guide",
+  "order": 10,
+  "navLabel": "Who can get an e-Visa",
+  "widget": "eligibility",
+  "applyButton": "/apply/india-visa/",
+  "h1": "Indian e-Visa eligible countries",
+  "applyLabel": "Start my application",
+  "intro": "Over 170 nationalities are Indian e-Visa eligible countries. Type yours below to check, or browse the full list. Some people can’t use the e-Visa whatever their nationality, so read the exceptions too.",
+  "cardText": "Check whether your nationality can apply for an Indian e-Visa.",
+  "sections": [
+    {
+      "heading": "Who can’t use an e-Visa, whatever their nationality",
+      "text": "- People of Pakistani origin, including British citizens whose parents or grandparents were born in or lived permanently in Pakistan. [Read our guide](/indian-visa-for-pakistani-origin/)\n- Pakistani passport holders\n- Anyone with a military, police, intelligence or security background, serving or retired\n- Holders of diplomatic or official passports, and international travel documents other than a passport\n- Children listed on a parent’s passport: each person needs their own passport"
+    },
+    {
+      "heading": "Other conditions for Indian e-Visa eligible countries",
+      "text": "Your passport must be valid for at least six months when you apply and have at least two blank pages. You need a return or onward ticket and enough money for your stay. The e-Visa isn’t valid for protected or restricted areas."
+    },
+    {
+      "heading": "Living in the UK on another passport?",
+      "text": "You can apply from the UK on any eligible passport. You may be asked for proof of your UK residence, such as your eVisa share code or BRP."
+    },
+    {
+      "heading": "What if my country isn’t eligible?",
+      "text": "If your nationality isn’t on the list of Indian e-Visa eligible countries, you’ll need a regular visa. The process takes longer and your passport goes to the visa application centre, but we handle the form and documents for you."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Can British citizens get an Indian e-Visa?",
+      "a": "Yes, unless they are of Pakistani origin or have a military or police background."
+    },
+    {
+      "q": "My nationality isn’t on the list. What can I do?",
+      "a": "You’ll need a regular visa. We can help you apply."
+    },
+    {
+      "q": "Does this list change?",
+      "a": "Occasionally. We check it against the official Government of India list and update this page when it changes."
+    }
+  ],
+  "related": [
+    "indian-visa-for-pakistani-origin",
+    "indian-regular-visa",
+    "indian-e-visa"
+  ],
+  "title": "Indian e-Visa Eligible Countries 2026 | Check Yours",
+  "description": "Indian e-Visa eligible countries: check if your nationality can apply online, see the full list, and who can’t use the e-Visa whatever their passport.",
+  "focusKeyword": "Indian e-Visa eligible countries",
+  "shareImage": "/images/share.jpg"
+}

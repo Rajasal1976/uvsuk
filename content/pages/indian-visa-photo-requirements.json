@@ -1,0 +1,72 @@
+{
+  "layout": "guide",
+  "group": "guide",
+  "order": 20,
+  "navLabel": "Photo and document rules",
+  "applyButton": "/apply/india-visa/",
+  "applyLabel": "Start my application",
+  "h1": "Indian e-Visa photo and document requirements",
+  "intro": "Indian e-Visa photo problems are the most common reason applications are sent back. Here are the official rules, and the good news: when you apply with us, we crop and resize your photo and scans for you.",
+  "cardText": "The official photo, passport scan and document size rules, explained.",
+  "documentsTable": [
+    {
+      "document": "Photo",
+      "details": "JPEG format, between 10 KB and 1 MB. Square: height and width must be the same.",
+      "needed": "Required"
+    },
+    {
+      "document": "Passport scan",
+      "details": "PDF format, between 10 KB and 300 KB. The photo page, clear and readable.",
+      "needed": "Required"
+    },
+    {
+      "document": "Other documents",
+      "details": "PDF format, between 10 KB and 300 KB. In English.",
+      "needed": "If applicable"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Indian e-Visa photo rules",
+      "text": "Your photo must:\n- show your full face, from the front, with your eyes open\n- be taken without glasses\n- have your head centred, showing the top of your hair to the bottom of your chin\n- have a plain white or light background\n- have no shadows on your face or the background\n- have no border\n- be recent and in colour"
+    },
+    {
+      "heading": "Common Indian e-Visa photo mistakes",
+      "text": "- A selfie taken too close, so your face looks distorted\n- A patterned or dark background\n- Shadows behind your head\n- Glasses, or hair covering your eyes\n- A photo that isn’t square, or is too big a file"
+    },
+    {
+      "heading": "Passport scan rules",
+      "text": "Upload the page with your photo and personal details. All four corners should be visible, the text must be readable, and the two coded lines at the bottom must be clear."
+    },
+    {
+      "heading": "Let us do it for you",
+      "text": "Take your photo against a plain wall in daylight and upload it as it is. We’ll check it against the rules, crop it to a square and resize it. If it can’t be fixed, we’ll tell you before anything is submitted."
+    },
+    {
+      "heading": "How to take a good Indian e-Visa photo at home",
+      "text": "Stand in front of a plain white or light wall, facing a window so your face is evenly lit. Ask someone to take the photo from about 1.5 metres away, at eye level. Keep a neutral expression, eyes open and glasses off. Then upload it as it is; we’ll crop it square and resize it to the official limits."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Can I wear glasses in my Indian e-Visa photo?",
+      "a": "No. Take your glasses off for the photo."
+    },
+    {
+      "q": "Can I use my passport photo?",
+      "a": "Often yes, if it has a plain light background and meets the rules. It must be square for the upload, which we can do for you."
+    },
+    {
+      "q": "What size should the photo be?",
+      "a": "A square JPEG between 10 KB and 1 MB."
+    }
+  ],
+  "related": [
+    "indian-e-visa",
+    "indian-evisa-rejected"
+  ],
+  "title": "Indian e-Visa Photo Requirements 2026 | Size & Rules",
+  "description": "Indian e-Visa photo and document rules: square JPEG 10 KB to 1 MB, plain background, no glasses, PDF scans. We fix your photo for you.",
+  "focusKeyword": "Indian e-Visa photo",
+  "shareImage": "/images/share.jpg"
+}

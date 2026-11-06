@@ -1,0 +1,170 @@
+{
+  "layout": "visa",
+  "group": "evisa",
+  "order": 31,
+  "navLabel": "e-Medical Attendant visa",
+  "h1": "India e-Medical Attendant visa",
+  "h1Accent": "for companions.",
+  "applyButton": "/apply/india-visa/?visaType=e-Medical%20Attendant%20visa",
+  "applyLabel": "Start Attendant application",
+  "intro": "The e-Medical Attendant visa is for family members or carers travelling with a patient who has an e-Medical visa. Up to two attendants can go with each patient.",
+  "cardText": "For up to two family members or carers travelling with an e-Medical patient.",
+  "facts": [
+    {
+      "value": "Up to 2",
+      "label": "Attendants per patient"
+    },
+    {
+      "value": "Linked",
+      "label": "To the patient’s e-Medical visa"
+    },
+    {
+      "value": "Same dates",
+      "label": "Follows the patient’s visa"
+    },
+    {
+      "value": "Passport + photo",
+      "label": "Main documents"
+    }
+  ],
+  "checklist": [
+    {
+      "item": "Passport photo page",
+      "hint": "Valid for 6 months, with at least 2 blank pages"
+    },
+    {
+      "item": "A recent photo",
+      "hint": "Plain light background, face fully visible. We’ll crop it"
+    },
+    {
+      "item": "The patient’s e-Medical visa details",
+      "hint": "Their application or visa number"
+    }
+  ],
+  "purposesTitle": "What it covers",
+  "purposes": [
+    {
+      "icon": "family",
+      "title": "Caring for the patient",
+      "text": "Being with a family member during treatment."
+    },
+    {
+      "icon": "heart",
+      "title": "Support during recovery",
+      "text": "Staying with them while they recover in India."
+    }
+  ],
+  "notCoveredTitle": "Not covered",
+  "notCovered": [
+    "Travelling without the patient",
+    "Tourism as the main purpose",
+    "Paid work"
+  ],
+  "documentsTable": [
+    {
+      "document": "Passport photo page",
+      "details": "A clear scan or photo of the page with your photo and details. Your passport must be valid for at least 6 months and have at least 2 blank pages.",
+      "needed": "Required"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent, in colour, front-facing with eyes open and no glasses. Plain white or light background, no shadows or borders. We crop and resize it for you.",
+      "needed": "Required"
+    },
+    {
+      "document": "Patient’s e-Medical visa",
+      "details": "Details of the e-Medical visa of the person you’re accompanying.",
+      "needed": "Required"
+    },
+    {
+      "document": "Hospital letter",
+      "details": "A copy of the hospital letter for the patient.",
+      "needed": "Helpful"
+    },
+    {
+      "document": "UK residence status",
+      "details": "If you’re not a British citizen: your UK eVisa share code page, BRP or settlement document.",
+      "needed": "If applicable"
+    }
+  ],
+  "rules": [
+    {
+      "title": "How long you can stay",
+      "text": "Your visa follows the patient’s e-Medical visa. Always check the dates shown on your e-Visa."
+    },
+    {
+      "title": "It can’t be extended or changed",
+      "text": "An e-Visa can’t be extended or switched to another type of visa once you’re in India, so choose the right one before you travel."
+    },
+    {
+      "title": "Arrive at an approved airport or seaport",
+      "text": "You must enter India through one of the airports or seaports approved for e-Visas. All the main international airports are included, such as Delhi, Mumbai, Bengaluru, Chennai, Kolkata, Hyderabad, Goa and Kochi. You can leave from any immigration checkpoint."
+    },
+    {
+      "title": "Who can’t use an e-Visa",
+      "text": "People of Pakistani origin, anyone with a military, police or security background (serving or retired), and holders of diplomatic or official passports must apply for a regular visa instead."
+    },
+    {
+      "title": "Fill in the e-Arrival card",
+      "text": "Before you fly, complete India’s free e-Arrival card online within 72 hours of arrival. It’s arrival information, not a visa. [How the e-Arrival card works](/india-e-arrival-card/)"
+    },
+    {
+      "title": "No protected areas",
+      "text": "An e-Visa isn’t valid for protected, restricted or cantonment areas. Visiting places such as parts of the North East, Sikkim or the Andaman Islands may need a separate permit."
+    }
+  ],
+  "boxTitle": "Can’t use an e-Visa?",
+  "boxText": "Pakistani origin, a military or police background, work, journalism or a longer stay all need a regular visa. We help with those too.",
+  "boxButton": "Regular Indian visas",
+  "boxLink": "/indian-regular-visa/",
+  "sections": [
+    {
+      "heading": "How the e-Medical Attendant visa works",
+      "text": "The patient applies for the [e-Medical visa](/india-e-medical-visa/) first. Each attendant then applies separately, giving the patient’s details. No more than two attendant visas can be granted for one patient."
+    },
+    {
+      "heading": "What you need for an e-Medical Attendant visa",
+      "text": "A passport valid for at least six months with two blank pages, a recent photo, and the details of the patient’s e-Medical visa. A copy of the hospital letter is useful too. We prepare each e-Medical Attendant visa alongside the patient’s application, so the details match."
+    },
+    {
+      "heading": "How long can attendants stay?",
+      "text": "An e-Medical Attendant visa follows the patient’s e-Medical visa, so attendants can stay for the same period and make the same number of entries. Always check the dates shown on your e-Visa."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Who can be a medical attendant?",
+      "a": "A family member or carer travelling to look after the patient during treatment."
+    },
+    {
+      "q": "Do attendants need their own application?",
+      "a": "Yes. Each attendant needs their own e-Medical Attendant visa."
+    },
+    {
+      "q": "How early should I apply?",
+      "a": "At least 4 days before you arrive in India, and no more than 120 days before. We recommend applying 2 to 3 weeks ahead in case anything needs correcting."
+    },
+    {
+      "q": "Is the e-Visa fee refundable if I’m refused?",
+      "a": "No. The Government of India’s e-Visa fee pays for processing your application, so it isn’t refunded if the visa is refused or you cancel your trip. That’s why we check everything before you pay it."
+    }
+  ],
+  "related": [
+    "india-e-medical-visa",
+    "india-e-ayush-visa"
+  ],
+  "title": "India e-Medical Attendant Visa from the UK | Apply Online",
+  "description": "India e-Medical Attendant visa for companions of patients: who can apply, documents and how it links to the e-Medical visa. Apply with our team.",
+  "focusKeyword": "e-Medical Attendant visa",
+  "prices": [
+    {
+      "service": "e-Medical Attendant visa",
+      "included": "Per attendant",
+      "processing": "",
+      "entries": "Multiple entries",
+      "govFee": "",
+      "fee": ""
+    }
+  ],
+  "shareImage": "/images/share.jpg"
+}

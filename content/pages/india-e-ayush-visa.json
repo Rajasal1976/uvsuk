@@ -1,0 +1,167 @@
+{
+  "layout": "visa",
+  "group": "evisa",
+  "order": 32,
+  "navLabel": "e-Ayush visa",
+  "h1": "India e-Ayush visa",
+  "h1Accent": "for Ayurveda and Ayush care.",
+  "applyButton": "/apply/india-visa/?visaType=e-Ayush%20visa",
+  "applyLabel": "Start e-Ayush application",
+  "intro": "The e-Ayush visa is for treatment under Indian systems of medicine, such as Ayurveda, yoga therapy, Unani, Siddha and homoeopathy. It’s applied for as part of the e-Medical visa.",
+  "cardText": "Ayurveda, yoga therapy and other Indian systems of medicine at a recognised centre.",
+  "facts": [
+    {
+      "value": "Ayush care",
+      "label": "Ayurveda, Unani, Siddha and more"
+    },
+    {
+      "value": "Centre letter",
+      "label": "The key document"
+    },
+    {
+      "value": "Companions",
+      "label": "Can apply as Ayush attendants"
+    },
+    {
+      "value": "4 to 120 days",
+      "label": "How far ahead to apply"
+    }
+  ],
+  "checklist": [
+    {
+      "item": "Passport photo page",
+      "hint": "Valid for 6 months, with at least 2 blank pages"
+    },
+    {
+      "item": "A recent photo",
+      "hint": "Plain light background, face fully visible. We’ll crop it"
+    },
+    {
+      "item": "Letter from the hospital or centre",
+      "hint": "On its letterhead, with your treatment dates"
+    }
+  ],
+  "purposesTitle": "What it covers",
+  "purposes": [
+    {
+      "icon": "leaf",
+      "title": "Ayurvedic treatment",
+      "text": "Panchakarma and other Ayurvedic therapies."
+    },
+    {
+      "icon": "yoga",
+      "title": "Yoga and naturopathy",
+      "text": "Therapeutic programmes at a recognised centre."
+    },
+    {
+      "icon": "medical",
+      "title": "Unani, Siddha, homoeopathy",
+      "text": "Treatment under other Ayush systems."
+    }
+  ],
+  "notCoveredTitle": "Not covered",
+  "notCovered": [
+    "General wellness holidays, which use the e-Tourist visa",
+    "Paid work",
+    "Staying longer than the visa allows"
+  ],
+  "documentsTable": [
+    {
+      "document": "Passport photo page",
+      "details": "A clear scan or photo of the page with your photo and details. Your passport must be valid for at least 6 months and have at least 2 blank pages.",
+      "needed": "Required"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent, in colour, front-facing with eyes open and no glasses. Plain white or light background, no shadows or borders. We crop and resize it for you.",
+      "needed": "Required"
+    },
+    {
+      "document": "Treatment letter",
+      "details": "From the Ayush hospital or centre in India, on its letterhead, with the date or expected date of treatment.",
+      "needed": "Required"
+    },
+    {
+      "document": "UK residence status",
+      "details": "If you’re not a British citizen: your UK eVisa share code page, BRP or settlement document.",
+      "needed": "If applicable"
+    }
+  ],
+  "rules": [
+    {
+      "title": "How long you can stay",
+      "text": "The e-Ayush visa follows the e-Medical rules. Always check the dates shown on your e-Visa."
+    },
+    {
+      "title": "It can’t be extended or changed",
+      "text": "An e-Visa can’t be extended or switched to another type of visa once you’re in India, so choose the right one before you travel."
+    },
+    {
+      "title": "Arrive at an approved airport or seaport",
+      "text": "You must enter India through one of the airports or seaports approved for e-Visas. All the main international airports are included, such as Delhi, Mumbai, Bengaluru, Chennai, Kolkata, Hyderabad, Goa and Kochi. You can leave from any immigration checkpoint."
+    },
+    {
+      "title": "Who can’t use an e-Visa",
+      "text": "People of Pakistani origin, anyone with a military, police or security background (serving or retired), and holders of diplomatic or official passports must apply for a regular visa instead."
+    },
+    {
+      "title": "Fill in the e-Arrival card",
+      "text": "Before you fly, complete India’s free e-Arrival card online within 72 hours of arrival. It’s arrival information, not a visa. [How the e-Arrival card works](/india-e-arrival-card/)"
+    },
+    {
+      "title": "No protected areas",
+      "text": "An e-Visa isn’t valid for protected, restricted or cantonment areas. Visiting places such as parts of the North East, Sikkim or the Andaman Islands may need a separate permit."
+    }
+  ],
+  "boxTitle": "Can’t use an e-Visa?",
+  "boxText": "Pakistani origin, a military or police background, work, journalism or a longer stay all need a regular visa. We help with those too.",
+  "boxButton": "Regular Indian visas",
+  "boxLink": "/indian-regular-visa/",
+  "sections": [
+    {
+      "heading": "e-Ayush visa or e-Tourist visa?",
+      "text": "If you’re having prescribed treatment at a hospital or recognised Ayush centre, use the e-Ayush visa. For a general wellness or yoga holiday, the [e-Tourist visa](/e-tourist-visa-india-uk/) is usually the right choice. We’ll help you decide."
+    },
+    {
+      "heading": "What you need for an e-Ayush visa",
+      "text": "Your passport, a recent photo and a letter from the Ayush hospital or centre in India. The letter should be on its letterhead, give the date or expected date of your treatment, and show your name, nationality and passport number. We check the letter before your e-Ayush visa application goes in."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "What is Ayush?",
+      "a": "Ayush stands for Ayurveda, Yoga and Naturopathy, Unani, Siddha and Homoeopathy, India’s traditional systems of medicine."
+    },
+    {
+      "q": "Can someone come with me?",
+      "a": "Yes. Companions can apply as e-Ayush attendants, in the same way as e-Medical attendants."
+    },
+    {
+      "q": "How early should I apply?",
+      "a": "At least 4 days before you arrive in India, and no more than 120 days before. We recommend applying 2 to 3 weeks ahead in case anything needs correcting."
+    },
+    {
+      "q": "Is the e-Visa fee refundable if I’m refused?",
+      "a": "No. The Government of India’s e-Visa fee pays for processing your application, so it isn’t refunded if the visa is refused or you cancel your trip. That’s why we check everything before you pay it."
+    }
+  ],
+  "related": [
+    "india-e-medical-visa",
+    "india-e-medical-attendant-visa",
+    "e-tourist-visa-india-uk"
+  ],
+  "title": "India e-Ayush Visa from the UK | Ayurveda Treatment Visa",
+  "description": "India e-Ayush visa for Ayurveda and Ayush treatment: what it covers, the letter you need and how to apply from the UK with our help.",
+  "focusKeyword": "e-Ayush visa",
+  "prices": [
+    {
+      "service": "e-Ayush visa",
+      "included": "For Ayush treatment",
+      "processing": "",
+      "entries": "Multiple entries",
+      "govFee": "",
+      "fee": ""
+    }
+  ],
+  "shareImage": "/images/share.jpg"
+}

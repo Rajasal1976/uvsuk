@@ -1,0 +1,166 @@
+{
+  "layout": "visa",
+  "group": "evisa",
+  "order": 50,
+  "navLabel": "e-Transit visa",
+  "h1": "India e-Transit visa",
+  "h1Accent": "for passing through.",
+  "applyButton": "/apply/india-visa/?visaType=e-Transit%20visa",
+  "applyLabel": "Start e-Transit application",
+  "intro": "The India e-Transit visa is for travelling through India on the way to another country, for example a stopover where you leave the airport. We’ll check whether you need one at all.",
+  "cardText": "For passing through India on the way to another country. Valid for 30 days.",
+  "facts": [
+    {
+      "value": "30 days",
+      "label": "From your first arrival"
+    },
+    {
+      "value": "Onward ticket",
+      "label": "Needed to apply"
+    },
+    {
+      "value": "Destination visa",
+      "label": "If your next country needs one"
+    },
+    {
+      "value": "4 to 120 days",
+      "label": "How far ahead to apply"
+    }
+  ],
+  "checklist": [
+    {
+      "item": "Passport photo page",
+      "hint": "Valid for 6 months, with at least 2 blank pages"
+    },
+    {
+      "item": "A recent photo",
+      "hint": "Plain light background, face fully visible. We’ll crop it"
+    },
+    {
+      "item": "Confirmed tickets",
+      "hint": "Into India and onward"
+    },
+    {
+      "item": "Visa for your final destination",
+      "hint": "If it needs one"
+    }
+  ],
+  "purposesTitle": "What it covers",
+  "purposes": [
+    {
+      "icon": "plane",
+      "title": "Stopovers",
+      "text": "Leaving the airport during a connection in India."
+    },
+    {
+      "icon": "map",
+      "title": "Short transits",
+      "text": "Passing through India overland or by air."
+    }
+  ],
+  "notCoveredTitle": "Not covered",
+  "notCovered": [
+    "Holidays, which use the e-Tourist visa",
+    "Business or work",
+    "Staying in India as your destination"
+  ],
+  "documentsTable": [
+    {
+      "document": "Passport photo page",
+      "details": "A clear scan or photo of the page with your photo and details. Your passport must be valid for at least 6 months and have at least 2 blank pages.",
+      "needed": "Required"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent, in colour, front-facing with eyes open and no glasses. Plain white or light background, no shadows or borders. We crop and resize it for you.",
+      "needed": "Required"
+    },
+    {
+      "document": "Tickets",
+      "details": "Your confirmed ticket to India and your onward ticket.",
+      "needed": "Required"
+    },
+    {
+      "document": "Destination visa",
+      "details": "A visa or entry permit for the country you’re going to, or that country’s passport if you hold dual nationality.",
+      "needed": "If applicable"
+    },
+    {
+      "document": "UK residence status",
+      "details": "If you’re not a British citizen: your UK eVisa share code page, BRP or settlement document.",
+      "needed": "If applicable"
+    }
+  ],
+  "rules": [
+    {
+      "title": "How long you can stay",
+      "text": "The visa is valid for 30 days from your first arrival."
+    },
+    {
+      "title": "It can’t be extended or changed",
+      "text": "An e-Visa can’t be extended or switched to another type of visa once you’re in India, so choose the right one before you travel."
+    },
+    {
+      "title": "Arrive at an approved airport or seaport",
+      "text": "You must enter India through one of the airports or seaports approved for e-Visas. All the main international airports are included, such as Delhi, Mumbai, Bengaluru, Chennai, Kolkata, Hyderabad, Goa and Kochi. You can leave from any immigration checkpoint."
+    },
+    {
+      "title": "Who can’t use an e-Visa",
+      "text": "People of Pakistani origin, anyone with a military, police or security background (serving or retired), and holders of diplomatic or official passports must apply for a regular visa instead."
+    },
+    {
+      "title": "Fill in the e-Arrival card",
+      "text": "Before you fly, complete India’s free e-Arrival card online within 72 hours of arrival. It’s arrival information, not a visa. [How the e-Arrival card works](/india-e-arrival-card/)"
+    },
+    {
+      "title": "No protected areas",
+      "text": "An e-Visa isn’t valid for protected, restricted or cantonment areas. Visiting places such as parts of the North East, Sikkim or the Andaman Islands may need a separate permit."
+    }
+  ],
+  "boxTitle": "Can’t use an e-Visa?",
+  "boxText": "Pakistani origin, a military or police background, work, journalism or a longer stay all need a regular visa. We help with those too.",
+  "boxButton": "Regular Indian visas",
+  "boxLink": "/indian-regular-visa/",
+  "sections": [
+    {
+      "heading": "Do I need an India e-Transit visa?",
+      "text": "If you stay airside during a connection and don’t pass through immigration, you may not need a visa. If you leave the airport, change airports or stay overnight outside the airport, you need an e-Transit visa or another visa. Tell us your route and we’ll check."
+    },
+    {
+      "heading": "What you need for an India e-Transit visa",
+      "text": "Your passport, a recent photo, your confirmed ticket into India and your onward ticket, and a visa for your final destination if that country needs one. Your India e-Transit visa is valid for 30 days from your first arrival."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Do I need an e-Transit visa for a flight connection in India?",
+      "a": "Not usually, if you stay airside and don’t go through immigration. If you’ll leave the airport, you need one."
+    },
+    {
+      "q": "How early should I apply?",
+      "a": "At least 4 days before you arrive in India, and no more than 120 days before. We recommend applying 2 to 3 weeks ahead in case anything needs correcting."
+    },
+    {
+      "q": "Is the e-Visa fee refundable if I’m refused?",
+      "a": "No. The Government of India’s e-Visa fee pays for processing your application, so it isn’t refunded if the visa is refused or you cancel your trip. That’s why we check everything before you pay it."
+    }
+  ],
+  "related": [
+    "e-tourist-visa-india-uk",
+    "india-evisa-airports"
+  ],
+  "title": "India e-Transit Visa from the UK | Stopovers & Connections",
+  "description": "India e-Transit visa: when you need one for a stopover, the tickets and documents you need, and how to apply from the UK with our help.",
+  "focusKeyword": "India e-Transit visa",
+  "prices": [
+    {
+      "service": "e-Transit visa",
+      "included": "30 days from first arrival",
+      "processing": "",
+      "entries": "",
+      "govFee": "",
+      "fee": ""
+    }
+  ],
+  "shareImage": "/images/share.jpg"
+}

@@ -1,0 +1,55 @@
+{
+  "layout": "guide",
+  "group": "guide",
+  "order": 40,
+  "navLabel": "e-Visa airports and ports",
+  "applyButton": "/apply/india-visa/",
+  "applyLabel": "Start my application",
+  "h1": "Indian e-Visa airports and seaports",
+  "intro": "With an e-Visa you must arrive through one of the Indian e-Visa airports or seaports. There are currently 37 Indian e-Visa airports, including every major international airport. You can leave India from any immigration checkpoint.",
+  "cardText": "The airports and seaports where you can arrive on an Indian e-Visa.",
+  "sections": [
+    {
+      "heading": "All 37 Indian e-Visa airports",
+      "text": "Ahmedabad, Amritsar, Bagdogra, Bengaluru, Bhogapuram, Bhopal, Bhubaneswar, Chandigarh, Chennai, Coimbatore, Delhi, Gaya, Goa (Dabolim), Goa (Mopa), Guwahati, Hyderabad, Indore, Jaipur, Kannur, Kochi (Cochin), Kolkata, Kozhikode (Calicut), Lucknow, Madurai, Mangaluru, Mumbai, Nagpur, Navi Mumbai, Port Blair, Pune, Surat, Thiruvananthapuram, Tiruchirappalli (Trichy), Tirupati, Varanasi, Vijayawada, Visakhapatnam."
+    },
+    {
+      "heading": "Seaports for cruise passengers",
+      "text": "e-Visa holders can also arrive at approved seaports, including Mumbai, Kochi, Mormugao (Goa), Chennai and New Mangalore, which are the main cruise ports."
+    },
+    {
+      "heading": "Land borders",
+      "text": "Some land border crossings, including crossings with Nepal, Bangladesh, Bhutan and Myanmar, now accept e-Visas. If you plan to arrive overland, check with us first."
+    },
+    {
+      "heading": "Leaving India",
+      "text": "You can leave India from any authorised immigration checkpoint, even if it isn’t on the e-Visa arrival list."
+    },
+    {
+      "heading": "What if I land at an airport that isn’t on the list?",
+      "text": "You could be refused entry. Check that your flight lands at one of the Indian e-Visa airports before you book, especially for connecting flights within India. If you’re arriving somewhere else, you need a regular visa."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Can I land at any airport with an Indian e-Visa?",
+      "a": "No, only at approved e-Visa airports. All major international airports are approved."
+    },
+    {
+      "q": "Do I need to choose my airport when I apply?",
+      "a": "The form asks for your expected arrival airport, but you can still arrive at another approved airport."
+    },
+    {
+      "q": "Can I use an Indian e-Visa on a cruise?",
+      "a": "Yes, if your ship arrives at one of the approved seaports. The main cruise ports, such as Mumbai, Kochi, Goa, Chennai and New Mangalore, are included."
+    }
+  ],
+  "related": [
+    "india-e-arrival-card",
+    "india-e-transit-visa"
+  ],
+  "title": "Indian e-Visa Airports and Seaports 2026 | Full List",
+  "description": "Indian e-Visa airports: the full list of 37 airports and the seaports where you can arrive on an e-Visa, plus land borders and leaving India.",
+  "focusKeyword": "Indian e-Visa airports",
+  "shareImage": "/images/share.jpg"
+}

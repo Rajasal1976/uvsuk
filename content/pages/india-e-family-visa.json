@@ -1,0 +1,168 @@
+{
+  "layout": "visa",
+  "group": "evisa",
+  "order": 41,
+  "navLabel": "e-Family visa",
+  "h1": "India e-Family visa",
+  "h1Accent": "for students’ families.",
+  "applyButton": "/apply/india-visa/?visaType=e-Student%20Dependent%20visa",
+  "applyLabel": "Start e-Family application",
+  "intro": "The India e-Family visa is for the husband, wife or children of someone studying in India on an e-Student visa, so your family can be together during the course.",
+  "cardText": "For family members of someone studying in India on an e-Student visa.",
+  "facts": [
+    {
+      "value": "1 year",
+      "label": "From the date it’s granted"
+    },
+    {
+      "value": "Multiple entries",
+      "label": "Travel with the student"
+    },
+    {
+      "value": "Linked",
+      "label": "To the student’s e-Student visa"
+    },
+    {
+      "value": "Passport + photo",
+      "label": "Main documents"
+    }
+  ],
+  "checklist": [
+    {
+      "item": "Passport photo page",
+      "hint": "Valid for 6 months, with at least 2 blank pages"
+    },
+    {
+      "item": "A recent photo",
+      "hint": "Plain light background, face fully visible. We’ll crop it"
+    },
+    {
+      "item": "The student’s e-Student visa details"
+    },
+    {
+      "item": "Proof of relationship",
+      "hint": "Marriage or birth certificate"
+    }
+  ],
+  "purposesTitle": "Who it’s for",
+  "purposes": [
+    {
+      "icon": "family",
+      "title": "Husbands and wives",
+      "text": "Joining a partner studying in India."
+    },
+    {
+      "icon": "people",
+      "title": "Children",
+      "text": "Children of an e-Student visa holder."
+    }
+  ],
+  "notCoveredTitle": "Not covered",
+  "notCovered": [
+    "Paid work",
+    "Studying a full course yourself, which needs your own e-Student visa",
+    "Travelling without a student in the family"
+  ],
+  "documentsTable": [
+    {
+      "document": "Passport photo page",
+      "details": "A clear scan or photo of the page with your photo and details. Your passport must be valid for at least 6 months and have at least 2 blank pages.",
+      "needed": "Required"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent, in colour, front-facing with eyes open and no glasses. Plain white or light background, no shadows or borders. We crop and resize it for you.",
+      "needed": "Required"
+    },
+    {
+      "document": "Student’s e-Visa",
+      "details": "A copy of the e-Student visa of the family member you’re joining.",
+      "needed": "Required"
+    },
+    {
+      "document": "Proof of relationship",
+      "details": "Marriage certificate or birth certificate.",
+      "needed": "Helpful"
+    },
+    {
+      "document": "UK residence status",
+      "details": "If you’re not a British citizen: your UK eVisa share code page, BRP or settlement document.",
+      "needed": "If applicable"
+    }
+  ],
+  "rules": [
+    {
+      "title": "How long you can stay",
+      "text": "The visa is valid for one year from the date it’s granted, with multiple entries."
+    },
+    {
+      "title": "It can’t be extended or changed",
+      "text": "An e-Visa can’t be extended or switched to another type of visa once you’re in India, so choose the right one before you travel."
+    },
+    {
+      "title": "Arrive at an approved airport or seaport",
+      "text": "You must enter India through one of the airports or seaports approved for e-Visas. All the main international airports are included, such as Delhi, Mumbai, Bengaluru, Chennai, Kolkata, Hyderabad, Goa and Kochi. You can leave from any immigration checkpoint."
+    },
+    {
+      "title": "Who can’t use an e-Visa",
+      "text": "People of Pakistani origin, anyone with a military, police or security background (serving or retired), and holders of diplomatic or official passports must apply for a regular visa instead."
+    },
+    {
+      "title": "Fill in the e-Arrival card",
+      "text": "Before you fly, complete India’s free e-Arrival card online within 72 hours of arrival. It’s arrival information, not a visa. [How the e-Arrival card works](/india-e-arrival-card/)"
+    },
+    {
+      "title": "No protected areas",
+      "text": "An e-Visa isn’t valid for protected, restricted or cantonment areas. Visiting places such as parts of the North East, Sikkim or the Andaman Islands may need a separate permit."
+    }
+  ],
+  "boxTitle": "Can’t use an e-Visa?",
+  "boxText": "Pakistani origin, a military or police background, work, journalism or a longer stay all need a regular visa. We help with those too.",
+  "boxButton": "Regular Indian visas",
+  "boxLink": "/indian-regular-visa/",
+  "sections": [
+    {
+      "heading": "How the India e-Family visa works",
+      "text": "The e-Family visa (sometimes called the e-Student Dependent visa) lets close family members join someone on an [e-Student visa](/india-e-student-visa/). The student usually applies first, then each family member applies with the student’s visa details."
+    },
+    {
+      "heading": "What you need for an India e-Family visa",
+      "text": "A passport valid for at least six months, a recent photo, a copy of the student’s e-Student visa, and proof of your relationship, such as a marriage or birth certificate. Each family member needs their own India e-Family visa, including children."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Who counts as family for this visa?",
+      "a": "Usually the husband, wife or children of the e-Student visa holder."
+    },
+    {
+      "q": "How early should I apply?",
+      "a": "At least 4 days before you arrive in India, and no more than 120 days before. We recommend applying 2 to 3 weeks ahead in case anything needs correcting."
+    },
+    {
+      "q": "Is the e-Visa fee refundable if I’m refused?",
+      "a": "No. The Government of India’s e-Visa fee pays for processing your application, so it isn’t refunded if the visa is refused or you cancel your trip. That’s why we check everything before you pay it."
+    },
+    {
+      "q": "How long is an India e-Family visa?",
+      "a": "It’s valid for one year from the date it’s granted, with multiple entries."
+    }
+  ],
+  "related": [
+    "india-e-student-visa"
+  ],
+  "title": "India e-Family Visa (Student Dependent) from the UK",
+  "description": "India e-Family visa for family of e-Student visa holders: who can apply, documents and how it links to the student’s visa. Apply with our team.",
+  "focusKeyword": "India e-Family visa",
+  "prices": [
+    {
+      "service": "e-Family visa, 1 year",
+      "included": "",
+      "processing": "",
+      "entries": "Multiple entries",
+      "govFee": "",
+      "fee": ""
+    }
+  ],
+  "shareImage": "/images/share.jpg"
+}

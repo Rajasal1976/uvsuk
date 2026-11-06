@@ -1,0 +1,52 @@
+{
+  "layout": "guide",
+  "group": "guide",
+  "order": 60,
+  "navLabel": "e-Visa refused?",
+  "applyButton": "/apply/india-visa/",
+  "applyLabel": "Get help with a new application",
+  "h1": "Indian e-Visa refused? What to do next",
+  "intro": "Had your Indian e-Visa refused? A refusal usually comes with little explanation. Here are the most common reasons, what you can do now, and how we help you apply again the right way.",
+  "cardText": "Common reasons for refusal and how to apply again.",
+  "sections": [
+    {
+      "heading": "Indian e-Visa refused: the common reasons",
+      "text": "- Photo or passport scan not meeting the rules\n- Details that don’t match your passport exactly\n- Pakistani origin, or a military or police background, when an e-Visa isn’t allowed\n- Missing or unclear documents, such as a business card or hospital letter\n- Answering a security question incorrectly\n- Previous refusals or immigration problems not declared"
+    },
+    {
+      "heading": "Can I appeal?",
+      "text": "There’s no formal appeal for an e-Visa refusal. You can make a new application with the problem fixed, or apply for a regular visa if the e-Visa isn’t right for you."
+    },
+    {
+      "heading": "How we help after a refusal",
+      "text": "Send us your refusal email and the details of your application. We’ll work out the likely reason, tell you whether to reapply for an e-Visa or switch to a regular visa, and prepare the new application with you."
+    },
+    {
+      "heading": "How to avoid a refusal next time",
+      "text": "Check your eligibility first, especially Pakistani origin and military or police service. Make sure your photo and passport scan meet the rules, and that every detail matches your passport exactly. Declare any previous refusals honestly. If your Indian e-Visa was refused because you weren’t eligible, apply for a regular visa instead."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Will I get my fee back if my e-Visa is refused?",
+      "a": "No, the government fee isn’t refundable."
+    },
+    {
+      "q": "How soon can I apply again?",
+      "a": "You can usually apply again straight away, once the problem is fixed. If the e-Visa isn’t suitable for you, apply for a regular visa instead."
+    },
+    {
+      "q": "Can I travel if my Indian e-Visa status is still pending?",
+      "a": "No. Only travel once your e-Visa status shows as granted."
+    }
+  ],
+  "related": [
+    "indian-visa-photo-requirements",
+    "indian-visa-for-pakistani-origin",
+    "indian-regular-visa"
+  ],
+  "title": "Indian e-Visa Refused? Reasons and What to Do Next",
+  "description": "Indian e-Visa refused? Common reasons, whether you can appeal, and how to apply again successfully. Our Manchester team helps after a refusal.",
+  "focusKeyword": "Indian e-Visa refused",
+  "shareImage": "/images/share.jpg"
+}

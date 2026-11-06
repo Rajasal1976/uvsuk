@@ -1,0 +1,225 @@
+{
+  "layout": "visa",
+  "group": "evisa",
+  "order": 10,
+  "navLabel": "e-Tourist visa",
+  "h1": "Indian e-Tourist visa",
+  "h1Accent": "from the UK.",
+  "applyButton": "/apply/india-visa/?visaType=e-Tourist%20visa%20(30%20days)",
+  "applyLabel": "Start e-Tourist application",
+  "intro": "The Indian e-Tourist visa is for holidays, sightseeing and visiting family or friends in India. Choose 30 days, 1 year or 5 years, and we’ll check and submit your application.",
+  "cardText": "Holidays, sightseeing, visiting family and short courses. Choose 30 days, 1 year or 5 years.",
+  "facts": [
+    {
+      "value": "3 options",
+      "label": "30 days, 1 year or 5 years"
+    },
+    {
+      "value": "Multiple trips",
+      "label": "Come and go on the 1 and 5 year visas"
+    },
+    {
+      "value": "180 days",
+      "label": "Most you can stay in a calendar year"
+    },
+    {
+      "value": "4 to 120 days",
+      "label": "How far ahead to apply"
+    }
+  ],
+  "checklist": [
+    {
+      "item": "Passport photo page",
+      "hint": "Valid for 6 months, with at least 2 blank pages"
+    },
+    {
+      "item": "A recent photo",
+      "hint": "Plain light background, face fully visible. We’ll crop it"
+    },
+    {
+      "item": "Your travel dates",
+      "hint": "Roughly when you’ll arrive"
+    },
+    {
+      "item": "An address in India",
+      "hint": "Your hotel or the family you’re visiting"
+    }
+  ],
+  "purposesTitle": "What you can do on an e-Tourist visa",
+  "purposesIntro": "The e-Tourist visa covers short, non-work visits to India.",
+  "purposes": [
+    {
+      "icon": "sun",
+      "title": "Holidays and sightseeing",
+      "text": "Touring India, beach breaks and city trips."
+    },
+    {
+      "icon": "family",
+      "title": "Visiting family and friends",
+      "text": "Weddings, family visits and celebrations."
+    },
+    {
+      "icon": "yoga",
+      "title": "Yoga programmes",
+      "text": "Short yoga retreats and programmes."
+    },
+    {
+      "icon": "book",
+      "title": "Short courses",
+      "text": "Language, music, dance, arts, crafts or cooking courses of up to 6 months, without a qualifying certificate."
+    },
+    {
+      "icon": "heart",
+      "title": "Short voluntary work",
+      "text": "Unpaid volunteering for up to one month."
+    },
+    {
+      "icon": "mountain",
+      "title": "Mountaineering",
+      "text": "Expeditions, with clearance from the Indian Mountaineering Foundation."
+    }
+  ],
+  "notCoveredTitle": "Not covered by an e-Tourist visa",
+  "notCovered": [
+    "Paid work or business meetings",
+    "Journalism",
+    "Charity or NGO work",
+    "Full-time study",
+    "Protected or restricted areas",
+    "Staying longer than the visa allows"
+  ],
+  "documentsTable": [
+    {
+      "document": "Passport photo page",
+      "details": "A clear scan or photo of the page with your photo and details. Your passport must be valid for at least 6 months and have at least 2 blank pages.",
+      "needed": "Required"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent, in colour, front-facing with eyes open and no glasses. Plain white or light background, no shadows or borders. We crop and resize it for you.",
+      "needed": "Required"
+    },
+    {
+      "document": "Flight and hotel bookings",
+      "details": "Not required for the application, but useful to have when you travel.",
+      "needed": "Helpful"
+    },
+    {
+      "document": "Course or volunteering letter",
+      "details": "For short courses or voluntary work: a letter from the organisation on its letterhead.",
+      "needed": "If applicable"
+    },
+    {
+      "document": "UK residence status",
+      "details": "If you’re not a British citizen: your UK eVisa share code page, BRP or settlement document.",
+      "needed": "If applicable"
+    }
+  ],
+  "rules": [
+    {
+      "title": "How long you can stay",
+      "text": "On the 30-day visa you can stay 30 days from the day you first arrive. On the 1-year and 5-year visas you can stay up to 180 days in each calendar year."
+    },
+    {
+      "title": "It can’t be extended or changed",
+      "text": "An e-Visa can’t be extended or switched to another type of visa once you’re in India, so choose the right one before you travel."
+    },
+    {
+      "title": "Arrive at an approved airport or seaport",
+      "text": "You must enter India through one of the airports or seaports approved for e-Visas. All the main international airports are included, such as Delhi, Mumbai, Bengaluru, Chennai, Kolkata, Hyderabad, Goa and Kochi. You can leave from any immigration checkpoint."
+    },
+    {
+      "title": "Who can’t use an e-Visa",
+      "text": "People of Pakistani origin, anyone with a military, police or security background (serving or retired), and holders of diplomatic or official passports must apply for a regular visa instead."
+    },
+    {
+      "title": "Fill in the e-Arrival card",
+      "text": "Before you fly, complete India’s free e-Arrival card online within 72 hours of arrival. It’s arrival information, not a visa. [How the e-Arrival card works](/india-e-arrival-card/)"
+    },
+    {
+      "title": "No protected areas",
+      "text": "An e-Visa isn’t valid for protected, restricted or cantonment areas. Visiting places such as parts of the North East, Sikkim or the Andaman Islands may need a separate permit."
+    }
+  ],
+  "boxTitle": "Can’t use an e-Visa?",
+  "boxText": "Pakistani origin, a military or police background, work, journalism or a longer stay all need a regular visa. We help with those too.",
+  "boxButton": "Regular Indian visas",
+  "boxLink": "/indian-regular-visa/",
+  "sections": [
+    {
+      "heading": "30 days, 1 year or 5 years: which should I choose?",
+      "text": "- [30-day e-Tourist visa](/india-30-day-e-tourist-visa/): best for a single holiday or one family visit. It lasts 30 days from the day you arrive.\n- [1-year e-Tourist visa](/india-1-year-e-tourist-visa/): best if you might go back within the year. You can make many trips over 12 months.\n- [5-year e-Tourist visa](/india-5-year-e-tourist-visa/): best if you visit family in India regularly. One application covers five years of trips.\n\nThe longer visas cost more, but often work out cheaper than applying again and again."
+    },
+    {
+      "heading": "Indian tourist visa requirements for UK residents",
+      "text": "You need a passport valid for at least 6 months from the date you apply, with two blank pages, a recent photo, and a scan of your passport photo page. You don’t need flight or hotel bookings to apply, but you must have a return or onward ticket and enough money for your stay when you travel.\n\nThe Indian e-Tourist visa is the same for British citizens and most other nationalities who can apply online."
+    },
+    {
+      "heading": "How to apply for an Indian e-Tourist visa",
+      "text": "Apply online at least 4 days before you arrive, and no more than 120 days before. With us, you answer simple questions, upload your passport and photo, and we fill in the official form, fix any photo problems and submit it. Your e-Visa is emailed to you once approved.\n\nMost Indian e-Tourist visa applications are decided within a few working days."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Can I visit family on an e-Tourist visa?",
+      "a": "Yes. Visiting family or friends is one of the main purposes of the e-Tourist visa."
+    },
+    {
+      "q": "Can I attend a wedding in India on an e-Tourist visa?",
+      "a": "Yes. Going to a family wedding or celebration is a tourist visit."
+    },
+    {
+      "q": "How long can I stay on a 1-year or 5-year e-Tourist visa?",
+      "a": "Up to 180 days in each calendar year, over as many trips as you like while the visa is valid."
+    },
+    {
+      "q": "How early should I apply?",
+      "a": "At least 4 days before you arrive in India, and no more than 120 days before. We recommend applying 2 to 3 weeks ahead in case anything needs correcting."
+    },
+    {
+      "q": "Can I apply myself instead of using you?",
+      "a": "Yes. You can apply on the official website, indianvisaonline.gov.in, and pay only the government fee. People use us when they want a person to check their eligibility, fix their photo and documents, and handle the form for them so nothing goes wrong."
+    },
+    {
+      "q": "What happens when I land in India?",
+      "a": "Show your printed e-Visa (ETA) at immigration. Your fingerprints and photo are taken and the visa is stamped in your passport. You must arrive at an airport or seaport approved for e-Visas."
+    }
+  ],
+  "related": [
+    "india-30-day-e-tourist-visa",
+    "india-1-year-e-tourist-visa",
+    "india-5-year-e-tourist-visa",
+    "india-e-arrival-card",
+    "indian-visa-photo-requirements"
+  ],
+  "title": "Indian e-Tourist Visa from the UK | 30 Days, 1 or 5 Years",
+  "description": "Indian e-Tourist visa for UK residents: 30-day, 1-year and 5-year options, what it covers and the documents you need. We check and apply for you.",
+  "focusKeyword": "Indian e-Tourist visa",
+  "prices": [
+    {
+      "service": "e-Tourist visa, 30 days",
+      "included": "30 days from the day you arrive",
+      "processing": "",
+      "entries": "Multiple entries",
+      "govFee": "",
+      "fee": ""
+    },
+    {
+      "service": "e-Tourist visa, 1 year",
+      "included": "Up to 180 days a year",
+      "processing": "",
+      "entries": "Multiple entries",
+      "govFee": "",
+      "fee": ""
+    },
+    {
+      "service": "e-Tourist visa, 5 years",
+      "included": "Up to 180 days a year",
+      "processing": "",
+      "entries": "Multiple entries",
+      "govFee": "",
+      "fee": ""
+    }
+  ],
+  "shareImage": "/images/share.jpg"
+}

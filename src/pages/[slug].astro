@@ -1,107 +1,203 @@
 ---
-// Every page in src/data/pages.js is built from this one template.
-// Edit page text in src/data/pages.js, not here.
-// Pages with their own file in src/pages (the ones with calculators or extra design)
-// are listed in `own` below so they aren't built twice.
+// Every page in content/pages is built from this one template. Edit pages in the admin (/admin).
+// The layout depends on the page's "Page layout": visa page, section page, guide or company page.
+// Any part left empty in the admin is simply not shown.
 import Page from '../layouts/Page.astro';
 import Faq from '../components/Faq.astro';
 import CtaBand from '../components/CtaBand.astro';
-import ApplyButton from '../components/ApplyButton.astro';
-import PriceTables from '../components/PriceTables.astro';
+import Flow from '../components/Flow.astro';
 import GuideSections from '../components/GuideSections.astro';
 import DocumentsTable from '../components/DocumentsTable.astro';
-import { pages, pageBySlug } from '../data/pages.js';
+import Eligibility from '../components/Eligibility.astro';
+import FeeTable from '../components/FeeTable.astro';
+import { pages, pageBySlug, groups, pagesIn, navName } from '../data/pages.js';
+import { eligible } from '../data/evisa-countries.js';
 import { site } from '../data/site.js';
+import { svg } from '../data/icons.js';
+import { inline } from '../lib/inline.js';
 
 export function getStaticPaths() {
-  const own = ['indefinite-leave-to-remain-ilr', 'skilled-worker-visa-formally-tier-t2-general', 'china-visa-application'];
-  return pages.filter((p) => !own.includes(p.slug)).map((p) => ({ params: { slug: p.slug }, props: { p } }));
+  return pages.map((p) => ({ params: { slug: p.slug }, props: { p } }));
 }
-
 const { p } = Astro.props;
-const hubFor = { uk: ['UK Visas', '/uk-visa-services/'], employer: ['Employers', '/hire-foreign-nationals-uk/'], worldwide: ['Worldwide Visas', '/worldwide-visas/'] };
-const hub = hubFor[p.group];
-const showCrumb = hub && hub[1] !== `/${p.slug}/`;
-const howWeHelp = [
-  'Check your eligibility and confirm the right route at your consultation',
-  'Give you a personalised document checklist',
-  'Prepare and complete your application forms',
-  'Review all evidence against the current rules before submission',
-  'Keep you updated until you have a decision',
-];
+const layout = p.layout || 'visa';
+const g = groups[p.group];
+const hub = g && pageBySlug[g.hub] && g.hub !== p.slug ? pageBySlug[g.hub] : null;
+const crumbs: [string, string][] = [['Home', '/'], ...(hub ? [[navName(hub), `/${hub.slug}/`]] : []), [navName(p), `/${p.slug}/`]];
+const apply = p.applyButton && p.applyButton !== 'none' ? p.applyButton : '';
+const applyLabel = p.applyLabel || 'Start my application';
+const children = layout === 'section' ? pagesIn(p.group) : [];
+const related = (p.related || []).map((s) => pageBySlug[s]).filter(Boolean);
+const serviceSchema = layout === 'visa' ? [JSON.stringify({
+  '@context': 'https://schema.org', '@type': 'Service', name: p.h1, description: p.description,
+  serviceType: 'Visa application assistance', areaServed: 'GB',
+  provider: { '@id': `${site.url}/#business` },
+  ...(site.serviceFee ? { offers: { '@type': 'Offer', priceCurrency: 'GBP', price: site.serviceFee.replace(/[^\d.]/g, '') || undefined } } : {}),
+})] : [];
+const ourFee = p.ourFee || site.serviceFee || 'Call for a quote';
+const letters = [...new Set(eligible.map((c) => c[0]))];
 ---
-<Page title={p.title} description={p.description}>
+<Page title={p.title} description={p.description} crumbs={crumbs} schemas={serviceSchema}>
   <main>
-    <div class="page-head">
-      <div class="wrap">
-        <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a>{showCrumb && <> / <a href={hub[1]}>{hub[0]}</a></>}</nav>
-        <h1>{p.h1}</h1>
-        {p.intro && <p class="lead">{p.intro}</p>}
-        <ApplyButton url={p.applyButton} />
-      </div>
-    </div>
-
-    <div class="wrap section page-body" style="padding-top:64px">
-      <div class="content">
-        {p.type === 'hub' && (
-          <div class="grid">
-            {p.children.map((c) => {
-              const child = pageBySlug[c];
-              return (
-                <a href={`/${c}/`} class="card">
-                  <h3>{child.h1}</h3>
-                  <p>{child.description}</p>
-                  <span class="more">Find out more</span>
-                </a>
-              );
-            })}
+    {(layout === 'visa' || layout === 'section') ? (
+      <section class="teal">
+        <div class="wrap hero-grid">
+          <div>
+            <nav class="crumbs" aria-label="Breadcrumb">{crumbs.slice(0, -1).map(([n, u]) => <><a href={u}>{n}</a><span aria-hidden="true">›</span></>)}{navName(p)}</nav>
+            <h1>{p.h1}{p.h1Accent && <span>{p.h1Accent}</span>}</h1>
+            {p.intro && <p class="lead" set:html={inline(p.intro)} />}
+            <div class="btn-row">
+              {apply && <a class="btn btn-gold" href={apply}>{applyLabel}</a>}
+              <a class="btn btn-ghost-light" href={`tel:${site.phoneIntl}`}>Call {site.phone}</a>
+            </div>
+            {p.facts?.length > 0 && <ul class="facts">{p.facts.map((f) => <li><b>{f.value}</b><span>{f.label}</span></li>)}</ul>}
           </div>
-        )}
+          {layout === 'visa' && p.checklist?.length > 0 && (
+            <div class="card-float ready" id="ready">
+              <h2>{p.checklistTitle || 'Have these ready'}</h2>
+              <p>Tick them off. Most people have everything on their phone already.</p>
+              <ul>{p.checklist.map((c) => <li><label><input type="checkbox" /><span>{c.item}{c.hint && <em>{c.hint}</em>}</span></label></li>)}</ul>
+              <p class="progress" aria-live="polite" data-total={p.checklist.length}>0 of {p.checklist.length} ready</p>
+              {apply ? <a class="btn btn-gold" href={apply}>{applyLabel}</a> : <a class="btn btn-gold" href={`tel:${site.phoneIntl}`}>Call {site.phone}</a>}
+              <small>Takes about 10 minutes. Your answers are saved as you go.</small>
+            </div>
+          )}
+          {layout === 'section' && p.group === 'evisa' && (
+            <div class="card-float">
+              <h2>Can you get an e-Visa?</h2>
+              <p>Most nationalities can apply online. Type yours to check.</p>
+              <Eligibility id="nat-hub" />
+            </div>
+          )}
+        </div>
+      </section>
+    ) : (
+      <div class="page-head">
+        <div class="wrap">
+          <nav class="crumbs" aria-label="Breadcrumb">{crumbs.slice(0, -1).map(([n, u]) => <><a href={u}>{n}</a><span aria-hidden="true">›</span></>)}{navName(p)}</nav>
+          <h1>{p.h1}</h1>
+          {p.intro && <p class="lead" set:html={inline(p.intro)} />}
+          {apply && <p style="margin-top:24px"><a class="btn btn-gold" href={apply}>{applyLabel}</a></p>}
+        </div>
+      </div>
+    )}
 
-        {p.type === 'service' && (
-          <>
-            {p.eligibility?.length > 0 && (
-              <section><h2>Do you qualify?</h2><ul>{p.eligibility.map((e) => <li>{e}</li>)}</ul></section>
-            )}
-            <DocumentsTable rows={p.documentsTable} />
-            <GuideSections sections={p.sections} />
-            <section><h2>How we help</h2><ul>{howWeHelp.map((h) => <li>{h}</li>)}</ul></section>
-            {p.visa && p.group === 'worldwide' ? <PriceTables prices={p.prices} kind={p.visa} /> : (
+    {layout === 'section' && children.length > 0 && (
+      <section class="section">
+        <div class="wrap">
+          {p.childrenTitle && <div class="section-head"><h2>{p.childrenTitle}</h2>{p.childrenIntro && <p>{p.childrenIntro}</p>}</div>}
+          <div class="grid">
+            {children.map((c) => <a class="card" href={`/${c.slug}/`}><h3>{c.h1}</h3><p>{c.cardText || c.description}</p><span class="more">Find out more</span></a>)}
+          </div>
+        </div>
+      </section>
+    )}
+
+    {layout === 'visa' && p.purposes?.length > 0 && (
+      <section class="section" id="purposes">
+        <div class="wrap">
+          <div class="section-head"><h2>{p.purposesTitle || 'What you can do on this visa'}</h2>{p.purposesIntro && <p>{p.purposesIntro}</p>}</div>
+          <div class="purposes">
+            {p.purposes.map((x) => <article class="purpose"><div class="icon-box" set:html={svg(x.icon)} /><div><h3>{x.title}</h3><p set:html={inline(x.text)} /></div></article>)}
+          </div>
+          {p.notCovered?.length > 0 && (
+            <div class="not-covered">
+              <h3><span set:html={svg('info')} />{p.notCoveredTitle || 'Not covered by this visa'}</h3>
+              <ul>{p.notCovered.map((n) => <li set:html={inline(n)} />)}</ul>
+            </div>
+          )}
+        </div>
+      </section>
+    )}
+
+    {layout === 'visa' && p.documentsTable?.length > 0 && (
+      <section class="section tinted" id="documents">
+        <div class="wrap content" style="max-width:var(--wrap)">
+          <DocumentsTable rows={p.documentsTable} />
+          {p.documentsNote && <p class="soft" style="font-size:15px" set:html={inline(p.documentsNote)} />}
+        </div>
+      </section>
+    )}
+
+    {layout === 'visa' && p.showSteps !== false && <Flow />}
+
+    {layout === 'visa' && p.rules?.length > 0 && (
+      <section class="section" id="rules">
+        <div class="wrap">
+          <div class="section-head"><h2>{p.rulesTitle || 'Rules to know before you travel'}</h2>{p.rulesIntro && <p>{p.rulesIntro}</p>}</div>
+          <div class="rules">{p.rules.map((r) => <article class="rule"><h3>{r.title}</h3><p set:html={inline(r.text)} /></article>)}</div>
+          {p.boxTitle && (
+            <div class="teal-box"><div><h3>{p.boxTitle}</h3>{p.boxText && <p>{p.boxText}</p>}</div><a class="btn btn-gold" href={p.boxLink || `tel:${site.phoneIntl}`}>{p.boxButton || `Call ${site.phone}`}</a></div>
+          )}
+        </div>
+      </section>
+    )}
+
+    {layout === 'visa' && p.showFees !== false && (
+      <section class="section tinted" id="fees">
+        <div class="wrap">
+          <div class="section-head"><h2>{p.feesTitle || 'Fees'}</h2><p>Two fees, shown separately, so you always know where your money goes.</p></div>
+          <FeeTable prices={p.prices} />
+          {!(p.prices?.length > 0) && <div class="fees">
+            <div class="fee"><span class="fee-label">Government visa fee</span><div class="amount">{p.govFee || 'Set by India'}</div><p>{p.govFeeText || 'Depends on your nationality and visa type. Paid to the Government of India and not refundable, even if the visa is refused.'}</p></div>
+            <div class="fee ours"><span class="fee-label">Our service fee</span><div class="amount">{ourFee}</div><p>{p.ourFeeText || 'Per person. Includes checking your documents, fixing your photo and scans, and submitting your application.'}</p></div>
+          </div>}
+          {p.prices?.length > 0 && <p class="soft" style="font-size:15px;margin-top:14px">{p.feesNote || 'The government fee is set by India and depends on your nationality. It isn’t refundable, even if the visa is refused. Our fee is per person and includes checking your documents, fixing your photo and scans, and submitting your application.'}</p>}
+          <div class="note-box"><span set:html={svg('info')} /><p><strong>No “express” fees.</strong> The Indian government doesn’t sell faster e-Visas, so we don’t either. Our job is getting your application right first time.</p></div>
+        </div>
+      </section>
+    )}
+
+    {(p.sections?.length > 0 || p.body?.length > 0 || p.widget || related.length > 0 || layout === 'guide' || layout === 'company') && (
+      <section class="section">
+        <div class="wrap page-body">
+          <div class="content">
+            {p.widget === 'eligibility' && (
               <section>
-                <h2>Fees and timescales</h2>
-                <p>Our fee is agreed before we start. <a href="/fees/">See our fees</a>. Government fees are paid separately{p.govuk && <>, and are listed on <a href={p.govuk}>GOV.UK</a></>}.</p>
+                <div class="card-float" style="box-shadow:none;border:1px solid var(--line);border-top:6px solid var(--gold)">
+                  <h2>Check your nationality</h2>
+                  <p>Type your nationality to see if you can apply for an e-Visa.</p>
+                  <Eligibility id="nat-page" />
+                </div>
+                <h2 style="margin-top:24px">All {eligible.length} nationalities that can apply</h2>
+                {letters.map((l) => <p><strong>{l}:</strong> {eligible.filter((c) => c[0] === l).join(', ')}</p>)}
               </section>
             )}
-          </>
-        )}
-
-        {p.type === 'info' && p.body?.length > 0 && <div class="prose">{p.body.map((t) => <p>{t}</p>)}</div>}
-
-        {p.type !== 'service' && <GuideSections sections={p.sections} />}
-        {p.type === 'hub' && p.govuk && <p class="soft">Official rules and fees: <a href={p.govuk}>GOV.UK</a></p>}
-
-        <Faq items={p.faqs} />
-
-        {p.related?.length > 0 && (
-          <section>
-            <h2>Related services</h2>
-            <ul>{p.related.map((r) => <li><a href={`/${r}/`}>{pageBySlug[r].h1}</a></li>)}</ul>
-          </section>
-        )}
-      </div>
-      {p.group !== 'company' && (
-        <aside class="aside">
-          <div class="panel">
-            <h2>Talk to an adviser</h2>
-            <p class="soft" style="font-size:16px">Book a consultation and we'll confirm your options, what you'll need and our fee.</p>
-            <a href={site.bookingUrl} class="btn btn-primary">Book a consultation</a>
-            <a href={`tel:${site.phoneIntl}`} class="btn btn-outline">Call {site.phone}</a>
-            <p style="font-size:14px;color:var(--ink-mute)">IAA-regulated · Ref {site.iaaRef}</p>
+            {p.body?.length > 0 && <div class="prose">{p.body.map((t) => <p set:html={inline(t)} />)}</div>}
+            {layout !== 'visa' && p.documentsTable?.length > 0 && <DocumentsTable rows={p.documentsTable} />}
+            <GuideSections sections={p.sections} />
+            {related.length > 0 && (
+              <section><h2>Related pages</h2><div class="pills">{related.map((r) => <a href={`/${r.slug}/`}>{navName(r)}</a>)}</div></section>
+            )}
           </div>
-        </aside>
-      )}
-    </div>
+          {layout !== 'company' && (
+            <aside class="aside">
+              <div class="panel">
+                <h2>Let us handle it</h2>
+                <ul><li>We check your eligibility first</li><li>Photo and scans fixed for you</li><li>Every answer checked by a person</li></ul>
+                <a class="btn btn-gold" href={apply || site.applyUrl}>{apply ? applyLabel : 'Start my application'}</a>
+                <a class="btn btn-outline" href={`tel:${site.phoneIntl}`}>Call {site.phone}</a>
+              </div>
+            </aside>
+          )}
+        </div>
+      </section>
+    )}
 
-    <CtaBand />
+    {p.faqs?.length > 0 && <section class="section tinted"><div class="wrap"><Faq items={p.faqs} title={p.faqHeading || 'Questions people ask'} /></div></section>}
+
+    {layout !== 'company' && <CtaBand href={apply || site.applyUrl} label={apply ? applyLabel : 'Start my application'} />}
   </main>
 </Page>
+<script>
+  // "Have these ready" checklist counter
+  const box = document.querySelector<HTMLElement>('.ready .progress');
+  if (box) {
+    const boxes = document.querySelectorAll<HTMLInputElement>('.ready input[type="checkbox"]');
+    const total = boxes.length;
+    boxes.forEach((b) => b.addEventListener('change', () => {
+      const done = [...boxes].filter((x) => x.checked).length;
+      box.textContent = done === total ? 'All ready. You can start now.' : `${done} of ${total} ready`;
+    }));
+  }
+</script>

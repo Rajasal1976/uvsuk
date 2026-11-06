@@ -1,0 +1,43 @@
+---
+// Price table on visa pages: visa, processing time, entries, government fee, our fee and total.
+// Rows are edited in the admin on each page ("Price table"). The total adds itself up when
+// both fees are amounts in pounds. On phones each row shows as a box.
+import { site } from '../data/site.js';
+const { prices = [] } = Astro.props;
+const rows = prices.filter((r) => r && r.service);
+const amount = (v) => { const m = String(v || '').replace(/,/g, '').match(/^\s*£?\s*(\d+(?:\.\d{1,2})?)\s*$/); return m ? Number(m[1]) : null; };
+const money = (n) => `£${Number.isInteger(n) ? n.toLocaleString('en-GB') : n.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+const pound = (v) => { const n = amount(v); return n === null ? v : money(n); };
+const total = (r) => { const a = amount(r.govFee), b = amount(r.fee); return a !== null && b !== null ? money(a + b) : ''; };
+const call = `tel:${site.phoneIntl}`;
+---
+{rows.length > 0 && (
+  <div class="table-wrap fee-table">
+    <table class="data-table">
+      <thead><tr><th scope="col">Visa</th><th scope="col">Processing time</th><th scope="col">Entries</th><th scope="col">Government fee</th><th scope="col">Our fee</th><th scope="col">Total you pay</th></tr></thead>
+      <tbody>
+        {rows.map((r) => (
+          <tr>
+            <th scope="row" data-label="Visa">{r.service}{r.included && <span class="fee-sub">{r.included}</span>}</th>
+            <td data-label="Processing time">{r.processing || 'Ask us'}</td>
+            <td data-label="Entries">{r.entries || 'Ask us'}</td>
+            <td data-label="Government fee">{r.govFee ? pound(r.govFee) : '–'}</td>
+            <td data-label="Our fee">{r.fee ? pound(r.fee) : <a href={call}>Call for price</a>}</td>
+            <td data-label="Total you pay" class="fee-total">{total(r) || '–'}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+)}
+<style>
+  .fee-sub { display: block; font-weight: 500; font-size: 14px; color: var(--ink-mute); margin-top: 3px; }
+  .fee-total { font-size: 22px; font-weight: 800; color: var(--green-800) !important; white-space: nowrap; }
+  @media (max-width: 700px) {
+    .fee-table { border: 0; background: transparent; overflow: visible; }
+    .fee-table :global(tbody tr) { background: #fff; border: 1px solid var(--line) !important; border-radius: 16px; margin-bottom: 12px; display: grid !important; grid-template-columns: 1fr 1fr; gap: 6px 14px; padding: 18px !important; }
+    .fee-table :global(tbody th) { grid-column: 1 / -1; font-size: 18px; }
+    .fee-table :global(tbody tr:nth-child(even)) { background: #fff; }
+    .fee-total { grid-column: 1 / -1; border-top: 1px solid var(--line) !important; padding-top: 10px !important; }
+  }
+</style>

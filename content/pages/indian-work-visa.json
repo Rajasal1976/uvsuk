@@ -1,0 +1,180 @@
+{
+  "layout": "visa",
+  "group": "regular",
+  "order": 30,
+  "navLabel": "Employment (work) visa",
+  "h1": "Indian Employment visa",
+  "h1Accent": "for working in India.",
+  "applyButton": "/apply/india-regular-visa/?visaType=Employment%20visa",
+  "applyLabel": "Start Employment visa application",
+  "intro": "The Indian Employment visa is for skilled professionals going to work for a company or organisation in India. There’s no e-Visa for work, so this is the visa you need. We prepare it with you and your employer.",
+  "cardText": "For skilled professionals taking a job with a company in India.",
+  "facts": [
+    {
+      "value": "No e-Visa",
+      "label": "Work needs this visa"
+    },
+    {
+      "value": "Contract",
+      "label": "From your Indian employer"
+    },
+    {
+      "value": "Salary rules",
+      "label": "A minimum usually applies"
+    },
+    {
+      "value": "Registration",
+      "label": "With the FRRO after arrival"
+    }
+  ],
+  "checklist": [
+    {
+      "item": "Passport photo page",
+      "hint": "Valid for 6 months, with at least 2 blank pages"
+    },
+    {
+      "item": "A recent photo",
+      "hint": "Plain light background, face fully visible. We’ll crop it"
+    },
+    {
+      "item": "Contract or appointment letter"
+    },
+    {
+      "item": "Degree certificates and CV"
+    },
+    {
+      "item": "Employer’s registration documents"
+    }
+  ],
+  "purposesTitle": "What the Employment visa covers",
+  "purposes": [
+    {
+      "icon": "briefcase",
+      "title": "Working for an Indian company",
+      "text": "Taking up a job or contract in India."
+    },
+    {
+      "icon": "tool",
+      "title": "Technical and skilled roles",
+      "text": "Engineers, specialists and senior staff."
+    },
+    {
+      "icon": "school",
+      "title": "Teaching and other posts",
+      "text": "Where the employer meets the rules."
+    }
+  ],
+  "notCoveredTitle": "Not covered",
+  "notCovered": [
+    "Short business visits, which use the e-Business visa",
+    "Volunteering for an NGO",
+    "Journalism"
+  ],
+  "documentsTable": [
+    {
+      "document": "Passport photo page",
+      "details": "A clear scan or photo of the page with your photo and details. Your passport must be valid for at least 6 months and have at least 2 blank pages.",
+      "needed": "Required"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent, in colour, front-facing with eyes open and no glasses. Plain white or light background, no shadows or borders. We crop and resize it for you.",
+      "needed": "Required"
+    },
+    {
+      "document": "Employment contract",
+      "details": "Or appointment letter from the Indian employer, showing your role, salary and dates.",
+      "needed": "Required"
+    },
+    {
+      "document": "Qualifications",
+      "details": "Degree certificates and your CV.",
+      "needed": "Required"
+    },
+    {
+      "document": "Employer documents",
+      "details": "Registration documents of the Indian company or organisation.",
+      "needed": "Required"
+    },
+    {
+      "document": "Proof of UK address",
+      "details": "A recent utility bill, council tax bill or bank statement.",
+      "needed": "Required"
+    },
+    {
+      "document": "UK residence status",
+      "details": "If you’re not a British citizen: your UK eVisa share code page, BRP or settlement document.",
+      "needed": "If applicable"
+    }
+  ],
+  "rules": [
+    {
+      "title": "A minimum salary usually applies",
+      "text": "Employment visas are usually only granted for skilled roles paying more than a set minimum, with some exceptions. We’ll check your offer against the current rules."
+    },
+    {
+      "title": "Register after you arrive",
+      "text": "Employment visa holders usually need to register with the Foreigners Regional Registration Office (FRRO) within 14 days of arriving."
+    },
+    {
+      "title": "Your passport goes to the visa centre",
+      "text": "Regular visas are stuck into your passport, so you’ll need to submit it at the Indian visa application centre. Don’t book travel you can’t change until it’s back."
+    },
+    {
+      "title": "Allow more time",
+      "text": "Regular visas take longer than e-Visas, and much longer for people of Pakistani origin. Apply as early as you can."
+    }
+  ],
+  "boxTitle": "Just visiting for meetings?",
+  "boxText": "Short business visits don’t need an Employment visa.",
+  "boxButton": "e-Business visa",
+  "boxLink": "/india-e-business-visa-for-uk-citizens/",
+  "sections": [
+    {
+      "heading": "Indian Employment visa requirements",
+      "text": "You need a job offer from a company or organisation in India, a contract or appointment letter, your qualifications, and documents from your employer. The role is usually expected to be skilled and to pay above a minimum salary, though some roles are exempt."
+    },
+    {
+      "heading": "How long is an Indian Employment visa?",
+      "text": "It’s usually granted for up to a year, or the length of your contract if shorter, and can be extended in India."
+    },
+    {
+      "heading": "How to apply for an Indian Employment visa",
+      "text": "Your employer sends your contract and their registration documents. We prepare your online form, check every document and tell you what to submit at the visa application centre. After you arrive, you usually register with the FRRO within 14 days."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Can I work in India on an e-Visa?",
+      "a": "No. Paid work needs an Employment visa."
+    },
+    {
+      "q": "Does my employer need to do anything?",
+      "a": "Yes. They provide your contract and their registration documents, and may need to support your registration after arrival."
+    },
+    {
+      "q": "Can I apply myself instead of using you?",
+      "a": "Yes. You can apply on the official website, indianvisaonline.gov.in, and pay only the government fee. People use us when they want a person to check their eligibility, fix their photo and documents, and handle the form for them so nothing goes wrong."
+    }
+  ],
+  "related": [
+    "india-e-business-visa-for-uk-citizens",
+    "indian-business-visa",
+    "indian-regular-visa"
+  ],
+  "title": "Indian Employment Visa from the UK | Work Visa Help",
+  "description": "Indian Employment visa for UK residents taking a job in India: contract, salary rules, documents and registration. We prepare it with you.",
+  "focusKeyword": "Indian Employment visa",
+  "prices": [
+    {
+      "service": "Employment visa",
+      "included": "",
+      "processing": "",
+      "entries": "",
+      "govFee": "",
+      "fee": ""
+    }
+  ],
+  "feesNote": "The government fee for a regular visa is set by India and includes the visa application centre’s charges. It isn’t refundable, even if the visa is refused. Our fee is per person and includes preparing your form and checking every document.",
+  "shareImage": "/images/share.jpg"
+}

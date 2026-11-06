@@ -1,0 +1,186 @@
+{
+  "layout": "visa",
+  "group": "evisa",
+  "order": 21,
+  "navLabel": "e-Conference visa",
+  "h1": "India e-Conference visa",
+  "h1Accent": "for events and seminars.",
+  "applyButton": "/apply/india-visa/?visaType=e-Conference%20visa",
+  "applyLabel": "Start e-Conference application",
+  "intro": "The India e-Conference visa is for attending a conference, seminar or workshop in India. The organiser’s paperwork matters most here, and we’ll check it’s all in place before you apply.",
+  "cardText": "Conferences, seminars and workshops in India. Valid for 30 days from arrival.",
+  "facts": [
+    {
+      "value": "30 days",
+      "label": "From the day you arrive"
+    },
+    {
+      "value": "Multiple entries",
+      "label": "Within those 30 days"
+    },
+    {
+      "value": "Organiser papers",
+      "label": "Needed with your application"
+    },
+    {
+      "value": "4 to 120 days",
+      "label": "How far ahead to apply"
+    }
+  ],
+  "checklist": [
+    {
+      "item": "Passport photo page",
+      "hint": "Valid for 6 months, with at least 2 blank pages"
+    },
+    {
+      "item": "A recent photo",
+      "hint": "Plain light background, face fully visible. We’ll crop it"
+    },
+    {
+      "item": "Invitation from the organiser",
+      "hint": "On their letterhead"
+    },
+    {
+      "item": "Political clearance",
+      "hint": "From India’s Ministry of External Affairs, via the organiser"
+    }
+  ],
+  "purposesTitle": "What the e-Conference visa covers",
+  "purposes": [
+    {
+      "icon": "mic",
+      "title": "Conferences",
+      "text": "International or national conferences in India."
+    },
+    {
+      "icon": "people",
+      "title": "Seminars and workshops",
+      "text": "Organised by government bodies, companies or private organisers."
+    },
+    {
+      "icon": "book",
+      "title": "Speaking at an event",
+      "text": "Presenting at a conference you’re invited to."
+    }
+  ],
+  "notCoveredTitle": "Not covered",
+  "notCovered": [
+    "Business meetings outside the event, which need an e-Business visa",
+    "Paid work",
+    "Journalism",
+    "Staying longer than 30 days"
+  ],
+  "documentsTable": [
+    {
+      "document": "Passport photo page",
+      "details": "A clear scan or photo of the page with your photo and details. Your passport must be valid for at least 6 months and have at least 2 blank pages.",
+      "needed": "Required"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent, in colour, front-facing with eyes open and no glasses. Plain white or light background, no shadows or borders. We crop and resize it for you.",
+      "needed": "Required"
+    },
+    {
+      "document": "Invitation from the organiser",
+      "details": "On the organiser’s letterhead, naming you and the event.",
+      "needed": "Required"
+    },
+    {
+      "document": "Political clearance",
+      "details": "Issued by India’s Ministry of External Affairs. The organiser arranges this.",
+      "needed": "Required"
+    },
+    {
+      "document": "Event clearance",
+      "details": "From India’s Ministry of Home Affairs, where the event needs it.",
+      "needed": "If applicable"
+    },
+    {
+      "document": "UK residence status",
+      "details": "If you’re not a British citizen: your UK eVisa share code page, BRP or settlement document.",
+      "needed": "If applicable"
+    }
+  ],
+  "documentsNote": "Organisers upload the event details on the Ministry of Home Affairs conference portal. Ask them early for your clearance letters.",
+  "rules": [
+    {
+      "title": "How long you can stay",
+      "text": "The visa is valid for 30 days from the day you arrive, with multiple entries in that time."
+    },
+    {
+      "title": "It can’t be extended or changed",
+      "text": "An e-Visa can’t be extended or switched to another type of visa once you’re in India, so choose the right one before you travel."
+    },
+    {
+      "title": "Arrive at an approved airport or seaport",
+      "text": "You must enter India through one of the airports or seaports approved for e-Visas. All the main international airports are included, such as Delhi, Mumbai, Bengaluru, Chennai, Kolkata, Hyderabad, Goa and Kochi. You can leave from any immigration checkpoint."
+    },
+    {
+      "title": "Who can’t use an e-Visa",
+      "text": "People of Pakistani origin, anyone with a military, police or security background (serving or retired), and holders of diplomatic or official passports must apply for a regular visa instead."
+    },
+    {
+      "title": "Fill in the e-Arrival card",
+      "text": "Before you fly, complete India’s free e-Arrival card online within 72 hours of arrival. It’s arrival information, not a visa. [How the e-Arrival card works](/india-e-arrival-card/)"
+    },
+    {
+      "title": "No protected areas",
+      "text": "An e-Visa isn’t valid for protected, restricted or cantonment areas. Visiting places such as parts of the North East, Sikkim or the Andaman Islands may need a separate permit."
+    }
+  ],
+  "boxTitle": "Can’t use an e-Visa?",
+  "boxText": "Pakistani origin, a military or police background, work, journalism or a longer stay all need a regular visa. We help with those too.",
+  "boxButton": "Regular Indian visas",
+  "boxLink": "/indian-regular-visa/",
+  "sections": [
+    {
+      "heading": "How to get an India e-Conference visa",
+      "text": "Conferences in India are applied for under the e-Business visa category, as an e-Conference visa. The organiser registers the event with the Ministry of Home Affairs and gets clearances, then sends you an invitation and the political clearance letter. You upload these with your passport and photo."
+    },
+    {
+      "heading": "Start early",
+      "text": "Clearances can take time to come through, so contact the organiser as soon as you’re invited. You can apply up to 120 days before you arrive and must apply at least 4 days before."
+    },
+    {
+      "heading": "Who can apply for an India e-Conference visa?",
+      "text": "Anyone eligible for an Indian e-Visa who has been invited to a conference, seminar or workshop in India by a government body, public institution or approved private organiser. Your India e-Conference visa covers the event only. If you also have business meetings, ask us whether an e-Business visa suits you better."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Who arranges the clearances for an e-Conference visa?",
+      "a": "The conference organiser. They register the event and obtain political clearance from the Ministry of External Affairs, and event clearance where needed."
+    },
+    {
+      "q": "Can I have business meetings while I’m there?",
+      "a": "If meetings are a main purpose of your trip, an e-Business visa may suit you better. We’ll help you choose."
+    },
+    {
+      "q": "How early should I apply?",
+      "a": "At least 4 days before you arrive in India, and no more than 120 days before. We recommend applying 2 to 3 weeks ahead in case anything needs correcting."
+    },
+    {
+      "q": "Is the e-Visa fee refundable if I’m refused?",
+      "a": "No. The Government of India’s e-Visa fee pays for processing your application, so it isn’t refunded if the visa is refused or you cancel your trip. That’s why we check everything before you pay it."
+    }
+  ],
+  "related": [
+    "india-e-business-visa-for-uk-citizens",
+    "indian-business-visa"
+  ],
+  "title": "India e-Conference Visa from the UK | Documents & Apply",
+  "description": "India e-Conference visa for UK residents attending events: organiser invitation, clearances and how to apply. We check your papers before you submit.",
+  "focusKeyword": "India e-Conference visa",
+  "prices": [
+    {
+      "service": "e-Conference visa",
+      "included": "30 days from the day you arrive",
+      "processing": "",
+      "entries": "Multiple entries",
+      "govFee": "",
+      "fee": ""
+    }
+  ],
+  "shareImage": "/images/share.jpg"
+}

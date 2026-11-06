@@ -1,0 +1,171 @@
+{
+  "layout": "visa",
+  "group": "evisa",
+  "order": 11,
+  "navLabel": "30-day e-Tourist visa",
+  "h1": "India 30-day e-Tourist visa",
+  "h1Accent": "for one trip.",
+  "applyButton": "/apply/india-visa/?visaType=e-Tourist%20visa%20(30%20days)",
+  "applyLabel": "Start 30-day application",
+  "intro": "The 30-day e-Tourist visa is the simplest Indian visa for a single holiday or family visit. It lasts 30 days from the day you arrive. Upload your passport and photo, and we do the rest.",
+  "cardText": "One holiday or family visit, valid for 30 days from the day you arrive.",
+  "facts": [
+    {
+      "value": "30 days",
+      "label": "From the day you first arrive"
+    },
+    {
+      "value": "Multiple entries",
+      "label": "Within those 30 days"
+    },
+    {
+      "value": "Passport + photo",
+      "label": "All you need to apply"
+    },
+    {
+      "value": "4 to 120 days",
+      "label": "How far ahead to apply"
+    }
+  ],
+  "checklist": [
+    {
+      "item": "Passport photo page",
+      "hint": "Valid for 6 months, with at least 2 blank pages"
+    },
+    {
+      "item": "A recent photo",
+      "hint": "Plain light background, face fully visible. We’ll crop it"
+    },
+    {
+      "item": "Your arrival date",
+      "hint": "Your 30 days start when you land"
+    }
+  ],
+  "purposesTitle": "Perfect for",
+  "purposes": [
+    {
+      "icon": "sun",
+      "title": "A single holiday",
+      "text": "A two or three week trip around India."
+    },
+    {
+      "icon": "family",
+      "title": "A family visit",
+      "text": "Seeing relatives or going to a wedding."
+    },
+    {
+      "icon": "yoga",
+      "title": "A short retreat",
+      "text": "Yoga or wellness programmes."
+    }
+  ],
+  "notCoveredTitle": "Not covered",
+  "notCovered": [
+    "Trips longer than 30 days",
+    "Business meetings",
+    "Paid work",
+    "Extending your stay in India"
+  ],
+  "documentsTable": [
+    {
+      "document": "Passport photo page",
+      "details": "A clear scan or photo of the page with your photo and details. Your passport must be valid for at least 6 months and have at least 2 blank pages.",
+      "needed": "Required"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent, in colour, front-facing with eyes open and no glasses. Plain white or light background, no shadows or borders. We crop and resize it for you.",
+      "needed": "Required"
+    },
+    {
+      "document": "UK residence status",
+      "details": "If you’re not a British citizen: your UK eVisa share code page, BRP or settlement document.",
+      "needed": "If applicable"
+    }
+  ],
+  "rules": [
+    {
+      "title": "How long you can stay",
+      "text": "You can stay for 30 days, counted from the day you first arrive. Your first arrival must be before the e-Visa’s expiry date. It can’t be extended."
+    },
+    {
+      "title": "It can’t be extended or changed",
+      "text": "An e-Visa can’t be extended or switched to another type of visa once you’re in India, so choose the right one before you travel."
+    },
+    {
+      "title": "Arrive at an approved airport or seaport",
+      "text": "You must enter India through one of the airports or seaports approved for e-Visas. All the main international airports are included, such as Delhi, Mumbai, Bengaluru, Chennai, Kolkata, Hyderabad, Goa and Kochi. You can leave from any immigration checkpoint."
+    },
+    {
+      "title": "Who can’t use an e-Visa",
+      "text": "People of Pakistani origin, anyone with a military, police or security background (serving or retired), and holders of diplomatic or official passports must apply for a regular visa instead."
+    },
+    {
+      "title": "Fill in the e-Arrival card",
+      "text": "Before you fly, complete India’s free e-Arrival card online within 72 hours of arrival. It’s arrival information, not a visa. [How the e-Arrival card works](/india-e-arrival-card/)"
+    },
+    {
+      "title": "No protected areas",
+      "text": "An e-Visa isn’t valid for protected, restricted or cantonment areas. Visiting places such as parts of the North East, Sikkim or the Andaman Islands may need a separate permit."
+    }
+  ],
+  "boxTitle": "Can’t use an e-Visa?",
+  "boxText": "Pakistani origin, a military or police background, work, journalism or a longer stay all need a regular visa. We help with those too.",
+  "boxButton": "Regular Indian visas",
+  "boxLink": "/indian-regular-visa/",
+  "sections": [
+    {
+      "heading": "How the 30-day e-Tourist visa works",
+      "text": "Once approved, you must make your first arrival in India before the date shown on your e-Visa. Your 30 days start on the day you land, and you can leave and come back within that time.\n\nIf you might stay longer than 30 days, or go back later in the year, the [1-year e-Tourist visa](/india-1-year-e-tourist-visa/) is usually better value."
+    },
+    {
+      "heading": "Is the 30-day e-Visa right for me?",
+      "text": "Choose it for one short trip. Choose the 1-year or 5-year visa if you visit India often, as you won’t need to apply again each time.\n\nNot sure? Tell us your plans and we’ll tell you whether the 30-day e-Tourist visa or a longer one is better value."
+    },
+    {
+      "heading": "What you need for a 30-day e-Tourist visa",
+      "text": "Just a passport valid for at least six months with two blank pages, and a recent photo with a plain light background. You don’t need hotel or flight bookings to apply, but carry them when you travel. Apply at least 4 days before you arrive in India."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "When does my 30-day e-Visa start?",
+      "a": "The 30 days start on the date you first arrive in India, not the date it was approved."
+    },
+    {
+      "q": "Can I extend a 30-day e-Tourist visa?",
+      "a": "No. e-Visas can’t be extended. If you need longer, apply for a 1-year or 5-year e-Tourist visa before you go."
+    },
+    {
+      "q": "Can I leave India and come back on a 30-day e-Visa?",
+      "a": "Yes, within the 30 days from your first arrival."
+    },
+    {
+      "q": "How early should I apply?",
+      "a": "At least 4 days before you arrive in India, and no more than 120 days before. We recommend applying 2 to 3 weeks ahead in case anything needs correcting."
+    },
+    {
+      "q": "Is the e-Visa fee refundable if I’m refused?",
+      "a": "No. The Government of India’s e-Visa fee pays for processing your application, so it isn’t refunded if the visa is refused or you cancel your trip. That’s why we check everything before you pay it."
+    }
+  ],
+  "related": [
+    "e-tourist-visa-india-uk",
+    "india-1-year-e-tourist-visa",
+    "india-5-year-e-tourist-visa"
+  ],
+  "title": "India 30-Day e-Tourist Visa from the UK | Apply Online",
+  "description": "India 30-day e-Tourist visa for UK travellers: how it works, when your 30 days start and what you need. We check and submit your application for you.",
+  "focusKeyword": "30-day e-Tourist visa",
+  "prices": [
+    {
+      "service": "e-Tourist visa, 30 days",
+      "included": "30 days from the day you arrive",
+      "processing": "",
+      "entries": "Multiple entries",
+      "govFee": "",
+      "fee": ""
+    }
+  ],
+  "shareImage": "/images/share.jpg"
+}

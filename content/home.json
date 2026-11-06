@@ -1,79 +1,134 @@
 {
-  "advisersPhotoAlt": "Raj and Sunita, immigration advisers at Unique Visa Services",
-  "advisersIntro": "Unique Visa Services is run by Raj and Sunita from our Manchester office. When you work with us, you deal with them directly, from first call to decision.",
-  "heroHeading": "UK immigration advice in Manchester, from advisers who check every detail",
-  "advisersPhoto": "",
+  "title": "Indian e-Visa from the UK | Apply Online in 4 Easy Steps",
+  "description": "Apply for your Indian e-Visa from the UK in four easy steps. Our Manchester team checks your photo, passport and every detail before it’s submitted.",
+  "focusKeyword": "Indian e-Visa",
+  "heroEyebrow": "Indian visa help from Manchester",
+  "heroHeading": "Your Indian e-Visa",
+  "heroAccent": "in four easy steps.",
+  "heroIntro": "Apply for your Indian e-Visa the easy way. You do the simple part; we handle the official form, check every detail and submit it for you.",
+  "steps": [
+    {
+      "title": "Apply online",
+      "short": "Apply online",
+      "text": "Answer a few simple questions and upload your photo and passport page."
+    },
+    {
+      "title": "We check and submit",
+      "short": "We check",
+      "text": "An adviser reviews every answer, fixes photo or document problems and submits it."
+    },
+    {
+      "title": "Receive your ETA",
+      "short": "Receive ETA",
+      "text": "Your Electronic Travel Authorisation is emailed to you once approved."
+    },
+    {
+      "title": "Fly to India",
+      "short": "Fly to India",
+      "text": "Print your ETA and show it at immigration, where your e-Visa is stamped in your passport."
+    }
+  ],
+  "heroOptions": [
+    {
+      "label": "e-Tourist",
+      "sub": "30 days",
+      "note": "for holidays and visiting family or friends. You’ll need your passport and a photo. Apply at least 4 days before you fly.",
+      "button": "Start e-Tourist application",
+      "link": "/apply/india-visa/?visaType=e-Tourist%20visa%20(30%20days)"
+    },
+    {
+      "label": "e-Tourist",
+      "sub": "1 year",
+      "note": "many trips over 12 months, up to 180 days in India in a calendar year. Passport and photo only.",
+      "button": "Start e-Tourist application",
+      "link": "/apply/india-visa/?visaType=e-Tourist%20visa%20(1%20year)"
+    },
+    {
+      "label": "e-Tourist",
+      "sub": "5 years",
+      "note": "many trips over 5 years, up to 180 days in India in a calendar year. Passport and photo only.",
+      "button": "Start e-Tourist application",
+      "link": "/apply/india-visa/?visaType=e-Tourist%20visa%20(5%20years)"
+    },
+    {
+      "label": "e-Business",
+      "sub": "1 year",
+      "note": "meetings and business trips for a year. You’ll also need a business card or an invitation from the Indian company.",
+      "button": "Start e-Business application",
+      "link": "/apply/india-visa/?visaType=e-Business%20visa"
+    },
+    {
+      "label": "e-Medical",
+      "sub": "Treatment in India",
+      "note": "for treatment in India. You’ll need a letter from the Indian hospital with your admission date.",
+      "button": "Start e-Medical application",
+      "link": "/apply/india-visa/?visaType=e-Medical%20visa"
+    },
+    {
+      "label": "Something else",
+      "sub": "Work, press, other",
+      "note": "work, journalism, longer stays and some backgrounds need a regular visa. Call us and we’ll tell you what applies.",
+      "button": "Call 0161 956 2003",
+      "link": "tel:+441619562003"
+    }
+  ],
+  "tilesTitle": "Every type of Indian e-Visa",
+  "tilesIntro": "Choose a visa to see what it’s for, what you’ll need and the fees. Apply at least 4 days before you fly, and up to 120 days ahead.",
+  "checksTitle": "What we check before it’s submitted",
+  "checksIntro": "Most e-Visa problems come from small mistakes the official form won’t warn you about. Once submitted, the government fee can’t be refunded, so we catch them first.",
+  "checks": [
+    {
+      "icon": "camera",
+      "title": "Your photo",
+      "text": "Square, a plain light background, full face and the right file size. We crop and resize it for you."
+    },
+    {
+      "icon": "passport",
+      "title": "Your passport scan",
+      "text": "A clear photo page in the format and size the form accepts, with at least 6 months left and 2 blank pages."
+    },
+    {
+      "icon": "info",
+      "title": "Whether you can use an e-Visa",
+      "text": "Some people can’t, including those of Pakistani origin or with a military or police background. We tell you before you pay."
+    },
+    {
+      "icon": "check",
+      "title": "Every detail",
+      "text": "Names, dates and passport number must match exactly. A mistake on an approved e-Visa can mean applying again."
+    }
+  ],
   "sections": [
     {
-      "heading": "Immigration advice in Manchester",
-      "text": "Unique Visa Services is an IAA-regulated immigration practice at 61 Mosley Street in Manchester city centre. Since 2008 we have helped people across Greater Manchester, including Bury, Bolton, Oldham, Rochdale, Salford and Stockport, and clients across the UK and overseas, with UK visas, settlement, citizenship and travel visas."
+      "heading": "Indian e-Visa for UK residents",
+      "text": "British citizens and people from more than 170 other countries can visit India on an e-Visa. It’s applied for online, approved by email and stamped into your passport when you land. There are e-Visas for tourism, business, conferences, medical treatment, study, transit and more.\n\nWe’re a private company based in Manchester. You can apply yourself on the official Government of India website and pay only the government fee. Our clients use us because they want a person to check their eligibility, fix their photo and documents and submit everything correctly the first time."
     },
     {
-      "heading": "UK visas, settlement and citizenship",
-      "text": "We prepare and check applications for spouse and partner visas, Skilled Worker visas, student and Graduate visas, visitor visas, Indefinite Leave to Remain and British citizenship. For employers, we handle sponsor licences and help you stay compliant once you have one.\n\nUK immigration rules are changing quickly in 2026, from the proposed 10-year route to settlement to the shorter Graduate visa from January 2027. We follow every change and tell you how it affects you before you apply."
-    },
-    {
-      "heading": "Travel visas and document services",
-      "text": "Travelling from the UK? We handle visas and eVisas for China, India, the Schengen area, the USA, Saudi Arabia, Ghana, Sri Lanka and more, as well as apostilles and embassy legalisation, Indian passport services and second British passports. You can apply online, and our forms read your passport details automatically."
-    },
-    {
-      "heading": "Why clients choose us",
-      "text": "- IAA-regulated advisers, with our registration shown on every page\n- A fee agreed in writing before we start\n- Every document checked against the current rules before submission\n- The same advisers from your first call to your decision"
+      "heading": "How long does an Indian e-Visa take?",
+      "text": "Most complete applications are decided within a few working days. Apply at least 4 days before you arrive in India, and no more than 120 days before. We suggest 2 to 3 weeks ahead, so there’s time to fix anything.\n\nYour Indian e-Visa arrives by email. Print it and carry it with your passport; immigration stamps the visa into your passport when you land."
     }
   ],
-  "heroEyebrow": "REGULATED IMMIGRATION ADVICE SINCE 2008",
-  "heroPhotoAlt": "Raj and Sunita with a client in our Manchester office",
-  "heroIntro": "Spouse visas, Skilled Worker visas, sponsor licences, ILR and British citizenship. We assess your case, prepare your evidence and review every application before it goes to the Home Office. Expert immigration advice in Manchester since 2008.",
-  "consultationFrom": "£75",
-  "iaaLogo": "/images/uploads/iaa-logo.jpg",
-  "title": "Immigration Advice in Manchester | UK Visas & Travel Visas",
-  "heroPhoto": "/images/uploads/gemini_generated_image_3q6ynw3q6ynw3q6y.jpg",
-  "reviews": [
-    {
-      "quote": "Sunita guided us through every single step, with clear explanations on every call and email. Their response rate is exceptionally high.",
-      "source": "Google review · UK visa"
-    },
-    {
-      "quote": "Sunita was very supportive, and she ended four years of stress by getting the visa. Highly professional and quick to respond.",
-      "source": "Google review · UK visa"
-    },
-    {
-      "quote": "Raj and the team are very professional and knowledgeable. My application was smooth and trouble-free thanks to their help.",
-      "source": "Google review · China visa"
-    }
-  ],
-  "description": "IAA-regulated immigration advice in Manchester: spouse visas, Skilled Worker, ILR, citizenship and travel visas. Clear advice and agreed fees.",
   "faqs": [
     {
-      "q": "Do I need an adviser, or can I apply myself?",
-      "a": "You can apply directly to the Home Office. Many people use us because a missing document or a misunderstood requirement can mean a refusal, a lost fee and months of delay. We make sure your application is complete before it's submitted."
+      "q": "Can I apply myself instead?",
+      "a": "Yes. You can apply on the official site, indianvisaonline.gov.in, and pay only the government fee. People use us when they want a person to check everything, fix their photo and documents, and handle the form for them."
     },
     {
-      "q": "How much do your services cost?",
-      "a": "Our fee depends on the visa route and is agreed before we start. Home Office fees and the Immigration Health Surcharge are paid separately. [Add example prices or a link to your fees page.]"
+      "q": "How early should I apply?",
+      "a": "At least 4 days before you arrive in India, and no more than 120 days before. We recommend applying 2 to 3 weeks ahead in case anything needs correcting."
     },
     {
-      "q": "Do I need to come to your Manchester office?",
-      "a": "No. You can meet us at 61 Mosley Street, or we can work with you by phone, video call and email from anywhere in the UK."
+      "q": "I have a British passport but my family is from Pakistan. Can I get an e-Visa?",
+      "a": "Usually not. Indian rules don’t allow an e-Visa if your parents or grandparents were born in, or lived permanently in, Pakistan, even on a British passport. You’ll need a regular visa, and we can help with that."
     },
     {
-      "q": "Are you regulated?",
-      "a": "Yes. Unique Visa Services Ltd is registered with the Immigration Advice Authority, reference F200700144. You can check this on the IAA's adviser finder."
+      "q": "What happens when I arrive in India?",
+      "a": "Show your printed e-Visa at immigration. Your fingerprints and photo are taken, and the visa is stamped in your passport. You must enter through one of the airports or seaports approved for e-Visas."
+    },
+    {
+      "q": "How long is an Indian e-Visa valid?",
+      "a": "It depends on the type: 30 days, 1 year or 5 years for tourism, and 1 year for business. Each visa page explains the rules."
     }
   ],
-  "focusKeyword": "immigration advice in Manchester",
-  "heroPoints": [
-    {
-      "title": "IAA-regulated advisers",
-      "text": "Every application is prepared and checked by regulated advisers."
-    },
-    {
-      "title": "Fixed fees, agreed upfront",
-      "text": "You know the full cost before we start. No hidden charges."
-    },
-    {
-      "title": "Fast, secure online forms",
-      "text": "Apply in minutes. Your passport details fill in automatically."
-    }
-  ]
+  "shareImage": "/images/share.jpg"
 }

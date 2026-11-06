@@ -1,0 +1,171 @@
+{
+  "layout": "visa",
+  "group": "evisa",
+  "order": 13,
+  "navLabel": "5-year e-Tourist visa",
+  "h1": "India 5-year e-Tourist visa",
+  "h1Accent": "for frequent visitors.",
+  "applyButton": "/apply/india-visa/?visaType=e-Tourist%20visa%20(5%20years)",
+  "applyLabel": "Start 5-year application",
+  "intro": "One 5-year e-Tourist visa covers five years of trips to India. It’s the best value if you visit family or holiday in India regularly.",
+  "cardText": "Five years of trips on one visa, up to 180 days in India each calendar year.",
+  "facts": [
+    {
+      "value": "5 years",
+      "label": "From the date it’s granted"
+    },
+    {
+      "value": "Multiple trips",
+      "label": "As many as you like"
+    },
+    {
+      "value": "180 days",
+      "label": "Most you can stay in a calendar year"
+    },
+    {
+      "value": "One application",
+      "label": "No need to reapply every trip"
+    }
+  ],
+  "checklist": [
+    {
+      "item": "Passport photo page",
+      "hint": "Ideally valid for several more years"
+    },
+    {
+      "item": "A recent photo",
+      "hint": "Plain light background, face fully visible. We’ll crop it"
+    },
+    {
+      "item": "Your first travel date",
+      "hint": "Roughly when you’ll first arrive"
+    }
+  ],
+  "purposesTitle": "Perfect for",
+  "purposes": [
+    {
+      "icon": "family",
+      "title": "Visiting family every year",
+      "text": "The most popular choice for British Indian families."
+    },
+    {
+      "icon": "sun",
+      "title": "Regular holidays",
+      "text": "Goa, Kerala or Rajasthan every winter."
+    },
+    {
+      "icon": "yoga",
+      "title": "Ongoing retreats",
+      "text": "Repeat yoga and wellness visits."
+    }
+  ],
+  "notCoveredTitle": "Not covered",
+  "notCovered": [
+    "Paid work or business",
+    "Staying more than 180 days in a calendar year",
+    "Full-time study",
+    "Journalism"
+  ],
+  "documentsTable": [
+    {
+      "document": "Passport photo page",
+      "details": "A clear scan or photo of the page with your photo and details. Your passport must be valid for at least 6 months and have at least 2 blank pages.",
+      "needed": "Required"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent, in colour, front-facing with eyes open and no glasses. Plain white or light background, no shadows or borders. We crop and resize it for you.",
+      "needed": "Required"
+    },
+    {
+      "document": "UK residence status",
+      "details": "If you’re not a British citizen: your UK eVisa share code page, BRP or settlement document.",
+      "needed": "If applicable"
+    }
+  ],
+  "rules": [
+    {
+      "title": "How long you can stay",
+      "text": "The visa lasts five years from the date it’s granted. You can stay up to 180 days in total in each calendar year."
+    },
+    {
+      "title": "It can’t be extended or changed",
+      "text": "An e-Visa can’t be extended or switched to another type of visa once you’re in India, so choose the right one before you travel."
+    },
+    {
+      "title": "Arrive at an approved airport or seaport",
+      "text": "You must enter India through one of the airports or seaports approved for e-Visas. All the main international airports are included, such as Delhi, Mumbai, Bengaluru, Chennai, Kolkata, Hyderabad, Goa and Kochi. You can leave from any immigration checkpoint."
+    },
+    {
+      "title": "Who can’t use an e-Visa",
+      "text": "People of Pakistani origin, anyone with a military, police or security background (serving or retired), and holders of diplomatic or official passports must apply for a regular visa instead."
+    },
+    {
+      "title": "Fill in the e-Arrival card",
+      "text": "Before you fly, complete India’s free e-Arrival card online within 72 hours of arrival. It’s arrival information, not a visa. [How the e-Arrival card works](/india-e-arrival-card/)"
+    },
+    {
+      "title": "No protected areas",
+      "text": "An e-Visa isn’t valid for protected, restricted or cantonment areas. Visiting places such as parts of the North East, Sikkim or the Andaman Islands may need a separate permit."
+    }
+  ],
+  "boxTitle": "Can’t use an e-Visa?",
+  "boxText": "Pakistani origin, a military or police background, work, journalism or a longer stay all need a regular visa. We help with those too.",
+  "boxButton": "Regular Indian visas",
+  "boxLink": "/indian-regular-visa/",
+  "sections": [
+    {
+      "heading": "How the 5-year e-Tourist visa works",
+      "text": "Your visa is valid for five years from the day it’s granted. You can visit India as often as you like, as long as you don’t spend more than 180 days there in any calendar year."
+    },
+    {
+      "heading": "What if my passport expires during the 5 years?",
+      "text": "If you renew your passport, you can still travel on your valid e-Visa as long as you carry your old passport too. If your old passport has been lost or stolen, we can [transfer your e-Visa to your new passport](/transfer-india-evisa-new-passport/).\n\nYour 5-year e-Tourist visa stays valid on the old passport until its expiry date."
+    },
+    {
+      "heading": "Is the 5-year e-Tourist visa worth it?",
+      "text": "If you visit India at least twice in five years, it usually costs less than applying each time, and you avoid the stress of applying before every trip."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Can British citizens get a 5-year Indian e-Visa?",
+      "a": "Yes. British citizens can apply for the 5-year e-Tourist visa."
+    },
+    {
+      "q": "How long can I stay in India on a 5-year e-Visa?",
+      "a": "Up to 180 days in each calendar year, over as many trips as you like."
+    },
+    {
+      "q": "What happens if I renew my passport?",
+      "a": "Carry your old passport with the e-Visa together with your new one. If the old passport is lost, the e-Visa can be transferred to the new passport."
+    },
+    {
+      "q": "How early should I apply?",
+      "a": "At least 4 days before you arrive in India, and no more than 120 days before. We recommend applying 2 to 3 weeks ahead in case anything needs correcting."
+    },
+    {
+      "q": "Is the e-Visa fee refundable if I’m refused?",
+      "a": "No. The Government of India’s e-Visa fee pays for processing your application, so it isn’t refunded if the visa is refused or you cancel your trip. That’s why we check everything before you pay it."
+    }
+  ],
+  "related": [
+    "e-tourist-visa-india-uk",
+    "india-1-year-e-tourist-visa",
+    "transfer-india-evisa-new-passport"
+  ],
+  "title": "India 5-Year e-Tourist Visa from the UK | Apply Online",
+  "description": "India 5-year e-Tourist visa for UK residents: trips over five years, up to 180 days a year. Check what you need and apply with our Manchester team.",
+  "focusKeyword": "5-year e-Tourist visa",
+  "prices": [
+    {
+      "service": "e-Tourist visa, 5 years",
+      "included": "Up to 180 days a year",
+      "processing": "",
+      "entries": "Multiple entries",
+      "govFee": "",
+      "fee": ""
+    }
+  ],
+  "shareImage": "/images/share.jpg"
+}

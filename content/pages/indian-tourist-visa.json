@@ -1,0 +1,173 @@
+{
+  "layout": "visa",
+  "group": "regular",
+  "order": 10,
+  "navLabel": "Regular tourist visa",
+  "h1": "Indian tourist visa",
+  "h1Accent": "(regular, paper visa).",
+  "applyButton": "/apply/india-regular-visa/?visaType=Tourist%20visa%20(regular)",
+  "applyLabel": "Start tourist visa application",
+  "intro": "The regular Indian tourist visa is for holidays and family visits when you can’t use the e-Tourist visa, for example because of Pakistani origin or a military background. We prepare the form and check every document.",
+  "cardText": "For holidays and family visits when you can’t use the e-Tourist visa.",
+  "facts": [
+    {
+      "value": "Paper visa",
+      "label": "Stuck into your passport"
+    },
+    {
+      "value": "Visa centre",
+      "label": "Passport submitted in person or by post"
+    },
+    {
+      "value": "Pakistani origin?",
+      "label": "This is your route"
+    },
+    {
+      "value": "Most UK travellers",
+      "label": "Can use the quicker e-Visa"
+    }
+  ],
+  "checklist": [
+    {
+      "item": "Passport photo page",
+      "hint": "Valid for 6 months, with at least 2 blank pages"
+    },
+    {
+      "item": "A recent photo",
+      "hint": "Plain light background, face fully visible. We’ll crop it"
+    },
+    {
+      "item": "Proof of UK address"
+    },
+    {
+      "item": "Travel plans",
+      "hint": "Dates and where you’ll stay"
+    }
+  ],
+  "purposesTitle": "Who needs the regular tourist visa",
+  "purposes": [
+    {
+      "icon": "family",
+      "title": "People of Pakistani origin",
+      "text": "Including British citizens whose parents or grandparents were from Pakistan."
+    },
+    {
+      "icon": "shield",
+      "title": "Military or police background",
+      "text": "Serving or retired."
+    },
+    {
+      "icon": "clock",
+      "title": "Longer or special trips",
+      "text": "Where the e-Visa rules don’t fit."
+    }
+  ],
+  "notCoveredTitle": "Not covered",
+  "notCovered": [
+    "Work or business",
+    "Journalism",
+    "Study"
+  ],
+  "documentsTable": [
+    {
+      "document": "Passport photo page",
+      "details": "A clear scan or photo of the page with your photo and details. Your passport must be valid for at least 6 months and have at least 2 blank pages.",
+      "needed": "Required"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent, in colour, front-facing with eyes open and no glasses. Plain white or light background, no shadows or borders. We crop and resize it for you.",
+      "needed": "Required"
+    },
+    {
+      "document": "Proof of UK address",
+      "details": "A recent utility bill, council tax bill or bank statement.",
+      "needed": "Required"
+    },
+    {
+      "document": "Previous passports or visas",
+      "details": "Your old Indian visas or previous passports, if you have them.",
+      "needed": "Helpful"
+    },
+    {
+      "document": "Extra forms for Pakistani origin",
+      "details": "Extra details about your family history, which we’ll help you complete.",
+      "needed": "If applicable"
+    },
+    {
+      "document": "UK residence status",
+      "details": "If you’re not a British citizen: your UK eVisa share code page, BRP or settlement document.",
+      "needed": "If applicable"
+    }
+  ],
+  "rules": [
+    {
+      "title": "Your passport goes to the visa centre",
+      "text": "Regular visas are stuck into your passport, so you’ll need to submit it at the Indian visa application centre. Don’t book travel you can’t change until it’s back."
+    },
+    {
+      "title": "Allow more time",
+      "text": "Regular visas take longer than e-Visas, and much longer for people of Pakistani origin. Apply as early as you can."
+    },
+    {
+      "title": "The form must be exact",
+      "text": "Any mismatch between your form, passport and documents can delay or refuse the application. We check everything line by line."
+    },
+    {
+      "title": "Arrive anywhere",
+      "text": "Unlike e-Visas, regular visas can be used at any immigration checkpoint in India."
+    }
+  ],
+  "boxTitle": "Can you use the e-Tourist visa instead?",
+  "boxText": "Most British citizens can, and it’s much quicker.",
+  "boxButton": "e-Tourist visa",
+  "boxLink": "/e-tourist-visa-india-uk/",
+  "sections": [
+    {
+      "heading": "Indian tourist visa or e-Tourist visa?",
+      "text": "Use the [e-Tourist visa](/e-tourist-visa-india-uk/) if you can: it’s online and quicker. The regular tourist visa is for people who can’t use the e-Visa, most often British citizens of Pakistani origin. See our guide to [Indian visas for people of Pakistani origin](/indian-visa-for-pakistani-origin/)."
+    },
+    {
+      "heading": "How to apply for a regular Indian tourist visa",
+      "text": "You complete the online form, book an appointment and submit your passport and documents at the Indian visa application centre. We fill in the form for you, check every answer against your passport, and tell you exactly what to take. Allow several weeks for an Indian tourist visa, especially if you’re of Pakistani origin."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "I’m British with Pakistani heritage. Do I need a regular visa?",
+      "a": "Usually yes. If your parents or grandparents were born in or lived permanently in Pakistan, you can’t use the e-Visa."
+    },
+    {
+      "q": "How long does it take?",
+      "a": "Allow several weeks, especially for people of Pakistani origin."
+    },
+    {
+      "q": "Can I apply myself instead of using you?",
+      "a": "Yes. You can apply on the official website, indianvisaonline.gov.in, and pay only the government fee. People use us when they want a person to check their eligibility, fix their photo and documents, and handle the form for them so nothing goes wrong."
+    },
+    {
+      "q": "How long is a regular Indian tourist visa valid?",
+      "a": "It depends on your nationality and circumstances. We’ll tell you what to expect for your case."
+    }
+  ],
+  "related": [
+    "indian-visa-for-pakistani-origin",
+    "e-tourist-visa-india-uk",
+    "indian-regular-visa"
+  ],
+  "title": "Indian Tourist Visa (Regular) from the UK | Apply With Help",
+  "description": "Regular Indian tourist visa for UK residents who can’t use the e-Visa, including people of Pakistani origin. We prepare and check your application.",
+  "focusKeyword": "Indian tourist visa",
+  "prices": [
+    {
+      "service": "Regular tourist visa",
+      "included": "",
+      "processing": "",
+      "entries": "",
+      "govFee": "",
+      "fee": ""
+    }
+  ],
+  "feesNote": "The government fee for a regular visa is set by India and includes the visa application centre’s charges. It isn’t refundable, even if the visa is refused. Our fee is per person and includes preparing your form and checking every document.",
+  "shareImage": "/images/share.jpg"
+}

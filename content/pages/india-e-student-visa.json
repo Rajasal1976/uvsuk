@@ -1,0 +1,185 @@
+{
+  "layout": "visa",
+  "group": "evisa",
+  "order": 40,
+  "navLabel": "e-Student visa",
+  "h1": "India e-Student visa",
+  "h1Accent": "for courses in India.",
+  "applyButton": "/apply/india-visa/?visaType=e-Student%20visa",
+  "applyLabel": "Start e-Student application",
+  "intro": "The India e-Student visa is for studying a full course at a recognised college or university in India. We check your admission letter and funds before we submit.",
+  "cardText": "Full courses at a recognised Indian college or university. Valid for a year.",
+  "facts": [
+    {
+      "value": "1 year",
+      "label": "From the date it’s granted"
+    },
+    {
+      "value": "Multiple entries",
+      "label": "Travel home in the holidays"
+    },
+    {
+      "value": "Admission letter",
+      "label": "From a recognised institution"
+    },
+    {
+      "value": "Proof of funds",
+      "label": "Bank statements or a guarantee"
+    }
+  ],
+  "checklist": [
+    {
+      "item": "Passport photo page",
+      "hint": "Valid for 6 months, with at least 2 blank pages"
+    },
+    {
+      "item": "A recent photo",
+      "hint": "Plain light background, face fully visible. We’ll crop it"
+    },
+    {
+      "item": "Admission letter",
+      "hint": "From the Indian institution, with your course length"
+    },
+    {
+      "item": "Proof of funds",
+      "hint": "6 months of bank statements, or a sponsor letter"
+    }
+  ],
+  "purposesTitle": "What the e-Student visa covers",
+  "purposes": [
+    {
+      "icon": "school",
+      "title": "Degree and diploma courses",
+      "text": "Full-time study at a recognised institution."
+    },
+    {
+      "icon": "medical",
+      "title": "Medical and paramedical courses",
+      "text": "With a no-objection certificate from India’s health ministry."
+    },
+    {
+      "icon": "book",
+      "title": "Formal structured courses",
+      "text": "Courses that lead to a qualification."
+    }
+  ],
+  "notCoveredTitle": "Not covered",
+  "notCovered": [
+    "Short informal courses, which use the e-Tourist visa",
+    "Paid work",
+    "Research visas",
+    "Staying beyond your visa"
+  ],
+  "documentsTable": [
+    {
+      "document": "Passport photo page",
+      "details": "A clear scan or photo of the page with your photo and details. Your passport must be valid for at least 6 months and have at least 2 blank pages.",
+      "needed": "Required"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent, in colour, front-facing with eyes open and no glasses. Plain white or light background, no shadows or borders. We crop and resize it for you.",
+      "needed": "Required"
+    },
+    {
+      "document": "Admission letter",
+      "details": "From a recognised Indian educational institution, showing the course and how long it lasts.",
+      "needed": "Required"
+    },
+    {
+      "document": "Proof of funds",
+      "details": "A letter of support from your parent or guardian with a bank guarantee certificate, or your last 6 months of bank statements.",
+      "needed": "Required"
+    },
+    {
+      "document": "No-objection certificate",
+      "details": "From India’s Ministry of Health and Family Welfare, for medical or paramedical courses.",
+      "needed": "If applicable"
+    },
+    {
+      "document": "UK residence status",
+      "details": "If you’re not a British citizen: your UK eVisa share code page, BRP or settlement document.",
+      "needed": "If applicable"
+    }
+  ],
+  "rules": [
+    {
+      "title": "How long you can stay",
+      "text": "The visa is valid for one year from the date it’s granted, with multiple entries. Longer courses may need registration or a regular student visa; we’ll check this with you."
+    },
+    {
+      "title": "It can’t be extended or changed",
+      "text": "An e-Visa can’t be extended or switched to another type of visa once you’re in India, so choose the right one before you travel."
+    },
+    {
+      "title": "Arrive at an approved airport or seaport",
+      "text": "You must enter India through one of the airports or seaports approved for e-Visas. All the main international airports are included, such as Delhi, Mumbai, Bengaluru, Chennai, Kolkata, Hyderabad, Goa and Kochi. You can leave from any immigration checkpoint."
+    },
+    {
+      "title": "Who can’t use an e-Visa",
+      "text": "People of Pakistani origin, anyone with a military, police or security background (serving or retired), and holders of diplomatic or official passports must apply for a regular visa instead."
+    },
+    {
+      "title": "Fill in the e-Arrival card",
+      "text": "Before you fly, complete India’s free e-Arrival card online within 72 hours of arrival. It’s arrival information, not a visa. [How the e-Arrival card works](/india-e-arrival-card/)"
+    },
+    {
+      "title": "No protected areas",
+      "text": "An e-Visa isn’t valid for protected, restricted or cantonment areas. Visiting places such as parts of the North East, Sikkim or the Andaman Islands may need a separate permit."
+    }
+  ],
+  "boxTitle": "Can’t use an e-Visa?",
+  "boxText": "Pakistani origin, a military or police background, work, journalism or a longer stay all need a regular visa. We help with those too.",
+  "boxButton": "Regular Indian visas",
+  "boxLink": "/indian-regular-visa/",
+  "sections": [
+    {
+      "heading": "India e-Student visa requirements",
+      "text": "You need an admission letter from a recognised Indian institution showing your course and its length, and proof you can pay your fees and living costs. For medical and paramedical courses, you also need a no-objection certificate from India’s Ministry of Health and Family Welfare."
+    },
+    {
+      "heading": "Bringing family",
+      "text": "Your dependants can apply for the [e-Family visa](/india-e-family-visa/), linked to your e-Student visa.\n\nEach family member needs their own application, linked to your India e-Student visa."
+    },
+    {
+      "heading": "How long is an India e-Student visa?",
+      "text": "It’s valid for one year from the date it’s granted, with multiple entries, so you can come home in the holidays. If your course is longer, we’ll tell you how to stay on legally."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Can I study a short course on a tourist visa?",
+      "a": "Yes, informal courses of up to 6 months that don’t give a qualifying certificate can be done on an e-Tourist visa. Formal courses need an e-Student visa."
+    },
+    {
+      "q": "Can I work while studying in India?",
+      "a": "No. The e-Student visa doesn’t allow paid work."
+    },
+    {
+      "q": "How early should I apply?",
+      "a": "At least 4 days before you arrive in India, and no more than 120 days before. We recommend applying 2 to 3 weeks ahead in case anything needs correcting."
+    },
+    {
+      "q": "Is the e-Visa fee refundable if I’m refused?",
+      "a": "No. The Government of India’s e-Visa fee pays for processing your application, so it isn’t refunded if the visa is refused or you cancel your trip. That’s why we check everything before you pay it."
+    }
+  ],
+  "related": [
+    "india-e-family-visa",
+    "e-tourist-visa-india-uk"
+  ],
+  "title": "India e-Student Visa from the UK | Requirements & Apply",
+  "description": "India e-Student visa for UK residents: admission letter, proof of funds, medical course rules and how to apply. We check everything before we submit.",
+  "focusKeyword": "India e-Student visa",
+  "prices": [
+    {
+      "service": "e-Student visa, 1 year",
+      "included": "",
+      "processing": "",
+      "entries": "Multiple entries",
+      "govFee": "",
+      "fee": ""
+    }
+  ],
+  "shareImage": "/images/share.jpg"
+}

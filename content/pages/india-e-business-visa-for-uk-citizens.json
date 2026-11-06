@@ -1,0 +1,229 @@
+{
+  "layout": "visa",
+  "group": "evisa",
+  "order": 20,
+  "navLabel": "e-Business visa",
+  "h1": "Indian e-Business visa",
+  "h1Accent": "from the UK.",
+  "applyButton": "/apply/india-visa/?visaType=e-Business%20visa",
+  "applyLabel": "Start e-Business application",
+  "intro": "The Indian e-Business visa is for meetings, trade fairs, sales trips and setting up business in India. We check your documents and submit your application, so your trip isn’t held up.",
+  "cardText": "Meetings, trade fairs, sales trips and setting up business. Valid for a year with multiple entries.",
+  "facts": [
+    {
+      "value": "1 year",
+      "label": "Valid from the date it’s granted"
+    },
+    {
+      "value": "Multiple trips",
+      "label": "Come and go as often as you need"
+    },
+    {
+      "value": "180 days",
+      "label": "Longest stay on each visit"
+    },
+    {
+      "value": "4 to 120 days",
+      "label": "How far ahead to apply"
+    }
+  ],
+  "checklist": [
+    {
+      "item": "Passport photo page",
+      "hint": "Valid for 6 months, with at least 2 blank pages"
+    },
+    {
+      "item": "A recent photo",
+      "hint": "Plain light background, face fully visible. We’ll crop it"
+    },
+    {
+      "item": "Your business card",
+      "hint": "Or an invitation letter from the Indian company"
+    },
+    {
+      "item": "Details of the Indian company",
+      "hint": "Name, address and phone number"
+    }
+  ],
+  "purposesTitle": "What you can do on an e-Business visa",
+  "purposesIntro": "The visa covers short business activity in India. If your trip is one of these, it’s the right visa.",
+  "purposes": [
+    {
+      "icon": "briefcase",
+      "title": "Business meetings",
+      "text": "Technical and business meetings with Indian companies."
+    },
+    {
+      "icon": "trade",
+      "title": "Buying and selling",
+      "text": "Sales trips, buying stock and trade deals."
+    },
+    {
+      "icon": "factory",
+      "title": "Setting up a business",
+      "text": "Exploring or starting an industrial or business venture."
+    },
+    {
+      "icon": "stall",
+      "title": "Trade fairs and exhibitions",
+      "text": "Visiting or exhibiting at business events."
+    },
+    {
+      "icon": "people",
+      "title": "Recruiting staff",
+      "text": "Interviewing and hiring people in India."
+    },
+    {
+      "icon": "tool",
+      "title": "Expert on a project",
+      "text": "Specialist visits for an ongoing project."
+    },
+    {
+      "icon": "mic",
+      "title": "Conferences",
+      "text": "Business conferences and seminars. See the [e-Conference visa](/india-e-conference-visa/)."
+    },
+    {
+      "icon": "map",
+      "title": "Leading business tours",
+      "text": "Conducting tours as part of your business."
+    },
+    {
+      "icon": "book",
+      "title": "Guest lectures",
+      "text": "Teaching under India’s GIAN academic programme."
+    }
+  ],
+  "notCoveredTitle": "Not covered by an e-Business visa",
+  "notCovered": [
+    "Taking a paid job in India",
+    "Journalism",
+    "Work for a charity or NGO",
+    "Visiting protected or restricted areas",
+    "Staying longer than the visa allows",
+    "Changing to a different visa once in India"
+  ],
+  "documentsTable": [
+    {
+      "document": "Passport photo page",
+      "details": "A clear scan or photo of the page with your photo and details. Your passport must be valid for at least 6 months and have at least 2 blank pages.",
+      "needed": "Required"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent, in colour, front-facing with eyes open and no glasses. Plain white or light background, no shadows or borders. We crop and resize it for you.",
+      "needed": "Required"
+    },
+    {
+      "document": "Business card",
+      "details": "The card from the company you work for. An invitation letter from the Indian company, with its address and phone number, can be used instead.",
+      "needed": "Required"
+    },
+    {
+      "document": "Invitation letter",
+      "details": "From the Indian business you’re visiting, saying who you are meeting and why.",
+      "needed": "Helpful"
+    },
+    {
+      "document": "Conference papers",
+      "details": "The organiser’s invitation and political clearance from India’s Ministry of External Affairs. Event clearance may also be needed.",
+      "needed": "If applicable"
+    },
+    {
+      "document": "UK residence status",
+      "details": "If you’re not a British citizen: your UK eVisa share code page, BRP or settlement document.",
+      "needed": "If applicable"
+    }
+  ],
+  "documentsNote": "Visiting for sport or film work? These need extra government approvals. Call us and we’ll tell you exactly what applies.",
+  "rules": [
+    {
+      "title": "How long you can stay",
+      "text": "Each visit can last up to 180 days. Staying longer means registering with India’s Foreigners Regional Registration Office (FRRO) within two weeks of day 180."
+    },
+    {
+      "title": "It can’t be extended or changed",
+      "text": "An e-Visa can’t be extended or switched to another type of visa once you’re in India, so choose the right one before you travel."
+    },
+    {
+      "title": "Arrive at an approved airport or seaport",
+      "text": "You must enter India through one of the airports or seaports approved for e-Visas. All the main international airports are included, such as Delhi, Mumbai, Bengaluru, Chennai, Kolkata, Hyderabad, Goa and Kochi. You can leave from any immigration checkpoint."
+    },
+    {
+      "title": "Who can’t use an e-Visa",
+      "text": "People of Pakistani origin, anyone with a military, police or security background (serving or retired), and holders of diplomatic or official passports must apply for a regular visa instead."
+    },
+    {
+      "title": "Fill in the e-Arrival card",
+      "text": "Before you fly, complete India’s free e-Arrival card online within 72 hours of arrival. It’s arrival information, not a visa. [How the e-Arrival card works](/india-e-arrival-card/)"
+    },
+    {
+      "title": "No protected areas",
+      "text": "An e-Visa isn’t valid for protected, restricted or cantonment areas. Visiting places such as parts of the North East, Sikkim or the Andaman Islands may need a separate permit."
+    }
+  ],
+  "boxTitle": "Need a regular business visa?",
+  "boxText": "For longer assignments, a military background, Pakistani origin or work that needs more than an e-Visa, we can help with a regular business visa.",
+  "boxButton": "Regular business visa",
+  "boxLink": "/indian-business-visa/",
+  "sections": [
+    {
+      "heading": "Indian business visa requirements for UK citizens",
+      "text": "To apply you need a passport valid for at least 6 months with two blank pages, a recent photo and your business card. If you don’t have a business card, an invitation letter from the Indian company works instead, as long as it shows the company’s address and phone number in India. All documents must be in English.\n\nMost Indian e-Business visa applications are decided within a few working days of being submitted."
+    },
+    {
+      "heading": "Indian e-Business visa or regular business visa?",
+      "text": "The e-Business visa suits most short trips: it’s quicker, done fully online and lasts a year. A [regular business visa](/indian-business-visa/) is needed if you can’t use an e-Visa, for example because of Pakistani origin or a military background, or if you need a longer or more complex arrangement. If you’re going to work for an Indian company, you need an [Employment visa](/indian-work-visa/)."
+    },
+    {
+      "heading": "Can I combine business with sightseeing?",
+      "text": "Yes, some sightseeing during a business trip is normal. If the main reason for your trip is a holiday, apply for an [e-Tourist visa](/e-tourist-visa-india-uk/) instead.\n\nYour Indian e-Business visa allows some sightseeing during a business trip, as long as business is the main purpose."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Do I need an invitation letter for an Indian e-Business visa?",
+      "a": "Not always. You need your business card, or an invitation letter from the Indian company with its address and phone number. Having both makes your application stronger."
+    },
+    {
+      "q": "Can I make several trips on one e-Business visa?",
+      "a": "Yes. It’s valid for a year with multiple entries, as long as each stay is no longer than 180 days."
+    },
+    {
+      "q": "Can I work for an Indian company on an e-Business visa?",
+      "a": "No. Taking up employment in India needs an Employment visa. The e-Business visa is for business visits, not jobs."
+    },
+    {
+      "q": "Can I attend a conference on an e-Business visa?",
+      "a": "Conferences have their own rules and paperwork. See the e-Conference visa page, or ask us."
+    },
+    {
+      "q": "How early should I apply?",
+      "a": "At least 4 days before you arrive in India, and no more than 120 days before. We recommend applying 2 to 3 weeks ahead in case anything needs correcting."
+    },
+    {
+      "q": "Can I apply myself instead of using you?",
+      "a": "Yes. You can apply on the official website, indianvisaonline.gov.in, and pay only the government fee. People use us when they want a person to check their eligibility, fix their photo and documents, and handle the form for them so nothing goes wrong."
+    }
+  ],
+  "related": [
+    "india-e-conference-visa",
+    "indian-business-visa",
+    "indian-work-visa",
+    "india-e-arrival-card"
+  ],
+  "title": "Indian e-Business Visa from the UK | Requirements & Apply",
+  "description": "Indian e-Business visa for UK citizens: what it covers, documents, rules and fees. A Manchester team checks and submits your application.",
+  "focusKeyword": "Indian e-Business visa",
+  "prices": [
+    {
+      "service": "e-Business visa, 1 year",
+      "included": "Up to 180 days each visit",
+      "processing": "",
+      "entries": "Multiple entries",
+      "govFee": "",
+      "fee": ""
+    }
+  ],
+  "shareImage": "/images/share.jpg"
+}

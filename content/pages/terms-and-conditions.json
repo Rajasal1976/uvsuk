@@ -1,0 +1,41 @@
+{
+  "layout": "company",
+  "group": "company",
+  "order": 40,
+  "navLabel": "Terms and conditions",
+  "h1": "Terms and conditions",
+  "intro": "These terms and conditions apply when you use our website and our visa application services.",
+  "body": [
+    "Our service: we help you apply for Indian visas. We check your eligibility, prepare your application from the information and documents you give us, and submit it on your behalf. We are a private company and are not connected to the Government of India, the High Commission of India or any embassy.",
+    "Visa decisions: all visa decisions are made by the Indian authorities. We can’t guarantee that a visa will be granted or how long it will take.",
+    "Your responsibilities: you must give us complete and truthful information and genuine documents, check the details we send you, and tell us about anything that could affect your eligibility, such as previous refusals, Pakistani origin or a military or police background.",
+    "Fees: our service fee is separate from, and in addition to, the government visa fee. We tell you both before you pay. The government fee isn’t refundable once your application is submitted. Our cancellation and refund terms for our own fee are confirmed to you in writing before you pay.",
+    "You can apply yourself: you can apply directly on the official website, indianvisaonline.gov.in, and pay only the government fee.",
+    "Liability: we take great care with every application, but we’re not responsible for decisions made by the Indian authorities, or for delays or refusals caused by incorrect or incomplete information given to us.",
+    "These terms are governed by the law of England and Wales."
+  ],
+  "title": "Terms and Conditions | Indian e-Visa Online Service",
+  "description": "Our terms and conditions for using Indian e-Visa Online: what we do, visa decisions, your responsibilities, our fees and the government fee.",
+  "focusKeyword": "terms and conditions",
+  "sections": [
+    {
+      "heading": "Questions about these terms and conditions",
+      "text": "Contact us before you pay if anything in these terms and conditions is unclear."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Do your terms and conditions guarantee a visa?",
+      "a": "No. All visa decisions are made by the Indian authorities."
+    },
+    {
+      "q": "Is the government fee refundable?",
+      "a": "No, once your application is submitted."
+    },
+    {
+      "q": "Which law applies?",
+      "a": "The law of England and Wales."
+    }
+  ],
+  "shareImage": "/images/share.jpg"
+}

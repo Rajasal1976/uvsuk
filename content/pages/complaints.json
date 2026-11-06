@@ -1,38 +1,37 @@
 {
-  "title": "Complaints Procedure | Unique Visa Services Ltd",
-  "description": "How to make a complaint to Unique Visa Services, how quickly we respond, and how to complain to the Immigration Advice Authority if you are not satisfied.",
+  "layout": "company",
+  "group": "company",
+  "order": 50,
+  "navLabel": "Complaints procedure",
   "h1": "Complaints procedure",
-  "intro": "We aim to give every client a professional, honest service. If something has gone wrong, we want to know so we can put it right. This procedure explains how to complain and what happens next.",
-  "body": [],
-  "faqs": [],
-  "govuk": "",
-  "applyButton": "none",
-  "country": "Company pages",
-  "sortKey": "2 company pages 1 complaints procedure",
+  "intro": "Our complaints procedure explains what to do if you’re unhappy with our service. We take every complaint seriously and aim to put things right quickly.",
+  "body": [
+    "How to complain: email or write to us with your name, your application reference if you have one, and what went wrong. You can also call us and we’ll make a note of your complaint.",
+    "What happens next: we’ll acknowledge your complaint within 3 working days and aim to give you a full response within 14 days. If we need longer, we’ll tell you why.",
+    "If you’re still not satisfied, tell us and a senior member of the team will review your complaint and the response."
+  ],
+  "title": "Complaints Procedure | Indian e-Visa Online Service",
+  "description": "Our complaints procedure: how to make a complaint about our Indian visa service, how quickly we respond and what happens if you are not satisfied.",
+  "focusKeyword": "complaints procedure",
   "sections": [
     {
-      "heading": "Step 1: tell us about your complaint",
-      "text": "Please contact us as soon as possible, ideally within 6 months of the problem. You can complain:\n- By email: hello@uvsuk.com\n- By post: Complaints, Unique Visa Services Ltd, Suite 6, 61 Mosley Street, Manchester M2 3HZ\n- By phone: 0161 956 2003, and we will confirm your complaint in writing\n\nPlease include your name, contact details, your case or application reference if you have one, what went wrong, and what you would like us to do to put it right. If you need help making a complaint, for example because of a language barrier or disability, tell us and we will help."
-    },
-    {
-      "heading": "Step 2: we acknowledge your complaint",
-      "text": "We will acknowledge your complaint in writing within 5 working days. Your complaint will be handled by a senior member of the team who was not involved in your case, wherever possible."
-    },
-    {
-      "heading": "Step 3: we investigate and reply",
-      "text": "We will look into your complaint fully, review your file and speak to the people involved. We will send you a written response within 28 days of receiving your complaint, explaining what we found, what we have done or will do to put things right, and why.\n\nIf we need more time, for example because the complaint is complex, we will tell you why and when you can expect our full response."
-    },
-    {
-      "heading": "Step 4: if you are not satisfied",
-      "text": "If you are not happy with our response, you can ask us to review it. Please write to us within 14 days of our response explaining why, and our director will review the complaint and reply within 14 days.\n\nIf your complaint is about UK immigration advice or services, you can also complain to our regulator, the Immigration Advice Authority (IAA), at any stage. You can find out how on [GOV.UK](https://www.gov.uk/find-an-immigration-adviser/complain-about-an-adviser). Our IAA reference is F200700144."
-    },
-    {
-      "heading": "Complaints about personal information",
-      "text": "If your complaint is about how we have handled your personal information, you can also contact the Information Commissioner's Office (ICO) at [ico.org.uk](https://ico.org.uk/make-a-complaint/) or on 0303 123 1113. Our [privacy policy](/privacy-policy/) explains how we use your information."
-    },
-    {
-      "heading": "Our commitment",
-      "text": "Making a complaint will never affect how we handle your application. We keep a record of all complaints and use them to improve our service."
+      "heading": "Before using the complaints procedure",
+      "text": "Often a quick call sorts things out. If your concern is about the progress of an application, call us first and we’ll check its status with you."
     }
-  ]
+  ],
+  "faqs": [
+    {
+      "q": "How long does the complaints procedure take?",
+      "a": "We acknowledge complaints within 3 working days and aim to reply in full within 14 days."
+    },
+    {
+      "q": "Can I complain by phone?",
+      "a": "Yes. We’ll make a note of your complaint and confirm it in writing."
+    },
+    {
+      "q": "What if I’m still unhappy?",
+      "a": "A senior member of the team will review your complaint and our response."
+    }
+  ],
+  "shareImage": "/images/share.jpg"
 }

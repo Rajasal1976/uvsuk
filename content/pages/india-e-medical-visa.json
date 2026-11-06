@@ -1,0 +1,176 @@
+{
+  "layout": "visa",
+  "group": "evisa",
+  "order": 30,
+  "navLabel": "e-Medical visa",
+  "h1": "India e-Medical visa",
+  "h1Accent": "for treatment in India.",
+  "applyButton": "/apply/india-visa/?visaType=e-Medical%20visa",
+  "applyLabel": "Start e-Medical application",
+  "intro": "The India e-Medical visa is for medical treatment at a hospital in India, including treatment under Indian systems of medicine. Up to two companions can travel with you on e-Medical Attendant visas.",
+  "cardText": "Treatment at a hospital in India. Up to two companions can come on Attendant visas.",
+  "facts": [
+    {
+      "value": "Hospital letter",
+      "label": "The key document"
+    },
+    {
+      "value": "Multiple entries",
+      "label": "For follow-up visits"
+    },
+    {
+      "value": "2 attendants",
+      "label": "Can travel with you"
+    },
+    {
+      "value": "4 to 120 days",
+      "label": "How far ahead to apply"
+    }
+  ],
+  "checklist": [
+    {
+      "item": "Passport photo page",
+      "hint": "Valid for 6 months, with at least 2 blank pages"
+    },
+    {
+      "item": "A recent photo",
+      "hint": "Plain light background, face fully visible. We’ll crop it"
+    },
+    {
+      "item": "Letter from the hospital in India",
+      "hint": "On its letterhead, with your admission date"
+    }
+  ],
+  "purposesTitle": "What the e-Medical visa covers",
+  "purposes": [
+    {
+      "icon": "medical",
+      "title": "Hospital treatment",
+      "text": "Surgery, procedures and specialist care."
+    },
+    {
+      "icon": "leaf",
+      "title": "Indian systems of medicine",
+      "text": "Ayurveda and other Ayush treatment. See the [e-Ayush visa](/india-e-ayush-visa/)."
+    },
+    {
+      "icon": "family",
+      "title": "Up to two companions",
+      "text": "Family or carers on [e-Medical Attendant visas](/india-e-medical-attendant-visa/)."
+    }
+  ],
+  "notCoveredTitle": "Not covered",
+  "notCovered": [
+    "Tourism as the main purpose",
+    "Paid work or business",
+    "Extending your stay on the same e-Visa",
+    "Changing to another visa in India"
+  ],
+  "documentsTable": [
+    {
+      "document": "Passport photo page",
+      "details": "A clear scan or photo of the page with your photo and details. Your passport must be valid for at least 6 months and have at least 2 blank pages.",
+      "needed": "Required"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent, in colour, front-facing with eyes open and no glasses. Plain white or light background, no shadows or borders. We crop and resize it for you.",
+      "needed": "Required"
+    },
+    {
+      "document": "Hospital letter",
+      "details": "On the Indian hospital’s letterhead, with the date or expected date of admission, and your name, nationality and passport number.",
+      "needed": "Required"
+    },
+    {
+      "document": "Medical reports",
+      "details": "Your UK medical reports. Not required by the form, but useful for the hospital.",
+      "needed": "Helpful"
+    },
+    {
+      "document": "UK residence status",
+      "details": "If you’re not a British citizen: your UK eVisa share code page, BRP or settlement document.",
+      "needed": "If applicable"
+    }
+  ],
+  "rules": [
+    {
+      "title": "How long you can stay",
+      "text": "The official e-Visa site lists the e-Medical visa as valid for up to one year from arrival, with multiple entries. Always check the dates shown on your e-Visa."
+    },
+    {
+      "title": "It can’t be extended or changed",
+      "text": "An e-Visa can’t be extended or switched to another type of visa once you’re in India, so choose the right one before you travel."
+    },
+    {
+      "title": "Arrive at an approved airport or seaport",
+      "text": "You must enter India through one of the airports or seaports approved for e-Visas. All the main international airports are included, such as Delhi, Mumbai, Bengaluru, Chennai, Kolkata, Hyderabad, Goa and Kochi. You can leave from any immigration checkpoint."
+    },
+    {
+      "title": "Who can’t use an e-Visa",
+      "text": "People of Pakistani origin, anyone with a military, police or security background (serving or retired), and holders of diplomatic or official passports must apply for a regular visa instead."
+    },
+    {
+      "title": "Fill in the e-Arrival card",
+      "text": "Before you fly, complete India’s free e-Arrival card online within 72 hours of arrival. It’s arrival information, not a visa. [How the e-Arrival card works](/india-e-arrival-card/)"
+    },
+    {
+      "title": "No protected areas",
+      "text": "An e-Visa isn’t valid for protected, restricted or cantonment areas. Visiting places such as parts of the North East, Sikkim or the Andaman Islands may need a separate permit."
+    }
+  ],
+  "boxTitle": "Can’t use an e-Visa?",
+  "boxText": "Pakistani origin, a military or police background, work, journalism or a longer stay all need a regular visa. We help with those too.",
+  "boxButton": "Regular Indian visas",
+  "boxLink": "/indian-regular-visa/",
+  "sections": [
+    {
+      "heading": "India e-Medical visa requirements",
+      "text": "Along with your passport and photo, you need a letter from the hospital in India on its letterhead. It should give the date or tentative date of your admission and show your name, nationality and passport number, exactly as in your passport."
+    },
+    {
+      "heading": "Travelling with family or a carer",
+      "text": "Up to two people can travel with you on [e-Medical Attendant visas](/india-e-medical-attendant-visa/), linked to your e-Medical visa. Apply for yours first, then theirs. We can handle all the applications together.\n\nEach attendant’s application is linked to your India e-Medical visa, so apply for yours first."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "How many people can come with me on a medical visa?",
+      "a": "Up to two attendants can be granted e-Medical Attendant visas against one e-Medical visa."
+    },
+    {
+      "q": "What must the hospital letter say?",
+      "a": "It must be on the hospital’s letterhead and give your admission or treatment date, with your name, nationality and passport number."
+    },
+    {
+      "q": "How early should I apply?",
+      "a": "At least 4 days before you arrive in India, and no more than 120 days before. We recommend applying 2 to 3 weeks ahead in case anything needs correcting."
+    },
+    {
+      "q": "Is the e-Visa fee refundable if I’m refused?",
+      "a": "No. The Government of India’s e-Visa fee pays for processing your application, so it isn’t refunded if the visa is refused or you cancel your trip. That’s why we check everything before you pay it."
+    },
+    {
+      "q": "Can I apply myself instead of using you?",
+      "a": "Yes. You can apply on the official website, indianvisaonline.gov.in, and pay only the government fee. People use us when they want a person to check their eligibility, fix their photo and documents, and handle the form for them so nothing goes wrong."
+    }
+  ],
+  "related": [
+    "india-e-medical-attendant-visa",
+    "india-e-ayush-visa"
+  ],
+  "title": "India e-Medical Visa from the UK | Hospital Letter & Apply",
+  "description": "India e-Medical visa for UK residents: hospital letter, attendants, rules and how to apply. A Manchester team checks every application for you.",
+  "focusKeyword": "India e-Medical visa",
+  "prices": [
+    {
+      "service": "e-Medical visa",
+      "included": "For treatment in India",
+      "processing": "",
+      "entries": "Multiple entries",
+      "govFee": "",
+      "fee": ""
+    }
+  ],
+  "shareImage": "/images/share.jpg"
+}

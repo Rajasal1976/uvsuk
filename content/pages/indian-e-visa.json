@@ -1,0 +1,79 @@
+{
+  "layout": "section",
+  "group": "evisa",
+  "order": 0,
+  "navLabel": "All e-Visa types",
+  "h1": "Indian e-Visa",
+  "h1Accent": "from the UK.",
+  "applyButton": "/apply/india-visa/",
+  "applyLabel": "Start my e-Visa application",
+  "intro": "Every type of Indian e-Visa explained in plain English: who it’s for, how long it lasts and what you need. Pick yours, and our Manchester team will check and submit your application.",
+  "facts": [
+    {
+      "value": "170+",
+      "label": "Nationalities can apply online"
+    },
+    {
+      "value": "4 days",
+      "label": "Apply at least this long before you fly"
+    },
+    {
+      "value": "120 days",
+      "label": "The earliest you can apply"
+    },
+    {
+      "value": "No embassy",
+      "label": "Everything is done online"
+    }
+  ],
+  "childrenTitle": "Choose your e-Visa",
+  "childrenIntro": "Each guide covers what the visa allows, the documents you need and the rules to know.",
+  "sections": [
+    {
+      "heading": "What is an Indian e-Visa?",
+      "text": "An Indian e-Visa is an electronic travel authorisation (ETA) issued by the Government of India. You apply online, upload your passport and photo, pay the fee and receive the approval by email. When you land, immigration stamps the visa into your passport.\n\nIt replaced the old paper visa for most short trips. British citizens and people from more than 170 other countries can use it for tourism, business, medical treatment, study, transit and more."
+    },
+    {
+      "heading": "Which e-Visa do I need?",
+      "text": "Choose the visa that matches the main reason for your trip:\n- Holiday or visiting family: [e-Tourist visa](/e-tourist-visa-india-uk/), for 30 days, 1 year or 5 years\n- Meetings, trade fairs or sales trips: [e-Business visa](/india-e-business-visa-for-uk-citizens/)\n- A conference or seminar: [e-Conference visa](/india-e-conference-visa/)\n- Hospital treatment: [e-Medical visa](/india-e-medical-visa/), and the [e-Medical Attendant visa](/india-e-medical-attendant-visa/) for up to two companions\n- Studying in India: [e-Student visa](/india-e-student-visa/), and the [e-Family visa](/india-e-family-visa/) for dependants\n- Passing through India: [e-Transit visa](/india-e-transit-visa/)\n- Indian origin or married to an Indian citizen: [e-Miscellaneous visa](/india-e-miscellaneous-visa/)"
+    },
+    {
+      "heading": "Indian e-Visa requirements for UK residents",
+      "text": "For every e-Visa you’ll need a passport valid for at least 6 months with two blank pages, a recent photo and a scan of your passport photo page. Some visas need one more document, such as a business card, a hospital letter or an admission letter.\n\nIf you live in the UK on a non-British passport, check that your nationality is eligible with our [e-Visa eligibility checker](/india-evisa-eligibility/)."
+    },
+    {
+      "heading": "Who can’t use an e-Visa?",
+      "text": "The e-Visa isn’t available to people of Pakistani origin, anyone with a military, police or security background, or holders of diplomatic and official passports. It also can’t be used for paid work, journalism or long stays. In these cases you’ll need a [regular Indian visa](/indian-regular-visa/)."
+    },
+    {
+      "heading": "How long does an Indian e-Visa take?",
+      "text": "Most complete applications are decided within a few working days. The Government of India asks you to apply at least 4 days before you arrive, and you can apply up to 120 days ahead. We recommend starting 2 to 3 weeks before you fly, so there’s time to fix anything the authorities query.\n\nYour approved Indian e-Visa arrives by email as an Electronic Travel Authorisation (ETA). Print it and keep it with your passport."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Can I apply myself instead of using you?",
+      "a": "Yes. You can apply on the official website, indianvisaonline.gov.in, and pay only the government fee. People use us when they want a person to check their eligibility, fix their photo and documents, and handle the form for them so nothing goes wrong."
+    },
+    {
+      "q": "How early should I apply?",
+      "a": "At least 4 days before you arrive in India, and no more than 120 days before. We recommend applying 2 to 3 weeks ahead in case anything needs correcting."
+    },
+    {
+      "q": "How long does an Indian e-Visa take?",
+      "a": "Most complete applications are decided within a few working days. The government asks you to apply at least 4 days before you arrive, so leave yourself time in case anything needs fixing."
+    },
+    {
+      "q": "Do British citizens need a visa for India?",
+      "a": "Yes. British citizens need a visa to visit India. For holidays, business trips and most short visits the e-Visa is the quickest option."
+    },
+    {
+      "q": "Is the e-Visa fee refundable if I’m refused?",
+      "a": "No. The Government of India’s e-Visa fee pays for processing your application, so it isn’t refunded if the visa is refused or you cancel your trip. That’s why we check everything before you pay it."
+    }
+  ],
+  "title": "Indian e-Visa from the UK: Every Type Explained",
+  "description": "Indian e-Visa help for UK residents: tourist, business, medical, student, transit and more. Check eligibility and apply online with our Manchester team.",
+  "focusKeyword": "Indian e-Visa",
+  "shareImage": "/images/share.jpg"
+}

@@ -1,0 +1,169 @@
+{
+  "layout": "visa",
+  "group": "regular",
+  "order": 40,
+  "navLabel": "Journalist visa",
+  "h1": "Indian Journalist visa",
+  "h1Accent": "for media work.",
+  "applyButton": "/apply/india-regular-visa/?visaType=Other",
+  "applyLabel": "Start Journalist visa application",
+  "intro": "The Indian Journalist visa is for journalists, photographers and news crews visiting India professionally. Journalism isn’t allowed on an e-Visa, so you need this visa.",
+  "cardText": "For journalists, photographers and news crews working in India.",
+  "facts": [
+    {
+      "value": "No e-Visa",
+      "label": "Journalism needs this visa"
+    },
+    {
+      "value": "Paper visa",
+      "label": "Stuck into your passport"
+    },
+    {
+      "value": "Employer letter",
+      "label": "From your media organisation"
+    },
+    {
+      "value": "Allow time",
+      "label": "Extra checks apply"
+    }
+  ],
+  "checklist": [
+    {
+      "item": "Passport photo page",
+      "hint": "Valid for 6 months, with at least 2 blank pages"
+    },
+    {
+      "item": "A recent photo",
+      "hint": "Plain light background, face fully visible. We’ll crop it"
+    },
+    {
+      "item": "Letter from your media organisation"
+    },
+    {
+      "item": "Details of your assignment"
+    }
+  ],
+  "purposesTitle": "Who needs it",
+  "purposes": [
+    {
+      "icon": "mic",
+      "title": "Journalists and reporters",
+      "text": "Covering news or features in India."
+    },
+    {
+      "icon": "camera",
+      "title": "Photographers and camera crews",
+      "text": "Working for media organisations."
+    }
+  ],
+  "notCoveredTitle": "Not covered",
+  "notCovered": [
+    "Film and series shoots, which use the e-Film visa",
+    "Holidays while working as a journalist: tell us, as rules apply"
+  ],
+  "documentsTable": [
+    {
+      "document": "Passport photo page",
+      "details": "A clear scan or photo of the page with your photo and details. Your passport must be valid for at least 6 months and have at least 2 blank pages.",
+      "needed": "Required"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent, in colour, front-facing with eyes open and no glasses. Plain white or light background, no shadows or borders. We crop and resize it for you.",
+      "needed": "Required"
+    },
+    {
+      "document": "Media organisation letter",
+      "details": "Confirming your role and the assignment.",
+      "needed": "Required"
+    },
+    {
+      "document": "Assignment details",
+      "details": "Where you’ll go and what you’ll cover.",
+      "needed": "Required"
+    },
+    {
+      "document": "Proof of UK address",
+      "details": "A recent utility bill, council tax bill or bank statement.",
+      "needed": "Required"
+    },
+    {
+      "document": "UK residence status",
+      "details": "If you’re not a British citizen: your UK eVisa share code page, BRP or settlement document.",
+      "needed": "If applicable"
+    }
+  ],
+  "rules": [
+    {
+      "title": "Your passport goes to the visa centre",
+      "text": "Regular visas are stuck into your passport, so you’ll need to submit it at the Indian visa application centre. Don’t book travel you can’t change until it’s back."
+    },
+    {
+      "title": "Allow more time",
+      "text": "Regular visas take longer than e-Visas, and much longer for people of Pakistani origin. Apply as early as you can."
+    },
+    {
+      "title": "The form must be exact",
+      "text": "Any mismatch between your form, passport and documents can delay or refuse the application. We check everything line by line."
+    },
+    {
+      "title": "Arrive anywhere",
+      "text": "Unlike e-Visas, regular visas can be used at any immigration checkpoint in India."
+    }
+  ],
+  "boxTitle": "Filming a production, not news?",
+  "boxText": "Feature films, series and adverts use the e-Film visa.",
+  "boxButton": "e-Film visa",
+  "boxLink": "/india-e-film-visa/",
+  "sections": [
+    {
+      "heading": "Who needs an Indian Journalist visa?",
+      "text": "Professional journalists and media crews can’t use the e-Visa, even for a short trip. Apply early: journalist applications go through extra checks."
+    },
+    {
+      "heading": "Documents for an Indian Journalist visa",
+      "text": "Your passport, a recent photo, proof of your UK address, a letter from your media organisation confirming your role and assignment, and details of where you’ll go and what you’ll cover. Freelancers should bring letters from the outlets commissioning the work."
+    },
+    {
+      "heading": "How long does it take?",
+      "text": "Journalist applications go through extra checks, so allow several weeks before you travel. Apply as early as you can and don’t book fixed travel until your Indian Journalist visa is approved."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Can I go to India on holiday if I’m a journalist?",
+      "a": "Tell us about your work first. Rules for media professionals are stricter, and we’ll advise on the right visa."
+    },
+    {
+      "q": "Can I apply myself instead of using you?",
+      "a": "Yes. You can apply on the official website, indianvisaonline.gov.in, and pay only the government fee. People use us when they want a person to check their eligibility, fix their photo and documents, and handle the form for them so nothing goes wrong."
+    },
+    {
+      "q": "Do freelance journalists need an Indian Journalist visa?",
+      "a": "Yes, if you’re travelling to report or film for the media. Letters from the outlets commissioning your work help your application."
+    },
+    {
+      "q": "Can a journalist go to India on an e-Visa?",
+      "a": "Not for journalism. Professional media work needs an Indian Journalist visa."
+    }
+  ],
+  "related": [
+    "india-e-film-visa",
+    "indian-regular-visa"
+  ],
+  "title": "Indian Journalist Visa from the UK | Media Visa Help",
+  "description": "Indian Journalist visa for reporters, photographers and news crews: why the e-Visa can’t be used, documents and how we help you apply.",
+  "focusKeyword": "Indian Journalist visa",
+  "prices": [
+    {
+      "service": "Journalist visa",
+      "included": "",
+      "processing": "",
+      "entries": "",
+      "govFee": "",
+      "fee": ""
+    }
+  ],
+  "feesNote": "The government fee for a regular visa is set by India and includes the visa application centre’s charges. It isn’t refundable, even if the visa is refused. Our fee is per person and includes preparing your form and checking every document.",
+  "shareImage": "/images/share.jpg"
+}

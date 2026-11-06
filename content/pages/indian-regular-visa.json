@@ -1,0 +1,62 @@
+{
+  "layout": "section",
+  "group": "regular",
+  "order": 0,
+  "navLabel": "All regular visas",
+  "h1": "Regular Indian visas",
+  "h1Accent": "when an e-Visa won’t do.",
+  "applyButton": "/apply/india-regular-visa/",
+  "applyLabel": "Start regular visa application",
+  "intro": "Some people and some trips can’t use the e-Visa. For work, journalism, longer stays, Pakistani origin or a military background, you need a regular Indian visa, and we can handle it for you.",
+  "facts": [
+    {
+      "value": "In your passport",
+      "label": "A visa sticker, not an email"
+    },
+    {
+      "value": "Visa centre",
+      "label": "Your passport is submitted there"
+    },
+    {
+      "value": "Longer",
+      "label": "Processing than an e-Visa"
+    },
+    {
+      "value": "Any port",
+      "label": "Enter India anywhere"
+    }
+  ],
+  "childrenTitle": "Choose your regular visa",
+  "sections": [
+    {
+      "heading": "When do I need a regular Indian visa?",
+      "text": "You need a regular visa if:\n- you, your parents or grandparents were born in or lived permanently in Pakistan, or hold Pakistani nationality\n- you have served, or serve, in the military, police or security services\n- you’re going to work for an Indian company\n- you’re a journalist or film crew working on news\n- you need to stay longer than an e-Visa allows\n- you hold a diplomatic or official passport"
+    },
+    {
+      "heading": "How the regular visa process works",
+      "text": "You complete the online regular visa form on the Government of India’s website, book an appointment, and submit your passport and documents at the Indian visa application centre. The visa is stuck into your passport, which is then returned to you. We prepare the form, check every document and tell you exactly what to take."
+    },
+    {
+      "heading": "Regular Indian visa documents",
+      "text": "Every regular Indian visa needs your passport, a recent photo, proof of your UK address and the completed online form. Most types also need a supporting letter, such as an invitation, an employment contract or a media letter. We tell you exactly what your regular Indian visa needs."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "How long does a regular Indian visa take?",
+      "a": "It varies. Many applications take a week or two, but it can take several weeks, especially for people of Pakistani origin. Apply as early as you can."
+    },
+    {
+      "q": "Can I use an e-Visa instead?",
+      "a": "If you’re eligible, the e-Visa is quicker and simpler for tourism, business and medical trips. Check with our [eligibility checker](/india-evisa-eligibility/) or ask us."
+    },
+    {
+      "q": "Can I apply myself instead of using you?",
+      "a": "Yes. You can apply on the official website, indianvisaonline.gov.in, and pay only the government fee. People use us when they want a person to check their eligibility, fix their photo and documents, and handle the form for them so nothing goes wrong."
+    }
+  ],
+  "title": "Regular Indian Visa from the UK | When You Need One",
+  "description": "When you need a regular Indian visa instead of an e-Visa: Pakistani origin, work, journalism, longer stays. We prepare and check your application.",
+  "focusKeyword": "regular Indian visa",
+  "shareImage": "/images/share.jpg"
+}

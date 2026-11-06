@@ -1,0 +1,174 @@
+{
+  "layout": "visa",
+  "group": "evisa",
+  "order": 51,
+  "navLabel": "e-Miscellaneous (e-Entry) visa",
+  "h1": "India e-Miscellaneous visa",
+  "h1Accent": "for people of Indian origin.",
+  "applyButton": "/apply/india-visa/?visaType=e-Miscellaneous%20(e-Entry)%20visa",
+  "applyLabel": "Start e-Entry application",
+  "intro": "The India e-Miscellaneous visa, also called the e-Entry visa, is for people of Indian origin, and the husbands, wives and children of Indian citizens, visiting India.",
+  "cardText": "For people of Indian origin, and spouses or children of Indian citizens. Valid for 3 months.",
+  "facts": [
+    {
+      "value": "3 months",
+      "label": "From your first entry"
+    },
+    {
+      "value": "Multiple entries",
+      "label": "Within the 3 months"
+    },
+    {
+      "value": "Indian link",
+      "label": "Proof needed"
+    },
+    {
+      "value": "4 to 120 days",
+      "label": "How far ahead to apply"
+    }
+  ],
+  "checklist": [
+    {
+      "item": "Passport photo page",
+      "hint": "Valid for 6 months, with at least 2 blank pages"
+    },
+    {
+      "item": "A recent photo",
+      "hint": "Plain light background, face fully visible. We’ll crop it"
+    },
+    {
+      "item": "Proof of your Indian link",
+      "hint": "Parent’s or spouse’s Indian passport, voter ID or OCI card, or your surrendered Indian passport"
+    },
+    {
+      "item": "Birth or marriage certificate"
+    }
+  ],
+  "purposesTitle": "Who it’s for",
+  "purposes": [
+    {
+      "icon": "family",
+      "title": "Spouses of Indian citizens",
+      "text": "Husbands and wives of Indian nationals."
+    },
+    {
+      "icon": "people",
+      "title": "Children of Indian citizens",
+      "text": "Children with an Indian parent."
+    },
+    {
+      "icon": "passport",
+      "title": "Former Indian citizens",
+      "text": "People who surrendered their Indian passport."
+    }
+  ],
+  "notCoveredTitle": "Not covered",
+  "notCovered": [
+    "Paid work",
+    "Staying longer than 3 months",
+    "People without an Indian family link, who use the e-Tourist visa"
+  ],
+  "documentsTable": [
+    {
+      "document": "Passport photo page",
+      "details": "A clear scan or photo of the page with your photo and details. Your passport must be valid for at least 6 months and have at least 2 blank pages.",
+      "needed": "Required"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent, in colour, front-facing with eyes open and no glasses. Plain white or light background, no shadows or borders. We crop and resize it for you.",
+      "needed": "Required"
+    },
+    {
+      "document": "Proof of Indian link",
+      "details": "One of: your Indian parent’s or spouse’s voter ID or Indian passport; your parent’s or spouse’s OCI card; or your cancelled or surrendered Indian passport with surrender certificate.",
+      "needed": "Required"
+    },
+    {
+      "document": "Birth or marriage certificate",
+      "details": "Showing your relationship to the Indian citizen or OCI holder.",
+      "needed": "Required"
+    },
+    {
+      "document": "UK residence status",
+      "details": "If you’re not a British citizen: your UK eVisa share code page, BRP or settlement document.",
+      "needed": "If applicable"
+    }
+  ],
+  "rules": [
+    {
+      "title": "How long you can stay",
+      "text": "The visa is valid for 3 months from your first entry, with multiple entries."
+    },
+    {
+      "title": "It can’t be extended or changed",
+      "text": "An e-Visa can’t be extended or switched to another type of visa once you’re in India, so choose the right one before you travel."
+    },
+    {
+      "title": "Arrive at an approved airport or seaport",
+      "text": "You must enter India through one of the airports or seaports approved for e-Visas. All the main international airports are included, such as Delhi, Mumbai, Bengaluru, Chennai, Kolkata, Hyderabad, Goa and Kochi. You can leave from any immigration checkpoint."
+    },
+    {
+      "title": "Who can’t use an e-Visa",
+      "text": "People of Pakistani origin, anyone with a military, police or security background (serving or retired), and holders of diplomatic or official passports must apply for a regular visa instead."
+    },
+    {
+      "title": "Fill in the e-Arrival card",
+      "text": "Before you fly, complete India’s free e-Arrival card online within 72 hours of arrival. It’s arrival information, not a visa. [How the e-Arrival card works](/india-e-arrival-card/)"
+    },
+    {
+      "title": "No protected areas",
+      "text": "An e-Visa isn’t valid for protected, restricted or cantonment areas. Visiting places such as parts of the North East, Sikkim or the Andaman Islands may need a separate permit."
+    }
+  ],
+  "boxTitle": "Can’t use an e-Visa?",
+  "boxText": "Pakistani origin, a military or police background, work, journalism or a longer stay all need a regular visa. We help with those too.",
+  "boxButton": "Regular Indian visas",
+  "boxLink": "/indian-regular-visa/",
+  "sections": [
+    {
+      "heading": "India e-Miscellaneous visa or OCI card?",
+      "text": "If you’re eligible for an Overseas Citizen of India (OCI) card, it gives lifelong visa-free travel to India and is often better in the long run. The e-Miscellaneous visa is useful when you need to travel soon or aren’t eligible for OCI. Ask us which suits you."
+    },
+    {
+      "heading": "What you need for an India e-Miscellaneous visa",
+      "text": "Your passport, a recent photo, proof of your Indian family link, and a birth or marriage certificate. The proof can be your Indian parent’s or spouse’s voter ID, Indian passport or OCI card, or your own surrendered Indian passport with its surrender certificate. The India e-Miscellaneous visa is valid for 3 months from your first entry."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Who can apply for the e-Miscellaneous visa?",
+      "a": "People of Indian origin and the spouses and children of Indian citizens or OCI cardholders, with documents proving the link."
+    },
+    {
+      "q": "I surrendered my Indian passport. Which documents do I need?",
+      "a": "Your cancelled or surrendered Indian passport with the surrender certificate, plus your birth certificate."
+    },
+    {
+      "q": "How early should I apply?",
+      "a": "At least 4 days before you arrive in India, and no more than 120 days before. We recommend applying 2 to 3 weeks ahead in case anything needs correcting."
+    },
+    {
+      "q": "Is the e-Visa fee refundable if I’m refused?",
+      "a": "No. The Government of India’s e-Visa fee pays for processing your application, so it isn’t refunded if the visa is refused or you cancel your trip. That’s why we check everything before you pay it."
+    }
+  ],
+  "related": [
+    "india-evisa-eligibility",
+    "e-tourist-visa-india-uk"
+  ],
+  "title": "India e-Miscellaneous Visa (e-Entry) from the UK",
+  "description": "India e-Miscellaneous visa, also called the e-Entry visa, for people of Indian origin and spouses of Indian citizens: documents and how to apply.",
+  "focusKeyword": "India e-Miscellaneous visa",
+  "prices": [
+    {
+      "service": "e-Miscellaneous (e-Entry) visa",
+      "included": "3 months from first entry",
+      "processing": "",
+      "entries": "Multiple entries",
+      "govFee": "",
+      "fee": ""
+    }
+  ],
+  "shareImage": "/images/share.jpg"
+}

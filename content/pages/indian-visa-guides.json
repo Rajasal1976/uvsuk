@@ -1,0 +1,62 @@
+{
+  "layout": "section",
+  "group": "guide",
+  "order": 0,
+  "navLabel": "All guides",
+  "h1": "Indian visa guides",
+  "h1Accent": "in plain English.",
+  "applyButton": "/apply/india-visa/",
+  "applyLabel": "Start my application",
+  "intro": "Our Indian visa guides give clear answers to the questions we hear every day: who can get an e-Visa, photo rules, the e-Arrival card, fees, airports and what to do if you’re refused.",
+  "facts": [
+    {
+      "value": "Official rules",
+      "label": "Explained simply"
+    },
+    {
+      "value": "Updated",
+      "label": "When India changes them"
+    },
+    {
+      "value": "Free to read",
+      "label": "No sign-up"
+    },
+    {
+      "value": "Questions?",
+      "label": "Call or WhatsApp us"
+    }
+  ],
+  "childrenTitle": "Guides",
+  "sections": [
+    {
+      "heading": "Can’t find your answer?",
+      "text": "Call us on 0161 956 2003 or send us a message on WhatsApp. We’re happy to answer quick questions, whether or not you apply through us."
+    },
+    {
+      "heading": "Why we write these Indian visa guides",
+      "text": "Indian visa rules change, and the official website can be hard to follow. Our Indian visa guides explain the rules in plain English, based on the Government of India’s own information, and we update them when the rules change.\n\nEvery guide is free to read. If you’d like us to handle your application, you can start online or call us."
+    },
+    {
+      "heading": "Most popular guides",
+      "text": "- [Who can get an Indian e-Visa](/india-evisa-eligibility/)\n- [Indian e-Visa photo rules](/indian-visa-photo-requirements/)\n- [The India e-Arrival card](/india-e-arrival-card/)\n- [What to do if your e-Visa is refused](/indian-evisa-rejected/)"
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Can I apply myself instead of using you?",
+      "a": "Yes. You can apply on the official website, indianvisaonline.gov.in, and pay only the government fee. People use us when they want a person to check their eligibility, fix their photo and documents, and handle the form for them so nothing goes wrong."
+    },
+    {
+      "q": "How early should I apply?",
+      "a": "At least 4 days before you arrive in India, and no more than 120 days before. We recommend applying 2 to 3 weeks ahead in case anything needs correcting."
+    },
+    {
+      "q": "Are these Indian visa guides official?",
+      "a": "No. They’re written by our team from the Government of India’s official information. Always check the latest rules before you travel."
+    }
+  ],
+  "title": "Indian Visa Guides for UK Travellers | e-Visa Help",
+  "description": "Indian visa guides for UK travellers: eligible countries, photo rules, the e-Arrival card, fees, approved airports and what to do after a refusal.",
+  "focusKeyword": "Indian visa guides",
+  "shareImage": "/images/share.jpg"
+}
