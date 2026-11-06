@@ -93,8 +93,13 @@ const placeholder = 'background: #D6E3DA; border-radius: 12px; display: flex; al
 <h2>Visa search</h2>
 <p>Choose the country, then the type of visa. For the UK, choose UK visas.</p>
 <div class="visa-finder" data-finder={JSON.stringify(visaFinder)}>
-<label for="visa-country">1. Country</label>
-<select id="visa-country">
+<label for="visa-country-input">1. Country</label>
+<div class="country-combo">
+<input id="visa-country-input" type="text" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="country-list" autocomplete="off" autocapitalize="words" spellcheck="false" placeholder="Type a country, e.g. India" value={visaFinder[0]?.[0] ?? ''} />
+<button type="button" class="combo-toggle" tabindex="-1" aria-label="Show all countries"></button>
+<ul id="country-list" role="listbox" aria-label="Countries" hidden></ul>
+</div>
+<select id="visa-country" class="sr-only" tabindex="-1" aria-hidden="true">
 <option value="">Select a country…</option>
 {visaFinder.map(([country], i) => <option value={country} selected={i === 0}>{country}</option>)}
 <option value="__other">Other countries</option>
@@ -371,13 +376,77 @@ const placeholder = 'background: #D6E3DA; border-radius: 12px; display: flex; al
       type.add(new Option(row[2].length ? `All ${row[0].replace(/ visas$/, '')} visa options` : (row[3] || `${row[0]} visa`), row[1]));
       for (const [label, url] of row[2]) type.add(new Option(label, url));
     });
+    // Type-to-search country box: filters the list as you type, then sets the country above
+    const input = box.querySelector<HTMLInputElement>('#visa-country-input')!;
+    const list = box.querySelector<HTMLUListElement>('#country-list')!;
+    const toggle = box.querySelector<HTMLButtonElement>('.combo-toggle')!;
+    const names = data.map((r) => r[0]);
+    const aliases: Record<string, string> = { uk: 'UK visas', 'united kingdom': 'UK visas', britain: 'UK visas', 'great britain': 'UK visas', england: 'UK visas', usa: 'USA', us: 'USA', america: 'USA', 'united states': 'USA', uae: 'UAE', dubai: 'UAE', 'abu dhabi': 'UAE', 'united arab emirates': 'UAE', europe: 'Schengen', schengen: 'Schengen', holland: 'Netherlands', ksa: 'Saudi Arabia', saudi: 'Saudi Arabia', 'south korea': 'Korea', 'hong kong': 'China' };
+    const norm = (t: string) => t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
+    let active = -1;
+    let matches: string[] = [];
+    const choose = (name: string) => {
+      country.value = name;
+      input.value = name === '__other' ? 'Other countries' : name;
+      close();
+      country.dispatchEvent(new Event('change'));
+    };
+    const close = () => { list.hidden = true; input.setAttribute('aria-expanded', 'false'); input.removeAttribute('aria-activedescendant'); active = -1; };
+    const render = (q: string) => {
+      const n = norm(q);
+      const alias = Object.entries(aliases).filter(([k]) => n && k.startsWith(n)).map(([, v]) => names.find((x) => norm(x).startsWith(norm(v)))).filter(Boolean) as string[];
+      const starts = names.filter((x) => norm(x).startsWith(n));
+      const contains = names.filter((x) => !starts.includes(x) && norm(x).includes(n));
+      matches = n ? [...new Set([...alias, ...starts, ...contains])] : names;
+      list.innerHTML = '';
+      matches.forEach((name, i) => {
+        const li = document.createElement('li');
+        li.id = `country-opt-${i}`; li.setAttribute('role', 'option'); li.textContent = name;
+        li.addEventListener('mousedown', (e) => { e.preventDefault(); choose(name); });
+        list.append(li);
+      });
+      const other = document.createElement('li');
+      other.className = 'combo-other'; other.setAttribute('role', 'option'); other.id = 'country-opt-other';
+      other.textContent = matches.length ? 'Other countries' : 'No match. See all countries';
+      other.addEventListener('mousedown', (e) => { e.preventDefault(); choose('__other'); });
+      list.append(other);
+      active = n && matches.length ? 0 : -1;
+      highlight();
+      list.hidden = false; input.setAttribute('aria-expanded', 'true');
+    };
+    const highlight = () => {
+      [...list.children].forEach((li, i) => li.classList.toggle('on', i === active));
+      const li = list.children[active] as HTMLElement | undefined;
+      if (li) { input.setAttribute('aria-activedescendant', li.id); li.scrollIntoView({ block: 'nearest' }); }
+    };
+    input.addEventListener('focus', () => {
+      input.select();
+      render('');
+      if (window.matchMedia('(max-width: 700px)').matches) setTimeout(() => input.scrollIntoView({ behavior: 'smooth', block: 'start' }), 250);
+    });
+    input.addEventListener('input', () => render(input.value));
+    input.addEventListener('keydown', (e) => {
+      const count = list.children.length;
+      if (e.key === 'ArrowDown') { e.preventDefault(); if (list.hidden) render(input.value); active = Math.min(active + 1, count - 1); highlight(); }
+      else if (e.key === 'ArrowUp') { e.preventDefault(); active = Math.max(active - 1, 0); highlight(); }
+      else if (e.key === 'Enter') { e.preventDefault(); const li = list.children[active] as HTMLElement | undefined; if (li) choose(li.classList.contains('combo-other') ? '__other' : li.textContent!); else if (matches[0]) choose(matches[0]); }
+      else if (e.key === 'Escape') { close(); input.value = country.value === '__other' ? 'Other countries' : country.value; }
+    });
+    input.addEventListener('blur', () => {
+      if (list.hidden) return;
+      const exact = names.find((x) => norm(x) === norm(input.value));
+      if (exact && exact !== country.value) choose(exact);
+      else { close(); input.value = country.value === '__other' ? 'Other countries' : country.value; }
+    });
+    toggle.addEventListener('mousedown', (e) => { e.preventDefault(); if (list.hidden) { input.focus(); } else close(); });
+
     // UK visas is selected when the page loads, so fill in its visa types straight away
     if (country.value) country.dispatchEvent(new Event('change'));
     box.querySelector('#visa-check')!.addEventListener('click', () => {
       if (country.value === '__other') return void (window.location.href = '/worldwide-visas/');
       const url = type.value || data.find((r) => r[0] === country.value)?.[1];
       if (url) window.location.href = url;
-      else country.focus();
+      else input.focus();
     });
   }
 </script>
@@ -422,6 +491,16 @@ const placeholder = 'background: #D6E3DA; border-radius: 12px; display: flex; al
     background-repeat: no-repeat; background-size: 20px 20px, 46px 100%; background-position: right 13px center, right center;
   }
   .visa-finder select:focus-visible { outline: 3px solid #14532D; outline-offset: 2px; }
+  .visa-finder .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .country-combo { position: relative; }
+  .country-combo input { width: 100%; box-sizing: border-box; height: 52px; padding: 0 60px 0 14px; font-size: 16px; font-family: inherit; color: #1B2430; background: #FFFFFF; border: 1px solid #C9D6CC; border-radius: 6px; }
+  .country-combo input::placeholder { color: #6B7A72; }
+  .country-combo input:focus { outline: 3px solid #14532D; outline-offset: 2px; }
+  .combo-toggle { position: absolute; top: 1px; right: 1px; bottom: 1px; width: 46px; margin: 0 !important; height: auto !important; padding: 0 !important; border: 0; border-radius: 0 5px 5px 0 !important; cursor: pointer; background: #F2C46D url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='20' height='20'%3E%3Cpath d='M6 9l6 6 6-6' fill='none' stroke='%2314532D' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center / 20px 20px !important; }
+  #country-list { position: absolute; z-index: 30; left: 0; right: 0; top: calc(100% + 4px); margin: 0; padding: 6px 0; list-style: none; max-height: 264px; overflow-y: auto; background: #FFFFFF; border: 1px solid #C9D6CC; border-radius: 8px; box-shadow: 0 14px 30px rgba(14, 59, 32, .18); }
+  #country-list li { padding: 11px 14px; font-size: 16px; color: #1B2430; cursor: pointer; }
+  #country-list li:hover, #country-list li.on { background: #EAF4EC; color: #14532D; font-weight: 600; }
+  #country-list .combo-other { border-top: 1px solid #DCE6DF; color: #14532D; font-weight: 600; }
   .visa-finder select:disabled { cursor: not-allowed; color: #6B7A72; background-color: #F4F6F4; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='20' height='20'%3E%3Cpath d='M6 9l6 6 6-6' fill='none' stroke='%23FFFFFF' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"), linear-gradient(#A9B8AE, #A9B8AE); }
   .visa-finder button { margin-top: 12px; height: 54px; background: #14532D; color: #FFFFFF; border: 0; padding: 0 24px; border-radius: 6px; font-size: 16px; font-weight: 700; font-family: inherit; cursor: pointer; white-space: nowrap; }
   .visa-finder button:hover { background: #0E3B20; }
