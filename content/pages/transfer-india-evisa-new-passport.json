@@ -1,150 +1,92 @@
 {
-  "layout": "visa",
-  "group": "evisa",
-  "order": 70,
-  "navLabel": "Move your e-Visa to a new passport",
-  "highlight": true,
-  "h1": "Move your Indian e-Visa to a new passport",
-  "h1Accent": "",
-  "applyButton": "/apply/india-evisa-transfer/",
-  "applyLabel": "Start the transfer",
-  "intro": "Renewed or lost your passport while your e-Visa is still valid? India now lets you move your Indian e-Visa to a new passport. We’ll check first whether you need to.",
-  "cardText": "Renewed or lost your passport? Keep your valid e-Visa by moving it to the new one.",
-  "facts": [
-    {
-      "value": "Keep your visa",
-      "label": "No need to apply again"
-    },
-    {
-      "value": "New passport",
-      "label": "Upload its photo page"
-    },
-    {
-      "value": "Old passport lost?",
-      "label": "This is when you need it"
-    },
-    {
-      "value": "We check first",
-      "label": "You may not need it at all"
-    }
+  "h1": "Transfer India eVisa to a new passport",
+  "title": "Transfer India eVisa to a New Passport | ETA Transfer Help",
+  "description": "Transfer India eVisa to your new passport: find out if you need to, and we’ll handle the transfer if your old passport is lost, stolen or kept.",
+  "intro": "If you’ve got a new passport while your India eVisa is still valid, you may not need to do anything. If your old passport has been lost, stolen or not returned, India’s new transfer service can move your eVisa onto your new passport. Before you transfer India eVisa details, check whether you need to: often you don’t.",
+  "eligibility": [
+    "You hold a valid India eVisa or ETA",
+    "You have a new passport, from the same country, issued after your eVisa",
+    "Your old passport has been lost, stolen or not returned to you",
+    "Nothing else about your eVisa needs to change"
   ],
-  "checklist": [
-    {
-      "item": "New passport photo page"
-    },
-    {
-      "item": "A recent photo",
-      "hint": "Plain light background, face fully visible. We’ll crop it"
-    },
-    {
-      "item": "Your current e-Visa (ETA)",
-      "hint": "The approval email or PDF"
-    },
-    {
-      "item": "Old passport number"
-    }
-  ],
-  "purposesTitle": "When you need a transfer",
-  "purposes": [
-    {
-      "icon": "passport",
-      "title": "Lost or stolen passport",
-      "text": "Your e-Visa was on a passport you no longer have."
-    },
-    {
-      "icon": "clock",
-      "title": "Long-term visas",
-      "text": "Keep using a 1-year or 5-year e-Visa on your new passport."
-    },
-    {
-      "icon": "check",
-      "title": "Peace of mind",
-      "text": "Travel with everything on one passport."
-    }
-  ],
-  "notCoveredTitle": "You probably don’t need a transfer if",
-  "notCovered": [
-    "You still have your old passport: carry it with your new one",
-    "Your e-Visa has expired: apply for a new one",
-    "You have a 30-day e-Visa: a new application is usually simpler"
-  ],
-  "documentsTable": [
-    {
-      "document": "New passport photo page",
-      "details": "A clear scan of your new passport.",
-      "needed": "Required"
-    },
-    {
-      "document": "Photo",
-      "details": "Recent, in colour, front-facing with eyes open and no glasses. Plain white or light background, no shadows or borders. We crop and resize it for you.",
-      "needed": "Required"
-    },
-    {
-      "document": "Current e-Visa",
-      "details": "The approval email or PDF you received when it was granted.",
-      "needed": "Helpful"
-    },
-    {
-      "document": "Police report",
-      "details": "If your old passport was stolen.",
-      "needed": "If applicable"
-    }
-  ],
-  "rules": [
-    {
-      "title": "Still have your old passport?",
-      "text": "You can usually travel on your new passport with a valid e-Visa issued on the old one, as long as you carry both passports."
-    },
-    {
-      "title": "Lost or stolen passport",
-      "text": "If you no longer have the old passport, transfer the e-Visa to your new one before you travel."
-    },
-    {
-      "title": "Details must match",
-      "text": "Your name, date of birth and nationality must be the same on both passports. If they’ve changed, call us first."
-    }
-  ],
-  "showFees": true,
   "sections": [
     {
-      "heading": "How to transfer an Indian e-Visa to a new passport",
-      "text": "India’s e-Visa portal now offers a service to move a valid e-Visa from an old passport to a new one. You give the old passport and e-Visa details and upload your new passport. With us, you upload your new passport and current e-Visa, and we check whether a transfer is needed before we submit it."
+      "heading": "Do you need to transfer your eVisa?",
+      "text": "Usually not, if you still have your old passport. India allows you to enter on your new passport even when your eVisa was issued on the old one, as long as you carry the old passport with you as well. Keep both passports together whenever you travel to India.\n\nYou need the transfer if you no longer have the old passport, for example because it was lost or stolen, or because the passport office didn't return it when you renewed."
     },
     {
-      "heading": "When should I move my Indian e-Visa to a new passport?",
-      "text": "If your old passport was lost or stolen, or you no longer have it, transfer your Indian e-Visa to a new passport before you travel. If you still have the old passport, you can usually travel with both passports instead, which is simpler."
+      "heading": "India’s new transfer service",
+      "text": "India added a \"Transfer of eVisa/ETA on New Passport\" service to its official eVisa portal in September 2026. You give the details of your current eVisa and old passport, choose the reason for the transfer (lost, stolen or not returned), and add the details and a copy of your new passport and a new photo.\n\nThe service only changes your passport details. If anything else needs to change, such as your name or the type of visa, you need a new eVisa application."
+    },
+    {
+      "heading": "Which eVisas can be transferred?",
+      "text": "Early users report that only longer eVisas, the 1-year and 5-year e-Tourist and e-Business visas, can currently be transferred, and that 30-day eVisas can't. India hasn't yet published official eligibility rules, fees or processing times for the service, so we confirm the position for your eVisa before you rely on it.\n\nIf your eVisa can't be transferred, we can apply for a new one on your new passport."
+    },
+    {
+      "heading": "Apply in good time",
+      "text": "Don't leave the transfer until just before you fly. Processing times haven't been published, so submit the request as early as you can. If you're travelling soon and the transfer hasn't come through, a new eVisa may be the safer option, and we'll advise you."
+    },
+    {
+      "heading": "Transfer India eVisa help in Manchester",
+      "text": "We're based in Manchester city centre and handle Indian eVisas for clients across the UK, entirely online. We check whether you need a transfer at all, submit it if you do, and keep you updated."
     }
   ],
   "faqs": [
     {
-      "q": "I renewed my passport. Is my Indian e-Visa still valid?",
-      "a": "Yes, if it hasn’t expired. Carry your old passport with the e-Visa together with your new passport. If the old one is lost, transfer the e-Visa."
+      "q": "I renewed my passport but still have the old one. Do I need to transfer my India eVisa?",
+      "a": "No. You can travel on your new passport as long as you also carry the old passport your eVisa was issued on."
     },
     {
-      "q": "Can I transfer a 30-day e-Tourist visa?",
-      "a": "It’s usually simpler to apply for a new one. We’ll check your case."
+      "q": "Can I transfer a 30-day India eVisa?",
+      "a": "Early reports suggest not: the transfer service appears to accept only 1-year and 5-year eVisas. If yours can’t be transferred, we can apply for a new eVisa on your new passport."
     },
     {
-      "q": "Can I apply myself instead of using you?",
-      "a": "Yes. You can apply on the official website, indianvisaonline.gov.in, and pay only the government fee. People use us when they want a person to check their eligibility, fix their photo and documents, and handle the form for them so nothing goes wrong."
+      "q": "How long does an eVisa transfer take?",
+      "a": "India hasn’t published processing times yet. Apply as early as possible before you travel."
     }
   ],
-  "related": [
-    "india-5-year-e-tourist-visa",
-    "india-1-year-e-tourist-visa"
-  ],
-  "title": "Transfer Indian e-Visa to a New Passport | UK Help",
-  "description": "Renewed or lost your passport? Transfer your valid Indian e-Visa to a new passport. We check whether you need to and submit it for you.",
-  "focusKeyword": "Indian e-Visa to a new passport",
+  "country": "India",
+  "govuk": "https://indianvisaonline.gov.in/evisa/",
+  "applyButton": "/apply/india-evisa-transfer/",
+  "sortKey": "1 india 1 india evisa transfer",
   "prices": [
     {
-      "service": "e-Visa transfer to a new passport",
-      "included": "",
+      "service": "eVisa transfer",
+      "included": "We check whether you need a transfer, then complete and submit it",
       "processing": "",
-      "entries": "Same as your e-Visa",
-      "govFee": "",
-      "fee": ""
+      "fee": "",
+      "popular": true,
+      "processingFee": "",
+      "total": ""
     }
   ],
-  "shareImage": "/images/share.jpg"
+  "focusKeyword": "transfer India eVisa",
+  "purposeLabel": "eVisa transfer to a new passport",
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Scan of your new passport photo page",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent passport-style photo with a white background",
+      "needed": "Required"
+    },
+    {
+      "document": "Your current eVisa / ETA",
+      "details": "Your current eVisa / ETA, or its reference number",
+      "needed": "Required"
+    },
+    {
+      "document": "Passport",
+      "details": "Details of your old passport (number and expiry)",
+      "needed": "Required"
+    }
+  ]
 }

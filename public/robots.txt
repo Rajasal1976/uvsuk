@@ -2,5 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /client-forms/
 Disallow: /forms-register/
-Disallow: /admin/
-Sitemap: https://indianevisaonline.org.uk/sitemap-index.xml
+Sitemap: https://www.uvsuk.co.uk/sitemap-index.xml

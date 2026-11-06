@@ -1,37 +1,42 @@
 {
-  "layout": "company",
-  "group": "company",
-  "order": 60,
-  "navLabel": "Disclaimer",
+  "title": "Disclaimer | Unique Visa Services Ltd",
+  "description": "Unique Visa Services Ltd is a private, IAA-regulated visa and immigration service, not affiliated with any government, embassy or consulate.",
   "h1": "Disclaimer",
-  "intro": "Please read this disclaimer before using our website or services.",
-  "body": [
-    "Indian Visa Online Service is a private company offering help with Indian visa applications. We are not the Government of India, the High Commission of India or any embassy or consulate, and we do not issue visas.",
-    "You can apply for an Indian e-Visa yourself on the official website, indianvisaonline.gov.in, and pay only the government fee. Our service fee is charged in addition to the government fee.",
-    "The information on this website is general guidance based on the official rules at the time of writing. Indian visa rules change, so always check the latest position before you travel. All visa decisions are made by the Indian authorities."
-  ],
-  "title": "Disclaimer | Indian e-Visa Online Service",
-  "description": "Disclaimer: Indian e-Visa Online is a private visa help service, not the Government of India. You can apply directly on the official website.",
-  "focusKeyword": "disclaimer",
+  "intro": "Unique Visa Services Ltd is a private visa assistance provider based in the UK. We specialise in professional support and guidance for individuals and businesses applying for visas for international travel. Please read this disclaimer carefully before using our services.",
+  "body": [],
+  "faqs": [],
+  "govuk": "",
+  "applyButton": "none",
+  "country": "Company pages",
+  "sortKey": "2 company pages 1 disclaimer",
   "sections": [
     {
-      "heading": "About this disclaimer",
-      "text": "This disclaimer applies to everything on this website, including our guides, visa pages and application forms."
-    }
-  ],
-  "faqs": [
-    {
-      "q": "Are you part of the Indian government?",
-      "a": "No. We are a private company."
+      "heading": "Independent visa assistance provider",
+      "text": "Unique Visa Services Ltd is not affiliated with, endorsed by, or connected to any government authority, embassy or consulate. We are an independent organisation that provides visa support services for UK citizens and residents travelling abroad.\n\nOur team helps applicants prepare, review and submit their visa applications for many countries. However, the final decision to approve or refuse a visa always rests with the relevant government authority or consulate."
     },
     {
-      "q": "Can I apply without you?",
-      "a": "Yes, on indianvisaonline.gov.in, paying only the government fee."
+      "heading": "Range of visa application assistance",
+      "text": "We help UK citizens and residents apply for visas to a wide range of destinations, including but not limited to:\n- China: tourist, business, work and conference visas\n- India: tourist, business, medical and other eVisas and visa categories\n- Russia: tourist, business and work visas\n- Saudi Arabia: family visit, business and religious travel visas\n- Sri Lanka: ETA tourist and business visas\n- Ghana: tourist and business visa applications\n- Australia: visitor, business and study visa guidance\n- Schengen area: tourist, business and conference visas for European countries\n- USA: visitor, business, student and work visa support\n- UK: various visa categories for international applicants\n\nOur services cover applications for tourism, work, business, conferences, study, medical treatment, journalism and other visa categories."
     },
     {
-      "q": "Who decides my visa?",
-      "a": "The Indian authorities."
+      "heading": "Consultation fees",
+      "text": "We charge a professional consultation and service fee for helping with visa applications. This fee is separate from government or consular visa application charges. All fees are clearly explained to applicants before the service begins.\n\nApplicants also have the option to apply directly through the relevant country's official government or consulate website, without using our services."
+    },
+    {
+      "heading": "Immigration advice and legal advice",
+      "text": "Unique Visa Services Ltd is not a firm of solicitors. We are immigration advisers regulated by the Immigration Advice Authority (IAA), reference F200700144, and we give UK immigration advice only within the level and categories we are authorised for. For travel visas to other countries, our service is limited to visa guidance, document checking and application support.\n\nIf your case needs advice or representation beyond our authorisation, we will tell you and recommend that you seek help from a solicitor or another suitably regulated adviser."
+    },
+    {
+      "heading": "Transparency and responsibility",
+      "text": "While we work to ensure accuracy and efficiency in your visa application, we cannot guarantee that a visa will be approved. Approval or refusal of an application is solely at the discretion of the relevant government authority or embassy.\n\nWe make every effort to keep our website and information up to date, but applicants should always check official government websites for the latest requirements, forms and fees."
+    },
+    {
+      "heading": "Official consulate and government websites",
+      "text": "For transparency, you can also visit the official consulate or government websites of the countries you plan to travel to:\n- [China visa: Ministry of Foreign Affairs](https://www.fmprc.gov.cn/)\n- [India visa: Ministry of Home Affairs](https://www.mha.gov.in/MHA1/TourVisa.html)\n- [Russia visa: Ministry of Foreign Affairs](https://mid.ru/en/)\n- [Saudi Arabia visa: Ministry of Foreign Affairs](https://visa.mofa.gov.sa/)\n- [Sri Lanka ETA](https://eta.gov.lk/)\n- [Ghana: Ghana High Commission, London](https://london.mfa.gov.gh/)\n- [Australia visa: Department of Home Affairs](https://immi.homeaffairs.gov.au/)\n- [Schengen visa information: European Commission](https://home-affairs.ec.europa.eu/)\n- [USA visa: U.S. Department of State](https://travel.state.gov/)\n- [UK visa: GOV.UK](https://www.gov.uk/apply-uk-visa)"
+    },
+    {
+      "heading": "Final note",
+      "text": "By using our services, applicants acknowledge that Unique Visa Services Ltd is a private visa assistance provider and not a government authority. We are committed to offering professional support and making the visa application process easier, but the responsibility for approval lies entirely with the relevant government, consulate or embassy."
     }
-  ],
-  "shareImage": "/images/share.jpg"
+  ]
 }

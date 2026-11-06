@@ -1,68 +1,52 @@
 {
-  "layout": "company",
-  "group": "company",
-  "order": 20,
-  "navLabel": "FAQs",
-  "h1": "Indian visa FAQs",
-  "intro": "Our Indian visa FAQs answer the questions we’re asked most about Indian e-Visas and visas. Can’t see yours? Call or WhatsApp us.",
+  "title": "Visa and Immigration FAQs | Unique Visa Services",
+  "description": "Answers to common visa and immigration FAQs: regulation, fees, timescales, documents and how to start your application with Unique Visa Services.",
+  "h1": "Visa and immigration FAQs",
+  "intro": "These visa and immigration FAQs answer the questions our clients ask most often.",
+  "body": [],
   "faqs": [
     {
-      "q": "Can I apply myself instead of using you?",
-      "a": "Yes. You can apply on the official website, indianvisaonline.gov.in, and pay only the government fee. People use us when they want a person to check their eligibility, fix their photo and documents, and handle the form for them so nothing goes wrong."
+      "q": "Do I need an adviser, or can I apply myself?",
+      "a": "You can apply directly. Many people use us because a missing document or misunderstood rule can mean a refusal, a lost fee and months of delay."
     },
     {
-      "q": "How early should I apply?",
-      "a": "At least 4 days before you arrive in India, and no more than 120 days before. We recommend applying 2 to 3 weeks ahead in case anything needs correcting."
+      "q": "Do I need to visit your office?",
+      "a": "No. You can meet us in Manchester, or we can work with you by phone, video call and email from anywhere in the UK."
     },
     {
-      "q": "How long does an Indian e-Visa take?",
-      "a": "Most complete applications are decided within a few working days. Apply at least 4 days before you arrive, and ideally 2 to 3 weeks ahead."
+      "q": "How much do your services cost?",
+      "a": "Our fee depends on the service and is agreed before we start. Government fees are paid separately. See our fees page."
     },
     {
-      "q": "Which e-Visa do I need?",
-      "a": "It depends on the main reason for your trip: e-Tourist for holidays and family visits, e-Business for business trips, e-Medical for treatment, and so on. See all the [e-Visa types](/indian-e-visa/)."
+      "q": "Are you regulated?",
+      "a": "Yes. We are registered with the Immigration Advice Authority, reference F200700144."
     },
     {
-      "q": "Do I need to send my passport?",
-      "a": "Not for an e-Visa: everything is online. For a regular visa, your passport is submitted at the visa application centre."
+      "q": "Can you guarantee my visa will be approved?",
+      "a": "No adviser can guarantee a decision, as it is made by the Home Office or the embassy. What we can do is tell you honestly whether you qualify and make sure your application meets the rules, which gives you the best chance."
     },
     {
-      "q": "I’m British with Pakistani heritage. Can I get an e-Visa?",
-      "a": "Usually not. If your parents or grandparents were born in or lived permanently in Pakistan, you need a regular visa."
+      "q": "How do I check you are regulated?",
+      "a": "Search for us on the Immigration Advice Authority’s online register using our reference number, shown at the bottom of every page."
     },
     {
-      "q": "My passport is due to expire. Can I still apply?",
-      "a": "Your passport must be valid for at least six months when you apply, with two blank pages. If it’s close, renew it first."
+      "q": "Do you translate documents?",
+      "a": "Documents not in English or Welsh usually need a certified translation. We can arrange this or tell you exactly what is needed."
     },
     {
-      "q": "Is the e-Visa fee refundable if I’m refused?",
-      "a": "No. The Government of India’s e-Visa fee pays for processing your application, so it isn’t refunded if the visa is refused or you cancel your trip. That’s why we check everything before you pay it."
-    },
-    {
-      "q": "What happens when I land in India?",
-      "a": "Show your printed e-Visa (ETA) at immigration. Your fingerprints and photo are taken and the visa is stamped in your passport. You must arrive at an airport or seaport approved for e-Visas."
-    },
-    {
-      "q": "Do children need their own e-Visa?",
-      "a": "Yes. Every traveller, including babies and children, needs their own passport and e-Visa."
-    },
-    {
-      "q": "What is the e-Arrival card?",
-      "a": "A free online form you can fill in within 72 hours before arriving in India. It isn’t a visa. [Read our guide](/india-e-arrival-card/)."
-    },
-    {
-      "q": "Can I visit India for work on an e-Visa?",
-      "a": "No. Paid work needs an [Employment visa](/indian-work-visa/)."
+      "q": "Where can I find visa and immigration FAQs for a specific visa?",
+      "a": "Each visa page on our website has its own FAQs at the bottom, covering the questions clients ask about that visa."
     }
   ],
-  "title": "Indian Visa FAQs | e-Visa Questions Answered",
-  "description": "Indian visa FAQs: answers to common questions about e-Visas and visas, timings, documents, Pakistani origin, refusals, children and arriving in India.",
-  "focusKeyword": "Indian visa FAQs",
+  "govuk": "",
+  "applyButton": "none",
+  "country": "Company pages",
+  "sortKey": "2 company pages 1 frequently asked questions",
   "sections": [
     {
-      "heading": "More Indian visa FAQs and guides",
-      "text": "Need more detail? Our [Indian visa guides](/indian-visa-guides/) cover eligibility, photo rules, fees, airports and refusals in depth. You’ll find answers to the Indian visa FAQs for each visa type on that visa’s own page."
+      "heading": "About our service",
+      "text": "We are regulated by the Immigration Advice Authority (IAA), the body that regulates immigration advisers in the UK. We help with UK visas, settlement and citizenship, sponsor licences for employers, and travel visas from the UK.\n\nOur fee is agreed in writing before we start. Government, embassy and visa centre fees are paid separately, at cost."
     }
   ],
-  "shareImage": "/images/share.jpg"
+  "focusKeyword": "visa and immigration FAQs"
 }
