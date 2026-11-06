@@ -10,7 +10,7 @@
   ],
   "sections": [
     {
-      "heading": "Do British citizens need a Ethiopia visa?",
+      "heading": "Do British citizens need an Ethiopia visa?",
       "text": "British passport holders need a visa to visit Ethiopia. Tourist visas can be applied for online as an eVisa through Ethiopia's official immigration system."
     },
     {
@@ -36,7 +36,7 @@
       "a": "Business visas have different requirements, including a letter from the Ethiopian company. We confirm the current process before you apply."
     },
     {
-      "q": "How long does a Ethiopia visa take?",
+      "q": "How long does an Ethiopia visa take?",
       "a": "Usually a few working days, but processing times vary. Apply at least a week before you travel, and earlier in busy seasons."
     }
   ],
@@ -91,5 +91,6 @@
       "details": "Hotel booking or invitation letter",
       "needed": "Required"
     }
-  ]
+  ],
+  "shareImage": "/images/uvs-share.jpg"
 }

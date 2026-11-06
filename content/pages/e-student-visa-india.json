@@ -92,5 +92,6 @@
       "details": "Proof of funds, such as bank statements or a sponsor letter",
       "needed": "Required"
     }
-  ]
+  ],
+  "shareImage": "/images/uvs-share.jpg"
 }

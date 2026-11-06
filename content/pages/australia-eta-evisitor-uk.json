@@ -27,6 +27,10 @@
     {
       "heading": "Australia eVisitor help from Manchester",
       "text": "We're based in Manchester city centre and help travellers and businesses across the UK. We check the rules for your passport, prepare your application and keep you updated until it's decided."
+    },
+    {
+      "heading": "Before you travel to Australia",
+      "text": "Check the UK government’s [travel advice for Australia](https://www.gov.uk/foreign-travel-advice/australia) before you book, and again shortly before you go. It covers safety, local laws, health risks and the latest entry rules.\n\n- Passport: most countries expect it to be valid for at least six months after you arrive, with blank pages for stamps. If yours is close to expiry, renew it first.\n- Health: check the NHS fitfortravel website for Australia at least eight weeks before you travel, in case you need vaccinations or malaria tablets. Some countries ask for a yellow fever certificate if you’ve recently been somewhere with yellow fever.\n- Insurance: take out travel insurance that covers medical treatment and getting you home, and check it’s valid for Australia.\n- Bookings: carry copies of your return ticket and accommodation, as border officers can ask to see them.\n\nWe go through the entry requirements for your passport when we prepare your application, so you know exactly what to carry."
     }
   ],
   "focusKeyword": "Australia eVisitor",
@@ -55,8 +59,9 @@
       "a": "Up to 3 months on each visit, within the 12-month validity."
     },
     {
-      "q": "How long does a Australia eVisitor take?",
+      "q": "How long does an Australia eVisitor take?",
       "a": "Processing times vary with the authority and the time of year. Apply as early as you can, and don’t book non-refundable travel until your visa or authorisation is approved."
     }
-  ]
+  ],
+  "shareImage": "/images/uvs-share.jpg"
 }

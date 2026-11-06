@@ -1,10 +1,23 @@
 {
   "title": "Disclaimer | Unique Visa Services Ltd",
-  "description": "Unique Visa Services Ltd is a private, IAA-regulated visa and immigration service, not affiliated with any government, embassy or consulate.",
+  "description": "Disclaimer: Unique Visa Services Ltd is a private, IAA-regulated visa and immigration service, not affiliated with any government, embassy or consulate.",
   "h1": "Disclaimer",
-  "intro": "Unique Visa Services Ltd is a private visa assistance provider based in the UK. We specialise in professional support and guidance for individuals and businesses applying for visas for international travel. Please read this disclaimer carefully before using our services.",
+  "intro": "This disclaimer explains who we are and what we do. Unique Visa Services Ltd is a private visa assistance provider based in the UK, giving professional support to individuals and businesses applying for visas for international travel and UK immigration.",
   "body": [],
-  "faqs": [],
+  "faqs": [
+    {
+      "q": "Is Unique Visa Services part of a government or embassy?",
+      "a": "No. We are an independent, private company, not affiliated with any government, embassy or consulate."
+    },
+    {
+      "q": "Can I apply for a visa without using you?",
+      "a": "Yes. You can apply directly through the official government or embassy website for your destination."
+    },
+    {
+      "q": "Does this disclaimer apply to your whole website?",
+      "a": "Yes. It applies to all information on our website and to our visa assistance services."
+    }
+  ],
   "govuk": "",
   "applyButton": "none",
   "country": "Company pages",
@@ -35,8 +48,10 @@
       "text": "For transparency, you can also visit the official consulate or government websites of the countries you plan to travel to:\n- [China visa: Ministry of Foreign Affairs](https://www.fmprc.gov.cn/)\n- [India visa: Ministry of Home Affairs](https://www.mha.gov.in/MHA1/TourVisa.html)\n- [Russia visa: Ministry of Foreign Affairs](https://mid.ru/en/)\n- [Saudi Arabia visa: Ministry of Foreign Affairs](https://visa.mofa.gov.sa/)\n- [Sri Lanka ETA](https://eta.gov.lk/)\n- [Ghana: Ghana High Commission, London](https://london.mfa.gov.gh/)\n- [Australia visa: Department of Home Affairs](https://immi.homeaffairs.gov.au/)\n- [Schengen visa information: European Commission](https://home-affairs.ec.europa.eu/)\n- [USA visa: U.S. Department of State](https://travel.state.gov/)\n- [UK visa: GOV.UK](https://www.gov.uk/apply-uk-visa)"
     },
     {
-      "heading": "Final note",
+      "heading": "Final note on this disclaimer",
       "text": "By using our services, applicants acknowledge that Unique Visa Services Ltd is a private visa assistance provider and not a government authority. We are committed to offering professional support and making the visa application process easier, but the responsibility for approval lies entirely with the relevant government, consulate or embassy."
     }
-  ]
+  ],
+  "shareImage": "/images/uvs-share.jpg",
+  "focusKeyword": "disclaimer"
 }

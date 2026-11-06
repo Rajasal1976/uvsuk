@@ -25,6 +25,10 @@
     {
       "heading": "Djibouti tourist visa help from Manchester",
       "text": "We're based in Manchester city centre and handle Djibouti tourist visa applications for travellers across the UK, entirely online. Before you travel, read the UK government's [foreign travel advice](https://www.gov.uk/foreign-travel-advice) for Djibouti."
+    },
+    {
+      "heading": "Before you travel to Djibouti",
+      "text": "Check the UK government’s [travel advice for Djibouti](https://www.gov.uk/foreign-travel-advice/djibouti) before you book, and again shortly before you go. It covers safety, local laws, health risks and the latest entry rules.\n\n- Passport: most countries expect it to be valid for at least six months after you arrive, with blank pages for stamps. If yours is close to expiry, renew it first.\n- Health: check the NHS fitfortravel website for Djibouti at least eight weeks before you travel, in case you need vaccinations or malaria tablets. Some countries ask for a yellow fever certificate if you’ve recently been somewhere with yellow fever.\n- Insurance: take out travel insurance that covers medical treatment and getting you home, and check it’s valid for Djibouti.\n- Bookings: carry copies of your return ticket and accommodation, as border officers can ask to see them.\n\nWe go through the entry requirements for your passport when we prepare your application, so you know exactly what to carry."
     }
   ],
   "faqs": [
@@ -39,6 +43,10 @@
     {
       "q": "How long does a Djibouti tourist visa take?",
       "a": "Usually a few working days, but processing times vary. Apply at least a week before you travel, and earlier in busy seasons."
+    },
+    {
+      "q": "Do I need travel insurance for Djibouti?",
+      "a": "We strongly recommend it. Choose a policy that covers medical treatment and repatriation, and check it’s valid for your destination before you go."
     }
   ],
   "govuk": "https://www.gov.uk/foreign-travel-advice",
@@ -92,5 +100,6 @@
       "details": "Hotel booking, or an invitation from the people you’re visiting",
       "needed": "Required"
     }
-  ]
+  ],
+  "shareImage": "/images/uvs-share.jpg"
 }

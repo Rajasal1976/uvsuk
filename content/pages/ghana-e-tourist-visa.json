@@ -3,7 +3,7 @@
   "description": "Ghana e-Tourist visa from the UK: apply online for a holiday or family visit, with no need to send your passport. We complete and check it for you.",
   "h1": "Ghana e-Tourist visa from the UK",
   "purposeLabel": "e-Tourist visa",
-  "intro": "Ghana's e-Tourist visa lets you apply online for a holiday or a visit to family or friends, without sending your passport away. We complete your eVisa application, check your documents and keep you updated until it's approved.",
+  "intro": "The Ghana e-Tourist visa lets you apply online for a holiday or a visit to family or friends, without sending your passport away. We complete your eVisa application, check your documents and keep you updated until it's approved.",
   "eligibility": [
     "You are travelling for a holiday, sightseeing or to visit family or friends",
     "You won’t work or do business during your visit",
@@ -92,5 +92,6 @@
       "details": "Yellow fever vaccination certificate",
       "needed": "Required"
     }
-  ]
+  ],
+  "shareImage": "/images/uvs-share.jpg"
 }

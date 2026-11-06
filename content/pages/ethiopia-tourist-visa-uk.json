@@ -11,12 +11,12 @@
   ],
   "sections": [
     {
-      "heading": "Do you need a Ethiopia tourist visa?",
+      "heading": "Do you need an Ethiopia tourist visa?",
       "text": "British passport holders need a visa to visit Ethiopia. Tourist visas can be applied for online as an eVisa through Ethiopia's official immigration system."
     },
     {
-      "heading": "What a Ethiopia tourist visa covers",
-      "text": "A Ethiopia tourist visa is for holidays, sightseeing and visiting family or friends in Ethiopia. It doesn't cover business meetings or paid work. If you're travelling for business, see our [Ethiopia business visa](/ethiopia-business-visa-uk/) page."
+      "heading": "What an Ethiopia tourist visa covers",
+      "text": "An Ethiopia tourist visa is for holidays, sightseeing and visiting family or friends in Ethiopia. It doesn't cover business meetings or paid work. If you're travelling for business, see our [Ethiopia business visa](/ethiopia-business-visa-uk/) page."
     },
     {
       "heading": "UK residents on other passports",
@@ -25,20 +25,28 @@
     {
       "heading": "Ethiopia tourist visa help from Manchester",
       "text": "We're based in Manchester city centre and handle Ethiopia tourist visa applications for travellers across the UK, entirely online. Before you travel, read the UK government's [foreign travel advice](https://www.gov.uk/foreign-travel-advice) for Ethiopia."
+    },
+    {
+      "heading": "Before you travel to Ethiopia",
+      "text": "Check the UK government’s [travel advice for Ethiopia](https://www.gov.uk/foreign-travel-advice/ethiopia) before you book, and again shortly before you go. It covers safety, local laws, health risks and the latest entry rules.\n\n- Passport: most countries expect it to be valid for at least six months after you arrive, with blank pages for stamps. If yours is close to expiry, renew it first.\n- Health: check the NHS fitfortravel website for Ethiopia at least eight weeks before you travel, in case you need vaccinations or malaria tablets. Some countries ask for a yellow fever certificate if you’ve recently been somewhere with yellow fever.\n- Insurance: take out travel insurance that covers medical treatment and getting you home, and check it’s valid for Ethiopia.\n- Bookings: carry copies of your return ticket and accommodation, as border officers can ask to see them.\n\nWe go through the entry requirements for your passport when we prepare your application, so you know exactly what to carry."
     }
   ],
   "faqs": [
     {
-      "q": "Can I visit family on a Ethiopia tourist visa?",
+      "q": "Can I visit family on an Ethiopia tourist visa?",
       "a": "Yes. Visiting family or friends is covered by the Ethiopia tourist visa."
     },
     {
-      "q": "Can I work in Ethiopia on a Ethiopia tourist visa?",
+      "q": "Can I work in Ethiopia on an Ethiopia tourist visa?",
       "a": "No. Working needs a work visa or permit. Contact us and we’ll explain the options."
     },
     {
-      "q": "How long does a Ethiopia tourist visa take?",
+      "q": "How long does an Ethiopia tourist visa take?",
       "a": "Usually a few working days, but processing times vary. Apply at least a week before you travel, and earlier in busy seasons."
+    },
+    {
+      "q": "Do I need travel insurance for Ethiopia?",
+      "a": "We strongly recommend it. Choose a policy that covers medical treatment and repatriation, and check it’s valid for your destination before you go."
     }
   ],
   "govuk": "https://www.gov.uk/foreign-travel-advice",
@@ -92,5 +100,6 @@
       "details": "Hotel booking, or an invitation from the people you’re visiting",
       "needed": "Required"
     }
-  ]
+  ],
+  "shareImage": "/images/uvs-share.jpg"
 }

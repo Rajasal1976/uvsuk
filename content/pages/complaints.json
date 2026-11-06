@@ -1,10 +1,23 @@
 {
   "title": "Complaints Procedure | Unique Visa Services Ltd",
-  "description": "How to make a complaint to Unique Visa Services, how quickly we respond, and how to complain to the Immigration Advice Authority if you are not satisfied.",
+  "description": "Our complaints procedure: how to complain to Unique Visa Services, how quickly we respond, and how to complain to the Immigration Advice Authority.",
   "h1": "Complaints procedure",
-  "intro": "We aim to give every client a professional, honest service. If something has gone wrong, we want to know so we can put it right. This procedure explains how to complain and what happens next.",
+  "intro": "We aim to give every client a professional, honest service. If something has gone wrong, we want to know so we can put it right. This complaints procedure explains how to complain and what happens next.",
   "body": [],
-  "faqs": [],
+  "faqs": [
+    {
+      "q": "How long does the complaints procedure take?",
+      "a": "We acknowledge your complaint in writing within 5 working days and send a full written response within 28 days. If you ask for a review, our director replies within 14 days."
+    },
+    {
+      "q": "Will complaining affect my application?",
+      "a": "No. Making a complaint never affects how we handle your application."
+    },
+    {
+      "q": "Who can I complain to if I’m not satisfied?",
+      "a": "If your complaint is about UK immigration advice or services, you can complain to the Immigration Advice Authority. Step 4 above explains how."
+    }
+  ],
   "govuk": "",
   "applyButton": "none",
   "country": "Company pages",
@@ -34,5 +47,7 @@
       "heading": "Our commitment",
       "text": "Making a complaint will never affect how we handle your application. We keep a record of all complaints and use them to improve our service."
     }
-  ]
+  ],
+  "shareImage": "/images/uvs-share.jpg",
+  "focusKeyword": "complaints procedure"
 }

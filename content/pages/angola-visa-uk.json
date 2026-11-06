@@ -1,8 +1,8 @@
 {
   "title": "Angola visa from the UK | Application Help | UVS",
-  "description": "Do you need a Angola visa from the UK? British citizens can visit visa-free, but other passport holders and workers may not. We check and apply for you.",
+  "description": "Do you need an Angola visa from the UK? British citizens can visit visa-free, but other passport holders and workers may not. We check and apply for you.",
   "h1": "Angola visa from the UK",
-  "intro": "British passport holders don't need a visa to visit Angola as tourists for up to 30 days. We check whether you need a Angola visa and apply for you if you do. Choose the visa that matches your trip below.",
+  "intro": "British passport holders don't need a visa to visit Angola as tourists for up to 30 days. We check whether you need an Angola visa and apply for you if you do. Choose the visa that matches your trip below.",
   "eligibility": [
     "Your passport is valid for at least 6 months from the date you arrive",
     "You are travelling for tourism, business meetings, transit or to visit family or friends",
@@ -10,7 +10,7 @@
   ],
   "sections": [
     {
-      "heading": "Do British citizens need a Angola visa?",
+      "heading": "Do British citizens need an Angola visa?",
       "text": "British passport holders don't need a visa to visit Angola as tourists for up to 30 days. You'll still need a visa if you're travelling for business or work, or staying longer."
     },
     {
@@ -91,5 +91,6 @@
       "details": "Hotel booking or invitation letter",
       "needed": "Required"
     }
-  ]
+  ],
+  "shareImage": "/images/uvs-share.jpg"
 }

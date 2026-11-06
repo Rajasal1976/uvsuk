@@ -54,6 +54,10 @@
     {
       "heading": "Employment visa help from Manchester",
       "text": "We're based in Manchester city centre and help travellers and businesses across the North West and the rest of the UK. Most travel visa applications can be handled by post and email, so you don't need to visit us in person."
+    },
+    {
+      "heading": "India Employment visa or e-Business visa?",
+      "text": "An e-Business visa covers short trips such as meetings, trade fairs and sales visits. If you’ll be employed by, or work for, a company in India, you need the India Employment visa instead. We’ll confirm which applies to you."
     }
   ],
   "country": "India",
@@ -67,6 +71,14 @@
     {
       "q": "How long does an India Employment visa take?",
       "a": "It depends on the visa centre and your documents, but allow several weeks. Starting early, with your employer’s documents ready, avoids delays."
+    },
+    {
+      "q": "Can I work in India on an e-Business visa?",
+      "a": "No. Paid work for an Indian company needs an Employment visa."
+    },
+    {
+      "q": "How long does an India Employment visa take?",
+      "a": "It varies, so apply as early as you can once your employer has sent your contract and documents."
     }
   ],
   "focusKeyword": "India Employment visa",
@@ -101,5 +113,6 @@
       "details": "CV and qualifications",
       "needed": "Required"
     }
-  ]
+  ],
+  "shareImage": "/images/uvs-share.jpg"
 }

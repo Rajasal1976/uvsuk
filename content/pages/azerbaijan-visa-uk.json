@@ -10,7 +10,7 @@
   ],
   "sections": [
     {
-      "heading": "Do British citizens need a Azerbaijan visa?",
+      "heading": "Do British citizens need an Azerbaijan visa?",
       "text": "British passport holders need a visa to visit Azerbaijan, applied for online as an eVisa through Azerbaijan's official ASAN Visa system."
     },
     {
@@ -32,7 +32,7 @@
       "a": "Yes. You apply online for an eVisa through the official ASAN Visa system."
     },
     {
-      "q": "How long does a Azerbaijan visa take?",
+      "q": "How long does an Azerbaijan visa take?",
       "a": "Usually a few working days, but processing times vary. Apply at least a week before you travel, and earlier in busy seasons."
     },
     {
@@ -91,5 +91,6 @@
       "details": "Hotel booking or invitation letter",
       "needed": "Required"
     }
-  ]
+  ],
+  "shareImage": "/images/uvs-share.jpg"
 }

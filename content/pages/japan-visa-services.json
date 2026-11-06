@@ -106,5 +106,6 @@
       "details": "Invitation letter, if you are visiting family, friends or a company",
       "needed": "Required"
     }
-  ]
+  ],
+  "shareImage": "/images/uvs-share.jpg"
 }

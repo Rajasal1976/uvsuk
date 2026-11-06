@@ -10,7 +10,7 @@
   ],
   "sections": [
     {
-      "heading": "Do British citizens need a Ivory Coast visa?",
+      "heading": "Do British citizens need an Ivory Coast visa?",
       "text": "British passport holders need a visa for Côte d’Ivoire (Ivory Coast). For air arrivals, you complete an online pre-registration and pay before you travel, then the visa is issued when you arrive at the airport in Abidjan."
     },
     {
@@ -36,7 +36,7 @@
       "a": "Yes, proof of yellow fever vaccination is normally required for entry."
     },
     {
-      "q": "How long does a Ivory Coast visa take?",
+      "q": "How long does an Ivory Coast visa take?",
       "a": "Usually a few working days, but processing times vary. Apply at least a week before you travel, and earlier in busy seasons."
     }
   ],
@@ -96,5 +96,6 @@
       "details": "Yellow fever vaccination certificate",
       "needed": "Required"
     }
-  ]
+  ],
+  "shareImage": "/images/uvs-share.jpg"
 }
