@@ -97,5 +97,6 @@
       "details": "Return flight and hotel booking",
       "needed": "Required"
     }
-  ]
+  ],
+  "shareImage": "/images/uvs-share.jpg"
 }

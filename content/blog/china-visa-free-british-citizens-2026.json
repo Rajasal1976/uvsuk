@@ -22,6 +22,10 @@
     {
       "heading": "How we can help",
       "text": "We arrange Chinese visas for UK residents who need them, including business (M), tourist (L), family (Q and S), work (Z) and student (X) visas. Our online China visa form reads your passport details automatically and lists exactly which documents your visa type needs."
+    },
+    {
+      "heading": "What to carry when you travel",
+      "text": "Even without a visa, take your passport (valid for at least six months), your return or onward ticket, and details of where you’re staying. Border officers can ask to see them. If you plan to work, study or stay longer than 30 days, you still need a visa."
     }
   ],
   "faqs": [
@@ -32,8 +36,13 @@
     {
       "q": "Can I work in China on visa-free entry?",
       "a": "No. Working in China needs a Z visa and a work permit."
+    },
+    {
+      "q": "Is China visa-free entry for British citizens permanent?",
+      "a": "No. It’s currently due to end on 31 December 2026. Check before you plan trips for 2027."
     }
   ],
   "relatedPage": "/china-visa-application/",
-  "relatedLabel": "China visa: how we can help"
+  "relatedLabel": "China visa: how we can help",
+  "shareImage": "/images/uvs-share.jpg"
 }

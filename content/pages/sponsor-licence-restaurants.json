@@ -48,5 +48,6 @@
   "country": "Employers",
   "sortKey": "2 employer 2 sponsor-licence-restaurants",
   "govuk": "https://www.gov.uk/government/collections/sponsorship-information-for-employers-and-educators",
-  "prices": []
+  "prices": [],
+  "shareImage": "/images/uvs-share.jpg"
 }

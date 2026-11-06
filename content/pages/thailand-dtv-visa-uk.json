@@ -15,6 +15,10 @@
     {
       "heading": "Destination Thailand Visa help from Manchester",
       "text": "We're based in Manchester city centre and help travellers and businesses across the UK. We check the rules for your passport, prepare your application and keep you updated until it's decided."
+    },
+    {
+      "heading": "Before you travel to Thailand",
+      "text": "Check the UK government’s [travel advice for Thailand](https://www.gov.uk/foreign-travel-advice/thailand) before you book, and again shortly before you go. It covers safety, local laws, health risks and the latest entry rules.\n\n- Passport: most countries expect it to be valid for at least six months after you arrive, with blank pages for stamps. If yours is close to expiry, renew it first.\n- Health: check the NHS fitfortravel website for Thailand at least eight weeks before you travel, in case you need vaccinations or malaria tablets. Some countries ask for a yellow fever certificate if you’ve recently been somewhere with yellow fever.\n- Insurance: take out travel insurance that covers medical treatment and getting you home, and check it’s valid for Thailand.\n- Bookings: carry copies of your return ticket and accommodation, as border officers can ask to see them.\n\nWe go through the entry requirements for your passport when we prepare your application, so you know exactly what to carry."
     }
   ],
   "faqs": [
@@ -83,5 +87,6 @@
       "needed": "If not British"
     }
   ],
-  "purposeLabel": "Destination Thailand Visa (DTV)"
+  "purposeLabel": "Destination Thailand Visa (DTV)",
+  "shareImage": "/images/uvs-share.jpg"
 }

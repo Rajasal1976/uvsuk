@@ -3,7 +3,7 @@
     "description": "Russian work visa for UK residents: work permit, employer invitation, HIV certificate and how the visa is extended in Russia. We help you apply.",
     "h1": "Russian work visa from the UK",
     "purposeLabel": "Work visa",
-    "intro": "For taking a job in Russia. Your employer arranges your work permit and official invitation first. We prepare your visa application and check your documents.",
+    "intro": "The Russian work visa is for taking a job in Russia. Your employer arranges your work permit and official invitation first. We prepare your visa application and check your documents.",
     "eligibility": [
         "You have a job offer from an employer in Russia",
         "Your employer has arranged a work permit and official invitation",
@@ -91,5 +91,6 @@
             "details": "If you're not a British citizen: your UK eVisa share code page, BRP or settlement document",
             "needed": "If not British"
         }
-    ]
+    ],
+    "shareImage": "/images/uvs-share.jpg"
 }

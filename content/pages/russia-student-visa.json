@@ -3,7 +3,7 @@
     "description": "Russian student visa for UK residents: university invitation, HIV certificate, visa length and extending it in Russia. We prepare your application.",
     "h1": "Russian student visa from the UK",
     "purposeLabel": "Student visa",
-    "intro": "For studying at a university, college or language school in Russia. Your place of study arranges an official invitation. We prepare your application and check your documents.",
+    "intro": "The Russian student visa is for studying at a university, college or language school in Russia. Your place of study arranges an official invitation. We prepare your application and check your documents.",
     "eligibility": [
         "You have a place at a Russian university, college or language school",
         "Your place of study has arranged an official invitation",
@@ -91,5 +91,6 @@
             "details": "If you're not a British citizen: your UK eVisa share code page, BRP or settlement document",
             "needed": "If not British"
         }
-    ]
+    ],
+    "shareImage": "/images/uvs-share.jpg"
 }

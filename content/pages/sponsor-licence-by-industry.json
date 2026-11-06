@@ -39,5 +39,6 @@
   "applyButton": "/contact-us/",
   "country": "Employers",
   "sortKey": "2 employer 2 a industry",
-  "govuk": ""
+  "govuk": "",
+  "shareImage": "/images/uvs-share.jpg"
 }

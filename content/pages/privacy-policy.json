@@ -1,15 +1,28 @@
 {
   "title": "Privacy Policy | Unique Visa Services Ltd",
-  "description": "How Unique Visa Services Ltd collects, uses, shares and protects your personal information, including passport details and visa application documents.",
+  "description": "Our privacy policy explains how Unique Visa Services Ltd collects, uses, shares and protects your personal information, including passport details.",
   "h1": "Privacy policy",
-  "intro": "This policy explains how Unique Visa Services Ltd collects, uses, shares and protects your personal information, and the rights you have over it under UK data protection law. Last updated: November 2026.",
+  "intro": "This privacy policy explains how Unique Visa Services Ltd collects, uses, shares and protects your personal information, and the rights you have over it under UK data protection law. Last updated: November 2026.",
   "body": [],
-  "faqs": [],
+  "faqs": [
+    {
+      "q": "Do you sell my personal information?",
+      "a": "No. We never sell your personal information."
+    },
+    {
+      "q": "How long do you keep my documents?",
+      "a": "Client files are kept for 6 years after your matter ends, to meet our regulatory, legal and accounting duties. Section 7 of this privacy policy explains more."
+    },
+    {
+      "q": "How do I ask for a copy of my information?",
+      "a": "Contact us by email or in writing. Section 10 of this privacy policy lists all your rights."
+    }
+  ],
   "govuk": "",
   "applyButton": "none",
   "country": "Company pages",
   "sortKey": "2 company pages 1 privacy policy",
-  "focusKeyword": "",
+  "focusKeyword": "privacy policy",
   "sections": [
     {
       "heading": "1. Who we are",
@@ -56,8 +69,9 @@
       "text": "If you are unhappy with how we have handled your personal information, please contact us first so we can try to put it right.\n\nYou also have the right to complain to the Information Commissioner's Office (ICO), the UK's data protection regulator, at [ico.org.uk](https://ico.org.uk/make-a-complaint/) or on 0303 123 1113."
     },
     {
-      "heading": "12. Changes to this policy",
+      "heading": "12. Changes to this privacy policy",
       "text": "We may update this policy from time to time, for example if we change how we work or the law changes. The latest version will always be on this page."
     }
-  ]
+  ],
+  "shareImage": "/images/uvs-share.jpg"
 }

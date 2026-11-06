@@ -46,6 +46,10 @@
     {
       "heading": "Graduate visa help in Manchester",
       "text": "We're based at 61 Mosley Street in Manchester city centre and help clients across Greater Manchester, including Bury, Bolton, Oldham, Rochdale, Salford and Stockport. We also work with clients anywhere in the UK and overseas by phone, video call and email."
+    },
+    {
+      "heading": "How to apply",
+      "text": "You apply online from inside the UK before your current permission ends, once your university has told the Home Office you’ve successfully completed your course. You’ll need your passport or identity document and your Confirmation of Acceptance for Studies (CAS) reference. You don’t need a job offer or a sponsor, and there’s no minimum salary.\n\nWe check that your course qualifies, that the timing works, and that your application is complete before it’s submitted."
     }
   ],
   "focusKeyword": "Graduate visa",
@@ -70,5 +74,6 @@
       "details": "",
       "needed": "Required"
     }
-  ]
+  ],
+  "shareImage": "/images/uvs-share.jpg"
 }

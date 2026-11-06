@@ -3,7 +3,7 @@
     "description": "Russian business visa for UK residents: invitation from the Russian company, single, double or multiple entry, documents and how we help.",
     "h1": "Russian business visa from the UK",
     "purposeLabel": "Business visa",
-    "intro": "For meetings, negotiations, trade fairs and other business trips to Russia. You need an official invitation from the Russian company. We prepare your application and check the invitation matches your details.",
+    "intro": "The Russian business visa is for meetings, negotiations, trade fairs and other business trips to Russia. You need an official invitation from the Russian company. We prepare your application and check the invitation matches your details.",
     "eligibility": [
         "You are travelling for business meetings, negotiations or trade fairs",
         "You have an official invitation from a Russian company",
@@ -109,5 +109,6 @@
             "details": "If you're not a British citizen: your UK eVisa share code page, BRP or settlement document",
             "needed": "If not British"
         }
-    ]
+    ],
+    "shareImage": "/images/uvs-share.jpg"
 }

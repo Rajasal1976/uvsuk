@@ -1,15 +1,28 @@
 {
   "title": "Terms and Conditions | Unique Visa Services Ltd",
-  "description": "The terms that apply when you use our website or our visa and immigration services: fees, cancellation, your documents, liability and complaints.",
+  "description": "Our terms and conditions for using our website and our visa and immigration services: fees, cancellation, your documents, liability and complaints.",
   "h1": "Terms and conditions",
-  "intro": "These terms apply when you use our website and when you use our visa and immigration services. Please read them before asking us to act for you. Last updated: November 2026.",
+  "intro": "These terms and conditions apply when you use our website and when you use our visa and immigration services. Please read them before asking us to act for you. Last updated: November 2026.",
   "body": [],
-  "faqs": [],
+  "faqs": [
+    {
+      "q": "When is your fee agreed?",
+      "a": "In writing, before we start work. Government, embassy and visa centre fees are charged separately, at cost."
+    },
+    {
+      "q": "Can I cancel?",
+      "a": "If you are a consumer and agreed our service away from our office, you can cancel within 14 days. Section 7 of these terms and conditions explains how."
+    },
+    {
+      "q": "Do your terms and conditions guarantee a visa?",
+      "a": "No. Visa and immigration decisions are made by the authorities, not by us."
+    }
+  ],
   "govuk": "",
   "applyButton": "none",
   "country": "Company pages",
   "sortKey": "2 company pages 1 terms of use",
-  "focusKeyword": "",
+  "focusKeyword": "terms and conditions",
   "sections": [
     {
       "heading": "1. About us",
@@ -68,8 +81,9 @@
       "text": "We handle your personal information as explained in our [privacy policy](/privacy-policy/)."
     },
     {
-      "heading": "15. Changes and governing law",
+      "heading": "15. Changes to these terms and conditions, and governing law",
       "text": "We may update these terms from time to time. The version on our website when you agree to our service will apply to that service.\n\nThese terms are governed by the law of England and Wales. If you are a consumer, you can bring legal proceedings in the courts of England and Wales, or, if you live in Scotland or Northern Ireland, in the courts of the part of the UK where you live."
     }
-  ]
+  ],
+  "shareImage": "/images/uvs-share.jpg"
 }

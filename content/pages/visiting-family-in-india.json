@@ -87,5 +87,6 @@
       "details": "Address of the relatives you’ll stay with (optional)",
       "needed": "Optional"
     }
-  ]
+  ],
+  "shareImage": "/images/uvs-share.jpg"
 }

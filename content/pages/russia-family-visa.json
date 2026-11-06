@@ -1,9 +1,9 @@
 {
-    "title": "Russian Family (Private) Visa from the UK | Apply",
-    "description": "Russian private visa for visiting family or friends: the official invitation from your host, documents, visa length and how we help.",
+    "title": "Russian Family Visa (Private Visa) from the UK",
+    "description": "Russian family visa, officially a private visa, for visiting family or friends: the official invitation, documents, visa length and how we help.",
     "h1": "Russian family visa from the UK",
     "purposeLabel": "Family visa",
-    "intro": "Known officially as a private visa: for visiting relatives or friends in Russia. Your host arranges an official invitation for you. We prepare your application and check every detail matches.",
+    "intro": "The Russian family visa, known officially as a private visa, is for visiting relatives or friends in Russia. Your host arranges an official invitation for you. We prepare your application and check every detail matches.",
     "eligibility": [
         "You are visiting a relative or friend who lives in Russia",
         "Your host has arranged an official invitation for you",
@@ -15,7 +15,7 @@
             "text": "The UK Foreign, Commonwealth and Development Office (FCDO) currently advises against all travel to Russia. If you travel against this advice, your travel insurance may not be valid, and the UK's ability to help you in Russia is very limited. Please read the [latest FCDO advice](https://www.gov.uk/foreign-travel-advice/russia) before you book."
         },
         {
-            "heading": "How the private visa invitation works",
+            "heading": "How the Russian family visa invitation works",
             "text": "Your relative or friend in Russia applies for your invitation through their local migration office. It can take several weeks, so ask them to start early. When it's ready, they send it to you and we use it for your application."
         },
         {
@@ -25,6 +25,10 @@
         {
             "heading": "Russian family visa help in Manchester",
             "text": "We're based in Manchester city centre and help with Russian family visa applications for clients across the UK. Most applications can be handled by post and email, so you don't need to visit us in person."
+        },
+        {
+            "heading": "How long is a Russian family visa?",
+            "text": "A Russian family visa is usually single or double entry, for up to 90 days, matching the dates on your invitation. Your host should apply for the invitation several weeks before you plan to travel."
         }
     ],
     "faqs": [
@@ -45,7 +49,7 @@
     "applyButton": "/apply/russia-visa/?visaType=Private%20(visiting%20family%20or%20friends)",
     "country": "Russia",
     "sortKey": "1 russia 5 russia family",
-    "focusKeyword": "Russian private visa",
+    "focusKeyword": "Russian family visa",
     "prices": [
         {
             "service": "Single entry",
@@ -93,5 +97,6 @@
             "details": "If you're not a British citizen: your UK eVisa share code page, BRP or settlement document",
             "needed": "If not British"
         }
-    ]
+    ],
+    "shareImage": "/images/uvs-share.jpg"
 }

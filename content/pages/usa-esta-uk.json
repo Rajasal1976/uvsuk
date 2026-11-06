@@ -72,5 +72,6 @@
       "needed": "Required"
     }
   ],
-  "purposeLabel": "ESTA"
+  "purposeLabel": "ESTA",
+  "shareImage": "/images/uvs-share.jpg"
 }

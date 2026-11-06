@@ -10,7 +10,7 @@
   ],
   "sections": [
     {
-      "heading": "Do British citizens need a Uganda visa?",
+      "heading": "Do British citizens need an Uganda visa?",
       "text": "British passport holders need a visa to visit Uganda, applied for online as an eVisa before travelling."
     },
     {
@@ -29,14 +29,14 @@
   "faqs": [
     {
       "q": "Do I need a visa for Uganda from the UK?",
-      "a": "Yes. British citizens apply online for a Uganda eVisa before travelling."
+      "a": "Yes. British citizens apply online for an Uganda eVisa before travelling."
     },
     {
       "q": "Do I need a yellow fever certificate for Uganda?",
       "a": "Yes, proof of yellow fever vaccination is normally required."
     },
     {
-      "q": "How long does a Uganda visa take?",
+      "q": "How long does an Uganda visa take?",
       "a": "Usually a few working days, but processing times vary. Apply at least a week before you travel, and earlier in busy seasons."
     }
   ],
@@ -96,5 +96,6 @@
       "details": "Yellow fever vaccination certificate",
       "needed": "Required"
     }
-  ]
+  ],
+  "shareImage": "/images/uvs-share.jpg"
 }

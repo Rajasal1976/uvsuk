@@ -75,5 +75,6 @@
       "details": "Host's ID, address proof and financial evidence, if they are supporting the trip",
       "needed": "Required"
     }
-  ]
+  ],
+  "shareImage": "/images/uvs-share.jpg"
 }

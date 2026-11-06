@@ -88,5 +88,6 @@
       "details": "Details of your old passport (number and expiry)",
       "needed": "Required"
     }
-  ]
+  ],
+  "shareImage": "/images/uvs-share.jpg"
 }

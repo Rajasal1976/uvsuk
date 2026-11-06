@@ -3,10 +3,10 @@
   "date": "2026-11-03",
   "updated": "2026-11-04",
   "category": "UK immigration",
-  "title": "ILR Changes 2026: New Earned Settlement Rules Explained | UVS",
+  "title": "ILR Changes 2026: Earned Settlement Rules Explained",
   "focusKeyword": "ILR changes",
-  "description": "On 2 November 2026 the Home Secretary confirmed most people will wait 10 years for ILR. Who keeps a 5-year route, when the changes start, and what to do now.",
-  "intro": "On 2 November 2026, the Home Secretary confirmed the government's final plans for Indefinite Leave to Remain (ILR). Under the new \"earned settlement\" system, most people will wait 10 years instead of 5. Some groups keep a 5-year route, and the changes are not law yet, so if you qualify under the current rules, now is the time to act.",
+  "description": "ILR changes confirmed on 2 November 2026: most people will wait 10 years for ILR. Who keeps a 5-year route, when the changes start, what to do now.",
+  "intro": "The ILR changes are confirmed. On 2 November 2026, the Home Secretary set out the government’s final plans for Indefinite Leave to Remain (ILR). Under the new \"earned settlement\" system, most people will wait 10 years instead of 5. Some groups keep a 5-year route.",
   "sections": [
     {
       "heading": "What has been announced?",
@@ -29,7 +29,7 @@
       "text": "Partners and children who come with the main applicant can usually settle at the same time. Partners can combine their incomes to meet the minimum earnings requirement. Partners who join later will normally need to complete the qualifying period themselves.\n\nIf you are married to, or in a relationship with, a British citizen, your route to ILR stays at 5 years."
     },
     {
-      "heading": "When do the changes start?",
+      "heading": "When do the ILR changes start?",
       "text": "Not yet. The announcement sets out government policy, but the law has not changed. The Home Secretary said the new rules will start to be laid from the December 2026 Immigration Rules and will come in over the course of 2027.\n\nUntil then, ILR applications are decided under the current rules. Importantly, the rules that apply are the ones in force when your application is decided, not when you arrived in the UK."
     },
     {
@@ -56,5 +56,6 @@
     }
   ],
   "relatedPage": "/indefinite-leave-to-remain-ilr/",
-  "relatedLabel": "Check your ILR eligibility"
+  "relatedLabel": "Check your ILR eligibility",
+  "shareImage": "/images/uvs-share.jpg"
 }

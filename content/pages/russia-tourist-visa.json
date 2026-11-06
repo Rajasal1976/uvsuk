@@ -3,7 +3,7 @@
     "description": "Russian tourist visa for UK residents: tourist voucher, documents, visa length and how to apply. Our Manchester team prepares and checks it.",
     "h1": "Russian tourist visa from the UK",
     "purposeLabel": "Tourist visa",
-    "intro": "For holidays and sightseeing in Russia. Every tourist visa needs a tourist voucher and confirmation from a Russian tour operator or hotel. We prepare your application and check your documents.",
+    "intro": "The Russian tourist visa is for holidays and sightseeing in Russia. Every Russian tourist visa needs a tourist voucher and confirmation from a Russian tour operator or hotel. We prepare your application and check your documents.",
     "eligibility": [
         "You are travelling for a holiday or sightseeing",
         "You have a tourist voucher and confirmation from a Russian tour operator or hotel",
@@ -93,5 +93,6 @@
             "details": "If you're not a British citizen: your UK eVisa share code page, BRP or settlement document",
             "needed": "If not British"
         }
-    ]
+    ],
+    "shareImage": "/images/uvs-share.jpg"
 }

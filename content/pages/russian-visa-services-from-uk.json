@@ -2,7 +2,7 @@
     "title": "Russian Visa from the UK | Application Help | Manchester",
     "description": "Russian visa help for UK residents: tourist, business, work and family visas, visa support letters and documents. FCDO travel advice explained.",
     "h1": "Russian visa from the UK",
-    "intro": "We help UK residents with Russian tourist, business, family (private), student and work visas. Choose your visa below. We prepare your application and check your visa support documents.",
+    "intro": "We help UK residents get the right Russian visa: tourist, business, family (private), student and work visas. Choose your Russian visa below. We prepare your application and check your visa support documents.",
     "eligibility": [],
     "faqs": [
         {
@@ -64,6 +64,10 @@
         {
             "heading": "Russian visa help in Manchester",
             "text": "We're based in Manchester city centre and help travellers and businesses across the North West and the rest of the UK. Most travel visa applications can be handled by post and email, so you don't need to visit us in person."
+        },
+        {
+            "heading": "Which visa do I need for Russia?",
+            "text": "Choose by the main reason for your trip:\n- Holidays and sightseeing: [tourist visa](/russia-tourist-visa/)\n- Meetings, negotiations and trade fairs: [business visa](/russia-business-visa/)\n- Visiting relatives or friends: [family (private) visa](/russia-family-visa/)\n- Studying at a university or language school: [student visa](/russia-student-visa/)\n- Taking a job: [work visa](/russian-work-visa/)\n\nEvery type needs an official invitation or visa support document from Russia, so start there. If you’re not sure which applies, call us and we’ll tell you."
         }
     ],
     "focusKeyword": "Russian visa",
@@ -93,5 +97,6 @@
             "details": "",
             "needed": "Required"
         }
-    ]
+    ],
+    "shareImage": "/images/uvs-share.jpg"
 }
