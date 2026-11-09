@@ -2,7 +2,7 @@
   "advisersPhotoAlt": "Raj and Sunita, immigration advisers at Unique Visa Services",
   "advisersIntro": "Unique Visa Services is run by Raj and Sunita from our Manchester office. When you work with us, you deal with them directly, from first call to decision.",
   "heroHeading": "UK immigration advice in Manchester, from advisers who check every detail",
-  "advisersPhoto": "",
+  "advisersPhoto": "/images/uploads/uk-map-passport.png",
   "sections": [
     {
       "heading": "Immigration advice in Manchester",
@@ -23,6 +23,7 @@
   ],
   "heroEyebrow": "REGULATED IMMIGRATION ADVICE SINCE 2008",
   "heroPhotoAlt": "Raj and Sunita with a client in our Manchester office",
+  "focusKeyword": "immigration advice in Manchester",
   "heroIntro": "Spouse visas, Skilled Worker visas, sponsor licences, ILR and British citizenship. We assess your case, prepare your evidence and review every application before it goes to the Home Office. Expert immigration advice in Manchester since 2008.",
   "consultationFrom": "£75",
   "iaaLogo": "/images/uploads/iaa-logo.jpg",
@@ -42,6 +43,7 @@
       "source": "Google review · China visa"
     }
   ],
+  "shareImage": "/images/uvs-share.jpg",
   "description": "IAA-regulated immigration advice in Manchester: spouse visas, Skilled Worker, ILR, citizenship and travel visas. Clear advice and agreed fees.",
   "faqs": [
     {
@@ -61,7 +63,6 @@
       "a": "Yes. Unique Visa Services Ltd is registered with the Immigration Advice Authority, reference F200700144. You can check this on the IAA's adviser finder."
     }
   ],
-  "focusKeyword": "immigration advice in Manchester",
   "heroPoints": [
     {
       "title": "IAA-regulated advisers",
@@ -75,6 +76,5 @@
       "title": "Fast, secure online forms",
       "text": "Apply in minutes. Your passport details fill in automatically."
     }
-  ],
-  "shareImage": "/images/uvs-share.jpg"
+  ]
 }
