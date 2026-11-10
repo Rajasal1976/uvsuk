@@ -5,22 +5,13 @@
   "h1": "India e-Business Visa",
   "prices": [
     {
-      "service": "Standard",
+      "service": "Up to 5 Working Days",
       "included": "Application completed and checked, photo and passport scan checked",
-      "processing": "6 Working Days",
+      "processing": "12 Months Multiple Entry",
       "fee": "£150",
       "popular": true,
       "processingFee": "£210",
       "total": "£360"
-    },
-    {
-      "service": "Urgent",
-      "included": "Everything in Standard, submitted the same working day",
-      "processing": "3 Working Days",
-      "fee": "£200",
-      "popular": false,
-      "processingFee": "£210",
-      "total": "£410"
     }
   ],
   "intro": "For business meetings, trade fairs and visiting suppliers in India. We prepare your application and check your invitation and business documents. We complete and check your India e-Business visa application, including your business card and invitation letter.",
@@ -42,24 +33,8 @@
       "text": "We handle Indian business visas for individuals and for companies that send staff to India regularly, including urgent applications. We're based in Manchester city centre and help travellers and businesses across the North West and the rest of the UK. Most travel visa applications can be handled by post and email, so you don't need to visit us in person."
     }
   ],
-  "country": "India",
-  "title": "India e-Business Visa from the UK | Business Visa Help | UVS",
-  "description": "India e-Business visa for UK business travellers: meetings, trade fairs and sales trips. We prepare your application and invitation documents.",
-  "faqs": [
-    {
-      "q": "How long does an India e-Business visa take?",
-      "a": "Usually a few working days, but apply at least 4 days before you travel. Leave more time if your trip is close to a public holiday."
-    },
-    {
-      "q": "Can I work in India on an e-Business visa?",
-      "a": "No. Paid employment in India requires an Employment visa."
-    },
-    {
-      "q": "How long is an India e-Business visa valid?",
-      "a": "It is valid for 1 year from the date it is granted, with multiple entries."
-    }
-  ],
   "focusKeyword": "India e-Business visa",
+  "country": "India",
   "documentsTable": [
     {
       "document": "Passport",
@@ -87,5 +62,21 @@
       "needed": "Required"
     }
   ],
-  "shareImage": "/images/uvs-share.jpg"
+  "title": "India e-Business Visa from the UK | Business Visa Help | UVS",
+  "shareImage": "/images/uvs-share.jpg",
+  "description": "India e-Business visa for UK business travellers: meetings, trade fairs and sales trips. We prepare your application and invitation documents.",
+  "faqs": [
+    {
+      "q": "How long does an India e-Business visa take?",
+      "a": "Usually a few working days, but apply at least 4 days before you travel. Leave more time if your trip is close to a public holiday."
+    },
+    {
+      "q": "Can I work in India on an e-Business visa?",
+      "a": "No. Paid employment in India requires an Employment visa."
+    },
+    {
+      "q": "How long is an India e-Business visa valid?",
+      "a": "It is valid for 1 year from the date it is granted, with multiple entries."
+    }
+  ]
 }
