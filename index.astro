@@ -1,0 +1,557 @@
+---
+// Homepage. Most of the text here is edited in the admin (content/home.json and settings.json).
+import Page from '../layouts/Page.astro';
+import GuideSections from '../components/GuideSections.astro';
+import home from '../../content/home.json';
+import { site } from '../data/site.js';
+const title = home.title;
+const description = home.description;
+const schemas = [JSON.stringify({
+  '@context': 'https://schema.org', '@type': 'FAQPage',
+  mainEntity: home.faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+})];
+const tel = `tel:${site.phoneIntl}`;
+// "Get directions" opens Google Maps at the office address
+const directionsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${site.address.line1}, ${site.address.city} ${site.address.postcode}`)}`;
+// Service tiles in the "Visit us" card. The last one (document legalisation) is highlighted in gold.
+const serviceTiles = [
+  ['UK immigration', 'Spouse, work, ILR and citizenship', '/uk-visa-services/', false],
+  ['Worldwide visas', 'Visas and eVisas for travel', '/worldwide-visas/', false],
+  ['Document legalisation', 'Apostilles and attestation', '/document-legalisation/', true],
+];
+// "Popular" buttons beside the visa search (edited in the admin: Homepage › Popular links)
+const popularLinks = (home.popularLinks?.length ? home.popularLinks.map((x) => [x.label, x.url]) : [
+  ['UK Immigration', '/uk-visa-services/'], ['2nd Passport', '/second-uk-passport/'], ['Schengen Visa', '/schengen-visa-application/'], ['China Visa', '/china-visa-application/'],
+  ['India Visa', '/indian-visa-application-uk/'], ['Ghana Visa', '/ghana-visa-services/'], ['USA Visa', '/usa-visa-services/'], ['Japan Visa', '/japan-visa-services/'],
+]).slice(0, 8);
+// Industry links in the "For employers" section, taken from the Sponsor licence by industry page
+import { pageBySlug as pagesBySlug } from '../data/pages.js';
+const industryLinks = (pagesBySlug['sponsor-licence-by-industry']?.children ?? []).map((slug) => {
+  const pg = pagesBySlug[slug];
+  return [(pg?.h1 || slug).replace(/^Sponsor licence for /i, '').replace(/^\w/, (c) => c.toUpperCase()), `/${slug}/`];
+});
+// "Check your visa requirements": choose a country, then the visa type. Built automatically from
+// the pages on the site, so new country or visa-type pages appear here without any changes.
+import { pages as allPages } from '../data/pages.js';
+const notCountries = new Set(['UK', 'Document legalisation', 'Worldwide visas overview', 'Employers', 'Company pages']);
+const shortLabel = (pg, country) => pg.purposeLabel || (pg.h1 || '').replace(/ from the UK.*$/i, '').replace(new RegExp('^' + country + '\\s+', 'i'), '').replace(/^(?!e-)\w/, (c) => c.toUpperCase());
+const byCountry = {};
+for (const pg of allPages) {
+  if (pg.group !== 'worldwide' || !pg.country || notCountries.has(pg.country) || pg.hideFromMenus) continue;
+  (byCountry[pg.country] ??= []).push(pg);
+}
+// A country whose main page is removed from menus is left out of the finder altogether
+const offMenuCountries = new Set(allPages.filter((pg) => pg.type === 'hub' && pg.hideFromMenus).map((pg) => pg.country));
+const visaFinder = Object.entries(byCountry).filter(([country]) => !offMenuCountries.has(country)).map(([country, list]) => {
+  const hub = list.find((x) => x.type === 'hub');
+  const main = hub || list[0];
+  // Use the order set on the country's main page, then any other pages for that country
+  const ordered = hub ? [...(hub.children || []).map((c) => list.find((x) => x.slug === c)).filter(Boolean), ...list.filter((x) => x !== hub && !(hub.children || []).includes(x.slug))] : list.filter((x) => x !== main);
+  const types = ordered.map((x) => [shortLabel(x, country), `/${x.slug}/`]);
+  // China: every visa type. Those without their own page open the China page with that type selected.
+  if (country === 'China') {
+    return [country, `/${main.slug}/`, [
+      ['Business visa (M)', '/china-business-visa/'],
+      ['Tourist visa (L)', '/china-tourist-visa/'],
+      ['Family visit visa (Q / S)', '/china-visa-application/#vc-family'],
+      ['Work visa (Z)', '/china-work-visa-for-uk-citizens/'],
+      ['Student visa (X)', '/china-visa-application/#vc-study'],
+      ['Transit visa (G)', '/china-visa-application/#vc-transit'],
+      ['Crew visa (C)', '/china-visa-application/#vc-crew'],
+      ['Journalist visa (J)', '/china-visa-application/#vc-journalist'],
+    ]];
+  }
+  return [country, `/${main.slug}/`, types, (main.h1 || '').replace(/ from the UK.*$/i, '')];
+}).sort((a, b) => a[0].localeCompare(b[0]));
+const ukTypes = allPages.filter((x) => x.group === 'uk' && x.type === 'service').map((x) => [x.h1.replace(/^UK /, '').replace(/^\w/, (c) => c.toUpperCase()), `/${x.slug}/`]);
+visaFinder.unshift(['UK visas', '/uk-visa-services/', ukTypes]);
+// Icons for the three selling points in the banner (edited in the admin: Homepage › Selling points)
+const pointIcons = [
+  '<svg viewBox="0 0 24 24" width="22" height="22"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M8.5 12l2.5 2.5 4.5-5"/></svg>',
+  '<svg viewBox="0 0 24 24" width="22" height="22"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M15.5 6.5A3.5 3.5 0 0 0 9 8.3c0 3.2 1.4 4.6.4 8.7h7.1M7 12.5h6"/></svg>',
+  '<svg viewBox="0 0 24 24" width="22" height="22"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M13 2.5L4.5 13.5H11l-1 8 8.5-11H12z"/></svg>',
+];
+const starIcon = '<svg viewBox="0 0 24 24" width="22" height="22"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg>';
+const photo = 'width: 100%; border-radius: 12px; object-fit: cover; display: block';
+const placeholder = 'background: #D6E3DA; border-radius: 12px; display: flex; align-items: center; justify-content: center; text-align: center; color: #3A4552; font-size: 15px; padding: 24px; box-sizing: border-box';
+---
+<Page title={title} description={description} schemas={schemas}>
+<main id="main">
+<!-- Hero: visa search first, beside the main heading -->
+<section class="home-hero">
+<div class="hero-inner">
+<div class="hero-text">
+<p class="hero-eyebrow">{home.heroEyebrow}</p>
+<h1>{home.heroHeading}</h1>
+<p class="hero-intro">{home.heroIntro}</p>
+<div class="hero-actions">
+<a href={site.bookingUrl} class="hero-book">Book a consultation</a>
+<a href={tel} class="hero-call">or call {site.phone}</a>
+</div>
+</div>
+<div class="finder-card">
+<h2>Visa search</h2>
+<p>Choose the country, then the type of visa. For the UK, choose UK visas.</p>
+<div class="visa-finder" data-finder={JSON.stringify(visaFinder)}>
+<label for="visa-country-input">1. Country</label>
+<div class="country-combo">
+<input id="visa-country-input" type="text" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="country-list" autocomplete="off" autocapitalize="words" spellcheck="false" placeholder="Type a country, e.g. India" value={visaFinder[0]?.[0] ?? ''} />
+<button type="button" class="combo-toggle" tabindex="-1" aria-label="Show all countries"></button>
+<ul id="country-list" role="listbox" aria-label="Countries" hidden></ul>
+</div>
+<select id="visa-country" class="sr-only" tabindex="-1" aria-hidden="true">
+<option value="">Select a country…</option>
+{visaFinder.map(([country], i) => <option value={country} selected={i === 0}>{country}</option>)}
+<option value="__other">Other countries</option>
+</select>
+<label for="visa-type">2. Type of visa</label>
+<select id="visa-type" disabled>
+<option value="">Select a country first</option>
+</select>
+<button id="visa-check" type="button">Check requirements</button>
+</div>
+</div>
+</div>
+<nav class="hero-popular" aria-label="Popular visas">
+<span>Popular visas</span>
+{popularLinks.map(([label, href]) => <a href={href}>{label}</a>)}
+</nav>
+</section>
+
+<!-- Why choose us: selling points and ratings -->
+<section class="trust-strip">
+<ul>
+{(home.heroPoints ?? []).slice(0, 3).map((pt, i) => (
+<li>
+<span class="trust-icon" aria-hidden="true" set:html={pointIcons[i % pointIcons.length]} />
+<span><strong>{pt.title}</strong><span>{pt.text}</span></span>
+</li>
+))}
+<li>
+<span class="trust-icon" aria-hidden="true" set:html={starIcon} />
+<span><strong>{site.googleRating} ★ rating</strong><span>On Google, Trustpilot and Trustindex. {site.yearsInPractice} years in practice, {site.applicationsHandled} applications handled.</span></span>
+</li>
+</ul>
+</section>
+
+<!-- Visit our office: photo with contact details and the three service areas -->
+<section class="office">
+<div class="office-inner">
+{home.heroPhoto
+  ? <img src={home.heroPhoto} alt={home.heroPhotoAlt} width="1200" height="880" loading="lazy" class="office-photo" />
+  : <div class="office-photo office-placeholder">Add a photo in the admin: Homepage › Main photo</div>}
+<div class="office-card">
+<h2>Visit us in Manchester</h2>
+<p class="office-lead">Meet an adviser at our city-centre office, or contact us by phone or email.</p>
+<div class="office-grid">
+<p class="fr-item"><span class="fr-label">Office</span>{site.address.line1}<br />{site.address.city} {site.address.postcode}<br /><a class="office-directions" href={directionsUrl} target="_blank" rel="noopener"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg>Get directions</a></p>
+<p class="fr-item"><span class="fr-label">Opening hours</span>{site.hours}</p>
+<p class="fr-item"><span class="fr-label">Telephone</span><a href={`tel:${site.phoneIntl}`}>{site.phoneLabel && `${site.phoneLabel}: `}{site.phone}</a>{site.phone2 && <><br /><a href={`tel:${site.phone2Intl}`}>{site.phone2Label && `${site.phone2Label}: `}{site.phone2}</a></>}</p>
+<p class="fr-item"><span class="fr-label">Email</span><a href={`mailto:${site.email}`}>{site.email}</a></p>
+</div>
+<div class="office-services">
+<h3>How we can help</h3>
+<ul>
+{serviceTiles.map(([title, text, href, featured]) => (
+<li><a href={href} class={featured ? 'service-tile service-tile-featured' : 'service-tile'}><strong>{title}<span aria-hidden="true">→</span></strong><span>{text}</span></a></li>
+))}
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<!-- UK routes -->
+<section id="routes" style="max-width: 1200px; margin: 0 auto; padding: 88px 24px; display: flex; flex-direction: column; gap: 40px">
+<div style="display: flex; flex-direction: column; gap: 12px; max-width: 720px">
+<h2 style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 40px; line-height: 1.15; font-weight: 600; color: #14532D">UK visa and immigration services</h2>
+<p style="margin: 0; color: #3A4552">Whichever route applies to you, a regulated adviser reviews your application against current Home Office rules before it's submitted.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px">
+<a href="/uk-spouse-visas/" style="text-decoration: none; color: inherit; border: 1px solid #E3E7EC; border-radius: 10px; padding: 28px; display: flex; flex-direction: column; gap: 10px">
+<h3 style="margin: 0; font-size: 21px; color: #14532D">Spouse &amp; Partner Visas</h3>
+<p style="margin: 0; color: #3A4552; font-size: 16px">Spouse, fiancé and unmarried partner visas, plus extensions. We check your financial requirement and relationship evidence.</p>
+<span style="font-weight: 600; color: #14532D; font-size: 15px">View requirements →</span>
+</a>
+<a href="/skilled-worker-visa-formally-tier-t2-general/" style="text-decoration: none; color: inherit; border: 1px solid #E3E7EC; border-radius: 10px; padding: 28px; display: flex; flex-direction: column; gap: 10px">
+<h3 style="margin: 0; font-size: 21px; color: #14532D">Skilled Worker Visa</h3>
+<p style="margin: 0; color: #3A4552; font-size: 16px">New applications, extensions and change of employment, including Certificate of Sponsorship and salary checks.</p>
+<span style="font-weight: 600; color: #14532D; font-size: 15px">View requirements →</span>
+</a>
+<a href="/indefinite-leave-to-remain-ilr/" style="text-decoration: none; color: inherit; border: 1px solid #E3E7EC; border-radius: 10px; padding: 28px; display: flex; flex-direction: column; gap: 10px">
+<h3 style="margin: 0; font-size: 21px; color: #14532D">Indefinite Leave to Remain</h3>
+<p style="margin: 0; color: #3A4552; font-size: 16px">Settlement applications once you've met the qualifying period, with residence and Life in the UK checks.</p>
+<span style="font-weight: 600; color: #14532D; font-size: 15px">View requirements →</span>
+</a>
+<a href="/british-citizenship/" style="text-decoration: none; color: inherit; border: 1px solid #E3E7EC; border-radius: 10px; padding: 28px; display: flex; flex-direction: column; gap: 10px">
+<h3 style="margin: 0; font-size: 21px; color: #14532D">British Citizenship</h3>
+<p style="margin: 0; color: #3A4552; font-size: 16px">Naturalisation and registration applications, including residence and good character requirements.</p>
+<span style="font-weight: 600; color: #14532D; font-size: 15px">View requirements →</span>
+</a>
+<a href="/student-visa-uk/" style="text-decoration: none; color: inherit; border: 1px solid #E3E7EC; border-radius: 10px; padding: 28px; display: flex; flex-direction: column; gap: 10px">
+<h3 style="margin: 0; font-size: 21px; color: #14532D">UK Student Visa</h3>
+<p style="margin: 0; color: #3A4552; font-size: 16px">Student and child student visas and extensions, with CAS and financial evidence checks, plus the Graduate visa.</p>
+<span style="font-weight: 600; color: #14532D; font-size: 15px">View requirements →</span>
+</a>
+<a href="/uk-visit-visa/" style="text-decoration: none; color: inherit; border: 1px solid #E3E7EC; border-radius: 10px; padding: 28px; display: flex; flex-direction: column; gap: 10px">
+<h3 style="margin: 0; font-size: 21px; color: #14532D">UK Visitor Visa</h3>
+<p style="margin: 0; color: #3A4552; font-size: 16px">Inviting family or business contacts to the UK? We prepare invitation letters, sponsor documents and evidence.</p>
+<span style="font-weight: 600; color: #14532D; font-size: 15px">View requirements →</span>
+</a>
+</div>
+</section>
+
+<!-- Employers -->
+<section id="employers" style="background: #14532D; color: #E7F2EA">
+<div style="max-width: 1200px; margin: 0 auto; padding: 72px 24px; display: flex; flex-wrap: wrap; gap: 32px 56px; align-items: center; justify-content: space-between">
+<div style="flex: 1 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+<p style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: 0.08em; color: #F2C46D">FOR EMPLOYERS</p>
+<h2 style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 36px; line-height: 1.2; font-weight: 600; color: #FFFFFF">Need to hire from overseas? We'll get your sponsor licence in place.</h2>
+<p style="margin: 0; color: #C6DECD">Sponsor licence applications and renewals, Key Personnel set-up, compliance processes and assigning Certificates of Sponsorship, for IT, engineering, hospitality and other UK businesses.</p>
+<p style="margin: 6px 0 0; font-size: 14px; font-weight: 600; color: #F2C46D">Sponsor licence guides by industry</p>
+<div class="industry-links">
+{industryLinks.map(([label, href]) => <a href={href}>{label}</a>)}
+<a href="/sponsor-licence-by-industry/">All industries</a>
+<a href="/sponsor-licence-compliance/">Compliance support</a>
+</div>
+</div>
+<a href="#book" style="background: #F2C46D; color: #14532D; text-decoration: none; padding: 16px 28px; border-radius: 6px; font-weight: 600">Talk to us about sponsorship</a>
+</div>
+</section>
+
+<!-- Process -->
+<section style="max-width: 1200px; margin: 0 auto; padding: 88px 24px; display: flex; flex-direction: column; gap: 40px">
+<h2 style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 40px; line-height: 1.15; font-weight: 600; color: #14532D">How it works</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 32px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 40px; color: #8A5A12; line-height: 1">1</span>
+<h3 style="margin: 0; font-size: 20px; color: #14532D">Consultation</h3>
+<p style="margin: 0; color: #3A4552; font-size: 16px">Tell us your plans and circumstances. We confirm the right route and what it will cost.</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 40px; color: #8A5A12; line-height: 1">2</span>
+<h3 style="margin: 0; font-size: 20px; color: #14532D">Preparation</h3>
+<p style="margin: 0; color: #3A4552; font-size: 16px">We give you a document checklist and help you gather the right evidence.</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 40px; color: #8A5A12; line-height: 1">3</span>
+<h3 style="margin: 0; font-size: 20px; color: #14532D">Review &amp; submission</h3>
+<p style="margin: 0; color: #3A4552; font-size: 16px">Your adviser checks everything against current rules, then we submit.</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 40px; color: #8A5A12; line-height: 1">4</span>
+<h3 style="margin: 0; font-size: 20px; color: #14532D">Decision</h3>
+<p style="margin: 0; color: #3A4552; font-size: 16px">The Home Office makes its decision. We keep you updated and advise on next steps.</p>
+</div>
+</div>
+</section>
+
+<!-- Advisers / why -->
+<section id="advisers" style="background: #F2F6F1">
+<div style="max-width: 1200px; margin: 0 auto; padding: 88px 24px; display: flex; flex-wrap: wrap; gap: 56px; align-items: center">
+<div style="flex: 1 1 380px; min-width: 0">
+{home.advisersPhoto
+  ? <img src={home.advisersPhoto} alt={home.advisersPhotoAlt} width="1000" height="840" loading="lazy" style={`${photo}; height: 420px`} />
+  : <div style={`${placeholder}; height: 420px`}>Add a photo in the admin: Homepage › Advisers photo</div>}
+</div>
+<div style="flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 22px">
+<h2 style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 40px; line-height: 1.15; font-weight: 600; color: #14532D">Meet your advisers</h2>
+<p style="margin: 0; color: #3A4552">{home.advisersIntro}</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px">
+<div style="display: flex; flex-direction: column; gap: 4px">
+<h3 style="margin: 0; font-size: 18px; color: #14532D">Regulated advice</h3>
+<p style="margin: 0; color: #3A4552; font-size: 15px">Registered with the Immigration Advice Authority. <a href="https://portal.immigrationadviceauthority.gov.uk/s/adviser-finder">Verify our registration</a></p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<h3 style="margin: 0; font-size: 18px; color: #14532D">One point of contact</h3>
+<p style="margin: 0; color: #3A4552; font-size: 15px">The same adviser handles your case throughout.</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<h3 style="margin: 0; font-size: 18px; color: #14532D">Fees agreed upfront</h3>
+<p style="margin: 0; color: #3A4552; font-size: 15px">You know our fee before you commit. Consultations from {home.consultationFrom}.</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<h3 style="margin: 0; font-size: 18px; color: #14532D">Checked before submission</h3>
+<p style="margin: 0; color: #3A4552; font-size: 15px">Errors are caught before the Home Office sees them, not after a refusal.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Reviews -->
+<section style="max-width: 1200px; margin: 0 auto; padding: 88px 24px; display: flex; flex-direction: column; gap: 40px">
+<div style="display: flex; flex-wrap: wrap; gap: 12px 32px; justify-content: space-between; align-items: flex-end">
+<h2 style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 40px; line-height: 1.15; font-weight: 600; color: #14532D">What our clients say</h2>
+<span style="color: #3A4552; font-size: 15px"><strong style="color: #14532D">{site.googleRating} ★</strong> from {site.googleReviewCount} Google reviews · <a href={site.googleReviewsUrl}>Read all reviews</a>{site.trustpilotUrl && site.trustpilotRating && <> · <strong style="color: #14532D">{site.trustpilotRating} ★</strong> on Trustpilot{site.trustpilotCount && <> ({site.trustpilotCount} reviews)</>} · <a href={site.trustpilotUrl} target="_blank" rel="noopener">Read on Trustpilot</a></>}</span>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px">
+{home.reviews.map((r) => (
+<figure style="margin: 0; border: 1px solid #E3E7EC; border-radius: 10px; padding: 28px; display: flex; flex-direction: column; gap: 16px">
+<blockquote style="margin: 0; font-size: 17px; color: #1B2430">“{r.quote}”</blockquote>
+<figcaption style="font-size: 14px; color: #55606E">{r.source}</figcaption>
+</figure>
+))}
+</div>
+</section>
+
+<!-- Worldwide -->
+<section id="worldwide" style="border-top: 1px solid #E3E7EC">
+<div style="max-width: 1200px; margin: 0 auto; padding: 72px 24px; display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; flex-direction: column; gap: 10px; max-width: 720px">
+<h2 style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 32px; line-height: 1.2; font-weight: 600; color: #14532D">Travelling abroad? We handle worldwide visas too</h2>
+<p style="margin: 0; color: #3A4552">Visa and eVisa applications for UK residents, plus document legalisation and Indian passport services.</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<a href="/indian-visa-application-uk/" style="text-decoration: none; border: 1px solid #C9D0D8; border-radius: 999px; padding: 10px 20px; font-weight: 500">India</a>
+<a href="/china-visa-application/" style="text-decoration: none; border: 1px solid #C9D0D8; border-radius: 999px; padding: 10px 20px; font-weight: 500">China</a>
+<a href="/schengen-visa-application/" style="text-decoration: none; border: 1px solid #C9D0D8; border-radius: 999px; padding: 10px 20px; font-weight: 500">Schengen</a>
+<a href="/usa-visa-services/" style="text-decoration: none; border: 1px solid #C9D0D8; border-radius: 999px; padding: 10px 20px; font-weight: 500">USA</a>
+<a href="/saudi-arabia-visa-uk/" style="text-decoration: none; border: 1px solid #C9D0D8; border-radius: 999px; padding: 10px 20px; font-weight: 500">Saudi Arabia</a>
+<a href="/ghana-visa-services/" style="text-decoration: none; border: 1px solid #C9D0D8; border-radius: 999px; padding: 10px 20px; font-weight: 500">Ghana</a>
+<a href="/russian-visa-services-from-uk/" style="text-decoration: none; border: 1px solid #C9D0D8; border-radius: 999px; padding: 10px 20px; font-weight: 500">Russia</a>
+<a href="/sri-lanka-visa-services/" style="text-decoration: none; border: 1px solid #C9D0D8; border-radius: 999px; padding: 10px 20px; font-weight: 500">Sri Lanka</a>
+<a href="/document-legalisation/" style="text-decoration: none; border: 1px solid #C9D0D8; border-radius: 999px; padding: 10px 20px; font-weight: 500">Document legalisation</a>
+<a href="/worldwide-visas/" style="text-decoration: none; border: 1px solid #C9D0D8; border-radius: 999px; padding: 10px 20px; font-weight: 500">All countries →</a>
+</div>
+</div>
+</section>
+
+<!-- Guide (edited in the admin: Homepage › Guide sections) -->
+{home.sections?.length > 0 && (
+<section class="home-guide" style="max-width: 1200px; margin: 0 auto; padding: 24px 24px 72px">
+<div style="display: flex; flex-direction: column; gap: 36px; max-width: 800px">
+<GuideSections sections={home.sections} />
+</div>
+</section>
+)}
+
+<!-- FAQ -->
+<section style="background: #F2F6F1">
+<div style="max-width: 880px; margin: 0 auto; padding: 88px 24px; display: flex; flex-direction: column; gap: 28px">
+<h2 style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 40px; line-height: 1.15; font-weight: 600; color: #14532D">Common questions</h2>
+<div style="display: flex; flex-direction: column">
+{home.faqs.map((f, i) => (
+<details open={i === 0} style="border-bottom: 1px solid #D5D9DE; padding: 20px 0">
+<summary style="font-weight: 600; font-size: 18px; color: #14532D">{f.q}</summary>
+<p style="margin: 12px 0 0; color: #3A4552">{f.a}</p>
+</details>
+))}
+</div>
+</div>
+</section>
+
+<!-- Final CTA -->
+<section id="book" style="max-width: 1200px; margin: 0 auto; padding: 88px 24px">
+<div style="background: #14532D; border-radius: 14px; padding: 56px 48px; display: flex; flex-wrap: wrap; gap: 28px; justify-content: space-between; align-items: center">
+<div style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
+<h2 style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 36px; line-height: 1.2; font-weight: 600; color: #FFFFFF">Not sure which visa you need?</h2>
+<p style="margin: 0; color: #C6DECD">Book a consultation and we'll tell you your options, what you'll need and what it will cost.</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 14px">
+<a href={site.bookingUrl} style="background: #F2C46D; color: #14532D; text-decoration: none; padding: 16px 28px; border-radius: 6px; font-weight: 600">Book a consultation</a>
+<a href={tel} style="color: #FFFFFF; text-decoration: none; padding: 15px 27px; border-radius: 6px; font-weight: 600; border: 1px solid #FFFFFF">{site.phone}</a>
+</div>
+</div>
+</section>
+</main>
+</Page>
+
+<script>
+  // Visa finder: choose a country, then the visa type, then go to that page
+  const box = document.querySelector<HTMLElement>('.visa-finder');
+  if (box) {
+    const data: [string, string, [string, string][], string?][] = JSON.parse(box.dataset.finder || '[]');
+    const country = box.querySelector<HTMLSelectElement>('#visa-country')!;
+    const type = box.querySelector<HTMLSelectElement>('#visa-type')!;
+    country.addEventListener('change', () => {
+      const row = data.find((r) => r[0] === country.value);
+      type.innerHTML = '';
+      if (!row) {
+        type.disabled = true;
+        type.add(new Option(country.value === '__other' ? 'See all countries' : 'Select a country first', ''));
+        return;
+      }
+      type.disabled = false;
+      type.add(new Option(row[2].length ? `All ${row[0].replace(/ visas$/, '')} visa options` : (row[3] || `${row[0]} visa`), row[1]));
+      for (const [label, url] of row[2]) type.add(new Option(label, url));
+    });
+    // Type-to-search country box: filters the list as you type, then sets the country above
+    const input = box.querySelector<HTMLInputElement>('#visa-country-input')!;
+    const list = box.querySelector<HTMLUListElement>('#country-list')!;
+    const toggle = box.querySelector<HTMLButtonElement>('.combo-toggle')!;
+    const names = data.map((r) => r[0]);
+    const aliases: Record<string, string> = { uk: 'UK visas', 'united kingdom': 'UK visas', britain: 'UK visas', 'great britain': 'UK visas', england: 'UK visas', usa: 'USA', us: 'USA', america: 'USA', 'united states': 'USA', uae: 'UAE', dubai: 'UAE', 'abu dhabi': 'UAE', 'united arab emirates': 'UAE', europe: 'Schengen', schengen: 'Schengen', holland: 'Netherlands', ksa: 'Saudi Arabia', saudi: 'Saudi Arabia', 'south korea': 'Korea', 'hong kong': 'China' };
+    const norm = (t: string) => t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
+    let active = -1;
+    let matches: string[] = [];
+    const choose = (name: string) => {
+      country.value = name;
+      input.value = name === '__other' ? 'Other countries' : name;
+      close();
+      country.dispatchEvent(new Event('change'));
+    };
+    const close = () => { list.hidden = true; input.setAttribute('aria-expanded', 'false'); input.removeAttribute('aria-activedescendant'); active = -1; };
+    const render = (q: string) => {
+      const n = norm(q);
+      const alias = Object.entries(aliases).filter(([k]) => n && k.startsWith(n)).map(([, v]) => names.find((x) => norm(x).startsWith(norm(v)))).filter(Boolean) as string[];
+      const starts = names.filter((x) => norm(x).startsWith(n));
+      const contains = names.filter((x) => !starts.includes(x) && norm(x).includes(n));
+      matches = n ? [...new Set([...alias, ...starts, ...contains])] : names;
+      list.innerHTML = '';
+      matches.forEach((name, i) => {
+        const li = document.createElement('li');
+        li.id = `country-opt-${i}`; li.setAttribute('role', 'option'); li.textContent = name;
+        li.addEventListener('mousedown', (e) => { e.preventDefault(); choose(name); });
+        list.append(li);
+      });
+      const other = document.createElement('li');
+      other.className = 'combo-other'; other.setAttribute('role', 'option'); other.id = 'country-opt-other';
+      other.textContent = matches.length ? 'Other countries' : 'No match. See all countries';
+      other.addEventListener('mousedown', (e) => { e.preventDefault(); choose('__other'); });
+      list.append(other);
+      active = n && matches.length ? 0 : -1;
+      highlight();
+      list.hidden = false; input.setAttribute('aria-expanded', 'true');
+    };
+    const highlight = () => {
+      [...list.children].forEach((li, i) => li.classList.toggle('on', i === active));
+      const li = list.children[active] as HTMLElement | undefined;
+      if (li) { input.setAttribute('aria-activedescendant', li.id); li.scrollIntoView({ block: 'nearest' }); }
+    };
+    input.addEventListener('focus', () => {
+      input.select();
+      render('');
+      if (window.matchMedia('(max-width: 700px)').matches) setTimeout(() => input.scrollIntoView({ behavior: 'smooth', block: 'start' }), 250);
+    });
+    input.addEventListener('input', () => render(input.value));
+    input.addEventListener('keydown', (e) => {
+      const count = list.children.length;
+      if (e.key === 'ArrowDown') { e.preventDefault(); if (list.hidden) render(input.value); active = Math.min(active + 1, count - 1); highlight(); }
+      else if (e.key === 'ArrowUp') { e.preventDefault(); active = Math.max(active - 1, 0); highlight(); }
+      else if (e.key === 'Enter') { e.preventDefault(); const li = list.children[active] as HTMLElement | undefined; if (li) choose(li.classList.contains('combo-other') ? '__other' : li.textContent!); else if (matches[0]) choose(matches[0]); }
+      else if (e.key === 'Escape') { close(); input.value = country.value === '__other' ? 'Other countries' : country.value; }
+    });
+    input.addEventListener('blur', () => {
+      if (list.hidden) return;
+      const exact = names.find((x) => norm(x) === norm(input.value));
+      if (exact && exact !== country.value) choose(exact);
+      else { close(); input.value = country.value === '__other' ? 'Other countries' : country.value; }
+    });
+    toggle.addEventListener('mousedown', (e) => { e.preventDefault(); if (list.hidden) { input.focus(); } else close(); });
+
+    // UK visas is selected when the page loads, so fill in its visa types straight away
+    if (country.value) country.dispatchEvent(new Event('change'));
+    box.querySelector('#visa-check')!.addEventListener('click', () => {
+      if (country.value === '__other') return void (window.location.href = '/worldwide-visas/');
+      const url = type.value || data.find((r) => r[0] === country.value)?.[1];
+      if (url) window.location.href = url;
+      else input.focus();
+    });
+  }
+</script>
+
+<style is:global>
+  .home-guide section { display: flex; flex-direction: column; gap: 12px; }
+  .home-guide h2 { margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 30px; line-height: 1.2; font-weight: 600; color: #14532D; }
+  .home-guide p { margin: 0; color: #3A4552; font-size: 17px; line-height: 1.65; }
+  .home-guide ul { margin: 0; padding-left: 22px; color: #3A4552; font-size: 17px; line-height: 1.65; }
+  .home-guide li { margin-bottom: 6px; }
+</style>
+
+<style is:global>
+  .industry-links { display: flex; flex-wrap: wrap; gap: 10px; }
+  .industry-links a { color: #FFFFFF; text-decoration: none; border: 1px solid rgba(255,255,255,.45); border-radius: 999px; padding: 8px 16px; font-size: 15px; font-weight: 500; }
+  .industry-links a:hover, .industry-links a:focus-visible { background: #F2C46D; border-color: #F2C46D; color: #14532D; }
+  .home-hero { background: #14532D; color: #DDEBE1; }
+  .hero-inner { max-width: 1200px; margin: 0 auto; padding: 64px 24px 28px; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 48px; align-items: center; }
+  .hero-text { display: flex; flex-direction: column; gap: 18px; }
+  .hero-eyebrow { margin: 0; font-size: 14px; font-weight: 600; letter-spacing: .08em; color: #F2C46D; }
+  .home-hero h1 { margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 44px; line-height: 1.12; font-weight: 600; color: #FFFFFF; }
+  .hero-intro { margin: 0; font-size: 18px; line-height: 1.6; color: #DDEBE1; max-width: 600px; }
+  .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 22px; }
+  .hero-book { background: #F2C46D; color: #0E3B20; text-decoration: none; padding: 16px 28px; border-radius: 6px; font-weight: 700; }
+  .hero-book:hover { background: #F6D48E; }
+  .hero-book:focus-visible, .hero-call:focus-visible { outline: 3px solid #FFFFFF; outline-offset: 3px; }
+  .hero-call { color: #FFFFFF; font-weight: 600; text-underline-offset: 3px; }
+  .finder-card { background: #EEF4EF; border-radius: 14px; padding: 28px; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 18px 40px rgba(0, 0, 0, .22); }
+  .finder-card h2 { margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 28px; color: #14532D; }
+  .finder-card > p { margin: 0; color: #3A4552; font-size: 15px; }
+  .hero-popular { max-width: 1200px; margin: 0 auto; padding: 0 24px 40px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+  .hero-popular span { font-size: 14px; font-weight: 700; color: #F2C46D; margin-right: 4px; }
+  .hero-popular a { color: #FFFFFF; text-decoration: none; border: 1px solid rgba(255,255,255,.45); border-radius: 999px; padding: 7px 15px; font-size: 14.5px; font-weight: 500; }
+  .hero-popular a:hover, .hero-popular a:focus-visible { background: #F2C46D; border-color: #F2C46D; color: #14532D; outline: none; }
+  .visa-finder { width: 100%; display: grid; grid-template-columns: 1fr; gap: 6px; }
+  .visa-finder label { margin-top: 6px; font-size: 14px; font-weight: 700; color: #14532D; }
+  .visa-finder select {
+    min-width: 0; height: 52px; padding: 0 60px 0 14px; font-size: 16px; font-family: inherit; color: #1B2430;
+    border: 1px solid #C9D6CC; border-radius: 6px; cursor: pointer; appearance: none; -webkit-appearance: none;
+    background-color: #FFFFFF;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='20' height='20'%3E%3Cpath d='M6 9l6 6 6-6' fill='none' stroke='%2314532D' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"), linear-gradient(#F2C46D, #F2C46D);
+    background-repeat: no-repeat; background-size: 20px 20px, 46px 100%; background-position: right 13px center, right center;
+  }
+  .visa-finder select:focus-visible { outline: 3px solid #14532D; outline-offset: 2px; }
+  .visa-finder .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .country-combo { position: relative; }
+  .country-combo input { width: 100%; box-sizing: border-box; height: 52px; padding: 0 60px 0 14px; font-size: 16px; font-family: inherit; color: #1B2430; background: #FFFFFF; border: 1px solid #C9D6CC; border-radius: 6px; }
+  .country-combo input::placeholder { color: #6B7A72; }
+  .country-combo input:focus { outline: 3px solid #14532D; outline-offset: 2px; }
+  .combo-toggle { position: absolute; top: 1px; right: 1px; bottom: 1px; width: 46px; margin: 0 !important; height: auto !important; padding: 0 !important; border: 0; border-radius: 0 5px 5px 0 !important; cursor: pointer; background: #F2C46D url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='20' height='20'%3E%3Cpath d='M6 9l6 6 6-6' fill='none' stroke='%2314532D' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center / 20px 20px !important; }
+  #country-list { position: absolute; z-index: 30; left: 0; right: 0; top: calc(100% + 4px); margin: 0; padding: 6px 0; list-style: none; max-height: 264px; overflow-y: auto; background: #FFFFFF; border: 1px solid #C9D6CC; border-radius: 8px; box-shadow: 0 14px 30px rgba(14, 59, 32, .18); }
+  #country-list li { padding: 11px 14px; font-size: 16px; color: #1B2430; cursor: pointer; }
+  #country-list li:hover, #country-list li.on { background: #EAF4EC; color: #14532D; font-weight: 600; }
+  #country-list .combo-other { border-top: 1px solid #DCE6DF; color: #14532D; font-weight: 600; }
+  .visa-finder select:disabled { cursor: not-allowed; color: #6B7A72; background-color: #F4F6F4; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='20' height='20'%3E%3Cpath d='M6 9l6 6 6-6' fill='none' stroke='%23FFFFFF' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"), linear-gradient(#A9B8AE, #A9B8AE); }
+  .visa-finder button { margin-top: 12px; height: 54px; background: #14532D; color: #FFFFFF; border: 0; padding: 0 24px; border-radius: 6px; font-size: 16px; font-weight: 700; font-family: inherit; cursor: pointer; white-space: nowrap; }
+  .visa-finder button:hover { background: #0E3B20; }
+  .visa-finder button:focus-visible { outline: 3px solid #F2C46D; outline-offset: 2px; }
+
+  .trust-strip { background: #FFFFFF; border-bottom: 1px solid #DCE6DF; }
+  .trust-strip ul { max-width: 1200px; margin: 0 auto; padding: 32px 24px; list-style: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+  .trust-strip li { display: flex; gap: 12px; align-items: flex-start; }
+  .trust-strip strong { display: block; color: #14532D; font-size: 16px; line-height: 1.3; margin-bottom: 3px; }
+  .trust-strip li > span:last-child > span { display: block; color: #3A4552; font-size: 14.5px; line-height: 1.45; }
+  .trust-icon { flex: none; width: 40px; height: 40px; border-radius: 50%; background: #F2F6F1; border: 1px solid #DCE6DF; color: #8A5A12; display: flex; align-items: center; justify-content: center; }
+  .trust-icon svg { display: block; }
+
+  .office { background: #F2F6F1; }
+  .office-inner { max-width: 1200px; margin: 0 auto; padding: 72px 24px; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); align-items: center; }
+  .office-photo { width: 100%; height: 440px; object-fit: cover; border-radius: 12px; display: block; }
+  .office-placeholder { background: #D6E3DA; display: flex; align-items: center; justify-content: center; text-align: center; color: #3A4552; padding: 24px; box-sizing: border-box; }
+  .office-card { position: relative; margin-left: -80px; background: #FFFFFF; border: 1px solid #DCE6DF; border-radius: 14px; padding: 32px; box-shadow: 0 18px 40px rgba(14, 59, 32, .12); }
+  .office-card h2 { margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 30px; line-height: 1.2; color: #14532D; }
+  .office-lead { margin: 6px 0 20px; color: #3A4552; font-size: 16px; }
+  .office-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 24px; }
+  .office-directions { display: inline-flex; align-items: center; gap: 5px; margin-top: 6px; }
+  .office-services { margin-top: 24px; padding-top: 20px; border-top: 1px solid #E3E9E5; }
+  .office-services h3 { margin: 0 0 10px; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #8A5A12; }
+  .office-services ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+  .service-tile { display: flex; flex-direction: column; gap: 4px; height: 100%; box-sizing: border-box; padding: 12px 14px; border: 1px solid #D5E6DA; border-radius: 10px; background: #F4F8F5; text-decoration: none; }
+  .service-tile strong { display: flex; justify-content: space-between; gap: 6px; color: #14532D; font-size: 15px; line-height: 1.3; }
+  .service-tile strong span { color: #8A5A12; }
+  .service-tile > span { color: #3A4552; font-size: 13.5px; line-height: 1.4; }
+  .service-tile:hover { border-color: #14532D; background: #EAF4EC; }
+  .service-tile:focus-visible { outline: 3px solid #F2C46D; outline-offset: 2px; }
+  .service-tile-featured { border: 2px solid #F2C46D; background: #FFF9EC; }
+  .service-tile-featured:hover { border-color: #E0AE4F; background: #FDF1D6; }
+  .fr-item { margin: 0; color: #3A4552; font-size: 16px; line-height: 1.5; }
+  .fr-label { display: block; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #8A5A12; }
+  .fr-item a { color: #14532D; font-weight: 600; }
+
+  @media (max-width: 1000px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 32px; padding-top: 32px; }
+    .finder-card { order: -1; }
+    .trust-strip ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .office-inner { grid-template-columns: 1fr; padding: 48px 24px; }
+    .office-card { margin: -48px 16px 0; }
+    .office-photo { height: 320px; }
+  }
+  @media (max-width: 600px) {
+    .home-hero h1 { font-size: 34px; }
+    .finder-card { padding: 22px 18px; }
+    .trust-strip ul { grid-template-columns: 1fr; gap: 18px; }
+    .office-photo { height: 240px; }
+    .office-card { margin: -32px 8px 0; padding: 22px 18px; }
+    .office-grid, .office-services ul { grid-template-columns: 1fr; }
+  }
+</style>

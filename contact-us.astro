@@ -1,0 +1,76 @@
+---
+import Page from '../layouts/Page.astro';
+import { site } from '../data/site.js';
+import { pages } from '../data/pages.js';
+const services = pages.filter((p) => p.type === 'service');
+const maps = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${site.legalName} ${site.address.line1} ${site.address.postcode}`)}`;
+---
+<Page title="Contact Unique Visa Services | 61 Mosley Street, Manchester" description={`Book a consultation with IAA-regulated immigration advisers in Manchester. Call ${site.phone} or visit us at 61 Mosley Street.`}>
+  <main>
+    <div class="page-head">
+      <div class="wrap">
+        <h1>Contact us</h1>
+        <p class="lead">Call, email or visit us to book a consultation. We'll confirm your options, what you'll need and our fee before you commit.</p>
+      </div>
+    </div>
+    <div class="wrap section" style="padding-top:64px">
+      <div class="grid">
+        <div class="panel">
+          <h2>Call us</h2>
+          <a href={`tel:${site.phoneIntl}`} style="font-size:22px;font-weight:600">{site.phoneLabel && `${site.phoneLabel}: `}{site.phone}</a>
+          {site.phone2 && <a href={`tel:${site.phone2Intl}`} style="font-size:22px;font-weight:600">{site.phone2Label && `${site.phone2Label}: `}{site.phone2}</a>}
+          <p class="soft">{site.hours}</p>
+        </div>
+        <div class="panel">
+          <h2>Email us</h2>
+          <a href={`mailto:${site.email}`} style="font-size:18px;font-weight:600">{site.email}</a>
+          <p class="soft">We reply within one working day.</p>
+        </div>
+        <div class="panel">
+          <h2>Visit us</h2>
+          <p>{site.address.line1}<br />{site.address.city} {site.address.postcode}</p>
+          <a href={maps}>Open in Google Maps</a>
+        </div>
+      </div>
+
+      <div class="panel" style="margin-top:24px">
+        <form class="enquiry" name="enquiry" method="POST" action="/thank-you/" data-netlify="true" netlify-honeypot="_gotcha" data-netlify-recaptcha="true">
+          <input type="hidden" name="form-name" value="enquiry" />
+          <h2>Book a consultation</h2>
+          <div class="f-grid">
+            <label>Full name<input name="name" required autocomplete="name" /></label>
+            <label>Phone<input name="phone" type="tel" required autocomplete="tel" /></label>
+            <label class="f-full">Email<input name="email" type="email" required autocomplete="email" /></label>
+            <label class="f-full">What do you need help with?
+              <select name="service" required>
+                <option value="">Choose a service</option>
+                {services.map((s) => <option>{s.h1}</option>)}
+                <option>Something else</option>
+              </select>
+            </label>
+            <label class="f-full">Tell us a little about your situation<textarea name="message" rows="5"></textarea></label>
+          </div>
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="f-trap" aria-hidden="true" />
+          <label class="f-consent"><input type="checkbox" name="consent" required /><span>I agree to {site.name} contacting me about this enquiry. See our <a href="/privacy-policy/">privacy policy</a>.</span></label>
+          <!-- "I'm not a robot" check. Netlify adds Google reCAPTCHA here when the site is published. -->
+          <div class="f-captcha" data-netlify-recaptcha="true"></div>
+          <button class="btn btn-primary" type="submit">Send enquiry</button>
+        </form>
+      </div>
+    </div>
+  </main>
+</Page>
+
+<style>
+  .enquiry { display: flex; flex-direction: column; gap: 18px; }
+  .f-grid { display: grid; gap: 16px; grid-template-columns: 1fr 1fr; }
+  .f-full { grid-column: 1 / -1; }
+  @media (max-width: 640px) { .f-grid { grid-template-columns: 1fr; } }
+  label { display: flex; flex-direction: column; gap: 6px; font-weight: 500; font-size: 15px; }
+  input, select, textarea { font: inherit; font-weight: 400; padding: 12px 14px; border: 1px solid #8FAE99; border-radius: 6px; background: #fff; color: var(--ink); }
+  .f-consent { flex-direction: row; align-items: flex-start; gap: 10px; font-weight: 400; }
+  .f-consent input { margin-top: 5px; }
+  .f-trap { position: absolute; left: -9999px; }
+  .f-captcha { min-height: 78px; }
+  .enquiry .btn { align-self: flex-start; }
+</style>

@@ -1,0 +1,92 @@
+---
+import { site } from '../data/site.js';
+import { menu } from '../data/nav.js';
+// The logo is uploaded in the editor: Business details › Website logo. Without one, the name shows as text.
+import settings from '../../content/settings.json';
+---
+<div class="topbar"><div class="wrap"><span>Regulated by the Immigration Advice Authority · Ref {site.iaaRef}</span><span>{site.hours} · {site.phoneLabel && <>{site.phoneLabel}{' '}</>}<a href={`tel:${site.phoneIntl}`}>{site.phone}</a>{site.phone2 && <> · {site.phone2Label}{' '}<a href={`tel:${site.phone2Intl}`}>{site.phone2}</a></>}</span></div></div>
+<header class="header">
+  <div class="wrap header-row">
+    <a class="brand" href="/">{settings.siteLogo
+      ? <img class="brand-logo" src={settings.siteLogo} alt={site.name} height="72" />
+      : <><span class="brand-name">{site.name}</span><span class="brand-tag">UK immigration advisers in Manchester</span></>}</a>
+    <button type="button" class="search-toggle search-toggle-mob" aria-expanded="false" aria-controls="site-search-panel" aria-label="Search the website"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5 21 21"></path></svg></button>
+    <button type="button" class="btn btn-outline menu-btn" aria-expanded="false" aria-controls="main-nav">Menu</button>
+    <nav id="main-nav" class="nav" aria-label="Main">
+      {menu.map((m) => (
+        <div class="dd">
+          <a aria-haspopup="true" href={m.href}>{m.label} <svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2.5 4.5 6 8l3.5-3.5"></path></svg></a>
+          {m.groups ? (
+            <ul class={m.columns ? "dd-menu dd-mega dd-cols" : "dd-menu dd-mega"}>
+              {m.groups.map((g) => (
+                <li class="dd-group">
+                  <a class="dd-head" href={g.href}>{g.label}</a>
+                  <ul>{g.items.map(([label, href]) => <li><a href={href}>{label}</a></li>)}</ul>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <ul class="dd-menu">{m.items.map(([label, href]) => <li><a href={href}>{label}</a></li>)}</ul>
+          )}
+        </div>
+      ))}
+      <a href="/contact-us/">Contact</a>
+      <button type="button" class="search-toggle search-toggle-desk" aria-expanded="false" aria-controls="site-search-panel" aria-label="Search the website"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M15.5 15.5 21 21"></path></svg></button>
+      <a class="btn btn-primary" href={site.bookingUrl}>Book a consultation</a>
+    </nav>
+  </div>
+  <div class="wrap search-row" id="site-search-panel" hidden>
+    <form class="search-form" role="search" action="/search/" method="get">
+      <label for="site-search" class="sr-only">Search visas and services</label>
+      <input id="site-search" type="search" placeholder="Search, e.g. spouse visa, Indian eVisa, sponsor licence" name="q" />
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+  </div>
+</header>
+
+<script>
+  // Mobile menu button
+  const btn = document.querySelector<HTMLButtonElement>('.menu-btn');
+  const nav = document.getElementById('main-nav');
+  btn?.addEventListener('click', () => {
+    const open = nav!.classList.toggle('open');
+    btn.setAttribute('aria-expanded', String(open));
+  });
+  // Search icon: opens and closes the site search box under the header
+  const panel = document.getElementById('site-search-panel');
+  const toggles = document.querySelectorAll<HTMLButtonElement>('.search-toggle');
+  const setSearch = (open: boolean) => {
+    if (!panel) return;
+    panel.hidden = !open;
+    toggles.forEach((t) => t.setAttribute('aria-expanded', String(open)));
+    if (open) panel.querySelector<HTMLInputElement>('input')?.focus();
+  };
+  toggles.forEach((t) => t.addEventListener('click', () => setSearch(panel!.hidden)));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && panel && !panel.hidden) setSearch(false); });
+  // Only one dropdown open at a time: pointing at a menu, or pressing Escape, closes any menu
+  // that was left open because it still had focus (e.g. after a click or tap).
+  const dds = document.querySelectorAll<HTMLElement>('#main-nav .dd');
+  const release = (except?: HTMLElement) => {
+    const a = document.activeElement as HTMLElement | null;
+    if (a && a.closest('#main-nav .dd') && a.closest('#main-nav .dd') !== except) a.blur();
+  };
+  dds.forEach((dd) => dd.addEventListener('mouseenter', () => release(dd)));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') release(); });
+  document.addEventListener('click', (e) => { if (!(e.target as HTMLElement).closest('#main-nav')) release(); });
+</script>
+
+<style>
+  .brand-logo { display: block; height: 72px; width: auto; max-width: 260px; object-fit: contain; }
+  @media (max-width: 640px) { .brand-logo { height: 54px; } }
+  .search-toggle { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; padding: 0; background: #fff; color: var(--green-800); border: 1px solid #C9D6CC; border-radius: 6px; cursor: pointer; }
+  .search-toggle:hover, .search-toggle[aria-expanded="true"] { background: var(--green-50); border-color: var(--green-800); }
+  .search-toggle:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+  .search-toggle-mob { display: none; }
+  .search-row { padding-top: 4px; }
+  .search-row .search-form { max-width: 640px; margin-left: auto; }
+  @media (max-width: 960px) {
+    .search-toggle-desk { display: none; }
+    .search-toggle-mob { display: inline-flex; margin-left: auto; }
+    .search-row .search-form { max-width: none; }
+  }
+</style>
