@@ -146,7 +146,7 @@ const placeholder = 'background: #D6E3DA; border-radius: 12px; display: flex; al
 <div class="office-grid">
 <p class="fr-item"><span class="fr-label">Office</span>{site.address.line1}<br />{site.address.city} {site.address.postcode}<br /><a class="office-directions" href={directionsUrl} target="_blank" rel="noopener"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg>Get directions</a></p>
 <p class="fr-item"><span class="fr-label">Opening hours</span>{site.hours}</p>
-<p class="fr-item"><span class="fr-label">Telephone</span><a href={`tel:${site.phoneIntl}`}>{site.phone}</a></p>
+<p class="fr-item"><span class="fr-label">Telephone</span><a href={`tel:${site.phoneIntl}`}>{site.phoneLabel && `${site.phoneLabel}: `}{site.phone}</a>{site.phone2 && <><br /><a href={`tel:${site.phone2Intl}`}>{site.phone2Label && `${site.phone2Label}: `}{site.phone2}</a></>}</p>
 <p class="fr-item"><span class="fr-label">Email</span><a href={`mailto:${site.email}`}>{site.email}</a></p>
 </div>
 <div class="office-services">

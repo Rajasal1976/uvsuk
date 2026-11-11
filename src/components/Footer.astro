@@ -34,7 +34,7 @@ const icons = {
           <span><strong>Regulated by the IAA</strong> Ref {site.iaaRef}. <a href={site.iaaFinder}>Check our registration</a></span>
         </div>
       </div>
-      <div><span class="footer-title">Visit or contact us</span><span>{site.address.line1}<br />{site.address.city} {site.address.postcode}</span><span>{site.hours}</span><a href={`tel:${site.phoneIntl}`}>{site.phone}</a><a href={`mailto:${site.email}`}>{site.email}</a></div>
+      <div><span class="footer-title">Visit or contact us</span><span>{site.address.line1}<br />{site.address.city} {site.address.postcode}</span><span>{site.hours}</span><a href={`tel:${site.phoneIntl}`}>{site.phoneLabel && `${site.phoneLabel}: `}{site.phone}</a>{site.phone2 && <a href={`tel:${site.phone2Intl}`}>{site.phone2Label && `${site.phone2Label}: `}{site.phone2}</a>}<a href={`mailto:${site.email}`}>{site.email}</a></div>
       <div><span class="footer-title">UK Immigration Services</span>{ukLinks.map(([label, href]) => <a href={href}>{label}</a>)}<a href={ukMenu?.href ?? '/uk-visa-services/'}>All UK visa services</a></div>
       <div><span class="footer-title">Company</span><a href="/about-us/">About us</a><a href="/blog/">Blog</a><a href="/partner-with-us/">Partner with us</a><a href="/corporate-clients/">Corporate clients</a><a href="/fees/">Fees</a><a href="/faqs/">FAQs</a><a href="/complaints/">Complaints procedure</a><a href="/privacy-policy/">Privacy policy</a><a href="/terms/">Terms and conditions</a><a href="/sitemap/">Sitemap</a></div>
     </div>

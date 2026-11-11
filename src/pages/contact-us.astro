@@ -17,7 +17,8 @@ const maps = `https://www.google.com/maps/search/?api=1&query=${encodeURICompone
       <div class="grid">
         <div class="panel">
           <h2>Call us</h2>
-          <a href={`tel:${site.phoneIntl}`} style="font-size:22px;font-weight:600">{site.phone}</a>
+          <a href={`tel:${site.phoneIntl}`} style="font-size:22px;font-weight:600">{site.phoneLabel && `${site.phoneLabel}: `}{site.phone}</a>
+          {site.phone2 && <a href={`tel:${site.phone2Intl}`} style="font-size:22px;font-weight:600">{site.phone2Label && `${site.phone2Label}: `}{site.phone2}</a>}
           <p class="soft">{site.hours}</p>
         </div>
         <div class="panel">

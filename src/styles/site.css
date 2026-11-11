@@ -258,7 +258,7 @@ a.card:hover { border-color: var(--green-600); color: inherit; }
 
 /* eVisas menu: countries grouped by continent */
 .dd-mega { display: none; grid-template-columns: repeat(4, minmax(150px, 1fr)); gap: 0 8px; width: min(800px, calc(100vw - 48px)); left: auto; right: -240px; padding: 16px 8px; }
-.dd:hover .dd-mega, .dd:focus-within .dd-mega { display: grid; }
+@media (min-width: 961px) { .dd:hover .dd-mega, .dd:focus-within .dd-mega { display: grid; } }
 .dd-group ul { list-style: none; margin: 0; padding: 0; }
 .dd-mega a.dd-head { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--green-800); padding: 6px 18px 8px; }
 .dd-mega .dd-group ul a { padding: 6px 18px; font-size: 15px; }
@@ -291,4 +291,17 @@ a.card:hover { border-color: var(--green-600); color: inherit; }
   .dd-cols .dd-group + .dd-group { border-left: 0; }
   .dd-mega.dd-cols a.dd-head { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--green-800); padding: 10px 0 2px; }
   .dd-cols .dd-group ul a { padding: 8px 0; font-size: inherit; }
+}
+
+/* Menus: only one dropdown open at a time, and the one under the mouse always on top */
+@media (min-width: 961px) {
+  .dd:hover { z-index: 30; }
+  .nav:hover .dd:not(:hover) .dd-menu { display: none !important; }
+}
+
+/* Phones and tablets: the menu is one simple list. Touching it must never switch it to the desktop
+   column layout, or the links move under your finger and the tap opens the wrong page. */
+@media (max-width: 960px) {
+  .dd-menu, .dd:hover .dd-menu, .dd:focus-within .dd-menu { display: block !important; }
+  .dd-mega, .dd-mega.dd-cols, .dd:hover .dd-mega, .dd:focus-within .dd-mega { display: block !important; width: auto !important; }
 }

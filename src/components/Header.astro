@@ -4,7 +4,7 @@ import { menu } from '../data/nav.js';
 // The logo is uploaded in the editor: Business details › Website logo. Without one, the name shows as text.
 import settings from '../../content/settings.json';
 ---
-<div class="topbar"><div class="wrap"><span>Regulated by the Immigration Advice Authority · Ref {site.iaaRef}</span><span>{site.hours} · <a href={`tel:${site.phoneIntl}`}>{site.phone}</a></span></div></div>
+<div class="topbar"><div class="wrap"><span>Regulated by the Immigration Advice Authority · Ref {site.iaaRef}</span><span>{site.hours} · {site.phoneLabel && <>{site.phoneLabel}{' '}</>}<a href={`tel:${site.phoneIntl}`}>{site.phone}</a>{site.phone2 && <> · {site.phone2Label}{' '}<a href={`tel:${site.phone2Intl}`}>{site.phone2}</a></>}</span></div></div>
 <header class="header">
   <div class="wrap header-row">
     <a class="brand" href="/">{settings.siteLogo
@@ -63,6 +63,16 @@ import settings from '../../content/settings.json';
   };
   toggles.forEach((t) => t.addEventListener('click', () => setSearch(panel!.hidden)));
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && panel && !panel.hidden) setSearch(false); });
+  // Only one dropdown open at a time: pointing at a menu, or pressing Escape, closes any menu
+  // that was left open because it still had focus (e.g. after a click or tap).
+  const dds = document.querySelectorAll<HTMLElement>('#main-nav .dd');
+  const release = (except?: HTMLElement) => {
+    const a = document.activeElement as HTMLElement | null;
+    if (a && a.closest('#main-nav .dd') && a.closest('#main-nav .dd') !== except) a.blur();
+  };
+  dds.forEach((dd) => dd.addEventListener('mouseenter', () => release(dd)));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') release(); });
+  document.addEventListener('click', (e) => { if (!(e.target as HTMLElement).closest('#main-nav')) release(); });
 </script>
 
 <style>
