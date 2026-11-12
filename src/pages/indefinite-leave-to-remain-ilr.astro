@@ -3,6 +3,8 @@ import Page from '../layouts/Page.astro';
 import { site } from '../data/site.js';
 import Faq from '../components/Faq.astro';
 import ApplyButton from '../components/ApplyButton.astro';
+import HeadFlag from '../components/HeadFlag.astro';
+import VisaBar from '../components/VisaBar.astro';
 // SEO title, description and FAQs for this page are edited in the admin (content/pages/indefinite-leave-to-remain-ilr.json).
 import content from '../../content/pages/indefinite-leave-to-remain-ilr.json';
 import AbsenceCalculator from '../components/AbsenceCalculator.astro';
@@ -14,12 +16,13 @@ const schemas = [];
 ---
 <Page title={title} description={description} schemas={schemas}>
 <main>
-<div class="page-head">
+<div class="page-head has-bar has-flag">
 <div class="wrap">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/uk-visa-services/">UK Visas</a></nav>
 <h1>{content.h1}</h1>
 {content.intro && <p class="lead">{content.intro}</p>}
-<ApplyButton url={content.applyButton} /></div></div>
+<HeadFlag country="UK" /></div></div>
+<VisaBar slug="indefinite-leave-to-remain-ilr" country="UK" applyUrl={content.applyButton} />
 <div class="wrap section page-body" style="padding-top:64px">
 <div class="content">
 <AbsenceCalculator />

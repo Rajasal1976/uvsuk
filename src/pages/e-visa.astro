@@ -3,6 +3,8 @@
 // Text, FAQs, prices and Google details are edited in the admin (content/pages/e-visa.json).
 import Page from '../layouts/Page.astro';
 import ApplyButton from '../components/ApplyButton.astro';
+import HeadFlag from '../components/HeadFlag.astro';
+import VisaBar from '../components/VisaBar.astro';
 import GuideSections from '../components/GuideSections.astro';
 import Faq from '../components/Faq.astro';
 import CtaBand from '../components/CtaBand.astro';
@@ -12,17 +14,19 @@ import content from '../../content/pages/e-visa.json';
 ---
 <Page title={content.title} description={content.description}>
   <main>
-    <div class="page-head">
+    <div class="page-head has-bar">
       <div class="wrap">
         <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/worldwide-visas/">Worldwide Visas</a></nav>
         <h1>{content.h1}</h1>
         {content.intro && <p class="lead">{content.intro}</p>}
-        <ApplyButton url={content.applyButton} />
+        
         <ul class="evisa-jump" aria-label="Jump to a continent">
           {evisaContinents.map((g) => <li><a href={`#${g.id}`}>{g.name}</a></li>)}
         </ul>
       </div>
     </div>
+
+    <VisaBar slug="e-visa" country="" applyUrl={content.applyButton} />
 
     <div class="wrap section page-body" style="padding-top:64px">
       <div class="content">

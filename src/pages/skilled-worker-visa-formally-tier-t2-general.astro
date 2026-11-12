@@ -5,6 +5,8 @@ import GuideSections from '../components/GuideSections.astro';
 import DocumentsTable from '../components/DocumentsTable.astro';
 import Faq from '../components/Faq.astro';
 import ApplyButton from '../components/ApplyButton.astro';
+import HeadFlag from '../components/HeadFlag.astro';
+import VisaBar from '../components/VisaBar.astro';
 // SEO title, description and FAQs for this page are edited in the admin (content/pages/skilled-worker-visa-formally-tier-t2-general.json).
 import content from '../../content/pages/skilled-worker-visa-formally-tier-t2-general.json';
 import SalaryChecker from '../components/SalaryChecker.astro';
@@ -14,12 +16,13 @@ const schemas = [];
 ---
 <Page title={title} description={description} schemas={schemas}>
 <main>
-<div class="page-head">
+<div class="page-head has-bar has-flag">
 <div class="wrap">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/uk-visa-services/">UK Visas</a></nav>
 <h1>{content.h1}</h1>
 {content.intro && <p class="lead">{content.intro}</p>}
-<ApplyButton url={content.applyButton} /></div></div>
+<HeadFlag country="UK" /></div></div>
+<VisaBar slug="skilled-worker-visa-formally-tier-t2-general" country="UK" applyUrl={content.applyButton} />
 <div class="wrap section page-body" style="padding-top:64px">
 <div class="content">
 <SalaryChecker />

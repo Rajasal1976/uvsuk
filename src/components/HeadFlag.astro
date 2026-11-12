@@ -1,0 +1,8 @@
+---
+// Country flag on the right of the page banner. The country comes from the page's Country field.
+import { flagFor } from '../data/flags.js';
+const { country } = Astro.props;
+const src = flagFor(country);
+const name = country === 'UK' || country === 'Employers' ? 'United Kingdom' : country === 'Schengen' ? 'European Union' : country;
+---
+{src && <img class="head-flag" src={src} alt={`Flag of ${name}`} width="200" height="150" loading="eager" decoding="async" />}

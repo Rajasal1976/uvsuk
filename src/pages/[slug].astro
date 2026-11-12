@@ -7,6 +7,10 @@ import Page from '../layouts/Page.astro';
 import Faq from '../components/Faq.astro';
 import CtaBand from '../components/CtaBand.astro';
 import ApplyButton from '../components/ApplyButton.astro';
+import HeadFlag from '../components/HeadFlag.astro';
+import VisaBar from '../components/VisaBar.astro';
+import { flagFor } from '../data/flags.js';
+import { visaFinder } from '../data/finder.js';
 import PriceTables from '../components/PriceTables.astro';
 import GuideSections from '../components/GuideSections.astro';
 import DocumentsTable from '../components/DocumentsTable.astro';
@@ -22,6 +26,12 @@ const { p } = Astro.props;
 const hubFor = { uk: ['UK Visas', '/uk-visa-services/'], employer: ['Employers', '/hire-foreign-nationals-uk/'], worldwide: ['Worldwide Visas', '/worldwide-visas/'] };
 const hub = hubFor[p.group];
 const showCrumb = hub && hub[1] !== `/${p.slug}/`;
+// Visa bar and flag under the banner on every visa page (not company pages such as About us)
+const withBar = p.group !== 'company';
+const hasFlag = withBar && !!flagFor(p.country);
+// Country step in the breadcrumb (Home / Worldwide visas / China), linking to the country's main page
+const countryRow = p.group === 'worldwide' ? visaFinder.find((r) => r[0] === p.country) : null;
+const countryCrumb = countryRow && countryRow[1] !== `/${p.slug}/` ? [p.country, countryRow[1]] : null;
 const howWeHelp = [
   'Check your eligibility and confirm the right route at your consultation',
   'Give you a personalised document checklist',
@@ -32,14 +42,16 @@ const howWeHelp = [
 ---
 <Page title={p.title} description={p.description}>
   <main>
-    <div class="page-head">
+    <div class:list={['page-head', { 'has-bar': withBar, 'has-flag': hasFlag }]}>
       <div class="wrap">
-        <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a>{showCrumb && <> / <a href={hub[1]}>{hub[0]}</a></>}</nav>
+        <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a>{showCrumb && <> / <a href={hub[1]}>{hub[0]}</a></>}{countryCrumb && <> / <a href={countryCrumb[1]}>{countryCrumb[0]}</a></>}</nav>
         <h1>{p.h1}</h1>
         {p.intro && <p class="lead">{p.intro}</p>}
-        <ApplyButton url={p.applyButton} />
+        {!withBar && <ApplyButton url={p.applyButton} />}
+        {hasFlag && <HeadFlag country={p.country} />}
       </div>
     </div>
+    {withBar && <VisaBar slug={p.slug} country={p.country} applyUrl={p.applyButton} />}
 
     <div class="wrap section page-body" style="padding-top:64px">
       <div class="content">
@@ -60,6 +72,7 @@ const howWeHelp = [
 
         {p.type === 'service' && (
           <>
+            <div id="requirements"></div>
             {p.eligibility?.length > 0 && (
               <section><h2>Do you qualify?</h2><ul>{p.eligibility.map((e) => <li>{e}</li>)}</ul></section>
             )}

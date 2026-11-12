@@ -1,0 +1,62 @@
+---
+// Visa bar under each page banner: country and visa type, already filled in for the page you're on,
+// with a "Check requirements" button. Uses the same list as the homepage visa search (src/data/finder.js).
+import { visaFinder } from '../data/finder.js';
+const { slug = '', country = '', applyUrl = '' } = Astro.props;
+const here = `/${slug}/`;
+const ukCountries = ['UK', 'Employers'];
+let row = visaFinder.find((r) => r[2].some(([, u]) => u === here)) || visaFinder.find((r) => r[1] === here)
+  || visaFinder.find((r) => r[0] === country) || (ukCountries.includes(country) ? visaFinder.find((r) => r[0] === 'UK visas') : null);
+const typeMatch = row?.[2].find(([, u]) => u === here);
+const selectedType = typeMatch ? typeMatch[1] : row?.[1] ?? '';
+const allLabel = (r) => (r[2].length ? `All ${r[0].replace(/ visas$/, '')} visa options` : (r[3] || `${r[0]} visa`));
+const showApply = applyUrl && applyUrl !== 'none';
+---
+<div class="wrap visa-bar-wrap">
+  <div class="visa-bar" data-finder={JSON.stringify(visaFinder)}>
+    <label class="sr-only" for="vb-country">Country</label>
+    <select id="vb-country">
+      {!row && <option value="" selected>Choose a country</option>}
+      {visaFinder.map(([c]) => <option value={c} selected={row?.[0] === c}>{c}</option>)}
+    </select>
+    <label class="sr-only" for="vb-type">Type of visa</label>
+    <select id="vb-type" disabled={!row}>
+      {row ? (
+        <>
+          <option value={row[1]} selected={selectedType === row[1]}>{allLabel(row)}</option>
+          {row[2].map(([label, url]) => <option value={url} selected={selectedType === url}>{label}</option>)}
+        </>
+      ) : <option value="">Choose a country first</option>}
+    </select>
+    <button type="button" id="vb-go" class="btn btn-gold">Check requirements</button>
+    {showApply && <p class="visa-bar-apply">Ready to go? <a href={applyUrl}>{applyUrl === '/contact-us/' ? 'Apply now' : 'Apply online'}</a></p>}
+  </div>
+</div>
+<script>
+  const bar = document.querySelector<HTMLElement>('.visa-bar');
+  if (bar) {
+    const data: [string, string, [string, string][], string?][] = JSON.parse(bar.dataset.finder || '[]');
+    const country = bar.querySelector<HTMLSelectElement>('#vb-country')!;
+    const type = bar.querySelector<HTMLSelectElement>('#vb-type')!;
+    country.addEventListener('change', () => {
+      const row = data.find((r) => r[0] === country.value);
+      type.innerHTML = '';
+      if (!row) { type.disabled = true; type.add(new Option('Choose a country first', '')); return; }
+      type.disabled = false;
+      type.add(new Option(row[2].length ? `All ${row[0].replace(/ visas$/, '')} visa options` : (row[3] || `${row[0]} visa`), row[1]));
+      for (const [label, url] of row[2]) type.add(new Option(label, url));
+    });
+    bar.querySelector('#vb-go')!.addEventListener('click', () => {
+      const url = type.value;
+      if (!url) { country.focus(); return; }
+      const target = new URL(url, location.href);
+      const req = document.getElementById('requirements');
+      if (target.pathname === location.pathname && !target.hash) {
+        (req || document.querySelector('.page-body'))?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        return;
+      }
+      if (!target.hash) target.hash = 'requirements';
+      location.href = target.toString();
+    });
+  }
+</script>

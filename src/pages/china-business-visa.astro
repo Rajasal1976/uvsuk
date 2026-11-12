@@ -4,6 +4,8 @@ import { site } from '../data/site.js';
 import GuideSections from '../components/GuideSections.astro';
 import Faq from '../components/Faq.astro';
 import ApplyButton from '../components/ApplyButton.astro';
+import HeadFlag from '../components/HeadFlag.astro';
+import VisaBar from '../components/VisaBar.astro';
 import PriceTables from '../components/PriceTables.astro';
 // SEO title, description and FAQs for this page are edited in the admin (content/pages/china-business-visa.json).
 import content from '../../content/pages/china-business-visa.json';
@@ -13,12 +15,13 @@ const schemas = [];
 ---
 <Page title={title} description={description} schemas={schemas}>
 <main>
-<div class="page-head">
+<div class="page-head has-bar has-flag">
 <div class="wrap">
-<nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/worldwide-visas/">Worldwide Visas</a></nav>
+<nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/worldwide-visas/">Worldwide Visas</a> / <a href="/china-visa-application/">China</a></nav>
 <h1>{content.h1}</h1>
 {content.intro && <p class="lead">{content.intro}</p>}
-<ApplyButton url={content.applyButton} /></div></div>
+<HeadFlag country="China" /></div></div>
+<VisaBar slug="china-business-visa" country="China" applyUrl={content.applyButton} />
 <div class="wrap section page-body" style="padding-top:64px">
 <div class="content">
 <section>

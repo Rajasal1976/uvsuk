@@ -305,3 +305,40 @@ a.card:hover { border-color: var(--green-600); color: inherit; }
   .dd-menu, .dd:hover .dd-menu, .dd:focus-within .dd-menu { display: block !important; }
   .dd-mega, .dd-mega.dd-cols, .dd:hover .dd-mega, .dd:focus-within .dd-mega { display: block !important; width: auto !important; }
 }
+
+/* Page banner on visa pages: a rounded green card with the country flag on the right,
+   and the visa bar overlapping its bottom edge */
+.page-head.has-bar { background: transparent; padding: 28px 0 0; }
+.page-head.has-bar > .wrap { position: relative; background: #D3EAD5; border-radius: 16px; padding: 30px 36px 70px; }
+.page-head.has-bar .crumbs { color: var(--green-900); margin-bottom: 10px; }
+.page-head.has-bar .crumbs a { color: var(--green-900); }
+.page-head.has-bar h1 { font-size: clamp(30px, 3.4vw, 42px); line-height: 1.15; }
+.page-head.has-bar .lead { color: var(--green-900); font-size: 18px; margin-top: 12px; max-width: 760px; }
+.page-head.has-flag > .wrap { padding-right: 230px; }
+.head-flag { position: absolute; right: 36px; top: 34px; width: 160px; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 3px; }
+.visa-bar-wrap { position: relative; z-index: 5; margin-top: -42px; padding-left: 52px; padding-right: 52px; }
+.visa-bar { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto; gap: 10px; align-items: center; background: #fff; border: 1px solid #C9D6CC; border-radius: 12px; padding: 12px; box-shadow: 0 6px 18px rgba(13, 59, 33, .08); }
+.visa-bar select { min-width: 0; height: 48px; padding: 0 44px 0 14px; font: inherit; font-size: 16px; color: var(--ink); border: 1px solid #C9D6CC; border-radius: 8px; background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='20' height='20'%3E%3Cpath d='M6 9l6 6 6-6' fill='none' stroke='%2314532D' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 14px center / 18px 18px; appearance: none; -webkit-appearance: none; cursor: pointer; }
+.visa-bar select:disabled { color: var(--ink-mute); background-color: #F4F6F4; cursor: not-allowed; }
+.visa-bar .btn { min-height: 48px; border-radius: 8px; white-space: nowrap; background: #F5A623; color: var(--green-900); font-weight: 600; }
+.visa-bar .btn:hover { background: #F7B84A; color: var(--green-900); }
+.visa-bar-apply { grid-column: 1 / -1; margin: 0; padding-left: 2px; font-size: 15px; color: var(--ink-soft); }
+.visa-bar-apply a { font-weight: 600; }
+.visa-bar-wrap + .page-body { padding-top: 48px !important; }
+#requirements { scroll-margin-top: 24px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@media (max-width: 960px) {
+  .page-head.has-flag > .wrap { padding-right: 36px; }
+  .head-flag { width: 120px; top: 30px; }
+  .page-head.has-flag .crumbs, .page-head.has-flag h1 { padding-right: 140px; }
+}
+@media (max-width: 700px) {
+  .page-head.has-bar { padding-top: 16px; }
+  .page-head.has-bar > .wrap { margin: 0 16px; padding: 22px 20px 64px; }
+  .page-head.has-flag .crumbs, .page-head.has-flag h1 { padding-right: 0; }
+  .head-flag { position: static; display: block; width: 56px; margin-bottom: 12px; }
+  .page-head.has-flag > .wrap { display: flex; flex-direction: column; }
+  .page-head.has-flag .head-flag { order: -1; }
+  .visa-bar-wrap { padding-left: 28px; padding-right: 28px; }
+  .visa-bar { grid-template-columns: 1fr; }
+}
