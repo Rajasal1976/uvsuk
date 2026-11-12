@@ -42,12 +42,21 @@
   "sortKey": "1 thailand 2 thailand-tourist-visa-uk",
   "prices": [
     {
-      "service": "Standard",
-      "included": "Application completed and documents checked",
-      "processing": "",
-      "fee": "",
+      "service": "Up to 15 working days",
+      "included": "Tourist e-Visa completed and checked, 60-day stay",
+      "processing": "Single entry, 3 months",
+      "processingFee": "£30",
+      "fee": "£150",
       "popular": true,
-      "processingFee": "",
+      "total": ""
+    },
+    {
+      "service": "Up to 15 working days",
+      "included": "Tourist e-Visa completed and checked, 60-day stay per entry",
+      "processing": "Multiple entry, 6 months",
+      "processingFee": "£150",
+      "fee": "£150",
+      "popular": false,
       "total": ""
     }
   ],

@@ -46,12 +46,21 @@
   "sortKey": "1 thailand 2 thailand-business-visa-uk",
   "prices": [
     {
-      "service": "Standard",
-      "included": "Application completed and documents checked",
-      "processing": "",
-      "fee": "",
+      "service": "Up to 15 working days",
+      "included": "Business visa application completed and checked",
+      "processing": "Single entry, 3 months",
+      "processingFee": "£60",
+      "fee": "£200",
       "popular": true,
-      "processingFee": "",
+      "total": ""
+    },
+    {
+      "service": "Up to 15 working days",
+      "included": "Business visa application completed and checked",
+      "processing": "Multiple entry, 1 year",
+      "processingFee": "£150",
+      "fee": "£200",
+      "popular": false,
       "total": ""
     }
   ],

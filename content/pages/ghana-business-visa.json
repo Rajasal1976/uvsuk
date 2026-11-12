@@ -48,21 +48,84 @@
   "focusKeyword": "Ghana business visa",
   "prices": [
     {
-      "service": "Standard",
+      "service": "Next day",
       "included": "Business visa application completed and checked",
-      "processing": "",
-      "fee": "",
-      "popular": true,
-      "processingFee": "",
+      "processing": "Single entry, 3 months",
+      "processingFee": "£218",
+      "fee": "£250",
+      "popular": false,
       "total": ""
     },
     {
-      "service": "Urgent",
-      "included": "Everything in Standard, with the fastest processing available",
-      "processing": "",
-      "fee": "",
+      "service": "72 hours",
+      "included": "Business visa application completed and checked",
+      "processing": "Single entry, 3 months",
+      "processingFee": "£178",
+      "fee": "£250",
+      "popular": true,
+      "total": ""
+    },
+    {
+      "service": "2-3 weeks",
+      "included": "Business visa application completed and checked",
+      "processing": "Single entry, 3 months",
+      "processingFee": "£138",
+      "fee": "£250",
       "popular": false,
-      "processingFee": "",
+      "total": ""
+    },
+    {
+      "service": "Next day",
+      "included": "Business visa application completed and checked",
+      "processing": "Multiple entry, 6 months",
+      "processingFee": "£258",
+      "fee": "£250",
+      "popular": false,
+      "total": ""
+    },
+    {
+      "service": "72 hours",
+      "included": "Business visa application completed and checked",
+      "processing": "Multiple entry, 6 months",
+      "processingFee": "£218",
+      "fee": "£250",
+      "popular": false,
+      "total": ""
+    },
+    {
+      "service": "2-3 weeks",
+      "included": "Business visa application completed and checked",
+      "processing": "Multiple entry, 6 months",
+      "processingFee": "£178",
+      "fee": "£250",
+      "popular": false,
+      "total": ""
+    },
+    {
+      "service": "Next day",
+      "included": "Business visa application completed and checked",
+      "processing": "Multiple entry, 1 year",
+      "processingFee": "£308",
+      "fee": "£250",
+      "popular": false,
+      "total": ""
+    },
+    {
+      "service": "72 hours",
+      "included": "Business visa application completed and checked",
+      "processing": "Multiple entry, 1 year",
+      "processingFee": "£268",
+      "fee": "£250",
+      "popular": false,
+      "total": ""
+    },
+    {
+      "service": "2-3 weeks",
+      "included": "Business visa application completed and checked",
+      "processing": "Multiple entry, 1 year",
+      "processingFee": "£228",
+      "fee": "£250",
+      "popular": false,
       "total": ""
     }
   ],

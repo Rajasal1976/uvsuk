@@ -48,21 +48,30 @@
   "focusKeyword": "Ghana e-Business visa",
   "prices": [
     {
-      "service": "Standard",
+      "service": "Standard – 96 hours",
       "included": "e-Business visa application completed and checked",
-      "processing": "",
-      "fee": "",
+      "processing": "Single entry",
+      "processingFee": "£195",
+      "fee": "£150",
       "popular": true,
-      "processingFee": "",
       "total": ""
     },
     {
-      "service": "Urgent",
-      "included": "Everything in Standard, with the fastest processing available",
-      "processing": "",
-      "fee": "",
+      "service": "Priority – 48 hours",
+      "included": "e-Business visa application completed and checked",
+      "processing": "Single entry",
+      "processingFee": "£255",
+      "fee": "£150",
       "popular": false,
-      "processingFee": "",
+      "total": ""
+    },
+    {
+      "service": "Express – 5 hours",
+      "included": "e-Business visa application completed and checked",
+      "processing": "Single entry",
+      "processingFee": "£330",
+      "fee": "£150",
+      "popular": false,
       "total": ""
     }
   ],
