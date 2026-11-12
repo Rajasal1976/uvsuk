@@ -52,21 +52,12 @@
   "focusKeyword": "Nigeria tourist eVisa",
   "prices": [
     {
-      "service": "Standard",
-      "included": "Tourist application completed and checked",
-      "processing": "",
-      "fee": "",
+      "service": "2-3 business days",
+      "included": "Tourist eVisa application completed and checked",
+      "processing": "Single entry, 30-day stay, valid up to 90 days",
+      "processingFee": "£247",
+      "fee": "£75",
       "popular": true,
-      "processingFee": "",
-      "total": ""
-    },
-    {
-      "service": "Urgent",
-      "included": "Everything in Standard, submitted the same working day",
-      "processing": "",
-      "fee": "",
-      "popular": false,
-      "processingFee": "",
       "total": ""
     }
   ],

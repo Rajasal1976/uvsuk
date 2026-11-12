@@ -52,21 +52,12 @@
   "focusKeyword": "Nigeria business eVisa",
   "prices": [
     {
-      "service": "Standard",
-      "included": "Business application completed and checked",
-      "processing": "",
-      "fee": "",
+      "service": "2-3 business days",
+      "included": "Business eVisa application completed and checked",
+      "processing": "Single entry, 30-day stay, valid up to 90 days",
+      "processingFee": "£247",
+      "fee": "£100",
       "popular": true,
-      "processingFee": "",
-      "total": ""
-    },
-    {
-      "service": "Urgent",
-      "included": "Everything in Standard, submitted the same working day",
-      "processing": "",
-      "fee": "",
-      "popular": false,
-      "processingFee": "",
       "total": ""
     }
   ],

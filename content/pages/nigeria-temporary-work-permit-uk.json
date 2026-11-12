@@ -48,12 +48,21 @@
   "sortKey": "1 nigeria 3 nigeria-temporary-work-permit-uk",
   "prices": [
     {
-      "service": "Standard",
+      "service": "5 business days",
       "included": "Documents checked and application prepared",
-      "processing": "",
-      "fee": "",
+      "processing": "Single entry, work permit up to 60 days",
+      "processingFee": "£513",
+      "fee": "£350",
       "popular": true,
-      "processingFee": "",
+      "total": ""
+    },
+    {
+      "service": "3 business days",
+      "included": "Documents checked and application prepared",
+      "processing": "Single entry, work permit up to 60 days",
+      "processingFee": "£665",
+      "fee": "£350",
+      "popular": false,
       "total": ""
     }
   ],

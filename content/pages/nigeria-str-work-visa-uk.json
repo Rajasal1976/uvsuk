@@ -48,12 +48,21 @@
   "sortKey": "1 nigeria 3 nigeria-str-work-visa-uk",
   "prices": [
     {
-      "service": "Standard",
+      "service": "10 working days",
       "included": "Documents checked and application prepared",
-      "processing": "",
-      "fee": "",
+      "processing": "Single entry, 90 days",
+      "processingFee": "£655",
+      "fee": "£300",
       "popular": true,
-      "processingFee": "",
+      "total": ""
+    },
+    {
+      "service": "7 working days",
+      "included": "Documents checked and application prepared",
+      "processing": "Single entry, 90 days",
+      "processingFee": "£807.50",
+      "fee": "£300",
+      "popular": false,
       "total": ""
     }
   ],

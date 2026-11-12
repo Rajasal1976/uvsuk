@@ -56,12 +56,21 @@
   "focusKeyword": "Japan visa",
   "prices": [
     {
-      "service": "Standard",
+      "service": "1 week",
       "included": "Application form and schedule of stay completed, documents checked",
-      "processing": "",
-      "fee": "",
+      "processing": "Single entry, 3 months",
+      "processingFee": "£77",
+      "fee": "£200",
       "popular": true,
-      "processingFee": "",
+      "total": ""
+    },
+    {
+      "service": "1 week",
+      "included": "Application form and schedule of stay completed, documents checked",
+      "processing": "Multiple entry, validity varies",
+      "processingFee": "£154",
+      "fee": "£200",
+      "popular": false,
       "total": ""
     }
   ],

@@ -52,12 +52,75 @@
   "sortKey": "1 nigeria 2 b business visa",
   "prices": [
     {
-      "service": "Standard",
-      "included": "Online application completed, documents checked, appointment guidance",
-      "processing": "",
-      "fee": "",
+      "service": "3 business days",
+      "included": "Business visa application completed, documents checked, appointment guidance",
+      "processing": "Single entry, 30 days, valid up to 90 days",
+      "processingFee": "£212",
+      "fee": "£250",
       "popular": true,
-      "processingFee": "",
+      "total": ""
+    },
+    {
+      "service": "5 business days",
+      "included": "Business visa application completed, documents checked, appointment guidance",
+      "processing": "Single entry, 30 days, valid up to 90 days",
+      "processingFee": "£220",
+      "fee": "£250",
+      "popular": false,
+      "total": ""
+    },
+    {
+      "service": "5 business days",
+      "included": "Business visa application completed, documents checked, appointment guidance",
+      "processing": "Single entry, valid up to 180 days",
+      "processingFee": "£370",
+      "fee": "£250",
+      "popular": false,
+      "total": ""
+    },
+    {
+      "service": "3 business days",
+      "included": "Business visa application completed, documents checked, appointment guidance",
+      "processing": "Single entry, valid up to 180 days",
+      "processingFee": "£428",
+      "fee": "£250",
+      "popular": false,
+      "total": ""
+    },
+    {
+      "service": "3 business days",
+      "included": "Business visa application completed, documents checked, appointment guidance",
+      "processing": "Multiple entry, 30 days, valid up to 90 days",
+      "processingFee": "£212",
+      "fee": "£250",
+      "popular": false,
+      "total": ""
+    },
+    {
+      "service": "5 business days",
+      "included": "Business visa application completed, documents checked, appointment guidance",
+      "processing": "Multiple entry, 30 days, valid up to 90 days",
+      "processingFee": "£220",
+      "fee": "£250",
+      "popular": false,
+      "total": ""
+    },
+    {
+      "service": "5 business days",
+      "included": "Business visa application completed, documents checked, appointment guidance",
+      "processing": "Multiple entry, valid up to 1 year",
+      "processingFee": "£630",
+      "fee": "£250",
+      "popular": false,
+      "total": ""
+    },
+    {
+      "service": "3 business days",
+      "included": "Business visa application completed, documents checked, appointment guidance",
+      "processing": "Multiple entry, valid up to 1 year",
+      "processingFee": "£677",
+      "fee": "£250",
+      "popular": false,
       "total": ""
     }
   ],

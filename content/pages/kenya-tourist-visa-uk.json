@@ -56,21 +56,12 @@
   "focusKeyword": "Kenya tourist ETA",
   "prices": [
     {
-      "service": "Standard",
+      "service": "72 hours",
       "included": "Tourist application completed and checked",
-      "processing": "",
-      "fee": "",
+      "processing": "Single entry, 3 months",
+      "processingFee": "£35",
+      "fee": "£50",
       "popular": true,
-      "processingFee": "",
-      "total": ""
-    },
-    {
-      "service": "Urgent",
-      "included": "Everything in Standard, submitted the same working day",
-      "processing": "",
-      "fee": "",
-      "popular": false,
-      "processingFee": "",
       "total": ""
     }
   ],
