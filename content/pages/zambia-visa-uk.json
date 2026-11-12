@@ -47,21 +47,21 @@
   "focusKeyword": "Zambia visa",
   "prices": [
     {
-      "service": "Standard",
-      "included": "Application completed and checked, photo and passport scan checked",
-      "processing": "",
-      "fee": "",
+      "service": "5 working days",
+      "included": "Tourist or business application completed and checked",
+      "processing": "Single entry, 3 months",
+      "processingFee": "£35",
+      "fee": "£150",
       "popular": true,
-      "processingFee": "",
       "total": ""
     },
     {
-      "service": "Urgent",
-      "included": "Everything in Standard, submitted the same working day",
-      "processing": "",
-      "fee": "",
+      "service": "5 working days",
+      "included": "Tourist or business application completed and checked",
+      "processing": "Multiple entry, 3 months",
+      "processingFee": "£120",
+      "fee": "£150",
       "popular": false,
-      "processingFee": "",
       "total": ""
     }
   ],

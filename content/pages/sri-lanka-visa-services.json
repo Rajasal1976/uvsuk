@@ -22,20 +22,22 @@
   "applyButton": "/apply/sri-lanka-eta/",
   "prices": [
     {
-      "service": "Standard",
+      "service": "Tourist ETA – 72 hours",
       "included": "Application completed and checked, photo and passport scan checked",
-      "processing": "",
-      "fee": "",
+      "processing": "Double entry, 30 days",
+      "processingFee": "£30",
+      "fee": "£50",
       "popular": true,
-      "processingFee": ""
+      "total": ""
     },
     {
-      "service": "Urgent",
-      "included": "Everything in Standard, submitted the same working day",
+      "service": "Business ETA",
+      "included": "Application completed and checked, photo and passport scan checked",
       "processing": "",
-      "fee": "",
+      "processingFee": "£34",
+      "fee": "£65",
       "popular": false,
-      "processingFee": ""
+      "total": ""
     }
   ],
   "country": "Sri Lanka",

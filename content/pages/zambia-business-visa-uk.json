@@ -48,21 +48,21 @@
   "focusKeyword": "Zambia business visa",
   "prices": [
     {
-      "service": "Standard",
+      "service": "5 working days",
       "included": "Business application completed and checked",
-      "processing": "",
-      "fee": "",
+      "processing": "Single entry, 3 months",
+      "processingFee": "£35",
+      "fee": "£150",
       "popular": true,
-      "processingFee": "",
       "total": ""
     },
     {
-      "service": "Urgent",
-      "included": "Everything in Standard, submitted the same working day",
-      "processing": "",
-      "fee": "",
+      "service": "5 working days",
+      "included": "Business application completed and checked",
+      "processing": "Multiple entry, 3 months",
+      "processingFee": "£120",
+      "fee": "£150",
       "popular": false,
-      "processingFee": "",
       "total": ""
     }
   ],
