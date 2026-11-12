@@ -108,6 +108,15 @@ export const structure = [
     ]
   },
   {
+    "slug": "uk-ancestry-visa",
+    "type": "service",
+    "group": "uk",
+    "related": [
+      "indefinite-leave-to-remain-ilr",
+      "british-citizenship"
+    ]
+  },
+  {
     "slug": "indefinite-leave-to-remain-ilr",
     "type": "service",
     "group": "uk",

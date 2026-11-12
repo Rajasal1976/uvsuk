@@ -17,6 +17,7 @@ const fullMenu = [
           ['Skilled Worker Visa', '/skilled-worker-visa-formally-tier-t2-general/'],
           ['Student Visa', '/student-visa-uk/'],
           ['Graduate Visa', '/post-study-work-visa/'],
+          ['UK Ancestry Visa', '/uk-ancestry-visa/'],
           ['Indefinite Leave to Remain', '/indefinite-leave-to-remain-ilr/'],
           ['British Citizenship', '/british-citizenship/'],
           ['UK Visitor Visa', '/uk-visit-visa/'],

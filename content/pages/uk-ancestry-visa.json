@@ -1,0 +1,112 @@
+{
+    "title": "UK Ancestry Visa | Requirements and Applications",
+    "description": "UK Ancestry visa help for Commonwealth citizens with a UK-born grandparent: eligibility, documents, work rights and settlement after 5 years.",
+    "h1": "UK Ancestry visa",
+    "intro": "The UK Ancestry visa lets Commonwealth citizens with a grandparent born in the UK live and work here for 5 years, then apply to settle. Our IAA-regulated advisers in Manchester check your family documents and prepare your UK Ancestry visa application.",
+    "eligibility": [
+        "You are a Commonwealth citizen aged 17 or over",
+        "One of your grandparents was born in the UK, the Channel Islands or the Isle of Man, or in Ireland before 31 March 1922",
+        "You can work and plan to work in the UK",
+        "You can support yourself without public funds"
+    ],
+    "sections": [
+        {
+            "heading": "Who can apply for a UK Ancestry visa?",
+            "text": "You can apply if you are a Commonwealth citizen aged 17 or over and can prove that one of your grandparents was born in the UK, the Channel Islands or the Isle of Man. A grandparent born in what is now the Republic of Ireland also counts if they were born before 31 March 1922. Grandparents born on a British-registered ship or aircraft can count too. Some British nationals, such as British overseas territories citizens and British overseas citizens, can also apply.\n\nThe link can be through your mother’s or father’s side, and through adoption in some cases. It must be a grandparent: a great-grandparent doesn’t qualify."
+        },
+        {
+            "heading": "What the UK Ancestry visa lets you do",
+            "text": "- Live in the UK for 5 years\n- Work in almost any job, or be self-employed\n- Study\n- Bring your partner and children under 18 as your dependants\n- Apply for Indefinite Leave to Remain after 5 years\n\nYou can’t claim most public funds while you’re on the visa."
+        },
+        {
+            "heading": "UK Ancestry visa requirements in detail",
+            "text": "You need to show the family link, generation by generation, with birth certificates for you, your parent and your grandparent, plus marriage or change-of-name documents if any names differ. You also need to show that you are able to work and intend to work in the UK, for example with a job offer or evidence of your job search, and that you have enough money to support yourself and any dependants until you’re earning. There’s no fixed amount, so the evidence needs to be convincing."
+        },
+        {
+            "heading": "How long does a UK Ancestry visa take?",
+            "text": "Applications from outside the UK are usually decided within about 3 weeks of your biometrics appointment, though times vary by country. You can apply up to 3 months before you plan to travel. You pay the application fee and the Immigration Health Surcharge when you apply."
+        },
+        {
+            "heading": "Settlement after 5 years",
+            "text": "After 5 years on the UK Ancestry visa, you can apply for Indefinite Leave to Remain, then British citizenship. Under the government’s earned settlement plans, Commonwealth citizens on the UK Ancestry route keep a 5-year route to settlement. You will need the Life in the UK test and English at B1 level for settlement. Keep your time outside the UK within the limits: see our [Indefinite Leave to Remain](/indefinite-leave-to-remain-ilr/) page."
+        },
+        {
+            "heading": "How we help with your UK Ancestry visa",
+            "text": "We check that your family link qualifies before you spend money on an application, review your birth and marriage certificates, help you show your plans to work and your funds, and prepare your application and supporting letter. We can also apply for your partner and children at the same time. We advise clients across the UK and overseas by phone, video call and email."
+        }
+    ],
+    "faqs": [
+        {
+            "q": "Who qualifies for a UK Ancestry visa?",
+            "a": "Commonwealth citizens aged 17 or over with a grandparent born in the UK, the Channel Islands or the Isle of Man, or in Ireland before 31 March 1922, who can work and support themselves in the UK."
+        },
+        {
+            "q": "Do I need a job offer for a UK Ancestry visa?",
+            "a": "No, but you must show that you are able to work and plan to work in the UK. A job offer or evidence of your job search helps."
+        },
+        {
+            "q": "Can my family come with me on a UK Ancestry visa?",
+            "a": "Yes. Your husband, wife, civil or unmarried partner and children under 18 can apply as your dependants."
+        },
+        {
+            "q": "Does a great-grandparent count?",
+            "a": "No. The UK Ancestry visa only covers a grandparent born in the UK, the Channel Islands, the Isle of Man, or Ireland before 1922."
+        },
+        {
+            "q": "Can I settle in the UK after a UK Ancestry visa?",
+            "a": "Yes. You can apply for Indefinite Leave to Remain after 5 years, and the government’s plans keep a 5-year route for UK Ancestry visa holders."
+        },
+        {
+            "q": "Do I need to speak English for a UK Ancestry visa?",
+            "a": "There’s no English test for the visa itself, but you will need English at B1 level and the Life in the UK test when you apply to settle."
+        }
+    ],
+    "documentsTable": [
+        {
+            "document": "Passport",
+            "details": "Your current passport, and any previous passports.",
+            "needed": "Required"
+        },
+        {
+            "document": "Your birth certificate",
+            "details": "Your full birth certificate showing your parents’ names.",
+            "needed": "Required"
+        },
+        {
+            "document": "Your parent’s birth certificate",
+            "details": "Full certificate for the parent linking you to your grandparent.",
+            "needed": "Required"
+        },
+        {
+            "document": "Your grandparent’s birth certificate",
+            "details": "Showing they were born in the UK, the Channel Islands, the Isle of Man, or Ireland before 31 March 1922.",
+            "needed": "Required"
+        },
+        {
+            "document": "Marriage or name-change documents",
+            "details": "If names differ between the certificates.",
+            "needed": "If applicable"
+        },
+        {
+            "document": "Evidence you plan to work",
+            "details": "A job offer, or evidence of your job search, CV and qualifications.",
+            "needed": "Required"
+        },
+        {
+            "document": "Proof of funds",
+            "details": "Bank statements showing you can support yourself until you’re earning.",
+            "needed": "Required"
+        },
+        {
+            "document": "TB test certificate",
+            "details": "If you are applying from a listed country.",
+            "needed": "If applicable"
+        }
+    ],
+    "govuk": "https://www.gov.uk/ancestry-visa",
+    "applyButton": "none",
+    "country": "UK",
+    "sortKey": "1 uk 1 ancestry visa",
+    "focusKeyword": "UK Ancestry visa",
+    "shareImage": "/images/uvs-share.jpg"
+}
