@@ -1,0 +1,72 @@
+{
+  "title": "Iran visa from the UK | Application Help | UVS",
+  "description": "Iran visa from the UK for tourist and business trips. Who needs one, authorisation codes, documents and fees. We check and apply for you.",
+  "h1": "Iran visa from the UK",
+  "intro": "Most visitors need a visa to travel to Iran, and it's issued in two stages: an authorisation code first, then the visa itself. We help UK residents with Iran tourist and business visas. Choose the visa that matches your trip below.",
+  "eligibility": [
+    "Your passport is valid for at least 6 months from the date you arrive",
+    "You are travelling for tourism, to visit family or for business meetings",
+    "You have read the UK government's travel advice for Iran"
+  ],
+  "sections": [
+    {
+      "heading": "UK government travel advice for Iran",
+      "text": "The UK Foreign, Commonwealth & Development Office (FCDO) currently advises against all travel to Iran. It warns that British and British-Iranian dual nationals face a very high risk of arrest, questioning or detention, and that UK consular help in Iran is very limited. Travelling against FCDO advice can also invalidate your travel insurance. Please read the [FCDO travel advice for Iran](https://www.gov.uk/foreign-travel-advice/iran) before you apply. We only process the visa; the decision to travel is yours."
+    },
+    {
+      "heading": "How the Iran visa works",
+      "text": "Getting an Iran visa is a two-stage process:\n- An authorisation code is requested through the Ministry of Foreign Affairs in Iran, usually by a travel agency or the company you're visiting\n- Once the code is issued, the visa is applied for and stamped in your passport by the Iranian embassy"
+    },
+    {
+      "heading": "Iran visa for British passport holders",
+      "text": "British, US and Canadian passport holders have extra conditions for Iran, including travelling on a pre-approved itinerary with a licensed guide. Fees and processing can also depend on your nationality, so we confirm the current rules for your passport before you pay."
+    },
+    {
+      "heading": "Iran visa help from Manchester",
+      "text": "We're based in Manchester city centre and help travellers across the UK with Iran visa applications. We check your documents, complete your application and keep you updated until your passport is back with you."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Can British citizens get an Iran visa?",
+      "a": "Iran does issue visas to British citizens, with extra conditions such as a guided itinerary. However, the UK government currently advises against all travel to Iran, so please read its travel advice first."
+    },
+    {
+      "q": "What is an Iran visa authorisation code?",
+      "a": "It's an approval reference from Iran's Ministry of Foreign Affairs. The visa can only be issued once the code has been granted."
+    },
+    {
+      "q": "How long does an Iran visa take?",
+      "a": "Once the authorisation code is granted, the visa is usually issued in about a week, or the next day with the urgent service."
+    }
+  ],
+  "govuk": "https://www.gov.uk/foreign-travel-advice/iran",
+  "applyButton": "/contact-us/",
+  "country": "Iran",
+  "sortKey": "1 iran 1 iran visa",
+  "focusKeyword": "Iran visa",
+  "prices": [],
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Original passport, valid for at least 6 months, with two blank pages",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent passport-style colour photo (women wearing a headscarf)",
+      "needed": "Required"
+    },
+    {
+      "document": "Authorisation code",
+      "details": "Visa authorisation reference issued in Iran before the visa can be stamped",
+      "needed": "Required"
+    }
+  ],
+  "shareImage": "/images/uvs-share.jpg"
+}

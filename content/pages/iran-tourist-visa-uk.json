@@ -1,0 +1,93 @@
+{
+  "title": "Iran tourist visa from the UK | Apply Online | UVS",
+  "description": "Iran tourist visa from the UK: authorisation code, documents, fees and timescales. We check your application and apply for you.",
+  "h1": "Iran tourist visa from the UK",
+  "purposeLabel": "Tourist visa",
+  "intro": "Planning a holiday or a visit to family in Iran? This page explains the Iran tourist visa, the authorisation code you need first and what to prepare. We check your documents and apply for you.",
+  "eligibility": [
+    "You are travelling for a holiday, sightseeing or to visit family or friends",
+    "You won't work or do business during your visit",
+    "You have a return ticket and enough money for your stay"
+  ],
+  "sections": [
+    {
+      "heading": "UK government travel advice for Iran",
+      "text": "The UK Foreign, Commonwealth & Development Office (FCDO) currently advises against all travel to Iran. It warns that British and British-Iranian dual nationals face a very high risk of arrest, questioning or detention, and that UK consular help in Iran is very limited. Travelling against FCDO advice can also invalidate your travel insurance. Please read the [FCDO travel advice for Iran](https://www.gov.uk/foreign-travel-advice/iran) before you apply. We only process the visa; the decision to travel is yours."
+    },
+    {
+      "heading": "What an Iran tourist visa covers",
+      "text": "An Iran tourist visa is for holidays, sightseeing and visiting family or friends, usually for a single entry with a stay of up to one month. It doesn't cover business meetings or work. If you're travelling for business, see our [Iran business visa](/iran-business-visa-uk/) page."
+    },
+    {
+      "heading": "Authorisation code and guided travel",
+      "text": "Before the visa can be issued, an authorisation code must be granted in Iran, usually through a licensed travel agency. British, US and Canadian passport holders must also travel on a pre-approved itinerary with a licensed guide."
+    },
+    {
+      "heading": "Iran tourist visa help from Manchester",
+      "text": "We're based in Manchester city centre and handle Iran tourist visa applications for travellers across the UK. Before you travel, read the UK government's [travel advice for Iran](https://www.gov.uk/foreign-travel-advice/iran)."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "How long can I stay on an Iran tourist visa?",
+      "a": "Usually up to one month, on a single entry."
+    },
+    {
+      "q": "Can I visit family on an Iran tourist visa?",
+      "a": "Yes. Visiting family or friends is covered by the tourist visa."
+    },
+    {
+      "q": "Do I need a guide in Iran?",
+      "a": "British, US and Canadian passport holders must travel on a pre-approved itinerary with a licensed guide. Other nationalities usually don't."
+    }
+  ],
+  "govuk": "https://www.gov.uk/foreign-travel-advice/iran",
+  "applyButton": "/contact-us/",
+  "country": "Iran",
+  "sortKey": "1 iran 2 iran tourist",
+  "focusKeyword": "Iran tourist visa",
+  "prices": [
+    {
+      "service": "1 week",
+      "included": "Tourist visa application completed and checked",
+      "processing": "Single entry, 1 month",
+      "processingFee": "£185",
+      "fee": "£200",
+      "popular": true,
+      "total": ""
+    }
+  ],
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Original passport, valid for at least 6 months, with two blank pages",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent passport-style colour photo (women wearing a headscarf)",
+      "needed": "Required"
+    },
+    {
+      "document": "Authorisation code",
+      "details": "Visa authorisation reference issued in Iran before the visa can be stamped",
+      "needed": "Required"
+    },
+    {
+      "document": "Flight and hotel bookings",
+      "details": "Return flight and hotel bookings, or your tour itinerary",
+      "needed": "Required"
+    },
+    {
+      "document": "Travel insurance",
+      "details": "Travel insurance valid in Iran",
+      "needed": "Required"
+    }
+  ],
+  "shareImage": "/images/uvs-share.jpg"
+}

@@ -1,0 +1,83 @@
+{
+  "title": "Nigeria Arrival Card (Landing Card) from the UK | UVS",
+  "description": "Every non-Nigerian traveller must complete Nigeria's online landing card before boarding. We complete and submit it for you, usually the same day.",
+  "h1": "Nigeria arrival card (landing card)",
+  "purposeLabel": "Arrival card (landing card)",
+  "intro": "Since May 2025, everyone travelling to Nigeria, apart from Nigerian citizens, must complete an online landing card before boarding their flight. It replaced the paper form you used to fill in on the plane. We complete and submit it for you, usually the same day.",
+  "eligibility": [
+    "You are travelling to Nigeria and are not a Nigerian citizen",
+    "You already have your visa or eVisa, or are applying for it",
+    "You know your flight details and where you'll stay in Nigeria"
+  ],
+  "sections": [
+    {
+      "heading": "Do I need a Nigeria arrival card?",
+      "text": "Yes, if you're not a Nigerian citizen. The landing card must be completed online before you board, and airlines can check it. Leaving it until the airport can delay your journey or stop you boarding."
+    },
+    {
+      "heading": "Arrival card and visa: you need both",
+      "text": "The landing card is not a visa. It records your flight, address and reason for travel. You still need a valid visa or eVisa to enter Nigeria. See our [Nigeria tourist eVisa](/nigeria-tourist-evisa-uk/) and [Nigeria business eVisa](/nigeria-business-evisa-uk/) pages."
+    },
+    {
+      "heading": "Exit card when you leave",
+      "text": "There's also an online exit card to complete before you leave Nigeria. Ask us and we can do both at the same time."
+    },
+    {
+      "heading": "Nigeria arrival card help from Manchester",
+      "text": "We're based in Manchester city centre and help travellers across the UK with their Nigeria visas and landing cards. Send us your details and we'll complete and submit the card, then email you the confirmation to show at the airport."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Is the Nigeria arrival card the same as a visa?",
+      "a": "No. It's a separate online form. You need a valid visa or eVisa as well."
+    },
+    {
+      "q": "When should I complete the Nigeria landing card?",
+      "a": "Before you board your flight to Nigeria. We recommend doing it a few days before you travel."
+    },
+    {
+      "q": "Is there a government fee for the landing card?",
+      "a": "No. There's no official fee, only our service fee for completing and submitting it for you."
+    }
+  ],
+  "govuk": "https://www.gov.uk/foreign-travel-advice/nigeria/entry-requirements",
+  "applyButton": "/contact-us/",
+  "country": "Nigeria",
+  "sortKey": "1 nigeria 4 arrival card",
+  "focusKeyword": "Nigeria arrival card",
+  "prices": [
+    {
+      "service": "Same day",
+      "included": "Landing card completed, submitted and confirmation emailed to you",
+      "processing": "Single entry",
+      "processingFee": "£0",
+      "fee": "£35",
+      "popular": true,
+      "total": ""
+    }
+  ],
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Passport photo page scan",
+      "needed": "Required"
+    },
+    {
+      "document": "Visa or eVisa",
+      "details": "Your Nigeria visa or eVisa details",
+      "needed": "Required"
+    },
+    {
+      "document": "Flight details",
+      "details": "Your flight number and arrival date",
+      "needed": "Required"
+    },
+    {
+      "document": "Address in Nigeria",
+      "details": "Hotel or host address",
+      "needed": "Required"
+    }
+  ],
+  "shareImage": "/images/uvs-share.jpg"
+}

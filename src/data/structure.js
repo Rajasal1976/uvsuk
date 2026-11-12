@@ -276,7 +276,8 @@ export const structure = [
       "document-legalisation",
       "indian-passport-services",
       "second-uk-passport",
-      "japan-visa-services"
+      "japan-visa-services",
+      "iran-visa-uk"
     ]
   },
   {
@@ -550,6 +551,28 @@ export const structure = [
     "visa": "evisa"
   },
   {
+    "slug": "iran-visa-uk",
+    "type": "hub",
+    "group": "worldwide",
+    "visa": "travel",
+    "children": [
+      "iran-tourist-visa-uk",
+      "iran-business-visa-uk"
+    ]
+  },
+  {
+    "slug": "iran-tourist-visa-uk",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "travel"
+  },
+  {
+    "slug": "iran-business-visa-uk",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "travel"
+  },
+  {
     "slug": "ivory-coast-visa-uk",
     "type": "hub",
     "group": "worldwide",
@@ -802,7 +825,8 @@ export const structure = [
       "nigeria-tourist-visa-uk",
       "nigeria-business-visa-uk",
       "nigeria-str-work-visa-uk",
-      "nigeria-temporary-work-permit-uk"
+      "nigeria-temporary-work-permit-uk",
+      "nigeria-arrival-card-uk"
     ]
   },
   {
@@ -813,6 +837,12 @@ export const structure = [
   },
   {
     "slug": "nigeria-business-evisa-uk",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "evisa"
+  },
+  {
+    "slug": "nigeria-arrival-card-uk",
     "type": "service",
     "group": "worldwide",
     "visa": "evisa"

@@ -1,0 +1,107 @@
+{
+  "title": "Iran business visa from the UK | Apply Online | UVS",
+  "description": "Iran business visa from the UK for meetings and trade visits. Authorisation code, documents, fees and timescales. We apply for you.",
+  "h1": "Iran business visa from the UK",
+  "purposeLabel": "Business visa",
+  "intro": "Travelling to Iran for meetings, negotiations or a trade visit? This page explains the Iran business visa, the authorisation code your Iranian contact requests first, and what to prepare. We check your documents and apply for you.",
+  "eligibility": [
+    "You are travelling for business meetings, negotiations or a trade visit",
+    "You have an invitation from a company in Iran",
+    "You won't take up paid work in Iran"
+  ],
+  "sections": [
+    {
+      "heading": "UK government travel advice for Iran",
+      "text": "The UK Foreign, Commonwealth & Development Office (FCDO) currently advises against all travel to Iran. It warns that British and British-Iranian dual nationals face a very high risk of arrest, questioning or detention, and that UK consular help in Iran is very limited. Travelling against FCDO advice can also invalidate your travel insurance. Please read the [FCDO travel advice for Iran](https://www.gov.uk/foreign-travel-advice/iran) before you apply. We only process the visa; the decision to travel is yours."
+    },
+    {
+      "heading": "What an Iran business visa covers",
+      "text": "An Iran business visa is for meetings, negotiations, trade fairs and similar short business trips, usually for a single entry with a stay of up to one month. It doesn't cover employment in Iran. If you're travelling for a holiday, see our [Iran tourist visa](/iran-tourist-visa-uk/) page."
+    },
+    {
+      "heading": "Authorisation code for business",
+      "text": "The company you're visiting in Iran usually requests the authorisation code from the Ministry of Foreign Affairs. Once it's granted, we apply for the visa with your documents."
+    },
+    {
+      "heading": "Iran business visa help from Manchester",
+      "text": "We're based in Manchester city centre and help UK businesses and travellers with Iran business visas, including next-day processing when you need it urgently. Before you travel, read the UK government's [travel advice for Iran](https://www.gov.uk/foreign-travel-advice/iran)."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Who requests the authorisation code for a business visa?",
+      "a": "Usually the company you're visiting in Iran. We can explain what they need to do."
+    },
+    {
+      "q": "Can I get an Iran business visa quickly?",
+      "a": "Yes. Once the authorisation code is granted, the visa can be issued the next day with the urgent service."
+    },
+    {
+      "q": "Can I work in Iran on a business visa?",
+      "a": "No. A business visa is for meetings and short business trips, not employment."
+    }
+  ],
+  "govuk": "https://www.gov.uk/foreign-travel-advice/iran",
+  "applyButton": "/contact-us/",
+  "country": "Iran",
+  "sortKey": "1 iran 2 iran business",
+  "focusKeyword": "Iran business visa",
+  "prices": [
+    {
+      "service": "1 week",
+      "included": "Business visa application completed and checked",
+      "processing": "Single entry, 1 month",
+      "processingFee": "£185",
+      "fee": "£250",
+      "popular": true,
+      "total": ""
+    },
+    {
+      "service": "Next day",
+      "included": "Business visa application completed and checked",
+      "processing": "Single entry, 1 month",
+      "processingFee": "£278",
+      "fee": "£250",
+      "popular": false,
+      "total": ""
+    }
+  ],
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Original passport, valid for at least 6 months, with two blank pages",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent passport-style colour photo (women wearing a headscarf)",
+      "needed": "Required"
+    },
+    {
+      "document": "Authorisation code",
+      "details": "Visa authorisation reference issued in Iran before the visa can be stamped",
+      "needed": "Required"
+    },
+    {
+      "document": "Invitation letter",
+      "details": "Invitation letter from the company you're visiting in Iran",
+      "needed": "Required"
+    },
+    {
+      "document": "Employer letter",
+      "details": "Letter from your UK employer confirming your role and the trip",
+      "needed": "Required"
+    },
+    {
+      "document": "Travel insurance",
+      "details": "Travel insurance valid in Iran",
+      "needed": "Required"
+    }
+  ],
+  "shareImage": "/images/uvs-share.jpg"
+}
