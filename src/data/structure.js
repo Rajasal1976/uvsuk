@@ -1203,6 +1203,11 @@ export const structure = [
     "group": "local"
   },
   {
+    "slug": "areas-we-serve",
+    "type": "info",
+    "group": "local"
+  },
+  {
     "slug": "about-us",
     "type": "info",
     "group": "company"
