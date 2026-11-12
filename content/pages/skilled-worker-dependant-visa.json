@@ -1,0 +1,82 @@
+{
+  "govuk": "https://www.gov.uk/skilled-worker-visa/your-partner-and-children",
+  "applyButton": "/contact-us/",
+  "country": "UK",
+  "shareImage": "/images/uvs-share.jpg",
+  "title": "Skilled Worker Dependant Visa UK | Partner & Children | UVS",
+  "description": "Bring your partner and children on a Skilled Worker visa. Who qualifies after the July 2025 changes, documents, and help with applications and extensions.",
+  "h1": "Skilled Worker dependant visa",
+  "intro": "Most Skilled Workers can bring their partner and children to the UK, but since July 2025 that depends on your job and when you were first sponsored. We check your family qualifies, then prepare every application together.",
+  "sortKey": "1 uk 2 skilled worker dependant visa",
+  "focusKeyword": "Skilled Worker dependant visa",
+  "eligibility": [
+    "You hold, or are applying for, a Skilled Worker visa in a job that allows dependants",
+    "Your partner is your spouse or civil partner, or you’ve lived together for at least two years",
+    "Your children are under 18, or are already in the UK as your dependants",
+    "You can show the required funds, unless an exemption applies"
+  ],
+  "sections": [
+    {
+      "heading": "Which Skilled Workers can bring family?",
+      "text": "It depends on your job and your visa history:\n- Jobs at degree level (RQF 6) and above: you can usually bring your partner and children\n- Jobs below degree level, where you were granted your visa before 22 July 2025 and have had no gap since: your family is protected and can usually join or stay with you\n- Jobs below degree level sponsored on or after 22 July 2025, under the shortage lists: new dependants aren’t allowed\n- Care workers and senior care workers: separate rules apply, based on 11 March 2024. See our [care worker dependant visa](/care-worker-dependant-visa/) page"
+    },
+    {
+      "heading": "Money you need to show",
+      "text": "Each dependant usually needs to show they have enough money to support themselves. You don’t need to show this if you’ve been in the UK for at least 12 months when you apply, or if your sponsor certifies maintenance on your Certificate of Sponsorship. We tell you which applies before you gather bank statements."
+    },
+    {
+      "heading": "Applying, extending and settling together",
+      "text": "Your family can apply with you or join you later. Each person makes their own application and pays their own visa fee and Immigration Health Surcharge. When you extend, they usually extend at the same time, and they can often apply for [Indefinite Leave to Remain](/indefinite-leave-to-remain-ilr/) alongside you.\n\nDependants can work in almost any job and study without needing a separate visa."
+    },
+    {
+      "heading": "If you’re a chef or hospitality worker",
+      "text": "If you were sponsored before 22 July 2025, your family’s rights are protected even though your job can no longer be newly sponsored. See [chef and restaurant worker visa extensions](/chef-visa-extension-uk/)."
+    }
+  ],
+  "documentsTable": [
+    {
+      "document": "Passports",
+      "details": "For each family member",
+      "needed": "Required"
+    },
+    {
+      "document": "Relationship evidence",
+      "details": "Marriage or civil partnership certificate, or evidence of two years living together",
+      "needed": "Required"
+    },
+    {
+      "document": "Birth certificates",
+      "details": "For each child, showing both parents",
+      "needed": "Required"
+    },
+    {
+      "document": "Financial evidence",
+      "details": "Bank statements, unless you’re exempt",
+      "needed": "Required"
+    },
+    {
+      "document": "Consent letter",
+      "details": "If a child is applying and the other parent isn’t",
+      "needed": "Helpful"
+    },
+    {
+      "document": "Application forms",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Can I bring my wife on a Skilled Worker visa?",
+      "a": "Usually yes, if your job is at degree level, or if you were granted your visa in a lower-skilled job before 22 July 2025. Care workers have different rules."
+    },
+    {
+      "q": "Can my partner work in the UK?",
+      "a": "Yes. Dependants of Skilled Workers can work in almost any job without a sponsor."
+    },
+    {
+      "q": "Can my family join me later?",
+      "a": "Yes, they can apply after you’ve arrived, as long as your job still allows dependants when they apply."
+    }
+  ]
+}

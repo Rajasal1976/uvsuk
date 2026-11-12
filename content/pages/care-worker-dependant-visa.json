@@ -1,0 +1,72 @@
+{
+  "govuk": "https://www.gov.uk/health-care-worker-visa",
+  "applyButton": "/contact-us/",
+  "country": "UK",
+  "shareImage": "/images/uvs-share.jpg",
+  "title": "Care Worker Dependant Visa UK | Partner & Children | UVS",
+  "description": "Can a care worker bring a partner or children to the UK? The 11 March 2024 rule explained, and help with dependant applications and extensions.",
+  "h1": "Care worker dependant visa",
+  "intro": "Care workers and senior care workers face stricter rules on bringing family than other sponsored workers. Whether your partner and children can join you, or stay with you, depends on when you first came into the route.",
+  "sortKey": "1 uk 2 care worker dependant visa",
+  "focusKeyword": "care worker dependant visa",
+  "eligibility": [
+    "You hold a Health and Care Worker or Skilled Worker visa as a care worker or senior care worker",
+    "You’ve held that permission continuously since before 11 March 2024",
+    "Your partner or child meets the relationship and maintenance requirements"
+  ],
+  "sections": [
+    {
+      "heading": "The 11 March 2024 rule",
+      "text": "From 11 March 2024, people newly sponsored as care workers or senior care workers can’t bring dependants. This applies whether they came from overseas or switched into care work from inside the UK.\n\nIf you were already in the route before that date, you’re protected. You can usually keep your family with you, extend their visas when you extend yours, and bring dependants who haven’t joined you yet, as long as your permission has been continuous."
+    },
+    {
+      "heading": "If you came into the route after 11 March 2024",
+      "text": "Your partner and children generally can’t apply as your dependants. Switching visa route doesn’t restore that right. There may still be other options, such as your partner qualifying for a visa in their own right, or a child born in the UK applying in some circumstances. We look at your family’s situation and tell you honestly what’s possible."
+    },
+    {
+      "heading": "Extending your family’s visas",
+      "text": "Dependants who are already here usually apply to extend at the same time as you. Each family member makes their own application and pays their own fees, including the Immigration Health Surcharge. We prepare the applications together so the dates and evidence line up. See [care worker visa extensions](/care-worker-visa-extension/)."
+    }
+  ],
+  "documentsTable": [
+    {
+      "document": "Passports",
+      "details": "For you and each family member",
+      "needed": "Required"
+    },
+    {
+      "document": "Your visa history",
+      "details": "Grant letters showing when you first came into the care worker route",
+      "needed": "Required"
+    },
+    {
+      "document": "Relationship evidence",
+      "details": "Marriage or civil partnership certificate, or evidence of living together for two years; birth certificates for children",
+      "needed": "Required"
+    },
+    {
+      "document": "Financial evidence",
+      "details": "Bank statements, unless you’ve been in the UK for 12 months or your sponsor certifies maintenance",
+      "needed": "Required"
+    },
+    {
+      "document": "Application forms",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Can a care worker bring a spouse to the UK?",
+      "a": "Only if the care worker has held care worker permission continuously since before 11 March 2024, in most cases."
+    },
+    {
+      "q": "My family is already here. Can they extend?",
+      "a": "Usually yes, if you were in the route before 11 March 2024 and have had no gap in your permission. They normally extend alongside you."
+    },
+    {
+      "q": "Can my dependants work?",
+      "a": "Yes. Dependants of sponsored workers can work in almost any job without needing their own sponsor."
+    }
+  ]
+}

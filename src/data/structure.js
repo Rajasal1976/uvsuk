@@ -77,6 +77,10 @@ export const structure = [
     "group": "uk",
     "children": [
       "skilled-worker-visa-formally-tier-t2-general",
+      "skilled-worker-dependant-visa",
+      "care-worker-visa-extension",
+      "care-worker-dependant-visa",
+      "chef-visa-extension-uk",
       "post-study-work-visa",
       "sponsor-licence-application"
     ]
@@ -86,9 +90,34 @@ export const structure = [
     "type": "service",
     "group": "uk",
     "related": [
+      "skilled-worker-dependant-visa",
       "sponsor-licence-application",
       "indefinite-leave-to-remain-ilr"
     ]
+  },
+  {
+    "slug": "skilled-worker-dependant-visa",
+    "type": "service",
+    "group": "uk",
+    "related": ["skilled-worker-visa-formally-tier-t2-general", "chef-visa-extension-uk", "care-worker-dependant-visa", "indefinite-leave-to-remain-ilr"]
+  },
+  {
+    "slug": "care-worker-visa-extension",
+    "type": "service",
+    "group": "uk",
+    "related": ["care-worker-dependant-visa", "sponsor-licence-care-homes", "indefinite-leave-to-remain-ilr"]
+  },
+  {
+    "slug": "care-worker-dependant-visa",
+    "type": "service",
+    "group": "uk",
+    "related": ["care-worker-visa-extension", "skilled-worker-dependant-visa"]
+  },
+  {
+    "slug": "chef-visa-extension-uk",
+    "type": "service",
+    "group": "uk",
+    "related": ["skilled-worker-dependant-visa", "sponsor-licence-restaurants", "skilled-worker-visa-formally-tier-t2-general"]
   },
   {
     "slug": "student-visa-uk",
@@ -181,6 +210,7 @@ export const structure = [
     "type": "service",
     "group": "employer",
     "related": [
+      "chef-visa-extension-uk",
       "sponsor-licence-application",
       "sponsor-licence-compliance",
       "sponsor-licence-it-technology",
@@ -217,6 +247,7 @@ export const structure = [
     "type": "service",
     "group": "employer",
     "related": [
+      "care-worker-visa-extension",
       "sponsor-licence-application",
       "sponsor-licence-compliance",
       "sponsor-licence-restaurants",

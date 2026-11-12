@@ -1,0 +1,81 @@
+{
+  "govuk": "https://www.gov.uk/skilled-worker-visa/extend-your-visa",
+  "applyButton": "/contact-us/",
+  "country": "UK",
+  "shareImage": "/images/uvs-share.jpg",
+  "title": "Chef & Restaurant Worker Visa Extension UK | UVS",
+  "description": "Chefs and hospitality workers sponsored before 22 July 2025 can still extend or change employer. We check you qualify and prepare your application.",
+  "h1": "Chef and restaurant worker visa extension",
+  "intro": "Chefs and many other hospitality jobs can no longer be newly sponsored, but if you already hold a Skilled Worker visa in one of these roles you’re protected by transitional rules. We check you qualify, then handle your extension or change of employer.",
+  "sortKey": "1 uk 2 chef visa extension",
+  "focusKeyword": "chef visa extension",
+  "eligibility": [
+    "You were granted a Skilled Worker visa before 22 July 2025",
+    "You’ve held Skilled Worker permission continuously since then, with no gap",
+    "You have a Certificate of Sponsorship from a licensed employer",
+    "Your salary meets the current rules for your job"
+  ],
+  "sections": [
+    {
+      "heading": "What changed in July 2025",
+      "text": "From 22 July 2025, new Skilled Worker visas are only available for jobs at degree level (RQF 6) and above. Chefs, bar and restaurant managers, bakers and many other hospitality roles fall below that level, so employers can’t sponsor new workers in them.\n\nPeople who already had a Skilled Worker visa before that date are protected. If you’ve kept your permission without a gap, you can still extend, change employer and keep your family with you."
+    },
+    {
+      "heading": "Extending your visa",
+      "text": "Your employer assigns a new Certificate of Sponsorship and you apply before your current visa expires. Salary rules went up in July 2025 and there’s no protection on pay, but lower rates apply to some workers who were already in the route. We check your salary against the right figure before you apply.\n\nDon’t let your visa lapse. A gap in your permission can mean losing the transitional protection altogether."
+    },
+    {
+      "heading": "Changing restaurant or employer",
+      "text": "You can move to a new employer, but they must hold a sponsor licence, and you need a new visa application before you start the new job. We check the occupation code your new employer plans to use, so the job is one the transitional rules still allow."
+    },
+    {
+      "heading": "Your partner and children",
+      "text": "If you were granted your Skilled Worker visa before 22 July 2025, your dependants are protected too. They can extend alongside you, and you can still bring a partner or children who haven’t joined you yet. See our [Skilled Worker dependant visa](/skilled-worker-dependant-visa/) page."
+    },
+    {
+      "heading": "For restaurant owners",
+      "text": "If you employ sponsored chefs or managers, keep their visas and your sponsor duties up to date, because you can’t replace them with new overseas hires in the same roles. See our [sponsor licence guide for restaurants](/sponsor-licence-restaurants/)."
+    }
+  ],
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Current passport and your eVisa details",
+      "needed": "Required"
+    },
+    {
+      "document": "Certificate of Sponsorship",
+      "details": "Reference number from your current or new employer",
+      "needed": "Required"
+    },
+    {
+      "document": "Previous visa decisions",
+      "details": "Grant letters showing you were in the route before 22 July 2025",
+      "needed": "Required"
+    },
+    {
+      "document": "Recent payslips",
+      "details": "So we can check your salary against the current rules",
+      "needed": "Helpful"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Can chefs still get a UK work visa?",
+      "a": "Not as new Skilled Workers. Since 22 July 2025, chef roles can’t be newly sponsored. Chefs who already had a Skilled Worker visa before that date can extend and change employer."
+    },
+    {
+      "q": "Can I switch from a Graduate or student visa into a chef job?",
+      "a": "Generally no, because the job is below the skill level now needed for new Skilled Worker visas. Speak to us about other options."
+    },
+    {
+      "q": "Can I move to another restaurant?",
+      "a": "Yes, if the new employer holds a sponsor licence and you make a new application before starting. We check the job qualifies first."
+    }
+  ]
+}

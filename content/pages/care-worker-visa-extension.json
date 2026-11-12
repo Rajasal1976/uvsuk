@@ -1,0 +1,90 @@
+{
+  "govuk": "https://www.gov.uk/health-care-worker-visa",
+  "applyButton": "/contact-us/",
+  "country": "UK",
+  "shareImage": "/images/uvs-share.jpg",
+  "title": "Care Worker Visa Extension & Change of Sponsor | UVS",
+  "description": "Extend your care worker or senior care worker visa, or change care provider, under the transitional rules that run to July 2028. IAA-regulated, Manchester.",
+  "h1": "Care worker visa extension and change of sponsor",
+  "intro": "Care workers can no longer be recruited from overseas, but if you’re already in the UK you can still extend your visa or move to a new care provider. We check that you qualify under the transitional rules and prepare your application.",
+  "sortKey": "1 uk 2 care worker visa extension",
+  "focusKeyword": "care worker visa extension",
+  "eligibility": [
+    "You’re in the UK as a care worker or senior care worker on a Health and Care Worker or Skilled Worker visa",
+    "Your current visa hasn’t expired, and you’ve had no gap in your permission",
+    "You have a Certificate of Sponsorship from a licensed care provider (registered with the CQC if the job is in England)",
+    "Your salary meets the current rules for your job",
+    "You apply before 22 July 2028, when the transitional rules for care roles are due to end"
+  ],
+  "sections": [
+    {
+      "heading": "What changed for care workers",
+      "text": "Since 22 July 2025, care providers can’t sponsor new care workers or senior care workers from overseas. People already in the UK weren’t forced to leave. A transitional period lets existing care workers keep extending, and lets some people switch into care work from inside the UK, until 22 July 2028. The government keeps that date under review, so plan ahead rather than waiting until the last minute."
+    },
+    {
+      "heading": "Extending with your current employer",
+      "text": "If you’re staying with the same care provider, your employer assigns you a new Certificate of Sponsorship and you apply to extend before your current visa runs out. Your salary has to meet the rules that apply on the date you apply, not the rules from when you first came, so we check your pay against the current figures before anything is submitted.\n\nApply in good time. If your visa expires before you apply, you lose the protection of the transitional rules."
+    },
+    {
+      "heading": "Moving to a new care provider",
+      "text": "You can change employer, but you must make a new visa application with a Certificate of Sponsorship from your new employer before you start working for them. Starting the new job first is one of the most common mistakes we see.\n\nIf your sponsor has lost its licence, the Home Office usually shortens your visa and gives you a limited time to find a new sponsor or leave. Contact us straight away. The sooner you act, the more options you have."
+    },
+    {
+      "heading": "Switching into care work from another visa",
+      "text": "Until 22 July 2028, people already in the UK on another visa may be able to switch into a care worker or senior care worker role. You must have been legally working for your new sponsor for at least three months before they assign your Certificate of Sponsorship."
+    },
+    {
+      "heading": "Your partner and children",
+      "text": "Whether your family can join you depends on when you first came into the route. Care workers who have been in the route since before 11 March 2024 can usually keep or bring dependants. Those who came in on or after that date generally can’t. See our [care worker dependant visa](/care-worker-dependant-visa/) page for the full picture."
+    },
+    {
+      "heading": "Planning for settlement",
+      "text": "Time as a care worker counts towards [Indefinite Leave to Remain](/indefinite-leave-to-remain-ilr/), but settlement rules are changing. Read our guide to the [2026 ILR changes](/blog/ilr-changes-2026-earned-settlement/), and talk to us about the best timing for your extensions."
+    }
+  ],
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Current passport and your eVisa details",
+      "needed": "Required"
+    },
+    {
+      "document": "Certificate of Sponsorship",
+      "details": "Reference number from your current or new care provider",
+      "needed": "Required"
+    },
+    {
+      "document": "Previous visa decisions",
+      "details": "Your earlier grant letters, so we can confirm when you entered the route",
+      "needed": "Required"
+    },
+    {
+      "document": "Recent payslips",
+      "details": "So we can check your salary against the current rules",
+      "needed": "Helpful"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Can I still extend my care worker visa?",
+      "a": "Yes, if you’re already in the UK as a care worker or senior care worker and you apply before your current visa expires. The transitional rules for care roles are due to run until 22 July 2028."
+    },
+    {
+      "q": "Can I change care home?",
+      "a": "Yes, but you need a new Certificate of Sponsorship from the new employer and a new visa application before you start working there."
+    },
+    {
+      "q": "My sponsor lost its licence. What should I do?",
+      "a": "Contact us as soon as you hear. You’ll usually have a limited time to find a new sponsor, and we can help you move quickly."
+    },
+    {
+      "q": "Can I bring my family?",
+      "a": "Only if you’ve held care worker permission since before 11 March 2024, in most cases. See our care worker dependant visa page."
+    }
+  ]
+}
