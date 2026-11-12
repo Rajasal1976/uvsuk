@@ -18,6 +18,7 @@ const groups = [
   { title: 'Worldwide visas and travel services', links: byGroup('worldwide').map((p) => [name(p), `/${p.slug}/`]) },
   { title: 'Online application forms', links: applications.map((a) => [a.title, `/apply/${a.slug}/`]) },
   { title: 'Blog', links: [['All blog posts', '/blog/'], ...posts.map((p) => [p.h1, `/blog/${p.slug}/`])] },
+  { title: 'Our office', links: byGroup('local').map((p) => [name(p), `/${p.slug}/`]) },
   { title: 'About us', links: byGroup('company').filter((p) => !legal.includes(p.slug)).map((p) => [name(p), `/${p.slug}/`]) },
   { title: 'Legal', links: legal.map((s) => visible.find((p) => p.slug === s)).filter(Boolean).map((p) => [name(p), `/${p.slug}/`]) },
 ].filter((g) => g.links.length);

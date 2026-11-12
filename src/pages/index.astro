@@ -143,6 +143,7 @@ const placeholder = 'background: #D6E3DA; border-radius: 12px; display: flex; al
 <div class="office-card">
 <h2>Visit us in Manchester</h2>
 <p class="office-lead">Meet an adviser at our city-centre office, or contact us by phone or email.</p>
+<p class="office-areas">We help clients across Greater Manchester, including Salford, Trafford, Stockport, Oldham, Bury and Bolton, and anywhere in the UK by phone or video call. <a href="/immigration-advice-manchester/">Immigration advice in Manchester →</a></p>
 <div class="office-grid">
 <p class="fr-item"><span class="fr-label">Office</span>{site.address.line1}<br />{site.address.city} {site.address.postcode}<br /><a class="office-directions" href={directionsUrl} target="_blank" rel="noopener"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg>Get directions</a></p>
 <p class="fr-item"><span class="fr-label">Opening hours</span>{site.hours}</p>
@@ -521,6 +522,8 @@ const placeholder = 'background: #D6E3DA; border-radius: 12px; display: flex; al
   .office-card { position: relative; margin-left: -80px; background: #FFFFFF; border: 1px solid #DCE6DF; border-radius: 14px; padding: 32px; box-shadow: 0 18px 40px rgba(14, 59, 32, .12); }
   .office-card h2 { margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 30px; line-height: 1.2; color: #14532D; }
   .office-lead { margin: 6px 0 20px; color: #3A4552; font-size: 16px; }
+  .office-areas { margin: -8px 0 20px; color: #3A4552; font-size: 15px; line-height: 1.55; }
+  .office-areas a { font-weight: 600; white-space: nowrap; }
   .office-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 24px; }
   .office-directions { display: inline-flex; align-items: center; gap: 5px; margin-top: 6px; }
   .office-services { margin-top: 24px; padding-top: 20px; border-top: 1px solid #E3E9E5; }

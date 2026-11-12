@@ -1167,6 +1167,11 @@ export const structure = [
     "visa": "evisa"
   },
   {
+    "slug": "immigration-advice-manchester",
+    "type": "info",
+    "group": "local"
+  },
+  {
     "slug": "about-us",
     "type": "info",
     "group": "company"

@@ -43,6 +43,7 @@ const business = {
   telephone: site.phoneIntl,
   address: { '@type': 'PostalAddress', streetAddress: site.address.line1, addressLocality: site.address.city, postalCode: site.address.postcode, addressCountry: 'GB' },
   openingHours: site.hoursSchema,
+  areaServed: [{ '@type': 'City', name: 'Manchester' }, { '@type': 'AdministrativeArea', name: 'Greater Manchester' }, { '@type': 'Country', name: 'United Kingdom' }],
 };
 ---
 <!doctype html>
