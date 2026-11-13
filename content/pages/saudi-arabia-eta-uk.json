@@ -1,0 +1,96 @@
+{
+  "govuk": "https://www.gov.uk/foreign-travel-advice/saudi-arabia/entry-requirements",
+  "applyButton": "/apply/saudi-visa/",
+  "country": "Saudi Arabia",
+  "shareImage": "/images/uvs-share.jpg",
+  "title": "Saudi Arabia ETA for British Citizens | Tourist & Business | UVS",
+  "description": "Saudi Arabia ETA for British passport holders: multiple entries for tourism, Umrah and business. We complete and submit your ETA for you.",
+  "h1": "Saudi Arabia ETA for British citizens",
+  "purposeLabel": "ETA (British citizens)",
+  "intro": "Since 1 July 2026, British citizens can visit Saudi Arabia on an Electronic Travel Authorisation (ETA) instead of a visa. It allows multiple entries for tourism, Umrah outside Hajj season, family visits and business meetings. We complete your application, check it and submit it for you.",
+  "eligibility": [
+    "You hold a British passport (any type of UK passport)",
+    "You are visiting for tourism, Umrah, family visits, short study or business meetings",
+    "You won't work or live in Saudi Arabia"
+  ],
+  "sections": [
+    {
+      "heading": "What the Saudi ETA covers",
+      "text": "The ETA lets British citizens enter Saudi Arabia several times, staying up to 180 days in total each year. It covers tourism, Umrah outside Hajj season, visiting family and friends, short courses and business meetings. It doesn't cover work, residence or Hajj."
+    },
+    {
+      "heading": "Tourist ETA or business ETA?",
+      "text": "Choose the tourist ETA for holidays, Umrah and family visits, and the business ETA for meetings, conferences and site visits. If you don't hold a British passport, see our [Saudi business visa](/saudi-business-visa-uk/) and [Saudi family visit visa](/saudi-family-visit-visa-uk/) pages."
+    },
+    {
+      "heading": "Working or moving to Saudi Arabia",
+      "text": "The ETA isn't for employment. For a job in Saudi Arabia, see our [Saudi work visa](/saudi-work-visa-uk/) page. If you're joining a family member who lives there, see our [Saudi residence visa](/saudi-residence-visa-uk/) page."
+    },
+    {
+      "heading": "Saudi ETA help from Manchester",
+      "text": "We're based in Manchester city centre and complete Saudi ETA applications for British citizens across the UK. Your ETA is sent to you by email, so there's no passport to post."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Do British citizens need a visa for Saudi Arabia?",
+      "a": "No. Since 1 July 2026 British citizens can apply for an ETA instead, for tourism, Umrah, family visits and business."
+    },
+    {
+      "q": "Can I perform Umrah on the Saudi ETA?",
+      "a": "Yes, outside the Hajj season. Hajj needs a separate Hajj visa."
+    },
+    {
+      "q": "Can I work in Saudi Arabia on the ETA?",
+      "a": "No. You need a Saudi work visa sponsored by your employer."
+    },
+    {
+      "q": "How long can I stay on the Saudi ETA?",
+      "a": "Up to 180 days in total each year, over multiple visits."
+    }
+  ],
+  "sortKey": "1 saudi arabia 1 eta",
+  "focusKeyword": "Saudi Arabia ETA",
+  "prices": [
+    {
+      "service": "Tourist ETA",
+      "included": "Tourism, Umrah and family visits. Application completed, checked and submitted",
+      "processing": "Multiple entry, valid 24 months",
+      "processingFee": "£25",
+      "fee": "£50",
+      "popular": true,
+      "total": ""
+    },
+    {
+      "service": "Business ETA",
+      "included": "Meetings, conferences and site visits. Application completed, checked and submitted",
+      "processing": "Multiple entry, valid 24 months",
+      "processingFee": "£25",
+      "fee": "£100",
+      "popular": false,
+      "total": ""
+    }
+  ],
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "British passport scan, valid for at least 6 months",
+      "needed": "Required"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent colour photo with a white background",
+      "needed": "Required"
+    },
+    {
+      "document": "Travel details",
+      "details": "Your planned dates and address in Saudi Arabia",
+      "needed": "Required"
+    },
+    {
+      "document": "Business details",
+      "details": "Company you're visiting (business ETA only)",
+      "needed": "If applicable"
+    }
+  ]
+}

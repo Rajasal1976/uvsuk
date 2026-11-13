@@ -1,0 +1,135 @@
+{
+  "govuk": "https://www.gov.uk/foreign-travel-advice/saudi-arabia/entry-requirements",
+  "applyButton": "/apply/saudi-visa/",
+  "country": "Saudi Arabia",
+  "shareImage": "/images/uvs-share.jpg",
+  "title": "Saudi Arabia Residence Visa from the UK | Family Joining | UVS",
+  "description": "Saudi residence visa from the UK to join a family member in Saudi Arabia. Medical, FCO attestation and visa in one service. Price calculator.",
+  "h1": "Saudi Arabia residence visa from the UK",
+  "purposeLabel": "Residence visa",
+  "intro": "The Saudi residence visa is for family members joining someone who lives and works in Saudi Arabia, such as a husband, wife or children. It needs a medical, a police certificate and FCO attestation before the visa is issued. We arrange all of it, and the calculator below shows your total.",
+  "eligibility": [
+    "Your family member lives in Saudi Arabia on a residence permit (iqama)",
+    "They have obtained a family residence visa reference for you",
+    "You are moving to live with them in Saudi Arabia"
+  ],
+  "sections": [
+    {
+      "heading": "What we arrange for you",
+      "text": "- Medical tests and report at our partner clinic in Manchester or London\n- FCO attestation of your medical report and ACRO police certificate\n- Your visa application, checked and submitted to the Saudi visa centre"
+    },
+    {
+      "heading": "Saudi residence visa help from Manchester",
+      "text": "We're based in Manchester city centre and help families across the UK join relatives in Saudi Arabia. Tick the extras you need in the calculator and we'll confirm the final price before you pay."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Do children need a medical for a Saudi residence visa?",
+      "a": "Medical and police certificate rules depend on age. We'll confirm exactly what each family member needs."
+    },
+    {
+      "q": "What is FCO attestation?",
+      "a": "It's the UK Foreign Office (FCO) confirming your document is genuine, so Saudi Arabia will accept it."
+    },
+    {
+      "q": "How long does it take?",
+      "a": "The visa itself usually takes about 72 hours. Allow extra time for the medical, police certificate and attestation."
+    }
+  ],
+  "sortKey": "1 saudi arabia 4 residence",
+  "focusKeyword": "Saudi residence visa",
+  "prices": [
+    {
+      "service": "72 hours",
+      "included": "Residence visa application completed and checked",
+      "processing": "Single entry, 2 months",
+      "processingFee": "£10",
+      "fee": "£250",
+      "popular": true,
+      "total": ""
+    }
+  ],
+  "calculator": {
+    "title": "Work out your total",
+    "intro": "Tick what you need. Medical and attestation prices are per person.",
+    "groups": [
+      {
+        "title": "Medical tests and report",
+        "note": "Mandatory",
+        "type": "choice",
+        "options": [
+          {
+            "label": "Manchester clinic",
+            "price": "£545",
+            "ticked": true
+          },
+          {
+            "label": "London clinic",
+            "price": "£445",
+            "ticked": false
+          },
+          {
+            "label": "Other clinic",
+            "price": "",
+            "ticked": false
+          }
+        ]
+      },
+      {
+        "title": "FCO attestation",
+        "note": "Mandatory",
+        "type": "tick",
+        "options": [
+          {
+            "label": "FCO attestation of your medical report",
+            "price": "£150",
+            "ticked": true
+          },
+          {
+            "label": "FCO attestation of your ACRO police certificate",
+            "price": "£150",
+            "ticked": true
+          }
+        ]
+      }
+    ]
+  },
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Original passport, valid for at least 6 months, with two blank pages",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent colour photo with a white background",
+      "needed": "Required"
+    },
+    {
+      "document": "Residence visa reference",
+      "details": "Issued in Saudi Arabia to your family member",
+      "needed": "Required"
+    },
+    {
+      "document": "Medical report",
+      "details": "From an approved clinic, then FCO attested",
+      "needed": "We arrange"
+    },
+    {
+      "document": "ACRO police certificate",
+      "details": "FCO attested",
+      "needed": "We attest"
+    },
+    {
+      "document": "Marriage or birth certificate",
+      "details": "To prove your relationship, attested",
+      "needed": "Required"
+    }
+  ]
+}

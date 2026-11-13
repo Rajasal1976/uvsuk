@@ -342,3 +342,27 @@ a.card:hover { border-color: var(--green-600); color: inherit; }
   .visa-bar-wrap { padding-left: 28px; padding-right: 28px; }
   .visa-bar { grid-template-columns: 1fr; }
 }
+
+/* Price calculator with tick boxes (Saudi work and residence visas, and any page with a calculator in the admin) */
+.calc { margin-top: 8px; }
+.calc-card { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 22px; box-shadow: 0 6px 18px rgba(13, 59, 33, .06); }
+.calc-group { border: 0; padding: 0; margin: 0 0 18px; }
+.calc-group legend { font-weight: 600; color: var(--green-800); font-size: 17px; margin-bottom: 8px; padding: 0; }
+.calc-legend { font-weight: 600; color: var(--green-800); font-size: 17px; margin: 0 0 8px; }
+.calc-fixed { cursor: default; background: #F1F8F2; border-color: var(--green-800); }
+.calc-fixed > span:first-of-type { color: var(--green-800); font-weight: 700; text-align: center; }
+.calc-note { display: inline-block; margin-left: 8px; font-size: 13px; font-weight: 600; color: var(--green-900); background: #D3EAD5; border-radius: 999px; padding: 2px 10px; vertical-align: 2px; }
+.calc-opt { display: grid; grid-template-columns: 22px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 12px 14px; border: 1px solid #C9D6CC; border-radius: 10px; margin-bottom: 8px; cursor: pointer; background: #fff; }
+.calc-opt:has(input:checked) { border-color: var(--green-800); background: #F1F8F2; box-shadow: inset 4px 0 0 var(--green-800); }
+.calc-opt input { width: 20px; height: 20px; margin: 0; accent-color: var(--green-800); cursor: pointer; }
+.calc-opt-price { font-weight: 600; color: var(--green-800); white-space: nowrap; }
+.calc-foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 14px; border-top: 1px solid var(--line); padding-top: 16px; }
+.calc-people { display: flex; align-items: center; gap: 10px; font-weight: 600; color: var(--green-800); }
+.calc-people select { height: 44px; padding: 0 12px; font: inherit; border: 1px solid #C9D6CC; border-radius: 8px; background: #fff; }
+.calc-total { text-align: right; }
+.calc-total span { display: block; font-size: 14px; color: var(--ink-soft); }
+.calc-total strong { font-family: var(--serif); font-size: 34px; color: var(--green-800); line-height: 1.1; }
+.calc-small { font-size: 14px; margin: 10px 0 14px; }
+.calc-apply { width: 100%; background: #F5A623; border-radius: 8px; }
+.calc-apply:hover { background: #F7B84A; }
+@media (max-width: 700px) { .calc-card { padding: 16px; } .calc-total { text-align: left; } }

@@ -1,0 +1,89 @@
+{
+  "govuk": "https://www.gov.uk/foreign-travel-advice/saudi-arabia/entry-requirements",
+  "applyButton": "/apply/saudi-visa/",
+  "country": "Saudi Arabia",
+  "shareImage": "/images/uvs-share.jpg",
+  "title": "Saudi Arabia Family Visit Visa from the UK | UVS",
+  "description": "Saudi family visit visa from the UK to visit relatives living in Saudi Arabia. 72-hour processing. We check your documents and apply for you.",
+  "h1": "Saudi Arabia family visit visa from the UK",
+  "purposeLabel": "Family visit visa",
+  "intro": "The Saudi family visit visa lets you visit a relative who lives and works in Saudi Arabia. Your relative applies for the invitation in Saudi Arabia first, then we prepare and submit your visa application here in the UK.",
+  "eligibility": [
+    "You have a close relative living in Saudi Arabia",
+    "Your relative has had a family visit invitation approved",
+    "You are visiting, not moving to live there"
+  ],
+  "sections": [
+    {
+      "heading": "How the family visit visa works",
+      "text": "Your relative in Saudi Arabia requests a family visit invitation through the Saudi Ministry of Foreign Affairs. Once it's approved, we apply for the visa in the UK with your documents. Processing usually takes about 72 hours."
+    },
+    {
+      "heading": "British citizens: you may only need an ETA",
+      "text": "British passport holders can visit family on the [Saudi ETA](/saudi-arabia-eta-uk/) without an invitation. The family visit visa is mainly for other passport holders living in the UK."
+    },
+    {
+      "heading": "Moving to live with your family",
+      "text": "If you're joining your family member to live in Saudi Arabia, you need a [Saudi residence visa](/saudi-residence-visa-uk/) instead."
+    },
+    {
+      "heading": "Saudi family visit visa help from Manchester",
+      "text": "We're based in Manchester city centre and help families across the UK with Saudi family visit visas."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Who can invite me on a Saudi family visit visa?",
+      "a": "A close relative who lives in Saudi Arabia on a residence permit (iqama), or a Saudi citizen."
+    },
+    {
+      "q": "How long does it take?",
+      "a": "Usually about 72 hours once the invitation is approved and your application is submitted."
+    }
+  ],
+  "sortKey": "1 saudi arabia 3 family visit",
+  "focusKeyword": "Saudi family visit visa",
+  "prices": [
+    {
+      "service": "72 hours",
+      "included": "Family visit visa application completed and checked",
+      "processing": "Single entry",
+      "processingFee": "£136",
+      "fee": "£250",
+      "popular": true,
+      "total": ""
+    }
+  ],
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Original passport, valid for at least 6 months, with two blank pages",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent colour photo with a white background",
+      "needed": "Required"
+    },
+    {
+      "document": "Family visit invitation",
+      "details": "Invitation reference approved in Saudi Arabia",
+      "needed": "Required"
+    },
+    {
+      "document": "Proof of relationship",
+      "details": "Marriage or birth certificate, as needed",
+      "needed": "Required"
+    },
+    {
+      "document": "Sponsor's documents",
+      "details": "Copy of your relative's iqama or Saudi ID",
+      "needed": "Required"
+    }
+  ]
+}

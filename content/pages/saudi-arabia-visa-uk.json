@@ -1,80 +1,48 @@
 {
-  "title": "Saudi Arabia Visa from the UK | Tourist, Umrah & Work Visas",
-  "description": "Saudi Arabia visa help for UK residents: tourist eVisas (including Umrah), business visits and work visas with medicals and attestation.",
+  "title": "Saudi Arabia Visa from the UK | ETA, Business, Work & Family",
+  "description": "Saudi Arabia visas from the UK: ETA for British citizens, business, family visit, residence and work visas with medicals and attestation.",
   "h1": "Saudi Arabia visa from the UK",
-  "intro": "We help UK residents with Saudi tourist eVisas, business visas and work visas. The tourist eVisa can be used for Umrah outside Hajj season, but only by eligible passport holders. We handle every Saudi Arabia visa, from tourist eVisas to work visas with document attestation.",
+  "intro": "We help UK residents with every Saudi Arabia visa: the new ETA for British citizens, business and family visit visas, residence visas for families, and work visas with medicals and document attestation. Choose the visa that matches your trip below.",
   "eligibility": [
-    "Tourist eVisa: available to eligible nationalities only",
-    "Work visa: requires sponsorship from a Saudi employer"
+    "British citizens: the ETA covers tourism, Umrah, family visits and business",
+    "Other passports: business or family visit visa, or the tourist eVisa if eligible",
+    "Moving to Saudi Arabia: work visa or residence visa"
   ],
   "faqs": [
     {
-      "q": "Can you help with Umrah?",
-      "a": "Yes, through the Saudi tourist eVisa, for eligible passports. We cannot help where your nationality is not eligible for the tourist eVisa."
+      "q": "Do British citizens need a visa for Saudi Arabia?",
+      "a": "No, not for visits. Since July 2026 British citizens can apply for a Saudi ETA instead."
     },
     {
-      "q": "Can I do Umrah on a Saudi tourist visa?",
+      "q": "Can I do Umrah on the Saudi ETA?",
       "a": "Yes, outside the Hajj season. Hajj requires a dedicated Hajj visa."
     },
     {
-      "q": "How long does a Saudi Arabia visa take?",
-      "a": "The tourist eVisa is usually quick, often within days. Work visas take longer, as they need medicals and document attestation."
-    },
-    {
-      "q": "Can British citizens get a Saudi Arabia visa online?",
-      "a": "Yes. British citizens can apply online for the Saudi tourist eVisa."
+      "q": "What do I need for a Saudi work visa?",
+      "a": "A work visa reference from your employer, a medical, an attested degree certificate and an attested ACRO police certificate. We arrange the medical and attestations."
     }
   ],
   "govuk": "",
   "applyButton": "/apply/saudi-visa/",
-  "prices": [
-    {
-      "service": "Standard",
-      "included": "Form completion, document check and submission",
-      "processing": "",
-      "fee": "",
-      "popular": false,
-      "processingFee": ""
-    },
-    {
-      "service": "Express",
-      "included": "Everything in Standard, with faster processing",
-      "processing": "",
-      "fee": "",
-      "popular": true,
-      "processingFee": ""
-    },
-    {
-      "service": "Urgent",
-      "included": "Everything in Standard, with the fastest processing available",
-      "processing": "",
-      "fee": "",
-      "popular": false,
-      "processingFee": ""
-    }
-  ],
+  "prices": [],
   "country": "Saudi Arabia",
   "sortKey": "1 saudi arabia 0 saudi arabia visa from the uk",
   "sections": [
     {
-      "heading": "Saudi tourist eVisa",
-      "text": "British citizens and many UK residents can apply online for a Saudi tourist eVisa. It is usually a one-year multiple-entry visa allowing stays of up to 90 days, and it allows you to perform Umrah outside the Hajj season. Hajj needs a separate Hajj visa through approved organisers."
+      "heading": "Saudi ETA for British citizens",
+      "text": "Since 1 July 2026, British citizens can use the [Saudi ETA](/saudi-arabia-eta-uk/) for tourism, Umrah outside Hajj season, family visits and business, with multiple entries."
     },
     {
-      "heading": "Saudi work visas",
-      "text": "A Saudi work visa starts with your employer in Saudi Arabia obtaining approval. You then complete medical tests, provide a police certificate, and have your degree and other documents attested before applying through the Saudi visa centre. We arrange the attestation of UK documents as part of our service."
+      "heading": "Business and family visit visas",
+      "text": "Other passport holders living in the UK can apply for a [Saudi business visa](/saudi-business-visa-uk/) or a [Saudi family visit visa](/saudi-family-visit-visa-uk/), usually processed in about 72 hours."
     },
     {
-      "heading": "Business and family visits",
-      "text": "Business visitors and family visitors can often use the eVisa or apply for a specific visit visa, depending on nationality and the purpose of the trip. We confirm the right route before you apply."
-    },
-    {
-      "heading": "Saudi Arabia visa: which type do you need?",
-      "text": "Most holidaymakers and Umrah pilgrims use the tourist eVisa. If you're visiting a Saudi company for meetings, a business visit visa may be needed. Working in Saudi Arabia always needs a work visa, which starts with your employer's approval. Family members joining relatives working in Saudi Arabia need a family visit visa. We confirm which one fits your trip before you apply."
+      "heading": "Working or living in Saudi Arabia",
+      "text": "A [Saudi work visa](/saudi-work-visa-uk/) or [Saudi residence visa](/saudi-residence-visa-uk/) needs a medical, a police certificate and FCO attestation. We arrange all of it, and each page has a calculator so you can see your total."
     },
     {
       "heading": "Saudi visa help in Manchester",
-      "text": "We're based in Manchester city centre and help travellers and businesses across the North West and the rest of the UK. Most travel visa applications can be handled by post and email, so you don't need to visit us in person."
+      "text": "We're based in Manchester city centre and help travellers, families and businesses across the UK with Saudi visas."
     }
   ],
   "focusKeyword": "Saudi Arabia visa",

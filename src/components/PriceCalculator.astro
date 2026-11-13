@@ -1,0 +1,86 @@
+---
+// Price calculator with tick boxes, shown under the price table when a page has a "Price calculator"
+// in the admin (for example the Saudi work and residence visa pages). Visitors choose their visa option,
+// medical and attestations, and the total adds itself up. Options with no price are hidden, so you can
+// add a new clinic or extra in the admin and leave the price empty until it's ready.
+const { calc, prices = [], applyUrl = '' } = Astro.props;
+const amount = (v) => { const m = String(v || '').replace(/,/g, '').match(/^\s*£?\s*(\d+(?:\.\d{1,2})?)\s*$/); return m ? Number(m[1]) : null; };
+const money = (n) => `£${n.toLocaleString('en-GB', { minimumFractionDigits: Number.isInteger(n) ? 0 : 2, maximumFractionDigits: 2 })}`;
+const visaRows = prices
+  .filter((r) => r && r.service && amount(r.processingFee) !== null && amount(r.fee) !== null)
+  .map((r) => ({ label: [r.validity || r.processing, r.service].filter(Boolean).join(' · '), price: amount(r.processingFee) + amount(r.fee) }));
+const groups = (calc?.groups || []).map((g) => ({
+  ...g,
+  options: (g.options || []).filter((o) => o && o.label && amount(o.price) !== null).map((o) => ({ ...o, value: amount(o.price) })),
+})).filter((g) => g.options.length);
+const firstChoice = (g) => Math.max(0, g.options.findIndex((o) => o.ticked));
+---
+{(visaRows.length > 0 || groups.length > 0) && (
+  <section class="calc" id="calculator" aria-labelledby="calc-title">
+    <h2 id="calc-title">{calc?.title || 'Work out your total'}</h2>
+    {calc?.intro && <p class="soft">{calc.intro}</p>}
+    <form class="calc-card" onsubmit="return false">
+      {visaRows.length > 1 && (
+        <fieldset class="calc-group">
+          <legend>Visa</legend>
+          {visaRows.map((r, i) => (
+            <label class="calc-opt">
+              <input type="radio" name="calc-visa" value={r.price} checked={i === 0} data-label={r.label} />
+              <span class="calc-opt-label">{r.label}</span><span class="calc-opt-price">{money(r.price)}</span>
+            </label>
+          ))}
+        </fieldset>
+      )}
+      {visaRows.length === 1 && (
+        <div class="calc-group">
+          <p class="calc-legend">Visa<span class="calc-note">Included</span></p>
+          <div class="calc-opt calc-fixed">
+            <input type="hidden" name="calc-visa" value={visaRows[0].price} data-label={visaRows[0].label} />
+            <span aria-hidden="true">✓</span>
+            <span class="calc-opt-label">{visaRows[0].label} <span class="soft">(visa fee and our fee)</span></span><span class="calc-opt-price">{money(visaRows[0].price)}</span>
+          </div>
+        </div>
+      )}
+      {groups.map((g, gi) => (
+        <fieldset class="calc-group">
+          <legend>{g.title}{g.note && <span class="calc-note">{g.note}</span>}</legend>
+          {g.options.map((o, i) => g.type === 'choice' ? (
+            <label class="calc-opt">
+              <input type="radio" name={`calc-g${gi}`} value={o.value} checked={i === firstChoice(g)} data-label={`${g.title}: ${o.label}`} />
+              <span class="calc-opt-label">{o.label}</span><span class="calc-opt-price">+{money(o.value)}</span>
+            </label>
+          ) : (
+            <label class="calc-opt">
+              <input type="checkbox" value={o.value} checked={!!o.ticked} data-label={o.label} />
+              <span class="calc-opt-label">{o.label}</span><span class="calc-opt-price">+{money(o.value)}</span>
+            </label>
+          ))}
+        </fieldset>
+      ))}
+      <div class="calc-foot">
+        <label class="calc-people">Number of applicants
+          <select name="calc-people">{[1,2,3,4,5,6,7,8,9,10].map((n) => <option value={n}>{n}</option>)}</select>
+        </label>
+        <div class="calc-total" aria-live="polite"><span>Your total</span><strong data-total>£0</strong></div>
+      </div>
+      <p class="calc-small soft">Includes the visa fee, our fee and the extras you’ve ticked, per applicant. We confirm the final price before you pay.</p>
+      {applyUrl && <a class="btn btn-gold calc-apply" href={applyUrl}>Apply now</a>}
+    </form>
+  </section>
+)}
+<script>
+  for (const form of document.querySelectorAll<HTMLFormElement>('.calc-card')) {
+    const update = () => {
+      let each = 0;
+      form.querySelectorAll<HTMLInputElement>('input').forEach((i) => {
+        if (i.type === 'hidden' || i.checked) each += Number(i.value) || 0;
+      });
+      const people = Number((form.querySelector('select[name="calc-people"]') as HTMLSelectElement)?.value || 1);
+      const total = each * people;
+      const el = form.querySelector('[data-total]');
+      if (el) el.textContent = '£' + total.toLocaleString('en-GB', { minimumFractionDigits: Number.isInteger(total) ? 0 : 2, maximumFractionDigits: 2 });
+    };
+    form.addEventListener('change', update);
+    update();
+  }
+</script>

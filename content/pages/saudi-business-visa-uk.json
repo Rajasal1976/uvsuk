@@ -1,0 +1,111 @@
+{
+  "govuk": "https://www.gov.uk/foreign-travel-advice/saudi-arabia/entry-requirements",
+  "applyButton": "/apply/saudi-visa/",
+  "country": "Saudi Arabia",
+  "shareImage": "/images/uvs-share.jpg",
+  "title": "Saudi Arabia Business Visa from the UK | Apply | UVS",
+  "description": "Saudi business visa from the UK: single and multiple entry up to 2 years, 72-hour processing. We check your documents and apply for you.",
+  "h1": "Saudi Arabia business visa from the UK",
+  "purposeLabel": "Business visa",
+  "intro": "The Saudi business visa is for meetings, negotiations, conferences and site visits in Saudi Arabia. It's mainly for UK residents who don't hold a British passport, or who need a visa rather than an ETA. We check your documents, complete your application and submit it for you.",
+  "eligibility": [
+    "You are travelling for business meetings, conferences or site visits",
+    "You have an invitation from a company in Saudi Arabia",
+    "You won't take up paid work in Saudi Arabia"
+  ],
+  "sections": [
+    {
+      "heading": "Single or multiple entry",
+      "text": "You can choose a single-entry visa, or a multiple-entry visa valid for 6 months, 1 year or 2 years if you travel to Saudi Arabia regularly. All options are usually processed in about 72 hours."
+    },
+    {
+      "heading": "British citizens: you may only need an ETA",
+      "text": "Since July 2026, British passport holders can visit Saudi Arabia for business on the [Saudi ETA](/saudi-arabia-eta-uk/), which is quicker and cheaper. We'll tell you which option suits your trip."
+    },
+    {
+      "heading": "Saudi business visa help from Manchester",
+      "text": "We're based in Manchester city centre and help UK companies and business travellers with Saudi business visas. We check your invitation and documents before anything is submitted."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "How long does a Saudi business visa take?",
+      "a": "Usually about 72 hours once your application is submitted."
+    },
+    {
+      "q": "Do I need an invitation letter?",
+      "a": "Yes. You need an invitation from the company you're visiting in Saudi Arabia."
+    },
+    {
+      "q": "Can I work on a Saudi business visa?",
+      "a": "No. For employment you need a [Saudi work visa](/saudi-work-visa-uk/)."
+    }
+  ],
+  "sortKey": "1 saudi arabia 2 business",
+  "focusKeyword": "Saudi business visa",
+  "prices": [
+    {
+      "service": "72 hours",
+      "included": "Business visa application completed and checked",
+      "processing": "Single entry",
+      "processingFee": "£136",
+      "fee": "£250",
+      "popular": true,
+      "total": ""
+    },
+    {
+      "service": "72 hours",
+      "included": "Business visa application completed and checked",
+      "processing": "Multiple entry, 6 months",
+      "processingFee": "£136",
+      "fee": "£250",
+      "popular": false,
+      "total": ""
+    },
+    {
+      "service": "72 hours",
+      "included": "Business visa application completed and checked",
+      "processing": "Multiple entry, 1 year",
+      "processingFee": "£500",
+      "fee": "£250",
+      "popular": false,
+      "total": ""
+    },
+    {
+      "service": "72 hours",
+      "included": "Business visa application completed and checked",
+      "processing": "Multiple entry, 2 years",
+      "processingFee": "£500",
+      "fee": "£250",
+      "popular": false,
+      "total": ""
+    }
+  ],
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Original passport, valid for at least 6 months, with two blank pages",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent colour photo with a white background",
+      "needed": "Required"
+    },
+    {
+      "document": "Invitation letter",
+      "details": "From the company you're visiting in Saudi Arabia",
+      "needed": "Required"
+    },
+    {
+      "document": "Employer letter",
+      "details": "Letter from your UK employer confirming your role and the trip",
+      "needed": "Required"
+    }
+  ]
+}

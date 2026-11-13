@@ -93,6 +93,34 @@ collections:
           - { name: processing, label: Visa length, widget: string, required: false, hint: 'Shown in the Visa length column, for example 30 days, single entry. Leave empty to show "Ask us".' }
           - { name: processingFee, label: 'Embassy fee (incl. VAT)', widget: string, required: false, hint: 'The full embassy or visa centre fee including VAT, or the official eVisa fee, for example £151.50.' }
           - { name: fee, label: Our fee, widget: string, required: false, hint: 'For example £95. Leave empty to show "Call for price".' }
+      - name: calculator
+        label: Price calculator (tick boxes)
+        widget: object
+        required: false
+        collapsed: true
+        hint: 'Optional. Adds a calculator under the price table where visitors tick extras (medicals, attestations and so on) and see their total. Used on the Saudi work and residence visa pages.'
+        fields:
+          - { name: title, label: Heading, widget: string, required: false, hint: 'For example "Work out your total".' }
+          - { name: intro, label: Short intro, widget: text, required: false }
+          - name: groups
+            label: Sections
+            label_singular: section
+            widget: list
+            required: false
+            summary: '{{fields.title}}'
+            fields:
+              - { name: title, label: Section heading, widget: string, hint: 'For example "Medical tests and report".' }
+              - { name: note, label: Label, widget: string, required: false, hint: 'Small label next to the heading, for example "Mandatory".' }
+              - { name: type, label: How visitors choose, widget: select, options: [{ label: 'Pick one (round buttons)', value: choice }, { label: 'Tick any (tick boxes)', value: tick }], default: tick }
+              - name: options
+                label: Options
+                label_singular: option
+                widget: list
+                summary: '{{fields.label}}: {{fields.price}}'
+                fields:
+                  - { name: label, label: Option, widget: string, hint: 'For example "Manchester clinic".' }
+                  - { name: price, label: Price, widget: string, required: false, hint: 'For example £545. Leave empty to hide this option until you add a price.' }
+                  - { name: ticked, label: Ticked to start with, widget: boolean, required: false, default: false }
       - name: body
         label: Page text
         label_singular: paragraph

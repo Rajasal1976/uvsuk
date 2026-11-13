@@ -1,0 +1,154 @@
+{
+  "govuk": "https://www.gov.uk/foreign-travel-advice/saudi-arabia/entry-requirements",
+  "applyButton": "/apply/saudi-visa/",
+  "country": "Saudi Arabia",
+  "shareImage": "/images/uvs-share.jpg",
+  "title": "Saudi Arabia Work Visa from the UK | Medical & Attestation | UVS",
+  "description": "Saudi work visa from the UK: medical, FCO attestation of your degree and police certificate, and the visa itself. See your total with our calculator.",
+  "h1": "Saudi Arabia work visa from the UK",
+  "purposeLabel": "Work visa",
+  "intro": "Got a job in Saudi Arabia? Before your work visa is issued you need a medical, an ACRO police certificate and your degree certificate attested. We arrange the medical, the attestations and the visa application in one service, and the calculator below shows your total.",
+  "eligibility": [
+    "You have a job offer from an employer in Saudi Arabia",
+    "Your employer has issued your work visa reference",
+    "You have a degree or qualification for the role"
+  ],
+  "sections": [
+    {
+      "heading": "What we arrange for you",
+      "text": "- Medical tests and report at our partner clinic in Manchester or London\n- Solicitor and FCO attestation of your degree certificate\n- FCO attestation of your medical report and ACRO police certificate\n- Your work visa application, checked and submitted to the Saudi visa centre"
+    },
+    {
+      "heading": "How long does a Saudi work visa take?",
+      "text": "The visa itself is usually issued in about 4 working days. Allow extra time beforehand for the medical, your ACRO police certificate and the attestations."
+    },
+    {
+      "heading": "Saudi work visa help from Manchester",
+      "text": "We're based in Manchester city centre and help professionals across the UK start jobs in Saudi Arabia. Tick the extras you need in the calculator and we'll confirm the final price before you pay. We also offer [document legalisation](/document-legalisation/) for other certificates."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Does my degree need to be attested for a Saudi work visa?",
+      "a": "Yes, in most cases. It's certified by a solicitor first, then attested by the FCO."
+    },
+    {
+      "q": "Where do I have my medical?",
+      "a": "At our partner clinic in Manchester or London. Choose the one that suits you in the calculator."
+    },
+    {
+      "q": "Do I need a police certificate?",
+      "a": "Yes. You need an ACRO police certificate, which is then attested by the FCO."
+    }
+  ],
+  "sortKey": "1 saudi arabia 5 work",
+  "focusKeyword": "Saudi work visa",
+  "prices": [
+    {
+      "service": "4 days",
+      "included": "Work visa application completed and checked",
+      "processing": "Single entry, 3 months",
+      "processingFee": "£10",
+      "fee": "£250",
+      "popular": true,
+      "total": ""
+    }
+  ],
+  "calculator": {
+    "title": "Work out your total",
+    "intro": "Tick what you need. Medical and attestation prices are per person.",
+    "groups": [
+      {
+        "title": "Medical tests and report",
+        "note": "Mandatory",
+        "type": "choice",
+        "options": [
+          {
+            "label": "Manchester clinic",
+            "price": "£545",
+            "ticked": true
+          },
+          {
+            "label": "London clinic",
+            "price": "£445",
+            "ticked": false
+          },
+          {
+            "label": "Other clinic",
+            "price": "",
+            "ticked": false
+          }
+        ]
+      },
+      {
+        "title": "Attestation",
+        "note": "Mandatory",
+        "type": "tick",
+        "options": [
+          {
+            "label": "FCO attestation of your medical report",
+            "price": "£150",
+            "ticked": true
+          },
+          {
+            "label": "FCO attestation of your ACRO police certificate",
+            "price": "£150",
+            "ticked": true
+          },
+          {
+            "label": "FCO attestation of your degree certificate",
+            "price": "£150",
+            "ticked": true
+          },
+          {
+            "label": "Solicitor attestation of your degree certificate",
+            "price": "£50",
+            "ticked": true
+          }
+        ]
+      }
+    ]
+  },
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Original passport, valid for at least 6 months, with two blank pages",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent colour photo with a white background",
+      "needed": "Required"
+    },
+    {
+      "document": "Work visa reference",
+      "details": "Issued by your employer in Saudi Arabia",
+      "needed": "Required"
+    },
+    {
+      "document": "Employment contract",
+      "details": "Signed contract or offer letter",
+      "needed": "Required"
+    },
+    {
+      "document": "Degree certificate",
+      "details": "Solicitor and FCO attested",
+      "needed": "We attest"
+    },
+    {
+      "document": "Medical report",
+      "details": "From an approved clinic, then FCO attested",
+      "needed": "We arrange"
+    },
+    {
+      "document": "ACRO police certificate",
+      "details": "FCO attested",
+      "needed": "We attest"
+    }
+  ]
+}

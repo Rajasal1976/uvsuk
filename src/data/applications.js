@@ -542,7 +542,7 @@ const saudi = {
       id: 'trip',
       title: 'Your trip',
       fields: [
-        { name: 'visaType', label: 'Which visa do you need?', type: 'select', required: true, options: ['Tourist eVisa', 'Umrah (tourist eVisa)', 'Business visit', 'Family visit', 'Work visa'] },
+        { name: 'visaType', label: 'Which visa do you need?', type: 'select', required: true, options: ['ETA – tourist or Umrah (British citizens)', 'ETA – business (British citizens)', 'Tourist eVisa', 'Umrah (tourist eVisa)', 'Business visit', 'Family visit', 'Residence visa (joining family)', 'Work visa'] },
         ...stay(),
         { name: 'employerSaudi', label: 'Name of your employer in Saudi Arabia', type: 'text', required: true, showIf: { name: 'visaType', is: 'Work visa' } },
         { name: 'hostSaudi', label: 'Name of the company or person you’re visiting', type: 'text', required: true, showIf: { name: 'visaType', is: ['Business visit', 'Family visit'] } },
@@ -556,6 +556,9 @@ const saudi = {
     'Umrah (tourist eVisa)': 'Umrah is allowed on the tourist eVisa outside the Hajj season. You usually only need your passport and photo.',
     'Business visit': 'For a business visit you’ll need an invitation from the Saudi company and a letter from your employer.',
     'Family visit': 'For a family visit you’ll need an invitation from your relative in Saudi Arabia and proof of your relationship.',
+    'ETA – tourist or Umrah (British citizens)': 'For the Saudi ETA you only need your British passport and a photo.',
+    'ETA – business (British citizens)': 'For the business ETA you need your British passport, a photo and the name of the company you’re visiting.',
+    'Residence visa (joining family)': 'For a residence visa you’ll need the visa reference from your family member, proof of your relationship, a medical and an attested police certificate. We can arrange the medical and attestation.',
     'Work visa': 'For a work visa you’ll need your visa authorisation from your employer, attested degree certificate, police certificate and medical report. We can arrange the attestation.',
   },
   uploads: [

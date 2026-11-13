@@ -402,6 +402,43 @@ export const structure = [
   },
   {
     "slug": "saudi-arabia-visa-uk",
+    "type": "hub",
+    "group": "worldwide",
+    "visa": "travel",
+    "children": [
+      "saudi-arabia-eta-uk",
+      "saudi-business-visa-uk",
+      "saudi-family-visit-visa-uk",
+      "saudi-residence-visa-uk",
+      "saudi-work-visa-uk"
+    ]
+  },
+  {
+    "slug": "saudi-arabia-eta-uk",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "evisa"
+  },
+  {
+    "slug": "saudi-business-visa-uk",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "travel"
+  },
+  {
+    "slug": "saudi-family-visit-visa-uk",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "travel"
+  },
+  {
+    "slug": "saudi-residence-visa-uk",
+    "type": "service",
+    "group": "worldwide",
+    "visa": "travel"
+  },
+  {
+    "slug": "saudi-work-visa-uk",
     "type": "service",
     "group": "worldwide",
     "visa": "travel"

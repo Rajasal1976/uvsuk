@@ -12,6 +12,7 @@ import VisaBar from '../components/VisaBar.astro';
 import { flagFor } from '../data/flags.js';
 import { visaFinder } from '../data/finder.js';
 import PriceTables from '../components/PriceTables.astro';
+import PriceCalculator from '../components/PriceCalculator.astro';
 import GuideSections from '../components/GuideSections.astro';
 import DocumentsTable from '../components/DocumentsTable.astro';
 import { pages, pageBySlug } from '../data/pages.js';
@@ -79,7 +80,7 @@ const howWeHelp = [
             <DocumentsTable rows={p.documentsTable} />
             <GuideSections sections={p.sections} />
             <section><h2>How we help</h2><ul>{howWeHelp.map((h) => <li>{h}</li>)}</ul></section>
-            {p.visa && p.group === 'worldwide' ? <PriceTables prices={p.prices} kind={p.visa} /> : (
+            {p.visa && p.group === 'worldwide' ? <><PriceTables prices={p.prices} kind={p.visa} />{p.calculator && <PriceCalculator calc={p.calculator} prices={p.prices} applyUrl={p.applyButton} />}</> : (
               <section>
                 <h2>Fees and timescales</h2>
                 <p>Our fee is agreed before we start. <a href="/fees/">See our fees</a>. Government fees are paid separately{p.govuk && <>, and are listed on <a href={p.govuk}>GOV.UK</a></>}.</p>
