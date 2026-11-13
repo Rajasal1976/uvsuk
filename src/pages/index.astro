@@ -294,36 +294,30 @@ const employerServices = sitePages.filter((p) => p.group === 'employer' && p.typ
 </div>
 </section>
 
-<!-- Worldwide -->
-<section id="worldwide" style="border-top: 1px solid #E3E7EC">
-<div style="max-width: 1200px; margin: 0 auto; padding: 72px 24px; display: flex; flex-direction: column; gap: 28px">
-<div style="display: flex; flex-direction: column; gap: 10px; max-width: 720px">
-<h2 style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 32px; line-height: 1.2; font-weight: 600; color: #14532D">Travelling abroad? We handle worldwide visas too</h2>
-<p style="margin: 0; color: #3A4552">Visa and eVisa applications for UK residents, plus document legalisation and Indian passport services.</p>
-</div>
-<div style="display: flex; flex-wrap: wrap; gap: 12px">
-<a href="/indian-visa-application-uk/" style="text-decoration: none; border: 1px solid #C9D0D8; border-radius: 999px; padding: 10px 20px; font-weight: 500">India</a>
-<a href="/china-visa-application/" style="text-decoration: none; border: 1px solid #C9D0D8; border-radius: 999px; padding: 10px 20px; font-weight: 500">China</a>
-<a href="/schengen-visa-application/" style="text-decoration: none; border: 1px solid #C9D0D8; border-radius: 999px; padding: 10px 20px; font-weight: 500">Schengen</a>
-<a href="/usa-visa-services/" style="text-decoration: none; border: 1px solid #C9D0D8; border-radius: 999px; padding: 10px 20px; font-weight: 500">USA</a>
-<a href="/saudi-arabia-visa-uk/" style="text-decoration: none; border: 1px solid #C9D0D8; border-radius: 999px; padding: 10px 20px; font-weight: 500">Saudi Arabia</a>
-<a href="/ghana-visa-services/" style="text-decoration: none; border: 1px solid #C9D0D8; border-radius: 999px; padding: 10px 20px; font-weight: 500">Ghana</a>
-<a href="/russian-visa-services-from-uk/" style="text-decoration: none; border: 1px solid #C9D0D8; border-radius: 999px; padding: 10px 20px; font-weight: 500">Russia</a>
-<a href="/sri-lanka-visa-services/" style="text-decoration: none; border: 1px solid #C9D0D8; border-radius: 999px; padding: 10px 20px; font-weight: 500">Sri Lanka</a>
-<a href="/document-legalisation/" style="text-decoration: none; border: 1px solid #C9D0D8; border-radius: 999px; padding: 10px 20px; font-weight: 500">Document legalisation</a>
-<a href="/worldwide-visas/" style="text-decoration: none; border: 1px solid #C9D0D8; border-radius: 999px; padding: 10px 20px; font-weight: 500">All countries →</a>
-</div>
-</div>
-</section>
 
 <!-- Guide (edited in the admin: Homepage › Guide sections), shown side by side.
      "Why clients choose us" is left out because "Meet your advisers" already covers the same points. -->
 {guideSections.length > 0 && (
-<section class="home-guide" style="max-width: 1200px; margin: 0 auto; padding: 8px 24px 88px">
+<div style="border-top: 1px solid #E3E7EC">
+<section class="home-guide" style="max-width: 1200px; margin: 0 auto; padding: 72px 24px 88px">
 <div class="guide-grid">
 <GuideSections sections={guideSections} />
 </div>
+<nav class="travel-row" aria-label="Popular travel visas">
+<span>Popular travel visas</span>
+<a href="/indian-visa-application-uk/">India</a>
+<a href="/china-visa-application/">China</a>
+<a href="/schengen-visa-application/">Schengen</a>
+<a href="/usa-visa-services/">USA</a>
+<a href="/saudi-arabia-visa-uk/">Saudi Arabia</a>
+<a href="/ghana-visa-services/">Ghana</a>
+<a href="/russian-visa-services-from-uk/">Russia</a>
+<a href="/sri-lanka-visa-services/">Sri Lanka</a>
+<a href="/document-legalisation/">Document legalisation</a>
+<a href="/worldwide-visas/">All countries →</a>
+</nav>
 </section>
+</div>
 )}
 
 
@@ -461,6 +455,10 @@ const employerServices = sitePages.filter((p) => p.group === 'employer' && p.typ
   .home-guide p { margin: 0; color: #3A4552; font-size: 15.5px; line-height: 1.65; }
   .home-guide ul { margin: 0; padding-left: 20px; color: #3A4552; font-size: 15.5px; line-height: 1.65; }
   .home-guide li { margin-bottom: 6px; }
+  .travel-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 28px; }
+  .travel-row span { font-size: 14px; font-weight: 700; color: #8A5A12; margin-right: 6px; }
+  .travel-row a { text-decoration: none; color: #14532D; border: 1px solid #D5DCD7; border-radius: 999px; padding: 6px 14px; font-size: 14px; font-weight: 500; }
+  .travel-row a:hover, .travel-row a:focus-visible { border-color: #14532D; background: #EAF4EC; }
   @media (max-width: 1000px) { .guide-grid { grid-template-columns: 1fr; } .guide-grid > section { padding: 24px; } }
   .chip-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 4px; }
   .chip-row a { text-decoration: none; color: #14532D; border: 1px solid #C9D0D8; border-radius: 999px; padding: 10px 20px; font-size: 15.5px; font-weight: 500; line-height: 1.3; }
