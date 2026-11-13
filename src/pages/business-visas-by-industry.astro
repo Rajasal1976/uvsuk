@@ -1,0 +1,60 @@
+---
+import Page from '../layouts/Page.astro';
+import { site } from '../data/site.js';
+const title = 'Business Travel Visas by Industry | Unique Visa Services';
+const description = 'Business and work visas for UK companies sending staff abroad: oil and gas, engineering, film crews, performers, trade fairs, construction and more.';
+const industries = [
+  ['Oil and gas', 'Contractors, rotational crews and offshore workers', '/oil-and-gas-visas/'],
+  ['Engineering and installation', 'Engineers installing, commissioning and servicing equipment', '/engineering-installation-visas/'],
+  ['Construction and renewables', 'Site teams on construction, wind, solar and infrastructure projects', '/construction-renewables-visas/'],
+  ['Film and TV crews', 'Media visas, crew lists and filming permissions', '/film-tv-crew-visas/'],
+  ['Performers and touring', 'Musicians, productions and touring crew', '/performers-touring-visas/'],
+  ['Trade fairs and exhibitions', 'Exhibitors and buyers, including the Canton Fair', '/trade-fair-exhibition-visas/'],
+];
+const tel = `tel:${site.phoneIntl}`;
+---
+<Page title={title} description={description}>
+<main>
+<div class="head-zone">
+<div class="page-head">
+<div class="wrap">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / Business visas by industry</nav>
+<h1>Business Travel Visas by Industry</h1>
+<p class="lead">UK companies send engineers, crews, performers and staff all over the world. Each industry has its own visa questions. Choose yours to see what your team is likely to need.</p>
+</div></div>
+</div>
+
+<div class="wrap section page-body" style="padding-top:64px">
+<div class="content">
+<section>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px">
+{industries.map(([name, text, href]) => (
+<a href={href} class="panel" style="text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:6px">
+<h2 style="margin:0;font-size:20px">{name}</h2>
+<p class="soft" style="margin:0;font-size:15px">{text}</p></a>
+))}
+</div>
+</section>
+
+<section>
+<h2>Don't see your industry?</h2>
+<p>We arrange business and work visas for companies in many other sectors too, including automotive, food and drink, mining, aviation, IT and tech, pharma and charities. <a href="/contact-us/">Tell us about your trip</a> and we'll confirm what your team needs.</p>
+</section>
+
+<section>
+<h2>Why use us for business travel visas</h2>
+<ul>
+<li>We check what each traveller will actually be doing, so nobody travels on the wrong visa</li>
+<li>Group applications with one point of contact for your team</li>
+<li>Document legalisation in-house for work permits</li>
+<li>Staffed office in Manchester, with a London office line</li></ul>
+</section>
+</div>
+
+<aside class="aside">
+<div class="panel">
+<h2>Get a quote for your team</h2>
+<p class="soft" style="font-size:16px">Tell us the destination, dates and team size, and we'll confirm the right visa and our fee.</p><a class="btn btn-primary" href="/contact-us/">Get a quote</a><a href={tel} class="btn btn-outline">Call {site.phone}</a>
+<p style="font-size:14px;color:var(--ink-mute)">IAA-regulated · Ref {site.iaaRef}</p></div></aside></div>
+</main>
+</Page>

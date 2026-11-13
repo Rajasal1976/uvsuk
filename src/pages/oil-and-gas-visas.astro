@@ -3,7 +3,6 @@ import Page from '../layouts/Page.astro';
 import { site } from '../data/site.js';
 const title = 'Oil & Gas Work Visas from the UK – Unique Visa Services';
 const description = 'Business and work visas for oil and gas contractors, rotational crews and HR teams. Saudi Arabia, Iraq, Nigeria, Kuwait, Angola and more.';
-const schemas = [];
 const countries = [
   { name: 'Saudi Arabia', work: 'Onshore fields, refineries and major energy projects' },
   { name: 'Iraq', work: 'Federal Iraq and Kurdistan: Basra oilfields and Erbil projects' },
@@ -18,13 +17,23 @@ const faqs = [
   { q: 'Can you legalise degree certificates for a work permit?', a: 'Yes. Many countries require attested qualifications for work visas, and we handle legalisation alongside the visa application.' },
   { q: 'What if the worker isn\u2019t a British citizen?', a: 'We help other nationalities too. Requirements can differ by passport, so tell us each traveller\u2019s nationality when you enquire.' },
 ];
+// FAQ structured data for Google, built from the questions above (Page.astro expects JSON text).
+const schemas = [JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+})];
 ---
 <Page title={title} description={description} schemas={schemas}>
 <main>
 <div class="head-zone">
 <div class="page-head">
 <div class="wrap">
-<nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/worldwide-visas/">Worldwide Visas</a> / Oil &amp; Gas</nav>
+<nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/business-visas-by-industry/">Business visas by industry</a> / Oil &amp; Gas</nav>
 <h1>Oil &amp; Gas Visas for Contractors and Rotational Crews</h1>
 <p class="lead">Sending engineers, technicians or offshore crews abroad? We handle business and work visas for oil and gas projects across the Middle East, Africa and the Caspian, so your people arrive on time and on the right visa.</p>
 <div class="btn-row" style="margin-top:20px"><a class="btn btn-gold" href="/contact-us/">Get a quote</a><a href="tel:+441619562003" class="btn btn-outline">Call 0161 956 2003</a></div>
@@ -107,7 +116,8 @@ const faqs = [
 <section>
 <h2>Related services</h2>
 <ul>
-<li><a href="/worldwide-visas/">Worldwide visas</a></li>
+<li><a href="/business-visas-by-industry/">Business visas for other industries</a></li>
+<li><a href="/engineering-installation-visas/">Engineering and installation visas</a></li>
 <li><a href="/contact-us/">Book a consultation</a></li></ul></section>
 </div>
 

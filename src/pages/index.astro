@@ -186,21 +186,37 @@ const employerServices = sitePages.filter((p) => p.group === 'employer' && p.typ
   </nav>
 </section>
 
-<!-- Employers -->
+<!-- Employers: hiring into the UK (left) and sending staff abroad (right) -->
 <section id="employers" style="background: #14532D; color: #E7F2EA">
-<div style="max-width: 1200px; margin: 0 auto; padding: 72px 24px; display: flex; flex-wrap: wrap; gap: 32px 56px; align-items: center; justify-content: space-between">
-<div style="flex: 1 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+<div class="biz-split">
+<div class="biz-col biz-col-left">
 <p style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: 0.08em; color: #F2C46D">FOR EMPLOYERS</p>
-<h2 style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 36px; line-height: 1.2; font-weight: 600; color: #FFFFFF">Need to hire from overseas? We'll get your sponsor licence in place.</h2>
-<p style="margin: 0; color: #C6DECD">Sponsor licence applications and renewals, Key Personnel set-up, compliance processes and assigning Certificates of Sponsorship, for IT, engineering, hospitality and other UK businesses.</p>
+<h2 style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 32px; line-height: 1.2; font-weight: 600; color: #FFFFFF">Need to hire from overseas? We'll get your sponsor licence in place.</h2>
+<p style="margin: 0; color: #C6DECD">Sponsor licence applications and renewals, Key Personnel set-up, compliance and Certificates of Sponsorship for UK businesses.</p>
 <p style="margin: 6px 0 0; font-size: 14px; font-weight: 600; color: #F2C46D">Sponsor licence guides by industry</p>
 <div class="industry-links">
 {industryLinks.map(([label, href]) => <a href={href}>{label}</a>)}
 <a href="/sponsor-licence-by-industry/">All industries</a>
 <a href="/sponsor-licence-compliance/">Compliance support</a>
 </div>
+<div style="padding-top: 8px"><a href="#book" style="display: inline-block; background: #F2C46D; color: #14532D; text-decoration: none; padding: 16px 28px; border-radius: 6px; font-weight: 600">Talk to us about sponsorship</a></div>
 </div>
-<a href="#book" style="background: #F2C46D; color: #14532D; text-decoration: none; padding: 16px 28px; border-radius: 6px; font-weight: 600">Talk to us about sponsorship</a>
+<div class="biz-col biz-col-right">
+<p style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: 0.08em; color: #F2C46D">FOR BUSINESSES SENDING STAFF ABROAD</p>
+<h2 style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 32px; line-height: 1.2; font-weight: 600; color: #FFFFFF">Sending your team overseas? We'll sort their business and work visas.</h2>
+<p style="margin: 0; color: #C6DECD">Business, work and crew visas for UK companies sending engineers, crews, performers and staff abroad, with document legalisation in-house.</p>
+<p style="margin: 6px 0 0; font-size: 14px; font-weight: 600; color: #F2C46D">Business travel visas by industry</p>
+<div class="industry-links">
+<a href="/oil-and-gas-visas/">Oil and gas</a>
+<a href="/engineering-installation-visas/">Engineering and installation</a>
+<a href="/construction-renewables-visas/">Construction and renewables</a>
+<a href="/film-tv-crew-visas/">Film and TV crews</a>
+<a href="/performers-touring-visas/">Performers and touring</a>
+<a href="/trade-fair-exhibition-visas/">Trade fairs and exhibitions</a>
+<a href="/business-visas-by-industry/">All industries</a>
+</div>
+<div style="padding-top: 8px"><a href="/contact-us/" style="display: inline-block; background: #F2C46D; color: #14532D; text-decoration: none; padding: 16px 28px; border-radius: 6px; font-weight: 600">Get a quote for your team</a></div>
+</div>
 </div>
 </section>
 
@@ -442,6 +458,18 @@ const employerServices = sitePages.filter((p) => p.group === 'employer' && p.typ
   .home-guide p { margin: 0; color: #3A4552; font-size: 17px; line-height: 1.65; }
   .home-guide ul { margin: 0; padding-left: 22px; color: #3A4552; font-size: 17px; line-height: 1.65; }
   .home-guide li { margin-bottom: 6px; }
+</style>
+
+<style is:global>
+  .biz-split { max-width: 1200px; margin: 0 auto; padding: 72px 24px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .biz-col { display: flex; flex-direction: column; gap: 14px; }
+  .biz-col-left { padding-right: 48px; border-right: 1px solid rgba(255,255,255,.22); }
+  .biz-col-right { padding-left: 48px; }
+  @media (max-width: 960px) {
+    .biz-split { grid-template-columns: 1fr; gap: 48px; }
+    .biz-col-left { padding-right: 0; border-right: 0; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,.22); }
+    .biz-col-right { padding-left: 0; }
+  }
 </style>
 
 <style is:global>

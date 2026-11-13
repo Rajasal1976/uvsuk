@@ -1,0 +1,112 @@
+---
+// Shared layout for the "Business travel visas by industry" pages.
+// Each industry page passes its own text in; the look matches the rest of the site.
+import Page from '../layouts/Page.astro';
+import { site } from '../data/site.js';
+
+interface Props {
+  title: string;          // SEO title
+  description: string;    // SEO description
+  crumb: string;          // short name for the breadcrumb
+  h1: string;
+  intro: string;
+  who: string[];          // who we help
+  visas: [string, string][]; // [visa type, used for]
+  sections: { h: string; p: string[] }[];
+  checklist: string[];    // documents commonly needed
+  faqs: { q: string; a: string }[];
+  related: [string, string][]; // [label, link]
+}
+const { title, description, crumb, h1, intro, who, visas, sections, checklist, faqs, related } = Astro.props;
+const tel = `tel:${site.phoneIntl}`;
+const schemas = [JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+})];
+---
+<Page title={title} description={description} schemas={schemas}>
+<main>
+<div class="head-zone">
+<div class="page-head">
+<div class="wrap">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/business-visas-by-industry/">Business visas by industry</a> / {crumb}</nav>
+<h1>{h1}</h1>
+<p class="lead">{intro}</p>
+<div class="btn-row" style="margin-top:20px"><a class="btn btn-gold" href="/contact-us/">Get a quote for your team</a><a href={tel} class="btn btn-outline">Call {site.phone}</a></div>
+</div></div>
+</div>
+
+<div class="wrap section page-body" style="padding-top:64px">
+<div class="content">
+
+<section>
+<h2>Who we help</h2>
+<ul>{who.map((w) => <li>{w}</li>)}</ul>
+</section>
+
+<section>
+<h2>Which visa does your team need?</h2>
+<div class="table-wrap">
+<table class="data-table"><thead>
+<tr><th scope="col">Visa</th><th scope="col">Usually used for</th></tr></thead><tbody>
+{visas.map(([v, u]) => <tr><th scope="row" data-label="Visa">{v}</th><td data-label="Usually used for">{u}</td></tr>)}
+</tbody></table></div>
+<p class="soft" style="font-size:15px">Rules differ by country and by the traveller's nationality. We confirm the right visa for each trip before anything is submitted.</p>
+</section>
+
+{sections.map((s) => (
+<section>
+<h2>{s.h}</h2>
+{s.p.map((para) => <p>{para}</p>)}
+</section>
+))}
+
+<section>
+<h2>Documents often needed</h2>
+<ul>{checklist.map((c) => <li>{c}</li>)}</ul>
+<p class="soft" style="font-size:15px">We give you an exact checklist for each destination and traveller.</p>
+</section>
+
+<section>
+<h2>How we help</h2>
+<ul>
+<li>Confirm the right visa for each destination and each traveller</li>
+<li>Prepare forms and check invitation and support letters before submission</li>
+<li>Arrange document legalisation in-house when a country asks for it</li>
+<li>Handle group applications with one point of contact for your team</li>
+<li>Keep you updated until passports are back with you</li></ul>
+</section>
+
+<section>
+<h2>Common questions</h2>
+{faqs.map((f) => (
+<details style="margin:0 0 12px">
+<summary style="font-weight:600;cursor:pointer">{f.q}</summary>
+<p style="margin:10px 0 0">{f.a}</p></details>
+))}
+</section>
+
+<section>
+<h2>Related services</h2>
+<ul>
+{related.map(([label, href]) => <li><a href={href}>{label}</a></li>)}
+<li><a href="/business-visas-by-industry/">Business visas for other industries</a></li>
+<li><a href="/document-legalisation/">Document legalisation</a></li></ul>
+</section>
+</div>
+
+<aside class="aside">
+<div class="panel">
+<h2>Get a quote for your team</h2>
+<p class="soft" style="font-size:16px">Tell us the destination, dates and team size, and we'll confirm the right visa and our fee.</p><a class="btn btn-primary" href="/contact-us/">Get a quote</a><a href={tel} class="btn btn-outline">Call {site.phone}</a>
+<p style="font-size:14px;color:var(--ink-mute)">IAA-regulated · Ref {site.iaaRef}</p></div></aside></div>
+
+<section class="wrap section">
+<div class="cta-band">
+<div class="stack" style="flex:1 1 460px;min-width:0;gap:10px">
+<h2>Sending a team abroad soon?</h2>
+<p>Tell us where, when and how many people, and we'll come back with the right visa and a clear quote.</p></div>
+<div class="btn-row"><a class="btn btn-gold" href="/contact-us/">Get a quote</a><a href={tel} class="btn btn-ghost-light">{site.phone}</a></div></div></section>
+</main>
+</Page>
