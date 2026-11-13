@@ -319,7 +319,7 @@ const employerServices = sitePages.filter((p) => p.group === 'employer' && p.typ
 <!-- Guide (edited in the admin: Homepage › Guide sections), shown side by side.
      "Why clients choose us" is left out because "Meet your advisers" already covers the same points. -->
 {guideSections.length > 0 && (
-<section class="home-guide" style="max-width: 1200px; margin: 0 auto; padding: 24px 24px 72px">
+<section class="home-guide" style="max-width: 1200px; margin: 0 auto; padding: 8px 24px 88px">
 <div class="guide-grid">
 <GuideSections sections={guideSections} />
 </div>
@@ -454,12 +454,14 @@ const employerServices = sitePages.filter((p) => p.group === 'employer' && p.typ
 </script>
 
 <style is:global>
-  .guide-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px 56px; align-items: start; }
-  .home-guide section { display: flex; flex-direction: column; gap: 12px; }
-  .home-guide h2 { margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 26px; line-height: 1.2; font-weight: 600; color: #14532D; }
-  .home-guide p { margin: 0; color: #3A4552; font-size: 16px; line-height: 1.65; }
-  .home-guide ul { margin: 0; padding-left: 22px; color: #3A4552; font-size: 17px; line-height: 1.65; }
+  /* Guide text as three matching cards, in the same style as the UK service cards at the top of the page */
+  .guide-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; align-items: stretch; }
+  .guide-grid > section { display: flex; flex-direction: column; gap: 12px; background: #FFFFFF; border: 1px solid #E3E7EC; border-top: 3px solid #F2C46D; border-radius: 10px; padding: 28px; }
+  .home-guide h2 { margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 22px; line-height: 1.25; font-weight: 600; color: #14532D; }
+  .home-guide p { margin: 0; color: #3A4552; font-size: 15.5px; line-height: 1.65; }
+  .home-guide ul { margin: 0; padding-left: 20px; color: #3A4552; font-size: 15.5px; line-height: 1.65; }
   .home-guide li { margin-bottom: 6px; }
+  @media (max-width: 1000px) { .guide-grid { grid-template-columns: 1fr; } .guide-grid > section { padding: 24px; } }
   .chip-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 4px; }
   .chip-row a { text-decoration: none; color: #14532D; border: 1px solid #C9D0D8; border-radius: 999px; padding: 10px 20px; font-size: 15.5px; font-weight: 500; line-height: 1.3; }
   .chip-row a:hover, .chip-row a:focus-visible { border-color: #14532D; background: #EAF4EC; }
