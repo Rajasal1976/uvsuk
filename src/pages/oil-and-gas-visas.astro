@@ -1,0 +1,127 @@
+---
+import Page from '../layouts/Page.astro';
+import { site } from '../data/site.js';
+const title = 'Oil & Gas Work Visas from the UK – Unique Visa Services';
+const description = 'Business and work visas for oil and gas contractors, rotational crews and HR teams. Saudi Arabia, Iraq, Nigeria, Kuwait, Angola and more.';
+const schemas = [];
+const countries = [
+  { name: 'Saudi Arabia', work: 'Onshore fields, refineries and major energy projects' },
+  { name: 'Iraq', work: 'Federal Iraq and Kurdistan: Basra oilfields and Erbil projects' },
+  { name: 'Nigeria', work: 'Onshore and offshore projects, Lagos and Port Harcourt' },
+  { name: 'Kuwait', work: 'Oilfield services and contractor work' },
+  { name: 'Angola', work: 'Offshore projects and Luanda-based work' },
+];
+const faqs = [
+  { q: 'Can my staff work on a tourist visa or visa-free entry?', a: 'Usually not. Most oil-producing countries require a business or work visa for any work activity, even short site visits. We\u2019ll confirm what each trip needs.' },
+  { q: 'How long does an oil and gas visa take?', a: 'It depends on the country and visa type. Some business visas take days, while sponsored work visas can take several weeks. Tell us your travel date and we\u2019ll give you a realistic timeline.' },
+  { q: 'Do you handle visas for a whole team at once?', a: 'Yes. We process group applications and can set up a corporate account with one point of contact.' },
+  { q: 'Can you legalise degree certificates for a work permit?', a: 'Yes. Many countries require attested qualifications for work visas, and we handle legalisation alongside the visa application.' },
+  { q: 'What if the worker isn\u2019t a British citizen?', a: 'We help other nationalities too. Requirements can differ by passport, so tell us each traveller\u2019s nationality when you enquire.' },
+];
+---
+<Page title={title} description={description} schemas={schemas}>
+<main>
+<div class="head-zone">
+<div class="page-head">
+<div class="wrap">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/worldwide-visas/">Worldwide Visas</a> / Oil &amp; Gas</nav>
+<h1>Oil &amp; Gas Visas for Contractors and Rotational Crews</h1>
+<p class="lead">Sending engineers, technicians or offshore crews abroad? We handle business and work visas for oil and gas projects across the Middle East, Africa and the Caspian, so your people arrive on time and on the right visa.</p>
+<div class="btn-row" style="margin-top:20px"><a class="btn btn-gold" href="/contact-us/">Get a quote</a><a href="tel:+441619562003" class="btn btn-outline">Call 0161 956 2003</a></div>
+</div></div>
+</div>
+
+<div class="wrap section page-body" style="padding-top:64px">
+<div class="content">
+
+<section>
+<h2>Who we help</h2>
+<ul>
+<li><strong>Oilfield service contractors</strong> sending engineers, drillers and technicians to client sites</li>
+<li><strong>HR and mobility teams</strong> booking visas for many staff, with one reliable point of contact</li>
+<li><strong>Rotational and offshore crews</strong> who need visas renewed without missing a rotation</li>
+<li><strong>Consultants and inspectors</strong> making short trips for meetings, audits and site visits</li></ul>
+<p class="soft" style="font-size:15px">One account manager handles your team&#x27;s applications, tracks expiry dates and reminds you before renewals are due.</p>
+</section>
+
+<section>
+<h2>Countries we cover</h2>
+<p>Our five most requested oil and gas destinations:</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin:20px 0">
+{countries.map((c) => (
+<div class="panel">
+<h3 style="margin:0 0 6px">{c.name}</h3>
+<p class="soft" style="font-size:15px;margin:0">{c.work}</p></div>
+))}
+</div>
+<div class="table-wrap">
+<table class="data-table"><thead>
+<tr><th scope="col">Region</th><th scope="col">We also arrange visas for</th></tr></thead><tbody>
+<tr><th scope="row" data-label="Region">Middle East</th><td data-label="Countries">Oman, Qatar, UAE</td></tr>
+<tr><th scope="row" data-label="Region">Africa</th><td data-label="Countries">Algeria, Libya, Egypt, Ghana, Equatorial Guinea, Gabon, Republic of Congo, Mozambique</td></tr>
+<tr><th scope="row" data-label="Region">Caspian and Central Asia</th><td data-label="Countries">Kazakhstan, Azerbaijan, Turkmenistan</td></tr>
+<tr><th scope="row" data-label="Region">Americas and Asia-Pacific</th><td data-label="Countries">Brazil, Guyana, Malaysia, Indonesia, Brunei</td></tr></tbody></table></div>
+<p class="soft" style="font-size:15px">Don&#x27;t see your destination? <a href="tel:+441619562003">Call us</a>, as we handle visas for most countries worldwide.</p>
+</section>
+
+<section>
+<h2>Why the right visa matters</h2>
+<p>A tourist visa or visa-free entry is almost never enough for oilfield work. Even where UK citizens can visit freely as tourists, working on a rig, a site or a project usually needs a business or work visa.</p>
+<div class="table-wrap">
+<table class="data-table"><thead>
+<tr><th scope="col">Visa</th><th scope="col">Used for</th></tr></thead><tbody>
+<tr><th scope="row" data-label="Visa">Business visa</th><td data-label="Used for">Meetings, inspections, audits and short site visits</td></tr>
+<tr><th scope="row" data-label="Visa">Work visa or permit</th><td data-label="Used for">Hands-on work, usually sponsored by the employer or client in that country</td></tr>
+<tr><th scope="row" data-label="Visa">Invitation and sponsor letters</th><td data-label="Used for">Required by many oil-producing countries; small errors cause delays</td></tr></tbody></table></div>
+<p>The wrong visa can mean a worker turned away at the airport, a missed rotation, or fines for the employer. We check which visa each trip needs before anything is submitted.</p>
+</section>
+
+<section>
+<h2>How it works</h2>
+<ol>
+<li><strong>Tell us about the trip:</strong> destination, dates, type of work and number of travellers</li>
+<li><strong>We confirm the right visa</strong> and send a checklist of documents each traveller needs</li>
+<li><strong>We prepare and check everything:</strong> forms, invitation letters and supporting documents</li>
+<li><strong>We submit and track it,</strong> keeping you updated until the visa is issued</li>
+<li><strong>Passports back to you,</strong> returned securely and ready to travel</li></ol>
+</section>
+
+<section>
+<h2>Why choose Unique Visa Services</h2>
+<ul>
+<li><strong>Business and work visa experience,</strong> including Saudi work visas</li>
+<li><strong>Document legalisation in-house:</strong> degree certificates and company documents attested for work permits, without a second supplier</li>
+<li><strong>Real people, real office:</strong> staffed office in Manchester, Monday to Friday 9am to 4pm, with phone lines answered 8am to 6pm</li>
+<li><strong>Corporate accounts:</strong> one contact for your whole team, with invoicing for businesses</li></ul>
+</section>
+
+<section>
+<h2>Common questions</h2>
+{faqs.map((f) => (
+<details style="margin:0 0 12px">
+<summary style="font-weight:600;cursor:pointer">{f.q}</summary>
+<p style="margin:10px 0 0">{f.a}</p></details>
+))}
+</section>
+
+<section>
+<h2>Related services</h2>
+<ul>
+<li><a href="/worldwide-visas/">Worldwide visas</a></li>
+<li><a href="/contact-us/">Book a consultation</a></li></ul></section>
+</div>
+
+<aside class="aside">
+<div class="panel">
+<h2>Get a quote for your team</h2>
+<p class="soft" style="font-size:16px">Tell us the destination, dates and team size, and we&#x27;ll confirm the right visa and our fee.</p><a class="btn btn-primary" href="/contact-us/">Get a quote</a><a href="tel:+441619562003" class="btn btn-outline">Call 0161 956 2003</a>
+<p style="font-size:14px;color:var(--ink-mute)">IAA-regulated · Ref {site.iaaRef}</p></div></aside></div>
+
+<section class="wrap section">
+<div class="cta-band">
+<div class="stack" style="flex:1 1 460px;min-width:0;gap:10px">
+<h2>Need visas for an upcoming project?</h2>
+<p>Tell us the destination, dates and team size, and we&#x27;ll come back with the right visa and a clear quote.</p></div>
+<div class="btn-row"><a class="btn btn-gold" href="/contact-us/">Get a quote</a><a href="tel:+441619562003" class="btn btn-ghost-light">0161 956 2003</a></div></div></section>
+</main>
+</Page>
