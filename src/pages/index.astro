@@ -46,6 +46,7 @@ const placeholder = 'background: #D6E3DA; border-radius: 12px; display: flex; al
 import { pages as sitePages } from '../data/pages.js';
 const byKey = (a, b) => String(a.sortKey || a.slug).localeCompare(String(b.sortKey || b.slug));
 const ukServices = sitePages.filter((p) => p.group === 'uk' && p.type === 'service').sort(byKey);
+const guideSections = (home.sections ?? []).filter((sec) => !/why clients choose us/i.test(JSON.stringify(sec)));
 const employerServices = sitePages.filter((p) => p.group === 'employer' && p.type === 'service').sort(byKey);
 ---
 <Page title={title} description={description} schemas={schemas}>
@@ -315,11 +316,12 @@ const employerServices = sitePages.filter((p) => p.group === 'employer' && p.typ
 </div>
 </section>
 
-<!-- Guide (edited in the admin: Homepage › Guide sections) -->
-{home.sections?.length > 0 && (
+<!-- Guide (edited in the admin: Homepage › Guide sections), shown side by side.
+     "Why clients choose us" is left out because "Meet your advisers" already covers the same points. -->
+{guideSections.length > 0 && (
 <section class="home-guide" style="max-width: 1200px; margin: 0 auto; padding: 24px 24px 72px">
-<div style="display: flex; flex-direction: column; gap: 36px; max-width: 800px">
-<GuideSections sections={home.sections} />
+<div class="guide-grid">
+<GuideSections sections={guideSections} />
 </div>
 </section>
 )}
@@ -452,9 +454,10 @@ const employerServices = sitePages.filter((p) => p.group === 'employer' && p.typ
 </script>
 
 <style is:global>
+  .guide-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px 56px; align-items: start; }
   .home-guide section { display: flex; flex-direction: column; gap: 12px; }
-  .home-guide h2 { margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 30px; line-height: 1.2; font-weight: 600; color: #14532D; }
-  .home-guide p { margin: 0; color: #3A4552; font-size: 17px; line-height: 1.65; }
+  .home-guide h2 { margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 26px; line-height: 1.2; font-weight: 600; color: #14532D; }
+  .home-guide p { margin: 0; color: #3A4552; font-size: 16px; line-height: 1.65; }
   .home-guide ul { margin: 0; padding-left: 22px; color: #3A4552; font-size: 17px; line-height: 1.65; }
   .home-guide li { margin-bottom: 6px; }
   .chip-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 4px; }
