@@ -1,0 +1,13 @@
+---
+// "Visit our Manchester office" box in the sidebar of UK immigration and employer pages:
+// address, how to find us and a directions link. Details come from Business details in the admin.
+import { site } from '../data/site.js';
+import { mapsUrl } from '../lib/schema.js';
+---
+<div class="panel office-panel">
+  <h2>Visit our Manchester office</h2>
+  <p class="office-addr">{site.address.line1}<br />{site.address.city} {site.address.postcode}</p>
+  <p class="soft">On Mosley Street in the city centre, between Piccadilly Gardens and St Peter’s Square, about 10 minutes’ walk from Manchester Piccadilly station. {site.hours}.</p>
+  <a class="office-dir" href={mapsUrl} target="_blank" rel="noopener">Get directions</a>
+  <p class="soft office-remote">Not in Manchester? We help clients anywhere in the UK by phone and video call.</p>
+</div>

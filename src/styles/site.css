@@ -415,3 +415,19 @@ a.card:hover { border-color: var(--green-600); color: inherit; }
   .visa-bar-apply.phone-only { display: none; }
   .page-head.has-bar.has-flag > .wrap { padding-bottom: 72px; }
 }
+
+/* "Visit our Manchester office" box in the sidebar */
+.office-panel { margin-top: 20px; }
+.office-panel h2 { font-size: 20px; }
+.office-addr { font-weight: 600; color: var(--green-800); margin: 8px 0; }
+.office-panel .soft { font-size: 15px; }
+.office-dir { display: inline-block; font-weight: 600; margin: 4px 0 8px; }
+.office-dir::after { content: " →"; }
+.office-remote { margin-bottom: 0; }
+
+/* Homepage: list of every UK immigration and employer service */
+.all-services { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px 40px; border-top: 1px solid var(--line); padding-top: 32px; }
+.all-services h3 { margin: 0 0 12px; font-size: 20px; color: var(--green-800); }
+.all-services ul { list-style: none; margin: 0; padding: 0; columns: 2 220px; column-gap: 28px; }
+.all-services li { break-inside: avoid; padding: 5px 0; }
+.all-services a { color: var(--green-800); font-weight: 500; }

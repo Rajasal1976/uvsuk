@@ -42,6 +42,14 @@
     {
       "q": "Why are so many care sponsor licences being revoked?",
       "a": "Mostly for compliance failures, such as underpaying sponsored workers, not giving promised hours, or poor records. A compliance audit helps you find and fix problems first."
+    },
+    {
+      "q": "How long does a sponsor licence application take?",
+      "a": "The Home Office aims to decide most applications within 8 weeks. A priority service, when places are available, can get a decision faster for an extra fee. We prepare your documents first so the application isn't delayed by missing evidence."
+    },
+    {
+      "q": "What happens on a Home Office compliance visit?",
+      "a": "Officers check your HR records, right to work files and how you pay and manage sponsored workers, and may interview staff. Visits can be announced or unannounced, so records need to be up to date at all times."
     }
   ],
   "applyButton": "/contact-us/",

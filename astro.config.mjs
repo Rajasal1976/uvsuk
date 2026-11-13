@@ -12,6 +12,6 @@ export default defineConfig({
   site: 'https://www.uvsuk.co.uk',
   trailingSlash: 'always', // the old site's URLs all end in "/", so keep them exactly the same
   integrations: [
-    sitemap({ filter: (url) => !hidden.some((h) => url.endsWith(h)) && !url.includes('/search/') && !url.includes('/client-forms/') && !url.includes('/thank-you/') && !url.includes('/forms-register/') }),
+    sitemap({ filter: (url) => !hidden.some((h) => url.endsWith(h)) && !url.includes('/search/') && !url.includes('/client-forms/') && !url.includes('/thank-you/') && !url.includes('/forms-register/') && !url.includes('/review/') }),
   ],
 });

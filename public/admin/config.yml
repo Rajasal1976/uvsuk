@@ -418,6 +418,7 @@ collections:
           - { name: googleRating, label: Google rating, widget: string, hint: 'e.g. 4.8' }
           - { name: googleReviewCount, label: Number of Google reviews, widget: string }
           - { name: googleReviewsUrl, label: Link to your Google reviews, widget: string, required: false }
+          - { name: googleReviewWriteUrl, label: Link for clients to leave a Google review, widget: string, required: false, hint: 'From your Google Business Profile: Ask for reviews, then copy the link (it looks like https://g.page/r/.../review). uvsuk.co.uk/review sends clients straight there.' }
           - { name: trustpilotUrl, label: Link to your Trustpilot page, widget: string, required: false, hint: 'e.g. https://uk.trustpilot.com/review/uvsuk.co.uk. Leave empty to hide the Trustpilot badge.' }
           - { name: trustpilotRating, label: Trustpilot rating, widget: string, required: false, hint: 'Exactly as Trustpilot shows it, e.g. 4.7' }
           - { name: trustpilotCount, label: Number of Trustpilot reviews, widget: string, required: false }

@@ -15,6 +15,7 @@ const fullMenu = [
         items: [
           ['Spouse & Partner Visas', '/uk-spouse-visas/'],
           ['Skilled Worker Visa', '/skilled-worker-visa-formally-tier-t2-general/'],
+          ['Skilled Worker Visa Extension', '/skilled-worker-visa-extension-uk/'],
           ['Student Visa', '/student-visa-uk/'],
           ['Graduate Visa', '/post-study-work-visa/'],
           ['UK Ancestry Visa', '/uk-ancestry-visa/'],

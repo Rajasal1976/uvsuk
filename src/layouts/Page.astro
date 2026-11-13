@@ -6,6 +6,7 @@ import Footer from '../components/Footer.astro';
 import ReviewsBand from '../components/ReviewsBand.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
 import { site } from '../data/site.js';
+import { businessSchema, pageSchemas } from '../lib/schema.js';
 
 interface Props {
   title: string;
@@ -35,16 +36,9 @@ const editUrl = slug === '' ? '/admin/#/collections/homepage/entries/home'
   : '/admin/';
 const editLabel = editUrl === '/admin/' ? 'Open the editor' : 'Edit this page';
 
-const business = {
-  '@context': 'https://schema.org',
-  '@type': 'ProfessionalService',
-  name: site.legalName,
-  url: site.url,
-  telephone: site.phoneIntl,
-  address: { '@type': 'PostalAddress', streetAddress: site.address.line1, addressLocality: site.address.city, postalCode: site.address.postcode, addressCountry: 'GB' },
-  openingHours: site.hoursSchema,
-  areaServed: [{ '@type': 'City', name: 'Manchester' }, { '@type': 'AdministrativeArea', name: 'Greater Manchester' }, { '@type': 'Country', name: 'United Kingdom' }],
-};
+// Business details and, for content pages, breadcrumbs and Service details (src/lib/schema.js)
+const business = businessSchema();
+const autoSchemas = pageSchemas(slug, seo).map((o) => JSON.stringify(o));
 ---
 <!doctype html>
 <html lang="en-GB">
@@ -68,7 +62,7 @@ const business = {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=Inter:wght@400;500;600&display=swap" />
   <script type="application/ld+json" set:html={JSON.stringify(business)} />
-  {schemas.map((s) => <script type="application/ld+json" set:html={s} />)}
+  {[...schemas, ...autoSchemas].map((s) => <script type="application/ld+json" set:html={s} />)}
   <slot name="head" />
 </head>
 <body>

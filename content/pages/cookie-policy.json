@@ -1,0 +1,38 @@
+{
+  "title": "Cookie Policy | Unique Visa Services Ltd",
+  "description": "How the Unique Visa Services website uses cookies and similar browser storage. We don't use advertising or analytics cookies.",
+  "h1": "Cookie policy",
+  "intro": "This cookie policy explains what cookies and similar technologies our website uses, and why. The short version: we don't use advertising or analytics cookies, and we don't track you across other websites. Last updated: November 2026.",
+  "sections": [
+    {
+      "heading": "1. What cookies are",
+      "text": "Cookies are small text files a website saves in your browser. Similar technologies, such as session storage, let a page remember information while you use it. We use both only where they're needed for the website to work."
+    },
+    {
+      "heading": "2. Cookies and storage we use",
+      "text": "- Online application forms: while you fill in an application form, your answers are saved in your browser's session storage so you don't lose them if you go back a step or refresh the page. This is cleared when you submit the form, click \"Start again\" or close the browser tab. It never leaves your device until you submit.\n- Client document forms: these remember, for the current browser tab only, that you've entered the access code we gave you.\n- Website editor: our own staff who log in to edit the website have a login saved in their browser. Visitors are never affected."
+    },
+    {
+      "heading": "3. Third-party services",
+      "text": "- Google reCAPTCHA: the \"I'm not a robot\" check on our contact form is provided by Google, which may set cookies and collect information about your device to confirm you're a real person. See [Google's privacy policy](https://policies.google.com/privacy).\n- Google Fonts: our pages load fonts from Google, so your browser's IP address is sent to Google when the fonts load. No cookies are set for this.\n- Links to other websites: if you click a link to WhatsApp, Google Maps, Trustpilot, social media or a government website, that website's own cookie policy applies."
+    },
+    {
+      "heading": "4. Analytics and advertising",
+      "text": "We don't currently use analytics, advertising or tracking cookies. If we add them in future, we'll update this policy and ask for your consent before setting any that aren't essential."
+    },
+    {
+      "heading": "5. Managing cookies",
+      "text": "You can block or delete cookies in your browser settings. If you block all cookies, the \"I'm not a robot\" check on our contact form may not work, so you may need to contact us by phone, email or WhatsApp instead."
+    },
+    {
+      "heading": "6. More information",
+      "text": "For how we handle your personal information, see our [privacy policy](/privacy-policy/). If you have any questions, email us at [hello@uvsuk.com](mailto:hello@uvsuk.com)."
+    }
+  ],
+  "faqs": [],
+  "applyButton": "none",
+  "country": "",
+  "sortKey": "9 cookie policy",
+  "focusKeyword": "cookie policy",
+  "shareImage": "/images/uvs-share.jpg"
+}

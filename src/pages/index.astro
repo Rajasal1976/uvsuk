@@ -42,6 +42,11 @@ const pointIcons = [
 const starIcon = '<svg viewBox="0 0 24 24" width="22" height="22"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg>';
 const photo = 'width: 100%; border-radius: 12px; object-fit: cover; display: block';
 const placeholder = 'background: #D6E3DA; border-radius: 12px; display: flex; align-items: center; justify-content: center; text-align: center; color: #3A4552; font-size: 15px; padding: 24px; box-sizing: border-box';
+// Homepage list of every UK and employer service page (BrightLocal: keep every service one click from the homepage)
+import { pages as sitePages } from '../data/pages.js';
+const byKey = (a, b) => String(a.sortKey || a.slug).localeCompare(String(b.sortKey || b.slug));
+const ukServices = sitePages.filter((p) => p.group === 'uk' && p.type === 'service').sort(byKey);
+const employerServices = sitePages.filter((p) => p.group === 'employer' && p.type === 'service').sort(byKey);
 ---
 <Page title={title} description={description} schemas={schemas}>
 <main id="main">
@@ -168,6 +173,17 @@ const placeholder = 'background: #D6E3DA; border-radius: 12px; display: flex; al
 <span style="font-weight: 600; color: #14532D; font-size: 15px">View requirements →</span>
 </a>
 </div>
+  <!-- Every UK immigration and employer service, so each page is one click from the homepage -->
+  <nav class="all-services" aria-label="All UK immigration services">
+    <div>
+      <h3>All UK immigration services</h3>
+      <ul>{ukServices.map((p) => <li><a href={`/${p.slug}/`}>{p.h1}</a></li>)}</ul>
+    </div>
+    <div>
+      <h3>For employers</h3>
+      <ul>{employerServices.map((p) => <li><a href={`/${p.slug}/`}>{p.h1}</a></li>)}</ul>
+    </div>
+  </nav>
 </section>
 
 <!-- Employers -->

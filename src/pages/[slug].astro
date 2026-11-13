@@ -15,6 +15,7 @@ import PriceTables from '../components/PriceTables.astro';
 import PriceCalculator from '../components/PriceCalculator.astro';
 import GuideSections from '../components/GuideSections.astro';
 import DocumentsTable from '../components/DocumentsTable.astro';
+import OfficePanel from '../components/OfficePanel.astro';
 import { pages, pageBySlug } from '../data/pages.js';
 import { site } from '../data/site.js';
 
@@ -114,6 +115,7 @@ const howWeHelp = [
             <a href={`tel:${site.phoneIntl}`} class="btn btn-outline">Call {site.phone}</a>
             <p style="font-size:14px;color:var(--ink-mute)">IAA-regulated · Ref {site.iaaRef}</p>
           </div>
+          {['uk', 'employer', 'local'].includes(p.group) && <OfficePanel />}
         </aside>
       )}
     </div>

@@ -1,0 +1,89 @@
+{
+  "title": "Skilled Worker Visa Extension UK | Manchester Advisers | UVS",
+  "description": "Extend your Skilled Worker visa or change employer. We check which rules apply to you, including July 2025 transitional rules, and prepare your application.",
+  "h1": "Skilled Worker visa extension",
+  "intro": "Need to extend your Skilled Worker visa, or moving to a new employer? The rules changed in July 2025, and which ones apply to you depends on when you were first sponsored. We check your position, then prepare and submit your extension.",
+  "eligibility": [
+    "You currently hold a Skilled Worker visa (or a Tier 2 General visa)",
+    "You have a Certificate of Sponsorship from a licensed employer",
+    "Your job and salary meet the rules that apply to you",
+    "You apply before your current visa expires"
+  ],
+  "sections": [
+    {
+      "heading": "Extending with the same employer",
+      "text": "If you're staying in the same job, your employer assigns you a new Certificate of Sponsorship and you apply to extend before your current visa runs out. You can usually stay in the UK while the application is decided, on the same conditions as now."
+    },
+    {
+      "heading": "Changing employer",
+      "text": "A new job with a different employer needs a new application, with a Certificate of Sponsorship from the new employer, before you start working for them. You can't just move jobs on your current visa. We can check the new job and salary before you resign."
+    },
+    {
+      "heading": "If you were sponsored before 22 July 2025",
+      "text": "Since July 2025, most new Skilled Worker jobs must be at degree level (RQF 6). People already on the route before 22 July 2025 may be able to extend, or change employer, in jobs below degree level and on older salary thresholds, as long as they've stayed on the route without a gap. We check exactly which rules cover you."
+    },
+    {
+      "heading": "Extending or applying for settlement",
+      "text": "If you're close to 5 years on the route, you may be able to apply for [Indefinite Leave to Remain](/indefinite-leave-to-remain-ilr/) instead of extending. The government has proposed lengthening the qualifying period under its earned settlement plans, so it's worth checking your options early."
+    },
+    {
+      "heading": "Your partner and children",
+      "text": "Family members on your visa usually extend at the same time as you. See our [Skilled Worker dependant visa](/skilled-worker-dependant-visa/) page."
+    },
+    {
+      "heading": "Skilled Worker visa extension help in Manchester",
+      "text": "We're based at 61 Mosley Street in Manchester city centre and help Skilled Workers across Greater Manchester and the UK. We check your Certificate of Sponsorship, salary and job code before anything is submitted, so a mistake doesn't put your status at risk."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "When can I apply to extend my Skilled Worker visa?",
+      "a": "Before your current visa expires. Your employer needs to assign you a new Certificate of Sponsorship first."
+    },
+    {
+      "q": "Can I change employer on a Skilled Worker visa?",
+      "a": "Yes, but you must make a new application with a Certificate of Sponsorship from the new employer before you start the new job."
+    },
+    {
+      "q": "Do the July 2025 changes affect my extension?",
+      "a": "Possibly not. Many people sponsored before 22 July 2025 can extend under transitional rules. We check which rules apply to you."
+    },
+    {
+      "q": "Can I work while my extension is being decided?",
+      "a": "If you apply before your visa expires, you can usually keep working for your sponsor on the same conditions while you wait."
+    }
+  ],
+  "govuk": "https://www.gov.uk/skilled-worker-visa/extend-your-visa",
+  "applyButton": "/contact-us/",
+  "country": "UK",
+  "sortKey": "1 uk 2 skilled worker visa extension",
+  "focusKeyword": "Skilled Worker visa extension",
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Current passport and your eVisa details",
+      "needed": "Required"
+    },
+    {
+      "document": "Certificate of Sponsorship",
+      "details": "New reference number from your current or new employer",
+      "needed": "Required"
+    },
+    {
+      "document": "Previous visa decisions",
+      "details": "Grant letters, especially if you were sponsored before 22 July 2025",
+      "needed": "Required"
+    },
+    {
+      "document": "Recent payslips",
+      "details": "So we can check your salary against the rules that apply to you",
+      "needed": "Helpful"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    }
+  ],
+  "shareImage": "/images/uvs-share.jpg"
+}

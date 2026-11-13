@@ -77,6 +77,7 @@ export const structure = [
     "group": "uk",
     "children": [
       "skilled-worker-visa-formally-tier-t2-general",
+      "skilled-worker-visa-extension-uk",
       "skilled-worker-dependant-visa",
       "care-worker-visa-extension",
       "care-worker-dependant-visa",
@@ -96,10 +97,16 @@ export const structure = [
     ]
   },
   {
+    "slug": "skilled-worker-visa-extension-uk",
+    "type": "service",
+    "group": "uk",
+    "related": ["skilled-worker-visa-formally-tier-t2-general", "skilled-worker-dependant-visa", "chef-visa-extension-uk", "indefinite-leave-to-remain-ilr"]
+  },
+  {
     "slug": "skilled-worker-dependant-visa",
     "type": "service",
     "group": "uk",
-    "related": ["skilled-worker-visa-formally-tier-t2-general", "chef-visa-extension-uk", "care-worker-dependant-visa", "indefinite-leave-to-remain-ilr"]
+    "related": ["skilled-worker-visa-formally-tier-t2-general", "skilled-worker-visa-extension-uk", "chef-visa-extension-uk", "indefinite-leave-to-remain-ilr"]
   },
   {
     "slug": "care-worker-visa-extension",
@@ -1296,6 +1303,11 @@ export const structure = [
   },
   {
     "slug": "privacy-policy",
+    "type": "info",
+    "group": "company"
+  },
+  {
+    "slug": "cookie-policy",
     "type": "info",
     "group": "company"
   },

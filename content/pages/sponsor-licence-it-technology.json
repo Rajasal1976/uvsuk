@@ -42,6 +42,14 @@
     {
       "q": "Do IT support roles qualify?",
       "a": "Only if the occupation is on the temporary shortage list, as most IT support roles are below degree level."
+    },
+    {
+      "q": "How long does a sponsor licence application take?",
+      "a": "The Home Office aims to decide most applications within 8 weeks. A priority service, when places are available, can get a decision faster for an extra fee. We prepare your documents first so the application isn't delayed by missing evidence."
+    },
+    {
+      "q": "Can a sponsored developer work from home?",
+      "a": "Yes, hybrid and home working are allowed for a genuine UK-based role. You must keep a record of where they work and report changes the Home Office requires."
     }
   ],
   "applyButton": "/contact-us/",

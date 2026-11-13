@@ -1,0 +1,22 @@
+---
+// Short link for review requests: send clients to uvsuk.co.uk/review and it opens your Google review form.
+// The link is set in the admin under Business details ("Link for clients to leave a Google review").
+import settings from '../../content/settings.json';
+import { mapsUrl } from '../lib/schema.js';
+const target = settings.googleReviewWriteUrl || mapsUrl;
+---
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="robots" content="noindex" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="refresh" content={`0; url=${target}`} />
+  <title>Leave us a review | Unique Visa Services</title>
+  <link rel="canonical" href={target} />
+</head>
+<body style="font-family:Inter,system-ui,sans-serif;padding:40px;text-align:center">
+  <p>Taking you to our Google reviews… If nothing happens, <a href={target}>tap here to leave a review</a>.</p>
+  <p>Thank you for choosing Unique Visa Services.</p>
+</body>
+</html>

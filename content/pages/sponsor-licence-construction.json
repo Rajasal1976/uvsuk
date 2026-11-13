@@ -38,6 +38,14 @@
     {
       "q": "What happens after December 2026?",
       "a": "The government is deciding which occupations stay on the list. We follow the changes and will advise you on your roles."
+    },
+    {
+      "q": "How long does a sponsor licence application take?",
+      "a": "The Home Office aims to decide most applications within 8 weeks. A priority service, when places are available, can get a decision faster for an extra fee. We prepare your documents first so the application isn't delayed by missing evidence."
+    },
+    {
+      "q": "Are we responsible for checking agency and subcontractor workers?",
+      "a": "You must check the right to work of anyone you employ directly. For agency and subcontracted workers, make sure your contracts require those checks, and keep evidence, because enforcement visits often look at everyone on site."
     }
   ],
   "applyButton": "/contact-us/",

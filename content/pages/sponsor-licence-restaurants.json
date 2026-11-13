@@ -42,6 +42,14 @@
     {
       "q": "What is the fine for employing an illegal worker?",
       "a": "Up to £60,000 per illegal worker, plus possible action against your sponsor licence."
+    },
+    {
+      "q": "How long does a sponsor licence application take?",
+      "a": "The Home Office aims to decide most applications within 8 weeks. A priority service, when places are available, can get a decision faster for an extra fee. We prepare your documents first so the application isn't delayed by missing evidence."
+    },
+    {
+      "q": "Do I need a sponsor licence to employ someone on a Graduate visa?",
+      "a": "No. Graduate visa holders can work for you without sponsorship while their visa lasts. You still need to check and record their right to work before they start."
     }
   ],
   "applyButton": "/contact-us/",
