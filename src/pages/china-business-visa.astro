@@ -20,8 +20,8 @@ const schemas = [];
 <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/worldwide-visas/">Worldwide Visas</a> / <a href="/china-visa-application/">China</a></nav>
 <h1>{content.h1}</h1>
 {content.intro && <p class="lead">{content.intro}</p>}
-<HeadFlag country="China" /></div></div>
-<VisaBar slug="china-business-visa" country="China" applyUrl={content.applyButton} />
+<HeadFlag country="China" applyUrl={content.applyButton} /></div></div>
+<VisaBar slug="china-business-visa" country="China" applyUrl={content.applyButton} applyInHead={true} />
 <div class="wrap section page-body" style="padding-top:64px">
 <div class="content">
 <section>
@@ -52,7 +52,7 @@ const schemas = [];
 <li>Prepare and complete your application forms</li>
 <li>Review all evidence against the current rules before submission</li>
 <li>Keep you updated until you have a decision</li></ul></section>
-<PriceTables prices={content.prices} kind="travel" />
+<PriceTables prices={content.prices} kind="travel" applyUrl={content.applyButton} />
 
 <Faq items={content.faqs} title={content.faqHeading || 'Common questions'} />
 

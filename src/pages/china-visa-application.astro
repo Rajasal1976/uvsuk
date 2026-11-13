@@ -20,8 +20,8 @@ const schemas = [];
 <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/worldwide-visas/">Worldwide Visas</a></nav>
 <h1>{content.h1}</h1>
 {content.intro && <p class="lead">{content.intro}</p>}
-<HeadFlag country="China" /></div></div>
-<VisaBar slug="china-visa-application" country="China" applyUrl={content.applyButton} />
+<HeadFlag country="China" applyUrl={content.applyButton} /></div></div>
+<VisaBar slug="china-visa-application" country="China" applyUrl={content.applyButton} applyInHead={true} />
 <div class="wrap section page-body" style="padding-top:64px">
 <div class="content">
 <section class="vc"><style is:global>

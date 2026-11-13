@@ -3,7 +3,9 @@
 // Rows come from each page's "Price table" in the admin. Delivery prices are in Business details.
 // The total is worked out automatically when the processing fee and our fee are both amounts.
 import { site } from '../data/site.js';
-const { prices = [], kind = 'travel' } = Astro.props;
+const { prices = [], kind = 'travel', applyUrl = '' } = Astro.props;
+// "Start your application" goes to the online application form where the page has one, otherwise the enquiry form
+const startUrl = String(applyUrl || '').startsWith('/apply/') ? applyUrl : '/contact-us/';
 const rows = prices.filter((r) => r && r.service);
 const amount = (v) => { const m = String(v || '').replace(/,/g, '').match(/^\s*£?\s*(\d+(?:\.\d{1,2})?)\s*$/); return m ? Number(m[1]) : null; };
 const money = (n) => `£${Number.isInteger(n) ? n.toLocaleString('en-GB') : n.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
@@ -66,5 +68,5 @@ const call = `tel:${site.phoneIntl}`;
       <p>Your eVisa is sent to you electronically, so there’s no passport to post. Delivery is a flat <strong>{site.evisaDelivery}</strong>.</p>
     </>
   )}
-  <div class="btn-row" style="margin-top:24px"><a class="btn btn-primary" href="/contact-us/">Start your application</a></div>
+  <div class="btn-row" style="margin-top:24px"><a class="btn btn-primary" href={startUrl}>Start your application</a></div>
 </section>

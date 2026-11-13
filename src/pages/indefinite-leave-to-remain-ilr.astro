@@ -21,8 +21,8 @@ const schemas = [];
 <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/uk-visa-services/">UK Visas</a></nav>
 <h1>{content.h1}</h1>
 {content.intro && <p class="lead">{content.intro}</p>}
-<HeadFlag country="UK" /></div></div>
-<VisaBar slug="indefinite-leave-to-remain-ilr" country="UK" applyUrl={content.applyButton} />
+<HeadFlag country="UK" applyUrl={content.applyButton} /></div></div>
+<VisaBar slug="indefinite-leave-to-remain-ilr" country="UK" applyUrl={content.applyButton} applyInHead={true} />
 <div class="wrap section page-body" style="padding-top:64px">
 <div class="content">
 <AbsenceCalculator />
@@ -34,7 +34,7 @@ const schemas = [];
 <li>You meet the continuous residence rules, including limits on time abroad</li>
 <li>You have passed the Life in the UK test</li>
 <li>You meet the English language requirement</li></ul></section>
-<DocumentsTable rows={content.documentsTable} />
+<DocumentsTable rows={content.documentsTable} applyUrl={content.applyButton} />
 <GuideSections sections={content.sections} />
 <section>
 <h2>How we help</h2>

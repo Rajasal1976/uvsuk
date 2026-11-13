@@ -1,7 +1,10 @@
 ---
 // "Documents you'll need" table: Document | Details | Needed, with coloured labels.
 // Edited in the admin as "Documents table" on each page.
-const { rows = [], note = true } = Astro.props;
+const { rows = [], note = true, applyUrl = '' } = Astro.props;
+// The "Application form" row links to the online application form, where the page has one
+const formUrl = String(applyUrl || '').startsWith('/apply/') ? applyUrl : '';
+const isForm = (r) => formUrl && /application form/i.test(r.document || '');
 const tagClass = (n = '') => (n === 'Required' ? 'tag-req' : n === 'We prepare' ? 'tag-us' : 'tag-opt');
 const items = rows.filter((r) => r && r.document);
 ---
@@ -14,8 +17,8 @@ const items = rows.filter((r) => r && r.document);
         <tbody>
           {items.map((r) => (
             <tr>
-              <th scope="row" data-label="Document">{r.document}</th>
-              <td data-label="Details">{r.details}</td>
+              <th scope="row" data-label="Document">{isForm(r) ? <a href={formUrl}>{r.document}</a> : r.document}</th>
+              <td data-label="Details">{r.details}{isForm(r) && <> <a class="doc-form-link" href={formUrl}>Fill in the form online</a></>}</td>
               <td data-label="Needed">{r.needed && <span class={`tag ${tagClass(r.needed)}`}>{r.needed}</span>}</td>
             </tr>
           ))}

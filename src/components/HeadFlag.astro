@@ -1,8 +1,15 @@
 ---
-// Country flag on the right of the page banner. The country comes from the page's Country field.
+// Country flag on the right of the page banner, with the "Apply online" button underneath it.
+// The country comes from the page's Country field; the button uses the page's apply link.
 import { flagFor } from '../data/flags.js';
-const { country } = Astro.props;
+const { country, applyUrl = '' } = Astro.props;
 const src = flagFor(country);
 const name = country === 'UK' || country === 'Employers' ? 'United Kingdom' : country === 'Schengen' ? 'European Union' : country;
+const showApply = applyUrl && applyUrl !== 'none';
 ---
-{src && <img class="head-flag" src={src} alt={`Flag of ${name}`} width="200" height="150" loading="eager" decoding="async" />}
+{src && (
+  <div class="head-side">
+    <img class="head-flag" src={src} alt={`Flag of ${name}`} width="200" height="150" loading="eager" decoding="async" />
+    {showApply && <a class="head-apply" href={applyUrl}>{applyUrl === '/contact-us/' ? 'Apply now' : 'Apply online'}</a>}
+  </div>
+)}

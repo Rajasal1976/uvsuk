@@ -2,7 +2,7 @@
 // Visa bar under each page banner: country and visa type, already filled in for the page you're on,
 // with a "Check requirements" button. Uses the same list as the homepage visa search (src/data/finder.js).
 import { visaFinder } from '../data/finder.js';
-const { slug = '', country = '', applyUrl = '' } = Astro.props;
+const { slug = '', country = '', applyUrl = '', applyInHead = false } = Astro.props;
 const here = `/${slug}/`;
 const ukCountries = ['UK', 'Employers'];
 let row = visaFinder.find((r) => r[2].some(([, u]) => u === here)) || visaFinder.find((r) => r[1] === here)
@@ -29,7 +29,7 @@ const showApply = applyUrl && applyUrl !== 'none';
       ) : <option value="">Choose a country first</option>}
     </select>
     <button type="button" id="vb-go" class="btn btn-gold">Check requirements</button>
-    {showApply && <p class="visa-bar-apply">Ready to go? <a href={applyUrl}>{applyUrl === '/contact-us/' ? 'Apply now' : 'Apply online'}</a></p>}
+    {showApply && <p class:list={['visa-bar-apply', { 'phone-only': applyInHead }]}>Ready to go? <a href={applyUrl}>{applyUrl === '/contact-us/' ? 'Apply now' : 'Apply online'}</a></p>}
   </div>
 </div>
 <script>
