@@ -30,41 +30,9 @@ const industryLinks = (pagesBySlug['sponsor-licence-by-industry']?.children ?? [
   const pg = pagesBySlug[slug];
   return [(pg?.h1 || slug).replace(/^Sponsor licence for /i, '').replace(/^\w/, (c) => c.toUpperCase()), `/${slug}/`];
 });
-// "Check your visa requirements": choose a country, then the visa type. Built automatically from
-// the pages on the site, so new country or visa-type pages appear here without any changes.
-import { pages as allPages } from '../data/pages.js';
-const notCountries = new Set(['UK', 'Document legalisation', 'Worldwide visas overview', 'Employers', 'Company pages']);
-const shortLabel = (pg, country) => pg.purposeLabel || (pg.h1 || '').replace(/ from the UK.*$/i, '').replace(new RegExp('^' + country + '\\s+', 'i'), '').replace(/^(?!e-)\w/, (c) => c.toUpperCase());
-const byCountry = {};
-for (const pg of allPages) {
-  if (pg.group !== 'worldwide' || !pg.country || notCountries.has(pg.country) || pg.hideFromMenus) continue;
-  (byCountry[pg.country] ??= []).push(pg);
-}
-// A country whose main page is removed from menus is left out of the finder altogether
-const offMenuCountries = new Set(allPages.filter((pg) => pg.type === 'hub' && pg.hideFromMenus).map((pg) => pg.country));
-const visaFinder = Object.entries(byCountry).filter(([country]) => !offMenuCountries.has(country)).map(([country, list]) => {
-  const hub = list.find((x) => x.type === 'hub');
-  const main = hub || list[0];
-  // Use the order set on the country's main page, then any other pages for that country
-  const ordered = hub ? [...(hub.children || []).map((c) => list.find((x) => x.slug === c)).filter(Boolean), ...list.filter((x) => x !== hub && !(hub.children || []).includes(x.slug))] : list.filter((x) => x !== main);
-  const types = ordered.map((x) => [shortLabel(x, country), `/${x.slug}/`]);
-  // China: every visa type. Those without their own page open the China page with that type selected.
-  if (country === 'China') {
-    return [country, `/${main.slug}/`, [
-      ['Business visa (M)', '/china-business-visa/'],
-      ['Tourist visa (L)', '/china-tourist-visa/'],
-      ['Family visit visa (Q / S)', '/china-visa-application/#vc-family'],
-      ['Work visa (Z)', '/china-work-visa-for-uk-citizens/'],
-      ['Student visa (X)', '/china-visa-application/#vc-study'],
-      ['Transit visa (G)', '/china-visa-application/#vc-transit'],
-      ['Crew visa (C)', '/china-visa-application/#vc-crew'],
-      ['Journalist visa (J)', '/china-visa-application/#vc-journalist'],
-    ]];
-  }
-  return [country, `/${main.slug}/`, types, (main.h1 || '').replace(/ from the UK.*$/i, '')];
-}).sort((a, b) => a[0].localeCompare(b[0]));
-const ukTypes = allPages.filter((x) => x.group === 'uk' && x.type === 'service').map((x) => [x.h1.replace(/^UK /, '').replace(/^\w/, (c) => c.toUpperCase()), `/${x.slug}/`]);
-visaFinder.unshift(['UK visas', '/uk-visa-services/', ukTypes]);
+// "Check your visa requirements": choose a country, then the visa type. Built in src/data/finder.js
+// (shared with the visa bar under every page banner).
+import { visaFinder } from '../data/finder.js';
 // Icons for the three selling points in the banner (edited in the admin: Homepage › Selling points)
 const pointIcons = [
   '<svg viewBox="0 0 24 24" width="22" height="22"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M8.5 12l2.5 2.5 4.5-5"/></svg>',
@@ -74,6 +42,12 @@ const pointIcons = [
 const starIcon = '<svg viewBox="0 0 24 24" width="22" height="22"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg>';
 const photo = 'width: 100%; border-radius: 12px; object-fit: cover; display: block';
 const placeholder = 'background: #D6E3DA; border-radius: 12px; display: flex; align-items: center; justify-content: center; text-align: center; color: #3A4552; font-size: 15px; padding: 24px; box-sizing: border-box';
+// Homepage list of every UK and employer service page (BrightLocal: keep every service one click from the homepage)
+import { pages as sitePages } from '../data/pages.js';
+const byKey = (a, b) => String(a.sortKey || a.slug).localeCompare(String(b.sortKey || b.slug));
+const ukServices = sitePages.filter((p) => p.group === 'uk' && p.type === 'service').sort(byKey);
+const guideSections = (home.sections ?? []).filter((sec) => !/why clients choose us/i.test(JSON.stringify(sec)));
+const employerServices = sitePages.filter((p) => p.group === 'employer' && p.type === 'service').sort(byKey);
 ---
 <Page title={title} description={description} schemas={schemas}>
 <main id="main">
@@ -143,6 +117,7 @@ const placeholder = 'background: #D6E3DA; border-radius: 12px; display: flex; al
 <div class="office-card">
 <h2>Visit us in Manchester</h2>
 <p class="office-lead">Meet an adviser at our city-centre office, or contact us by phone or email.</p>
+<p class="office-areas">We help clients across Greater Manchester and beyond, including Leeds, Liverpool, Warrington, Birmingham, Nottingham and Leicester, and anywhere in the UK by phone or video call. <a href="/immigration-advice-manchester/">Our Manchester office</a> · <a href="/areas-we-serve/">Areas we serve →</a></p>
 <div class="office-grid">
 <p class="fr-item"><span class="fr-label">Office</span>{site.address.line1}<br />{site.address.city} {site.address.postcode}<br /><a class="office-directions" href={directionsUrl} target="_blank" rel="noopener"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg>Get directions</a></p>
 <p class="fr-item"><span class="fr-label">Opening hours</span>{site.hours}</p>
@@ -199,23 +174,47 @@ const placeholder = 'background: #D6E3DA; border-radius: 12px; display: flex; al
 <span style="font-weight: 600; color: #14532D; font-size: 15px">View requirements →</span>
 </a>
 </div>
+<!-- Full list of services, folded away so the page stays clean (Google still reads every link) -->
+<details class="all-services-toggle">
+<summary>View all UK immigration and employer services</summary>
+<div class="all-services-grid">
+<div><h3>UK immigration</h3><div class="chip-row">{ukServices.map((p) => <a href={`/${p.slug}/`}>{p.h1}</a>)}</div></div>
+<div><h3>For employers</h3><div class="chip-row">{employerServices.map((p) => <a href={`/${p.slug}/`}>{p.h1}</a>)}</div></div>
+</div>
+</details>
 </section>
 
-<!-- Employers -->
+<!-- Employers: hiring into the UK (left) and sending staff abroad (right) -->
 <section id="employers" style="background: #14532D; color: #E7F2EA">
-<div style="max-width: 1200px; margin: 0 auto; padding: 72px 24px; display: flex; flex-wrap: wrap; gap: 32px 56px; align-items: center; justify-content: space-between">
-<div style="flex: 1 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+<div class="biz-split">
+<div class="biz-col biz-col-left">
 <p style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: 0.08em; color: #F2C46D">FOR EMPLOYERS</p>
-<h2 style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 36px; line-height: 1.2; font-weight: 600; color: #FFFFFF">Need to hire from overseas? We'll get your sponsor licence in place.</h2>
-<p style="margin: 0; color: #C6DECD">Sponsor licence applications and renewals, Key Personnel set-up, compliance processes and assigning Certificates of Sponsorship, for IT, engineering, hospitality and other UK businesses.</p>
+<h2 style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 32px; line-height: 1.2; font-weight: 600; color: #FFFFFF">Need to hire from overseas? We'll get your sponsor licence in place.</h2>
+<p style="margin: 0; color: #C6DECD">Sponsor licence applications and renewals, Key Personnel set-up, compliance and Certificates of Sponsorship for UK businesses.</p>
 <p style="margin: 6px 0 0; font-size: 14px; font-weight: 600; color: #F2C46D">Sponsor licence guides by industry</p>
 <div class="industry-links">
 {industryLinks.map(([label, href]) => <a href={href}>{label}</a>)}
 <a href="/sponsor-licence-by-industry/">All industries</a>
 <a href="/sponsor-licence-compliance/">Compliance support</a>
 </div>
+<div style="margin-top: auto; padding-top: 8px"><a href="#book" style="display: inline-block; background: #F2C46D; color: #14532D; text-decoration: none; padding: 16px 28px; border-radius: 6px; font-weight: 600">Talk to us about sponsorship</a></div>
 </div>
-<a href="#book" style="background: #F2C46D; color: #14532D; text-decoration: none; padding: 16px 28px; border-radius: 6px; font-weight: 600">Talk to us about sponsorship</a>
+<div class="biz-col biz-col-right">
+<p style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: 0.08em; color: #F2C46D">FOR BUSINESSES SENDING STAFF ABROAD</p>
+<h2 style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 32px; line-height: 1.2; font-weight: 600; color: #FFFFFF">Sending your team overseas? We'll sort their business and work visas.</h2>
+<p style="margin: 0; color: #C6DECD">Business, work and crew visas for UK companies sending engineers, crews, performers and staff abroad, with document legalisation in-house.</p>
+<p style="margin: 6px 0 0; font-size: 14px; font-weight: 600; color: #F2C46D">Business travel visas by industry</p>
+<div class="industry-links">
+<a href="/oil-and-gas-visas/">Oil and gas</a>
+<a href="/engineering-installation-visas/">Engineering and installation</a>
+<a href="/construction-renewables-visas/">Construction and renewables</a>
+<a href="/film-tv-crew-visas/">Film and TV crews</a>
+<a href="/performers-touring-visas/">Performers and touring</a>
+<a href="/trade-fair-exhibition-visas/">Trade fairs</a>
+<a href="/business-visas-by-industry/">All industries</a>
+</div>
+<div style="margin-top: auto; padding-top: 8px"><a href="/contact-us/" style="display: inline-block; background: #F2C46D; color: #14532D; text-decoration: none; padding: 16px 28px; border-radius: 6px; font-weight: 600">Get a quote for your team</a></div>
+</div>
 </div>
 </section>
 
@@ -317,14 +316,17 @@ const placeholder = 'background: #D6E3DA; border-radius: 12px; display: flex; al
 </div>
 </section>
 
-<!-- Guide (edited in the admin: Homepage › Guide sections) -->
-{home.sections?.length > 0 && (
-<section class="home-guide" style="max-width: 1200px; margin: 0 auto; padding: 24px 24px 72px">
-<div style="display: flex; flex-direction: column; gap: 36px; max-width: 800px">
-<GuideSections sections={home.sections} />
+<!-- Guide (edited in the admin: Homepage › Guide sections), shown side by side.
+     "Why clients choose us" is left out because "Meet your advisers" already covers the same points. -->
+{guideSections.length > 0 && (
+<section class="home-guide" style="max-width: 1200px; margin: 0 auto; padding: 8px 24px 88px">
+<div class="guide-grid">
+<GuideSections sections={guideSections} />
 </div>
 </section>
 )}
+
+
 
 <!-- FAQ -->
 <section style="background: #F2F6F1">
@@ -452,11 +454,38 @@ const placeholder = 'background: #D6E3DA; border-radius: 12px; display: flex; al
 </script>
 
 <style is:global>
-  .home-guide section { display: flex; flex-direction: column; gap: 12px; }
-  .home-guide h2 { margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 30px; line-height: 1.2; font-weight: 600; color: #14532D; }
-  .home-guide p { margin: 0; color: #3A4552; font-size: 17px; line-height: 1.65; }
-  .home-guide ul { margin: 0; padding-left: 22px; color: #3A4552; font-size: 17px; line-height: 1.65; }
+  /* Guide text as three matching cards, in the same style as the UK service cards at the top of the page */
+  .guide-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; align-items: stretch; }
+  .guide-grid > section { display: flex; flex-direction: column; gap: 12px; background: #FFFFFF; border: 1px solid #E3E7EC; border-top: 3px solid #F2C46D; border-radius: 10px; padding: 28px; }
+  .home-guide h2 { margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 22px; line-height: 1.25; font-weight: 600; color: #14532D; }
+  .home-guide p { margin: 0; color: #3A4552; font-size: 15.5px; line-height: 1.65; }
+  .home-guide ul { margin: 0; padding-left: 20px; color: #3A4552; font-size: 15.5px; line-height: 1.65; }
   .home-guide li { margin-bottom: 6px; }
+  @media (max-width: 1000px) { .guide-grid { grid-template-columns: 1fr; } .guide-grid > section { padding: 24px; } }
+  .chip-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 4px; }
+  .chip-row a { text-decoration: none; color: #14532D; border: 1px solid #C9D0D8; border-radius: 999px; padding: 10px 20px; font-size: 15.5px; font-weight: 500; line-height: 1.3; }
+  .chip-row a:hover, .chip-row a:focus-visible { border-color: #14532D; background: #EAF4EC; }
+  .all-services-toggle { border-top: 1px solid #E3E7EC; padding-top: 24px; }
+  .all-services-toggle summary { cursor: pointer; font-weight: 600; font-size: 16px; color: #14532D; list-style: none; display: inline-flex; align-items: center; gap: 8px; }
+  .all-services-toggle summary::-webkit-details-marker { display: none; }
+  .all-services-toggle summary::after { content: '+'; font-size: 20px; line-height: 1; color: #8A5A12; }
+  .all-services-toggle[open] summary::after { content: '\2212'; }
+  .all-services-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; margin-top: 24px; }
+  .all-services-grid h3 { margin: 0 0 12px; font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #8A5A12; }
+  .chip-row a { padding: 8px 16px; font-size: 14.5px; }
+  @media (max-width: 800px) { .all-services-grid { grid-template-columns: 1fr; } }
+</style>
+
+<style is:global>
+  .biz-split { max-width: 1200px; margin: 0 auto; padding: 72px 24px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .biz-col { display: flex; flex-direction: column; gap: 14px; }
+  .biz-col-left { padding-right: 48px; border-right: 1px solid rgba(255,255,255,.22); }
+  .biz-col-right { padding-left: 48px; }
+  @media (max-width: 960px) {
+    .biz-split { grid-template-columns: 1fr; gap: 48px; }
+    .biz-col-left { padding-right: 0; border-right: 0; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,.22); }
+    .biz-col-right { padding-left: 0; }
+  }
 </style>
 
 <style is:global>
@@ -521,6 +550,8 @@ const placeholder = 'background: #D6E3DA; border-radius: 12px; display: flex; al
   .office-card { position: relative; margin-left: -80px; background: #FFFFFF; border: 1px solid #DCE6DF; border-radius: 14px; padding: 32px; box-shadow: 0 18px 40px rgba(14, 59, 32, .12); }
   .office-card h2 { margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 30px; line-height: 1.2; color: #14532D; }
   .office-lead { margin: 6px 0 20px; color: #3A4552; font-size: 16px; }
+  .office-areas { margin: -8px 0 20px; color: #3A4552; font-size: 15px; line-height: 1.55; }
+  .office-areas a { font-weight: 600; white-space: nowrap; }
   .office-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 24px; }
   .office-directions { display: inline-flex; align-items: center; gap: 5px; margin-top: 6px; }
   .office-services { margin-top: 24px; padding-top: 20px; border-top: 1px solid #E3E9E5; }
