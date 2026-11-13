@@ -173,17 +173,6 @@ const employerServices = sitePages.filter((p) => p.group === 'employer' && p.typ
 <span style="font-weight: 600; color: #14532D; font-size: 15px">View requirements →</span>
 </a>
 </div>
-  <!-- Every UK immigration and employer service, so each page is one click from the homepage -->
-  <nav class="all-services" aria-label="All UK immigration services">
-    <div>
-      <h3>All UK immigration services</h3>
-      <ul>{ukServices.map((p) => <li><a href={`/${p.slug}/`}>{p.h1}</a></li>)}</ul>
-    </div>
-    <div>
-      <h3>For employers</h3>
-      <ul>{employerServices.map((p) => <li><a href={`/${p.slug}/`}>{p.h1}</a></li>)}</ul>
-    </div>
-  </nav>
 </section>
 
 <!-- Employers: hiring into the UK (left) and sending staff abroad (right) -->
@@ -327,6 +316,36 @@ const employerServices = sitePages.filter((p) => p.group === 'employer' && p.typ
 </section>
 )}
 
+
+<!-- All services as chips, in the same style as the guide text above (keeps every service one click from the homepage) -->
+<section class="home-guide home-services" style="max-width: 1200px; margin: 0 auto; padding: 0 24px 72px">
+<div style="display: flex; flex-direction: column; gap: 48px; max-width: 800px">
+<section>
+<h2>UK immigration services</h2>
+<p>Whether you're joining a partner, working, studying or settling in the UK, our regulated advisers handle every main UK route, from first application to extension, settlement and citizenship.</p>
+<div class="chip-row">{ukServices.map((p) => <a href={`/${p.slug}/`}>{p.h1}</a>)}</div>
+</section>
+<section>
+<h2>Services for employers</h2>
+<p>We help UK businesses get a sponsor licence, stay compliant and bring in the skilled staff they need, with sector guides for the industries we work with most.</p>
+<div class="chip-row">{employerServices.map((p) => <a href={`/${p.slug}/`}>{p.h1}</a>)}</div>
+</section>
+<section>
+<h2>Business travel visas by industry</h2>
+<p>Sending staff overseas? We arrange business, work and crew visas for UK companies, with document legalisation in-house for work permits.</p>
+<div class="chip-row">
+<a href="/oil-and-gas-visas/">Oil and gas</a>
+<a href="/engineering-installation-visas/">Engineering and installation</a>
+<a href="/construction-renewables-visas/">Construction and renewables</a>
+<a href="/film-tv-crew-visas/">Film and TV crews</a>
+<a href="/performers-touring-visas/">Performers and touring</a>
+<a href="/trade-fair-exhibition-visas/">Trade fairs and exhibitions</a>
+<a href="/business-visas-by-industry/">All industries →</a>
+</div>
+</section>
+</div>
+</section>
+
 <!-- FAQ -->
 <section style="background: #F2F6F1">
 <div style="max-width: 880px; margin: 0 auto; padding: 88px 24px; display: flex; flex-direction: column; gap: 28px">
@@ -458,6 +477,9 @@ const employerServices = sitePages.filter((p) => p.group === 'employer' && p.typ
   .home-guide p { margin: 0; color: #3A4552; font-size: 17px; line-height: 1.65; }
   .home-guide ul { margin: 0; padding-left: 22px; color: #3A4552; font-size: 17px; line-height: 1.65; }
   .home-guide li { margin-bottom: 6px; }
+  .chip-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 4px; }
+  .chip-row a { text-decoration: none; color: #14532D; border: 1px solid #C9D0D8; border-radius: 999px; padding: 10px 20px; font-size: 15.5px; font-weight: 500; line-height: 1.3; }
+  .chip-row a:hover, .chip-row a:focus-visible { border-color: #14532D; background: #EAF4EC; }
 </style>
 
 <style is:global>
