@@ -16,6 +16,7 @@ const schemas = [];
 ---
 <Page title={title} description={description} schemas={schemas}>
 <main>
+<div class="head-zone">
 <div class="page-head has-bar has-flag">
 <div class="wrap">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/uk-visa-services/">UK Visas</a></nav>
@@ -23,6 +24,7 @@ const schemas = [];
 {content.intro && <p class="lead">{content.intro}</p>}
 <HeadFlag country="UK" applyUrl={content.applyButton} /></div></div>
 <VisaBar slug="indefinite-leave-to-remain-ilr" country="UK" applyUrl={content.applyButton} applyInHead={true} />
+</div>
 <div class="wrap section page-body" style="padding-top:64px">
 <div class="content">
 <AbsenceCalculator />

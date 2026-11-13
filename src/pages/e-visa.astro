@@ -14,7 +14,8 @@ import content from '../../content/pages/e-visa.json';
 ---
 <Page title={content.title} description={content.description}>
   <main>
-    <div class="page-head has-bar">
+    <div class="head-zone">
+<div class="page-head has-bar">
       <div class="wrap">
         <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/worldwide-visas/">Worldwide Visas</a></nav>
         <h1>{content.h1}</h1>
@@ -27,6 +28,7 @@ import content from '../../content/pages/e-visa.json';
     </div>
 
     <VisaBar slug="e-visa" country="" applyUrl={content.applyButton} />
+</div>
 
     <div class="wrap section page-body" style="padding-top:64px">
       <div class="content">

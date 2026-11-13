@@ -394,3 +394,24 @@ a.card:hover { border-color: var(--green-600); color: inherit; }
 .data-table th a { color: var(--green-800); }
 .doc-form-link { display: inline-block; margin-left: 6px; font-weight: 600; white-space: nowrap; }
 .doc-form-link::after { content: " →"; }
+
+/* Visa bar position: above the banner on computers, overlapping the bottom of the banner on phones */
+.head-zone + .page-body { padding-top: 48px !important; }
+@media (min-width: 701px) {
+  .head-zone { display: flex; flex-direction: column; }
+  .head-zone .visa-bar-wrap { order: -1; width: 100%; box-sizing: border-box; margin-top: 24px; padding-left: 0; padding-right: 0; }
+  .head-zone .visa-bar { box-shadow: none; }
+  .head-zone .page-head.has-bar { padding-top: 16px; }
+  .head-zone .page-head.has-bar > .wrap { padding-bottom: 32px; }
+  .head-zone .page-head.has-flag > .wrap { min-height: 250px; }
+  .head-zone + .page-body { padding-top: 40px !important; }
+}
+/* Phones: the flag sits at the top of the banner and the Apply online button goes under the intro text,
+   so it isn't next to the Check requirements button in the visa bar */
+@media (max-width: 700px) {
+  .page-head.has-flag .head-side { display: contents; }
+  .page-head.has-flag .head-side .head-flag { order: -1; }
+  .page-head.has-flag .head-apply { display: inline-flex; align-self: flex-start; margin-top: 18px; padding: 0 20px; min-height: 46px; font-size: 16px; box-shadow: none; }
+  .visa-bar-apply.phone-only { display: none; }
+  .page-head.has-bar.has-flag > .wrap { padding-bottom: 72px; }
+}

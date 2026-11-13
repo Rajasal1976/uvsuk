@@ -43,6 +43,7 @@ const howWeHelp = [
 ---
 <Page title={p.title} description={p.description}>
   <main>
+    <div class="head-zone">
     <div class:list={['page-head', { 'has-bar': withBar, 'has-flag': hasFlag }]}>
       <div class="wrap">
         <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a>{showCrumb && <> / <a href={hub[1]}>{hub[0]}</a></>}{countryCrumb && <> / <a href={countryCrumb[1]}>{countryCrumb[0]}</a></>}</nav>
@@ -53,6 +54,7 @@ const howWeHelp = [
       </div>
     </div>
     {withBar && <VisaBar slug={p.slug} country={p.country} applyUrl={p.applyButton} applyInHead={hasFlag} />}
+    </div>
 
     <div class="wrap section page-body" style="padding-top:64px">
       <div class="content">
