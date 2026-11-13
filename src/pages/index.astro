@@ -173,6 +173,14 @@ const employerServices = sitePages.filter((p) => p.group === 'employer' && p.typ
 <span style="font-weight: 600; color: #14532D; font-size: 15px">View requirements →</span>
 </a>
 </div>
+<!-- Full list of services, folded away so the page stays clean (Google still reads every link) -->
+<details class="all-services-toggle">
+<summary>View all UK immigration and employer services</summary>
+<div class="all-services-grid">
+<div><h3>UK immigration</h3><div class="chip-row">{ukServices.map((p) => <a href={`/${p.slug}/`}>{p.h1}</a>)}</div></div>
+<div><h3>For employers</h3><div class="chip-row">{employerServices.map((p) => <a href={`/${p.slug}/`}>{p.h1}</a>)}</div></div>
+</div>
+</details>
 </section>
 
 <!-- Employers: hiring into the UK (left) and sending staff abroad (right) -->
@@ -317,34 +325,6 @@ const employerServices = sitePages.filter((p) => p.group === 'employer' && p.typ
 )}
 
 
-<!-- All services as chips, in the same style as the guide text above (keeps every service one click from the homepage) -->
-<section class="home-guide home-services" style="max-width: 1200px; margin: 0 auto; padding: 0 24px 72px">
-<div style="display: flex; flex-direction: column; gap: 48px; max-width: 800px">
-<section>
-<h2>UK immigration services</h2>
-<p>Whether you're joining a partner, working, studying or settling in the UK, our regulated advisers handle every main UK route, from first application to extension, settlement and citizenship.</p>
-<div class="chip-row">{ukServices.map((p) => <a href={`/${p.slug}/`}>{p.h1}</a>)}</div>
-</section>
-<section>
-<h2>Services for employers</h2>
-<p>We help UK businesses get a sponsor licence, stay compliant and bring in the skilled staff they need, with sector guides for the industries we work with most.</p>
-<div class="chip-row">{employerServices.map((p) => <a href={`/${p.slug}/`}>{p.h1}</a>)}</div>
-</section>
-<section>
-<h2>Business travel visas by industry</h2>
-<p>Sending staff overseas? We arrange business, work and crew visas for UK companies, with document legalisation in-house for work permits.</p>
-<div class="chip-row">
-<a href="/oil-and-gas-visas/">Oil and gas</a>
-<a href="/engineering-installation-visas/">Engineering and installation</a>
-<a href="/construction-renewables-visas/">Construction and renewables</a>
-<a href="/film-tv-crew-visas/">Film and TV crews</a>
-<a href="/performers-touring-visas/">Performers and touring</a>
-<a href="/trade-fair-exhibition-visas/">Trade fairs and exhibitions</a>
-<a href="/business-visas-by-industry/">All industries →</a>
-</div>
-</section>
-</div>
-</section>
 
 <!-- FAQ -->
 <section style="background: #F2F6F1">
@@ -480,6 +460,15 @@ const employerServices = sitePages.filter((p) => p.group === 'employer' && p.typ
   .chip-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 4px; }
   .chip-row a { text-decoration: none; color: #14532D; border: 1px solid #C9D0D8; border-radius: 999px; padding: 10px 20px; font-size: 15.5px; font-weight: 500; line-height: 1.3; }
   .chip-row a:hover, .chip-row a:focus-visible { border-color: #14532D; background: #EAF4EC; }
+  .all-services-toggle { border-top: 1px solid #E3E7EC; padding-top: 24px; }
+  .all-services-toggle summary { cursor: pointer; font-weight: 600; font-size: 16px; color: #14532D; list-style: none; display: inline-flex; align-items: center; gap: 8px; }
+  .all-services-toggle summary::-webkit-details-marker { display: none; }
+  .all-services-toggle summary::after { content: '+'; font-size: 20px; line-height: 1; color: #8A5A12; }
+  .all-services-toggle[open] summary::after { content: '\2212'; }
+  .all-services-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; margin-top: 24px; }
+  .all-services-grid h3 { margin: 0 0 12px; font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #8A5A12; }
+  .chip-row a { padding: 8px 16px; font-size: 14.5px; }
+  @media (max-width: 800px) { .all-services-grid { grid-template-columns: 1fr; } }
 </style>
 
 <style is:global>
