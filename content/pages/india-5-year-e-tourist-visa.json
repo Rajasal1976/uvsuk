@@ -7,7 +7,7 @@
   "h1Accent": "for frequent visitors.",
   "applyButton": "/apply/india-visa/?visaType=e-Tourist%20visa%20(5%20years)",
   "applyLabel": "Start 5-year application",
-  "intro": "One 5-year e-Tourist visa covers five years of trips to India. It’s the best value if you visit family or holiday in India regularly.",
+  "intro": "One 5-year e-Tourist visa covers five years of trips to India, with no need to apply again before each visit. For British passport holders the government fee is US$484, so it suits people who travel often and value the convenience.",
   "cardText": "Five years of trips on one visa, up to 180 days in India each calendar year.",
   "facts": [
     {
@@ -46,7 +46,7 @@
     {
       "icon": "family",
       "title": "Visiting family every year",
-      "text": "The most popular choice for British Indian families."
+      "text": "For British Indian families who travel every year and don’t want to reapply."
     },
     {
       "icon": "sun",
@@ -124,13 +124,25 @@
     },
     {
       "heading": "Is the 5-year e-Tourist visa worth it?",
-      "text": "If you visit India at least twice in five years, it usually costs less than applying each time, and you avoid the stress of applying before every trip."
+      "text": "For British passport holders, the Government of India charges US$484 for the 5-year e-Tourist visa. The 1-year e-Tourist visa costs US$40, so five separate 1-year visas would cost US$200 in total. On price alone, the 1-year visa is better value for British citizens.\n\nThe 5-year visa makes sense if you’d rather apply once and not worry about it for five years, or if you might make an unplanned trip at short notice.\n\nFees depend on the passport you hold, not where you live. Most other nationalities pay US$200 for the 5-year visa, which is much better value. About 3% is added for card payments. See our guide to [Indian e-Visa fees](/indian-evisa-fees/) or compare the [1-year e-Tourist visa](/india-1-year-e-tourist-visa/)."
+    },
+    {
+      "heading": "5-year or 1-year e-Tourist visa: which should you choose?",
+      "text": "- Choose the 1-year visa if you hold a British passport and want the lowest cost. It allows multiple trips and up to 180 days in India in a calendar year.\n- Choose the 5-year visa if you travel to India several times a year, often book at short notice, or simply don’t want to reapply each year.\n- If you hold a non-British passport and live in the UK, the 5-year visa is usually the better value, because most nationalities pay US$200.\n\nNot sure which suits you? Tell us how often you travel and we’ll recommend the right one."
+    },
+    {
+      "heading": "How to apply for the 5-year e-Tourist visa",
+      "text": "Send us your passport photo page and a recent photo using our online form. We check your eligibility, fix the photo if needed, complete the official application and send it to the Government of India. You then pay the government fee online, at least 4 days before you arrive.\n\nMost complete applications are decided within 72 hours, and the approval arrives by email. Print it or keep it on your phone, because airlines check it before you board."
     }
   ],
   "faqs": [
     {
       "q": "Can British citizens get a 5-year Indian e-Visa?",
       "a": "Yes. British citizens can apply for the 5-year e-Tourist visa."
+    },
+    {
+      "q": "How much is the 5-year e-Tourist visa for British citizens?",
+      "a": "The government fee is US$484 for a British passport, plus about 3% for card payments. Most other nationalities pay US$200."
     },
     {
       "q": "How long can I stay in India on a 5-year e-Visa?",
@@ -156,14 +168,14 @@
   ],
   "title": "India 5-Year e-Tourist Visa from the UK | Apply Online",
   "description": "India 5-year e-Tourist visa for UK residents: trips over five years, up to 180 days a year. Check what you need and apply with our Manchester team.",
-  "focusKeyword": "5-year e-Tourist visa",
+  "focusKeyword": "5 year e tourist visa",
   "prices": [
     {
       "service": "e-Tourist visa, 5 years",
       "included": "Up to 180 days a year",
       "processing": "",
       "entries": "Multiple entries",
-      "govFee": "",
+      "govFee": "US$484 (British passports)",
       "fee": ""
     }
   ],
