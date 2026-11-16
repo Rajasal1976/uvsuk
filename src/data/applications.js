@@ -48,7 +48,17 @@ const passportStep = (extra = [], base = passportFields) => ({
   fields: [...base, ...extra],
 });
 
-const contactStep = (extra = []) => ({
+// Emergency contact in the UK. Most official forms ask for one (China, US ESTA and others).
+const emergencyFields = [
+  { name: 'emergencyName', label: 'Emergency contact in the UK: full name', type: 'text', required: true, half: true, hint: 'Someone who isn’t travelling with you.' },
+  { name: 'emergencyRelationship', label: 'Their relationship to you', type: 'text', required: true, half: true, hint: 'For example husband, mother or friend.' },
+  { name: 'emergencyPhone', label: 'Their phone number', type: 'tel', required: true, half: true },
+  { name: 'emergencyEmail', label: 'Their email (optional)', type: 'email', half: true },
+  { name: 'emergencyAddress', label: 'Their address (optional)', type: 'textarea' },
+];
+const emergencyNames = emergencyFields.map((f) => f.name);
+
+const contactStep = (extra = [], { emergency = true } = {}) => ({
   id: 'contact',
   title: 'Contact details',
   fields: [
@@ -62,6 +72,7 @@ const contactStep = (extra = []) => ({
     { name: 'ukStatus', label: 'Your status in the UK', type: 'select', required: true, options: ['British citizen', 'Indefinite leave to remain / settled', 'EU Settlement Scheme', 'Skilled Worker or other work visa', 'Student visa', 'Spouse or family visa', 'Other'], showIf: { name: 'nationality', isNot: 'United Kingdom' } },
     { name: 'ukStatusExpiry', label: 'When does your UK permission expire?', type: 'date', showIf: { name: 'ukStatus', is: ['Skilled Worker or other work visa', 'Student visa', 'Spouse or family visa', 'Other'] } },
     ...extra,
+    ...(emergency ? emergencyFields : []),
   ],
 });
 
@@ -72,6 +83,7 @@ const declarationNote = 'I confirm the information I’ve given is true and comp
 // from the uploaded documents by our team.
 
 const married = { name: 'maritalStatus', is: 'Married' };
+const chinaWorking = ['Employed', 'Self-employed / business owner', 'Government employee'];
 
 const china = {
   slug: 'china-visa',
@@ -97,6 +109,32 @@ const china = {
         { name: 'spouseNationality', label: 'Their nationality', type: 'country', required: true, half: true, showIf: married },
         { name: 'spouseDob', label: 'Their date of birth', type: 'date', required: true, half: true, showIf: married },
         { name: 'spouseBirthPlace', label: 'Their place of birth', type: 'text', required: true, hint: 'Town or city, and country.', showIf: married },
+      ],
+    },
+    {
+      id: 'work',
+      title: 'Work and education',
+      intro: 'The Chinese visa form asks for your current job, your work over the last 5 years and your education.',
+      fields: [
+        { name: 'occupation', label: 'What do you currently do?', type: 'select', required: true, options: chinaWorking.concat(['Student', 'Retired', 'Not working', 'Other']) },
+        { name: 'employer', label: 'Employer or business name', type: 'text', required: true, half: true, showIf: { name: 'occupation', is: chinaWorking } },
+        { name: 'jobTitle', label: 'Your job title', type: 'text', required: true, half: true, showIf: { name: 'occupation', is: chinaWorking } },
+        { name: 'employerAddress', label: 'Employer address', type: 'textarea', required: true, showIf: { name: 'occupation', is: chinaWorking } },
+        { name: 'employerPhone', label: 'Employer phone number', type: 'tel', required: true, half: true, showIf: { name: 'occupation', is: chinaWorking } },
+        { name: 'supervisorName', label: 'Your manager’s name', type: 'text', required: true, half: true, showIf: { name: 'occupation', is: ['Employed', 'Government employee'] }, hint: 'The Chinese form asks for a supervisor’s name.' },
+        { name: 'schoolName', label: 'School, college or university', type: 'text', required: true, half: true, showIf: { name: 'occupation', is: 'Student' } },
+        { name: 'schoolAddress', label: 'Its address and phone number', type: 'textarea', required: true, showIf: { name: 'occupation', is: 'Student' } },
+        { name: 'occupationOther', label: 'Please describe', type: 'text', required: true, showIf: { name: 'occupation', is: 'Other' } },
+        yesNo('previousJobs', 'Have you had any other jobs in the last 5 years?'),
+        { name: 'workHistory', type: 'repeat', label: 'Previous jobs in the last 5 years', addLabel: 'Add another job', max: 6, showIf: { name: 'previousJobs', is: 'Yes' }, fields: [
+          { name: 'employer', label: 'Employer name', type: 'text', required: true },
+          { name: 'jobTitle', label: 'Job title', type: 'text', required: true },
+          { name: 'address', label: 'Employer address and phone number', type: 'textarea', required: true },
+          { name: 'from', label: 'From (month and year)', type: 'text', required: true },
+          { name: 'to', label: 'To (month and year)', type: 'text', required: true },
+        ] },
+        { name: 'education', label: 'Your highest qualification', type: 'select', required: true, options: ['Doctorate', 'Master’s degree', 'Bachelor’s degree', 'College or vocational', 'A levels or equivalent', 'GCSEs or equivalent', 'None'] },
+        { name: 'educationSchool', label: 'Where you studied for it, and your subject', type: 'text', required: true, showIf: { name: 'education', isNot: 'None' } },
       ],
     },
     {
@@ -197,6 +235,19 @@ const china = {
 
 const indiaAirports = ['Delhi', 'Mumbai', 'Bengaluru', 'Chennai', 'Kolkata', 'Hyderabad', 'Ahmedabad', 'Amritsar', 'Goa (Dabolim)', 'Goa (Mopa)', 'Kochi', 'Thiruvananthapuram', 'Kozhikode (Calicut)', 'Jaipur', 'Lucknow', 'Pune', 'Chandigarh', 'Varanasi', 'Gaya', 'Bagdogra', 'Guwahati', 'Mangaluru', 'Madurai', 'Tiruchirappalli', 'Coimbatore', 'Nagpur', 'Port Blair', 'Bhubaneswar', 'Indore', 'Kannur', 'Vishakhapatnam', 'Seaport / other'];
 const indiaWorking = ['Employed (private sector)', 'Employed (government)', 'Self-employed / business'];
+const indiaWork = {
+  id: 'work',
+  title: 'Your work',
+  fields: [
+    { name: 'occupation', label: 'Present occupation', type: 'select', required: true, options: [...indiaWorking, 'Student', 'Housewife / homemaker', 'Retired', 'Not working', 'Other'] },
+    { name: 'employer', label: 'Employer or business name', type: 'text', required: true, half: true, showIf: { name: 'occupation', is: indiaWorking } },
+    { name: 'designation', label: 'Your job title', type: 'text', required: true, half: true, showIf: { name: 'occupation', is: indiaWorking } },
+    { name: 'employerAddress', label: 'Employer address', type: 'textarea', required: true, showIf: { name: 'occupation', is: indiaWorking } },
+    { name: 'employerPhone', label: 'Employer phone number', type: 'tel', required: true, half: true, showIf: { name: 'occupation', is: indiaWorking } },
+    { name: 'spouseOrParentOccupation', label: 'Occupation of your spouse or parent', type: 'text', required: true, showIf: { name: 'occupation', is: ['Student', 'Housewife / homemaker', 'Not working'] }, hint: 'The Indian form asks for this when you aren’t working.' },
+    { name: 'occupationOther', label: 'Please describe', type: 'text', required: true, showIf: { name: 'occupation', is: 'Other' } },
+  ],
+};
 
 const india = {
   slug: 'india-visa',
@@ -223,7 +274,7 @@ const india = {
       { name: 'previousNationality', label: 'Previous nationality', type: 'country', required: true, showIf: { name: 'nationalityBy', is: 'By naturalisation' } },
       { name: 'religion', label: 'Religion', type: 'select', required: true, options: ['Bahai', 'Buddhism', 'Christian', 'Hindu', 'Islam', 'Jainism', 'Judaism', 'Parsi', 'Sikh', 'Zoroastrian', 'Other', 'None'], hint: 'The Indian eVisa form asks every applicant this.' },
     ], passportScanFields),
-    contactStep(),
+    contactStep([], { emergency: false }),
     {
       id: 'family',
       title: 'Family',
@@ -240,18 +291,7 @@ const india = {
         { name: 'spouseBirthPlace', label: 'Their place of birth', type: 'text', required: true, half: true, hint: 'Town or city, and country.', showIf: married },
       ],
     },
-    {
-      id: 'work',
-      title: 'Your work',
-      fields: [
-        { name: 'occupation', label: 'Present occupation', type: 'select', required: true, options: [...indiaWorking, 'Student', 'Housewife / homemaker', 'Retired', 'Not working', 'Other'] },
-        { name: 'employer', label: 'Employer or business name', type: 'text', required: true, half: true, showIf: { name: 'occupation', is: indiaWorking } },
-        { name: 'designation', label: 'Your job title', type: 'text', required: true, half: true, showIf: { name: 'occupation', is: indiaWorking } },
-        { name: 'employerAddress', label: 'Employer address', type: 'textarea', required: true, showIf: { name: 'occupation', is: indiaWorking } },
-        { name: 'spouseOrParentOccupation', label: 'Occupation of your spouse or parent', type: 'text', required: true, showIf: { name: 'occupation', is: ['Student', 'Housewife / homemaker', 'Not working'] }, hint: 'The Indian form asks for this when you aren’t working.' },
-        { name: 'occupationOther', label: 'Please describe', type: 'text', required: true, showIf: { name: 'occupation', is: 'Other' } },
-      ],
-    },
+    indiaWork,
     {
       id: 'trip',
       title: 'Your trip',
@@ -424,6 +464,10 @@ const work = {
     { name: 'occupation', label: 'What do you currently do?', type: 'select', required: true, options: ['Employed', 'Self-employed / business owner', 'Student', 'Retired', 'Not working'] },
     { name: 'employer', label: 'Employer or business name', type: 'text', required: true, half: true, showIf: { name: 'occupation', is: ['Employed', 'Self-employed / business owner'] } },
     { name: 'jobTitle', label: 'Job title', type: 'text', required: true, half: true, showIf: { name: 'occupation', is: ['Employed', 'Self-employed / business owner'] } },
+    { name: 'employerAddress', label: 'Employer or business address', type: 'textarea', required: true, showIf: { name: 'occupation', is: ['Employed', 'Self-employed / business owner'] } },
+    { name: 'employerPhone', label: 'Employer or business phone number', type: 'tel', required: true, half: true, showIf: { name: 'occupation', is: ['Employed', 'Self-employed / business owner'] } },
+    { name: 'workStart', label: 'When you started (month and year)', type: 'text', half: true, showIf: { name: 'occupation', is: ['Employed', 'Self-employed / business owner'] } },
+    { name: 'schoolName', label: 'School, college or university', type: 'text', required: true, showIf: { name: 'occupation', is: 'Student' } },
   ],
 };
 const ukStatusDoc = (name) => ({ name, label: 'Your UK residence permit, BRP or eVisa share code page', hint: 'Because you’re not a British citizen.', required: true, showIf: { name: 'nationality', isNot: 'United Kingdom' } });
@@ -549,6 +593,7 @@ const saudi = {
         { name: 'religion', label: 'Religion', type: 'select', options: ['Islam', 'Christian', 'Hindu', 'Sikh', 'Other', 'Prefer not to say'], required: true, showIf: { name: 'visaType', is: 'Umrah (tourist eVisa)' }, hint: 'The Saudi form asks this for Umrah applicants.' },
       ],
     },
+    work,
     contactStep(),
   ],
   docsIntro: {
@@ -696,6 +741,7 @@ const indiaRegular = {
         { name: 'duration', label: 'How long will you stay?', type: 'text', required: true, half: true },
       ],
     },
+    indiaWork,
     contactStep(),
   ],
   docsIntro: {
@@ -745,6 +791,7 @@ const evisa = {
         ...stay([{ name: 'address', label: 'Hotel or address where you’ll stay', type: 'textarea', required: true }]),
       ],
     },
+    work,
     contactStep(),
   ],
   docsIntro: {
@@ -793,7 +840,7 @@ const legalisation = {
         { name: 'speed', label: 'How quickly do you need them?', type: 'radio', required: true, options: ['Standard', 'Urgent'] },
       ],
     },
-    { ...contactStep(), fields: contactStep().fields.filter((f) => !['ukStatus', 'ukStatusExpiry'].includes(f.name)) },
+    { ...contactStep(), fields: contactStep([], { emergency: false }).fields.filter((f) => !['ukStatus', 'ukStatusExpiry'].includes(f.name)) },
   ],
   docsIntro: {
     'Apostille only': 'Upload a clear copy of each document so we can check it can be apostilled as it is, or needs certifying first.',
@@ -882,7 +929,7 @@ const secondPassport = {
         { name: 'reasonDetails', label: 'Anything else we should know?', type: 'textarea' },
       ],
     },
-    { ...contactStep(), fields: contactStep().fields.filter((f) => !['ukStatus', 'ukStatusExpiry'].includes(f.name)) },
+    { ...contactStep(), fields: contactStep([], { emergency: false }).fields.filter((f) => !['ukStatus', 'ukStatusExpiry'].includes(f.name)) },
   ],
   uploads: [
     { name: 'photo', label: 'Passport photo', hint: 'Recent colour photo, plain light grey or cream background.', required: true },
@@ -916,7 +963,7 @@ const indiaTransfer = {
         { name: 'travelDate', label: 'When are you next travelling to India?', type: 'date', half: true },
       ],
     },
-    { ...contactStep(), fields: contactStep().fields.filter((f) => !['ukStatus', 'ukStatusExpiry'].includes(f.name)) },
+    { ...contactStep(), fields: contactStep([], { emergency: false }).fields.filter((f) => !['ukStatus', 'ukStatusExpiry'].includes(f.name)) },
   ],
   docsIntro: {
     'e-Tourist visa (1 year)': 'Add a photo and your current eVisa. We’ll submit the transfer on India’s eVisa portal.',
