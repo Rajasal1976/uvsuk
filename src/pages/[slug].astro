@@ -20,7 +20,7 @@ import { pages, pageBySlug } from '../data/pages.js';
 import { site } from '../data/site.js';
 
 export function getStaticPaths() {
-  const own = ['indefinite-leave-to-remain-ilr', 'skilled-worker-visa-formally-tier-t2-general', 'china-visa-application'];
+  const own = ['indefinite-leave-to-remain-ilr', 'skilled-worker-visa-formally-tier-t2-general', 'china-visa-application', 'spouse-visa-income-calculator', 'uk-visa-cost-calculator', 'am-i-eligible-for-ilr'];
   return pages.filter((p) => !own.includes(p.slug)).map((p) => ({ params: { slug: p.slug }, props: { p } }));
 }
 

@@ -1,0 +1,69 @@
+{
+  "country": "UK",
+  "applyButton": "none",
+  "shareImage": "/images/share.jpg",
+  "faqHeading": "Common questions",
+  "sortKey": "1 uk 1 spouse visa income calculator",
+  "widgetTitle": "Check your income and savings",
+  "h1": "Spouse visa income calculator",
+  "intro": "Our free spouse visa income calculator shows whether you and your partner earn enough for a UK spouse or partner visa. Add your income and savings and it tells you straight away if you meet the requirement, or how far short you are.",
+  "sections": [
+    {
+      "heading": "What the spouse visa income calculator checks",
+      "text": "The Home Office sets a minimum income for spouse, partner and fiancé(e) visas. The calculator compares the income you can use with that minimum, then tells you whether your savings can make up any gap.\n\nIt covers first applications, extensions and Indefinite Leave to Remain, and the older rules for people first granted before April 2024."
+    },
+    {
+      "heading": "How much income do you need?",
+      "text": "For most couples applying now, the minimum is £29,000 a year before tax. You can usually count:\n- Your partner’s salary or self-employed earnings\n- Your own earnings, if you already live in the UK with permission to work\n- Pensions, rental income and some investment income\n- Cash savings above £16,000\n\nYour partner doesn’t have to earn it all alone. Different types of income can often be added together."
+    },
+    {
+      "heading": "Not enough income? How savings help",
+      "text": "If your income is below £29,000, savings can fill the gap. Take away £16,000 from your savings, then divide what’s left by 2.5 and add it to your income. For ILR, you don’t divide by 2.5.\n\nSo a couple earning £25,000 needs £26,000 in savings for a first visa: £16,000 plus 2.5 × £4,000. The spouse visa income calculator does this sum for you."
+    },
+    {
+      "heading": "Older visas and children",
+      "text": "Couples whose first partner visa was granted before 11 April 2024 can normally stay on the old figure of £18,600 for their extension and settlement. Children who aren’t British or settled add £3,800 for the first and £2,400 for each one after that."
+    },
+    {
+      "heading": "Benefits that change the rules",
+      "text": "If your partner gets Carer’s Allowance or a disability benefit such as PIP, the £29,000 minimum doesn’t apply. You need to show instead that you can live without claiming extra benefits, which is called adequate maintenance."
+    },
+    {
+      "heading": "Self-employed or company director?",
+      "text": "Self-employed income and income from your own limited company follow stricter rules. You usually need a full financial year of accounts and tax returns, and you can’t top this income up with savings. If this applies to you, use the calculator as a guide and ask us to check your figures."
+    },
+    {
+      "heading": "Get your evidence right",
+      "text": "Meeting the figure is only half of it. The Home Office expects payslips, bank statements, letters and accounts covering exact periods, and one missing month can lead to a refusal. Our Manchester team checks every document before you apply. See our [spouse visa application](/uk-spouse-visa-application/) service."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Is the spouse visa income calculator free?",
+      "a": "Yes. It’s free and you don’t need to give any details to see your result."
+    },
+    {
+      "q": "What is the minimum income for a UK spouse visa?",
+      "a": "£29,000 a year for most new applications. People first granted before 11 April 2024 can usually keep the old £18,600 figure."
+    },
+    {
+      "q": "Can I use savings instead of income?",
+      "a": "Yes. With no income you need £88,500 in cash savings for a first visa or extension."
+    },
+    {
+      "q": "Does overseas income count?",
+      "a": "Your own overseas salary doesn’t count for a first visa. Some of your partner’s overseas income can count if they’re returning to the UK with them."
+    },
+    {
+      "q": "Do we need extra income for children?",
+      "a": "Not under the current £29,000 rules. Extra amounts only apply if you were first granted under the old rules."
+    },
+    {
+      "q": "How accurate is the spouse visa income calculator?",
+      "a": "It uses the same figures and savings formula as the Immigration Rules. We confirm your exact position and evidence before you apply."
+    }
+  ],
+  "title": "Spouse Visa Income Calculator | Do You Earn Enough? UVS",
+  "description": "Free spouse visa income calculator: check if you meet the £29,000 UK spouse visa income requirement, and how much savings would cover a shortfall.",
+  "focusKeyword": "spouse visa income calculator"
+}

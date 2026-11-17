@@ -1,0 +1,78 @@
+---
+// "Want us to check your application?" box shown under each free calculator.
+// Sends to the Netlify form "calculator-lead", with the calculator's result attached,
+// so the adviser who calls back can see what the visitor worked out.
+const { tool, heading = 'Want us to check your application?', text = 'Our advisers can check your figures and documents before you apply, so nothing is missed.' } = Astro.props;
+---
+<form class="vt-lead" id={`lead-${tool}`} name="calculator-lead" method="POST" action="/thank-you/" data-netlify="true" netlify-honeypot="company">
+  <input type="hidden" name="form-name" value="calculator-lead" />
+  <input type="hidden" name="tool" value={tool} />
+  <input type="hidden" name="result" value="" />
+  <p hidden><label>Leave this empty <input name="company" /></label></p>
+  <h3>{heading}</h3>
+  <p class="vt-lead-text">{text}</p>
+  <div class="vt-lead-grid">
+    <label>Name<input name="name" required autocomplete="name" /></label>
+    <label>Phone<input name="phone" type="tel" required autocomplete="tel" /></label>
+    <label class="vt-lead-full">Email<input name="email" type="email" required autocomplete="email" /></label>
+  </div>
+  <p class="vt-lead-small">We’ll use your details only to contact you about your application. Your calculator answers are sent with your message.</p>
+  <button type="submit" class="btn btn-gold">Ask an adviser to check</button>
+</form>
+
+<style is:global>
+/* Shared styles for the free calculators (prefix vt- so they never clash with other page styles) */
+.vt [hidden], .vt-lead [hidden] { display: none !important; }
+.vt { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); border: 1px solid var(--line, #dfe3e0); border-radius: 6px; overflow: hidden; background: #fff; }
+.vt-in { padding: 32px; border-right: 1px solid var(--line, #dfe3e0); display: grid; gap: 20px; align-content: start; }
+.vt-out { padding: 32px; background: var(--green-50, #f1f6f3); display: grid; gap: 12px; align-content: start; }
+.vt fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 8px; }
+.vt legend, .vt .vt-label { font-size: 14px; font-weight: 600; color: var(--ink, #1c2420); padding: 0; margin: 0 0 6px; }
+.vt .vt-hint { font-size: 13px; color: var(--ink-mute, #5d6862); margin: -2px 0 0; }
+.vt-opt { position: relative; }
+.vt-opt input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.vt-opt span { display: block; padding: 11px 14px; border: 1.5px solid var(--line, #dfe3e0); border-radius: 4px; font-size: 14.5px; color: var(--ink, #1c2420); background: #fff; }
+.vt-opt span small { display: block; color: var(--ink-mute, #5d6862); font-size: 13px; }
+.vt-opt input:checked + span { border-color: var(--green-800, #1d4b37); background: var(--gold-soft, #fbf3dc); }
+.vt-opt input:focus-visible + span { outline: 3px solid var(--gold, #c9a227); outline-offset: 2px; }
+.vt-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.vt-row-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.vt-field { display: grid; gap: 6px; }
+.vt-field label { font-size: 14px; font-weight: 600; color: var(--ink, #1c2420); }
+.vt input[type=number], .vt input[type=date], .vt select { width: 100%; min-height: 46px; padding: 0 12px; font: inherit; font-size: 15px; color: var(--ink, #1c2420); background: #fff; border: 1.5px solid var(--line, #dfe3e0); border-radius: 4px; box-sizing: border-box; }
+.vt-money { position: relative; }
+.vt-money::before { content: "£"; position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--ink-mute, #5d6862); font-size: 15px; }
+.vt-money input[type=number] { padding-left: 26px; }
+.vt-check { display: flex; gap: 10px; align-items: flex-start; font-size: 14.5px; color: var(--ink, #1c2420); }
+.vt-check input { width: 20px; height: 20px; margin-top: 1px; flex: none; }
+.vt-verdict { font-family: var(--serif, Georgia, serif); font-size: 27px; line-height: 1.2; color: var(--ink, #1c2420); margin: 0 0 6px; }
+.vt-res { display: flex; gap: 12px; align-items: flex-start; padding: 13px 15px; border-radius: 4px; background: #fff; border: 1px solid var(--line, #dfe3e0); font-size: 15px; line-height: 1.5; }
+.vt-res b { color: var(--ink, #1c2420); }
+.vt-res i { font-style: normal; flex: none; width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-size: 14px; }
+.vt-res.ok i { background: var(--tick-soft, #e2f2e8); color: var(--tick, #1b6b3f); }
+.vt-res.bad i { background: var(--rani-soft, #fbe5e3); color: var(--rani, #a3271c); }
+.vt-res.info i { background: var(--gold-soft, #fbf3dc); color: var(--gold-text, #7a5a0c); }
+.vt-table { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid var(--line, #dfe3e0); border-radius: 4px; font-size: 15px; }
+.vt-table th, .vt-table td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line, #dfe3e0); }
+.vt-table td:last-child, .vt-table th:last-child { text-align: right; white-space: nowrap; }
+.vt-table tr.vt-total td { font-weight: 700; color: var(--ink, #1c2420); border-bottom: 0; font-size: 17px; }
+.vt-empty { color: var(--ink-mute, #5d6862); font-size: 15.5px; margin: 0; }
+.vt-note { font-size: 13px; color: var(--ink-mute, #5d6862); margin: 4px 0 0; line-height: 1.5; }
+.vt-lead { margin-top: 24px; border: 1px solid var(--line, #dfe3e0); border-radius: 6px; background: #fff; padding: 28px 32px; display: grid; gap: 12px; }
+.vt-lead h3 { margin: 0; font-family: var(--serif, Georgia, serif); font-size: 24px; color: var(--ink, #1c2420); }
+.vt-lead-text { margin: 0; color: var(--ink-soft, #3b4540); }
+.vt-lead-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.vt-lead-grid label { display: grid; gap: 6px; font-size: 14px; font-weight: 600; color: var(--ink, #1c2420); }
+.vt-lead-grid input { min-height: 46px; padding: 0 12px; font: inherit; font-size: 15px; border: 1.5px solid var(--line, #dfe3e0); border-radius: 4px; }
+.vt-lead-full { grid-column: 1 / -1; }
+.vt-lead-small { margin: 0; font-size: 13px; color: var(--ink-mute, #5d6862); }
+.vt-lead .btn { justify-self: start; }
+@media (max-width: 760px) {
+  .vt { grid-template-columns: 1fr; }
+  .vt-in { border-right: 0; border-bottom: 1px solid var(--line, #dfe3e0); padding: 22px; }
+  .vt-out { padding: 22px; }
+  .vt-row-3 { grid-template-columns: 1fr; }
+  .vt-lead { padding: 22px; }
+  .vt-lead-grid { grid-template-columns: 1fr; }
+}
+</style>

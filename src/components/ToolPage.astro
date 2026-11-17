@@ -1,0 +1,45 @@
+---
+// Page layout for the free calculators (spouse visa income, visa costs, ILR eligibility).
+// Text, FAQs and SEO for each page are edited in the admin (content/pages/<slug>.json).
+import Page from '../layouts/Page.astro';
+import { site } from '../data/site.js';
+import Faq from './Faq.astro';
+import OfficePanel from './OfficePanel.astro';
+import HeadFlag from './HeadFlag.astro';
+import VisaBar from './VisaBar.astro';
+import GuideSections from './GuideSections.astro';
+import { pageBySlug } from '../data/pages.js';
+const { content, slug } = Astro.props;
+const related = (pageBySlug[slug]?.related || []).map((r) => pageBySlug[r]).filter(Boolean);
+---
+<Page title={content.title} description={content.description} schemas={[]}>
+<main>
+<div class="head-zone">
+<div class="page-head has-bar has-flag">
+<div class="wrap">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/uk-visa-services/">UK Visas</a></nav>
+<h1>{content.h1}</h1>
+{content.intro && <p class="lead">{content.intro}</p>}
+<HeadFlag country="UK" applyUrl="none" /></div></div>
+<VisaBar slug={slug} country="UK" applyUrl="none" />
+</div>
+<div class="wrap section page-body" style="padding-top:64px">
+<div class="content">
+<section id="calculator">
+{content.widgetTitle && <h2>{content.widgetTitle}</h2>}
+<slot />
+</section>
+<GuideSections sections={content.sections} />
+<Faq items={content.faqs} title={content.faqHeading || 'Common questions'} />
+{related.length > 0 && (
+<section>
+<h2>Related pages</h2>
+<ul>{related.map((r) => <li><a href={`/${r.slug}/`}>{r.h1}</a></li>)}</ul></section>)}
+</div>
+<aside class="aside">
+<div class="panel">
+<h2>Talk to an adviser</h2>
+<p class="soft" style="font-size:16px">Book a consultation and we’ll check your figures, what you’ll need and our fee.</p><a class="btn btn-primary" href="/contact-us/">Book a consultation</a><a href={`tel:${site.phoneIntl}`} class="btn btn-outline">Call {site.phone}</a>
+<p style="font-size:14px;color:var(--ink-mute)">IAA-regulated · Ref {site.iaaRef}</p></div><OfficePanel /></aside></div>
+</main>
+</Page>

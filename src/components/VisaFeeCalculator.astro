@@ -1,0 +1,124 @@
+---
+// UK visa fee calculator: Home Office fees and the Immigration Health Surcharge (IHS).
+// Fees in force from 8 April 2026. Update the FEES list below when the Home Office changes them.
+// IHS: £1,035 a year for adults, £776 for students, their dependants and children under 18.
+// Part years: 6 months or less counts as half a year, over 6 months as a full year.
+import CalcLead from './CalcLead.astro';
+---
+<div class="vt-wrap" id="fee-tool">
+  <div class="vt">
+    <div class="vt-in">
+      <div class="vt-field">
+        <label for="fee-type">What are you applying for?</label>
+        <select id="fee-type">
+          <optgroup label="Family">
+            <option value="spouseOut">Spouse or partner visa, from outside the UK</option>
+            <option value="spouseIn">Spouse or partner visa, inside the UK (extension or switch)</option>
+            <option value="fiance">Fiancé(e) visa</option>
+          </optgroup>
+          <optgroup label="Settlement and citizenship">
+            <option value="ilr">Indefinite Leave to Remain</option>
+            <option value="citizen">British citizenship (adult)</option>
+          </optgroup>
+          <optgroup label="Work">
+            <option value="swOut">Skilled Worker, from outside the UK</option>
+            <option value="swIn">Skilled Worker, inside the UK (extension or switch)</option>
+            <option value="hcw">Health and Care Worker</option>
+          </optgroup>
+          <optgroup label="Study and visit">
+            <option value="student">Student visa</option>
+            <option value="graduate">Graduate visa</option>
+            <option value="visit">Standard Visitor visa (6 months)</option>
+          </optgroup>
+        </select>
+      </div>
+
+      <div class="vt-field" id="fee-years-wrap" hidden>
+        <label for="fee-years" id="fee-years-label">How long is the visa?</label>
+        <select id="fee-years">
+          <option value="1">1 year</option><option value="2">2 years</option><option value="3" selected>3 years</option><option value="4">4 years</option><option value="5">5 years</option>
+        </select>
+      </div>
+
+      <div class="vt-row">
+        <div class="vt-field">
+          <label for="fee-adults">Adults applying</label>
+          <input type="number" id="fee-adults" min="1" max="10" step="1" value="1" inputmode="numeric">
+        </div>
+        <div class="vt-field" id="fee-kids-wrap">
+          <label for="fee-kids">Children under 18</label>
+          <input type="number" id="fee-kids" min="0" max="10" step="1" value="0" inputmode="numeric">
+        </div>
+      </div>
+      <p class="vt-hint">Include yourself. Each person pays their own fee.</p>
+    </div>
+    <div class="vt-out" aria-live="polite"><div id="fee-out"></div></div>
+  </div>
+  <CalcLead tool="visa-fees" heading="Want us to handle the application?" text="Fees are the easy part. We prepare the forms and evidence so you pay them once, not twice after a refusal." />
+</div>
+
+<script>
+  const IHS_ADULT = 1035, IHS_REDUCED = 776;
+  // fee: per person. ihsYears: number, 'pick' (visa length chosen), 'course' (course length + extra months) or 0.
+  const FEES = {
+    spouseOut: { name: 'Spouse or partner visa (outside the UK)', fee: 2064, ihsYears: 2.75 },
+    spouseIn: { name: 'Spouse or partner visa (inside the UK)', fee: 1407, ihsYears: 2.5 },
+    fiance: { name: 'Fiancé(e) visa', fee: 2064, ihsYears: 0 },
+    ilr: { name: 'Indefinite Leave to Remain', fee: 3226, ihsYears: 0, note: 'Each adult also needs to pass the Life in the UK test (£50 a try), unless exempt.' },
+    citizen: { name: 'British citizenship', fee: 1709, extra: 130, extraName: 'Citizenship ceremony', ihsYears: 0, adultsOnly: true, note: 'Children apply to register as British, which has its own fee.' },
+    swOut: { name: 'Skilled Worker (outside the UK)', fee: [819, 1618], ihsYears: 'pick' },
+    swIn: { name: 'Skilled Worker (inside the UK)', fee: [943, 1865], ihsYears: 'pick' },
+    hcw: { name: 'Health and Care Worker', fee: [324, 628], ihsYears: 'pick', noIhsMain: true, note: 'Health and Care Workers and their family don’t pay the Immigration Health Surcharge.' },
+    student: { name: 'Student visa', fee: 558, ihsYears: 'course', reduced: true },
+    graduate: { name: 'Graduate visa', fee: 937, ihsYears: 2 },
+    visit: { name: 'Standard Visitor visa', fee: 135, ihsYears: 0 },
+  };
+  const root = document.getElementById('fee-tool');
+  const $ = (s) => root.querySelector(s);
+  const money = (n) => '£' + n.toLocaleString('en-GB', { minimumFractionDigits: n % 1 ? 2 : 0, maximumFractionDigits: 2 });
+  // Round a stay to whole and half years, as the IHS does
+  const ihsYears = (y) => { const whole = Math.floor(y), part = y - whole; return part === 0 ? whole : part <= 0.5 ? whole + 0.5 : whole + 1; };
+
+  function calc() {
+    const key = $('#fee-type').value, f = FEES[key];
+    const pick = f.ihsYears === 'pick' || f.ihsYears === 'course';
+    $('#fee-years-wrap').hidden = !pick;
+    $('#fee-years-label').textContent = f.ihsYears === 'course' ? 'How long is the course?' : 'How long is the visa?';
+    $('#fee-kids-wrap').style.visibility = f.adultsOnly ? 'hidden' : '';
+    const years = +$('#fee-years').value;
+    const adults = Math.min(10, Math.max(1, Math.floor(+$('#fee-adults').value || 1)));
+    const kids = f.adultsOnly ? 0 : Math.min(10, Math.max(0, Math.floor(+$('#fee-kids').value || 0)));
+    const people = adults + kids;
+    const fee = Array.isArray(f.fee) ? f.fee[years > 3 ? 1 : 0] : f.fee;
+    let stay = 0;
+    if (typeof f.ihsYears === 'number') stay = f.ihsYears;
+    else if (f.ihsYears === 'pick') stay = years;
+    else if (f.ihsYears === 'course') stay = years + (years >= 1 ? 0.34 : 0.17); // visas run a few months past the course
+    const ihsY = f.noIhsMain ? 0 : ihsYears(stay);
+    const ihsAdult = ihsY * (f.reduced ? IHS_REDUCED : IHS_ADULT);
+    const ihsChild = ihsY * IHS_REDUCED;
+    const visaTotal = fee * people;
+    const extraTotal = (f.extra || 0) * adults;
+    const ihsTotal = ihsAdult * adults + ihsChild * kids;
+    const total = visaTotal + extraTotal + ihsTotal;
+
+    let rows = `<tr><td>Application fee × ${people}</td><td>${money(visaTotal)}</td></tr>`;
+    if (f.extra) rows += `<tr><td>${f.extraName} × ${adults}</td><td>${money(extraTotal)}</td></tr>`;
+    if (ihsY) rows += `<tr><td>Health surcharge (${ihsY} years) × ${people}</td><td>${money(ihsTotal)}</td></tr>`;
+    rows += `<tr class="vt-total"><td>Total government fees</td><td>${money(total)}</td></tr>`;
+
+    let notes = '';
+    if (ihsY) notes += `<div class="vt-res info"><i>i</i><span>Health surcharge per person: <b>${money(ihsAdult)}</b> for ${f.reduced ? 'a student' : 'an adult'}${kids ? `, <b>${money(ihsChild)}</b> for a child` : ''}. It’s paid upfront for the whole visa.</span></div>`;
+    if (f.ihsYears === 'course') notes += '<div class="vt-res info"><i>i</i><span>Your visa usually runs a few months past the end of your course, and the surcharge covers that time too.</span></div>';
+    if (f.note) notes += `<div class="vt-res info"><i>i</i><span>${f.note}</span></div>`;
+
+    $('#fee-out').innerHTML = `<p class="vt-verdict">${money(total)}</p><p class="vt-note" style="margin:-6px 0 6px">${f.name}, ${people} ${people === 1 ? 'person' : 'people'}</p>`
+      + `<table class="vt-table"><tbody>${rows}</tbody></table>` + notes
+      + '<p class="vt-note">Home Office fees from 8 April 2026. Priority processing, biometrics appointments and our own fee are extra. Fees aren’t refunded if an application is refused.</p>';
+    const lead = document.querySelector('#lead-visa-fees [name="result"]');
+    if (lead) lead.value = `${f.name}, ${adults} adult(s), ${kids} child(ren)${pick ? `, ${years} year(s)` : ''}. Government fees ${money(total)}.`;
+  }
+  root.addEventListener('input', calc);
+  root.addEventListener('change', calc);
+  calc();
+</script>

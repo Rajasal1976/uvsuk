@@ -1,0 +1,73 @@
+{
+  "country": "UK",
+  "applyButton": "none",
+  "shareImage": "/images/share.jpg",
+  "faqHeading": "Common questions",
+  "sortKey": "1 uk 1 uk visa cost calculator",
+  "widgetTitle": "Work out your visa costs",
+  "h1": "UK visa cost calculator",
+  "intro": "Find out what your UK visa will really cost with our free UK visa cost calculator. It adds up the Home Office fee and the NHS health surcharge for everyone applying, so there are no surprises.",
+  "sections": [
+    {
+      "heading": "Using the UK visa cost calculator",
+      "text": "Pick the visa you’re applying for, the length of the visa where it matters, and the number of adults and children. You’ll see the total government cost straight away, split into application fees and the health surcharge."
+    },
+    {
+      "heading": "What’s included",
+      "text": "- The Home Office application fee for each person\n- The citizenship ceremony fee, where it applies\n- The Immigration Health Surcharge, which gives you access to the NHS\n\nThe health surcharge is £1,035 a year for adults, and £776 a year for children and students. It’s paid in one go for the whole visa."
+    },
+    {
+      "heading": "Typical UK visa costs in 2026",
+      "text": "- Spouse visa from abroad: £2,064 fee plus £3,105 health surcharge per adult\n- Spouse visa extension: £1,407 fee plus £2,587.50 health surcharge per adult\n- Indefinite Leave to Remain: £3,226 per person\n- British citizenship: £1,839 including the ceremony\n- Skilled Worker for 3 years from abroad: £819 fee plus £3,105 health surcharge\n- Visitor visa for 6 months: £135"
+    },
+    {
+      "heading": "Example: a family moving for work",
+      "text": "A Skilled Worker coming from abroad on a 3-year visa with their partner and one child would pay £2,457 in application fees, £6,210 in health surcharge for the two adults and £2,328 for the child. That’s £10,995 before flights, tests or advice.\n\nCompare that with a single applicant on the same visa, who pays £3,924. The UK visa cost calculator lets you try different family sizes and visa lengths, so you can budget before you commit."
+    },
+    {
+      "heading": "What isn’t included",
+      "text": "The UK visa cost calculator shows government fees only. You may also pay for priority processing, a visa centre appointment, English or Life in the UK tests, translations and professional advice. Employers sponsoring a worker pay separate sponsorship charges."
+    },
+    {
+      "heading": "Paying the fees",
+      "text": "You pay the application fee and health surcharge online when you submit your application, by debit or credit card. Each person in the family has their own application and their own payment. Your visa can’t be decided until both are paid, so make sure the card limit covers the full amount."
+    },
+    {
+      "heading": "Why a refusal costs so much",
+      "text": "If your application is refused, the Home Office keeps the fee. For a partner and two children applying from abroad on the spouse route, that’s £6,192 in application fees lost. It’s why we check every application in full before it’s sent. See our [UK visa services](/uk-visa-services/)."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "How much does a UK spouse visa cost in total?",
+      "a": "£5,169 per adult in government fees when applying from abroad: the £2,064 fee and £3,105 health surcharge."
+    },
+    {
+      "q": "Does a child pay the same visa fee?",
+      "a": "Usually, yes. Children pay the same application fee but a lower health surcharge."
+    },
+    {
+      "q": "Is the health surcharge refunded if I’m refused?",
+      "a": "Usually, yes. The application fee itself isn’t refunded."
+    },
+    {
+      "q": "Who doesn’t pay the health surcharge?",
+      "a": "Health and Care Worker visa holders and their families, visitors, and people applying for ILR or citizenship."
+    },
+    {
+      "q": "Are your service fees included?",
+      "a": "No. The UK visa cost calculator shows government costs. We agree our fee with you in writing before we start."
+    },
+    {
+      "q": "When do UK visa fees go up?",
+      "a": "The Home Office usually changes fees once a year, often in April. We update the UK visa cost calculator when they change."
+    },
+    {
+      "q": "Is the UK visa cost calculator free?",
+      "a": "Yes. It’s free to use and you don’t need to enter any personal details to see the costs."
+    }
+  ],
+  "title": "UK Visa Cost Calculator 2026 | Fees and NHS Surcharge | UVS",
+  "description": "Free UK visa cost calculator: total up Home Office fees and the NHS health surcharge for spouse, ILR, citizenship, work, student and visitor visas.",
+  "focusKeyword": "UK visa cost calculator"
+}

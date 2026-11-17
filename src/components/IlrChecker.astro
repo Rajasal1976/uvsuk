@@ -1,0 +1,142 @@
+---
+// ILR eligibility checker. Current rules (November 2026):
+// - 5 years on the partner, Skilled Worker, UK Ancestry and BN(O) routes; 10 years for long residence.
+// - You can apply up to 28 days before you complete the qualifying period.
+// - No more than 180 days outside the UK in any 12 months, Life in the UK test, English at B1.
+// The "earned settlement" plans (10-year standard route) are expected from 2027: see the note in the results.
+import CalcLead from './CalcLead.astro';
+---
+<div class="vt-wrap" id="ilr-tool">
+  <div class="vt">
+    <div class="vt-in">
+      <div class="vt-field">
+        <label for="ilr-route">Which visa are you on?</label>
+        <select id="ilr-route">
+          <option value="partner">Spouse or partner of a British or settled person</option>
+          <option value="sw">Skilled Worker</option>
+          <option value="ancestry">UK Ancestry</option>
+          <option value="bno">British National (Overseas)</option>
+          <option value="long">Long residence (10 years in the UK on any visas)</option>
+          <option value="other">Something else, or I’m not sure</option>
+        </select>
+      </div>
+      <div class="vt-field">
+        <label for="ilr-start" id="ilr-start-label">When did your first visa on this route start?</label>
+        <input type="date" id="ilr-start">
+        <p class="vt-hint" id="ilr-start-hint">The date your visa started, or the date you entered the UK on it if later</p>
+      </div>
+
+      <fieldset>
+        <legend>In any 12 months, have you spent more than 180 days outside the UK?</legend>
+        <div class="vt-row vt-row-3">
+          <label class="vt-opt"><input type="radio" name="ilr-abs" value="no" checked><span>No</span></label>
+          <label class="vt-opt"><input type="radio" name="ilr-abs" value="yes"><span>Yes</span></label>
+          <label class="vt-opt"><input type="radio" name="ilr-abs" value="unsure"><span>Not sure</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Have you passed the Life in the UK test?</legend>
+        <div class="vt-row vt-row-3">
+          <label class="vt-opt"><input type="radio" name="ilr-lituk" value="yes" checked><span>Yes</span></label>
+          <label class="vt-opt"><input type="radio" name="ilr-lituk" value="no"><span>Not yet</span></label>
+          <label class="vt-opt"><input type="radio" name="ilr-lituk" value="exempt"><span>65 or over</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Can you show English at B1 level or above?</legend>
+        <label class="vt-opt"><input type="radio" name="ilr-eng" value="yes" checked><span>Yes<small>An approved B1 test, a degree taught in English, or I’m from a majority English-speaking country</small></span></label>
+        <label class="vt-opt"><input type="radio" name="ilr-eng" value="no"><span>Not yet</span></label>
+      </fieldset>
+
+      <fieldset id="ilr-route-q">
+        <legend id="ilr-route-q-label">Are you still together and living with your partner?</legend>
+        <div class="vt-row vt-row-3">
+          <label class="vt-opt"><input type="radio" name="ilr-rq" value="yes" checked><span>Yes</span></label>
+          <label class="vt-opt"><input type="radio" name="ilr-rq" value="no"><span>No</span></label>
+          <label class="vt-opt"><input type="radio" name="ilr-rq" value="unsure"><span>Not sure</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Have you ever overstayed a visa, been refused, or had a criminal conviction or caution?</legend>
+        <div class="vt-row">
+          <label class="vt-opt"><input type="radio" name="ilr-issue" value="no" checked><span>No</span></label>
+          <label class="vt-opt"><input type="radio" name="ilr-issue" value="yes"><span>Yes</span></label>
+        </div>
+      </fieldset>
+    </div>
+    <div class="vt-out" aria-live="polite"><div id="ilr-out"></div></div>
+  </div>
+  <CalcLead tool="ilr-eligibility" heading="Want us to check before you apply?" text="ILR costs £3,226 per person and the fee isn’t refunded if you’re refused. We check your dates, absences and evidence first." />
+</div>
+
+<script>
+  const ROUTES = {
+    partner: { years: 5, label: 'partner route', q: 'Are you still together and living with your partner?', qFail: 'You need to still be in a genuine relationship and living together. If things have changed, other options may be open to you.' },
+    sw: { years: 5, label: 'Skilled Worker route', q: 'Are you still with your sponsor, and paid at least the salary needed?', qFail: 'You need to be employed by a licensed sponsor and paid at least the required salary. We can check what applies to you.' },
+    ancestry: { years: 5, label: 'UK Ancestry route', q: 'Are you working, or able to work, in the UK?', qFail: 'UK Ancestry settlement normally needs you to be working or able to work.' },
+    bno: { years: 5, label: 'BN(O) route', q: null },
+    long: { years: 10, label: 'long residence route', q: null, start: 'When did your continuous lawful stay in the UK start?', hint: 'You need 10 years with permission throughout, without long gaps' },
+    other: { years: null, label: 'your route', q: null },
+  };
+  const root = document.getElementById('ilr-tool');
+  const $ = (s) => root.querySelector(s);
+  const val = (n) => root.querySelector(`input[name="${n}"]:checked`).value;
+  const DAY = 864e5;
+  const fmt = (d) => d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+  const row = (cls, icon, html) => `<div class="vt-res ${cls}"><i>${icon}</i><span>${html}</span></div>`;
+  const note = '<p class="vt-note"><b>Changes coming:</b> the government plans to raise the standard wait for ILR to 10 years for many people under “earned settlement”, starting during 2027. Partners of British citizens and higher earners are expected to keep a 5-year route. Applications are decided under the rules in force at the time, so if you qualify before the change, applying early matters.</p>';
+
+  function calc() {
+    const key = $('#ilr-route').value, r = ROUTES[key];
+    $('#ilr-start-label').textContent = r.start || 'When did your first visa on this route start?';
+    $('#ilr-start-hint').textContent = r.hint || 'The date your visa started, or the date you entered the UK on it if later';
+    $('#ilr-route-q').hidden = !r.q;
+    if (r.q) $('#ilr-route-q-label').textContent = r.q;
+    const out = $('#ilr-out');
+    const lead = document.querySelector('#lead-ilr-eligibility [name="result"]');
+
+    if (!r.years) {
+      out.innerHTML = '<p class="vt-verdict">Let’s check your route</p>' + row('info', 'i', 'The time you need depends on your visa. Tell us which visa you hold and we’ll confirm when you can apply.') + note;
+      if (lead) lead.value = 'Route: other or not sure.';
+      return;
+    }
+    const startV = $('#ilr-start').value;
+    if (!startV) { out.innerHTML = '<p class="vt-empty">Choose your visa and enter the start date to see when you could apply.</p>'; if (lead) lead.value = ''; return; }
+    const start = new Date(startV + 'T00:00:00Z');
+    const qualify = new Date(start); qualify.setUTCFullYear(qualify.getUTCFullYear() + r.years);
+    const earliest = new Date(qualify.getTime() - 28 * DAY);
+    const today = new Date(); const todayUtc = new Date(Date.UTC(today.getFullYear(), today.getMonth(), today.getDate()));
+    const ready = todayUtc >= earliest;
+
+    const problems = [], checks = [];
+    const abs = val('ilr-abs'), lituk = val('ilr-lituk'), eng = val('ilr-eng'), issue = val('ilr-issue');
+    const rq = r.q ? val('ilr-rq') : 'yes';
+    checks.push(row(ready ? 'ok' : 'info', ready ? '✓' : 'i', `${r.years} years on the ${r.label} ends on <b>${fmt(qualify)}</b>. You can apply from <b>${fmt(earliest)}</b>, 28 days earlier.`));
+    if (abs === 'no') checks.push(row('ok', '✓', 'Time outside the UK within the 180-day limit'));
+    else { problems.push('absences'); checks.push(row(abs === 'yes' ? 'bad' : 'info', abs === 'yes' ? '!' : 'i', abs === 'yes' ? 'More than 180 days outside the UK in a 12-month period can break your continuous residence. There are exceptions, so get advice before applying.' : 'Not sure about your absences? Use our <a href="/absence-calculator/">absence calculator</a> to check.')); }
+    if (lituk === 'no') { problems.push('Life in the UK test'); checks.push(row('bad', '!', 'You need to pass the Life in the UK test before you apply. Book it early, as dates fill up.')); }
+    else checks.push(row('ok', '✓', lituk === 'exempt' ? 'Exempt from the Life in the UK test (65 or over)' : 'Life in the UK test passed'));
+    if (eng === 'no' && lituk !== 'exempt') { problems.push('English'); checks.push(row('bad', '!', 'You need an approved English test at B1 level or above, unless you’re exempt.')); }
+    else checks.push(row('ok', '✓', 'English requirement met'));
+    if (r.q) { if (rq === 'yes') checks.push(row('ok', '✓', 'Route requirements met')); else { problems.push('route requirements'); checks.push(row(rq === 'no' ? 'bad' : 'info', rq === 'no' ? '!' : 'i', r.qFail)); } }
+    if (issue === 'yes') { problems.push('immigration or criminal history'); checks.push(row('bad', '!', 'Past overstaying, refusals, convictions or cautions can affect ILR. Speak to an adviser before you apply.')); }
+
+    let verdict;
+    if (problems.length) verdict = 'Get advice before you apply';
+    else if (ready) verdict = 'You may be able to apply now';
+    else {
+      const months = Math.max(1, Math.round((earliest - todayUtc) / (30.44 * DAY)));
+      const yrs = Math.floor(months / 12), mos = months % 12;
+      const when = months < 24 ? `${months} month${months === 1 ? '' : 's'}` : `${yrs} years${mos ? ` and ${mos} month${mos === 1 ? '' : 's'}` : ''}`;
+      verdict = `You could apply in about ${when}`;
+    }
+    out.innerHTML = `<p class="vt-verdict">${verdict}</p>` + checks.join('') + note + '<p class="vt-note">This checker is a guide. We confirm your exact position before you apply.</p>';
+    if (lead) lead.value = `Route: ${r.label}, start ${startV}. Earliest apply date ${fmt(earliest)}. ${problems.length ? 'Issues: ' + problems.join(', ') + '.' : 'No issues flagged.'}`;
+  }
+  root.addEventListener('input', calc);
+  root.addEventListener('change', calc);
+  calc();
+</script>

@@ -1,0 +1,69 @@
+{
+  "country": "UK",
+  "applyButton": "none",
+  "shareImage": "/images/share.jpg",
+  "faqHeading": "Common questions",
+  "sortKey": "1 uk 1 am i eligible for ilr",
+  "widgetTitle": "Check if you’re eligible for ILR",
+  "h1": "Am I eligible for ILR? Free checker",
+  "intro": "Wondering whether you’re eligible for ILR yet? Answer a few quick questions and our free checker shows the earliest date you can apply for Indefinite Leave to Remain, and anything that could hold you back.",
+  "sections": [
+    {
+      "heading": "Are you eligible for ILR yet?",
+      "text": "Most people become eligible for ILR after 5 years on a qualifying visa, such as a spouse, Skilled Worker, UK Ancestry or BN(O) visa. Others qualify after 10 years living in the UK lawfully. You can send your application up to 28 days before you reach the full period."
+    },
+    {
+      "heading": "How the checker works",
+      "text": "Choose your visa, enter the date it started and answer five quick questions. The checker adds the qualifying period to your start date, takes off the 28 days you’re allowed to apply early, and shows that date. It also flags anything that could stop you being eligible for ILR on that date, such as time abroad or a test you still need to pass."
+    },
+    {
+      "heading": "What makes you eligible for ILR?",
+      "text": "As well as the time on your visa, you’ll usually need:\n- Time abroad of no more than 180 days in any 12 months\n- A pass in the Life in the UK test\n- English at B1 level, unless you’re exempt\n- To still meet your visa’s rules, for example living with your partner or working for your sponsor\n- A good immigration and criminal record"
+    },
+    {
+      "heading": "Planned changes to ILR",
+      "text": "The government has announced plans to make 10 years the standard wait for ILR, with shorter routes for some people, starting during 2027. Partners of British citizens are expected to keep a 5-year route. Until the new rules start, applications are decided under the current rules, so it’s worth applying as soon as you qualify."
+    },
+    {
+      "heading": "Common reasons people aren’t eligible for ILR",
+      "text": "- Applying more than 28 days early\n- Long trips abroad that break continuous residence\n- A gap between visas, or overstaying\n- Not passing the Life in the UK test in time\n- A partner or job that has changed since the last visa\n\nMany of these have solutions or exceptions, so talk to us before deciding you can’t apply."
+    },
+    {
+      "heading": "Documents to start gathering",
+      "text": "Once you know when you’re eligible for ILR, start collecting:\n- All passports you’ve held during the qualifying period\n- Your Life in the UK test pass reference and English evidence\n- Proof for your route, such as joint bills and bank statements for partners, or payslips and a sponsor letter for Skilled Workers\n- A dated list of every trip outside the UK\n\nStarting a few months before your date gives you time to fix any gaps."
+    },
+    {
+      "heading": "How Unique Visa Services helps",
+      "text": "Our advisers in Manchester check your dates, absences and documents, then prepare your ILR application so it’s ready to submit on the first possible day. See our [Indefinite Leave to Remain](/indefinite-leave-to-remain-ilr/) service."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Am I eligible for ILR after 5 years?",
+      "a": "On most work and family routes, yes, if you also meet the other requirements. Long residence needs 10 years."
+    },
+    {
+      "q": "Can I apply for ILR before my 5 years are up?",
+      "a": "Up to 28 days before. Any earlier and your application will be refused."
+    },
+    {
+      "q": "Does time on a student visa count?",
+      "a": "Not towards the 5-year routes, but it can count towards 10 years’ long residence."
+    },
+    {
+      "q": "Will the new ILR rules affect me?",
+      "a": "They’re planned to start during 2027 and may affect people already in the UK. If you qualify before then, apply under the current rules."
+    },
+    {
+      "q": "How much does ILR cost?",
+      "a": "£3,226 per person in Home Office fees, plus £50 for each Life in the UK test."
+    },
+    {
+      "q": "Can my family apply for ILR at the same time?",
+      "a": "Often, yes. Partners and children on your visa can usually apply with you if they meet the requirements."
+    }
+  ],
+  "title": "Am I Eligible for ILR? Free ILR Checker | UVS Manchester",
+  "description": "Am I eligible for ILR? Use our free checker to find your earliest ILR date and check time abroad, Life in the UK test, English and the 2027 changes.",
+  "focusKeyword": "eligible for ILR"
+}

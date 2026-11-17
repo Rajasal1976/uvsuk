@@ -33,6 +33,7 @@ export const structure = [
     "type": "service",
     "group": "uk",
     "related": [
+      "spouse-visa-income-calculator",
       "uk-spouse-visa-extension",
       "indefinite-leave-to-remain-ilr"
     ]
@@ -42,6 +43,7 @@ export const structure = [
     "type": "service",
     "group": "uk",
     "related": [
+      "spouse-visa-income-calculator",
       "uk-spouse-visa-application",
       "indefinite-leave-to-remain-ilr"
     ]
@@ -153,10 +155,41 @@ export const structure = [
     ]
   },
   {
+    "slug": "spouse-visa-income-calculator",
+    "type": "service",
+    "group": "uk",
+    "related": [
+      "uk-spouse-visa-application",
+      "uk-spouse-visa-extension",
+      "uk-visa-cost-calculator"
+    ]
+  },
+  {
+    "slug": "uk-visa-cost-calculator",
+    "type": "service",
+    "group": "uk",
+    "related": [
+      "uk-spouse-visa-application",
+      "indefinite-leave-to-remain-ilr",
+      "skilled-worker-visa-formally-tier-t2-general"
+    ]
+  },
+  {
+    "slug": "am-i-eligible-for-ilr",
+    "type": "service",
+    "group": "uk",
+    "related": [
+      "indefinite-leave-to-remain-ilr",
+      "british-citizenship",
+      "uk-visa-cost-calculator"
+    ]
+  },
+  {
     "slug": "indefinite-leave-to-remain-ilr",
     "type": "service",
     "group": "uk",
     "related": [
+      "am-i-eligible-for-ilr",
       "british-citizenship"
     ]
   },
