@@ -2,11 +2,12 @@
 // "Latest news" strip for the homepage: the 3 newest blog posts with Category "News".
 // It hides itself if there are no news posts yet.
 import { posts, fmtDate } from '../data/blog.js';
-const { title = 'Latest news', allLabel = 'All news' } = Astro.props;
+// tightBottom: less space underneath, for when the next section has its own top padding.
+const { title = 'Latest news', allLabel = 'All news', tightBottom = false } = Astro.props;
 const news = posts.filter((p) => p.category === 'News').slice(0, 3);
 ---
 {news.length > 0 && (
-<section class="news-strip" id="news">
+<section class={tightBottom ? 'news-strip is-tight' : 'news-strip'} id="news">
   <div class="news-strip-in">
     <div class="news-strip-head">
       <h2>{title}</h2>
@@ -26,6 +27,7 @@ const news = posts.filter((p) => p.category === 'News').slice(0, 3);
 )}
 <style>
 .news-strip-in { max-width: 1200px; margin: 0 auto; padding: 72px 24px; display: flex; flex-direction: column; gap: 28px; }
+.news-strip.is-tight .news-strip-in { padding-bottom: 0; }
 .news-strip-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 12px; }
 .news-strip-head h2 { margin: 0; font-size: 34px; line-height: 1.2; color: var(--green-800, #14532D); }
 .news-strip-head a { font-weight: 600; color: var(--green-800, #14532D); }

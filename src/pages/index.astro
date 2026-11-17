@@ -312,9 +312,6 @@ import NewsStrip from '../components/NewsStrip.astro';
 </section>
 
 
-<!-- Latest visa news (blog posts with Category "News") -->
-<NewsStrip title="Latest visa news" allLabel="All visa news" />
-
 <!-- Guide (edited in the admin: Homepage › Guide sections), shown side by side.
      "Why clients choose us" is left out because "Meet your advisers" already covers the same points. -->
 {guideSections.length > 0 && (
@@ -356,6 +353,9 @@ import NewsStrip from '../components/NewsStrip.astro';
 </div>
 </div>
 </section>
+
+<!-- Latest visa news (blog posts with Category "News"), between the FAQ and the final call to action -->
+<NewsStrip title="Latest visa news" allLabel="All visa news" tightBottom />
 
 <!-- Final CTA -->
 <section id="book" style="max-width: 1200px; margin: 0 auto; padding: 88px 24px">
