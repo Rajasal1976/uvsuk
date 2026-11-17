@@ -1,0 +1,27 @@
+---
+// Skilled Worker job checker and A to Z of every occupation, each linking to its own page.
+// Text and SEO are edited in the admin (content/pages/skilled-worker-jobs.json).
+import ToolPage from '../../components/ToolPage.astro';
+import SkilledWorkerChecker from '../../components/SkilledWorkerChecker.astro';
+import content from '../../../content/pages/skilled-worker-jobs.json';
+import { occupations } from '../../data/occupations.js';
+const groups = [
+  ['eligible', 'Degree-level jobs that can be sponsored'],
+  ['payscale', 'Health and education jobs on national pay scales'],
+  ['tsl', 'Temporary Shortage List jobs'],
+  ['existing', 'Jobs open only to workers sponsored before 22 July 2025'],
+  ['ineligible', 'Jobs that can’t be sponsored'],
+].map(([s, label]) => [label, occupations.filter((o) => o.s === s).sort((a, b) => a.t.localeCompare(b.t))]);
+---
+<ToolPage content={content} slug="skilled-worker-jobs">
+  <SkilledWorkerChecker jobBase="/skilled-worker-jobs/" />
+  <section slot="after">
+    <h2>Every Skilled Worker occupation, A to Z</h2>
+    {groups.map(([label, list]) => (
+      <details style="margin:0 0 12px">
+        <summary style="font-weight:600;cursor:pointer;padding:10px 0">{label} ({list.length})</summary>
+        <ul style="columns:2 260px;column-gap:28px">{list.map((o) => <li style="break-inside:avoid"><a href={`/skilled-worker-jobs/${o.u}/`}>{o.t.split(';')[0]}</a> <span style="color:var(--ink-mute);font-size:14px">{o.soc}</span></li>)}</ul>
+      </details>
+    ))}
+  </section>
+</ToolPage>

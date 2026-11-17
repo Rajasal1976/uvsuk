@@ -1,0 +1,144 @@
+---
+// Skilled Worker job checker: search a job title, see the occupation code, whether it can be
+// sponsored and the minimum salary. Data: src/data/occupations.js (from GOV.UK, Open Government Licence).
+// Salary rules (November 2026): the higher of £41,700 or the going rate; new entrants the higher of
+// £33,400 or 70% of the going rate. Change GENERAL and NEW_ENTRANT below if the thresholds change.
+import CalcLead from './CalcLead.astro';
+import { occupations, UPDATED } from '../data/occupations.js';
+// jobBase: where the full page for each job lives (on uvsuk.co.uk). Leave empty to hide the link.
+const { jobBase = '/skilled-worker-jobs/' } = Astro.props;
+---
+<div class="vt-wrap" id="sw-tool" data-jobbase={jobBase}>
+  <div class="vt">
+    <div class="vt-in">
+      <div class="vt-field">
+        <label for="sw-q">Job title or occupation code</label>
+        <input type="search" id="sw-q" class="vt-sw-input" placeholder="e.g. software developer, nurse, chef or 2134" autocomplete="off" aria-controls="sw-list">
+        <p class="vt-hint">Type at least two letters, then choose the closest match.</p>
+      </div>
+      <ul id="sw-list" class="vt-sw-list" aria-label="Matching jobs"></ul>
+    </div>
+    <div class="vt-out" aria-live="polite"><div id="sw-out"><p class="vt-empty">Search for a job to see whether it can be sponsored and the minimum salary.</p></div></div>
+  </div>
+  <p class="vt-note">Based on the Immigration Rules Appendix Skilled Occupations, updated {UPDATED}. <a href="https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-skilled-occupations" target="_blank" rel="noopener">See the official list on GOV.UK</a>. Contains public sector information licensed under the Open Government Licence v3.0.</p>
+  <CalcLead tool="skilled-worker-job" heading="Hiring for this role, or applying for it?" text="We check the role, the salary and the paperwork for employers and workers, and handle sponsor licences and visa applications." />
+</div>
+<script type="application/json" id="sw-data" set:html={JSON.stringify(occupations)}></script>
+
+<script>
+  const GENERAL = 41700, NEW_ENTRANT = 33400;
+  const GOV = 'https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-skilled-occupations';
+  const TSL_GOV = 'https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-temporary-shortage-list';
+  const PAY = {
+    band: 'At least the NHS Agenda for Change rate for the role’s band. In England that’s £29,970 for Band 5, £37,338 for Band 6 and £46,148 for Band 7 (37.5 hours a week). Rates differ slightly in Scotland, Wales and Northern Ireland.',
+    doctor: 'At least the national pay scale for the grade. In England, for example: Foundation Year 1 £36,616, Specialty doctor £59,175, salaried GP £73,113 and Consultant £105,504.',
+    dentist: 'At least the national pay scale for the role. In England, for example: foundation training £38,472, Band A £50,512 and Band B £78,573.',
+    teacher: 'At least the national teacher pay scale. In England, qualified teachers start at £31,650 outside London and £38,766 in Inner London. Scotland, Wales and Northern Ireland have their own scales.',
+    fe: 'At least the further education pay scale. In England, qualified FE teachers start at £27,786.',
+  };
+  const data = JSON.parse(document.getElementById('sw-data').textContent);
+  const root = document.getElementById('sw-tool');
+  const q = root.querySelector('#sw-q'), list = root.querySelector('#sw-list'), out = root.querySelector('#sw-out');
+  const money = (n) => '£' + n.toLocaleString('en-GB');
+  const row = (cls, icon, html) => `<div class="vt-res ${cls}"><i>${icon}</i><span>${html}</span></div>`;
+  const norm = (s) => s.toLowerCase().replace(/[^a-z0-9 ]/g, ' ').replace(/\s+/g, ' ').trim();
+  const stem = (w) => w.replace(/(ies)$/, 'y').replace(/(es|s)$/, '');
+  data.forEach((o) => { o.n = norm(o.t); o.words = o.n.split(' ').map(stem); o.first = o.t.split(';')[0].trim(); });
+
+  function search(text) {
+    const t = norm(text);
+    if (/^\d{4}$/.test(t)) return data.filter((o) => o.soc === t);
+    const terms = t.split(' ').filter(Boolean).map(stem);
+    if (!terms.length || t.length < 2) return [];
+    return data.map((o) => {
+      let score = 0;
+      for (const term of terms) {
+        if (o.words.includes(term)) score += 3;
+        else if (o.words.some((w) => w.startsWith(term))) score += 2;
+        else if (o.n.includes(term)) score += 1;
+        else return null;
+      }
+      if (norm(o.first).startsWith(terms.join(' '))) score += 2;
+      return { o, score };
+    }).filter(Boolean).sort((a, b) => b.score - a.score).slice(0, 8).map((x) => x.o);
+  }
+
+  const LABEL = { eligible: 'Can be sponsored', payscale: 'Can be sponsored', tsl: 'Shortage list', existing: 'Existing workers only', ineligible: 'Not eligible' };
+  function renderList() {
+    const res = search(q.value);
+    if (q.value.trim().length < 2) { list.innerHTML = ''; return; }
+    if (!res.length) { list.innerHTML = '<li class="vt-sw-none">No match. Try a different word, or ask us and we’ll find the right code.</li>'; return; }
+    list.innerHTML = res.map((o) => `<li><button type="button" data-soc="${o.soc}"><span><b>${o.first}</b><small>${o.soc} · ${o.t.split(';').slice(1, 3).join(';') || 'Occupation code ' + o.soc}</small></span><em class="vt-sw-tag vt-sw-${o.s}">${LABEL[o.s]}</em></button></li>`).join('');
+  }
+
+  function show(o) {
+    let verdict, html = row('info', 'i', `Occupation code: <b>${o.soc}</b><br><small>${o.t.replace(/;/g, ',')}</small>`);
+    const lead = document.querySelector('#lead-skilled-worker-job [name="result"]');
+    let summary = '';
+    if (o.s === 'eligible') {
+      const min = Math.max(GENERAL, o.rate), ne = Math.max(NEW_ENTRANT, o.ne);
+      verdict = 'This job can be sponsored';
+      html += row('ok', '✓', 'Skilled to degree level (RQF 6 or above), so it’s open to new Skilled Worker applicants.');
+      html += row('info', '£', `Minimum salary: <b>${money(min)}</b> a year<br><small>The higher of £41,700 and the going rate for this job (${money(o.rate)}), for a 37.5-hour week</small>`);
+      html += row('info', '£', `New entrants: <b>${money(ne)}</b> a year<br><small>For example under-26s, recent graduates and people switching from a Student or Graduate visa</small>`);
+      html += '<p class="vt-note">A relevant PhD can lower the salary needed. Pay for part-time or longer hours is worked out pro rata.</p>';
+      summary = `eligible, minimum ${money(min)}, new entrant ${money(ne)}`;
+    } else if (o.s === 'payscale') {
+      const health = /^22/.test(o.soc);
+      verdict = 'This job can be sponsored';
+      html += row('ok', '✓', 'A health or education job paid on national pay scales, open to new Skilled Worker applicants.');
+      html += row('info', '£', `Minimum salary: ${PAY[o.k]}`);
+      if (health) html += row('info', 'i', 'If the employer is the NHS, an NHS supplier or in adult social care, this is usually a <b>Health and Care Worker visa</b>, with lower fees and no Immigration Health Surcharge.');
+      summary = `eligible on national pay scale (${o.k})`;
+    } else if (o.s === 'tsl') {
+      verdict = 'Can be sponsored for now';
+      html += row('ok', '✓', `This job is on the <a href="${TSL_GOV}" target="_blank" rel="noopener">Temporary Shortage List</a>, so it can be sponsored even though it’s below degree level.`);
+      if (o.c) html += row('info', 'i', `Only some jobs in this code qualify: ${o.c}.`);
+      html += row('bad', '!', 'The Certificate of Sponsorship must be assigned before 31 December 2026, and the government may end the list sooner.');
+      html += row('bad', '!', 'New workers in shortage list jobs usually can’t bring a partner or children.');
+      html += row('info', '£', 'The salary must meet the general threshold and the going rate for the job. We’ll confirm the exact figure for you.');
+      summary = 'Temporary Shortage List';
+    } else if (o.s === 'existing') {
+      verdict = 'Not open to new applicants';
+      html += row('bad', '!', 'This job is below degree level and isn’t on the shortage list, so it can’t be sponsored for someone new to the Skilled Worker route.');
+      html += row('info', 'i', 'Workers already sponsored in this job before 22 July 2025 can usually still extend their visa or change employer.');
+      if (o.soc === '6135' || o.soc === '6136') html += row('info', 'i', 'Overseas recruitment of care workers closed in July 2025. Some care workers already in the UK can still be sponsored.');
+      summary = 'existing workers only';
+    } else {
+      verdict = 'This job can’t be sponsored';
+      html += row('bad', '!', 'This occupation isn’t eligible for the Skilled Worker, Global Business Mobility or Scale-up routes.');
+      html += row('info', 'i', 'Other visas may still be open to you, for example as a partner, a graduate or through UK Ancestry. Ask us about your options.');
+      summary = 'not eligible';
+    }
+    const base = root.dataset.jobbase;
+    if (base) html += `<p style="margin:4px 0 0"><a href="${base}${o.u}/" style="font-weight:600">Full guide for ${o.first} →</a></p>`;
+    out.innerHTML = `<p class="vt-verdict">${verdict}</p><p class="vt-note" style="margin:-6px 0 6px"><b>${o.first}</b></p>` + html
+      + `<p class="vt-note">Source: <a href="${GOV}" target="_blank" rel="noopener">Appendix Skilled Occupations, GOV.UK</a>. The job’s real duties decide its code, not just the title, so check the code with us before a Certificate of Sponsorship is assigned.</p>`;
+    if (lead) lead.value = `${o.first} (SOC ${o.soc}): ${summary}.`;
+  }
+
+  q.addEventListener('input', renderList);
+  list.addEventListener('click', (e) => {
+    const b = e.target.closest('button[data-soc]'); if (!b) return;
+    const o = data.find((x) => x.soc === b.dataset.soc); show(o);
+    list.innerHTML = ''; q.value = o.first;
+    if (window.matchMedia('(max-width: 760px)').matches) out.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+  const pre = new URLSearchParams(location.search).get('job');
+  if (pre) { q.value = pre; renderList(); const r = search(pre); if (r.length === 1) show(r[0]); }
+</script>
+
+<style is:global>
+.vt-sw-input { width: 100%; min-height: 50px; padding: 0 14px; font: inherit; font-size: 16px; color: var(--ink, #1c2420); background: #fff; border: 1.5px solid var(--line, #dfe3e0); border-radius: 4px; box-sizing: border-box; }
+.vt-sw-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.vt-sw-list button { width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 12px; text-align: left; padding: 11px 14px; min-height: 48px; background: #fff; border: 1.5px solid var(--line, #dfe3e0); border-radius: 4px; font: inherit; color: var(--ink, #1c2420); cursor: pointer; }
+.vt-sw-list button:hover, .vt-sw-list button:focus-visible { border-color: var(--green-800, #1d4b37); outline: none; }
+.vt-sw-list b { display: block; font-size: 15px; }
+.vt-sw-list small { display: block; font-size: 12.5px; color: var(--ink-mute, #5d6862); margin-top: 2px; }
+.vt-sw-none { font-size: 14.5px; color: var(--ink-mute, #5d6862); padding: 6px 2px; }
+.vt-sw-tag { flex: none; font-style: normal; font-size: 12px; font-weight: 700; padding: 4px 9px; border-radius: 999px; white-space: nowrap; }
+.vt-sw-eligible, .vt-sw-payscale { background: var(--tick-soft, #e2f2e8); color: var(--tick, #1b6b3f); }
+.vt-sw-tsl { background: var(--gold-soft, #fbf3dc); color: var(--gold-text, #7a5a0c); }
+.vt-sw-existing, .vt-sw-ineligible { background: var(--rani-soft, #fbe5e3); color: var(--rani, #a3271c); }
+#sw-tool > .vt-note { margin-top: 12px; }
+</style>

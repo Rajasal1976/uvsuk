@@ -31,6 +31,7 @@ const related = (pageBySlug[slug]?.related || []).map((r) => pageBySlug[r]).filt
 </section>
 <GuideSections sections={content.sections} />
 <Faq items={content.faqs} title={content.faqHeading || 'Common questions'} />
+<slot name="after" />
 {related.length > 0 && (
 <section>
 <h2>Related pages</h2>

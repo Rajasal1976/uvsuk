@@ -93,6 +93,7 @@ export const structure = [
     "type": "service",
     "group": "uk",
     "related": [
+      "skilled-worker-jobs",
       "skilled-worker-dependant-visa",
       "sponsor-licence-application",
       "indefinite-leave-to-remain-ilr"
@@ -155,6 +156,26 @@ export const structure = [
     ]
   },
   {
+    "slug": "skilled-worker-jobs",
+    "type": "service",
+    "group": "uk",
+    "related": [
+      "skilled-worker-visa-formally-tier-t2-general",
+      "sponsor-licence-application",
+      "uk-visa-cost-calculator"
+    ]
+  },
+  {
+    "slug": "life-in-the-uk-mock-test",
+    "type": "service",
+    "group": "uk",
+    "related": [
+      "am-i-eligible-for-ilr",
+      "indefinite-leave-to-remain-ilr",
+      "british-citizenship"
+    ]
+  },
+  {
     "slug": "spouse-visa-income-calculator",
     "type": "service",
     "group": "uk",
@@ -179,6 +200,7 @@ export const structure = [
     "type": "service",
     "group": "uk",
     "related": [
+      "life-in-the-uk-mock-test",
       "indefinite-leave-to-remain-ilr",
       "british-citizenship",
       "uk-visa-cost-calculator"
@@ -198,6 +220,7 @@ export const structure = [
     "type": "service",
     "group": "uk",
     "related": [
+      "life-in-the-uk-mock-test",
       "indefinite-leave-to-remain-ilr"
     ]
   },
@@ -1311,6 +1334,36 @@ export const structure = [
   },
   {
     "slug": "areas-we-serve",
+    "type": "info",
+    "group": "local"
+  },
+  {
+    "slug": "immigration-adviser-leeds",
+    "type": "info",
+    "group": "local"
+  },
+  {
+    "slug": "immigration-adviser-liverpool",
+    "type": "info",
+    "group": "local"
+  },
+  {
+    "slug": "immigration-adviser-warrington",
+    "type": "info",
+    "group": "local"
+  },
+  {
+    "slug": "immigration-adviser-birmingham",
+    "type": "info",
+    "group": "local"
+  },
+  {
+    "slug": "immigration-adviser-nottingham",
+    "type": "info",
+    "group": "local"
+  },
+  {
+    "slug": "immigration-adviser-leicester",
     "type": "info",
     "group": "local"
   },

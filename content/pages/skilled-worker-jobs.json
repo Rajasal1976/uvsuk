@@ -1,0 +1,61 @@
+{
+  "country": "UK",
+  "applyButton": "none",
+  "shareImage": "/images/share.jpg",
+  "faqHeading": "Common questions",
+  "sortKey": "1 uk 1 skilled worker jobs",
+  "widgetTitle": "Check a job",
+  "h1": "Skilled Worker jobs: which can be sponsored?",
+  "intro": "Find out whether a job can be sponsored for a Skilled Worker visa. Search over 400 Skilled Worker jobs to see the occupation code, whether new applicants can be sponsored, and the minimum salary, using the official Home Office list.",
+  "sections": [
+    {
+      "heading": "Which Skilled Worker jobs can be sponsored in 2026?",
+      "text": "Since 22 July 2025, most new Skilled Worker jobs must be at degree level, known as RQF level 6. That includes managers and directors, engineers, IT professionals, scientists, accountants, solicitors and many other professional jobs.\n\nSome jobs below degree level can still be sponsored for now because they’re on the Temporary Shortage List, such as electricians, plumbers, welders, vehicle technicians and data analysts. The Certificate of Sponsorship has to be assigned before 31 December 2026."
+    },
+    {
+      "heading": "Health and education jobs",
+      "text": "Doctors, nurses, midwives, paramedics, pharmacists, therapists, social workers and teachers can all be sponsored. Their minimum salary comes from the national pay scales, such as NHS Agenda for Change bands, rather than the £41,700 threshold.\n\nMost health jobs with the NHS, NHS suppliers or adult social care use the Health and Care Worker visa, which has lower fees and no Immigration Health Surcharge."
+    },
+    {
+      "heading": "Skilled Worker jobs that are closed to new applicants",
+      "text": "Many jobs below degree level, such as chefs, care workers, bricklayers, carpenters and hotel managers, can no longer be sponsored for people new to the route. Workers already sponsored in these jobs before 22 July 2025 can usually still extend and change employer.\n\nSome jobs, like retail assistants, cleaners, drivers and kitchen assistants, have never been eligible."
+    },
+    {
+      "heading": "How the minimum salary works",
+      "text": "For degree-level jobs, the salary must be the higher of £41,700 a year and the going rate for the job. New entrants, such as under-26s, recent graduates and people switching from a Student or Graduate visa, can be paid less: the higher of £33,400 and 70% of the going rate.\n\nEach job page shows the exact figures for that occupation."
+    },
+    {
+      "heading": "Popular Skilled Worker jobs",
+      "text": "Some of the jobs people search for most:\n- [Software developers](/skilled-worker-jobs/software-developers-skilled-worker-visa/): eligible\n- [Nurses](/skilled-worker-jobs/nurses-skilled-worker-visa/): eligible on NHS pay bands\n- [Chartered accountants](/skilled-worker-jobs/chartered-accountants-skilled-worker-visa/): eligible\n- [Electricians](/skilled-worker-jobs/electricians-and-electrical-fitters-skilled-worker-visa/): on the shortage list\n- [Chefs](/skilled-worker-jobs/chefs-skilled-worker-visa/): existing workers only\n- [Care workers](/skilled-worker-jobs/care-workers-skilled-worker-visa/): existing workers only"
+    },
+    {
+      "heading": "Get the occupation code right",
+      "text": "The employer chooses the occupation code that best fits the job’s real duties. Choosing the wrong code is one of the main reasons Skilled Worker applications are refused and sponsors get compliance problems. We check the code, salary and paperwork before a Certificate of Sponsorship is assigned. See our [Skilled Worker visa](/skilled-worker-visa-formally-tier-t2-general/) and [sponsor licence](/sponsor-licence-application/) services."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Which Skilled Worker jobs are eligible?",
+      "a": "Degree-level jobs (RQF 6 and above), health and education jobs on national pay scales, and jobs on the Temporary Shortage List until 31 December 2026."
+    },
+    {
+      "q": "Can chefs and care workers still get a Skilled Worker visa?",
+      "a": "Not as new applicants. Since 22 July 2025 these jobs are only open to workers who were already sponsored in them before that date."
+    },
+    {
+      "q": "What is the minimum salary for a Skilled Worker visa?",
+      "a": "£41,700 or the going rate for the job, whichever is higher. New entrants need at least £33,400. Health and education jobs use national pay scales."
+    },
+    {
+      "q": "Where does this list come from?",
+      "a": "From the Home Office’s Appendix Skilled Occupations and Appendix Temporary Shortage List in the Immigration Rules. We update it when they change."
+    },
+    {
+      "q": "Is the Skilled Worker jobs checker free?",
+      "a": "Yes. Search as many jobs as you like, then ask us to check your role and salary if you’d like advice."
+    }
+  ],
+  "title": "Skilled Worker Jobs 2026 | Which Can Be Sponsored? | UVS",
+  "description": "Check Skilled Worker jobs: search 400+ occupations to see the SOC code, whether a job can be sponsored, and the minimum salary for a Skilled Worker visa.",
+  "focusKeyword": "Skilled Worker jobs"
+}

@@ -1,0 +1,195 @@
+---
+// One page per occupation: can this job be sponsored for a Skilled Worker visa, and at what salary?
+// Built automatically from src/data/occupations.js (GOV.UK Appendix Skilled Occupations).
+// Salary thresholds below must match src/components/SkilledWorkerChecker.astro.
+import Page from '../../layouts/Page.astro';
+import Faq from '../../components/Faq.astro';
+import OfficePanel from '../../components/OfficePanel.astro';
+import { site } from '../../data/site.js';
+import { occupations, UPDATED } from '../../data/occupations.js';
+
+const GENERAL = 41700, NEW_ENTRANT = 33400;
+export function getStaticPaths() {
+  return occupations.map((o) => ({ params: { job: o.u }, props: { o } }));
+}
+const { o } = Astro.props;
+const titles = o.t.split(';').map((s) => s.trim());
+const name = titles[0];
+const lower = name.charAt(0) + name.slice(1);
+const money = (n) => (n == null ? '' : '£' + n.toLocaleString('en-GB'));
+const GOV = 'https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-skilled-occupations';
+const health = /^22/.test(o.soc);
+const PAY = {
+  band: 'at least the NHS Agenda for Change rate for the role’s band. In England that’s £29,970 for Band 5, £37,338 for Band 6 and £46,148 for Band 7, for a 37.5-hour week',
+  doctor: 'at least the national pay scale for the grade. In England, for example, Foundation Year 1 is £36,616, a specialty doctor £59,175, a salaried GP £73,113 and a consultant £105,504',
+  dentist: 'at least the national pay scale for the role. In England, for example, foundation training is £38,472, Band A £50,512 and Band B £78,573',
+  teacher: 'at least the national teacher pay scale. In England, qualified teachers start at £31,650 outside London and £38,766 in Inner London',
+  fe: 'at least the further education pay scale. In England, qualified FE teachers start at £27,786',
+};
+const min = o.s === 'eligible' ? Math.max(GENERAL, o.rate) : null;
+const ne = o.s === 'eligible' ? Math.max(NEW_ENTRANT, o.ne) : null;
+
+const answer = {
+  eligible: `Yes. ${name} (occupation code ${o.soc}) can be sponsored for a Skilled Worker visa. The minimum salary is ${money(min)} a year, or ${money(ne)} for new entrants.`,
+  payscale: `Yes. ${name} (occupation code ${o.soc}) can be sponsored for a Skilled Worker visa${health ? ', usually through the Health and Care Worker visa' : ''}. The salary must be ${PAY[o.k]}.`,
+  tsl: `Yes, for now. ${name} (occupation code ${o.soc}) is on the Temporary Shortage List, so it can be sponsored for a Skilled Worker visa if the Certificate of Sponsorship is assigned before 31 December 2026.`,
+  existing: `Not for new applicants. ${name} (occupation code ${o.soc}) is below degree level and isn’t on the shortage list, so a new Skilled Worker visa can’t be sponsored for this job. Workers already sponsored in it before 22 July 2025 can usually carry on.`,
+  ineligible: `No. ${name} (occupation code ${o.soc}) isn’t eligible for the Skilled Worker visa, so an employer can’t sponsor this job.`,
+}[o.s];
+
+const verdict = { eligible: 'Can be sponsored', payscale: 'Can be sponsored', tsl: 'Can be sponsored for now', existing: 'Existing workers only', ineligible: 'Not eligible' }[o.s];
+const shortName = name.length > 24 ? name.slice(0, 25).replace(/[\s,/]+\S*$/, '').replace(/[\s,]+$/, '') : name;
+const title = `Skilled Worker Visa for ${shortName} | SOC ${o.soc}`;
+const lowerShort = shortName.toLowerCase();
+const description = (o.s === 'eligible' ? `Skilled Worker visa for ${lowerShort} (SOC ${o.soc}): eligible, with a minimum salary of ${money(min)}, or ${money(ne)} for new entrants. Rules and how to get sponsored.`
+  : o.s === 'payscale' ? `Skilled Worker visa for ${lowerShort} (SOC ${o.soc}): eligible, paid on national pay scales. Salary rules, the Health and Care visa and how to apply.`
+  : o.s === 'tsl' ? `Skilled Worker visa for ${lowerShort} (SOC ${o.soc}): on the Temporary Shortage List until 31 December 2026. Rules, family and how to get sponsored.`
+  : o.s === 'existing' ? `Skilled Worker visa for ${lowerShort} (SOC ${o.soc}): closed to new applicants since July 2025. Who can still be sponsored, and other options.`
+  : `Skilled Worker visa for ${lowerShort} (SOC ${o.soc}): not eligible. Why this job can’t be sponsored, and the other UK visa options to consider.`).slice(0, 160);
+
+const faqs = [
+  { q: `Can ${name.toLowerCase()} get a Skilled Worker visa?`, a: answer },
+  { q: `What is the occupation code for ${name.toLowerCase()}?`, a: `The SOC 2020 occupation code is ${o.soc}. It also covers: ${titles.slice(1).join(', ') || name}. The employer chooses the code that best matches the job’s actual duties.` },
+  ...(o.s === 'eligible' ? [{ q: `What is the minimum salary for ${name.toLowerCase()}?`, a: `${money(min)} a year: the higher of the £41,700 general threshold and the ${money(o.rate)} going rate for this occupation. New entrants need at least ${money(ne)}.` }] : []),
+  ...(o.s === 'tsl' ? [{ q: 'Can I bring my family?', a: 'Workers newly sponsored in medium-skilled shortage list jobs usually can’t bring a partner or children. Some people already on the route before 22 July 2025 still can.' }] : []),
+  ...(o.s === 'eligible' || o.s === 'payscale' ? [{ q: 'Can I bring my family?', a: 'Yes. Your partner and children under 18 can usually apply as your dependants.' }] : []),
+  { q: 'Do I need a job offer?', a: 'Yes. You need a job offer from a UK employer with a sponsor licence, who assigns you a Certificate of Sponsorship.' },
+];
+const group = o.soc.slice(0, 2);
+const related = occupations.filter((x) => x.soc !== o.soc && x.soc.slice(0, 2) === group).slice(0, 8);
+---
+<Page title={title} description={description} schemas={[]}>
+<main>
+<div class="page-head">
+<div class="wrap">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/skilled-worker-jobs/">Skilled Worker jobs</a></nav>
+<h1>{name}: Skilled Worker visa eligibility</h1>
+<p class="lead">{answer}</p>
+</div></div>
+<div class="wrap section page-body" style="padding-top:56px">
+<div class="content">
+<section>
+<h2>At a glance</h2>
+<div class="table-wrap"><table class="data-table"><tbody>
+<tr><th scope="row">Occupation code (SOC 2020)</th><td>{o.soc}</td></tr>
+<tr><th scope="row">Can it be sponsored?</th><td><strong>{verdict}</strong></td></tr>
+{o.s === 'eligible' && <tr><th scope="row">Minimum salary</th><td>{money(min)} a year</td></tr>}
+{o.s === 'eligible' && <tr><th scope="row">Going rate for this job</th><td>{money(o.rate)} a year</td></tr>}
+{o.s === 'eligible' && <tr><th scope="row">New entrant salary</th><td>{money(ne)} a year</td></tr>}
+{o.s === 'payscale' && <tr><th scope="row">Minimum salary</th><td>National pay scale for the role</td></tr>}
+{(o.s === 'eligible' || o.s === 'payscale') && <tr><th scope="row">Partner and children</th><td>Can usually come too</td></tr>}
+{o.s === 'tsl' && <tr><th scope="row">Shortage list ends</th><td>Certificate must be assigned before 31 December 2026</td></tr>}
+{o.s === 'tsl' && <tr><th scope="row">Partner and children</th><td>Usually can’t come for new workers</td></tr>}
+{health && o.s === 'payscale' && <tr><th scope="row">Health and Care Worker visa</th><td>Usually, with lower fees and no health surcharge</td></tr>}
+</tbody></table></div>
+</section>
+
+<section>
+<h2>Job titles in occupation code {o.soc}</h2>
+<p>The Home Office groups similar jobs under one occupation code. Code {o.soc} covers:</p>
+<ul>{titles.map((t) => <li>{t}</li>)}</ul>
+<p>What matters is the job’s real duties, not just its title. If the duties fit a different code, a different salary and different rules apply. We check the code before a Certificate of Sponsorship is assigned.</p>
+</section>
+
+{o.s === 'eligible' && (
+<section>
+<h2>Salary for {lower} on a Skilled Worker visa</h2>
+<p>The salary must be at least the higher of the £41,700 general threshold and the going rate for the occupation. For code {o.soc}, the going rate is {money(o.rate)}, so the minimum is <strong>{money(min)} a year</strong> for a 37.5-hour week.</p>
+<p>New entrants can be paid less: at least {money(ne)}. That covers people under 26, recent graduates, people switching from a Student or Graduate visa, and some people working towards professional registration. A relevant PhD can also reduce the salary needed.</p>
+</section>)}
+
+{o.s === 'payscale' && (
+<section>
+<h2>Salary for {lower} on a Skilled Worker visa</h2>
+<p>This job is paid on national pay scales, so the salary must be {PAY[o.k]}. Rates are slightly different in Scotland, Wales and Northern Ireland.</p>
+{health && <p>Most health roles employed by the NHS, an NHS supplier or in adult social care use the <strong>Health and Care Worker visa</strong>. It’s part of the Skilled Worker route, with lower application fees, no Immigration Health Surcharge and usually faster decisions.</p>}
+</section>)}
+
+{o.s === 'tsl' && (
+<section>
+<h2>The Temporary Shortage List</h2>
+<p>This job is below degree level, but it’s on the government’s Temporary Shortage List, so it can still be sponsored for now.</p>
+<ul>
+{o.c && <li>Only some jobs in this code qualify: {o.c}.</li>}
+<li>The employer must assign the Certificate of Sponsorship before 31 December 2026. The government may end the list sooner.</li>
+<li>Workers newly sponsored in these jobs usually can’t bring a partner or children.</li>
+<li>The salary must meet the general threshold and the going rate. We confirm the exact figure for your role.</li>
+</ul>
+</section>)}
+
+{o.s === 'existing' && (
+<section>
+<h2>Who can still be sponsored as {lower}?</h2>
+<p>Since 22 July 2025, new Skilled Worker jobs must normally be at degree level (RQF 6). This occupation is below that and isn’t on the Temporary Shortage List, so it can’t be sponsored for someone new to the route.</p>
+<p>If you were already sponsored in this job before 22 July 2025, you can usually still extend your visa, change employer within the same occupation, and go on to apply for settlement.</p>
+{(o.soc === '6135' || o.soc === '6136') && <p>Overseas recruitment of care workers closed in July 2025. Some care workers already in the UK can still be sponsored. Ask us whether this applies to you.</p>}
+</section>)}
+
+{(o.s === 'existing' || o.s === 'ineligible') && (
+<section>
+<h2>For employers hiring {lower}</h2>
+<p>You can’t assign a new Certificate of Sponsorship for this occupation to someone outside the Skilled Worker route. You can still hire people who already have the right to work in the UK, for example British and Irish citizens, people with settled or pre-settled status, partners on a spouse visa, and graduates on the Graduate visa.</p>
+<p>Whoever you hire, you must carry out a right to work check before they start. If you already sponsor workers in this occupation from before 22 July 2025, you can usually extend their sponsorship. We advise employers on <a href="/hire-foreign-nationals-uk/">hiring foreign nationals</a> and <a href="/sponsor-licence-compliance/">sponsor compliance</a>.</p>
+</section>)}
+
+{(o.s === 'existing' || o.s === 'ineligible') && (
+<section>
+<h2>Other ways to work in the UK</h2>
+<p>If this job can’t be sponsored, another route may still let you live and work in the UK:</p>
+<ul>
+<li><a href="/uk-spouse-visas/">Spouse or partner visa</a>, if your partner is British or settled</li>
+<li><a href="/post-study-work-visa/">Graduate visa</a>, after studying in the UK</li>
+<li><a href="/uk-ancestry-visa/">UK Ancestry visa</a>, if a grandparent was born in the UK</li>
+<li>A different, eligible job that matches your skills</li>
+</ul>
+</section>)}
+
+{(o.s === 'eligible' || o.s === 'payscale' || o.s === 'tsl') && (
+<section>
+<h2>How to get a Skilled Worker visa as {lower}</h2>
+<ol>
+<li>Get a job offer from a UK employer with a sponsor licence.</li>
+<li>Your employer assigns you a Certificate of Sponsorship with code {o.soc} and your salary.</li>
+<li>Prove your English at B2 level, unless you’re exempt.</li>
+<li>Apply online, pay the fee and the health surcharge, and prove your identity.</li>
+</ol>
+<p>Work out your costs with our <a href="/uk-visa-cost-calculator/">UK visa cost calculator</a>, or see our <a href="/skilled-worker-visa-formally-tier-t2-general/">Skilled Worker visa service</a>.</p>
+</section>)}
+
+{(o.s === 'eligible' || o.s === 'payscale' || o.s === 'tsl') && (
+<section>
+<h2>For employers sponsoring {lower}</h2>
+<p>You need a sponsor licence before you can assign a Certificate of Sponsorship. Each certificate costs £525, and you also pay the Immigration Skills Charge of £480 a year for small sponsors or £1,320 for medium and large sponsors. We handle <a href="/sponsor-licence-application/">sponsor licence applications</a> and ongoing compliance.</p>
+</section>)}
+
+<section>
+<h2>Skilled Worker visa requirements</h2>
+<p>To get a Skilled Worker visa{o.s === 'existing' || o.s === 'ineligible' ? ' in an eligible job' : ` as ${lower}`}, you usually need:</p>
+<ul>
+<li>A job offer from a UK employer with a Home Office sponsor licence</li>
+<li>A Certificate of Sponsorship showing the job, its occupation code{o.s === 'existing' || o.s === 'ineligible' ? '' : ` (${o.soc})`} and your salary</li>
+<li>A salary that meets the minimum for the job{o.s === 'eligible' ? `: ${money(min)} here, or ${money(ne)} for new entrants` : o.s === 'payscale' ? ', which for this job is the national pay scale rate' : ''}</li>
+<li>English at B2 level, unless you’re from an English-speaking country or have a degree taught in English</li>
+<li>The visa fee and the Immigration Health Surcharge, unless you qualify for the Health and Care Worker visa</li>
+</ul>
+<p>Skilled Worker visas can lead to settlement (ILR) after 5 years under the current rules, although the government plans to lengthen this for many people from 2027. Check when you might qualify with our <a href="/am-i-eligible-for-ilr/">ILR eligibility checker</a>.</p>
+</section>
+
+<Faq items={faqs} title="Common questions" />
+
+{related.length > 0 && (
+<section>
+<h2>Related jobs</h2>
+<ul>{related.map((r) => <li><a href={`/skilled-worker-jobs/${r.u}/`}>{r.t.split(';')[0]}</a> (code {r.soc})</li>)}</ul>
+<p><a href="/skilled-worker-jobs/">See all Skilled Worker jobs</a></p>
+</section>)}
+
+<p class="soft" style="font-size:14px">Based on the Immigration Rules <a href={GOV} target="_blank" rel="noopener">Appendix Skilled Occupations</a> (GOV.UK, updated {UPDATED}). Contains public sector information licensed under the Open Government Licence v3.0. General information, not advice on your situation.</p>
+</div>
+<aside class="aside">
+<div class="panel">
+<h2>Check this job with an adviser</h2>
+<p class="soft" style="font-size:16px">We confirm the right occupation code and salary, and handle sponsor licences and visa applications.</p><a class="btn btn-primary" href="/contact-us/">Book a consultation</a><a href={`tel:${site.phoneIntl}`} class="btn btn-outline">Call {site.phone}</a>
+<p style="font-size:14px;color:var(--ink-mute)">IAA-regulated · Ref {site.iaaRef}</p></div><OfficePanel /></aside></div>
+</main>
+</Page>
