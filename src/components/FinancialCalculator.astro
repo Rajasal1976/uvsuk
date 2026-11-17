@@ -15,7 +15,8 @@ import CalcLead from './CalcLead.astro';
     <div class="vt-in">
       <fieldset>
         <legend>Which application is this?</legend>
-        <label class="vt-opt"><input type="radio" name="fin-stage" value="first" checked><span>First partner visa<small>Applying from outside the UK, or switching into the partner route</small></span></label>
+        <label class="vt-opt"><input type="radio" name="fin-stage" value="first" checked><span>First visa, applying from abroad<small>The partner applying lives outside the UK</small></span></label>
+        <label class="vt-opt"><input type="radio" name="fin-stage" value="switch"><span>First visa, switching inside the UK<small>The partner applying is already in the UK on another visa</small></span></label>
         <label class="vt-opt"><input type="radio" name="fin-stage" value="ext"><span>Extension<small>Your second partner visa, after the first 2½ years</small></span></label>
         <label class="vt-opt"><input type="radio" name="fin-stage" value="ilr"><span>Indefinite Leave to Remain<small>Settlement after 5 years on the partner route</small></span></label>
       </fieldset>
@@ -31,27 +32,28 @@ import CalcLead from './CalcLead.astro';
         <input type="number" id="fin-kids" min="0" max="10" step="1" value="0" inputmode="numeric">
       </div>
 
-      <label class="vt-check"><input type="checkbox" id="fin-exempt"><span>My partner receives a disability or carer’s benefit, such as PIP, Disability Living Allowance, Attendance Allowance or Carer’s Allowance</span></label>
+      <label class="vt-check"><input type="checkbox" id="fin-exempt"><span>The partner in the UK receives a disability or carer’s benefit, such as PIP, Disability Living Allowance, Attendance Allowance or Carer’s Allowance</span></label>
 
       <div class="vt-field">
-        <label for="fin-partner">Your partner’s yearly income before tax</label>
+        <label for="fin-partner">Yearly income of the partner in the UK (the sponsor)</label>
         <div class="vt-money"><input type="number" id="fin-partner" min="0" step="100" inputmode="numeric" placeholder="0"></div>
-        <p class="vt-hint">From a job, self-employment or pension</p>
+        <p class="vt-hint">The British or settled partner. Salary, self-employment or pension, before tax.</p>
       </div>
-      <div class="vt-field">
-        <label for="fin-you">Your own yearly income before tax</label>
+      <p class="vt-hint" id="fin-abroad-note">The applying partner’s salary from abroad doesn’t count for a first visa from outside the UK.</p>
+      <div class="vt-field" id="fin-you-wrap" hidden>
+        <label for="fin-you">Yearly income of the partner applying for the visa</label>
         <div class="vt-money"><input type="number" id="fin-you" min="0" step="100" inputmode="numeric" placeholder="0"></div>
-        <p class="vt-hint">Only counts if you’re already in the UK with permission to work</p>
+        <p class="vt-hint">Their earnings from work in the UK, before tax</p>
       </div>
       <div class="vt-field">
-        <label for="fin-other">Other yearly income</label>
+        <label for="fin-other">Other yearly income of either partner</label>
         <div class="vt-money"><input type="number" id="fin-other" min="0" step="100" inputmode="numeric" placeholder="0"></div>
         <p class="vt-hint">For example rent from a property, or dividends</p>
       </div>
       <div class="vt-field">
         <label for="fin-savings">Cash savings held for at least 6 months</label>
         <div class="vt-money"><input type="number" id="fin-savings" min="0" step="100" inputmode="numeric" placeholder="0"></div>
-        <p class="vt-hint">Yours, your partner’s, or joint</p>
+        <p class="vt-hint">In either partner’s name, or a joint account</p>
       </div>
     </div>
     <div class="vt-out" aria-live="polite"><div id="fin-out"><p class="vt-empty">Enter your income and savings to see if you meet the requirement.</p></div></div>
@@ -72,21 +74,27 @@ import CalcLead from './CalcLead.astro';
 
   function calc() {
     const stage = root.querySelector('input[name="fin-stage"]:checked').value;
-    $('#fin-rules-wrap').hidden = stage === 'first';
-    const rules = stage === 'first' ? 'new' : root.querySelector('input[name="fin-rules"]:checked').value;
+    const firstVisa = stage === 'first' || stage === 'switch';
+    $('#fin-rules-wrap').hidden = firstVisa;
+    $('#fin-you-wrap').hidden = stage === 'first';
+    $('#fin-abroad-note').hidden = stage !== 'first';
+    const rules = firstVisa ? 'new' : root.querySelector('input[name="fin-rules"]:checked').value;
     $('#fin-kids-wrap').hidden = rules !== 'old';
     const kids = rules === 'old' ? Math.min(10, Math.floor(num('#fin-kids'))) : 0;
     const threshold = rules === 'old' ? OLD_BASE + (kids > 0 ? OLD_FIRST_CHILD : 0) + Math.max(0, kids - 1) * OLD_EACH_CHILD : NEW_THRESHOLD;
     const mult = stage === 'ilr' ? 1 : 2.5;
-    const income = num('#fin-partner') + num('#fin-you') + num('#fin-other');
+    const sponsorInc = num('#fin-partner'), applicantInc = stage === 'first' ? 0 : num('#fin-you'), otherInc = num('#fin-other');
+    const income = sponsorInc + applicantInc + otherInc;
+    const parts = [['partner in the UK', sponsorInc], ['applying partner', applicantInc], ['other income', otherInc]].filter((p) => p[1] > 0);
+    const breakdown = parts.length > 1 ? ` (${parts.map((p) => `${p[0]} ${money(p[1])}`).join(' + ')})` : '';
     const savings = num('#fin-savings');
     const out = $('#fin-out');
     const lead = document.querySelector('#lead-financial-requirement [name="result"]');
-    const stageLabel = { first: 'first partner visa', ext: 'extension', ilr: 'ILR' }[stage];
+    const stageLabel = { first: 'first visa from abroad', switch: 'first visa, switching in the UK', ext: 'extension', ilr: 'ILR' }[stage];
 
     if ($('#fin-exempt').checked) {
       out.innerHTML = '<p class="vt-verdict">The income threshold doesn’t apply</p>'
-        + row('info', 'i', 'Because your partner receives one of these benefits, you show <b>adequate maintenance</b> instead: that you can support yourselves without claiming extra public funds.')
+        + row('info', 'i', 'Because the partner in the UK receives one of these benefits, you show <b>adequate maintenance</b> instead: that you can support yourselves without claiming extra public funds.')
         + row('info', 'i', 'This is worked out from your household income, housing costs and family size. We can do this calculation for you.');
       if (lead) lead.value = `Stage: ${stageLabel}. Partner receives an exempt benefit, so adequate maintenance applies.`;
       return;
@@ -101,13 +109,13 @@ import CalcLead from './CalcLead.astro';
     const savingsOnly = SAVINGS_FLOOR + threshold * mult;
     if (income >= threshold) {
       verdict = 'You meet the income requirement';
-      html += row('ok', '✓', `Income counted: <b>${money(income)}</b> a year (you need ${money(threshold)})`);
+      html += row('ok', '✓', `Income counted: <b>${money(income)}</b> a year${breakdown}. You need ${money(threshold)}.`);
       if (savings) html += row('info', 'i', 'You don’t need to use your savings, but keep the evidence in case your income changes.');
       summary = `Meets threshold on income: ${money(income)} vs ${money(threshold)}.`;
     } else {
       const shortfall = threshold - income;
       const needed = SAVINGS_FLOOR + shortfall * mult;
-      html += row('info', 'i', `Income counted: <b>${money(income)}</b> a year. Shortfall: <b>${money(shortfall)}</b>.`);
+      html += row('info', 'i', `Income counted: <b>${money(income)}</b> a year${breakdown}. You need ${money(threshold)}, so the shortfall is <b>${money(shortfall)}</b>.`);
       if (savings >= needed) {
         verdict = 'You meet it with your savings';
         html += row('ok', '✓', `Savings needed to cover the shortfall: <b>${money(needed)}</b>. You have ${money(savings)}.<br><small>£16,000 plus ${mult === 1 ? 'the shortfall' : '2.5 × the shortfall'}</small>`);
