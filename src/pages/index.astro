@@ -48,6 +48,7 @@ const byKey = (a, b) => String(a.sortKey || a.slug).localeCompare(String(b.sortK
 const ukServices = sitePages.filter((p) => p.group === 'uk' && p.type === 'service').sort(byKey);
 const guideSections = (home.sections ?? []).filter((sec) => !/why clients choose us/i.test(JSON.stringify(sec)));
 const employerServices = sitePages.filter((p) => p.group === 'employer' && p.type === 'service').sort(byKey);
+import ToolCards from '../components/ToolCards.astro';
 ---
 <Page title={title} description={description} schemas={schemas}>
 <main id="main">
@@ -182,6 +183,21 @@ const employerServices = sitePages.filter((p) => p.group === 'employer' && p.typ
 <div><h3>For employers</h3><div class="chip-row">{employerServices.map((p) => <a href={`/${p.slug}/`}>{p.h1}</a>)}</div></div>
 </div>
 </details>
+</section>
+
+<!-- Free UK immigration tools (list in src/data/tools.js) -->
+<section id="tools" style="background: #F4F7F5">
+<div style="max-width: 1200px; margin: 0 auto; padding: 80px 24px; display: flex; flex-direction: column; gap: 32px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 12px; max-width: 720px">
+<p style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: 0.08em; color: #8A6A12">FREE TOOLS</p>
+<h2 style="margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 40px; line-height: 1.15; font-weight: 600; color: #14532D">UK immigration tools</h2>
+<p style="margin: 0; color: #3A4552">Practise for the Life in the UK and English tests, check your figures and see where you stand before you apply. Free, with no sign-up.</p>
+</div>
+<a href="/uk-immigration-tools/" style="font-weight: 600; color: #14532D">See all free tools →</a>
+</div>
+<ToolCards />
+</div>
 </section>
 
 <!-- Employers: hiring into the UK (left) and sending staff abroad (right) -->

@@ -1,0 +1,61 @@
+{
+  "country": "UK",
+  "applyButton": "none",
+  "shareImage": "/images/share.jpg",
+  "faqHeading": "Common questions",
+  "sortKey": "1 uk 1 visa photo tool",
+  "widgetTitle": "",
+  "h1": "Free visa photo tool",
+  "intro": "Use our free visa photo tool to turn a photo from your phone into a correctly sized visa or passport photo. Choose the country, position your face, and download a digital photo for your online form plus a 6 × 4 print sheet. Your photo never leaves your device.",
+  "sections": [
+    {
+      "heading": "How the visa photo tool works",
+      "text": "- Choose the photo you need, for example an India e-Visa, a China visa or a USA visa.\n- Add a photo taken against a plain light wall.\n- Drag and zoom until your face sits inside the oval guide.\n- Download your digital photo, already at the right pixel size and file size for the online form.\n- If you need printed photos, download the 6 × 4 print sheet and print it at any photo kiosk or online print shop for a few pence.\n\nThe visa photo tool runs entirely in your browser, so your photo is never uploaded to us or anyone else."
+    },
+    {
+      "heading": "Photo sizes by country",
+      "text": "- India e-Visa: a square digital photo between 350 and 1,000 pixels, 10 KB to 300 KB. No printed photo needed.\n- China visa: 354 to 420 pixels wide and 472 to 560 pixels tall, 40 KB to 120 KB, or a 33 × 48 mm printed photo.\n- USA visa and ESTA: a square photo between 600 and 1,200 pixels, up to 240 KB, or 2 × 2 inches printed.\n- UK passport: at least 600 × 750 pixels and 50 KB to 10 MB online, or 35 × 45 mm printed.\n- Schengen visa: a 35 × 45 mm printed photo, with the head 32 to 36 mm tall.\n\nEmbassies change their rules from time to time, so we check these sizes regularly. When you apply for an [Indian e-Visa](/e-tourist-visa-india/) through us, we check and resize your photo for you."
+    },
+    {
+      "heading": "Taking a photo that passes",
+      "text": "Our visa photo tool fixes the size, but the photo itself still has to be right. For the best result:\n- Stand about half a metre in front of a plain white or light grey wall.\n- Face a window so daylight falls evenly on your face, with no shadows behind you.\n- Ask someone else to take the photo at eye level, about 1.5 metres away. Selfies distort your face.\n- Look straight at the camera with a neutral expression and your mouth closed.\n- Take off glasses, hats and headphones. Head coverings worn for religious reasons are allowed if your face is fully visible.\n- Keep your hair away from your eyes and make sure both ears are visible for a China visa."
+    },
+    {
+      "heading": "Common reasons photos are rejected",
+      "text": "- Shadows on the face or on the wall behind\n- A patterned, coloured or cluttered background\n- The head too small or too large in the frame\n- Blurred, grainy or over-edited photos, including beauty filters\n- Red eye, glare on glasses or a tilted head\n- A screenshot or a photo sent through a messaging app, which loses quality\n\nA rejected photo can delay an e-Visa by several days, or mean resubmitting the whole application. Our visa photo tool checks the background and file size before you download, to catch the most common problems early."
+    },
+    {
+      "heading": "Need help with your application?",
+      "text": "We’ve helped thousands of travellers with visa applications since 2007. If you’d like us to check your visa photo and documents, or handle the whole application, we can help with your [Indian e-Visa](/e-tourist-visa-india/), [China visa](/china-visa-application/) or [Schengen visa](/schengen-visa-application/)."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Is the visa photo tool free?",
+      "a": "Yes, completely free with no sign-up. Make and download as many photos as you need."
+    },
+    {
+      "q": "Is my photo uploaded anywhere?",
+      "a": "No. The visa photo tool works inside your browser, so your photo stays on your phone or computer."
+    },
+    {
+      "q": "Can I use a photo taken on my phone?",
+      "a": "Yes. A modern phone camera is more than good enough. Use the original photo, not a screenshot, and have someone else take it rather than a selfie."
+    },
+    {
+      "q": "Does the tool remove the background?",
+      "a": "No. Background removal often leaves rough edges that embassies reject. Take your photo against a plain light wall instead, and the tool will check the background for you."
+    },
+    {
+      "q": "Can I print the photos myself?",
+      "a": "Yes. Download the 6 × 4 print sheet and print it on glossy photo paper at a supermarket photo kiosk or online print shop. Cut the photos out carefully along the edges."
+    },
+    {
+      "q": "Will the embassy definitely accept my photo?",
+      "a": "The tool gets the size and file size right and checks the background, but the embassy or visa officer decides. Make sure your face is clear, in focus and evenly lit."
+    }
+  ],
+  "title": "Free Visa Photo Tool | India, China, USA & UK Sizes | UVS",
+  "description": "Free visa photo tool: crop your photo to the right size for an India e-Visa, China, USA, UK or Schengen visa. Download a digital photo and a 6x4 print sheet.",
+  "focusKeyword": "visa photo tool"
+}

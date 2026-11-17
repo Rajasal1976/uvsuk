@@ -1,10 +1,11 @@
 // Menu structure, shared by the header and footer.
 import { evisaContinents, evisaLink } from './evisas.js';
 import { isListed } from './pages.js';
+import { tools } from './tools.js';
 
 const fullMenu = [
   {
-    // Two columns: visas for people, and sponsor licences for businesses
+    // Three columns: visas for people, sponsor licences for businesses, and the free tools
     label: 'UK Visas',
     href: '/uk-visa-services/',
     columns: true,
@@ -33,6 +34,12 @@ const fullMenu = [
           ['Sponsor Licence by Industry', '/sponsor-licence-by-industry/'],
           ['Hiring from overseas', '/hire-foreign-nationals-uk/'],
         ],
+      },
+      {
+        // The list of tools comes from src/data/tools.js
+        label: 'UK immigration tools',
+        href: '/uk-immigration-tools/',
+        items: [...tools.map((t) => [t.menu, t.href]), ['All free tools', '/uk-immigration-tools/']],
       },
     ],
   },

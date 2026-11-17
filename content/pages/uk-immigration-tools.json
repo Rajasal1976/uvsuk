@@ -1,0 +1,57 @@
+{
+  "country": "UK",
+  "applyButton": "none",
+  "shareImage": "/images/share.jpg",
+  "faqHeading": "Common questions",
+  "sortKey": "1 uk 0 uk immigration tools",
+  "widgetTitle": "",
+  "h1": "Free UK immigration tools",
+  "intro": "Our free UK immigration tools help you check where you stand before you apply. Practise for the Life in the UK and English tests, work out visa costs and income, check when you can settle, and size your visa photo, all in a few minutes and with no sign-up.",
+  "sections": [
+    {
+      "heading": "Which UK immigration tool do you need?",
+      "text": "- Applying for settlement or citizenship? Start with the [ILR eligibility checker](/am-i-eligible-for-ilr/) and the [absence calculator](/indefinite-leave-to-remain-ilr/#absence-tool), then practise with the [Life in the UK mock test](/life-in-the-uk-mock-test/) and the [B1 English mock test](/b1-english-mock-test/).\n- Bringing a partner to the UK? Use the [spouse visa income calculator](/spouse-visa-income-calculator/) to check the financial requirement.\n- Coming to work? Check your job in the [Skilled Worker job checker](/skilled-worker-jobs/) and your level with the [B2 English mock test](/b2-english-mock-test/).\n- Want to know the cost? The [UK visa cost calculator](/uk-visa-cost-calculator/) adds up the Home Office fee and the Immigration Health Surcharge.\n- Travelling abroad? The [visa photo tool](/visa-photo-tool/) crops your photo to the right size for many countries."
+    },
+    {
+      "heading": "Tools for employers",
+      "text": "Hiring from overseas? Before you assign a Certificate of Sponsorship, use the [Skilled Worker job checker](/skilled-worker-jobs/) to confirm the occupation code is eligible and the salary meets both the general threshold and the going rate. Many refusals and compliance problems start with the wrong code or a salary that falls just short.\n\nThe [UK visa cost calculator](/uk-visa-cost-calculator/) shows what a Skilled Worker application costs, including the Immigration Health Surcharge, so you can budget for the whole family if you’re covering the costs. If you don’t yet hold a licence, see our [sponsor licence application](/sponsor-licence-application/) service."
+    },
+    {
+      "heading": "Kept up to date with the rules",
+      "text": "Immigration rules, fees and salary thresholds change several times a year. We check GOV.UK every week and update our UK immigration tools when anything changes, so the figures you see reflect the latest Immigration Rules and Home Office fees.\n\nEach tool shows where its figures come from, with a link to the official guidance."
+    },
+    {
+      "heading": "Private and free",
+      "text": "None of our UK immigration tools ask you to sign up. Your answers stay in your browser unless you choose to send them to us for a free check, and your photo is never uploaded when you use the visa photo tool."
+    },
+    {
+      "heading": "When to speak to an adviser",
+      "text": "The tools give you a quick answer for common situations. Talk to us if:\n- you’ve had a visa refused before, or have a criminal record or immigration breach\n- you’ve spent long periods outside the UK\n- your income comes from self-employment, a company you own or several jobs\n- you’re not sure which visa route fits you\n\nWe’re regulated by the Immigration Advice Authority and have helped clients from our Manchester office since 2007. [Book a consultation](/contact-us/) and we’ll check everything before you apply."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Are the UK immigration tools free?",
+      "a": "Yes. Every tool is free to use as often as you like, with no sign-up."
+    },
+    {
+      "q": "Are the results guaranteed?",
+      "a": "No tool can guarantee a decision, because the Home Office looks at your full circumstances and evidence. The tools are a reliable first check for common situations."
+    },
+    {
+      "q": "How often are the tools updated?",
+      "a": "We check for rule and fee changes every week and update the tools when they change."
+    },
+    {
+      "q": "Can an adviser check my result?",
+      "a": "Yes. Each tool has a short form to send us your result, and an adviser will get back to you."
+    },
+    {
+      "q": "Do the English mock tests count as an official test?",
+      "a": "No. They’re for practice. Visa applications need a Secure English Language Test from a Home Office approved provider, unless you’re exempt."
+    }
+  ],
+  "title": "Free UK Immigration Tools | Calculators & Mock Tests | UVS",
+  "description": "Free UK immigration tools: Life in the UK and English mock tests, spouse visa and visa cost calculators, ILR checkers, a job checker and a visa photo tool.",
+  "focusKeyword": "UK immigration tools"
+}

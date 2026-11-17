@@ -1,0 +1,29 @@
+---
+// Cards linking to every free tool (list in src/data/tools.js). Used on /uk-immigration-tools/ and the homepage.
+import { tools } from '../data/tools.js';
+---
+<div class="tool-cards" role="list">
+  {tools.map((t) => (
+    <div role="listitem" class={t.featured ? 'tool-card is-featured' : 'tool-card'}>
+      <a href={t.href}>
+        {t.featured && <span class="tool-card-tag">Most popular</span>}
+        <h3>{t.name}</h3>
+        <p>{t.text}</p>
+        <span class="tool-card-go">{t.featured ? 'Start the test' : 'Use the tool'} →</span>
+      </a>
+    </div>
+  ))}
+</div>
+<style is:global>
+.tool-cards { margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px; }
+.tool-card a { display: flex; flex-direction: column; gap: 8px; height: 100%; box-sizing: border-box; padding: 22px 24px; border: 1px solid #E3E7EC; border-radius: 10px; background: #fff; color: inherit; text-decoration: none; transition: border-color .15s, box-shadow .15s; }
+.tool-card a:hover, .tool-card a:focus-visible { border-color: #14532D; box-shadow: 0 6px 18px rgba(20, 83, 45, .08); }
+.tool-card h3 { margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 20px; color: #14532D; }
+.tool-card p { margin: 0; font-size: 15px; line-height: 1.5; color: var(--ink-mute, #4b5563); flex: 1; }
+.tool-card-go { font-weight: 600; font-size: 15px; color: #14532D; }
+.tool-card.is-featured a { background: #14532D; border-color: #14532D; color: #E7F2EA; }
+.tool-card.is-featured h3, .tool-card.is-featured .tool-card-go { color: #fff; }
+.tool-card.is-featured p { color: #CFE3D6; }
+.tool-card-tag { align-self: flex-start; font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; background: #E9B949; color: #3b2a00; padding: 3px 9px; border-radius: 999px; }
+@media (min-width: 900px) { .tool-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+</style>

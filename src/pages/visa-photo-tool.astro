@@ -1,0 +1,8 @@
+---
+// Free visa photo tool. Text and SEO are edited in the admin (content/pages/visa-photo-tool.json).
+// Link to a preset with ?preset=india | china | usa | uk | schengen | other
+import ToolPage from '../components/ToolPage.astro';
+import PhotoTool from '../components/PhotoTool.astro';
+import content from '../../content/pages/visa-photo-tool.json';
+---
+<ToolPage content={content} slug="visa-photo-tool"><PhotoTool /></ToolPage>

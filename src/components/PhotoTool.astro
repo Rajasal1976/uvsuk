@@ -1,0 +1,177 @@
+---
+// Visa photo tool: crops, resizes and compresses a photo to each country's digital rules, and makes
+// a 6x4 inch print sheet. Everything happens in the visitor's browser: the photo is never uploaded.
+// Specs (checked November 2026): India e-Visa (indianvisaonline.gov.in): JPEG, square, 350-1000 px, 10-300 KB.
+// China online form: 354-420 x 472-560 px, 40-120 KB, 33 x 48 mm, head 28-33 mm. USA (travel.state.gov):
+// square 600-1200 px, max 240 KB, 2 x 2 in. UK passport (GOV.UK): at least 600 x 750 px, 50 KB-10 MB.
+// Schengen and most others: 35 x 45 mm, head 32-36 mm.
+import CalcLead from './CalcLead.astro';
+const { preset = 'india' } = Astro.props;
+---
+<div class="vt-wrap" id="ph-tool" data-preset={preset}>
+  <div class="vt">
+    <div class="vt-in">
+      <div class="vt-field">
+        <label for="ph-preset">Which photo do you need?</label>
+        <select id="ph-preset">
+          <option value="india">India e-Visa (square digital photo)</option>
+          <option value="china">China visa (33 × 48 mm)</option>
+          <option value="usa">USA visa and ESTA (2 × 2 inch)</option>
+          <option value="uk">UK passport (digital)</option>
+          <option value="schengen">Schengen visa (35 × 45 mm)</option>
+          <option value="other">Other visas, e.g. Saudi, Nigeria, Ghana (35 × 45 mm)</option>
+        </select>
+      </div>
+      <div class="vt-field">
+        <label for="ph-file">Your photo</label>
+        <input type="file" id="ph-file" accept="image/*" class="vt-ph-file">
+        <p class="vt-hint">Taken against a plain light wall, facing the camera, in good daylight. Your photo stays on your device and is never uploaded.</p>
+      </div>
+      <div id="ph-edit" hidden>
+        <div class="vt-ph-stage-wrap">
+          <canvas id="ph-stage" class="vt-ph-stage" aria-label="Drag to position your photo"></canvas>
+        </div>
+        <p class="vt-hint" id="ph-guide-hint">Drag the photo so your face is inside the oval: top of your head on the upper line, chin on the lower line.</p>
+        <div class="vt-field">
+          <label for="ph-zoom">Zoom</label>
+          <input type="range" id="ph-zoom" min="1" max="4" step="0.01" value="1">
+        </div>
+      </div>
+    </div>
+    <div class="vt-out" aria-live="polite">
+      <div id="ph-out"><p class="vt-empty">Choose the photo you need and add your picture. We’ll crop it to the right size and check it.</p></div>
+    </div>
+  </div>
+  <CalcLead tool="visa-photo" heading="Want us to check your photo?" text="Photo problems are one of the most common reasons applications are sent back. Tell us which visa you need and we’ll check your photo before you apply." />
+</div>
+
+<script>
+  const PRESETS = {
+    india: { name: 'India e-Visa', w: 600, h: 600, minKB: 10, maxKB: 300, head: [0.5, 0.7], print: { w: 51, h: 51 }, bg: 'plain white or light',
+      rules: ['Square, between 350 and 1,000 pixels on each side', 'JPEG file between 10 KB and 300 KB', 'Plain white or light background, no shadows', 'Full face, eyes open, no glasses'] },
+    china: { name: 'China visa', w: 420, h: 560, minKB: 40, maxKB: 120, head: [0.58, 0.69], print: { w: 33, h: 48 }, bg: 'white',
+      rules: ['354 to 420 pixels wide and 472 to 560 pixels tall', 'JPEG file between 40 KB and 120 KB', 'White background, no border', 'Head 28 to 33 mm tall on the printed photo', 'Ears visible, no glasses, neutral expression'] },
+    usa: { name: 'USA visa', w: 600, h: 600, minKB: 1, maxKB: 240, head: [0.5, 0.69], print: { w: 51, h: 51 }, bg: 'white or off-white',
+      rules: ['Square, between 600 and 1,200 pixels on each side', 'JPEG file no larger than 240 KB', 'White or off-white background', 'Head 1 to 1⅜ inches (25 to 35 mm) on a 2-inch photo', 'No glasses'] },
+    uk: { name: 'UK passport', w: 900, h: 1200, minKB: 50, maxKB: 10000, head: [0.45, 0.6], print: { w: 35, h: 45, head: true }, bg: 'plain, light-coloured',
+      rules: ['At least 600 pixels wide and 750 pixels tall', 'File between 50 KB and 10 MB', 'Head, shoulders and upper body: GOV.UK crops it for you', 'Plain light background, no shadows', 'Plain expression, mouth closed'] },
+    schengen: { name: 'Schengen visa', w: 827, h: 1063, minKB: 1, maxKB: 1000, head: [0.71, 0.8], print: { w: 35, h: 45 }, bg: 'plain light',
+      rules: ['35 × 45 mm printed photo', 'Head 32 to 36 mm from chin to crown', 'Plain light background, no shadows', 'Neutral expression, eyes open'] },
+    other: { name: 'Other visas', w: 827, h: 1063, minKB: 1, maxKB: 1000, head: [0.66, 0.8], print: { w: 35, h: 45 }, bg: 'plain white or light',
+      rules: ['35 × 45 mm printed photo for most countries', 'Plain white or light background', 'Face the camera, neutral expression', 'Check the exact rules for your country'] },
+  };
+  const root = document.getElementById('ph-tool');
+  const $ = (s) => root.querySelector(s);
+  const stage = $('#ph-stage'), ctx = stage.getContext('2d');
+  const out = $('#ph-out');
+  let img = null, p = PRESETS[root.dataset.preset] || PRESETS.india;
+  let zoom = 1, ox = 0, oy = 0, drag = null, timer = null;
+  const fromUrl = new URLSearchParams(location.search).get('preset');
+  if (fromUrl && PRESETS[fromUrl]) p = PRESETS[fromUrl];
+  $('#ph-preset').value = Object.keys(PRESETS).find((k) => PRESETS[k] === p);
+
+  function sizeStage() {
+    const maxW = Math.min(320, root.querySelector('.vt-in').clientWidth - 8);
+    stage.width = Math.round(maxW * devicePixelRatio);
+    stage.height = Math.round(maxW * (p.h / p.w) * devicePixelRatio);
+    stage.style.width = maxW + 'px'; stage.style.height = Math.round(maxW * (p.h / p.w)) + 'px';
+  }
+  // Scale so the image covers the frame at zoom 1
+  const baseScale = (W, H) => Math.max(W / img.width, H / img.height);
+  function draw(c, W, H, guides) {
+    c.fillStyle = '#fff'; c.fillRect(0, 0, W, H);
+    if (!img) return;
+    const s = baseScale(W, H) * zoom;
+    const dw = img.width * s, dh = img.height * s;
+    c.drawImage(img, (W - dw) / 2 + ox * W, (H - dh) / 2 + oy * H, dw, dh);
+    if (guides) {
+      const top = H * (1 - p.head[1]) * 0.45, chin = top + H * ((p.head[0] + p.head[1]) / 2);
+      c.strokeStyle = 'rgba(214, 160, 30, .95)'; c.lineWidth = 2 * devicePixelRatio; c.setLineDash([6 * devicePixelRatio, 5 * devicePixelRatio]);
+      c.beginPath(); c.moveTo(0, top); c.lineTo(W, top); c.moveTo(0, chin); c.lineTo(W, chin); c.moveTo(W / 2, 0); c.lineTo(W / 2, H); c.stroke();
+      c.setLineDash([]); c.beginPath(); c.ellipse(W / 2, (top + chin) / 2, (chin - top) * 0.37, (chin - top) / 2, 0, 0, Math.PI * 2); c.stroke();
+    }
+  }
+  const render = () => { draw(ctx, stage.width, stage.height, true); clearTimeout(timer); timer = setTimeout(exportPhoto, 250); };
+
+  function toBlob(canvas, q) { return new Promise((r) => canvas.toBlob(r, 'image/jpeg', q)); }
+  async function exportPhoto() {
+    if (!img) return;
+    const c = document.createElement('canvas'); c.width = p.w; c.height = p.h;
+    draw(c.getContext('2d'), p.w, p.h, false);
+    let q = 0.92, blob = await toBlob(c, q);
+    while (blob.size / 1024 > p.maxKB && q > 0.35) { q -= 0.07; blob = await toBlob(c, q); }
+    // Too small for the minimum file size (very plain photos compress a lot): use the highest quality
+    if (blob.size / 1024 < p.minKB) blob = await toBlob(c, 1);
+    const kb = blob.size / 1024;
+    const checks = [];
+    const srcPx = Math.min(img.width / zoom, img.height / zoom);
+    checks.push(srcPx >= Math.min(p.w, p.h) * 0.8 ? ['ok', 'Good resolution'] : ['bad', 'Your photo is quite small for this size. Use the original from your phone’s camera, not a screenshot or a photo sent by messaging app.']);
+    checks.push(kb >= p.minKB && kb <= p.maxKB ? ['ok', `File size ${Math.round(kb)} KB (allowed ${p.minKB}–${p.maxKB >= 1000 ? Math.round(p.maxKB / 1000) + ' MB' : p.maxKB + ' KB'})`] : ['bad', `File size ${Math.round(kb)} KB is outside the allowed ${p.minKB}–${p.maxKB} KB. Try a sharper original photo.`]);
+    // Background: look at the strips down each side of the top half
+    const d = c.getContext('2d').getImageData(0, 0, p.w, Math.round(p.h / 2)).data, sw = Math.round(p.w * 0.1);
+    let n = 0, sum = 0, sum2 = 0;
+    for (let y = 0; y < p.h / 2; y += 4) for (const x0 of [0, p.w - sw]) for (let x = x0; x < x0 + sw; x += 4) {
+      const i = (y * p.w + x) * 4, l = 0.299 * d[i] + 0.587 * d[i + 1] + 0.114 * d[i + 2]; n++; sum += l; sum2 += l * l;
+    }
+    const mean = sum / n, sd = Math.sqrt(Math.max(0, sum2 / n - mean * mean));
+    checks.push(mean > 195 && sd < 28 ? ['ok', 'Background looks plain and light'] : mean <= 195 ? ['bad', `Background looks too dark. You need a ${p.bg} background: stand in front of a plain light wall.`] : ['bad', 'Background looks uneven, which usually means shadows or objects behind you. Use a plain wall and even light.']);
+    const url = URL.createObjectURL(blob);
+    const ok = checks.every((x) => x[0] === 'ok');
+    out.innerHTML = `<p class="vt-verdict">${ok ? 'Your photo is ready' : 'Nearly there'}</p>`
+      + `<img src="${url}" alt="Your cropped photo" class="vt-ph-result" style="aspect-ratio:${p.w}/${p.h}">`
+      + `<p class="vt-note" style="margin:0">${p.name}: ${p.w} × ${p.h} pixels, ${Math.round(kb)} KB JPEG</p>`
+      + checks.map(([cls, t]) => `<div class="vt-res ${cls}"><i>${cls === 'ok' ? '✓' : '!'}</i><span>${t}</span></div>`).join('')
+      + `<div class="vt-ph-actions"><a class="btn btn-gold" href="${url}" download="${p.name.toLowerCase().replace(/\W+/g, '-')}-photo.jpg">Download photo</a>`
+      + `<button type="button" class="btn btn-outline" id="ph-print">Download 6 × 4 print sheet</button></div>`
+      + `<h3 class="vt-ph-h">Check these yourself</h3><ul class="vt-ph-rules">${p.rules.map((r) => `<li>${r}</li>`).join('')}</ul>`
+      + '<p class="vt-note">This tool crops and sizes your photo and checks the background. It can’t guarantee an embassy will accept it, so check your face is clear, evenly lit and in focus.</p>';
+    out.querySelector('#ph-print').addEventListener('click', () => printSheet(c));
+    const lead = document.querySelector('#lead-visa-photo [name="result"]');
+    if (lead) lead.value = `${p.name} photo, ${Math.round(kb)} KB, checks: ${checks.map((x) => x[0]).join('/')}.`;
+  }
+
+  // A 6 x 4 inch sheet at 300 dpi, filled with copies at the printed size, ready for a photo kiosk
+  async function printSheet(photo) {
+    const dpmm = 300 / 25.4, W = 1800, H = 1200, pw = Math.round(p.print.w * dpmm), phh = Math.round(p.print.h * dpmm), gap = Math.round(3 * dpmm);
+    const c = document.createElement('canvas'); c.width = W; c.height = H;
+    const g = c.getContext('2d'); g.fillStyle = '#fff'; g.fillRect(0, 0, W, H);
+    const cols = Math.floor((W - gap) / (pw + gap)), rows = Math.floor((H - gap) / (phh + gap));
+    const x0 = (W - (cols * pw + (cols - 1) * gap)) / 2, y0 = (H - (rows * phh + (rows - 1) * gap)) / 2;
+    for (let r = 0; r < rows; r++) for (let k = 0; k < cols; k++) {
+      const x = x0 + k * (pw + gap), y = y0 + r * (phh + gap);
+      g.drawImage(photo, x, y, pw, phh); g.strokeStyle = '#ccc'; g.lineWidth = 1; g.strokeRect(x - 0.5, y - 0.5, pw + 1, phh + 1);
+    }
+    const blob = await toBlob(c, 0.95), a = document.createElement('a');
+    a.href = URL.createObjectURL(blob); a.download = `${p.name.toLowerCase().replace(/\W+/g, '-')}-print-6x4.jpg`; a.click();
+  }
+
+  $('#ph-file').addEventListener('change', (e) => {
+    const f = e.target.files[0]; if (!f) return;
+    const im = new Image();
+    im.onload = () => { img = im; zoom = 1; ox = 0; oy = 0; $('#ph-zoom').value = 1; $('#ph-edit').hidden = false; sizeStage(); render(); };
+    im.onerror = () => { out.innerHTML = '<div class="vt-res bad"><i>!</i><span>We couldn’t open that file. Try a JPEG or PNG photo.</span></div>'; };
+    im.src = URL.createObjectURL(f);
+  });
+  $('#ph-preset').addEventListener('change', (e) => { p = PRESETS[e.target.value]; if (img) { sizeStage(); render(); } });
+  $('#ph-zoom').addEventListener('input', (e) => { zoom = +e.target.value; render(); });
+  stage.addEventListener('pointerdown', (e) => { drag = { x: e.clientX, y: e.clientY, ox, oy }; stage.setPointerCapture(e.pointerId); });
+  stage.addEventListener('pointermove', (e) => {
+    if (!drag) return;
+    const r = stage.getBoundingClientRect();
+    ox = drag.ox + (e.clientX - drag.x) / r.width; oy = drag.oy + (e.clientY - drag.y) / r.height; render();
+  });
+  ['pointerup', 'pointercancel'].forEach((ev) => stage.addEventListener(ev, () => { drag = null; }));
+  window.addEventListener('resize', () => { if (img) { sizeStage(); render(); } });
+</script>
+
+<style is:global>
+.vt-ph-file { font: inherit; font-size: 15px; }
+.vt-ph-stage-wrap { display: flex; justify-content: center; background: var(--green-50, #f1f6f3); border-radius: 4px; padding: 12px; }
+.vt-ph-stage { touch-action: none; cursor: grab; border: 1px solid var(--line, #dfe3e0); background: #fff; max-width: 100%; }
+.vt-ph-stage:active { cursor: grabbing; }
+#ph-tool input[type=range] { width: 100%; accent-color: var(--green-800, #1d4b37); }
+.vt-ph-result { width: 160px; max-width: 100%; border: 1px solid var(--line, #dfe3e0); background: #fff; display: block; }
+.vt-ph-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.vt-ph-h { margin: 6px 0 0; font-size: 17px; }
+.vt-ph-rules { margin: 0; padding-left: 20px; font-size: 14.5px; line-height: 1.55; }
+</style>

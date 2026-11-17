@@ -284,7 +284,7 @@ a.card:hover { border-color: var(--green-600); color: inherit; }
 }
 
 /* UK Visas menu: two columns, individuals and employers */
-.dd-mega.dd-cols { grid-template-columns: repeat(2, minmax(220px, 1fr)); width: min(560px, calc(100vw - 48px)); left: -16px; right: auto; }
+.dd-mega.dd-cols { grid-template-columns: repeat(3, minmax(200px, 1fr)); width: min(780px, calc(100vw - 48px)); left: -16px; right: auto; }
 .dd-cols .dd-group + .dd-group { border-left: 1px solid var(--line); }
 @media (max-width: 960px) {
   .dd-cols .dd-group ul { display: block; }

@@ -1,0 +1,8 @@
+---
+// Free UK immigration tools page. Text and SEO are edited in the admin (content/pages/uk-immigration-tools.json).
+// The tool cards come from src/data/tools.js.
+import ToolPage from '../components/ToolPage.astro';
+import ToolCards from '../components/ToolCards.astro';
+import content from '../../content/pages/uk-immigration-tools.json';
+---
+<ToolPage content={content} slug="uk-immigration-tools"><ToolCards /></ToolPage>

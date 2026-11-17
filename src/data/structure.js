@@ -1411,5 +1411,47 @@ export const structure = [
     "slug": "partner-with-us",
     "type": "service",
     "group": "company"
+  },
+  {
+    "slug": "uk-immigration-tools",
+    "type": "info",
+    "group": "uk",
+    "related": [
+      "life-in-the-uk-mock-test",
+      "indefinite-leave-to-remain-ilr",
+      "skilled-worker-visa-formally-tier-t2-general"
+    ]
+  },
+  {
+    "slug": "visa-photo-tool",
+    "type": "info",
+    "group": "uk",
+    "related": [
+      "e-tourist-visa-india",
+      "china-visa-application",
+      "uk-immigration-tools"
+    ]
+  },
+  {
+    "slug": "b1-english-mock-test",
+    "type": "info",
+    "group": "uk",
+    "related": [
+      "life-in-the-uk-mock-test",
+      "indefinite-leave-to-remain-ilr",
+      "british-citizenship",
+      "uk-immigration-tools"
+    ]
+  },
+  {
+    "slug": "b2-english-mock-test",
+    "type": "info",
+    "group": "uk",
+    "related": [
+      "skilled-worker-visa-formally-tier-t2-general",
+      "skilled-worker-jobs",
+      "b1-english-mock-test",
+      "uk-immigration-tools"
+    ]
   }
 ];

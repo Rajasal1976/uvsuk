@@ -1,0 +1,206 @@
+---
+// B1 / B2 English practice test: grammar and vocabulary, reading, and listening (read aloud by the
+// browser), marked instantly, plus speaking practice tasks with a timer. Questions are in
+// src/data/english-questions.js. A practice level check only: not an official Secure English Language Test.
+import CalcLead from './CalcLead.astro';
+import { english } from '../data/english-questions.js';
+const { level = 'b1' } = Astro.props;
+const L = level.toUpperCase();
+const bank = english[level];
+const lead = level === 'b1'
+  ? { heading: 'Applying for ILR or citizenship?', text: 'We check you meet the English requirement, or an exemption, and prepare your application so it’s right first time.' }
+  : { heading: 'Applying for a Skilled Worker visa?', text: 'We check how you meet the English requirement, which may not need a test at all, and handle the whole application.' };
+---
+<div class="vt-wrap" id="en-tool" data-level={level}>
+  <div class="vt-lt">
+    <div id="en-start">
+      <p class="vt-verdict">Free {L} English practice test</p>
+      <ul class="vt-lt-facts">
+        <li><b>12</b> grammar and vocabulary</li>
+        <li><b>6</b> reading</li>
+        <li><b>6</b> listening</li>
+      </ul>
+      <p>About 20 minutes, with no time limit. Questions are chosen at random each time. Turn your sound on: the listening part is read aloud.</p>
+      <button type="button" class="btn btn-gold" id="en-go">Start the {L} practice test</button>
+    </div>
+
+    <div id="en-quiz" hidden>
+      <div class="vt-lt-bar"><span id="en-part"></span><span id="en-count"></span></div>
+      <div class="vt-lt-progress" aria-hidden="true"><span id="en-progress"></span></div>
+      <div id="en-passage" class="vt-en-passage" hidden></div>
+      <div id="en-listen" class="vt-en-listen" hidden>
+        <button type="button" class="btn btn-outline" id="en-play">▶ Play the recording</button>
+        <span class="vt-hint" id="en-plays">You can listen twice.</span>
+        <button type="button" class="vt-en-link" id="en-script-btn" hidden>Can’t hear it? Read the script</button>
+        <div id="en-script" class="vt-en-passage" hidden></div>
+      </div>
+      <fieldset class="vt-lt-q">
+        <legend id="en-question"></legend>
+        <div id="en-options" class="vt-lt-options"></div>
+      </fieldset>
+      <div class="vt-lt-nav">
+        <button type="button" class="btn btn-outline" id="en-quit">End test</button>
+        <button type="button" class="btn btn-gold" id="en-next" disabled>Next question</button>
+      </div>
+    </div>
+
+    <div id="en-result" hidden aria-live="polite"></div>
+  </div>
+
+  <section class="vt-en-speak" aria-labelledby="en-speak-h">
+    <h2 id="en-speak-h">{L} speaking practice</h2>
+    <p>Speaking can’t be marked online, so practise these out loud. Press start, talk until the timer ends, and record yourself on your phone if you can. Listen back for long pauses and words you avoided.</p>
+    <div class="vt-en-tasks">
+      {bank.speaking.map((t, k) => (
+        <div class="vt-en-task">
+          <h3>{k + 1}. {t.task}</h3>
+          <ul>{t.prompts.map((p) => <li>{p}</li>)}</ul>
+          <button type="button" class="btn btn-outline vt-en-timer" data-time={t.time}>Start {t.time >= 120 ? `${t.time / 60}-minute` : `${t.time}-second`} timer</button>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <CalcLead tool={`english-${level}-test`} heading={lead.heading} text={lead.text} />
+</div>
+<script type="application/json" id="en-data" set:html={JSON.stringify(bank)}></script>
+
+<script>
+  const root = document.getElementById('en-tool');
+  const $ = (s) => root.querySelector(s);
+  const bank = JSON.parse(document.getElementById('en-data').textContent);
+  const LEVEL = root.dataset.level.toUpperCase();
+  const shuffle = (a) => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+  const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+  const para = (t) => t.split('\n').filter(Boolean).map((l) => `<p>${esc(l)}</p>`).join('');
+  const mix = (q) => { const order = shuffle(q.o.map((_, k) => k)); return { ...q, opts: order.map((k) => q.o[k]), correct: order.indexOf(0) }; };
+  const PARTS = { g: 'Grammar and vocabulary', r: 'Reading', l: 'Listening' };
+  let test = [], i = 0, answers = [], plays = {};
+
+  function start() {
+    window.speechSynthesis?.cancel();
+    const g = shuffle(bank.grammar).slice(0, 12).map((q) => ({ ...mix(q), part: 'g' }));
+    const r = shuffle(bank.reading).slice(0, 2).flatMap((p, n) => p.qs.map((q) => ({ ...mix(q), part: 'r', passage: p, pid: 'r' + n })));
+    const l = shuffle(bank.listening).slice(0, 2).flatMap((p, n) => p.qs.map((q) => ({ ...mix(q), part: 'l', listen: p, pid: 'l' + n })));
+    test = [...g, ...r, ...l]; i = 0; answers = new Array(test.length).fill(null); plays = {};
+    $('#en-start').hidden = true; $('#en-result').hidden = true; $('#en-quiz').hidden = false;
+    show();
+  }
+  function show() {
+    const q = test[i];
+    $('#en-part').textContent = `Part ${'grl'.indexOf(q.part) + 1}: ${PARTS[q.part]}`;
+    $('#en-count').textContent = `Question ${i + 1} of ${test.length}`;
+    $('#en-progress').style.width = `${(i / test.length) * 100}%`;
+    $('#en-passage').hidden = !q.passage;
+    if (q.passage) $('#en-passage').innerHTML = `<h3>${esc(q.passage.title)}</h3>${para(q.passage.text)}`;
+    $('#en-listen').hidden = !q.listen;
+    if (q.listen) {
+      $('#en-plays').textContent = (plays[q.pid] || 0) >= 2 ? 'You’ve listened twice.' : `${q.listen.title}. You can listen twice.`;
+      $('#en-play').disabled = (plays[q.pid] || 0) >= 2;
+      $('#en-script').hidden = true; $('#en-script-btn').hidden = !!window.speechSynthesis;
+      $('#en-script').innerHTML = script(q.listen);
+    }
+    $('#en-question').textContent = q.q;
+    $('#en-options').innerHTML = q.opts.map((o, k) => `<label class="vt-opt"><input type="radio" name="en-opt" value="${k}" ${answers[i] === k ? 'checked' : ''}><span>${esc(o)}</span></label>`).join('');
+    $('#en-next').disabled = answers[i] === null;
+    $('#en-next').textContent = i === test.length - 1 ? 'See my result' : 'Next question';
+  }
+  const script = (p) => p.lines.map(([who, t]) => `<p>${p.lines.length > 1 ? `<b>${who === 'A' ? 'Speaker 1' : 'Speaker 2'}:</b> ` : ''}${esc(t)}</p>`).join('');
+
+  // Read the recording aloud with two different British English voices where the device has them
+  function play() {
+    const q = test[i], synth = window.speechSynthesis;
+    if (!synth) { $('#en-script').hidden = false; return; }
+    synth.cancel();
+    const voices = synth.getVoices().filter((v) => /^en[-_]GB/i.test(v.lang));
+    const all = voices.length ? voices : synth.getVoices().filter((v) => /^en/i.test(v.lang));
+    q.listen.lines.forEach(([who, t]) => {
+      const u = new SpeechSynthesisUtterance(t);
+      u.lang = 'en-GB'; u.rate = LEVEL === 'B1' ? 0.92 : 1;
+      const v = all[who === 'A' ? 0 : Math.min(1, all.length - 1)];
+      if (v) u.voice = v;
+      if (who === 'B' && all.length < 2) u.pitch = 1.35;
+      synth.speak(u);
+    });
+    plays[q.pid] = (plays[q.pid] || 0) + 1;
+    $('#en-plays').textContent = plays[q.pid] >= 2 ? 'Last listen.' : 'You can listen once more.';
+    $('#en-play').disabled = plays[q.pid] >= 2;
+    $('#en-script-btn').hidden = false;
+  }
+  $('#en-play').addEventListener('click', play);
+  $('#en-script-btn').addEventListener('click', () => { $('#en-script').hidden = !$('#en-script').hidden; });
+  $('#en-options').addEventListener('change', (e) => { answers[i] = +e.target.value; $('#en-next').disabled = false; });
+  $('#en-next').addEventListener('click', () => {
+    if (i < test.length - 1) { const prev = test[i]; i++; if (test[i].pid !== prev.pid) window.speechSynthesis?.cancel(); show(); } else finish();
+  });
+  $('#en-quit').addEventListener('click', finish);
+  $('#en-go').addEventListener('click', start);
+
+  function finish() {
+    window.speechSynthesis?.cancel();
+    const right = (k) => answers[k] === test[k].correct;
+    const score = test.filter((_, k) => right(k)).length, pct = Math.round((score / test.length) * 100);
+    const byPart = Object.keys(PARTS).map((p) => { const ks = test.map((q, k) => (q.part === p ? k : -1)).filter((k) => k >= 0); return [p, ks.filter(right).length, ks.length]; });
+    const verdict = pct >= 75 ? `You’re working at around ${LEVEL} level` : pct >= 50 ? `You’re getting close to ${LEVEL}` : `Not at ${LEVEL} level yet`;
+    const advice = pct >= 75
+      ? `A good sign. Take a few more practice tests to be sure, then practise speaking out loud before you book a real test.`
+      : pct >= 50 ? `Look at the questions you missed below, then try again. Every test uses different questions.`
+      : `Keep practising. A short course with a teacher, focusing on speaking and listening, is often the quickest way to improve.`;
+    const wrong = test.map((q, k) => ({ q, k })).filter(({ k }) => !right(k));
+    $('#en-quiz').hidden = true;
+    const r = $('#en-result'); r.hidden = false;
+    r.innerHTML = `<p class="vt-verdict">${verdict}: ${score} out of ${test.length}</p><p>${advice}</p>`
+      + `<ul class="vt-lt-facts">${byPart.map(([p, s, n]) => `<li><b>${s}/${n}</b> ${PARTS[p].toLowerCase()}</li>`).join('')}</ul>`
+      + (wrong.length ? '<h3 class="vt-lt-h">Questions to review</h3>' + wrong.map(({ q, k }) => `<div class="vt-res bad"><i>!</i><span><b>${esc(q.q)}</b><br>${answers[k] === null ? 'Not answered.' : `You answered: ${esc(q.opts[answers[k]])}.`} Correct answer: <b>${esc(q.opts[q.correct])}</b>.<br><small>${esc(q.e)}</small></span></div>`).join('') : '')
+      + '<p class="vt-note">This is a practice check, not an official test result. Visa applications need a Secure English Language Test from a Home Office approved provider, unless you’re exempt.</p>'
+      + '<p style="margin-top:8px"><button type="button" class="btn btn-gold" id="en-again">Take another test</button></p>';
+    r.querySelector('#en-again').addEventListener('click', start);
+    const lead = document.querySelector(`#lead-english-${root.dataset.level}-test [name="result"]`);
+    if (lead) lead.value = `${LEVEL} practice test ${score}/${test.length} (${byPart.map(([p, s, n]) => `${PARTS[p]} ${s}/${n}`).join(', ')}).`;
+    r.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // Speaking timers
+  root.querySelectorAll('.vt-en-timer').forEach((b) => {
+    const label = b.textContent; let t = null;
+    b.addEventListener('click', () => {
+      if (t) { clearInterval(t); t = null; b.textContent = label; return; }
+      let left = +b.dataset.time;
+      const tick = () => { b.textContent = `${Math.floor(left / 60)}:${String(left % 60).padStart(2, '0')} left (tap to stop)`; if (left-- <= 0) { clearInterval(t); t = null; b.textContent = 'Time’s up. Start again?'; } };
+      tick(); t = setInterval(tick, 1000);
+    });
+  });
+  window.speechSynthesis?.getVoices();
+</script>
+
+<style is:global>
+.vt-lt { border: 1px solid var(--line, #dfe3e0); border-radius: 6px; background: #fff; padding: 32px; display: grid; gap: 14px; }
+.vt-lt [hidden], .vt-en-speak [hidden] { display: none !important; }
+#en-start, #en-quiz, #en-result { display: grid; gap: 14px; }
+.vt-lt-facts { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.vt-lt-facts li { background: var(--green-50, #f1f6f3); border-radius: 4px; padding: 10px 16px; font-size: 15px; }
+.vt-lt-facts b { font-size: 20px; margin-right: 4px; }
+.vt-lt-bar { display: flex; justify-content: space-between; gap: 10px; font-size: 14.5px; font-weight: 600; color: var(--ink-mute, #5d6862); }
+.vt-lt-progress { height: 6px; background: var(--green-50, #f1f6f3); border-radius: 3px; overflow: hidden; }
+.vt-lt-progress span { display: block; height: 100%; background: var(--green-800, #1d4b37); transition: width .2s; }
+.vt-lt-q { border: 0; padding: 0; margin: 0; }
+.vt-lt-q legend { font-family: var(--serif, Georgia, serif); font-size: 22px; line-height: 1.3; color: var(--ink, #1c2420); margin-bottom: 14px; padding: 0; }
+.vt-lt-options { display: grid; gap: 8px; }
+.vt-lt-options .vt-opt span { padding: 13px 16px; font-size: 15.5px; }
+.vt-lt-nav { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.vt-lt-nav .btn:disabled, .vt-en-listen .btn:disabled { opacity: .5; cursor: not-allowed; }
+.vt-lt-h { margin: 8px 0 0; font-size: 18px; }
+.vt-en-passage { background: var(--green-50, #f1f6f3); border-radius: 4px; padding: 18px 20px; font-size: 15.5px; line-height: 1.6; max-height: 360px; overflow: auto; }
+.vt-en-passage h3 { margin: 0 0 8px; font-size: 17px; }
+.vt-en-passage p { margin: 0 0 8px; }
+.vt-en-listen { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.vt-en-listen .vt-en-passage { flex-basis: 100%; }
+.vt-en-link { background: none; border: 0; padding: 0; font: inherit; font-size: 14px; color: var(--green-800, #1d4b37); text-decoration: underline; cursor: pointer; }
+.vt-en-speak { margin-top: 28px; }
+.vt-en-tasks { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+.vt-en-task { border: 1px solid var(--line, #dfe3e0); border-radius: 6px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; background: #fff; }
+.vt-en-task h3 { margin: 0; font-size: 17px; }
+.vt-en-task ul { margin: 0; padding-left: 18px; font-size: 15px; line-height: 1.5; }
+.vt-en-task .btn { justify-self: start; font-variant-numeric: tabular-nums; }
+@media (max-width: 760px) { .vt-lt { padding: 20px; } .vt-lt-q legend { font-size: 19px; } }
+</style>
