@@ -1,0 +1,38 @@
+---
+// "Latest news" strip for the homepage: the 3 newest blog posts with Category "News".
+// It hides itself if there are no news posts yet.
+import { posts, fmtDate } from '../data/blog.js';
+const { title = 'Latest news', allLabel = 'All news' } = Astro.props;
+const news = posts.filter((p) => p.category === 'News').slice(0, 3);
+---
+{news.length > 0 && (
+<section class="news-strip" id="news">
+  <div class="news-strip-in">
+    <div class="news-strip-head">
+      <h2>{title}</h2>
+      <a href="/news/">{allLabel} →</a>
+    </div>
+    <div class="news-strip-grid">
+      {news.map((p) => (
+        <a class="news-strip-card" href={`/blog/${p.slug}/`}>
+          <time datetime={p.date}>{fmtDate(p.date)}</time>
+          <h3>{p.h1}</h3>
+          <p>{p.description || p.intro}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+)}
+<style>
+.news-strip-in { max-width: 1200px; margin: 0 auto; padding: 72px 24px; display: flex; flex-direction: column; gap: 28px; }
+.news-strip-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 12px; }
+.news-strip-head h2 { margin: 0; font-size: 34px; line-height: 1.2; color: var(--green-800, #14532D); }
+.news-strip-head a { font-weight: 600; color: var(--green-800, #14532D); }
+.news-strip-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+.news-strip-card { display: flex; flex-direction: column; gap: 8px; padding: 22px 24px; border: 1px solid var(--line, #E3E7EC); border-radius: 10px; background: #fff; color: inherit; text-decoration: none; }
+.news-strip-card:hover, .news-strip-card:focus-visible { border-color: var(--green-800, #14532D); }
+.news-strip-card time { font-size: 14px; color: var(--ink-mute, #5d6862); }
+.news-strip-card h3 { margin: 0; font-size: 19px; line-height: 1.3; color: var(--green-800, #14532D); }
+.news-strip-card p { margin: 0; font-size: 15px; line-height: 1.5; color: var(--ink-soft, #3A4552); }
+</style>

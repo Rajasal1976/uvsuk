@@ -78,6 +78,7 @@ const fullMenu = [
     items: [
       ['About us', '/about-us/'],
       ['Blog', '/blog/'],
+      ['Visa news', '/news/'],
       ['Corporate Clients', '/corporate-clients/'],
       ['Partner with us', '/partner-with-us/'],
     ],

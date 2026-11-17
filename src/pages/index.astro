@@ -49,6 +49,7 @@ const ukServices = sitePages.filter((p) => p.group === 'uk' && p.type === 'servi
 const guideSections = (home.sections ?? []).filter((sec) => !/why clients choose us/i.test(JSON.stringify(sec)));
 const employerServices = sitePages.filter((p) => p.group === 'employer' && p.type === 'service').sort(byKey);
 import ToolCards from '../components/ToolCards.astro';
+import NewsStrip from '../components/NewsStrip.astro';
 ---
 <Page title={title} description={description} schemas={schemas}>
 <main id="main">
@@ -310,6 +311,9 @@ import ToolCards from '../components/ToolCards.astro';
 </div>
 </section>
 
+
+<!-- Latest visa news (blog posts with Category "News") -->
+<NewsStrip title="Latest visa news" allLabel="All visa news" />
 
 <!-- Guide (edited in the admin: Homepage › Guide sections), shown side by side.
      "Why clients choose us" is left out because "Meet your advisers" already covers the same points. -->
