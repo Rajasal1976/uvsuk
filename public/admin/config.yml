@@ -435,7 +435,7 @@ collections:
               - { name: service, label: Delivery option, widget: string }
               - { name: price, label: Price, widget: string, hint: 'For example £15, or "We’ll quote".' }
           - { name: evisaDelivery, label: eVisa delivery price, widget: string, hint: 'Shown on every eVisa page, e.g. £5.' }
-          - { name: collection, label: 'Free collection option', widget: string, required: false, hint: 'Shown first in "Getting your passport back" on travel visa pages, followed by " · Free". Leave empty to hide it.' }
+          - { name: collection, label: 'Free collection sentence', widget: string, required: false, hint: 'Shown under the price table on travel visa pages, e.g. You can also collect your passport from our Manchester office at no extra cost. Leave empty to hide it.' }
           - { name: facebook, label: Facebook page link, widget: string, required: false, hint: 'The full web address, e.g. https://www.facebook.com/yourpage. Leave empty to hide the icon.' }
           - { name: instagram, label: Instagram link, widget: string, required: false, hint: 'e.g. https://www.instagram.com/yourname' }
           - { name: linkedin, label: LinkedIn link, widget: string, required: false, hint: 'e.g. https://www.linkedin.com/company/yourcompany' }

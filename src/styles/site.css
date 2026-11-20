@@ -445,13 +445,12 @@ a.card:hover { border-color: var(--green-600); color: inherit; }
   .fee-table td.total-col { text-align: left; margin: 8px -18px -14px; padding: 10px 18px; width: calc(100% + 36px); }
 }
 
-/* Compact passport return / eVisa delivery box */
-.delivery-box { margin-top: 20px; background: var(--green-50); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; }
-.delivery-box h3 { font-family: var(--sans); font-size: 17px; margin: 0 0 10px; color: var(--green-800); }
-.delivery-box p { margin: 0; font-size: 16px; color: var(--ink-soft); }
-.delivery-chips { list-style: none; margin: 0; padding: 0 !important; display: flex !important; flex-direction: row !important; flex-wrap: wrap; gap: 8px !important; }
-.delivery-chips li { background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-size: 15px; color: var(--ink-soft); }
-.delivery-chips li.chip-free { background: var(--green-800); border-color: var(--green-800); color: #fff; font-weight: 600; }
+/* Delivery strip under the price table */
+.delivery-strip { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; padding: 12px 18px; background: var(--green-50); border-top: 1px solid var(--line); font-size: 15px; }
+.delivery-label { font-weight: 600; color: var(--green-800); margin-right: 4px; }
+.delivery-chip { background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; color: var(--ink-soft); white-space: nowrap; }
+.delivery-note { color: var(--ink-soft); }
+@media (max-width: 700px) { .delivery-label { flex-basis: 100%; } }
 
 /* "On this page" jump links */
 .toc ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
@@ -467,3 +466,4 @@ a.card:hover { border-color: var(--green-600); color: inherit; }
   .toc-desktop { display: none; }
   .toc-mobile { display: block; }
 }
+.toc[hidden] { display: none !important; }

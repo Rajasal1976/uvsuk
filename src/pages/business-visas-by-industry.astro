@@ -1,5 +1,6 @@
 ---
 import Page from '../layouts/Page.astro';
+import OnThisPage from '../components/OnThisPage.astro';
 import { site } from '../data/site.js';
 const title = 'Business Travel Visas by Industry | Unique Visa Services';
 const description = 'Business and work visas for UK companies sending staff abroad: oil and gas, engineering, film crews, performers, trade fairs, construction and more.';
@@ -26,6 +27,7 @@ const tel = `tel:${site.phoneIntl}`;
 
 <div class="wrap section page-body" style="padding-top:64px">
 <div class="content">
+<OnThisPage auto mobile />
 <section>
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px">
 {industries.map(([name, text, href]) => (
@@ -52,6 +54,7 @@ const tel = `tel:${site.phoneIntl}`;
 </div>
 
 <aside class="aside">
+<OnThisPage auto />
 <div class="panel">
 <h2>Get a quote for your team</h2>
 <p class="soft" style="font-size:16px">Tell us the destination, dates and team size, and we'll confirm the right visa and our fee.</p><a class="btn btn-primary" href="/contact-us/">Get a quote</a><a href={tel} class="btn btn-outline">Call {site.phone}</a>

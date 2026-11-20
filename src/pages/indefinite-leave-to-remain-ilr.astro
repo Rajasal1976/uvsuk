@@ -1,5 +1,6 @@
 ---
 import Page from '../layouts/Page.astro';
+import OnThisPage from '../components/OnThisPage.astro';
 import { site } from '../data/site.js';
 import Faq from '../components/Faq.astro';
 import ApplyButton from '../components/ApplyButton.astro';
@@ -28,6 +29,7 @@ const schemas = [];
 </div>
 <div class="wrap section page-body" style="padding-top:64px">
 <div class="content">
+<OnThisPage auto mobile />
 <AbsenceCalculator />
 
 <section>
@@ -61,6 +63,7 @@ const schemas = [];
 <li><a href="/uk-visa-cost-calculator/">UK visa cost calculator</a></li>
 <li><a href="/life-in-the-uk-mock-test/">Life in the UK mock test</a></li></ul></section></div>
 <aside class="aside">
+<OnThisPage auto />
 <div class="panel">
 <h2>Talk to an adviser</h2>
 <p class="soft" style="font-size:16px">Book a consultation and we&#x27;ll confirm your options, what you&#x27;ll need and our fee.</p><a class="btn btn-primary" href="/contact-us/">Book a consultation</a><a href="tel:+441619562003" class="btn btn-outline">Call 0161 956 2003</a>

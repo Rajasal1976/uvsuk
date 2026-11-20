@@ -41,25 +41,22 @@ const call = `tel:${site.phoneIntl}`;
           })}
         </tbody>
       </table>
+      {kind === 'travel' && site.delivery.length > 0 && (
+        <div class="delivery-strip">
+          <span class="delivery-label">Delivery back to you</span>
+          {site.delivery.map((d) => <span class="delivery-chip">{d.service}{/\d/.test(d.price) ? ` ${d.price}` : `, ${d.price.charAt(0).toLowerCase()}${d.price.slice(1)}`}</span>)}
+        </div>
+      )}
+      {kind === 'evisa' && (
+        <div class="delivery-strip">
+          <span class="delivery-label">Delivery</span>
+          <span class="delivery-note">Your eVisa is emailed to you.{site.evisaDelivery && <> A copy by post is optional, {site.evisaDelivery}.</>}</span>
+        </div>
+      )}
     </div>
   )}
   <p class="soft" style="font-size:15px">{kind === 'evisa'
     ? 'The official fee is the fee charged by the country’s eVisa system. It can change, so we confirm it before you pay.'
-    : 'The embassy fee includes the visa centre charges and VAT. It can depend on your nationality and the number of entries, so we confirm it before you pay.'}</p>
-
-  {kind === 'travel' && (site.collection || site.delivery.length > 0) && (
-    <div class="delivery-box">
-      <h3>Getting your passport back</h3>
-      <ul class="delivery-chips">
-        {site.collection && <li class="chip-free">{site.collection} · Free</li>}
-        {site.delivery.map((d) => <li>{d.service} · {/\d/.test(d.price) ? d.price : d.price.toLowerCase()}</li>)}
-      </ul>
-    </div>
-  )}
-  {kind === 'evisa' && (
-    <div class="delivery-box">
-      <p>Your eVisa is emailed to you, so there’s nothing to post.{site.evisaDelivery && <> If you’d like a copy sent by post as well, that’s an optional <strong>{site.evisaDelivery}</strong>.</>}</p>
-    </div>
-  )}
+    : 'The embassy fee includes the visa centre charges and VAT. It can depend on your nationality and the number of entries, so we confirm it before you pay.'}{kind === 'travel' && site.collection && ` ${site.collection}`}</p>
   <div class="btn-row" style="margin-top:24px"><a class="btn btn-primary" href={startUrl}>Start your application</a></div>
 </section>
