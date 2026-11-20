@@ -9,7 +9,7 @@ const tagClass = (n = '') => (n === 'Required' ? 'tag-req' : n === 'We prepare' 
 const items = rows.filter((r) => r && r.document);
 ---
 {items.length > 0 && (
-  <section>
+  <section id="documents">
     <h2>Documents you'll need</h2>
     <div class="table-wrap">
       <table class="data-table">

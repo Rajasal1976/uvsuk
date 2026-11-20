@@ -1,0 +1,17 @@
+---
+// "On this page" list of jump links. Shown in the sidebar on desktop and as a tap-to-open bar on mobile.
+// Only appears on pages with 4 or more sections, so short pages stay clean.
+const { items = [], mobile = false } = Astro.props;
+const show = items.length >= 4;
+---
+{show && (mobile ? (
+  <details class="toc toc-mobile">
+    <summary>On this page</summary>
+    <ol>{items.map((i) => <li><a href={`#${i.id}`}>{i.label}</a></li>)}</ol>
+  </details>
+) : (
+  <nav class="toc toc-desktop" aria-label="On this page">
+    <p class="toc-title">On this page</p>
+    <ol>{items.map((i) => <li><a href={`#${i.id}`}>{i.label}</a></li>)}</ol>
+  </nav>
+))}

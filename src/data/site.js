@@ -38,6 +38,8 @@ export const site = {
   // Passport return options for travel visas, and the single eVisa delivery charge (edited in the admin)
   delivery: s.delivery || [],
   evisaDelivery: s.evisaDelivery || '',
+  // First passport-return option on travel visa pages (Business details in the admin). Leave empty to hide it.
+  collection: s.collection ?? 'Collect from our Manchester office',
   // Social media links (edited in the admin under Business details). Empty ones are hidden.
   social: [
     ['Facebook', s.facebook], ['Instagram', s.instagram], ['LinkedIn', s.linkedin],

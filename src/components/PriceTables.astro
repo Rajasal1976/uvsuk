@@ -21,8 +21,8 @@ const call = `tel:${site.phoneIntl}`;
   <h2>Fees and timescales</h2>
   {rows.length > 0 && (
     <div class="table-wrap">
-      <table class="data-table price-table">
-        <thead><tr><th scope="col">Service</th><th scope="col">Visa length</th><th scope="col">{feeName}</th><th scope="col">Our fee</th><th scope="col">Total</th></tr></thead>
+      <table class="data-table price-table fee-table">
+        <thead><tr><th scope="col">Service</th><th scope="col">Visa length</th><th scope="col">{feeName}</th><th scope="col">Our fee</th><th scope="col" class="total-col">Total</th></tr></thead>
         <tbody>
           {rows.map((r) => {
             const total = totalFor(r);
@@ -35,7 +35,7 @@ const call = `tel:${site.phoneIntl}`;
                 <td data-label="Visa length">{r.validity || r.processing || 'Ask us'}</td>
                 <td data-label={feeName}>{r.processingFee || '–'}</td>
                 <td data-label="Our fee">{r.fee || <a href={call}>Call for price</a>}</td>
-                <td data-label="Total" class={total ? 'price' : undefined}>{total || '–'}</td>
+                <td data-label="Total" class:list={['total-col', { price: total }]}>{total || '–'}</td>
               </tr>
             );
           })}
@@ -47,26 +47,19 @@ const call = `tel:${site.phoneIntl}`;
     ? 'The official fee is the fee charged by the country’s eVisa system. It can change, so we confirm it before you pay.'
     : 'The embassy fee includes the visa centre charges and VAT. It can depend on your nationality and the number of entries, so we confirm it before you pay.'}</p>
 
-  {kind === 'travel' && site.delivery.length > 0 && (
-    <>
-      <h3 style="margin-top:32px">Returning your passport</h3>
-      <div class="table-wrap">
-        <table class="data-table price-table">
-          <thead><tr><th scope="col">Delivery option</th><th scope="col">Price</th></tr></thead>
-          <tbody>
-            {site.delivery.map((d) => (
-              <tr><th scope="row" data-label="Delivery option">{d.service}</th><td data-label="Price" class={/\d/.test(d.price) ? 'price' : undefined}>{d.price}</td></tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </>
+  {kind === 'travel' && (site.collection || site.delivery.length > 0) && (
+    <div class="delivery-box">
+      <h3>Getting your passport back</h3>
+      <ul class="delivery-chips">
+        {site.collection && <li class="chip-free">{site.collection} · Free</li>}
+        {site.delivery.map((d) => <li>{d.service} · {/\d/.test(d.price) ? d.price : d.price.toLowerCase()}</li>)}
+      </ul>
+    </div>
   )}
-  {kind === 'evisa' && site.evisaDelivery && (
-    <>
-      <h3 style="margin-top:32px">Delivery</h3>
-      <p>Your eVisa is sent to you electronically, so there’s no passport to post. Delivery is a flat <strong>{site.evisaDelivery}</strong>.</p>
-    </>
+  {kind === 'evisa' && (
+    <div class="delivery-box">
+      <p>Your eVisa is emailed to you, so there’s nothing to post.{site.evisaDelivery && <> If you’d like a copy sent by post as well, that’s an optional <strong>{site.evisaDelivery}</strong>.</>}</p>
+    </div>
   )}
   <div class="btn-row" style="margin-top:24px"><a class="btn btn-primary" href={startUrl}>Start your application</a></div>
 </section>

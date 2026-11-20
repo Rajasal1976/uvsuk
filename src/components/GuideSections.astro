@@ -2,6 +2,7 @@
 // Longer guide sections on a page (good for Google). Edited in the admin: "Guide sections".
 // In the text, leave a blank line between paragraphs. Lines starting with "- " become bullet points.
 // Links: write [link text](https://example.com). Links to other websites open in a new tab.
+import { sectionId } from '../lib/section-id.js';
 const { sections = [] } = Astro.props;
 const blocks = (text = '') => {
   // Split into paragraphs and bullet lists. A run of lines starting with "- " becomes one list.
@@ -22,6 +23,7 @@ const blocks = (text = '') => {
   return out;
 };
 const items = sections.filter((s) => s && s.heading && s.text);
+// Each section gets an id from its heading, so "On this page" and Google can link straight to it
 // Split text into plain parts and [text](url) links
 const parts = (text = '') => {
   const out = [];
@@ -37,7 +39,7 @@ const parts = (text = '') => {
 };
 ---
 {items.map((s) => (
-  <section>
+  <section id={sectionId(s.heading)}>
     <h2>{s.heading}</h2>
     {blocks(s.text).map((b) => (b.list
       ? <ul>{b.list.map((li) => <li>{parts(li).map((x) => (x.href ? <a href={x.href} target={x.ext ? '_blank' : undefined} rel={x.ext ? 'noopener' : undefined}>{x.label}</a> : x.t))}</li>)}</ul>

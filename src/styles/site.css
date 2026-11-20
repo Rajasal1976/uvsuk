@@ -435,3 +435,35 @@ a.card:hover { border-color: var(--green-600); color: inherit; }
 /* "Last updated · Reviewed by" line under page content */
 .review-note { padding: 0 0 40px; }
 .review-note p { margin: 0; padding-top: 18px; border-top: 1px solid rgba(0,0,0,.1); font-size: .9rem; color: #5b6660; }
+
+/* Coloured fee table: gold Total column */
+.fee-table thead th.total-col { background: var(--gold); color: var(--green-900); text-align: center; }
+.fee-table td.total-col { background: #FFF4D1; text-align: center; }
+.fee-table tbody tr:nth-child(even) td.total-col { background: #FBEBB8; }
+.fee-table td.total-col.price { color: var(--green-900); }
+@media (max-width: 700px) {
+  .fee-table td.total-col { text-align: left; margin: 8px -18px -14px; padding: 10px 18px; width: calc(100% + 36px); }
+}
+
+/* Compact passport return / eVisa delivery box */
+.delivery-box { margin-top: 20px; background: var(--green-50); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; }
+.delivery-box h3 { font-family: var(--sans); font-size: 17px; margin: 0 0 10px; color: var(--green-800); }
+.delivery-box p { margin: 0; font-size: 16px; color: var(--ink-soft); }
+.delivery-chips { list-style: none; margin: 0; padding: 0 !important; display: flex !important; flex-direction: row !important; flex-wrap: wrap; gap: 8px !important; }
+.delivery-chips li { background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-size: 15px; color: var(--ink-soft); }
+.delivery-chips li.chip-free { background: var(--green-800); border-color: var(--green-800); color: #fff; font-weight: 600; }
+
+/* "On this page" jump links */
+.toc ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+.toc a { display: block; padding: 6px 10px; border-radius: 6px; color: var(--ink-soft); text-decoration: none; font-size: 15px; line-height: 1.35; }
+.toc a:hover { background: var(--green-50); color: var(--green-800); }
+.toc-desktop { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 18px 14px; margin-bottom: 16px; }
+.toc-title { font-weight: 600; color: var(--green-800); margin: 0 0 8px 10px; font-size: 15px; }
+.toc-mobile { display: none; background: var(--green-50); border: 1px solid var(--line); border-radius: 10px; padding: 0 14px; }
+.toc-mobile summary { cursor: pointer; padding: 12px 0; font-weight: 600; color: var(--green-800); }
+.toc-mobile ol { padding-bottom: 10px; }
+.content section[id], .content [id="requirements"] { scroll-margin-top: 24px; }
+@media (max-width: 960px) {
+  .toc-desktop { display: none; }
+  .toc-mobile { display: block; }
+}

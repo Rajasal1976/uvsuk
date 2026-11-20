@@ -33,6 +33,7 @@ const schemas = [];
 <li>You have an invitation from a company or trade fair organiser in China</li>
 <li>Your passport is valid for at least six months, with blank visa pages</li>
 <li>If you are not British, you hold valid UK residence status</li></ul></section>
+<PriceTables prices={content.prices} kind="travel" applyUrl={content.applyButton} />
 <section>
 <h2>Documents you&#x27;ll need</h2>
 <div class="table-wrap">
@@ -54,7 +55,6 @@ const schemas = [];
 <li>Prepare and complete your application forms</li>
 <li>Review all evidence against the current rules before submission</li>
 <li>Keep you updated until you have a decision</li></ul></section>
-<PriceTables prices={content.prices} kind="travel" applyUrl={content.applyButton} />
 
 <Faq items={content.faqs} title={content.faqHeading || 'Common questions'} />
 
