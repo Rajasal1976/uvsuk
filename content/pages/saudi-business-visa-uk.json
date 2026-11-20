@@ -3,9 +3,9 @@
   "applyButton": "/apply/saudi-visa/",
   "country": "Saudi Arabia",
   "shareImage": "/images/uvs-share.jpg",
-  "title": "Saudi Arabia Business Visa from the UK | Apply | UVS",
+  "title": "Saudi Business Visa from the UK | Apply Online | UVS",
   "description": "Saudi business visa from the UK: single and multiple entry up to 2 years, 72-hour processing. We check your documents and apply for you.",
-  "h1": "Saudi Arabia business visa from the UK",
+  "h1": "Saudi business visa from the UK",
   "purposeLabel": "Business visa",
   "intro": "The Saudi business visa is for meetings, negotiations, conferences and site visits in Saudi Arabia. It's mainly for UK residents who don't hold a British passport, or who need a visa rather than an ETA. We check your documents, complete your application and submit it for you.",
   "eligibility": [
@@ -15,12 +15,28 @@
   ],
   "sections": [
     {
+      "heading": "Who needs a Saudi business visa?",
+      "text": "You’ll usually need a Saudi business visa if you live in the UK and travel on a non-British passport, or if your trip isn’t covered by the Saudi ETA. Before you apply, we look at your passport, how long you’re staying and what you’ll be doing, and tell you whether the ETA or a Saudi business visa is the right route."
+    },
+    {
+      "heading": "What you can do on a Saudi business visa",
+      "text": "A Saudi business visa covers short business trips, such as:\n- Meetings and negotiations with clients, suppliers or partners\n- Conferences, exhibitions and trade fairs\n- Site visits, inspections and project meetings\n- Training or briefings that don’t involve paid work in Saudi Arabia\n\nIf you’re going to be employed or paid by a company in Saudi Arabia, you need a [Saudi work visa](/saudi-work-visa-uk/) instead."
+    },
+    {
       "heading": "Single or multiple entry",
       "text": "You can choose a single-entry visa, or a multiple-entry visa valid for 6 months, 1 year or 2 years if you travel to Saudi Arabia regularly. All options are usually processed in about 72 hours."
     },
     {
       "heading": "British citizens: you may only need an ETA",
       "text": "Since July 2026, British passport holders can visit Saudi Arabia for business on the [Saudi ETA](/saudi-arabia-eta-uk/), which is quicker and cheaper. We'll tell you which option suits your trip."
+    },
+    {
+      "heading": "How we apply for your Saudi business visa",
+      "text": "- We confirm whether you need the ETA or a Saudi business visa, and which entry option suits your travel\n- We check your invitation letter and employer letter against the requirements\n- We complete your application and check every detail against your passport\n- We submit it and keep you updated until a decision\n- We return your passport by your chosen delivery option\n\nDon’t have an employer letter yet? We can draft it for your company to sign, so it covers everything the application needs."
+    },
+    {
+      "heading": "Saudi Arabia business invitation letter template",
+      "text": "The invitation letter must come from the company you’re visiting in Saudi Arabia, printed on its letterhead, signed and stamped. Send them our free template so nothing is missed: [Download the Saudi Arabia business invitation letter template (Word)](/downloads/saudi-arabia-business-invitation-letter-template.docx).\n\nThe letter should include:\n- Your full name, date of birth, nationality, passport number and job title\n- The purpose of your visit and your business relationship with the company\n- Your arrival and departure dates and where you’ll stay\n- Who pays for your trip\n- The company’s registered name, address, phone number and registration number\n- The name, job title and signature of the person signing, with the company stamp\n\nSend us the signed letter and we’ll check it matches your application before anything is submitted."
     },
     {
       "heading": "Saudi business visa help from Manchester",
@@ -33,12 +49,20 @@
       "a": "Usually about 72 hours once your application is submitted."
     },
     {
+      "q": "Should I apply for a Saudi business visa or the ETA?",
+      "a": "British passport holders can often use the quicker Saudi ETA for business visits. If you hold another passport, or your trip isn’t covered by the ETA, you need a Saudi business visa. We check this for you before you apply."
+    },
+    {
       "q": "Do I need an invitation letter?",
       "a": "Yes. You need an invitation from the company you're visiting in Saudi Arabia."
     },
     {
       "q": "Can I work on a Saudi business visa?",
       "a": "No. For employment you need a [Saudi work visa](/saudi-work-visa-uk/)."
+    },
+    {
+      "q": "Can you write my employer letter?",
+      "a": "Yes. We can draft the employer letter for your company to sign, so it confirms your role and the trip in the way the application needs."
     }
   ],
   "sortKey": "1 saudi arabia 2 business",

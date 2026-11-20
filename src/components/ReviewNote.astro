@@ -1,0 +1,10 @@
+---
+// "Last updated · Reviewed by" line at the bottom of content pages.
+// Who reviews and the default date are set in the editor under Business details.
+// A page or blog post can give its own date with an `updated` field (YYYY-MM-DD).
+import { site } from '../data/site.js';
+const { updated } = Astro.props;
+const d = new Date(updated || site.contentUpdated);
+const label = isNaN(d.getTime()) ? '' : d.toLocaleDateString('en-GB', { month: 'long', year: 'numeric', timeZone: 'Europe/London' });
+---
+<div class="review-note"><div class="wrap"><p>{label && <>Last updated: <time datetime={updated || site.contentUpdated}>{label}</time> · </>}Reviewed by {site.reviewedBy}</p></div></div>

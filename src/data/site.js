@@ -43,4 +43,7 @@ export const site = {
     ['Facebook', s.facebook], ['Instagram', s.instagram], ['LinkedIn', s.linkedin],
     ['X (Twitter)', s.x], ['TikTok', s.tiktok], ['YouTube', s.youtube], ['WhatsApp', s.whatsapp],
   ].filter(([, url]) => url && url.trim()).map(([name, url]) => ({ name, url: url.trim() })),
+  // Shown at the bottom of content pages: "Last updated · Reviewed by ..." (edited in the admin under Business details)
+  reviewedBy: s.reviewedBy || 'Raj and Sunita, IAA-regulated immigration advisers',
+  contentUpdated: s.contentUpdated || '2026-11-20',
 };

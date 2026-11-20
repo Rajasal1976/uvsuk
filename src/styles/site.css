@@ -431,3 +431,7 @@ a.card:hover { border-color: var(--green-600); color: inherit; }
 .all-services ul { list-style: none; margin: 0; padding: 0; columns: 2 220px; column-gap: 28px; }
 .all-services li { break-inside: avoid; padding: 5px 0; }
 .all-services a { color: var(--green-800); font-weight: 500; }
+
+/* "Last updated · Reviewed by" line under page content */
+.review-note { padding: 0 0 40px; }
+.review-note p { margin: 0; padding-top: 18px; border-top: 1px solid rgba(0,0,0,.1); font-size: .9rem; color: #5b6660; }

@@ -6,6 +6,8 @@ import Footer from '../components/Footer.astro';
 import ReviewsBand from '../components/ReviewsBand.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
 import { site } from '../data/site.js';
+import ReviewNote from '../components/ReviewNote.astro';
+import { crossCanonicals } from '../data/cross-canonicals.js';
 import { businessSchema, pageSchemas } from '../lib/schema.js';
 
 interface Props {
@@ -26,7 +28,9 @@ const seo: any = pageSlug === '' ? homeContent
 const noindex = noindexProp || seo.noindex === true;
 const shareImagePath = seo.shareImage || site.shareImage || '';
 const shareImage = shareImagePath ? new URL(shareImagePath, site.url).href : '';
-const canonical = new URL(Astro.url.pathname, site.url).href;
+// Pages whose main version lives on a sister site point Google there (src/data/cross-canonicals.js)
+const crossCanonical = crossCanonicals[Astro.url.pathname];
+const canonical = crossCanonical || new URL(Astro.url.pathname, site.url).href;
 
 // "Edit this page" button: only shown to someone logged in to the editor (/admin) in this browser.
 const editable = new Set(Object.keys(import.meta.glob('../../content/pages/*.json')).map((p) => p.split('/').pop()!.replace('.json', '')));
@@ -39,6 +43,16 @@ const editLabel = editUrl === '/admin/' ? 'Open the editor' : 'Edit this page';
 // Business details and, for content pages, breadcrumbs and Service details (src/lib/schema.js)
 const business = businessSchema();
 const autoSchemas = pageSchemas(slug, seo).map((o) => JSON.stringify(o));
+// "Last updated · Reviewed by" line and matching structured data on content pages
+const noReview = /^(apply|contact-us|sitemap|blog|news|terms|terms-and-conditions|privacy-policy|cookie-policy|complaints|disclaimer|404|thank-you)(\/|$)/;
+const showReview = !noindex && slug !== '' && !crossCanonical && (/^blog\/./.test(slug) || !noReview.test(slug));
+const reviewDate = seo.updated || seo.date || site.contentUpdated;
+const reviewSchema = showReview ? {
+  '@context': 'https://schema.org', '@type': 'WebPage', '@id': `${canonical}#webpage`, url: canonical, name: title,
+  lastReviewed: reviewDate, dateModified: reviewDate,
+  reviewedBy: { '@type': 'Organization', name: site.legalName || site.name, url: site.url },
+  publisher: { '@id': `${site.url}/#business` },
+} : null;
 ---
 <!doctype html>
 <html lang="en-GB">
@@ -62,12 +76,14 @@ const autoSchemas = pageSchemas(slug, seo).map((o) => JSON.stringify(o));
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=Inter:wght@400;500;600&display=swap" />
   <script type="application/ld+json" set:html={JSON.stringify(business)} />
+  {reviewSchema && <script type="application/ld+json" set:html={JSON.stringify(reviewSchema)} />}
   {[...schemas, ...autoSchemas].map((s) => <script type="application/ld+json" set:html={s} />)}
   <slot name="head" />
 </head>
 <body>
   <Header />
   <slot />
+  {showReview && <ReviewNote updated={seo.updated || seo.date} />}
   {slug !== '' && <ReviewsBand />}
   <Footer />
   <WhatsAppButton pageTitle={title} />

@@ -401,6 +401,8 @@ collections:
         description: These appear across the whole site. Keep them identical to your Google Business Profile.
         file: content/settings.json
         fields:
+          - { name: reviewedBy, label: 'Pages reviewed by', widget: string, required: false, hint: 'Shown at the bottom of every guide and service page as "Reviewed by ...", e.g. Raj, IAA-regulated immigration adviser. Only name someone who actually checks the pages.' }
+          - { name: contentUpdated, label: 'Pages last checked (date)', widget: datetime, required: false, format: 'YYYY-MM-DD', date_format: 'DD/MM/YYYY', time_format: false, hint: 'Shown as "Last updated" on pages without their own date. Change it when you have checked the pages are still correct.' }
           - { name: shareImage, label: 'Default social sharing image', widget: image, required: false, choose_url: false, hint: 'Used when a page without its own image is shared on WhatsApp, Facebook or LinkedIn. Landscape, about 1200 × 630 pixels.' }
           - { name: siteLogo, label: Website logo, widget: image, required: false, choose_url: false, hint: 'Shown at the top of every page instead of the business name. A PNG with a transparent background works best, at least 400 pixels wide.' }
           - { name: phone, label: Main phone number, widget: string, hint: 'One number only, e.g. 0161 956 2003' }
