@@ -546,10 +546,12 @@ export function mountApplication(root, config, opts = {}) {
 
     const c1 = h('input', { type: 'checkbox', id: 'decl-true' });
     const c2 = h('input', { type: 'checkbox', id: 'decl-privacy' });
+    const c3 = h('input', { type: 'checkbox', id: 'decl-agency' });
     wrap.append(h('div', { class: 'ap-declare' },
       h('h3', {}, 'Declaration'),
       h('label', { class: 'ap-check' }, c1, h('span', {}, opts.declaration)),
-      h('label', { class: 'ap-check' }, c2, h('span', {}, 'I agree to Unique Visa Services keeping and using my information and documents to prepare my application, as described in the ', h('a', { href: '/privacy-policy/', target: '_blank' }, 'privacy policy'), '.')),
+      h('label', { class: 'ap-check' }, c2, h('span', {}, 'I agree to the ', h('a', { href: '/terms/', target: '_blank' }, 'terms and conditions'), ', and to Unique Visa Services keeping and using my information and documents to prepare my application, as described in the ', h('a', { href: '/privacy-policy/', target: '_blank' }, 'privacy policy'), '.')),
+      h('label', { class: 'ap-check' }, c3, h('span', {}, 'I understand that Unique Visa Services is a private visa agency, not an embassy, consulate or government office. Our service fee is charged in addition to the official visa fee, and I could apply directly to the official authority myself.')),
       h('p', { class: 'ap-err', id: 'decl-err', role: 'alert' })));
     return wrap;
   }
@@ -575,8 +577,8 @@ export function mountApplication(root, config, opts = {}) {
     }
     if (step.id === 'review') {
       if (!config.noPassport) people.forEach((x, i) => { if (!x.files.passport) errors.push({ msg: `Add the passport photo page for ${personName(i)} (Documents step${people.length > 1 ? `, person ${i + 1}` : ''})`, el: null }); });
-      const ok = stage.querySelector('#decl-true').checked && stage.querySelector('#decl-privacy').checked;
-      if (!ok) { stage.querySelector('#decl-err').textContent = 'Please tick both boxes to send your application.'; errors.push({ msg: 'Please tick both declaration boxes', el: stage.querySelector('#decl-true') }); }
+      const ok = ['#decl-true', '#decl-privacy', '#decl-agency'].every((id) => stage.querySelector(id).checked);
+      if (!ok) { stage.querySelector('#decl-err').textContent = 'Please tick all three boxes to send your application.'; errors.push({ msg: 'Please tick all three declaration boxes', el: stage.querySelector('#decl-true') }); }
       return errors;
     }
     stage.querySelectorAll('.ap-field').forEach((el) => {
@@ -705,7 +707,8 @@ export function mountApplication(root, config, opts = {}) {
         const parts = batches.length;
         const header = [config.title, `Reference: ${ref}`,
           total > 1 ? `Group reference: ${base} (person ${i + 1} of ${total}: ${names.join(', ')})` : null,
-          `Submitted: ${new Date().toLocaleString('en-GB')}`].filter(Boolean);
+          `Submitted: ${new Date().toLocaleString('en-GB')}`,
+          'Declarations accepted: information true and complete; terms and conditions and privacy policy; understands Unique Visa Services is a private agency, not an embassy or government office, and that our fee is in addition to the official fee'].filter(Boolean);
         for (let k = 0; k < parts; k++) {
           const fd = new FormData();
           fd.append('form-name', config.slug);

@@ -6,6 +6,7 @@
 .ap-facts li { display: flex; align-items: center; gap: 8px; }
 .ap-facts li::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--gold); flex: none; }
 .ap-section { padding-top: 48px; }
+.ap-agency-note { font-size: .95rem; color: #3d4a44; background: #F3F6F4; border: 1px solid #DDE5E0; padding: 12px 16px; border-radius: 6px; margin: 0 0 20px; max-width: 920px; }
 .ap-notice { background: #FFF8E8; border-left: 4px solid var(--gold); padding: 14px 18px; border-radius: 6px; margin: 0 0 28px; max-width: 920px; }
 
 .ap-layout { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 48px; align-items: start; }
