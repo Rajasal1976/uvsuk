@@ -45,14 +45,19 @@ const howWeHelp = [
 ];
 // "On this page" jump links, in the same order as the sections below
 const guideItems = (p.sections || []).filter((s) => s && s.heading && s.text).map((s) => ({ id: sectionId(s.heading), label: s.heading }));
-const tocItems = p.type === 'service' ? [
-  ...(p.eligibility?.length ? [{ id: 'qualify', label: 'Do you qualify?' }] : []),
-  { id: 'fees', label: 'Fees and timescales' },
-  ...((p.documentsTable || []).some((r) => r && r.document) ? [{ id: 'documents', label: "Documents you'll need" }] : []),
-  ...guideItems,
-  { id: 'how-we-help', label: 'How we help' },
+// "On this page": kept short on purpose. Only what clients look for: fees and timescales,
+// documents, common questions, and an Apply (or Book) button.
+const findSection = (re) => (p.sections || []).find((s) => s && s.heading && s.text && re.test(s.heading));
+const feesSec = p.type === 'service' ? { id: 'fees' } : (findSection(/fee|cost|price|timescale|processing time/i) && { id: sectionId(findSection(/fee|cost|price|timescale|processing time/i).heading) });
+const hasDocTable = p.type === 'service' && (p.documentsTable || []).some((r) => r && r.document);
+const docSec = hasDocTable ? { id: 'documents' } : (findSection(/document|what you.?ll need|requirements/i) && { id: sectionId(findSection(/document|what you.?ll need|requirements/i).heading) });
+const applyHref = p.applyButton && p.applyButton !== 'none' ? p.applyButton : site.bookingUrl;
+const tocItems = p.group === 'company' ? [] : [
+  ...(feesSec ? [{ id: feesSec.id, label: 'Fees and timescales' }] : []),
+  ...(docSec ? [{ id: docSec.id, label: 'Documents' }] : []),
   ...(p.faqs?.length ? [{ id: 'faqs', label: 'Common questions' }] : []),
-] : [...guideItems, ...(p.faqs?.length ? [{ id: 'faqs', label: 'Common questions' }] : [])];
+  { href: applyHref, label: 'Apply now', cta: true },
+];
 ---
 <Page title={p.title} description={p.description}>
   <main>

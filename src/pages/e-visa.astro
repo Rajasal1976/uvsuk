@@ -33,7 +33,7 @@ import content from '../../content/pages/e-visa.json';
 
     <div class="wrap section page-body" style="padding-top:64px">
       <div class="content">
-<OnThisPage auto mobile />
+<OnThisPage auto mobile apply={content.applyButton} />
         {evisaContinents.map((g) => (
           <section class="evisa-continent" id={g.id}>
             <h2>{g.name}</h2>
@@ -64,7 +64,7 @@ import content from '../../content/pages/e-visa.json';
         <Faq items={content.faqs} title={content.faqHeading || 'Common questions'} />
       </div>
       <aside class="aside">
-<OnThisPage auto />
+<OnThisPage auto apply={content.applyButton} />
         <div class="panel">
           <h2>Not sure if you need an eVisa?</h2>
           <p class="soft" style="font-size:16px">Tell us where you’re going and your nationality, and we’ll tell you what you need.</p>

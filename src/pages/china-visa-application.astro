@@ -14,6 +14,12 @@ import '../styles/china-chooser.css';
 const title = content.title;
 const description = content.description;
 const schemas = [];
+const toc = [
+  { id: 'fees', label: 'Fees and timescales' },
+  { id: 'documents-for-a-china-visa-application', label: 'Documents' },
+  { id: 'faqs', label: 'Common questions' },
+  { href: content.applyButton, label: 'Apply now', cta: true },
+];
 ---
 <Page title={title} description={description} schemas={schemas}>
 <main>
@@ -28,7 +34,7 @@ const schemas = [];
 </div>
 <div class="wrap section page-body" style="padding-top:64px">
 <div class="content">
-<OnThisPage auto mobile />
+<OnThisPage items={toc} mobile />
 <PriceTables prices={content.prices} kind="travel" applyUrl={content.applyButton} />
 <section class="vc"><style is:global>
 #vc-business:checked ~ .vc-grid label[for="vc-business"]{border-color:var(--green-800);background:var(--green-50);box-shadow:inset 0 0 0 1px var(--green-800)}
@@ -203,7 +209,7 @@ const schemas = [];
 <li><a href="/china-business-visa/">China business visa (M visa)</a></li>
 <li><a href="/china-work-visa-for-uk-citizens/">China work visa (Z visa)</a></li></ul></section></div>
 <aside class="aside">
-<OnThisPage auto />
+<OnThisPage items={toc} />
 <div class="panel">
 <h2>Talk to an adviser</h2>
 <p class="soft" style="font-size:16px">Book a consultation and we&#x27;ll confirm your options, what you&#x27;ll need and our fee.</p><a class="btn btn-primary" href="/contact-us/">Book a consultation</a><a href="tel:+441619562003" class="btn btn-outline">Call 0161 956 2003</a>

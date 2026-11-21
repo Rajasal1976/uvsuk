@@ -1,21 +1,24 @@
 ---
 // "On this page" list of jump links. Shown in the sidebar on desktop and as a tap-to-open bar on mobile.
-// Only appears on pages with 4 or more sections, so short pages stay clean.
-// Pages built from the main template pass `items`. Special pages use `auto`, which builds the list
-// from the page's headings in the browser.
-const { items = [], mobile = false, auto = false } = Astro.props;
-const show = auto || items.length >= 4;
-const list = items.map((i) => ({ href: `#${i.id}`, label: i.label }));
+// Kept short: fees and timescales, documents, common questions and an Apply button.
+// Pages built from the main template pass `items`. Special pages use `auto`, which finds those
+// sections from the page's headings in the browser. `apply` is the Apply link (defaults to booking).
+import { site } from '../data/site.js';
+const { items = [], mobile = false, auto = false, apply = '' } = Astro.props;
+const show = auto || items.length >= 2;
+const applyHref = apply && apply !== 'none' ? apply : site.bookingUrl;
+const applyLabel = 'Apply now';
+const list = items.map((i) => ({ href: i.href || `#${i.id}`, label: i.label, cta: !!i.cta }));
 ---
 {show && (mobile ? (
-  <details class="toc toc-mobile" data-toc-auto={auto ? '' : undefined} hidden={auto}>
+  <details class="toc toc-mobile" data-toc-auto={auto ? '' : undefined} data-apply={auto ? applyHref : undefined} data-apply-label={auto ? applyLabel : undefined} hidden={auto}>
     <summary>On this page</summary>
-    <ol>{list.map((i) => <li><a href={i.href}>{i.label}</a></li>)}</ol>
+    <ol>{list.map((i) => <li><a href={i.href} class={i.cta ? 'toc-cta' : undefined}>{i.label}</a></li>)}</ol>
   </details>
 ) : (
-  <nav class="toc toc-desktop" aria-label="On this page" data-toc-auto={auto ? '' : undefined} hidden={auto}>
+  <nav class="toc toc-desktop" aria-label="On this page" data-toc-auto={auto ? '' : undefined} data-apply={auto ? applyHref : undefined} data-apply-label={auto ? applyLabel : undefined} hidden={auto}>
     <p class="toc-title">On this page</p>
-    <ol>{list.map((i) => <li><a href={i.href}>{i.label}</a></li>)}</ol>
+    <ol>{list.map((i) => <li><a href={i.href} class={i.cta ? 'toc-cta' : undefined}>{i.label}</a></li>)}</ol>
   </nav>
 ))}
 {auto && !mobile && (
@@ -25,19 +28,26 @@ const list = items.map((i) => ({ href: `#${i.id}`, label: i.label }));
       var content = document.querySelector('.content');
       if (!boxes.length || !content) return;
       var slug = function (h) { return h.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60); };
-      var seen = {}, items = [];
-      content.querySelectorAll('h2').forEach(function (h) {
-        if (h.closest('.toc')) return;
+      var wanted = [
+        [/fee|cost|price|timescale|processing time/i, 'Fees and timescales'],
+        [/document|what you.?ll need|requirements/i, 'Documents'],
+        [/common questions|faq|frequently asked/i, 'Common questions']
+      ];
+      var heads = Array.prototype.filter.call(content.querySelectorAll('h2'), function (h) { return !h.closest('.toc'); });
+      var items = [];
+      wanted.forEach(function (w) {
+        var h = heads.find(function (x) { return w[0].test(x.textContent); });
+        if (!h) return;
         var target = h.closest('section') && h.closest('section').querySelectorAll('h2').length === 1 ? h.closest('section') : h;
         var id = target.id || slug(h.textContent);
-        if (!id || seen[id]) return;
-        seen[id] = true; target.id = id; target.style.scrollMarginTop = '24px';
-        items.push({ id: id, label: h.textContent.trim() });
+        target.id = id; target.style.scrollMarginTop = '24px';
+        items.push({ id: id, label: w[1] });
       });
-      if (items.length < 4) return;
+      if (!items.length) return;
       boxes.forEach(function (box) {
         var ol = box.querySelector('ol');
         items.forEach(function (i) { var li = document.createElement('li'), a = document.createElement('a'); a.href = '#' + i.id; a.textContent = i.label; li.appendChild(a); ol.appendChild(li); });
+        if (box.dataset.apply) { var li2 = document.createElement('li'), b = document.createElement('a'); b.href = box.dataset.apply; b.textContent = box.dataset.applyLabel; b.className = 'toc-cta'; li2.appendChild(b); ol.appendChild(li2); }
         box.hidden = false;
       });
     })();
