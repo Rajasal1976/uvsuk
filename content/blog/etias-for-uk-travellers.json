@@ -1,10 +1,10 @@
 {
-  "h1": "ETIAS for UK travellers: what to expect when it launches",
-  "date": "2026-11-17",
+  "h1": "ETIAS for UK travellers: latest on the launch date",
+  "date": "2026-11-21",
   "category": "News",
   "focusKeyword": "ETIAS for UK travellers",
   "shareImage": "/images/uvs-share.jpg",
-  "intro": "ETIAS for UK travellers is the EU’s new online travel authorisation, and it’s expected to start in the last quarter of 2026. It isn’t open yet, so nobody can apply today. Here’s what we know about the fee, who needs it, how it fits with the new Entry/Exit System, and how to avoid the scam websites already selling it.",
+  "intro": "ETIAS for UK travellers is the EU’s planned online travel authorisation for British visitors to Europe. It isn’t open yet, and the EU no longer gives a launch window: it now says only that it will announce the start date several months in advance. Here’s what we know about the fee, who will need it, how it fits with the new Entry/Exit System, and how to avoid the scam websites already selling it.",
   "sections": [
     {
       "heading": "What is ETIAS?",
@@ -12,7 +12,7 @@
     },
     {
       "heading": "When does ETIAS start?",
-      "text": "The EU has said ETIAS will start operating in the last quarter of 2026, but it hasn’t yet announced an exact opening date. When it does launch, there’s expected to be a transition period of several months before an approval becomes compulsory.\n\nUntil the EU confirms the date, you don’t need to do anything. Keep an eye on the official [ETIAS website](https://travel-europe.europa.eu/etias_en) or on our [visa news](/news/) page, where we’ll post the date as soon as it’s confirmed."
+      "text": "There is no confirmed start date. Until mid-2026 the EU said ETIAS would start in the last quarter of 2026, but it has since dropped that timeline. The official position now is that ETIAS isn’t in operation, no applications are being taken, and the EU will announce the start date several months before launch. After it launches, there’s expected to be a transition period of several months before an approval becomes compulsory.\n\nSo for now you don’t need to do anything, and you won’t be caught out: you’ll get months of notice. Keep an eye on the official [ETIAS website](https://travel-europe.europa.eu/etias_en) or on our [visa news](/news/) page, where we’ll post the date as soon as it’s confirmed."
     },
     {
       "heading": "ETIAS for UK travellers: the key facts",
@@ -20,7 +20,7 @@
     },
     {
       "heading": "How ETIAS works with the Entry/Exit System",
-      "text": "ETIAS is the second part of the EU’s new border systems. The first, the Entry/Exit System (EES), has been fully running since 10 April 2026. EES replaces passport stamps with a digital record: the first time you cross the border you give your fingerprints and a photo, and each later crossing is recorded automatically.\n\nEES is free and you don’t apply for it in advance. ETIAS is the part you’ll apply and pay for online before you travel."
+      "text": "ETIAS is the second part of the EU’s new border systems. The first, the Entry/Exit System (EES), has been fully running since 10 April 2026. EES replaces passport stamps with a digital record: the first time you cross the border you give your fingerprints and a photo, and each later crossing is recorded automatically.\n\nEES is free and you don’t apply for it in advance. ETIAS is the part you’ll apply and pay for online before you travel.\n\nRead our guide to the [Entry Exit System](/blog/entry-exit-system-uk-travellers/) for what to expect at the border."
     },
     {
       "heading": "Who doesn’t need ETIAS?",
@@ -38,7 +38,7 @@
   "faqs": [
     {
       "q": "Do UK citizens need ETIAS now?",
-      "a": "No. ETIAS hasn’t launched yet. You can travel to Europe as you do now, and you’ll go through the Entry/Exit System checks at the border."
+      "a": "No. ETIAS hasn’t launched and no start date has been announced. You can travel to Europe as you do now, and you’ll go through the Entry/Exit System checks at the border."
     },
     {
       "q": "How much will ETIAS cost?",
@@ -59,6 +59,6 @@
   ],
   "relatedPage": "/schengen-visa-application/",
   "relatedLabel": "Schengen visa: how we can help",
-  "title": "ETIAS for UK Travellers: Launch, Fee & Rules | UVS",
-  "description": "ETIAS for UK travellers is expected to start in late 2026. Here’s the €20 fee, who needs it, how it works with EES, and how to avoid scam websites."
+  "title": "ETIAS for UK Travellers: Launch Date & Fee | UVS",
+  "description": "ETIAS for UK travellers has no confirmed start date yet. The latest on the launch, the €20 fee, who needs it, how it works with EES and how to avoid scams."
 }
