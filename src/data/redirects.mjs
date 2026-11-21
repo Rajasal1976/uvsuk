@@ -1,6 +1,5 @@
 // Old URLs that were merged into other pages. Each becomes a permanent (301) redirect.
-// One page from the plan is NOT here yet: /family-visa-uk/. (/japan-visa-services/ now has its own page.)
-// Check their traffic first, then add them if you decide to merge them.
+// /japan-visa-services/ has its own page.
 export const redirects = [
   ['/tier-2-work-visa-extension/', '/skilled-worker-visa-formally-tier-t2-general/'],
   ['/change-of-employment/', '/skilled-worker-visa-formally-tier-t2-general/'],
@@ -29,4 +28,33 @@ export const redirects = [
   ['/china-student-visa/', '/china-visa-application/'],
   ['/schengen-visa/', '/schengen-visa-application/'],
   ['/terms-of-use/', '/terms/'],
+  // Old-site pages still known to Google (found Nov 2026), sent to the closest page on the new site
+  ['/uk-visas-and-immigration/', '/uk-visa-services/'],
+  ['/uk-visa-immigration/', '/uk-visa-services/'],
+  ['/uk-visas-immigration/', '/uk-visa-services/'],
+  ['/all-you-need-to-know-about-uk-immigration-services-a-comprehensive-guide-by-uvs/', '/uk-visa-services/'],
+  ['/family-visa-uk/', '/uk-spouse-visas/'],
+  ['/uk-spouse-visa-application-form/', '/uk-spouse-visa-application/'],
+  ['/e-visa-india-from-uk/', '/indian-visa-application-uk/'],
+  ['/chinese-visa-application/', '/china-visa-application/'],
+  ['/chinese-visa-centre-manchester/', '/china-visa-application/'],
+  ['/chinese-visa-centre-london/', '/china-visa-application/'],
+  ['/exploring-china-how-to-secure-a-tourist-visa-for-your-travels/', '/china-tourist-visa/'],
+  ['/common-visa-application-mistakes-and-how-to-avoid-them/', '/blog/'],
+  // Old WordPress archive pages
+  ['/category/*', '/blog/'],
+  ['/tag/*', '/blog/'],
+  ['/author/*', '/about-us/'],
+  ['/feed/', '/blog/'],
+  // Links copied from the Indian e-Visa site into uvsuk blog posts (fixed Nov 2026); kept in case anyone else links to them
+  ['/e-tourist-visa-india-uk/', '/e-tourist-visa-india/'],
+  ['/india-e-arrival-card/', '/blog/india-e-arrival-card-explained/'],
+  ['/india-e-business-visa-for-uk-citizens/', '/e-business-visa-india/'],
+  ['/india-e-medical-visa/', '/e-medical-visa-india/'],
+  ['/india-evisa-airports/', '/indian-visa-application-uk/'],
+  ['/indian-e-visa/', '/indian-visa-application-uk/'],
+  ['/indian-evisa-fees/', '/indian-visa-application-uk/'],
+  ['/indian-evisa-rejected/', '/blog/why-indian-e-visas-get-refused/'],
+  ['/indian-regular-visa/', '/indian-visa-application-uk/'],
+  ['/indian-visa-photo-requirements/', '/visa-photo-tool/'],
 ];

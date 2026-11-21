@@ -24,13 +24,13 @@ const redirects = [...fixed, ...hiddenOrGone.map((s) => [`/${s.slug}/`, parentOf
 
 const lines = redirects.flatMap(([from, to]) => [
   `${from}  ${to}  301`,
-  `${from.replace(/\/$/, '')}  ${to}  301`, // also catch the old URL typed without the final slash
+  ...(from.endsWith('*') ? [] : [`${from.replace(/\/$/, '')}  ${to}  301`]), // also catch the old URL typed without the final slash
 ]);
 writeFileSync('public/_redirects', lines.join('\n') + '\n');
 
 writeFileSync('vercel.json', JSON.stringify({
   trailingSlash: true,
-  redirects: redirects.map(([source, destination]) => ({ source, destination, permanent: true })),
+  redirects: redirects.map(([source, destination]) => ({ source: source.replace(/\*$/, ':path*'), destination, permanent: true })),
 }, null, 2) + '\n');
 
 console.log(`Wrote ${redirects.length} redirects.`);

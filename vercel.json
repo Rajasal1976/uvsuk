@@ -2,11 +2,6 @@
   "trailingSlash": true,
   "redirects": [
     {
-      "source": "/civil-partner-visa/",
-      "destination": "/uk-spouse-visas/",
-      "permanent": true
-    },
-    {
       "source": "/tier-2-work-visa-extension/",
       "destination": "/skilled-worker-visa-formally-tier-t2-general/",
       "permanent": true
@@ -132,53 +127,158 @@
       "permanent": true
     },
     {
-      "source": "/china-tourist-visa/",
-      "destination": "/china-visa-application/",
-      "permanent": true
-    },
-    {
       "source": "/schengen-visa/",
       "destination": "/schengen-visa-application/",
       "permanent": true
     },
     {
-      "source": "/ghana-business-visa/",
-      "destination": "/ghana-visa-services/",
-      "permanent": true
-    },
-    {
-      "source": "/ghana-tourist-visa/",
-      "destination": "/ghana-visa-services/",
-      "permanent": true
-    },
-    {
-      "source": "/russia-business-visa/",
-      "destination": "/russian-visa-services-from-uk/",
-      "permanent": true
-    },
-    {
-      "source": "/russian-work-visa/",
-      "destination": "/russian-visa-services-from-uk/",
-      "permanent": true
-    },
-    {
-      "source": "/russia-family-visa/",
-      "destination": "/russian-visa-services-from-uk/",
-      "permanent": true
-    },
-    {
-      "source": "/russia-tourist-visa/",
-      "destination": "/russian-visa-services-from-uk/",
-      "permanent": true
-    },
-    {
-      "source": "/russia-student-visa/",
-      "destination": "/russian-visa-services-from-uk/",
-      "permanent": true
-    },
-    {
       "source": "/terms-of-use/",
       "destination": "/terms/",
+      "permanent": true
+    },
+    {
+      "source": "/uk-visas-and-immigration/",
+      "destination": "/uk-visa-services/",
+      "permanent": true
+    },
+    {
+      "source": "/uk-visa-immigration/",
+      "destination": "/uk-visa-services/",
+      "permanent": true
+    },
+    {
+      "source": "/uk-visas-immigration/",
+      "destination": "/uk-visa-services/",
+      "permanent": true
+    },
+    {
+      "source": "/all-you-need-to-know-about-uk-immigration-services-a-comprehensive-guide-by-uvs/",
+      "destination": "/uk-visa-services/",
+      "permanent": true
+    },
+    {
+      "source": "/family-visa-uk/",
+      "destination": "/uk-spouse-visas/",
+      "permanent": true
+    },
+    {
+      "source": "/uk-spouse-visa-application-form/",
+      "destination": "/uk-spouse-visa-application/",
+      "permanent": true
+    },
+    {
+      "source": "/e-visa-india-from-uk/",
+      "destination": "/indian-visa-application-uk/",
+      "permanent": true
+    },
+    {
+      "source": "/chinese-visa-application/",
+      "destination": "/china-visa-application/",
+      "permanent": true
+    },
+    {
+      "source": "/chinese-visa-centre-manchester/",
+      "destination": "/china-visa-application/",
+      "permanent": true
+    },
+    {
+      "source": "/chinese-visa-centre-london/",
+      "destination": "/china-visa-application/",
+      "permanent": true
+    },
+    {
+      "source": "/exploring-china-how-to-secure-a-tourist-visa-for-your-travels/",
+      "destination": "/china-tourist-visa/",
+      "permanent": true
+    },
+    {
+      "source": "/common-visa-application-mistakes-and-how-to-avoid-them/",
+      "destination": "/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/category/:path*",
+      "destination": "/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/:path*",
+      "destination": "/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/author/:path*",
+      "destination": "/about-us/",
+      "permanent": true
+    },
+    {
+      "source": "/feed/",
+      "destination": "/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/e-tourist-visa-india-uk/",
+      "destination": "/e-tourist-visa-india/",
+      "permanent": true
+    },
+    {
+      "source": "/india-e-arrival-card/",
+      "destination": "/blog/india-e-arrival-card-explained/",
+      "permanent": true
+    },
+    {
+      "source": "/india-e-business-visa-for-uk-citizens/",
+      "destination": "/e-business-visa-india/",
+      "permanent": true
+    },
+    {
+      "source": "/india-e-medical-visa/",
+      "destination": "/e-medical-visa-india/",
+      "permanent": true
+    },
+    {
+      "source": "/india-evisa-airports/",
+      "destination": "/indian-visa-application-uk/",
+      "permanent": true
+    },
+    {
+      "source": "/indian-e-visa/",
+      "destination": "/indian-visa-application-uk/",
+      "permanent": true
+    },
+    {
+      "source": "/indian-evisa-fees/",
+      "destination": "/indian-visa-application-uk/",
+      "permanent": true
+    },
+    {
+      "source": "/indian-evisa-rejected/",
+      "destination": "/blog/why-indian-e-visas-get-refused/",
+      "permanent": true
+    },
+    {
+      "source": "/indian-regular-visa/",
+      "destination": "/indian-visa-application-uk/",
+      "permanent": true
+    },
+    {
+      "source": "/indian-visa-photo-requirements/",
+      "destination": "/visa-photo-tool/",
+      "permanent": true
+    },
+    {
+      "source": "/zimbabwe-visa-uk/",
+      "destination": "/worldwide-visas/",
+      "permanent": true
+    },
+    {
+      "source": "/zimbabwe-tourist-visa-uk/",
+      "destination": "/worldwide-visas/",
+      "permanent": true
+    },
+    {
+      "source": "/zimbabwe-business-visa-uk/",
+      "destination": "/worldwide-visas/",
       "permanent": true
     }
   ]
