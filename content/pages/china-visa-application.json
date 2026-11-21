@@ -2,7 +2,7 @@
   "applyButton": "/apply/china-visa/",
   "sortKey": "1 china 0 china visa from the uk",
   "govuk": "https://manchester.china-consulate.gov.cn/eng/",
-  "h1": "China visa from the UK",
+  "h1": "China visa application from the UK",
   "prices": [
     {
       "service": "Standard",
@@ -24,42 +24,66 @@
     }
   ],
   "faqHeading": "Common questions",
-  "intro": "Not sure which China visa you need? Choose the purpose of your trip below and we will show you the right visa and what to prepare. We complete your application and book your appointment at the visa centre. If you need a China visa from the UK, we prepare your application and book your visa centre appointment.",
+  "intro": "Need a visa for China? We handle your China visa application from start to finish: we complete the online form, check your documents, book your visa centre appointment and keep you updated until your visa is ready. Standard service from £301 in total, or express in 48 working hours.",
   "sections": [
     {
-      "heading": "China visa-free travel for British citizens",
-      "text": "Since 17 February 2026, holders of ordinary British passports can enter mainland China without a visa for up to 30 days for business, tourism, visiting family and friends, exchanges and transit. This policy currently runs until 31 December 2026.\n\nYou still need a visa if you plan to stay longer than 30 days, work, study or report as a journalist, or if your trip starts after the policy ends and it isn't extended."
+      "heading": "Do you need a visa for China?",
+      "text": "It depends on your passport, how long you’re staying and what you’re doing.\n\n- British passport, trip of up to 30 days for tourism, business, family visits or transit: you don’t currently need a visa. This visa-free policy runs until 31 December 2026, and China hasn’t yet confirmed whether it will continue in 2027.\n- Staying longer than 30 days, or going to work, study or report as a journalist: you need a visa.\n- Living in the UK on another passport, such as Indian, Pakistani or Nigerian: you usually need a visa, whatever the length of your trip.\n\nIf you’re travelling in 2027, ask us before you book. If the visa-free policy isn’t extended, British travellers will need a visa again from 1 January 2027. See [China visa-free 2027](/blog/china-visa-free-2027/) for the latest."
     },
     {
-      "heading": "UK residents with other passports",
-      "text": "The visa-free policy depends on your passport, not where you live. If you live in the UK on an Indian, Pakistani, Nigerian or other passport, you may still need a Chinese visa. Applications are made through the Chinese Visa Application Service Centres in the UK."
+      "heading": "How our China visa application service works",
+      "text": "- Tell us about your trip using our online China visa application form, so we can confirm the right visa type\n- We give you a document checklist and check everything you send against the visa centre’s requirements\n- We complete the China online visa application form for you, so the details match your passport and documents exactly\n- We book your appointment at the Chinese Visa Application Service Centre\n- We keep you updated until your visa is ready and return your passport by your chosen delivery option, or you can collect it from our Manchester office\n\nMost applications can be handled by post and email, so you don’t need to visit us in person."
+    },
+    {
+      "heading": "Documents for a China visa application",
+      "text": "Every China visa application needs:\n- Your passport, valid for at least six months, with at least two blank visa pages\n- A recent colour passport photo that meets the Chinese requirements\n- The completed online application form, which we prepare for you\n- Copies of any previous Chinese visas or Chinese passports\n- Proof of legal residence in the UK if you aren’t a British citizen, such as your eVisa share code or BRP\n\nThen, depending on your visa type:\n- Tourist (L) visa: flight and hotel bookings, or an invitation from someone in China\n- Business (M) visa: an invitation letter from the Chinese company or trade fair. Send them our free [China business invitation letter template](/downloads/china-business-invitation-letter-template.docx)\n- Family (Q or S) visa: an invitation from your family member in China, with proof of your relationship and their status\n- Work (Z) visa: your work permit notification from the Chinese employer\n\nNeed a photo? Our free [visa photo tool](/visa-photo-tool/?preset=china) sizes your photo for the China online form and makes a print sheet of 33 × 48 mm photos."
     },
     {
       "heading": "Which Chinese visa do you need?",
-      "text": "The main visa types are:\n- L visa: tourism\n- M visa: business and trade\n- Q1 and Q2 visas: visiting family members who are Chinese citizens or permanent residents\n- S1 and S2 visas: visiting family members who are working or studying in China\n- Z visa: work, with a work permit notification\n- X1 and X2 visas: study\n\nChoosing the right type and providing the matching invitation is the key to a smooth application.\n\nNeed a photo? Our free [visa photo tool](/visa-photo-tool/?preset=china) sizes your photo for the China online form and makes a print sheet of 33 × 48 mm photos."
+      "text": "The main visa types are:\n- L visa: tourism\n- M visa: business and trade\n- Q1 and Q2 visas: visiting family members who are Chinese citizens or permanent residents\n- S1 and S2 visas: visiting family members who are working or studying in China\n- Z visa: work, with a work permit notification\n- X1 and X2 visas: study\n\nChoosing the right type and providing the matching invitation is the key to a smooth application. Use the trip chooser above, or ask us if you’re not sure."
     },
     {
-      "heading": "China visa from the UK help in Manchester",
-      "text": "We're based in Manchester city centre and help travellers and businesses across the North West and the rest of the UK. Most travel visa applications can be handled by post and email, so you don't need to visit us in person."
+      "heading": "China visa processing times",
+      "text": "Once your application has been submitted at the visa centre:\n- Standard service: about 5 working days\n- Express service: about 48 working hours\n\nAllow extra time for the appointment itself, especially around Chinese New Year and the summer holidays, when appointments get booked up. If your trip is urgent, call us and we’ll tell you the quickest realistic option."
+    },
+    {
+      "heading": "UK residents with other passports",
+      "text": "The visa-free policy depends on your passport, not where you live. If you live in the UK on an Indian, Pakistani, Nigerian or other non-visa-free passport, you need a Chinese visa for any trip. Pakistani and Nigerian passport holders also need an invitation letter from China. We prepare applications for UK residents of all nationalities every week."
+    },
+    {
+      "heading": "China visa appointments in Manchester and London",
+      "text": "China visa applications in the UK are submitted in person at a Chinese Visa Application Service Centre, including centres in Manchester and London. We book your appointment, make sure your documents are complete before you go, and explain exactly what to bring. Our office is in Manchester city centre, close to the Manchester centre."
     }
   ],
   "country": "China",
-  "title": "China Visa from the UK | Visa-Free Rules & Applications",
-  "description": "Do you need a China visa from the UK? British citizens can visit visa-free until 31 Dec 2026. Help with longer trips, work, study and other passports.",
+  "title": "China Visa Application UK | Visa for China from the UK",
+  "description": "China visa application from the UK: who needs a visa for China, prices, processing times and documents. We complete your form and book your appointment.",
   "faqs": [
     {
-      "q": "Do I need a visa for a short holiday?",
-      "a": "If you travel on a British passport, probably not, for now. Check the current visa-free rules before you book, or ask us."
+      "q": "How much does a China visa application cost?",
+      "a": "Our standard service costs £301 in total, made up of the £151 visa centre fee and our £150 fee. Express costs £357 in total. The visa centre fee can depend on your nationality and number of entries, so we confirm it before you pay."
+    },
+    {
+      "q": "How long does a China visa take from the UK?",
+      "a": "About 5 working days with the standard service, or 48 working hours with express, once your application is submitted at the visa centre. Allow time for the appointment too."
     },
     {
       "q": "Do British citizens need a visa for China?",
-      "a": "Not for trips of up to 30 days for tourism, business, family visits or transit, until 31 December 2026. You still need a visa for longer stays, work or study."
+      "a": "Not for trips of up to 30 days for tourism, business, family visits or transit, until 31 December 2026. You still need a visa for longer stays, work or study, and for trips in 2027 if the policy isn’t extended."
+    },
+    {
+      "q": "Can you fill in the China visa application form for me?",
+      "a": "Yes. We complete the China online visa application form for you and check every detail against your passport and documents before your appointment."
+    },
+    {
+      "q": "Do I need to go to the visa centre in person?",
+      "a": "Usually yes, for fingerprints, unless you’re exempt. We book the appointment and make sure everything is ready, so the visit is quick."
     },
     {
       "q": "What happens after 31 December 2026?",
-      "a": "The visa-free policy is due to end then unless China extends it. If you are travelling in 2027, check with us before you book."
+      "a": "The visa-free policy for British passports is due to end then unless China extends it. If it isn’t extended, you’ll need a visa for trips from 1 January 2027, so apply early if you’re travelling in January or February."
     }
   ],
-  "focusKeyword": "China visa from the UK",
+  "focusKeyword": "China visa application",
   "shareImage": "/images/uvs-share.jpg"
 }

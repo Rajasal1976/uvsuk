@@ -177,6 +177,11 @@
       "permanent": true
     },
     {
+      "source": "/visa-for-china/",
+      "destination": "/china-visa-application/",
+      "permanent": true
+    },
+    {
       "source": "/chinese-visa-centre-manchester/",
       "destination": "/china-visa-application/",
       "permanent": true

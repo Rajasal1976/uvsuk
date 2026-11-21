@@ -37,6 +37,7 @@ export const redirects = [
   ['/uk-spouse-visa-application-form/', '/uk-spouse-visa-application/'],
   ['/e-visa-india-from-uk/', '/indian-visa-application-uk/'],
   ['/chinese-visa-application/', '/china-visa-application/'],
+  ['/visa-for-china/', '/china-visa-application/'],
   ['/chinese-visa-centre-manchester/', '/china-visa-application/'],
   ['/chinese-visa-centre-london/', '/china-visa-application/'],
   ['/exploring-china-how-to-secure-a-tourist-visa-for-your-travels/', '/china-tourist-visa/'],

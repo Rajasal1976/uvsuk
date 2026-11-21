@@ -7,6 +7,7 @@ import Faq from '../components/Faq.astro';
 import ApplyButton from '../components/ApplyButton.astro';
 import HeadFlag from '../components/HeadFlag.astro';
 import VisaBar from '../components/VisaBar.astro';
+import PriceTables from '../components/PriceTables.astro';
 // SEO title, description and FAQs for this page are edited in the admin (content/pages/china-visa-application.json).
 import content from '../../content/pages/china-visa-application.json';
 import '../styles/china-chooser.css';
@@ -28,6 +29,7 @@ const schemas = [];
 <div class="wrap section page-body" style="padding-top:64px">
 <div class="content">
 <OnThisPage auto mobile />
+<PriceTables prices={content.prices} kind="travel" applyUrl={content.applyButton} />
 <section class="vc"><style is:global>
 #vc-business:checked ~ .vc-grid label[for="vc-business"]{border-color:var(--green-800);background:var(--green-50);box-shadow:inset 0 0 0 1px var(--green-800)}
 #vc-business:checked ~ .vc-grid label[for="vc-business"] .vc-check{background:var(--green-800);border-color:var(--green-800)}
