@@ -1,0 +1,41 @@
+---
+// Right-hand column on blog posts: the visa types for the country the post is about
+// (or the UK immigration categories), then Book a consultation and Call.
+// The country comes from the post's "Country" field, or from its related page.
+import { visaFinder } from '../data/finder.js';
+import { pageBySlug } from '../data/pages.js';
+import { site } from '../data/site.js';
+const { country = '' } = Astro.props;
+const isUk = country === 'UK';
+const row = !isUk && country ? visaFinder.find((r) => r[0] === country) : null;
+const ukHub = pageBySlug['uk-visa-services'];
+const links = isUk
+  ? (ukHub?.children || []).map((c) => [(pageBySlug[c]?.h1?.replace(/^UK /, '') || c).replace(/^\w/, (x) => x.toUpperCase()), `/${c}/`])
+  : (row ? (row[2].length ? row[2] : [[row[3] || `${row[0]} visa`, row[1]]]) : []);
+const title = isUk ? 'UK immigration services' : row ? `${row[0]} visas` : '';
+const allLink = isUk ? ['All UK visas', '/uk-visa-services/'] : row && row[2].length ? [`All ${row[0]} visa options`, row[1]] : null;
+---
+<aside class="aside blog-aside">
+  {links.length > 0 && (
+    <nav class="panel ba-visas" aria-label={title}>
+      <h2>{title}</h2>
+      <ul>{links.map(([label, url]) => <li><a href={url}>{label}</a></li>)}</ul>
+      {allLink && <a class="ba-all" href={allLink[1]}>{allLink[0]} →</a>}
+    </nav>
+  )}
+  <div class="panel">
+    <h2>Talk to an adviser</h2>
+    <p class="soft" style="font-size:16px">Book a consultation and we'll confirm your options, what you'll need and our fee.</p>
+    <a href={site.bookingUrl} class="btn btn-primary">Book a consultation</a>
+    <a href={`tel:${site.phoneIntl}`} class="btn btn-outline">Call {site.phone}</a>
+    <p style="font-size:14px;color:var(--ink-mute)">IAA-regulated · Ref {site.iaaRef}</p>
+  </div>
+</aside>
+<style>
+  .ba-visas h2 { font-size: 20px; margin-bottom: 8px; }
+  .ba-visas ul { list-style: none; margin: 0 0 8px; padding: 0; }
+  .ba-visas li a { display: block; padding: 7px 0; border-bottom: 1px solid var(--line, #e5e7eb); color: var(--ink-soft); text-decoration: none; font-size: 15px; }
+  .ba-visas li a:hover { color: var(--green-800); }
+  .ba-all { display: inline-block; margin-top: 6px; font-weight: 600; color: var(--green-800); font-size: 15px; }
+  .blog-aside .panel + .panel { margin-top: 20px; }
+</style>

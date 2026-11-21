@@ -469,3 +469,28 @@ a.card:hover { border-color: var(--green-600); color: inherit; }
   .toc-mobile { display: block; }
 }
 .toc[hidden] { display: none !important; }
+
+/* Floating visa bar (desktop): appears at the top of the screen once you scroll past the bar */
+.visa-bar .vb-book { display: none; }
+@media (min-width: 901px) {
+  .visa-bar-wrap.is-floating { position: fixed; top: 10px; left: 0; right: 0; margin: 0 auto; z-index: 55; animation: vb-in .2s ease-out; }
+  .visa-bar-wrap.is-floating .visa-bar { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto auto; padding: 8px; box-shadow: 0 8px 24px rgba(13, 59, 33, .18); }
+  .visa-bar-wrap.is-floating select, .visa-bar-wrap.is-floating .btn { height: 42px; min-height: 42px; }
+  .visa-bar-wrap.is-floating .visa-bar-apply { display: none; }
+  .visa-bar-wrap.is-floating .vb-book { display: inline-flex; align-items: center; justify-content: center; background: var(--green-800); color: #fff; }
+  .visa-bar-wrap.is-floating .vb-book:hover { background: var(--green-900, #0D3B21); color: #fff; }
+  body.vb-floating .aside { top: 96px; }
+}
+@keyframes vb-in { from { transform: translateY(-12px); opacity: 0; } to { transform: none; opacity: 1; } }
+
+/* Mobile action bar: Apply and Call, fixed at the bottom of the screen on phones */
+.mab { display: none; }
+@media (max-width: 760px) {
+  .mab { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 58; padding: 8px 12px calc(8px + env(safe-area-inset-bottom, 0px)); background: #fff; border-top: 1px solid #C9D6CC; box-shadow: 0 -4px 14px rgba(13, 59, 33, .10); }
+  .mab a { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 46px; border-radius: 8px; font-weight: 600; font-size: 16px; text-decoration: none; }
+  .mab-apply { background: #F5A623; color: var(--green-900, #0D3B21); }
+  .mab-call { background: var(--green-800); color: #fff; }
+  body.has-mab { padding-bottom: 72px; }
+  body.has-mab .wa-float { bottom: calc(78px + env(safe-area-inset-bottom, 0px)); }
+  body.has-mab #edit-page { bottom: 78px !important; }
+}

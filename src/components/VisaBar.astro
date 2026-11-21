@@ -2,6 +2,7 @@
 // Visa bar under each page banner: country and visa type, already filled in for the page you're on,
 // with a "Check requirements" button. Uses the same list as the homepage visa search (src/data/finder.js).
 import { visaFinder } from '../data/finder.js';
+import { site } from '../data/site.js';
 const { slug = '', country = '', applyUrl = '', applyInHead = false } = Astro.props;
 const here = `/${slug}/`;
 const ukCountries = ['UK', 'Employers'];
@@ -13,7 +14,7 @@ const allLabel = (r) => (r[2].length ? `All ${r[0].replace(/ visas$/, '')} visa 
 const showApply = applyUrl && applyUrl !== 'none';
 ---
 <div class="wrap visa-bar-wrap">
-  <div class="visa-bar" data-finder={JSON.stringify(visaFinder)}>
+  <div class="visa-bar" data-finder={JSON.stringify(visaFinder)} data-apply={showApply ? applyUrl : undefined}>
     <label class="sr-only" for="vb-country">Country</label>
     <select id="vb-country">
       {!row && <option value="" selected>Choose a country</option>}
@@ -29,6 +30,7 @@ const showApply = applyUrl && applyUrl !== 'none';
       ) : <option value="">Choose a country first</option>}
     </select>
     <button type="button" id="vb-go" class="btn btn-gold">Check requirements</button>
+    <a class="btn vb-book" href={site.bookingUrl}>Book a consultation</a>
     {showApply && <p class:list={['visa-bar-apply', { 'phone-only': applyInHead }]}>Ready to go? <a href={applyUrl}>{applyUrl === '/contact-us/' ? 'Apply now' : 'Apply online'}</a></p>}
   </div>
 </div>
@@ -58,5 +60,26 @@ const showApply = applyUrl && applyUrl !== 'none';
       if (!target.hash) target.hash = 'requirements';
       location.href = target.toString();
     });
+  }
+
+  // Desktop: once the visitor scrolls past the bar, a slim copy stays fixed at the top of the screen.
+  const wrap = document.querySelector<HTMLElement>('.visa-bar-wrap');
+  if (wrap && 'IntersectionObserver' in window) {
+    const holder = document.createElement('div');
+    holder.className = 'vb-holder';
+    wrap.before(holder);
+    const wide = window.matchMedia('(min-width: 901px)');
+    let floating = false;
+    const set = (on: boolean) => {
+      if (on === floating) return;
+      floating = on;
+      holder.style.height = on ? `${wrap.offsetHeight}px` : '';
+      wrap.classList.toggle('is-floating', on);
+      document.body.classList.toggle('vb-floating', on);
+    };
+    new IntersectionObserver(([e]) => {
+      set(wide.matches && !e.isIntersecting && e.boundingClientRect.top < 0);
+    }).observe(holder);
+    wide.addEventListener('change', () => { if (!wide.matches) set(false); });
   }
 </script>

@@ -5,6 +5,9 @@ import Faq from '../../components/Faq.astro';
 import CtaBand from '../../components/CtaBand.astro';
 import { posts, fmtDate } from '../../data/blog.js';
 import { site } from '../../data/site.js';
+import VisaBar from '../../components/VisaBar.astro';
+import BlogAside from '../../components/BlogAside.astro';
+import { pageBySlug } from '../../data/pages.js';
 
 export function getStaticPaths() {
   return posts.map((p) => ({ params: { slug: p.slug }, props: { p } }));
@@ -16,11 +19,19 @@ const schema = JSON.stringify({
   author: { '@type': 'Organization', name: site.legalName }, publisher: { '@type': 'Organization', name: site.legalName },
   mainEntityOfPage: new URL(`/blog/${p.slug}/`, site.url).href,
 });
+// Which country the post is about: the post's "Country" field, otherwise its related page.
+const relSlug = (p.relatedPage || '').replace(/^\/|\/$/g, '').split(/[?#]/)[0];
+const rel = pageBySlug[relSlug];
+const country = (p.country && p.country !== 'auto' ? p.country : '') || (rel && ['uk', 'employer', 'local'].includes(rel.group) ? 'UK' : rel?.country) || '';
+// Help box halfway through the post
+const half = Math.ceil((p.sections || []).length / 2);
+const helpName = country === 'UK' ? 'UK visa' : country === 'Schengen' ? 'Schengen visa' : country ? `${country} visa` : 'visa';
 const others = posts.filter((x) => x.slug !== p.slug).slice(0, 3);
 ---
 <Page title={p.title} description={p.description} schemas={[schema]}>
   <main>
-    <div class="page-head">
+    <div class="head-zone">
+    <div class:list={['page-head', { 'has-bar': !!country }]}>
       <div class="wrap">
         <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/blog/">Blog</a></nav>
         <h1>{p.h1}</h1>
@@ -28,9 +39,24 @@ const others = posts.filter((x) => x.slug !== p.slug).slice(0, 3);
         {p.intro && <p class="lead">{p.intro}</p>}
       </div>
     </div>
+    {country && <VisaBar slug={rel ? relSlug : ''} country={country} />}
+    </div>
     <div class="wrap section page-body" style="padding-top:56px">
       <div class="content">
-        <GuideSections sections={p.sections} />
+        <GuideSections sections={(p.sections || []).slice(0, half)} />
+        {(p.sections || []).length >= 3 && (
+          <aside class="mid-help" aria-label="Get help">
+            <div>
+              <p class="mid-help-title">Need help with your {helpName}?</p>
+              <p class="mid-help-text">Our IAA-regulated advisers check your documents and handle the application for you.</p>
+            </div>
+            <div class="mid-help-btns">
+              <a class="btn btn-primary" href={site.bookingUrl}>Book a consultation</a>
+              <a class="btn btn-outline" href={`tel:${site.phoneIntl}`}>Call {site.phone}</a>
+            </div>
+          </aside>
+        )}
+        <GuideSections sections={(p.sections || []).slice(half)} />
         <Faq items={p.faqs || []} />
         {p.relatedPage && <p><a class="btn btn-primary" href={p.relatedPage}>{p.relatedLabel || 'Find out more'}</a></p>}
         <p class="soft" style="font-size:14px">This article is general information, correct when published. Rules change often, so please contact us for advice on your situation.</p>
@@ -41,11 +67,17 @@ const others = posts.filter((x) => x.slug !== p.slug).slice(0, 3);
           </section>
         )}
       </div>
+      <BlogAside country={country} />
     </div>
     <CtaBand />
   </main>
 </Page>
 
 <style>
+  .mid-help { display: flex; flex-wrap: wrap; gap: 16px 24px; align-items: center; justify-content: space-between; margin: 8px 0 40px; padding: 22px 24px; border-radius: 12px; background: var(--green-50, #F0F7F2); border: 1px solid #C9D6CC; border-left: 5px solid var(--green-800); }
+  .mid-help-title { margin: 0 0 4px; font-weight: 700; font-size: 19px; color: var(--green-800); }
+  .mid-help-text { margin: 0; font-size: 15px; color: var(--ink-soft); }
+  .mid-help-btns { display: flex; flex-wrap: wrap; gap: 10px; }
+  .mid-help-btns .btn { margin: 0; }
   .blog-meta { color: var(--ink-mute); font-size: 15px; margin: 6px 0 10px; }
 </style>
