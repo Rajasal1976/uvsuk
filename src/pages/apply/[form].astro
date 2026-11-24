@@ -6,6 +6,7 @@ import { site } from '../../data/site.js';
 import '../../styles/apply.css';
 
 import { customStep } from '../../lib/custom-questions.js';
+import { collectPageDocs } from '../../lib/doc-match.js';
 
 export function getStaticPaths() {
   // Form settings from the admin ("Form settings"): extra questions, and documents or questions
@@ -14,6 +15,10 @@ export function getStaticPaths() {
   const norm = (t) => String(t || '').toLowerCase().replace(/\s+/g, ' ').trim();
   const list = (x) => (Array.isArray(x) ? x : []).map((v) => norm(typeof v === 'string' ? v : v?.text)).filter(Boolean);
   const hits = (label, words) => words.some((w) => norm(label).includes(w));
+  // Each page's "Documents table" from the admin, grouped by the form its Apply button opens.
+  // The form asks for those documents too (see src/lib/doc-match.js).
+  const pageFiles = import.meta.glob('../../../content/pages/*.json', { eager: true, import: 'default' });
+  const pageDocs = collectPageDocs(Object.entries(pageFiles).map(([path, d]: [string, any]) => ({ slug: path.split('/').pop()!.replace('.json', ''), ...d })));
   const PROTECTED = new Set(['surname', 'givenNames', 'dateOfBirth', 'sex', 'nationality', 'passportNumber', 'passportExpiry', 'passportIssuingCountry', 'email', 'phone', 'visaType', 'destination']);
   return applications.map((a) => {
     const extra: any = extras.find((x: any) => x.form === a.slug) || {};
@@ -31,7 +36,7 @@ export function getStaticPaths() {
       }))
       .filter((st) => st.fields.length || st.passportScan);
     const step = customStep(extra, 'custom');
-    return { params: { form: a.slug }, props: { app: { ...a, uploads, steps: step ? [...steps, step] : steps } } };
+    return { params: { form: a.slug }, props: { app: { ...a, uploads, steps: step ? [...steps, step] : steps, pageDocs: (pageDocs[a.slug] || []).map((e) => ({ ...e, rows: e.rows.filter((r) => !hits(r.document, hideDocs)).map((r) => (hits(r.document, optDocs) && r.needed !== 'We prepare' ? { ...r, needed: 'Optional' } : r)) })) } } };
   });
 }
 const { app } = Astro.props;

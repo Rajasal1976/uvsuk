@@ -46,6 +46,15 @@ The text lives in the `content/` folder as simple files; the editor's settings a
 - Submissions arrive in Netlify under Forms, with the documents attached, and by email if you set up
   Form notifications. Each one has a reference like UVS-CN-AB12CD.
 - Each visa type has its own document checklist (`uploads` and `docsIntro` in `src/data/applications.js`). Files arrive named after the document, e.g. "KHAN - Invitation letter from the Chinese company or trade fair.pdf".
+- **Documents table → form.** Each visa page's "Documents table" in the admin is also used by its online form: a client
+  who opens the form from that page (or with the same destination and visa type in the link) is asked to upload the
+  documents on that table, as well as the form's own list. Documents the form already asks for (passport, photo,
+  flights, hotel, bank statements, proof of UK status and so on) aren't asked for twice, and "We prepare" rows are skipped.
+  "Needed" sets the box: Required and If not British must be uploaded, If applicable and Optional are optional.
+  Run `node scripts/check-page-docs.mjs` to list what each page adds. Matching rules: `src/lib/doc-match.js`.
+- **Proof of UK status.** Clients who aren't British choose their UK status, and the upload box changes to match
+  (eVisa share code page, or British passport for dual nationals), with a "What we need: see an example" guide.
+  Refugees also get a box for their travel document's observations page.
 - To add a country, copy one of the forms in `src/data/applications.js` and add it to `applications`, then add it to the Apply button options in `public/admin/config.yml`.
 - The questions follow the official forms. Check them against the current official forms from time to time.
 - Passport scans are sensitive personal data: download what you need, then delete submissions from Netlify

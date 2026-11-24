@@ -69,8 +69,8 @@ const contactStep = (extra = [], { emergency = true } = {}) => ({
     { name: 'city', label: 'Town or city', type: 'text', required: true, half: true },
     { name: 'postcode', label: 'Postcode', type: 'text', required: true, half: true },
     { name: 'country', label: 'Country you live in', type: 'country', required: true, default: 'United Kingdom' },
-    { name: 'ukStatus', label: 'Your status in the UK', type: 'select', required: true, options: ['British citizen', 'Indefinite leave to remain / settled', 'EU Settlement Scheme', 'Skilled Worker or other work visa', 'Student visa', 'Spouse or family visa', 'Other'], showIf: { name: 'nationality', isNot: 'United Kingdom' } },
-    { name: 'ukStatusExpiry', label: 'When does your UK permission expire?', type: 'date', showIf: { name: 'ukStatus', is: ['Skilled Worker or other work visa', 'Student visa', 'Spouse or family visa', 'Other'] } },
+    { name: 'ukStatus', label: 'Your status in the UK', type: 'select', required: true, options: ['British citizen', 'Indefinite leave to remain / settled', 'EU Settlement Scheme', 'Skilled Worker or other work visa', 'Student visa', 'Spouse or family visa', 'Refugee or humanitarian protection', 'Other'], showIf: { name: 'nationality', isNot: 'United Kingdom' }, hint: 'We’ll ask for proof of this with your documents, and show you exactly what we need.' },
+    { name: 'ukStatusExpiry', label: 'When does your UK permission expire?', type: 'date', showIf: { name: 'ukStatus', is: ['Skilled Worker or other work visa', 'Student visa', 'Spouse or family visa', 'Refugee or humanitarian protection', 'Other'] } },
     ...extra,
     ...(emergency ? emergencyFields : []),
   ],
@@ -188,7 +188,7 @@ const china = {
   },
   uploads: [
     { name: 'photo', label: 'Passport-style photo', hint: 'Recent colour photo on a white background, no glasses, face fully visible.', required: true },
-    { name: 'doc1', label: 'Your UK visa, BRP or eVisa share code page', hint: 'Because you’re not a British citizen.', required: true, showIf: { name: 'nationality', isNot: 'United Kingdom' } },
+    { name: 'doc1', label: 'Your UK visa, BRP or eVisa share code page', hint: 'Because you’re not a British citizen.', example: 'ukStatus', required: true, showIf: { name: 'nationality', isNot: 'United Kingdom' } },
     ...byVisa('doc2', {
       'Business (M visa)': { label: 'Invitation letter from the Chinese company or trade fair', hint: 'On their letterhead, with your trip dates and their contact details.', required: true },
       'Visiting family in China (Q2 / Q1 visa)': { label: 'Invitation letter from your family member in China', hint: 'Signed by them, with your trip dates and their address.', required: true },
@@ -378,7 +378,7 @@ const india = {
       'e-Student Dependent visa': { label: 'Proof of relationship, e.g. marriage or birth certificate', required: true },
       'e-Transit visa': { label: 'Visa for your final destination (if it needs one)' },
     }),
-    { name: 'doc3', label: 'Your UK visa, BRP or eVisa share code page', hint: 'Because you’re not a British citizen.', showIf: { name: 'nationality', isNot: 'United Kingdom' } },
+    { name: 'doc3', label: 'Your UK visa, BRP or eVisa share code page', hint: 'Because you’re not a British citizen.', example: 'ukStatus', showIf: { name: 'nationality', isNot: 'United Kingdom' } },
     { name: 'doc4', label: 'Flight booking (optional)' },
     { name: 'doc5', label: 'Hotel booking (optional)' },
     { name: 'doc6', label: 'Your last Indian visa (optional)', hint: 'A photo of the visa page or your old eVisa email.', showIf: { name: 'visitedIndia', is: 'Yes' } },
@@ -470,7 +470,7 @@ const work = {
     { name: 'schoolName', label: 'School, college or university', type: 'text', required: true, showIf: { name: 'occupation', is: 'Student' } },
   ],
 };
-const ukStatusDoc = (name) => ({ name, label: 'Your UK residence permit, BRP or eVisa share code page', hint: 'Because you’re not a British citizen.', required: true, showIf: { name: 'nationality', isNot: 'United Kingdom' } });
+const ukStatusDoc = (name) => ({ name, label: 'Your UK residence permit, BRP or eVisa share code page', hint: 'Because you’re not a British citizen.', example: 'ukStatus', required: true, showIf: { name: 'nationality', isNot: 'United Kingdom' } });
 const other = { name: 'doc8', label: 'Any other supporting document (optional)' };
 const bankDocs = (name, req = true) => ({ name, label: 'Bank statements for the last 3 months', hint: 'Showing your name and address. PDFs from online banking are fine.', required: req });
 
@@ -902,7 +902,7 @@ const indianPassport = {
       'OCI update (new passport)': { label: 'Your old passport', required: true },
       'Lost or damaged Indian passport': { label: 'Copy of the lost passport (if you have one)' },
     }),
-    ...byVisa('doc3', { 'Indian passport renewal': { label: 'UK visa, BRP or eVisa share code page', required: true } }),
+    ...byVisa('doc3', { 'Indian passport renewal': { label: 'UK visa, BRP or eVisa share code page', required: true, example: 'ukStatus' } }),
     { name: 'doc4', label: 'Proof of UK address', hint: 'A recent utility bill or council tax bill.', required: true },
     other,
   ],
@@ -1083,7 +1083,9 @@ const nigeria = {
 export const applications = [china, india, indiaTransfer, sriLanka, japan, nigeria, schengen, usa, saudi, ghana, russia, indiaRegular, evisa, legalisation, indianPassport, secondPassport];
 export const applicationBySlug = Object.fromEntries(applications.map((a) => [a.slug, a]));
 export const declaration = declarationNote;
-// Upload fields registered with Netlify. extra1–extra20 are the "Add another document" uploads.
-export const FILE_SLOTS = ['passport', 'photo', 'doc1', 'doc2', 'doc3', 'doc4', 'doc5', 'doc6', 'doc7', 'doc8', ...Array.from({ length: 20 }, (_, i) => `extra${i + 1}`)];
+// Upload fields registered with Netlify. status2 is the second proof-of-UK-status page (e.g. a travel
+// document's observations page), list1–list12 are documents taken from a page's Documents table,
+// extra1–extra20 are the "Add another document" uploads.
+export const FILE_SLOTS = ['passport', 'photo', 'doc1', 'doc2', 'doc3', 'doc4', 'doc5', 'doc6', 'doc7', 'doc8', 'status2', ...Array.from({ length: 12 }, (_, i) => `list${i + 1}`), ...Array.from({ length: 20 }, (_, i) => `extra${i + 1}`)];
 // Building blocks shared with the client forms built in the admin
 export { passportStep, passportScanFields, contactStep, declarationNote };
