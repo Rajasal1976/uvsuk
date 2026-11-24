@@ -1,8 +1,19 @@
 {
-  "title": "Nigeria tourist eVisa from the UK | Apply Online | UVS",
-  "description": "Nigeria tourist eVisa from the UK: single entry, valid for 30 to 90 days and decided in about 48 hours. Who needs one, the documents and how we apply.",
+  "applyButton": "/apply/evisa/?destination=Nigeria&visaType=Tourism",
+  "sortKey": "1 nigeria 2 a tourist evisa",
+  "govuk": "https://www.gov.uk/foreign-travel-advice",
   "h1": "Nigeria tourist eVisa from the UK",
-  "purposeLabel": "Tourist eVisa",
+  "prices": [
+    {
+      "service": "2-3 business days",
+      "included": "Tourist eVisa application completed and checked",
+      "processing": "Single entry, 30-day stay, valid up to 90 days",
+      "processingFee": "£265",
+      "fee": "£75",
+      "popular": true,
+      "total": ""
+    }
+  ],
   "intro": "Planning a holiday or a visit to family or friends in Nigeria? This page explains the Nigeria tourist eVisa, who needs one and what to prepare. We check the rules for your passport and apply for you.",
   "eligibility": [
     "You are travelling for a holiday, sightseeing or to visit family or friends",
@@ -31,36 +42,9 @@
       "text": "We're based in Manchester city centre and handle Nigeria tourist eVisa applications for travellers across the UK, entirely online. Before you travel, read the UK government's [foreign travel advice](https://www.gov.uk/foreign-travel-advice) for Nigeria."
     }
   ],
-  "faqs": [
-    {
-      "q": "Can I visit family on a Nigeria tourist eVisa?",
-      "a": "Yes. Visiting family or friends is covered by the Nigeria tourist eVisa."
-    },
-    {
-      "q": "Can I work in Nigeria on a Nigeria tourist eVisa?",
-      "a": "No. Working needs a work visa or permit. Contact us and we’ll explain the options."
-    },
-    {
-      "q": "How long does a Nigeria tourist eVisa take?",
-      "a": "Usually a few working days, but processing times vary. Apply at least a week before you travel, and earlier in busy seasons."
-    }
-  ],
-  "govuk": "https://www.gov.uk/foreign-travel-advice",
-  "applyButton": "/apply/evisa/?destination=Nigeria&visaType=Tourism",
-  "country": "Nigeria",
-  "sortKey": "1 nigeria 2 a tourist evisa",
   "focusKeyword": "Nigeria tourist eVisa",
-  "prices": [
-    {
-      "service": "2-3 business days",
-      "included": "Tourist eVisa application completed and checked",
-      "processing": "Single entry, 30-day stay, valid up to 90 days",
-      "processingFee": "£247",
-      "fee": "£75",
-      "popular": true,
-      "total": ""
-    }
-  ],
+  "purposeLabel": "Tourist eVisa",
+  "country": "Nigeria",
   "documentsTable": [
     {
       "document": "Passport",
@@ -93,5 +77,21 @@
       "needed": "Required"
     }
   ],
-  "shareImage": "/images/uvs-share.jpg"
+  "title": "Nigeria tourist eVisa from the UK | Apply Online | UVS",
+  "shareImage": "/images/uvs-share.jpg",
+  "description": "Nigeria tourist eVisa from the UK: single entry, valid for 30 to 90 days and decided in about 48 hours. Who needs one, the documents and how we apply.",
+  "faqs": [
+    {
+      "q": "Can I visit family on a Nigeria tourist eVisa?",
+      "a": "Yes. Visiting family or friends is covered by the Nigeria tourist eVisa."
+    },
+    {
+      "q": "Can I work in Nigeria on a Nigeria tourist eVisa?",
+      "a": "No. Working needs a work visa or permit. Contact us and we’ll explain the options."
+    },
+    {
+      "q": "How long does a Nigeria tourist eVisa take?",
+      "a": "Usually a few working days, but processing times vary. Apply at least a week before you travel, and earlier in busy seasons."
+    }
+  ]
 }
