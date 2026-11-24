@@ -791,6 +791,9 @@ export function mountApplication(root, config, opts = {}) {
           size += item[1].size;
         }
         const parts = batches.length;
+        // Documents on the list that weren't uploaded (optional ones). Listed for us, and in the client's email.
+        const stillToSend = config.noPassport ? [] : (files.passport ? [] : ['Passport photo page']);
+        for (const u of visibleUploads()) if (!files[u.name] && !/^any other/i.test(u.label)) stillToSend.push(u.label.replace(/\s*\(optional\)/i, ''));
         const header = [config.title, `Reference: ${ref}`,
           total > 1 ? `Group reference: ${base} (person ${i + 1} of ${total}: ${names.join(', ')})` : null,
           `Submitted: ${new Date().toLocaleString('en-GB')}`,
@@ -806,7 +809,8 @@ export function mountApplication(root, config, opts = {}) {
           const partTag = parts > 1 ? ` – documents part ${k + 1} of ${parts}` : '';
           fd.append('subject', `${config.title}: ${name} (${ref})${partTag}`);
           fd.append('summary', (k === 0
-            ? [...header, ...summaryLines(), '', 'DOCUMENTS ATTACHED', '', ...list.map(([slot, f], n) => `${n + 1}. ${slotInfo(slot).label}\n${f.name}\n`), parts > 1 ? `\n(Documents sent in ${parts} parts with the same reference.)` : '']
+            ? [...header, ...summaryLines(), '', 'DOCUMENTS ATTACHED', '', ...list.map(([slot, f], n) => `${n + 1}. ${slotInfo(slot).label}\n${f.name}\n`), parts > 1 ? `\n(Documents sent in ${parts} parts with the same reference.)` : '',
+              ...(stillToSend.length ? ['', 'DOCUMENTS STILL TO SEND', '', ...stillToSend.map((l, n) => `${n + 1}. ${l}`)] : [])]
             : [...header, `Documents part ${k + 1} of ${parts}.`]).join('\n'));
           fd.append('bot-field', '');
           // Name each file after the document it is, e.g. "KHAN - Invitation letter from the Chinese company.pdf"

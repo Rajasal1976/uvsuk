@@ -4,6 +4,10 @@
   command = "npm run build"
   publish = "dist"
 
+# Functions (netlify/functions): sends clients a confirmation email when a form arrives
+[functions]
+  node_bundler = "esbuild"
+
 [build.environment]
   NODE_VERSION = "22"
 

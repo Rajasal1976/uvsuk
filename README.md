@@ -55,6 +55,11 @@ The text lives in the `content/` folder as simple files; the editor's settings a
 - **Proof of UK status.** Clients who aren't British choose their UK status, and the upload box changes to match
   (eVisa share code page, or British passport for dual nationals), with a "What we need: see an example" guide.
   Refugees also get a box for their travel document's observations page.
+- **Confirmation email to the client.** `netlify/functions/submission-created.mjs` emails the client when an
+  application arrives: their reference, what happens next, the documents we received and any still to send.
+  It sends through Zoho: in Netlify › Site configuration › Environment variables add `ZOHO_SMTP_USER`
+  (e.g. hello@uvsuk.com) and `ZOHO_SMTP_PASS` (a Zoho app password), and `ZOHO_SMTP_HOST` = `smtp.zoho.eu`
+  only if your Zoho account is on zoho.eu. Until they're set, no email is sent. Logs: Netlify › Logs › Functions.
 - To add a country, copy one of the forms in `src/data/applications.js` and add it to `applications`, then add it to the Apply button options in `public/admin/config.yml`.
 - The questions follow the official forms. Check them against the current official forms from time to time.
 - Passport scans are sensitive personal data: download what you need, then delete submissions from Netlify
