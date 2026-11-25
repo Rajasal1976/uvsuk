@@ -1,7 +1,7 @@
 ---
 // "Latest news" strip for the homepage: the 3 newest blog posts with Category "News".
 // It hides itself if there are no news posts yet.
-import { posts, fmtDate } from '../data/blog.js';
+import { posts, fmtDate, listDate } from '../data/blog.js';
 // tightBottom: less space underneath, for when the next section has its own top padding.
 const { title = 'Latest news', allLabel = 'All news', tightBottom = false } = Astro.props;
 const news = posts.filter((p) => p.category === 'News').slice(0, 3);
@@ -16,7 +16,7 @@ const news = posts.filter((p) => p.category === 'News').slice(0, 3);
     <div class="news-strip-grid">
       {news.map((p) => (
         <a class="news-strip-card" href={`/blog/${p.slug}/`}>
-          <time datetime={p.date}>{fmtDate(p.date)}</time>
+          <time datetime={p.latest}>{listDate(p)}</time>
           <h3>{p.h1}</h3>
           <p>{p.description || p.intro}</p>
         </a>
