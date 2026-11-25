@@ -2,7 +2,7 @@
 // Visa news page: lists blog posts whose category is "News" (content/blog, edited in the admin under "Blog posts").
 // To add a news story, create a blog post and set its Category to "News".
 import Page from '../layouts/Page.astro';
-import { posts, fmtDate } from '../data/blog.js';
+import { posts, fmtDate, listDate } from '../data/blog.js';
 const news = posts.filter((p) => p.category === 'News');
 ---
 <Page title="Visa News for UK Travellers | Latest Rule Changes | UVS" description="Latest visa news for UK residents: new entry rules, e-Visa changes, visa-free deals and UK immigration updates, explained by IAA-regulated advisers in Manchester.">
@@ -19,7 +19,7 @@ const news = posts.filter((p) => p.category === 'News');
         <div class="blog-list">
           {news.map((p) => (
             <article class="blog-card">
-              <p class="blog-date"><time datetime={p.date}>{fmtDate(p.date)}</time></p>
+              <p class="blog-date"><time datetime={p.latest}>{listDate(p)}</time></p>
               <h2><a href={`/blog/${p.slug}/`}>{p.h1}</a></h2>
               <p>{p.intro}</p>
               <a class="blog-more" href={`/blog/${p.slug}/`}>Read more<span class="sr-only">: {p.h1}</span></a>

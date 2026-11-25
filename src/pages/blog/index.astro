@@ -1,6 +1,6 @@
 ---
 import Page from '../../layouts/Page.astro';
-import { posts, fmtDate } from '../../data/blog.js';
+import { posts, fmtDate, listDate } from '../../data/blog.js';
 ---
 <Page title="Visa and Immigration News & Guides | UVS Blog" description="News and practical guides on UK immigration and travel visas from IAA-regulated advisers in Manchester: rule changes, deadlines and how to apply.">
   <main>
@@ -15,7 +15,7 @@ import { posts, fmtDate } from '../../data/blog.js';
       <div class="blog-list">
         {posts.map((p) => (
           <article class="blog-card">
-            <p class="blog-date"><time datetime={p.date}>{fmtDate(p.date)}</time>{p.category && <> · {p.category}</>}</p>
+            <p class="blog-date"><time datetime={p.latest}>{listDate(p)}</time>{p.category && <> · {p.category}</>}</p>
             <h2><a href={`/blog/${p.slug}/`}>{p.h1}</a></h2>
             <p>{p.intro}</p>
             <a class="blog-more" href={`/blog/${p.slug}/`}>Read more<span class="sr-only">: {p.h1}</span></a>
