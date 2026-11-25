@@ -20,6 +20,13 @@ const allForms = [...applications, ...clientForms];
       <input type="text" name="visa_type" />
       <input type="text" name="reference" />
       <input type="hidden" name="subject" />
+      <input type="text" name="form_title" />
+      <input type="text" name="page_url" />
+      <input type="text" name="address" />
+      <input type="text" name="invoice_to" />
+      <input type="text" name="company_name" />
+      <input type="text" name="company_number" />
+      <textarea name="company_address"></textarea>
       <textarea name="summary"></textarea>
       <input name="bot-field" />
       {FILE_SLOTS.map((s) => <input type="file" name={s} />)}
