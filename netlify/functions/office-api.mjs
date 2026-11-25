@@ -2,8 +2,8 @@
 // sign-in cookie (see netlify/office/auth.mjs). Records are kept in Netlify Blobs (netlify/office/store.mjs).
 import nodemailer from 'nodemailer';
 import settingsJson from '../../content/settings.json' with { type: 'json' };
-import { officeStore, secretStore, readIndex, getRecord, saveRecord, rebuildIndex, applyPatch, manualRecord, STATUSES } from '../office/store.mjs';
-import { checkPassword, passwordSet, sessionCookie, clearCookie, signedIn, tooManyTries } from '../office/auth.mjs';
+import { officeStore, secretStore, readIndex, getRecord, saveRecord, rebuildIndex, applyPatch, manualRecord, STATUSES, recordFromSubmission, groupRef } from '../office/store.mjs';
+import { checkPassword, passwordSet, sessionCookie, clearCookie, signedIn, tooManyTries, ingestAllowed } from '../office/auth.mjs';
 import { COMPANIES, validateInvoice, createInvoice, connection, keysSet, waveCatalogue, disconnect } from '../office/accounts.mjs';
 
 export const config = { path: '/office/api/*' };
@@ -30,6 +30,16 @@ export default async (req, context) => {
     if (!checkPassword(body.password)) { await guard.fail(); return fail('That password isn’t right.', 401); }
     await guard.clear();
     return json({ ok: true }, 200, { 'Set-Cookie': sessionCookie() });
+  }
+  // A new application from the website forms (sent by submission-created.mjs)
+  if (action === 'ingest' && req.method === 'POST') {
+    if (!ingestAllowed(req)) return fail('Not allowed', 403);
+    const data = body.data || {};
+    if (!data.reference) return fail('No reference');
+    const target = officeStore(!!body.preview);
+    const existing = await getRecord(target, groupRef(data.reference));
+    const saved = await saveRecord(target, recordFromSubmission(data, existing));
+    return json({ ok: true, ref: saved.ref });
   }
   if (action === 'logout') return json({ ok: true }, 200, { 'Set-Cookie': clearCookie() });
 

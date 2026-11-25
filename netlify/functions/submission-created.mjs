@@ -16,6 +16,7 @@ import nodemailer from 'nodemailer';
 import { connectLambda } from '@netlify/blobs';
 import settings from '../../content/settings.json' with { type: 'json' };
 import { officeStore, getRecord, saveRecord, recordFromSubmission, groupRef } from '../office/store.mjs';
+import { ingestToken } from '../office/auth.mjs';
 
 const SITE = 'https://www.uvsuk.co.uk';
 const esc = (t) => String(t ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -121,18 +122,34 @@ export const isPreviewSubmission = (data) => { try { return new URL(String(data.
 
 // Saves the application in the back office (/office/). Only applications with a reference;
 // extra document parts are skipped, extra people are added to the same record.
+// Netlify doesn't always give this function the database connection, so normally it hands the
+// application to the back office function (/office/api/ingest), which has it.
 async function saveToOffice(event, data) {
   if (!data.reference || /documents part (\d+) of/i.test(data.subject || '') && !/documents part 1 of/i.test(data.subject || '')) return;
-  if (event.blobs) connectLambda(event); // Netlify passes the database connection in with the event
-  const store = officeStore(isPreviewSubmission(data));
-  const existing = await getRecord(store, groupRef(data.reference));
-  await saveRecord(store, recordFromSubmission(data, existing));
+  const preview = isPreviewSubmission(data);
+  if (event.blobs) {
+    connectLambda(event);
+    const store = officeStore(preview);
+    const existing = await getRecord(store, groupRef(data.reference));
+    await saveRecord(store, recordFromSubmission(data, existing));
+    return;
+  }
+  // Only ever send to this site: a test copy's own address, or the live site
+  const previewOrigin = preview ? new URL(data.referrer).origin : '';
+  const base = process.env.OFFICE_INGEST_URL || (/^https:\/\/[a-z0-9-]+--uvsuk\.netlify\.app$/.test(previewOrigin) ? previewOrigin : 'https://www.uvsuk.co.uk');
+  const res = await fetch(`${base.replace(/\/$/, '')}/office/api/ingest`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'X-Office': '1', 'X-Office-Ingest': ingestToken() },
+    body: JSON.stringify({ data, preview }),
+  });
+  if (!res.ok) throw new Error(`back office answered ${res.status}: ${await res.text()}`);
 }
 
 export const handler = async (event) => {
   let data = {};
   try {
-    data = JSON.parse(event.body || '{}')?.payload?.data || {};
+    const payload = JSON.parse(event.body || '{}')?.payload || {};
+    data = payload.data || {};
     await saveToOffice(event, data);
   } catch (e) {
     console.error('Saving to the back office failed:', e.message);
