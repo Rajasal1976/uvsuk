@@ -41,3 +41,8 @@ export async function tooManyTries(store, ip) {
   const recent = rec.fails.filter((t) => t > Date.now() - 15 * 60e3);
   return { locked: recent.length >= 8, async fail() { await store.setJSON(k, { fails: [...recent, Date.now()].slice(-20) }); }, async clear() { await store.delete(k); } };
 }
+
+// Lets the form-submitted function hand a new application to the back office function
+// (which has the database connection). Derived from the password, so nothing extra to set up.
+export const ingestToken = () => sign('ingest-v1');
+export const ingestAllowed = (req) => passwordSet() && same(req.headers.get('x-office-ingest') || '', ingestToken());

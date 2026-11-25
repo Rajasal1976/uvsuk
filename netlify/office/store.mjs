@@ -90,6 +90,27 @@ export function recordFromSubmission(data, existing) {
   };
 }
 
+// ---------- Applications sent before the back office existed ----------
+// Pulled from Netlify Forms (Settings › Import past applications). Their details are read
+// from the summary text the form sent ("3. Home address" then the answer on the next line).
+export function summaryAnswer(summary, label) {
+  const lines = String(summary || '').split('\n');
+  const i = lines.findIndex((l) => l.replace(/^\d+\.\s*/, '').trim().toLowerCase() === label.toLowerCase());
+  return i >= 0 ? String(lines[i + 1] || '').trim() : '';
+}
+export function dataFromOldSubmission(sub) {
+  const d = { ...(sub.data || {}) };
+  const sum = d.summary || '';
+  const a = (label) => summaryAnswer(sum, label);
+  d['form-name'] = d['form-name'] || sub.form_name || '';
+  d.form_title = d.form_title || String(sum.split('\n')[0] || '').trim();
+  d.address = d.address || [a('Home address'), a('Address line 2 (optional)'), a('Town or city'), a('Postcode'), a('Country you live in')].filter(Boolean).join(', ');
+  if (!d.invoice_to && /company/i.test(a('Who should our invoice be made out to?'))) {
+    d.invoice_to = 'Company'; d.company_name = a('Company name'); d.company_number = a('Company registration number (optional)'); d.company_address = a('Company address');
+  }
+  return d;
+}
+
 // A record typed in by hand in the back office (phone enquiries, UK immigration clients).
 export function manualRecord(input) {
   const ref = `UVS-M-${Date.now().toString(36).toUpperCase().slice(-6)}`;
