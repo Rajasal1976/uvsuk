@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.2.0",
+    "@netlify/blobs": "^8.2.0",
     "astro": "^5.0.0",
     "nodemailer": "^10.6.1",
     "tesseract.js": "^5.1.1"

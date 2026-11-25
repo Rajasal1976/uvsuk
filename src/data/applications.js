@@ -58,6 +58,16 @@ const emergencyFields = [
 ];
 const emergencyNames = emergencyFields.map((f) => f.name);
 
+// Who the invoice is made out to. Read by the office back office (src/pages/office) to fill in the invoice.
+export const INVOICE_COMPANY = 'In my company’s name';
+const invoiceCompany = { name: 'invoiceTo', is: INVOICE_COMPANY };
+const invoiceFields = [
+  { name: 'invoiceTo', label: 'Who should our invoice be made out to?', type: 'radio', required: true, options: ['In my name', INVOICE_COMPANY], default: 'In my name', hint: 'Choose your company if your employer or business is paying.' },
+  { name: 'companyName', label: 'Company name', type: 'text', required: true, half: true, showIf: invoiceCompany },
+  { name: 'companyNumber', label: 'Company registration number (optional)', type: 'text', half: true, showIf: invoiceCompany },
+  { name: 'companyAddress', label: 'Company address', type: 'textarea', required: true, showIf: invoiceCompany, hint: 'Including the postcode.' },
+];
+
 const contactStep = (extra = [], { emergency = true } = {}) => ({
   id: 'contact',
   title: 'Contact details',
@@ -72,6 +82,7 @@ const contactStep = (extra = [], { emergency = true } = {}) => ({
     { name: 'ukStatus', label: 'Your status in the UK', type: 'select', required: true, options: ['British citizen', 'Indefinite leave to remain / settled', 'EU Settlement Scheme', 'Skilled Worker or other work visa', 'Student visa', 'Spouse or family visa', 'Refugee or humanitarian protection', 'Other'], showIf: { name: 'nationality', isNot: 'United Kingdom' }, hint: 'We’ll ask for proof of this with your documents, and show you exactly what we need.' },
     { name: 'ukStatusExpiry', label: 'When does your UK permission expire?', type: 'date', showIf: { name: 'ukStatus', is: ['Skilled Worker or other work visa', 'Student visa', 'Spouse or family visa', 'Refugee or humanitarian protection', 'Other'] } },
     ...extra,
+    ...invoiceFields,
     ...(emergency ? emergencyFields : []),
   ],
 });

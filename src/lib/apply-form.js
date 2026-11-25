@@ -806,6 +806,17 @@ export function mountApplication(root, config, opts = {}) {
           fd.append('phone', answers.phone || people[0].answers.phone || '');
           fd.append('visa_type', answers.visaType || '');
           fd.append('reference', ref);
+          // Details the back office uses to fill in the invoice (taken from the main applicant)
+          const main = people[0].answers;
+          const pick = (k) => String(answers[k] || main[k] || '').trim();
+          const isCo = /company/i.test(main.invoiceTo || '');
+          fd.append('form_title', config.title || '');
+          fd.append('page_url', config.pageUrl || '');
+          fd.append('address', [pick('addressLine1'), pick('addressLine2'), pick('city'), pick('postcode'), pick('country')].filter(Boolean).join(', '));
+          fd.append('invoice_to', isCo ? 'Company' : 'Personal');
+          fd.append('company_name', isCo ? String(main.companyName || '').trim() : '');
+          fd.append('company_number', isCo ? String(main.companyNumber || '').trim() : '');
+          fd.append('company_address', isCo ? String(main.companyAddress || '').trim() : '');
           const partTag = parts > 1 ? ` – documents part ${k + 1} of ${parts}` : '';
           fd.append('subject', `${config.title}: ${name} (${ref})${partTag}`);
           fd.append('summary', (k === 0

@@ -13,7 +13,9 @@
 // Which forms send an email: the online application forms and client forms (anything with
 // a reference number). The contact form doesn't.
 import nodemailer from 'nodemailer';
+import { connectLambda } from '@netlify/blobs';
 import settings from '../../content/settings.json' with { type: 'json' };
+import { officeStore, getRecord, saveRecord, recordFromSubmission, groupRef } from '../office/store.mjs';
 
 const SITE = 'https://www.uvsuk.co.uk';
 const esc = (t) => String(t ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -114,10 +116,28 @@ export function shouldSend(data) {
   return true;
 }
 
+// Submissions made on a test copy of the site (deploy-preview-1--uvsuk.netlify.app) go to the test records.
+export const isPreviewSubmission = (data) => { try { return new URL(String(data.referrer || '')).hostname.includes('--'); } catch { return false; } };
+
+// Saves the application in the back office (/office/). Only applications with a reference;
+// extra document parts are skipped, extra people are added to the same record.
+async function saveToOffice(event, data) {
+  if (!data.reference || /documents part (\d+) of/i.test(data.subject || '') && !/documents part 1 of/i.test(data.subject || '')) return;
+  if (event.blobs) connectLambda(event); // Netlify passes the database connection in with the event
+  const store = officeStore(isPreviewSubmission(data));
+  const existing = await getRecord(store, groupRef(data.reference));
+  await saveRecord(store, recordFromSubmission(data, existing));
+}
+
 export const handler = async (event) => {
+  let data = {};
   try {
-    const { payload } = JSON.parse(event.body || '{}');
-    const data = payload?.data || {};
+    data = JSON.parse(event.body || '{}')?.payload?.data || {};
+    await saveToOffice(event, data);
+  } catch (e) {
+    console.error('Saving to the back office failed:', e.message);
+  }
+  try {
     if (!shouldSend(data)) return { statusCode: 200, body: 'No email needed' };
     const user = process.env.ZOHO_SMTP_USER, pass = process.env.ZOHO_SMTP_PASS;
     if (!user || !pass) { console.log('Client email not sent: ZOHO_SMTP_USER / ZOHO_SMTP_PASS not set in Netlify'); return { statusCode: 200, body: 'Email not set up' }; }
