@@ -73,7 +73,7 @@ export function mountOffice(root, cfg) {
     root.append(
       h('header', { class: 'of-top' },
         h('div', { class: 'of-brand' }, h('span', {}, 'UVS'), 'Back office'),
-        h('nav', { class: 'of-nav', 'aria-label': 'Back office' }, link('home', 'Home'), link('apps', 'Applications'), link('clients', 'Clients'), link('new', '+ New record'), link('settings', 'Settings'), h('a', { href: '/admin/' }, 'Edit website ↗'))),
+        h('nav', { class: 'of-nav', 'aria-label': 'Back office' }, link('home', 'Home'), link('apps', 'Applications'), link('clients', 'Clients'), link('newsletter', 'Newsletter'), link('new', '+ New record'), link('settings', 'Settings'), h('a', { href: '/admin/' }, 'Edit website ↗'))),
       h('main', { class: 'of-main' },
         me?.preview ? h('p', { class: 'of-banner' }, h('strong', {}, 'Test copy. '), 'You’re on a preview of the site, so the records here are test records, kept apart from your real ones. Invoices made here still go to your real FreeAgent and Wave, so delete any test invoices there.') : null,
         ...content));
@@ -83,7 +83,7 @@ export function mountOffice(root, cfg) {
   function route() {
     const [view, ...rest] = (location.hash.slice(1) || 'home').split('/');
     const arg = decodeURIComponent(rest.join('/'));
-    ({ home, apps: appsView, clients, client: () => clientView(arg), app: () => recordView(arg), new: newRecord, settings }[view] || home)();
+    ({ home, apps: appsView, clients, client: () => clientView(arg), app: () => recordView(arg), new: newRecord, newsletter, settings }[view] || home)();
   }
   const go = (hash) => { if (location.hash === `#${hash}`) route(); else location.hash = hash; };
 
@@ -237,7 +237,8 @@ export function mountOffice(root, cfg) {
             e.target.disabled = true;
             try { a = (await api('remind-email', { ref: a.ref })).app; syncIndex(a); flash('Reminder email sent'); draw(); } catch (ex) { flash(ex.message, true); e.target.disabled = false; }
           } }, 'Email expiry reminder to client'),
-          a.expiryReminded ? h('span', { class: 'small muted' }, `Last sent ${fmtDate(a.expiryReminded)}`) : null) : null);
+          a.expiryReminded ? h('span', { class: 'small muted' }, `Last sent ${fmtDate(a.expiryReminded)}`) : null) : null,
+        a.email ? newsletterToggle(a) : null);
 
       // Reminders
       const rText = h('input', { type: 'text', placeholder: 'e.g. Chase bank statements', 'aria-label': 'Reminder' });
@@ -264,6 +265,115 @@ export function mountOffice(root, cfg) {
     };
     draw();
   }
+  // On the newsletter? (shown on each record)
+  let subs = null;
+  function newsletterToggle(a) {
+    const box = h('div', { class: 'row small' }, h('span', { class: 'muted' }, 'Newsletter: checking…'));
+    const draw = () => {
+      const me1 = (subs || []).find((x) => x.email === String(a.email).toLowerCase());
+      const on = me1 && me1.status === 'subscribed';
+      put(box, h('span', {}, h('strong', {}, 'Newsletter: '), on ? 'on the list' : me1 ? 'unsubscribed' : 'not on the list'),
+        on ? h('button', { class: 'btn small', onclick: async () => { await api('newsletter-status', { email: a.email, status: 'unsubscribed' }); subs = (await get('newsletter')).list; draw(); } }, 'Take off')
+          : (!me1 ? h('button', { class: 'btn small', onclick: async () => {
+            if (!confirm(`Add ${a.email} to the newsletter?\n\nOnly do this if they're your client or have agreed to get emails from you.`)) return;
+            try { await api('newsletter-add', { people: [{ email: a.email, name: titleCase(a.name) }], agreed: true, source: 'record' }); subs = (await get('newsletter')).list; draw(); } catch (e) { alert(e.message); }
+          } }, 'Add to newsletter') : h('span', { class: 'muted' }, ' (they unsubscribed themselves, so they can’t be added back by hand)')));
+    };
+    (subs ? Promise.resolve() : get('newsletter').then((r) => { subs = r.list; })).then(draw).catch(() => put(box, ''));
+    return box;
+  }
+
+  // ---------- newsletter ----------
+  async function newsletter() {
+    frame('newsletter', h('p', { class: 'muted' }, 'Loading…'));
+    let data;
+    try { data = await get('newsletter'); } catch (e) { return frame('newsletter', h('p', { class: 'msg err' }, e.message)); }
+    subs = data.list;
+    const msg = h('div', { role: 'status', 'aria-live': 'polite' });
+    const ok = (t) => put(msg, h('p', { class: 'msg ok' }, t));
+    const bad = (t) => put(msg, h('p', { class: 'msg err' }, t));
+    const active = data.list.filter((x) => x.status === 'subscribed');
+
+    // Add people
+    const nName = h('input', { type: 'text', placeholder: 'Name', 'aria-label': 'Name' });
+    const nEmail = h('input', { type: 'email', placeholder: 'Email', 'aria-label': 'Email' });
+    const paste = h('textarea', { placeholder: 'Paste contacts, one per line, e.g.\nJane Smith, jane@example.com\nor: Jane Smith <jane@example.com>', 'aria-label': 'Contacts to add', style: 'min-height:110px' });
+    const file = h('input', { type: 'file', accept: '.csv,.txt,.vcf', 'aria-label': 'Contacts file (CSV)', onchange: async (e) => { const f = e.target.files[0]; if (f) paste.value = (await f.text()).slice(0, 2e6); } });
+    const agree = h('input', { type: 'checkbox', id: 'nl-agree' });
+    const addPeople = async (body) => {
+      if (!agree.checked) return bad('Please tick the box to confirm these people are clients or have agreed to hear from you.');
+      try { const r = await api('newsletter-add', { ...body, agreed: true }); ok(`Added ${r.added}${r.skipped ? ` (${r.skipped} already on the list, unsubscribed or not valid)` : ''}. ${r.total} on the list now.`); setTimeout(newsletter, 1200); }
+      catch (e) { bad(e.message); }
+    };
+
+    // Write and send
+    const subj = h('input', { type: 'text', 'aria-label': 'Subject line', placeholder: 'Subject line, e.g. Spouse visa changes from January' });
+    const body = h('textarea', { 'aria-label': 'Newsletter text', style: 'min-height:260px', placeholder: 'Write your newsletter here.\n\nLeave a blank line between paragraphs.\n# A line starting with # becomes a heading\n- Lines starting with - become bullet points\nLinks like https://www.uvsuk.co.uk become clickable.' });
+    try { const d = JSON.parse(localStorage.getItem('uvs-nl-draft') || '{}'); subj.value = d.s || ''; body.value = d.b || ''; } catch {}
+    const keep = () => { try { localStorage.setItem('uvs-nl-draft', JSON.stringify({ s: subj.value, b: body.value })); } catch {} };
+    subj.addEventListener('input', keep); body.addEventListener('input', keep);
+    const progress = h('div');
+    async function run(id) {
+      let stop = false;
+      const stopBtn = h('button', { class: 'btn small', onclick: () => { stop = true; } }, 'Pause');
+      for (;;) {
+        let r;
+        try { r = await api('newsletter-batch', { id }); } catch (e) { put(progress, h('p', { class: 'msg err' }, e.message)); return; }
+        const c = r.campaign;
+        put(progress, h('div', { class: 'box stack', style: 'gap:6px' }, h('strong', {}, c.subject),
+          h('div', {}, `Sent ${c.sent} of ${c.total}${c.failed ? ` · ${c.failed} failed` : ''}`),
+          h('progress', { max: c.total, value: c.sent + c.failed, style: 'width:100%' }),
+          r.paused ? h('p', { class: 'small', style: 'margin:0' }, 'Today’s sending limit is reached, so the rest are waiting. Come back tomorrow and press Continue sending under Sent newsletters.')
+            : r.remaining ? h('div', { class: 'row' }, h('span', { class: 'small muted' }, 'Keep this page open while it sends.'), stopBtn) : h('p', { class: 'msg ok', style: 'margin:0' }, 'All sent.')));
+        if (!r.remaining || r.paused || stop) { if (stop && r.remaining) put(progress, h('p', { class: 'msg ok' }, `Paused with ${r.remaining} still to send. Press Continue sending under Sent newsletters to carry on.`)); return; }
+      }
+    }
+
+    frame('newsletter',
+      h('div', { class: 'head' }, h('div', {}, h('h1', {}, 'Newsletter'), h('p', { class: 'muted' }, `${active.length} on the list · ${data.list.length - active.length} unsubscribed`))),
+      msg,
+      h('div', { class: 'cols' },
+        h('div', { class: 'right' },
+          h('section', { class: 'card stack' }, h('h2', {}, 'Write a newsletter'),
+            h('label', { class: 'f' }, 'Subject', subj), h('label', { class: 'f' }, 'Newsletter', body),
+            h('p', { class: 'small muted', style: 'margin:0' }, 'Your phone number, address and an unsubscribe link are added at the bottom automatically.'),
+            h('div', { class: 'row', style: 'justify-content:flex-end' },
+              h('button', { class: 'btn', onclick: async (e) => { e.target.disabled = true; try { const r = await api('newsletter-test', { subject: subj.value, body: body.value }); ok(`Test sent to ${r.to}. Check how it looks before sending to everyone.`); } catch (ex) { bad(ex.message); } e.target.disabled = false; } }, 'Send a test to me'),
+              h('button', { class: 'btn gold', onclick: async () => {
+                if (!confirm(`Send “${subj.value}” to ${active.length} people on the list?`)) return;
+                try { const r = await api('newsletter-create', { subject: subj.value, body: body.value }); try { localStorage.removeItem('uvs-nl-draft'); } catch {} run(r.campaign.id); } catch (ex) { bad(ex.message); }
+              } }, `Send to ${active.length} ${active.length === 1 ? 'person' : 'people'}`)),
+            progress),
+          h('section', { class: 'card stack' }, h('h2', {}, 'Sent newsletters'),
+            data.campaigns.length ? h('ul', { class: 'list' }, data.campaigns.map((c) => h('li', { class: 'row', style: 'justify-content:space-between' },
+              h('span', {}, h('strong', {}, c.subject), h('div', { class: 'small muted' }, `${fmtDateTime(c.created)} · sent ${c.sent} of ${c.total}${c.failed ? ` · ${c.failed} failed` : ''}`)),
+              c.status !== 'sent' ? h('button', { class: 'btn small', onclick: () => { progress.scrollIntoView({ behavior: 'smooth' }); run(c.id); } }, 'Continue sending') : h('span', { class: 'tag' }, 'Sent')))) : h('p', { class: 'muted small' }, 'None yet.'))),
+        h('div', { class: 'left' },
+          h('section', { class: 'card stack' }, h('h2', {}, 'Add people'),
+            h('label', { class: 'row small', for: 'nl-agree', style: 'align-items:flex-start;gap:8px;flex-wrap:nowrap' }, agree, h('span', { style: 'flex:1 1 200px' }, 'These people are my clients or have agreed to get emails from Unique Visa Services.')),
+            h('h3', { style: 'margin:6px 0 0' }, 'One person'),
+            h('div', { class: 'fields' }, nName, nEmail),
+            h('button', { class: 'btn small', style: 'align-self:flex-start', onclick: () => { if (!nEmail.value.trim()) return nEmail.focus(); addPeople({ people: [{ name: nName.value, email: nEmail.value }] }); } }, 'Add'),
+            h('h3', { style: 'margin:10px 0 0' }, 'Several at once'),
+            paste, h('label', { class: 'f' }, 'Or choose a contacts file (CSV)', file),
+            h('p', { class: 'small muted', style: 'margin:0' }, 'From Zoho Mail: open Contacts, select the ones to include, then Export as CSV and choose the file here.'),
+            h('button', { class: 'btn small', style: 'align-self:flex-start', onclick: () => { if (!paste.value.trim()) return paste.focus(); addPeople({ text: paste.value }); } }, 'Add these contacts')),
+          h('section', { class: 'card stack' }, h('h2', {}, 'People on the list'), subscriberTable(data.list, ok, bad)))));
+  }
+  function subscriberTable(list, ok, bad) {
+    const q = h('input', { type: 'search', placeholder: 'Search', 'aria-label': 'Search the list' });
+    const out = h('div');
+    const draw = () => {
+      const t = q.value.trim().toLowerCase();
+      const rows = list.filter((x) => !t || [x.email, x.name].some((v) => String(v || '').toLowerCase().includes(t))).slice(0, 300);
+      put(out, rows.length ? h('ul', { class: 'list' }, rows.map((x) => h('li', { class: 'row', style: 'justify-content:space-between' },
+        h('span', {}, x.name || x.email, h('div', { class: 'small muted' }, `${x.name ? x.email + ' · ' : ''}${x.status === 'subscribed' ? x.source : 'unsubscribed'}`)),
+        x.status === 'subscribed' ? h('button', { class: 'btn link small', onclick: async () => { if (!confirm(`Take ${x.email} off the newsletter?`)) return; try { await api('newsletter-status', { email: x.email, status: 'unsubscribed' }); x.status = 'unsubscribed'; draw(); ok('Taken off the list.'); } catch (e) { bad(e.message); } } }, 'Take off') : null))) : h('p', { class: 'muted small' }, 'Nobody yet.'));
+    };
+    q.addEventListener('input', draw); draw();
+    return h('div', { class: 'stack' }, q, out);
+  }
+
   const syncIndex = (a) => {
     const i = apps.findIndex((x) => x.ref === a.ref);
     const s = { ...apps[i], ...a, invoices: (a.invoices || []).map((v) => ({ status: v.status, total: v.total, company: v.company })), people: (a.people || []).length, nextReminder: (a.reminders || []).filter((r) => !r.done).sort((x, y) => x.due.localeCompare(y.due)).map((r) => ({ due: r.due, text: r.text }))[0] || null };
@@ -422,6 +532,7 @@ export function mountOffice(root, cfg) {
     };
     const terms = h('input', { type: 'number', min: '0', max: '120', value: s.paymentTermsDays });
     const days = h('input', { type: 'number', min: '1', max: '365', value: s.reminderDays });
+    const nlLimit = h('input', { type: 'number', min: '1', max: '2000', value: s.newsletterDailyLimit || 200 });
     const vatSel = (v) => h('select', {}, [0, 20].map((x) => h('option', { value: x, selected: Number(v) === x }, x ? '+20% VAT' : 'No VAT')));
     const tvhVat = vatSel(s.tvhFeeVat), uvsVat = vatSel(s.uvsFeeVat);
     const waveBox = h('div', { class: 'stack' });
@@ -447,9 +558,10 @@ export function mountOffice(root, cfg) {
           h('label', { class: 'f' }, 'Payment terms (days, 0 = due on receipt)', terms),
           h('label', { class: 'f' }, 'Travel Visa Help fee: default VAT', tvhVat),
           h('label', { class: 'f' }, 'UVSUK fee: default VAT', uvsVat),
-          h('label', { class: 'f' }, 'Show visas expiring within (days)', days)),
+          h('label', { class: 'f' }, 'Show visas expiring within (days)', days),
+          h('label', { class: 'f' }, 'Newsletter: most emails to send a day', nlLimit)),
         h('button', { class: 'btn primary small', style: 'align-self:flex-start', onclick: async () => {
-          try { me.settings = (await api('settings', { paymentTermsDays: terms.value, reminderDays: days.value, tvhFeeVat: tvhVat.value, uvsFeeVat: uvsVat.value })).settings; ok('Settings saved'); } catch (e) { bad(e.message); }
+          try { me.settings = (await api('settings', { paymentTermsDays: terms.value, reminderDays: days.value, newsletterDailyLimit: nlLimit.value, tvhFeeVat: tvhVat.value, uvsFeeVat: uvsVat.value })).settings; ok('Settings saved'); } catch (e) { bad(e.message); }
         } }, 'Save')),
       h('section', { class: 'card stack', style: 'margin-top:16px' }, h('h2', {}, 'Import past applications'),
         h('p', { class: 'small', style: 'margin:0' }, 'Bring in applications sent through your website forms before the back office existed. Ones already here are skipped, so it’s safe to press more than once.'),

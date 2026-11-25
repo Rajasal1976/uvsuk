@@ -4,6 +4,7 @@ import nodemailer from 'nodemailer';
 import settingsJson from '../../content/settings.json' with { type: 'json' };
 import { officeStore, secretStore, readIndex, getRecord, saveRecord, rebuildIndex, applyPatch, manualRecord, STATUSES, recordFromSubmission, groupRef, dataFromOldSubmission } from '../office/store.mjs';
 import { checkPassword, passwordSet, sessionCookie, clearCookie, signedIn, tooManyTries, ingestAllowed } from '../office/auth.mjs';
+import { readList, addSubscribers, setStatus as setSubStatus, removeSubscriber, parseContacts, readCampaigns, createCampaign, sendBatch, sendTest, summary as campaignSummary, validEmail } from '../office/newsletter.mjs';
 import { COMPANIES, validateInvoice, createInvoice, connection, keysSet, waveCatalogue, disconnect } from '../office/accounts.mjs';
 
 export const config = { path: '/office/api/*' };
@@ -11,7 +12,7 @@ export const config = { path: '/office/api/*' };
 const json = (body, status = 200, headers = {}) => new Response(JSON.stringify(body), { status, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store', ...headers } });
 const fail = (message, status = 400) => json({ error: message }, status);
 
-const DEFAULT_SETTINGS = { paymentTermsDays: 0, waveProductMain: '', waveProductOther: '', waveVatTaxId: '', reminderDays: 90, tvhFeeVat: 0, uvsFeeVat: 0 };
+const DEFAULT_SETTINGS = { paymentTermsDays: 0, waveProductMain: '', waveProductOther: '', waveVatTaxId: '', reminderDays: 90, tvhFeeVat: 0, uvsFeeVat: 0, newsletterDailyLimit: 200 };
 const getSettings = async () => ({ ...DEFAULT_SETTINGS, ...((await secretStore().get('settings', { type: 'json' })) || {}) });
 
 export default async (req, context) => {
@@ -39,6 +40,7 @@ export default async (req, context) => {
     const target = officeStore(!!body.preview);
     const existing = await getRecord(target, groupRef(data.reference));
     const saved = await saveRecord(target, recordFromSubmission(data, existing));
+    if (/^yes/i.test(String(data.newsletter || '')) && validEmail(data.email)) await addSubscribers(target, [{ email: data.email, name: data.applicant_name }], 'form');
     return json({ ok: true, ref: saved.ref });
   }
   if (action === 'logout') return json({ ok: true }, 200, { 'Set-Cookie': clearCookie() });
@@ -88,6 +90,7 @@ export default async (req, context) => {
         const n = (v, max) => Math.max(0, Math.min(max, Math.round(Number(v) || 0)));
         if ('paymentTermsDays' in body) s.paymentTermsDays = n(body.paymentTermsDays, 120);
         if ('reminderDays' in body) s.reminderDays = n(body.reminderDays, 365) || 90;
+        if ('newsletterDailyLimit' in body) s.newsletterDailyLimit = n(body.newsletterDailyLimit, 2000) || 200;
         for (const k of ['tvhFeeVat', 'uvsFeeVat']) if (k in body) s[k] = [0, 20].includes(Number(body[k])) ? Number(body[k]) : 0;
         for (const k of ['waveProductMain', 'waveProductOther', 'waveVatTaxId']) if (k in body) s[k] = String(body[k] || '').slice(0, 200);
         await secretStore().setJSON('settings', s);
@@ -128,6 +131,34 @@ export default async (req, context) => {
         }
         await rebuildIndex(store);
         return json({ added, skipped });
+      }
+      case 'newsletter': {
+        const [list, campaigns] = await Promise.all([readList(store), readCampaigns(store)]);
+        return json({ list, campaigns: campaigns.map(campaignSummary) });
+      }
+      case 'newsletter-add': {
+        // body.people = [{name,email}] or body.text = pasted contacts; body.agreed must be true
+        if (body.agreed !== true) return fail('Please confirm these people are clients or have agreed to hear from you.');
+        const people = Array.isArray(body.people) ? body.people : parseContacts(body.text);
+        if (!people.length) return fail('No email addresses found.');
+        if (people.length > 5000) return fail('That’s a lot at once: please add up to 5,000 at a time.');
+        return json(await addSubscribers(store, people, body.source === 'record' ? 'client record' : people.length > 1 ? 'imported' : 'added by hand'));
+      }
+      case 'newsletter-status': {
+        if (!['subscribed', 'unsubscribed'].includes(body.status)) return fail('Unknown status');
+        return json({ ok: await setSubStatus(store, body.email, body.status) });
+      }
+      case 'newsletter-remove': { await removeSubscriber(store, body.email); return json({ ok: true }); }
+      case 'newsletter-test': {
+        const to = process.env.ZOHO_SMTP_USER;
+        if (!String(body.subject || '').trim() || String(body.body || '').trim().length < 20) return fail('Add a subject and write the newsletter first.');
+        await sendTest({ subject: String(body.subject).slice(0, 200), body: String(body.body).slice(0, 50000) }, to, new URL(req.url).origin);
+        return json({ ok: true, to });
+      }
+      case 'newsletter-create': return json({ campaign: campaignSummary(await createCampaign(store, body)) });
+      case 'newsletter-batch': {
+        const s = await getSettings();
+        return json(await sendBatch(store, String(body.id || ''), { dailyLimit: Number(s.newsletterDailyLimit) || 200, origin: new URL(req.url).origin }));
       }
       case 'rebuild': return json({ count: await rebuildIndex(store) });
       default: return fail('Unknown request', 404);

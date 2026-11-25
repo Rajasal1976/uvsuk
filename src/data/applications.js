@@ -66,6 +66,8 @@ const invoiceFields = [
   { name: 'companyName', label: 'Company name', type: 'text', required: true, half: true, showIf: invoiceCompany },
   { name: 'companyNumber', label: 'Company registration number (optional)', type: 'text', half: true, showIf: invoiceCompany },
   { name: 'companyAddress', label: 'Company address', type: 'textarea', required: true, showIf: invoiceCompany, hint: 'Including the postcode.' },
+  // Optional newsletter sign-up (the back office adds a "Yes" to the newsletter list)
+  { name: 'newsletter', label: 'Would you like our occasional newsletter with visa news and tips?', type: 'yesno', hint: 'Optional. You can unsubscribe at any time.' },
 ];
 
 const contactStep = (extra = [], { emergency = true } = {}) => ({
