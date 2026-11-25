@@ -451,6 +451,15 @@ export function mountOffice(root, cfg) {
         h('button', { class: 'btn primary small', style: 'align-self:flex-start', onclick: async () => {
           try { me.settings = (await api('settings', { paymentTermsDays: terms.value, reminderDays: days.value, tvhFeeVat: tvhVat.value, uvsFeeVat: uvsVat.value })).settings; ok('Settings saved'); } catch (e) { bad(e.message); }
         } }, 'Save')),
+      h('section', { class: 'card stack', style: 'margin-top:16px' }, h('h2', {}, 'Import past applications'),
+        h('p', { class: 'small', style: 'margin:0' }, 'Bring in applications sent through your website forms before the back office existed. Ones already here are skipped, so it’s safe to press more than once.'),
+        h('p', { class: 'small muted', style: 'margin:0' }, 'One-time setup: in Netlify, click your profile picture › User settings › Applications › Personal access tokens › New access token. Copy it, then add it to the site as an environment variable called NETLIFY_API_TOKEN (tick “Contains secret values”, put it in Production) and rebuild the site.'),
+        h('button', { class: 'btn primary small', style: 'align-self:flex-start', onclick: async (e) => {
+          e.target.disabled = true; e.target.textContent = 'Importing…';
+          try { const r = await api('import-forms', {}); await loadApps(); ok(`Imported ${r.added} past application${r.added === 1 ? '' : 's'}${r.skipped ? ` (${r.skipped} already here)` : ''}.`); }
+          catch (ex) { bad(ex.message); }
+          e.target.disabled = false; e.target.textContent = 'Import past applications';
+        } }, 'Import past applications')),
       h('section', { class: 'card stack', style: 'margin-top:16px' }, h('h2', {}, 'Records'),
         h('p', { class: 'small muted' }, 'If the lists ever look out of date, rebuild them from the saved records.'),
         h('button', { class: 'btn small', style: 'align-self:flex-start', onclick: async () => { try { const r = await api('rebuild', {}); await loadApps(); ok(`Rebuilt: ${r.count} records.`); } catch (e) { bad(e.message); } } }, 'Rebuild lists')));

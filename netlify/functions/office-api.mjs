@@ -2,7 +2,7 @@
 // sign-in cookie (see netlify/office/auth.mjs). Records are kept in Netlify Blobs (netlify/office/store.mjs).
 import nodemailer from 'nodemailer';
 import settingsJson from '../../content/settings.json' with { type: 'json' };
-import { officeStore, secretStore, readIndex, getRecord, saveRecord, rebuildIndex, applyPatch, manualRecord, STATUSES, recordFromSubmission, groupRef } from '../office/store.mjs';
+import { officeStore, secretStore, readIndex, getRecord, saveRecord, rebuildIndex, applyPatch, manualRecord, STATUSES, recordFromSubmission, groupRef, dataFromOldSubmission } from '../office/store.mjs';
 import { checkPassword, passwordSet, sessionCookie, clearCookie, signedIn, tooManyTries, ingestAllowed } from '../office/auth.mjs';
 import { COMPANIES, validateInvoice, createInvoice, connection, keysSet, waveCatalogue, disconnect } from '../office/accounts.mjs';
 
@@ -98,6 +98,36 @@ export default async (req, context) => {
         if (!['freeagent', 'wave'].includes(body.app)) return fail('Unknown app');
         await disconnect(body.app);
         return json({ ok: true });
+      }
+      case 'import-forms': {
+        // Needs a Netlify personal access token saved as NETLIFY_API_TOKEN
+        const token = process.env.NETLIFY_API_TOKEN;
+        const siteId = context?.site?.id || process.env.SITE_ID;
+        if (!token) return fail('Add a Netlify personal access token as NETLIFY_API_TOKEN first (see the steps on this page), then try again.');
+        if (!siteId) return fail('Couldn’t work out which Netlify site this is.');
+        let added = 0, skipped = 0;
+        const index = await readIndex(store);
+        const known = new Set(index.map((x) => x.ref));
+        for (let page = 1; page <= 20; page++) {
+          const res = await fetch(`https://api.netlify.com/api/v1/sites/${siteId}/submissions?per_page=100&page=${page}`, { headers: { Authorization: `Bearer ${token}`, 'User-Agent': 'UVS back office' } });
+          if (!res.ok) return fail(`Netlify said ${res.status}${res.status === 401 ? ': the access token isn’t right' : ''}`, 502);
+          const list = await res.json();
+          for (const sub of list.slice().reverse()) {
+            const d = dataFromOldSubmission(sub);
+            if (!d.reference || (/documents part (\d+) of/i.test(d.subject || '') && !/documents part 1 of/i.test(d.subject || ''))) continue;
+            const ref = groupRef(d.reference);
+            const existing = known.has(ref) ? await getRecord(store, ref) : null;
+            const name = String(d.applicant_name || '').trim();
+            if (existing && (existing.people || []).includes(name)) { skipped++; continue; }
+            const rec = recordFromSubmission(d, existing);
+            if (!existing) { rec.received = sub.created_at || rec.received; rec.source = 'website'; added++; }
+            await store.setJSON(`apps/${rec.ref}`, rec);
+            known.add(rec.ref);
+          }
+          if (list.length < 100) break;
+        }
+        await rebuildIndex(store);
+        return json({ added, skipped });
       }
       case 'rebuild': return json({ count: await rebuildIndex(store) });
       default: return fail('Unknown request', 404);
