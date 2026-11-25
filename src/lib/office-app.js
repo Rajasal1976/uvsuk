@@ -117,7 +117,12 @@ export function mountOffice(root, cfg) {
     const box = (title, count, body) => h('section', { class: 'card' }, h('h2', {}, title, ' ', h('span', { class: 'muted' }, `(${count})`)), body);
     const mini = (list, extra) => list.length ? h('ul', { class: 'list' }, list.slice(0, 12).map((a) => h('li', {}, h('a', { href: `#app/${a.ref}` }, titleCase(a.name) || a.ref), ' ', h('span', { class: 'small muted' }, extra(a))))) : h('p', { class: 'muted small' }, 'Nothing right now.');
     frame('home',
-      h('div', { class: 'head' }, h('div', {}, h('h1', {}, 'Home'), h('p', { class: 'muted' }, 'What needs doing today.'))),
+      h('div', { class: 'head' }, h('div', {}, h('h1', {}, 'Home'), h('p', { class: 'muted' }, 'What needs doing today.')), h('a', { class: 'btn primary', href: '#new' }, '+ New record')),
+      !apps.length ? h('section', { class: 'card stack', style: 'margin-bottom:16px;border-left:4px solid var(--gold)' },
+        h('h2', {}, 'How records get here'),
+        h('p', { style: 'margin:0' }, h('strong', {}, 'Automatically: '), 'when a client sends one of the online application forms on the website, it appears here under New applications.'),
+        h('p', { style: 'margin:0' }, h('strong', {}, 'By hand: '), 'for phone calls, walk-ins and UK immigration clients, press ', h('strong', {}, '+ New record'), ', fill in their details, and the record opens with the invoice beside it.'),
+        h('a', { class: 'btn primary', href: '#new', style: 'align-self:flex-start' }, '+ Add your first record')) : null,
       h('div', { class: 'grid' },
         box('New applications', fresh.length, mini(fresh, (a) => `${a.formTitle || ''} · ${fmtDate(a.received)}`)),
         box('Reminders due', due.length, mini(due, (a) => `${a.nextReminder.text} · ${fmtDate(a.nextReminder.due)}`)),
