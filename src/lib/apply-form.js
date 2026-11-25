@@ -1,6 +1,7 @@
 // Online application form engine. The questions come from src/data/applications.js.
 import { readPassport, warmUp } from './passport-ocr.js';
 import { countries, commonCountries } from '../data/countries.js';
+import { pickPageDocs, pageDocUploads, LIST_SLOTS } from './doc-match.js';
 
 const MAX_TOTAL = 7.5 * 1024 * 1024; // Netlify Forms accepts up to 8 MB per submission
 const MAX_PDF = 4 * 1024 * 1024;
@@ -28,6 +29,70 @@ const fmtSize = (b) => (b > 1024 * 1024 ? `${(b / 1024 / 1024).toFixed(1)} MB` :
 const fmtDate = (v) => (v && /^\d{4}-\d{2}-\d{2}$/.test(v) ? new Date(v + 'T00:00:00').toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }) : v);
 const isEmpty = (v) => v == null || (typeof v === 'string' && v.trim() === '') || (Array.isArray(v) && v.length === 0);
 
+// ---------- proof of UK status (clients who aren't British) ----------
+// The upload box changes with the status they chose in "Your status in the UK", and opens a guide
+// with an example showing exactly what the page must show.
+const REFUGEE = 'Refugee or humanitarian protection';
+const VIEW_PROVE = 'https://www.gov.uk/view-prove-immigration-status';
+const STATUS2_UPLOAD = {
+  name: 'status2',
+  label: 'Travel document: page showing your UK leave',
+  hint: 'If you travel on a Home Office travel document, add the observations page that shows your leave to remain and when it expires. If you don’t have one, add your Home Office decision letter instead.',
+  required: false,
+};
+const PERMISSION_EXAMPLE = {
+  'Indefinite leave to remain / settled': ['Indefinite leave to remain', 'No expiry'],
+  'EU Settlement Scheme': ['EU Settlement Scheme: settled status', 'No expiry'],
+  'Skilled Worker or other work visa': ['Skilled Worker', '14 March 2028'],
+  'Student visa': ['Student', '30 January 2027'],
+  'Spouse or family visa': ['Leave to remain: partner', '2 October 2027'],
+  [REFUGEE]: ['Refugee: limited leave to remain', '28 October 2029'],
+};
+function statusUpload(u, status = '') {
+  if (status === 'British citizen') return { ...u, label: 'Your British passport photo page', hint: 'Because you’re a British citizen travelling on another passport.' };
+  if (status === REFUGEE) return { ...u, label: 'Your eVisa share code page', hint: 'Showing your refugee or humanitarian protection leave. Open the guide below to see exactly what we need.' };
+  if (status) return { ...u, label: 'Your eVisa share code page', hint: 'Because you’re not a British citizen. Open the guide below to see exactly what we need.' };
+  return u;
+}
+function ukStatusGuide(status = '') {
+  if (status === 'British citizen') {
+    return h('details', { class: 'ap-guide' }, h('summary', {}, 'What we need'),
+      h('div', { class: 'ap-guide-body' },
+        h('p', {}, 'You told us you’re a British citizen, so instead of an eVisa we need the photo page of your ', h('strong', {}, 'British passport'), '.'),
+        h('ul', { class: 'ap-guide-ticks' }, h('li', {}, 'All four corners of the page in the photo'), h('li', {}, 'Your name, photo, passport number and expiry date easy to read'), h('li', {}, 'No glare or fingers over the details'))));
+  }
+  const [permission, until] = PERMISSION_EXAMPLE[status] || ['Your type of permission', 'Date it ends'];
+  const row = (k, v, n) => h('div', { class: 'ap-ex-row' }, h('span', { class: 'ap-ex-num', 'aria-hidden': 'true' }, String(n)), h('span', { class: 'ap-ex-k' }, k), h('span', { class: 'ap-ex-v' }, v));
+  const example = h('figure', { class: 'ap-ex' },
+    h('div', { class: 'ap-ex-card', role: 'img', 'aria-label': 'Example of an eVisa share code page, with the five details we need numbered' },
+      h('span', { class: 'ap-ex-stamp', 'aria-hidden': 'true' }, 'Example'),
+      h('div', { class: 'ap-ex-top' }, h('div', { class: 'ap-ex-photo', 'aria-hidden': 'true' }, h('span', { class: 'ap-ex-num' }, '2')),
+        h('div', {}, row('Name', 'Jane Example', 1))),
+      row('Permission', permission, 3),
+      row('Valid until', until, 4),
+      row('Share code', 'W12 3AB C45 (valid until a date shown on the page)', 5)),
+    h('figcaption', {}, 'An example only. Your page will look different, but it must show these five things.'));
+  const extra = status === REFUGEE
+    ? h('p', { class: 'ap-guide-note' }, 'If you travel on a Home Office travel document, please also add its observations page (the page that shows your leave to remain). There’s a separate box for it below.')
+    : h('p', { class: 'ap-guide-note' }, 'Still have a BRP, or a visa stamp in an old passport? Add it as an extra document if you like, but we still need the eVisa page, because BRPs are no longer accepted on their own.');
+  return h('details', { class: 'ap-guide' }, h('summary', {}, 'What we need: see an example'),
+    h('div', { class: 'ap-guide-body' },
+      h('p', {}, 'Your UK immigration status is now online (an eVisa). Here’s how to get the page we need:'),
+      h('ol', { class: 'ap-guide-steps' },
+        h('li', {}, 'Go to ', h('a', { href: VIEW_PROVE, target: '_blank', rel: 'noopener' }, 'View and prove your immigration status'), ' on GOV.UK and sign in.'),
+        h('li', {}, 'Choose to get a share code. If it asks why, pick the option for something else, or travel.'),
+        h('li', {}, 'Download the page as a PDF, or take a screenshot of the whole page, and upload it here.')),
+      h('p', {}, h('strong', {}, 'Your page must show:')),
+      h('ol', { class: 'ap-guide-ticks ap-guide-numbered' },
+        h('li', {}, 'Your full name, the same as on your passport'),
+        h('li', {}, 'Your photo'),
+        h('li', {}, 'Your type of permission, for example “', permission === 'Your type of permission' ? 'Indefinite leave to remain' : permission, '”'),
+        h('li', {}, 'The date your permission is valid until (or “No expiry”)'),
+        h('li', {}, 'The share code, and the date it expires')),
+      example,
+      extra));
+}
+
 async function compressImage(file, maxSide = 2000, quality = 0.85) {
   if (!file.type.startsWith('image/') || file.type === 'image/gif') return file;
   try {
@@ -48,6 +113,14 @@ async function compressImage(file, maxSide = 2000, quality = 0.85) {
 // ---------- the form ----------
 export function mountApplication(root, config, opts = {}) {
   const storeKey = `uvs-apply-${config.slug}`;
+  // The visa page the client came from, so the form can ask for the documents on that page's table
+  let fromPage = '';
+  try {
+    const ref = document.referrer ? new URL(document.referrer) : null;
+    if (ref && ref.origin === location.origin && !ref.pathname.startsWith('/apply/')) fromPage = ref.pathname.replace(/^\/|\/$/g, '');
+    if (fromPage) sessionStorage.setItem(`${storeKey}-from`, fromPage);
+    else fromPage = sessionStorage.getItem(`${storeKey}-from`) || '';
+  } catch {}
   const allFields = config.steps.flatMap((s) => s.fields);
   const fieldByName = Object.fromEntries(allFields.map((f) => [f.name, f]));
   // ---------- people ----------
@@ -144,14 +217,26 @@ export function mountApplication(root, config, opts = {}) {
     return Array.isArray(c.is) ? c.is.includes(v) : v === c.is;
   };
   // Extra people: only their photo (and passport) are required; shared documents cover everyone
-  const visibleUploads = () => (config.uploads || []).filter((u) => visible(u)).map((u) => (p > 0 && u.name !== 'photo' ? { ...u, required: false } : u));
+  // Documents: the form's own list, plus anything on the visa page's Documents table that the form
+  // doesn't already ask for (src/lib/doc-match.js). Proof of UK status adapts to the client's status.
+  const visibleUploads = () => {
+    const own = (config.uploads || []).filter((u) => visible(u));
+    const out = [];
+    for (const u of own) {
+      out.push(u.example === 'ukStatus' ? statusUpload(u, answers.ukStatus) : u);
+      if (u.example === 'ukStatus' && answers.ukStatus === REFUGEE) out.push(STATUS2_UPLOAD);
+    }
+    const listed = pageDocUploads(pickPageDocs(config.pageDocs, answers, fromPage), own).filter((u) => visible(u));
+    for (const u of listed) out.push(u.example === 'ukStatus' ? statusUpload(u, answers.ukStatus) : u);
+    return out.map((u) => (p > 0 && u.name !== 'photo' ? { ...u, required: false } : u));
+  };
   const PASSPORT_SLOT = { name: 'passport', label: 'Passport photo page' };
   // Forms without a passport (e.g. document legalisation) set noPassport: true in their settings.
   const slotInfo = (slot) => (slot === 'passport' ? (config.noPassport ? null : PASSPORT_SLOT)
     : slot.startsWith('extra') ? { name: slot, label: (people[p].labels[slot] || '').trim() || 'Additional document' }
     : visibleUploads().find((u) => u.name === slot));
   // Only files for documents that still apply (e.g. if the client changed their visa type)
-  const SLOT_ORDER = ['passport', 'photo', 'doc1', 'doc2', 'doc3', 'doc4', 'doc5', 'doc6', 'doc7', 'doc8', ...EXTRA_SLOTS];
+  const SLOT_ORDER = ['passport', 'photo', 'doc1', 'doc2', 'doc3', 'doc4', 'doc5', 'doc6', 'doc7', 'doc8', 'status2', ...LIST_SLOTS, ...EXTRA_SLOTS];
   const activeFiles = () => Object.entries(files).filter(([slot]) => slotInfo(slot)).sort(([a], [b]) => SLOT_ORDER.indexOf(a) - SLOT_ORDER.indexOf(b));
   const safeName = (t) => t.replace(/[^\w\s().,-]/g, '').replace(/\s+/g, ' ').trim().slice(0, 80);
 
@@ -396,7 +481,8 @@ export function mountApplication(root, config, opts = {}) {
       const input = h('input', { type: 'file', id, accept: ACCEPT, class: 'ap-file-input' });
       const card = h('div', { class: 'ap-up', 'data-slot': u.name },
         h('div', { class: 'ap-up-text' }, h('strong', {}, u.label, u.required || /optional/i.test(u.label) ? null : h('span', { class: 'ap-optional' }, ' (optional)')), u.hint ? h('small', {}, u.hint) : null),
-        info, input, h('label', { for: id, class: 'btn btn-outline' }, 'Choose file'), err);
+        info, input, h('label', { for: id, class: 'btn btn-outline' }, 'Choose file'), err,
+        u.example === 'ukStatus' ? ukStatusGuide(answers.ukStatus) : null);
       const draw = () => {
         info.innerHTML = '';
         const f = files[u.name];
@@ -705,6 +791,9 @@ export function mountApplication(root, config, opts = {}) {
           size += item[1].size;
         }
         const parts = batches.length;
+        // Documents on the list that weren't uploaded (optional ones). Listed for us, and in the client's email.
+        const stillToSend = config.noPassport ? [] : (files.passport ? [] : ['Passport photo page']);
+        for (const u of visibleUploads()) if (!files[u.name] && !/^any other/i.test(u.label)) stillToSend.push(u.label.replace(/\s*\(optional\)/i, ''));
         const header = [config.title, `Reference: ${ref}`,
           total > 1 ? `Group reference: ${base} (person ${i + 1} of ${total}: ${names.join(', ')})` : null,
           `Submitted: ${new Date().toLocaleString('en-GB')}`,
@@ -720,7 +809,8 @@ export function mountApplication(root, config, opts = {}) {
           const partTag = parts > 1 ? ` – documents part ${k + 1} of ${parts}` : '';
           fd.append('subject', `${config.title}: ${name} (${ref})${partTag}`);
           fd.append('summary', (k === 0
-            ? [...header, ...summaryLines(), '', 'DOCUMENTS ATTACHED', '', ...list.map(([slot, f], n) => `${n + 1}. ${slotInfo(slot).label}\n${f.name}\n`), parts > 1 ? `\n(Documents sent in ${parts} parts with the same reference.)` : '']
+            ? [...header, ...summaryLines(), '', 'DOCUMENTS ATTACHED', '', ...list.map(([slot, f], n) => `${n + 1}. ${slotInfo(slot).label}\n${f.name}\n`), parts > 1 ? `\n(Documents sent in ${parts} parts with the same reference.)` : '',
+              ...(stillToSend.length ? ['', 'DOCUMENTS STILL TO SEND', '', ...stillToSend.map((l, n) => `${n + 1}. ${l}`)] : [])]
             : [...header, `Documents part ${k + 1} of ${parts}.`]).join('\n'));
           fd.append('bot-field', '');
           // Name each file after the document it is, e.g. "KHAN - Invitation letter from the Chinese company.pdf"

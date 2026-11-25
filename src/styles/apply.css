@@ -212,3 +212,31 @@
 /* On form pages the WhatsApp button is the round icon only, so it doesn't cover Continue */
 body:has(.ap-layout) .wa-float { width: 58px; padding: 0; }
 body:has(.ap-layout) .wa-label { display: none; }
+
+/* ---------- "What we need" guide on an upload (proof of UK status) ---------- */
+.ap-guide { grid-column: 1 / -1; margin-top: 4px; border-top: 1px dashed #D5E6DA; padding-top: 10px; }
+.ap-guide summary { cursor: pointer; color: var(--green-800); font-weight: 600; font-size: 15px; list-style: none; display: inline-flex; align-items: center; gap: 6px; }
+.ap-guide summary::-webkit-details-marker { display: none; }
+.ap-guide summary::before { content: '+'; display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; background: var(--green-50); font-weight: 700; }
+.ap-guide[open] summary::before { content: '–'; }
+.ap-guide summary:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; border-radius: 4px; }
+.ap-guide-body { margin-top: 10px; font-size: 15px; }
+.ap-guide-body p { margin: 0 0 8px; }
+.ap-guide-steps, .ap-guide-ticks { margin: 0 0 12px; padding-left: 22px; }
+.ap-guide-steps li, .ap-guide-ticks li { margin-bottom: 4px; }
+.ap-guide-numbered { padding-left: 0; list-style: none; counter-reset: g; }
+.ap-guide-numbered li { counter-increment: g; display: flex; gap: 8px; align-items: baseline; }
+.ap-guide-numbered li::before { content: counter(g); flex: none; display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; background: var(--gold); color: #3A2A05; font-size: 12px; font-weight: 700; }
+.ap-guide-note { background: #FFF8E8; border-left: 4px solid var(--gold); border-radius: 6px; padding: 10px 14px; }
+.ap-ex { margin: 6px 0 12px; }
+.ap-ex-card { position: relative; overflow: hidden; max-width: 420px; border: 1.5px solid #C9D6CE; border-radius: 10px; background: #fff; padding: 14px 16px; display: grid; gap: 8px; }
+.ap-ex-stamp { position: absolute; top: 14px; right: -34px; transform: rotate(35deg); background: #B42318; color: #fff; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 3px 40px; opacity: .85; }
+.ap-ex-top { display: flex; gap: 12px; align-items: center; }
+.ap-ex-photo { position: relative; flex: none; width: 56px; height: 68px; border-radius: 6px; background: linear-gradient(180deg, #E3E9E5 0 45%, #CBD5CF 45%); }
+.ap-ex-photo .ap-ex-num { position: absolute; top: -6px; left: -6px; }
+.ap-ex-row { display: grid; grid-template-columns: 20px 92px 1fr; gap: 8px; align-items: baseline; font-size: 14px; }
+.ap-ex-k { color: var(--ink-mute); }
+.ap-ex-v { font-weight: 600; color: #1F2A24; }
+.ap-ex-num { display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; background: var(--gold); color: #3A2A05; font-size: 12px; font-weight: 700; }
+.ap-ex figcaption { font-size: 13px; color: var(--ink-mute); margin-top: 6px; }
+@media (max-width: 560px) { .ap-ex-row { grid-template-columns: 20px 80px 1fr; } }
