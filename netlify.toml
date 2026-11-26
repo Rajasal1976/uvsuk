@@ -32,3 +32,15 @@
   for = "/ocr/*"
   [headers.values]
     Cache-Control = "public, max-age=2592000"
+
+# The back office app file: tell phones it's an app description so they can install it.
+[[headers]]
+  for = "/office/manifest.webmanifest"
+  [headers.values]
+    Content-Type = "application/manifest+json"
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/office/sw.js"
+  [headers.values]
+    Cache-Control = "no-cache"
