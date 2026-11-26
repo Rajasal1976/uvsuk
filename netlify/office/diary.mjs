@@ -158,7 +158,7 @@ async function notify(appt, people, method, moved = false) {
 }
 
 // ---------- to-dos ----------
-// A simple one-line list. { id, title, due, time, who, ref, clientName, clientPhone, notes, photo, done, doneAt, created }
+// A simple one-line list. { id, title, due, time, who, ref, clientName, clientPhone, clientEmail, notes, photo, done, doneAt, created }
 // photo = the id of a picture kept under 'photos/<id>' (e.g. a snap of a caller's number).
 export async function readTasks(store) { return (await store.get('diary/tasks', { type: 'json' })) || []; }
 async function saveTasks(store, list) {
@@ -178,7 +178,7 @@ export async function saveTask(store, input, people) {
   if (time && !isTime(time)) throw bad('The time doesn’t look right.');
   const who = clean(input.who, 60);
   if (who && !people.some((p) => p.name === who)) throw bad('Choose who it’s for.');
-  const fields = { title, due, time, who, ref: clean(input.ref, 60), clientName: clean(input.clientName, 200), clientPhone: clean(input.clientPhone, 60), notes: clean(input.notes, 2000) };
+  const fields = { title, due, time, who, ref: clean(input.ref, 60), clientName: clean(input.clientName, 200), clientPhone: clean(input.clientPhone, 60), clientEmail: clean(input.clientEmail, 200).toLowerCase(), notes: clean(input.notes, 2000) };
   if ('photo' in input) fields.photo = photo;
   const list = await readTasks(store);
   let task;

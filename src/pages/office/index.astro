@@ -94,6 +94,7 @@ const data = { pages, forms, delivery: site.delivery, evisaDelivery: site.evisaD
     .row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
     .login { max-width: 380px; margin: 10vh auto; }
     @media (max-width: 560px) { .line, .line.has-name { grid-template-columns: 1fr 90px; } .line .who { grid-column: 1 / -1; } .line select, .line .x { grid-column: auto; } }
+    [hidden] { display: none !important; }
     /* Simple to-do list */
     .td-add { display: flex; gap: 8px; align-items: stretch; }
     .td-add input[type=text] { flex: 1; min-height: 48px; font-size: 16px; }
@@ -111,6 +112,13 @@ const data = { pages, forms, delivery: site.delivery, evisaDelivery: site.evisaD
     .td-x { border: none; background: none; color: var(--muted); font-size: 20px; line-height: 1; padding: 0 4px; cursor: pointer; flex: none; }
     .td-pending { display: flex; gap: 8px; align-items: center; font-size: 13px; }
     .td-pending img { width: 44px; height: 44px; object-fit: cover; border-radius: 6px; }
+    .td-move { position: relative; font-size: 18px; padding: 0 2px; cursor: pointer; flex: none; line-height: 1.2; }
+    .td-move input, .td-other { position: absolute; inset: 0; opacity: 0; width: 100%; height: 100%; min-height: 0; padding: 0; border: 0; cursor: pointer; }
+    .pill.small { min-height: 34px; padding: 5px 12px; font-size: 14px; position: relative; }
+    .pill.on { background: var(--green); border-color: var(--green); color: #fff; font-weight: 600; }
+    @media (max-width: 560px) { .week { grid-template-columns: 1fr; } }
+    .week .td-move { display: none; }
+    .week .td-item { padding: 6px 0; gap: 6px; } .week .td-item input[type=checkbox] { width: 18px; height: 18px; } .week .td-thumb { width: 36px; height: 36px; }
     .quick { display: inline-flex; gap: 4px; flex-wrap: nowrap; }
     .quick .btn { min-height: 30px; padding: 3px 9px; font-size: 13px; }
     @media (max-width: 560px) { .of-top { padding: 8px 12px; } .of-main { padding: 16px 12px 60px; } .of-nav a { padding: 6px 9px; } }
