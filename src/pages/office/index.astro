@@ -77,6 +77,7 @@ const data = { pages, forms, delivery: site.delivery, evisaDelivery: site.evisaD
     .box { background: var(--soft); border-radius: 10px; padding: 12px 14px; }
     .line { display: grid; grid-template-columns: 1fr 110px 92px 32px; gap: 8px; align-items: center; }
     .line input, .line select { min-height: 40px; }
+    .line.has-name { grid-template-columns: 1fr 180px 110px 92px 32px; }
     .amt { text-align: right; }
     .total { display: flex; justify-content: space-between; align-items: baseline; border-top: 1px solid var(--line); padding-top: 10px; }
     .total strong { font-size: 22px; }
@@ -90,7 +91,7 @@ const data = { pages, forms, delivery: site.delivery, evisaDelivery: site.evisaD
     .stack { display: flex; flex-direction: column; gap: 12px; }
     .row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
     .login { max-width: 380px; margin: 10vh auto; }
-    @media (max-width: 560px) { .line { grid-template-columns: 1fr 90px; } .line select, .line .x { grid-column: auto; } }
+    @media (max-width: 560px) { .line, .line.has-name { grid-template-columns: 1fr 90px; } .line .who { grid-column: 1 / -1; } .line select, .line .x { grid-column: auto; } }
     .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
   </style>
 </head>
