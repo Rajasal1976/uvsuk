@@ -18,17 +18,19 @@ export const visaFinder = Object.entries(byCountry).filter(([country]) => !offMe
   // Use the order set on the country's main page, then any other pages for that country
   const ordered = hub ? [...(hub.children || []).map((c) => list.find((x) => x.slug === c)).filter(Boolean), ...list.filter((x) => x !== hub && !(hub.children || []).includes(x.slug))] : list.filter((x) => x !== main);
   const types = ordered.map((x) => [shortLabel(x, country), `/${x.slug}/`]);
-  // China: every visa type. Those without their own page open the China page with that type selected.
+  // China: every visa type, each with its own page.
   if (country === 'China') {
     return [country, `/${main.slug}/`, [
       ['Business visa (M)', '/china-business-visa/'],
       ['Tourist visa (L)', '/china-tourist-visa/'],
-      ['Family visit visa (Q / S)', '/china-visa-application/#vc-family'],
+      ['Family visit visa (Q1 / Q2)', '/china-family-visit/'],
+      ['Visiting family working in China (S1 / S2)', '/china-s-visa/'],
       ['Work visa (Z)', '/china-work-visa-for-uk-citizens/'],
-      ['Student visa (X)', '/china-visa-application/#vc-study'],
-      ['Transit visa (G)', '/china-visa-application/#vc-transit'],
-      ['Crew visa (C)', '/china-visa-application/#vc-crew'],
-      ['Journalist visa (J)', '/china-visa-application/#vc-journalist'],
+      ['Student visa (X1 / X2)', '/china-student-visa/'],
+      ['Transit visa (G)', '/china-transit-visa/'],
+      ['Crew visa (C)', '/china-crew-visa/'],
+      ['Journalist visa (J1 / J2)', '/china-journalist-visa/'],
+      ['Exchange visit visa (F)', '/china-non-business-f-visa/'],
     ]];
   }
   return [country, `/${main.slug}/`, types, (main.h1 || '').replace(/ from the UK.*$/i, '')];

@@ -1,0 +1,112 @@
+{
+  "applyButton": "/apply/china-visa/?visaType=Crew%20%28C%20visa%29",
+  "sortKey": "1 china 1 china crew visa (c visa)",
+  "govuk": "https://manchester.china-consulate.gov.cn/eng/",
+  "h1": "China crew visa (C visa)",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Form completion, document check, visa centre appointment and submission support",
+      "processing": "5 Working Days",
+      "processingFee": "£151",
+      "fee": "£150",
+      "popular": false,
+      "total": "£301"
+    },
+    {
+      "service": "Express",
+      "included": "Everything in Standard, with faster processing at the visa centre",
+      "processing": "48 Working Hours",
+      "processingFee": "£182",
+      "fee": "£175",
+      "popular": true,
+      "total": "£357"
+    }
+  ],
+  "intro": "The China crew visa (C visa) is for crew members of international aircraft, ships and trains working on routes to China, and family members travelling with them. We complete applications for individual crew members and for companies sending crews, and handle the visa centre submission.",
+  "eligibility": [
+    "You work as crew on an international flight, ship or train going to China",
+    "Or you are an accompanying family member of a ship's crew",
+    "Your employer can issue a letter of guarantee",
+    "If you are not British, you hold valid UK residence status"
+  ],
+  "sections": [
+    {
+      "heading": "Who needs a China crew visa?",
+      "text": "Airline, shipping and international rail crew who enter China as part of their job need a C visa, unless their crew document or route is covered by another exemption. Crew joining or leaving a ship in a Chinese port usually need one. We check the right route for your journey."
+    },
+    {
+      "heading": "Documents for a China C visa",
+      "text": "You'll need a letter of guarantee from your airline, shipping company or rail operator confirming your role and the journey, or an invitation from the relevant Chinese organisation. Include your seaman's book or crew ID if you have one."
+    },
+    {
+      "heading": "Help for shipping and airline companies",
+      "text": "We handle crew visa applications in batches for UK employers, with one point of contact, a document checklist for each crew member and updates until the passports come back. Ask us about account terms for regular applications."
+    },
+    {
+      "heading": "China visa help in Manchester",
+      "text": "We're based in Manchester city centre and help travellers, families and businesses across the North West and the rest of the UK. Most China visa applications can be handled by post and email, so you only need to visit us if you want to. You can also collect your passport from our office at no extra cost."
+    }
+  ],
+  "country": "China",
+  "title": "China Crew Visa (C Visa) from the UK | Airline & Shipping Crew",
+  "description": "China C visa help for airline, shipping and international train crew based in the UK, and their accompanying family. Documents, fees and how we help.",
+  "faqs": [
+    {
+      "q": "Can crew enter China visa-free?",
+      "a": "Some crew are covered by exemptions, and British citizens can currently enter for up to 30 days visa-free for business. Joining a ship or working on a route often still needs a C visa. We check your situation before you apply."
+    },
+    {
+      "q": "Can you handle visas for a whole crew?",
+      "a": "Yes. We regularly process applications for several crew members at once, and can set up a simple process for companies with regular crew changes."
+    },
+    {
+      "q": "Can family travel with a ship's crew?",
+      "a": "Accompanying family members of ship crew can apply for a C visa too. They'll need the employer's letter and proof of relationship."
+    }
+  ],
+  "focusKeyword": "China crew visa",
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Original passport, valid for at least six months with two blank visa pages, plus a copy of the photo page",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent colour photo on a white background, meeting Chinese visa specifications",
+      "needed": "Required"
+    },
+    {
+      "document": "Letter from your employer",
+      "details": "Letter of guarantee from your airline, shipping company or rail operator, confirming your role and the journey",
+      "needed": "Required"
+    },
+    {
+      "document": "Crew ID or seaman's book",
+      "details": "Copy of your crew identity document",
+      "needed": "If applicable"
+    },
+    {
+      "document": "Voyage or flight details",
+      "details": "Ship, port and dates, or flight details",
+      "needed": "If applicable"
+    },
+    {
+      "document": "UK residence evidence",
+      "details": "Your UK visa or eVisa share code, if you are not British",
+      "needed": "If not British"
+    },
+    {
+      "document": "Previous visas",
+      "details": "Copies of any previous Chinese visas",
+      "needed": "If applicable"
+    }
+  ],
+  "shareImage": "/images/uvs-share.jpg"
+}

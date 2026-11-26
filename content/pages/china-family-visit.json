@@ -1,0 +1,116 @@
+{
+  "applyButton": "/apply/china-visa/?visaType=Visiting%20family%20in%20China%20%28Q2%20%2F%20Q1%20visa%29",
+  "sortKey": "1 china 1 china family visit visa (q visa)",
+  "govuk": "https://manchester.china-consulate.gov.cn/eng/",
+  "h1": "China family visit visa (Q1 and Q2 visa)",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Form completion, document check, visa centre appointment and submission support",
+      "processing": "5 Working Days",
+      "processingFee": "£151",
+      "fee": "£150",
+      "popular": false,
+      "total": "£301"
+    },
+    {
+      "service": "Express",
+      "included": "Everything in Standard, with faster processing at the visa centre",
+      "processing": "48 Working Hours",
+      "processingFee": "£182",
+      "fee": "£175",
+      "popular": true,
+      "total": "£357"
+    }
+  ],
+  "intro": "The China Q visa is for visiting or joining family members who are Chinese citizens, or foreigners with permanent residence in China. The Q2 visa covers visits of up to 180 days and the Q1 visa covers family reunion stays of more than 180 days. We check which one you need, complete your application and book your visa centre appointment.",
+  "eligibility": [
+    "Your relative in China is a Chinese citizen or holds Chinese permanent residence",
+    "You are their spouse, parent, child, sibling, grandparent, grandchild or in-law (Q1 covers close family and people in foster care)",
+    "Your passport is valid for at least six months, with two blank visa pages",
+    "If you are not British, you hold valid UK residence status"
+  ],
+  "sections": [
+    {
+      "heading": "Q1 or Q2: which China family visa do you need?",
+      "text": "Choose the Q2 visa for a family visit of up to 180 days. Choose the Q1 visa if you're moving to China to live with your family for more than 180 days; after you arrive you apply for a residence permit within 30 days. If your relative is a foreigner working or studying in China, you need the S visa instead."
+    },
+    {
+      "heading": "Do British citizens need a Q visa?",
+      "text": "British passport holders can visit China visa-free for up to 30 days until 31 December 2026, and visiting relatives is one of the allowed purposes. You need a Q2 visa if you plan to stay longer than 30 days, travel on another passport, or travel after the visa-free policy ends and it isn't extended. Anyone moving to China to live with family needs a Q1 visa."
+    },
+    {
+      "heading": "Documents for a China family visit visa",
+      "text": "You'll need an invitation letter from your relative with your trip dates and their address, a copy of their Chinese ID card (or passport and permanent residence card), and proof of how you're related, such as a birth or marriage certificate. For a Q1 visa the relationship certificate usually has to be notarised and legalised, which our document legalisation team can arrange."
+    },
+    {
+      "heading": "China visa help in Manchester",
+      "text": "We're based in Manchester city centre and help travellers, families and businesses across the North West and the rest of the UK. Most China visa applications can be handled by post and email, so you only need to visit us if you want to. You can also collect your passport from our office at no extra cost."
+    }
+  ],
+  "country": "China",
+  "title": "China Family Visit Visa (Q1 / Q2) from the UK | UVS",
+  "description": "China Q visa help for UK residents visiting family who are Chinese citizens or permanent residents. Q2 short visits and Q1 family reunion, with fees.",
+  "faqs": [
+    {
+      "q": "What's the difference between a Q1 and Q2 visa?",
+      "a": "Q2 is for visits of up to 180 days to relatives who are Chinese citizens or permanent residents. Q1 is for family members moving to China to live for more than 180 days, who then apply for a residence permit after arriving."
+    },
+    {
+      "q": "My relative in China is a foreigner on a work permit. Do I need a Q visa?",
+      "a": "No. Family of foreigners who work or study in China apply for the S visa (S1 or S2). We can help with that too."
+    },
+    {
+      "q": "Do I need to attend the visa centre?",
+      "a": "For a short stay (up to 180 days), usually not: until 31 December 2026 fingerprints are waived for short-term visas, so we can submit your application for you. Long-stay visas (stays over 180 days) still need fingerprints in person, and we book that appointment for you."
+    },
+    {
+      "q": "Does my relationship certificate need legalising?",
+      "a": "For a Q1 visa it usually does. UK documents are notarised and then legalised before they are accepted. We arrange this through our document legalisation service."
+    }
+  ],
+  "focusKeyword": "China family visit visa",
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Original passport, valid for at least six months with two blank visa pages, plus a copy of the photo page",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent colour photo on a white background, meeting Chinese visa specifications",
+      "needed": "Required"
+    },
+    {
+      "document": "Invitation letter",
+      "details": "Signed by your relative in China, with your trip dates, the purpose of the visit and their address",
+      "needed": "Required"
+    },
+    {
+      "document": "Copy of your relative’s Chinese ID card",
+      "details": "Copy of their Chinese ID card, or their passport and Chinese permanent residence card",
+      "needed": "Required"
+    },
+    {
+      "document": "Proof of relationship",
+      "details": "Birth or marriage certificate. For a Q1 visa, notarised and legalised",
+      "needed": "Required"
+    },
+    {
+      "document": "UK residence evidence",
+      "details": "Your UK visa or eVisa share code, if you are not British",
+      "needed": "If not British"
+    },
+    {
+      "document": "Previous visas",
+      "details": "Copies of any previous Chinese visas",
+      "needed": "If applicable"
+    }
+  ],
+  "shareImage": "/images/uvs-share.jpg"
+}

@@ -154,7 +154,7 @@ const china = {
       id: 'history',
       title: 'Your trip and travel history',
       fields: [
-        { name: 'visaType', label: 'What is the main purpose of your trip?', type: 'select', required: true, hint: 'This tells us which documents to ask you for.', options: ['Business (M visa)', 'Tourism (L visa)', 'Visiting family in China (Q2 / Q1 visa)', 'Visiting a foreigner living in China (S visa)', 'Work (Z visa)', 'Study (X visa)', 'Transit (G visa)', 'Crew (C visa)', 'Journalism (J visa)'] },
+        { name: 'visaType', label: 'What is the main purpose of your trip?', type: 'select', required: true, hint: 'This tells us which documents to ask you for.', options: ['Business (M visa)', 'Tourism (L visa)', 'Visiting family in China (Q2 / Q1 visa)', 'Visiting a foreigner living in China (S visa)', 'Work (Z visa)', 'Study (X visa)', 'Transit (G visa)', 'Crew (C visa)', 'Journalism (J visa)', 'Exchange or non-business visit (F visa)'] },
         yesNo('beenToChina', 'Have you been to China before?', { hint: 'If your last Chinese visa is in your current passport, you’ll be asked for a photo of it in the Documents step.' }),
         { name: 'countriesLastYear', label: 'Which countries have you visited in the last 12 months?', type: 'textarea', required: true, hint: 'List each country and roughly when. Write “None” if you haven’t travelled.' },
       ],
@@ -198,6 +198,7 @@ const china = {
     'Transit (G visa)': 'For a transit visa you’ll need your onward ticket to a third country, and a visa for that country if it requires one.',
     'Crew (C visa)': 'For a crew visa you’ll need a letter from your employer.',
     'Journalism (J visa)': 'For a journalist visa you’ll need the visa notification letter and a letter from your media organisation.',
+    'Exchange or non-business visit (F visa)': 'For an F visa you’ll need an invitation letter from the Chinese organisation hosting your visit.',
   },
   uploads: [
     { name: 'photo', label: 'Passport-style photo', hint: 'Recent colour photo on a white background, no glasses, face fully visible.', required: true },
@@ -210,6 +211,7 @@ const china = {
       'Study (X visa)': { label: 'JW201 or JW202 form', hint: 'Visa application form for study in China, from your school.', required: true },
       'Crew (C visa)': { label: 'Letter from your employer', hint: 'Confirming your role and the journey.', required: true },
       'Journalism (J visa)': { label: 'Journalist visa notification letter', hint: 'Issued by the Chinese foreign affairs office.', required: true },
+      'Exchange or non-business visit (F visa)': { label: 'Invitation letter from the Chinese host organisation', hint: 'With the purpose and dates of your visit, where you’ll stay and who pays.', required: true },
     }),
     ...byVisa('doc3', {
       'Business (M visa)': { label: 'Flight booking (optional)', hint: 'A reservation is fine; you don’t need to have paid yet.' },
@@ -221,6 +223,7 @@ const china = {
       'Transit (G visa)': { label: 'Onward flight ticket to a third country', hint: 'Showing you’re leaving China for another country.', required: true },
       'Crew (C visa)': { label: 'Flight or voyage details (optional)' },
       'Journalism (J visa)': { label: 'Flight booking (optional)' },
+      'Exchange or non-business visit (F visa)': { label: 'Flight booking (optional)' },
     }),
     ...byVisa('doc4', {
       'Business (M visa)': { label: 'Hotel booking (optional)' },

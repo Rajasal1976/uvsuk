@@ -419,7 +419,14 @@ export const structure = [
     "group": "worldwide",
     "related": [
       "china-tourist-visa",
-      "china-work-visa-for-uk-citizens"
+      "china-work-visa-for-uk-citizens",
+      "china-family-visit",
+      "china-s-visa",
+      "china-student-visa",
+      "china-transit-visa",
+      "china-crew-visa",
+      "china-journalist-visa",
+      "china-non-business-f-visa"
     ]
   },
   {
@@ -438,6 +445,79 @@ export const structure = [
     "group": "worldwide",
     "related": [
       "china-visa-application"
+    ],
+    "visa": "travel"
+  },
+  {
+    "slug": "china-family-visit",
+    "type": "service",
+    "group": "worldwide",
+    "related": [
+      "china-s-visa",
+      "china-visa-application",
+      "document-legalisation"
+    ],
+    "visa": "travel"
+  },
+  {
+    "slug": "china-s-visa",
+    "type": "service",
+    "group": "worldwide",
+    "related": [
+      "china-family-visit",
+      "china-visa-application",
+      "document-legalisation"
+    ],
+    "visa": "travel"
+  },
+  {
+    "slug": "china-student-visa",
+    "type": "service",
+    "group": "worldwide",
+    "related": [
+      "china-visa-application",
+      "document-legalisation"
+    ],
+    "visa": "travel"
+  },
+  {
+    "slug": "china-transit-visa",
+    "type": "service",
+    "group": "worldwide",
+    "related": [
+      "china-tourist-visa",
+      "china-visa-application"
+    ],
+    "visa": "travel"
+  },
+  {
+    "slug": "china-crew-visa",
+    "type": "service",
+    "group": "worldwide",
+    "related": [
+      "china-work-visa-for-uk-citizens",
+      "china-visa-application"
+    ],
+    "visa": "travel"
+  },
+  {
+    "slug": "china-journalist-visa",
+    "type": "service",
+    "group": "worldwide",
+    "related": [
+      "china-visa-application",
+      "china-crew-visa"
+    ],
+    "visa": "travel"
+  },
+  {
+    "slug": "china-non-business-f-visa",
+    "type": "service",
+    "group": "worldwide",
+    "related": [
+      "china-visa-application",
+      "china-student-visa",
+      "china-tourist-visa"
     ],
     "visa": "travel"
   },

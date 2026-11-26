@@ -1,0 +1,112 @@
+{
+  "applyButton": "/apply/china-visa/?visaType=Journalism%20%28J%20visa%29",
+  "sortKey": "1 china 1 china journalist visa (j visa)",
+  "govuk": "https://manchester.china-consulate.gov.cn/eng/",
+  "h1": "China journalist visa (J1 and J2 visa)",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Form completion, document check, visa centre appointment and submission support",
+      "processing": "5 Working Days",
+      "processingFee": "£151",
+      "fee": "£150",
+      "popular": false,
+      "total": "£301"
+    },
+    {
+      "service": "Express",
+      "included": "Everything in Standard, with faster processing at the visa centre",
+      "processing": "48 Working Hours",
+      "processingFee": "£182",
+      "fee": "£175",
+      "popular": true,
+      "total": "£357"
+    }
+  ],
+  "intro": "The China journalist visa (J visa) is for foreign journalists reporting from China. The J1 visa is for resident correspondents staying more than 180 days, and the J2 visa is for short reporting trips. We complete your application once you have your visa notification, and handle the visa centre submission.",
+  "eligibility": [
+    "You are a journalist, or crew member, working for a foreign media organisation",
+    "You have a visa notification letter from the Chinese authorities",
+    "Your passport is valid for at least six months, with two blank visa pages",
+    "If you are not British, you hold valid UK residence status"
+  ],
+  "sections": [
+    {
+      "heading": "J1 or J2: which journalist visa do you need?",
+      "text": "Resident correspondents posted to China for more than 180 days apply for a J1 visa and then a residence permit after arrival. Journalists on short reporting assignments apply for a J2 visa. Reporting work isn't covered by visa-free entry, so journalists on assignment need a J visa."
+    },
+    {
+      "heading": "Documents for a China J visa",
+      "text": "You'll need the visa notification letter issued by the Information Department of China's Ministry of Foreign Affairs (or the relevant foreign affairs office), and a letter from your media organisation about your assignment. J1 applicants give fingerprints at the visa centre in person."
+    },
+    {
+      "heading": "Film crews and production teams",
+      "text": "Camera operators, producers and technical crew travelling with a journalist apply on the same basis. For documentary and commercial film shoots that aren't news reporting, we'll advise on the right visa type."
+    },
+    {
+      "heading": "China visa help in Manchester",
+      "text": "We're based in Manchester city centre and help travellers, families and businesses across the North West and the rest of the UK. Most China visa applications can be handled by post and email, so you only need to visit us if you want to. You can also collect your passport from our office at no extra cost."
+    }
+  ],
+  "country": "China",
+  "title": "China Journalist Visa (J1 / J2) from the UK | Application Help",
+  "description": "China J1 and J2 journalist visa help for UK-based reporters and media crews. Visa notification letters, documents, fees and how we help.",
+  "faqs": [
+    {
+      "q": "Can I report from China on a tourist visa or visa-free?",
+      "a": "No. Journalistic work needs a J visa, even for short trips. Entering on another basis to report can lead to refusal or removal."
+    },
+    {
+      "q": "How do I get a visa notification letter?",
+      "a": "Your media organisation applies to the Chinese authorities, usually through the Chinese Embassy's press section. Once it's issued, we can submit your visa application."
+    },
+    {
+      "q": "Do I need to attend the visa centre?",
+      "a": "J1 applicants give fingerprints in person, and we book the appointment. For a short J2 trip, fingerprints are waived until 31 December 2026, so we can usually submit for you."
+    }
+  ],
+  "focusKeyword": "China journalist visa",
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Original passport, valid for at least six months with two blank visa pages, plus a copy of the photo page",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent colour photo on a white background, meeting Chinese visa specifications",
+      "needed": "Required"
+    },
+    {
+      "document": "Journalist visa notification letter",
+      "details": "Issued by the Chinese Ministry of Foreign Affairs or the relevant foreign affairs office",
+      "needed": "Required"
+    },
+    {
+      "document": "Letter from your media organisation",
+      "details": "On letterhead, confirming your role, the assignment and dates",
+      "needed": "Required"
+    },
+    {
+      "document": "Press card",
+      "details": "Copy of your press card or media ID",
+      "needed": "If applicable"
+    },
+    {
+      "document": "UK residence evidence",
+      "details": "Your UK visa or eVisa share code, if you are not British",
+      "needed": "If not British"
+    },
+    {
+      "document": "Previous visas",
+      "details": "Copies of any previous Chinese visas",
+      "needed": "If applicable"
+    }
+  ],
+  "shareImage": "/images/uvs-share.jpg"
+}

@@ -1,0 +1,112 @@
+{
+  "applyButton": "/apply/china-visa/?visaType=Transit%20%28G%20visa%29",
+  "sortKey": "1 china 1 china transit visa (g visa)",
+  "govuk": "https://manchester.china-consulate.gov.cn/eng/",
+  "h1": "China transit visa (G visa)",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Form completion, document check, visa centre appointment and submission support",
+      "processing": "5 Working Days",
+      "processingFee": "£151",
+      "fee": "£150",
+      "popular": false,
+      "total": "£301"
+    },
+    {
+      "service": "Express",
+      "included": "Everything in Standard, with faster processing at the visa centre",
+      "processing": "48 Working Hours",
+      "processingFee": "£182",
+      "fee": "£175",
+      "popular": true,
+      "total": "£357"
+    }
+  ],
+  "intro": "The China transit visa (G visa) is for passing through mainland China on the way to another country. Many travellers on a British passport can transit visa-free, so we first check whether you need a visa at all. If you do, we complete your application and handle the visa centre submission.",
+  "eligibility": [
+    "You are travelling through China to a third country, not returning to where you started",
+    "You hold a confirmed onward ticket out of China",
+    "You hold a visa for your next destination, if it needs one",
+    "If you are not British, you hold valid UK residence status"
+  ],
+  "sections": [
+    {
+      "heading": "Do you need a China transit visa?",
+      "text": "British passport holders can visit China visa-free for up to 30 days until 31 December 2026, which covers transit. British citizens can also use China's 240-hour visa-free transit at designated airports and ports, when travelling on to a third country. You need a G visa if your passport isn't covered, you'll leave the transit area somewhere not on the list, or your stay is longer than the visa-free rules allow."
+    },
+    {
+      "heading": "Documents for a China G visa",
+      "text": "You'll need a confirmed onward ticket to a third country within the transit period, and a visa for that country if it requires one. Bring hotel bookings if you're staying overnight. Fingerprints aren't needed for short-term visas until 31 December 2026."
+    },
+    {
+      "heading": "Tips for a smooth application",
+      "text": "Check that your route really counts as transit: a return to the country you flew from doesn't qualify. Tell us every Chinese airport on your route, as the rules can differ by port."
+    },
+    {
+      "heading": "China visa help in Manchester",
+      "text": "We're based in Manchester city centre and help travellers, families and businesses across the North West and the rest of the UK. Most China visa applications can be handled by post and email, so you only need to visit us if you want to. You can also collect your passport from our office at no extra cost."
+    }
+  ],
+  "country": "China",
+  "title": "China Transit Visa (G Visa) from the UK | Application Help",
+  "description": "China G transit visa help for UK residents passing through China, plus advice on visa-free transit and 30-day visa-free entry for British citizens.",
+  "faqs": [
+    {
+      "q": "Can I transit China without a visa?",
+      "a": "Often, yes. British citizens can currently enter for up to 30 days visa-free, and can also use 240-hour visa-free transit at designated ports when travelling on to a third country. We check your exact route and passport before you book."
+    },
+    {
+      "q": "Can I leave the airport during a layover?",
+      "a": "With visa-free transit or a G visa, you can usually leave the airport within the permitted area and time. Staying airside for less than 24 hours on a through ticket generally needs no visa."
+    },
+    {
+      "q": "Does a flight back to the UK via China count as transit?",
+      "a": "No. Transit means travelling on to a different country from the one you came from. A return to the same country doesn't qualify for visa-free transit."
+    }
+  ],
+  "focusKeyword": "China transit visa",
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Original passport, valid for at least six months with two blank visa pages, plus a copy of the photo page",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent colour photo on a white background, meeting Chinese visa specifications",
+      "needed": "Required"
+    },
+    {
+      "document": "Onward ticket",
+      "details": "Confirmed flight, train or ship ticket from China to a third country",
+      "needed": "Required"
+    },
+    {
+      "document": "Visa for your onward destination",
+      "details": "Visa for the country you're travelling on to, if it needs one",
+      "needed": "If applicable"
+    },
+    {
+      "document": "Hotel booking",
+      "details": "If you're staying overnight in China",
+      "needed": "If applicable"
+    },
+    {
+      "document": "UK residence evidence",
+      "details": "Your UK visa or eVisa share code, if you are not British",
+      "needed": "If not British"
+    },
+    {
+      "document": "Previous visas",
+      "details": "Copies of any previous Chinese visas",
+      "needed": "If applicable"
+    }
+  ],
+  "shareImage": "/images/uvs-share.jpg"
+}

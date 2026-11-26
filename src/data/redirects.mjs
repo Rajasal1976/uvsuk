@@ -20,12 +20,7 @@ export const redirects = [
   ['/indian-business-visa/', '/e-business-visa-india/'],
   ['/china-visa-services/', '/china-visa-application/'],
   ['/home-business/', '/china-visa-application/'],
-  ['/china-crew-visa/', '/china-visa-application/'],
   ['/china-cruise-visa/', '/china-visa-application/'],
-  ['/china-family-visit/', '/china-visa-application/'],
-  ['/china-journalist-visa/', '/china-visa-application/'],
-  ['/china-non-business-f-visa/', '/china-visa-application/'],
-  ['/china-student-visa/', '/china-visa-application/'],
   ['/schengen-visa/', '/schengen-visa-application/'],
   ['/terms-of-use/', '/terms/'],
   // Old-site pages still known to Google (found Nov 2026), sent to the closest page on the new site

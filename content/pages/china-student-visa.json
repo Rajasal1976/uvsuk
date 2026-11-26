@@ -1,0 +1,116 @@
+{
+  "applyButton": "/apply/china-visa/?visaType=Study%20%28X%20visa%29",
+  "sortKey": "1 china 1 china student visa (x visa)",
+  "govuk": "https://manchester.china-consulate.gov.cn/eng/",
+  "h1": "China student visa (X1 and X2 visa)",
+  "prices": [
+    {
+      "service": "Standard",
+      "included": "Form completion, document check, visa centre appointment and submission support",
+      "processing": "5 Working Days",
+      "processingFee": "£151",
+      "fee": "£150",
+      "popular": false,
+      "total": "£301"
+    },
+    {
+      "service": "Express",
+      "included": "Everything in Standard, with faster processing at the visa centre",
+      "processing": "48 Working Hours",
+      "processingFee": "£182",
+      "fee": "£175",
+      "popular": true,
+      "total": "£357"
+    }
+  ],
+  "intro": "The China student visa (X visa) is for studying at a university, college or school in China. The X1 visa is for courses of more than 180 days and the X2 visa is for courses of up to 180 days, such as a summer school or language course. We complete your application, check your admission documents and book your visa centre appointment.",
+  "eligibility": [
+    "You have a place on a course at a Chinese university, college or school",
+    "For X1: you have a JW201 or JW202 form from your institution",
+    "Your passport is valid for at least six months, with two blank visa pages",
+    "If you are not British, you hold valid UK residence status"
+  ],
+  "sections": [
+    {
+      "heading": "X1 or X2: which student visa do you need?",
+      "text": "Choose the X1 visa for study of more than 180 days, such as a degree or a year abroad. After arriving you apply for a student residence permit within 30 days. Choose the X2 visa for a course of up to 180 days. The visa-free policy for British citizens doesn't cover formal study, so students need an X visa."
+    },
+    {
+      "heading": "Documents for a China student visa",
+      "text": "You'll need your admission letter from the Chinese institution and, for an X1 visa, the original JW201 or JW202 form. X1 applicants may also be asked for a Foreigner Physical Examination Form. X1 applicants give fingerprints at the visa centre in person; we book the appointment for you."
+    },
+    {
+      "heading": "Tips for a smooth application",
+      "text": "Apply as soon as your JW form arrives, as university intakes in September and February are busy at the visa centre. Make sure the name and passport number on your admission documents match your passport exactly."
+    },
+    {
+      "heading": "China visa help in Manchester",
+      "text": "We're based in Manchester city centre and help travellers, families and businesses across the North West and the rest of the UK. Most China visa applications can be handled by post and email, so you only need to visit us if you want to. You can also collect your passport from our office at no extra cost."
+    }
+  ],
+  "country": "China",
+  "title": "China Student Visa (X1 / X2) from the UK | Application Help",
+  "description": "China X1 and X2 student visa help for UK residents studying at a Chinese university or school. JW201/JW202 forms, documents, fees and how we help.",
+  "faqs": [
+    {
+      "q": "Can I study in China visa-free?",
+      "a": "No. The 30-day visa-free entry for British citizens covers business, tourism, family visits, exchanges and transit, but not formal study. You need an X1 or X2 visa."
+    },
+    {
+      "q": "What is a JW202 form?",
+      "a": "It's the visa application form for study in China, issued by your Chinese institution. JW201 is for scholarship students and JW202 for self-funded students. X1 visas need the original."
+    },
+    {
+      "q": "Do I need to attend the visa centre?",
+      "a": "For an X1 visa, yes, to give fingerprints. For a short X2 course, usually not until 31 December 2026, as fingerprints are waived for short-term visas. We book the appointment and submit for you."
+    },
+    {
+      "q": "How long after arriving do I need a residence permit?",
+      "a": "With an X1 visa you must apply for your student residence permit within 30 days of arriving. Your institution usually helps with this."
+    }
+  ],
+  "focusKeyword": "China student visa",
+  "documentsTable": [
+    {
+      "document": "Passport",
+      "details": "Original passport, valid for at least six months with two blank visa pages, plus a copy of the photo page",
+      "needed": "Required"
+    },
+    {
+      "document": "Application form",
+      "details": "Completed and checked by us before submission",
+      "needed": "We prepare"
+    },
+    {
+      "document": "Photo",
+      "details": "Recent colour photo on a white background, meeting Chinese visa specifications",
+      "needed": "Required"
+    },
+    {
+      "document": "Admission letter from your school or university",
+      "details": "Original admission notice from your Chinese school or university",
+      "needed": "Required"
+    },
+    {
+      "document": "JW201 or JW202 form",
+      "details": "Original form issued by your institution, needed for the X1 visa",
+      "needed": "Required"
+    },
+    {
+      "document": "Physical examination form",
+      "details": "Foreigner Physical Examination Form, if your course is longer than six months and it is requested",
+      "needed": "If applicable"
+    },
+    {
+      "document": "UK residence evidence",
+      "details": "Your UK visa or eVisa share code, if you are not British",
+      "needed": "If not British"
+    },
+    {
+      "document": "Previous visas",
+      "details": "Copies of any previous Chinese visas",
+      "needed": "If applicable"
+    }
+  ],
+  "shareImage": "/images/uvs-share.jpg"
+}

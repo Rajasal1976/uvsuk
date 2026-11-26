@@ -76,9 +76,14 @@ const toc = [
 #vc-journalist:checked ~ .vc-grid label[for="vc-journalist"] .vc-check{background:var(--green-800);border-color:var(--green-800)}
 #vc-journalist:focus-visible ~ .vc-grid label[for="vc-journalist"]{outline:3px solid var(--gold);outline-offset:2px}
 #vc-journalist:checked ~ .vc-panels .vc-p-journalist{display:flex}
-#vc-journalist:checked ~ .vc-panels .vc-hint{display:none}</style>
+#vc-journalist:checked ~ .vc-panels .vc-hint{display:none}
+#vc-exchange:checked ~ .vc-grid label[for="vc-exchange"]{border-color:var(--green-800);background:var(--green-50);box-shadow:inset 0 0 0 1px var(--green-800)}
+#vc-exchange:checked ~ .vc-grid label[for="vc-exchange"] .vc-check{background:var(--green-800);border-color:var(--green-800)}
+#vc-exchange:focus-visible ~ .vc-grid label[for="vc-exchange"]{outline:3px solid var(--gold);outline-offset:2px}
+#vc-exchange:checked ~ .vc-panels .vc-p-exchange{display:flex}
+#vc-exchange:checked ~ .vc-panels .vc-hint{display:none}</style>
 <h2>What is the purpose of your trip?</h2>
-<p class="soft">Choose one to see which visa you need and what to prepare.</p><input type="radio" id="vc-business" class="sr-only" name="visa-choice"/><input type="radio" id="vc-work" class="sr-only" name="visa-choice"/><input type="radio" id="vc-tourism" class="sr-only" name="visa-choice"/><input type="radio" id="vc-family" class="sr-only" name="visa-choice"/><input type="radio" id="vc-study" class="sr-only" name="visa-choice"/><input type="radio" id="vc-transit" class="sr-only" name="visa-choice"/><input type="radio" id="vc-crew" class="sr-only" name="visa-choice"/><input type="radio" id="vc-journalist" class="sr-only" name="visa-choice"/>
+<p class="soft">Choose one to see which visa you need and what to prepare.</p><input type="radio" id="vc-business" class="sr-only" name="visa-choice"/><input type="radio" id="vc-work" class="sr-only" name="visa-choice"/><input type="radio" id="vc-tourism" class="sr-only" name="visa-choice"/><input type="radio" id="vc-family" class="sr-only" name="visa-choice"/><input type="radio" id="vc-study" class="sr-only" name="visa-choice"/><input type="radio" id="vc-transit" class="sr-only" name="visa-choice"/><input type="radio" id="vc-crew" class="sr-only" name="visa-choice"/><input type="radio" id="vc-journalist" class="sr-only" name="visa-choice"/><input type="radio" id="vc-exchange" class="sr-only" name="visa-choice"/>
 <div class="vc-grid">
 <label for="vc-business" class="vc-card"><span class="vc-check" aria-hidden="true"></span><span class="vc-name">Business</span><span class="vc-sub">Business visa</span></label>
 <label for="vc-work" class="vc-card"><span class="vc-check" aria-hidden="true"></span><span class="vc-name">Work</span><span class="vc-sub">Work visa</span></label>
@@ -87,7 +92,8 @@ const toc = [
 <label for="vc-study" class="vc-card"><span class="vc-check" aria-hidden="true"></span><span class="vc-name">Study</span><span class="vc-sub">Student visa</span></label>
 <label for="vc-transit" class="vc-card"><span class="vc-check" aria-hidden="true"></span><span class="vc-name">Transit</span><span class="vc-sub">Transit visa</span></label>
 <label for="vc-crew" class="vc-card"><span class="vc-check" aria-hidden="true"></span><span class="vc-name">Crew</span><span class="vc-sub">Crew visa</span></label>
-<label for="vc-journalist" class="vc-card"><span class="vc-check" aria-hidden="true"></span><span class="vc-name">Journalism</span><span class="vc-sub">Journalist visa</span></label></div>
+<label for="vc-journalist" class="vc-card"><span class="vc-check" aria-hidden="true"></span><span class="vc-name">Journalism</span><span class="vc-sub">Journalist visa</span></label>
+<label for="vc-exchange" class="vc-card"><span class="vc-check" aria-hidden="true"></span><span class="vc-name">Exchange</span><span class="vc-sub">Exchange visit visa</span></label></div>
 <div class="vc-panels">
 <p class="vc-hint">Select a purpose above to see the right visa.</p>
 <div class="vc-panel vc-p-business">
@@ -132,7 +138,7 @@ const toc = [
 <div class="vc-panel-head"><span class="vc-code">Q/S</span>
 <div>
 <h3>Family visit visa</h3>
-<p class="soft">Visiting relatives who are Chinese citizens, permanent residents, or foreigners working or studying in China.</p></div></div>
+<p class="soft">Q visa if your relative is a Chinese citizen or permanent resident. S visa if they are a foreigner working or studying in China.</p></div></div>
 <p class="vc-note">Travelling on a British passport? Short trips for this purpose are currently visa-free, so you may not need a visa at all. We check the latest rules for your dates before you apply.</p>
 <div>
 <p class="vc-label">You&#x27;ll usually need</p>
@@ -141,7 +147,7 @@ const toc = [
 <li>Invitation letter from your relative</li>
 <li>Copy of your relative&#x27;s ID or residence permit</li>
 <li>Proof of your relationship</li></ul></div>
-<div class="btn-row"><a class="btn btn-primary" href="/contact-us/">Get help with this visa</a></div></div>
+<div class="btn-row"><a class="btn btn-primary" href="/china-family-visit/">Q visa: details and fees</a><a class="btn btn-primary" href="/china-s-visa/">S visa: details and fees</a><a class="btn btn-outline" href="/contact-us/">Get help with this visa</a></div></div>
 <div class="vc-panel vc-p-study">
 <div class="vc-panel-head"><span class="vc-code">X</span>
 <div>
@@ -153,7 +159,7 @@ const toc = [
 <li>Passport and photo</li>
 <li>Admission letter</li>
 <li>JW201 or JW202 form for longer courses</li></ul></div>
-<div class="btn-row"><a class="btn btn-primary" href="/contact-us/">Get help with this visa</a></div></div>
+<div class="btn-row"><a class="btn btn-primary" href="/china-student-visa/">See full details and fees</a><a class="btn btn-outline" href="/contact-us/">Get help with this visa</a></div></div>
 <div class="vc-panel vc-p-transit">
 <div class="vc-panel-head"><span class="vc-code">G</span>
 <div>
@@ -166,7 +172,7 @@ const toc = [
 <li>Passport and photo</li>
 <li>Onward ticket to your next destination</li>
 <li>Visa for your next destination, if needed</li></ul></div>
-<div class="btn-row"><a class="btn btn-primary" href="/contact-us/">Get help with this visa</a></div></div>
+<div class="btn-row"><a class="btn btn-primary" href="/china-transit-visa/">See full details and fees</a><a class="btn btn-outline" href="/contact-us/">Get help with this visa</a></div></div>
 <div class="vc-panel vc-p-crew">
 <div class="vc-panel-head"><span class="vc-code">C</span>
 <div>
@@ -177,7 +183,7 @@ const toc = [
 <ul>
 <li>Passport and photo</li>
 <li>Letter from your airline or shipping company</li></ul></div>
-<div class="btn-row"><a class="btn btn-primary" href="/contact-us/">Get help with this visa</a></div></div>
+<div class="btn-row"><a class="btn btn-primary" href="/china-crew-visa/">See full details and fees</a><a class="btn btn-outline" href="/contact-us/">Get help with this visa</a></div></div>
 <div class="vc-panel vc-p-journalist">
 <div class="vc-panel-head"><span class="vc-code">J</span>
 <div>
@@ -189,7 +195,19 @@ const toc = [
 <li>Passport and photo</li>
 <li>Letter from your media organisation</li>
 <li>Approval from the Chinese authorities</li></ul></div>
-<div class="btn-row"><a class="btn btn-primary" href="/contact-us/">Get help with this visa</a></div></div></div></section>
+<div class="btn-row"><a class="btn btn-primary" href="/china-journalist-visa/">See full details and fees</a><a class="btn btn-outline" href="/contact-us/">Get help with this visa</a></div></div>
+<div class="vc-panel vc-p-exchange">
+<div class="vc-panel-head"><span class="vc-code">F</span>
+<div>
+<h3>Exchange visit visa</h3>
+<p class="soft">Exchanges, study tours, research and cultural, sports, educational or religious visits.</p></div></div>
+<p class="vc-note">Travelling on a British passport? Short trips for this purpose are currently visa-free, so you may not need a visa at all. We check the latest rules for your dates before you apply.</p>
+<div>
+<p class="vc-label">You&#x27;ll usually need</p>
+<ul>
+<li>Passport and photo</li>
+<li>Invitation letter from the Chinese host organisation</li></ul></div>
+<div class="btn-row"><a class="btn btn-primary" href="/china-non-business-f-visa/">See full details and fees</a><a class="btn btn-outline" href="/contact-us/">Get help with this visa</a></div></div></div></section>
 <GuideSections sections={content.sections} />
 <section>
 <h2>How we help</h2>
@@ -207,7 +225,14 @@ const toc = [
 <ul>
 <li><a href="/china-tourist-visa/">China tourist visa (L visa)</a></li>
 <li><a href="/china-business-visa/">China business visa (M visa)</a></li>
-<li><a href="/china-work-visa-for-uk-citizens/">China work visa (Z visa)</a></li></ul></section></div>
+<li><a href="/china-work-visa-for-uk-citizens/">China work visa (Z visa)</a></li>
+<li><a href="/china-family-visit/">China family visit visa (Q1 / Q2 visa)</a></li>
+<li><a href="/china-s-visa/">China S visa (S1 / S2 visa)</a></li>
+<li><a href="/china-student-visa/">China student visa (X1 / X2 visa)</a></li>
+<li><a href="/china-transit-visa/">China transit visa (G visa)</a></li>
+<li><a href="/china-crew-visa/">China crew visa (C visa)</a></li>
+<li><a href="/china-journalist-visa/">China journalist visa (J1 / J2 visa)</a></li>
+<li><a href="/china-non-business-f-visa/">China F visa (exchange visits)</a></li></ul></section></div>
 <aside class="aside">
 <OnThisPage items={toc} />
 <div class="panel">

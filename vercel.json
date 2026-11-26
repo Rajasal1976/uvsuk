@@ -97,32 +97,7 @@
       "permanent": true
     },
     {
-      "source": "/china-crew-visa/",
-      "destination": "/china-visa-application/",
-      "permanent": true
-    },
-    {
       "source": "/china-cruise-visa/",
-      "destination": "/china-visa-application/",
-      "permanent": true
-    },
-    {
-      "source": "/china-family-visit/",
-      "destination": "/china-visa-application/",
-      "permanent": true
-    },
-    {
-      "source": "/china-journalist-visa/",
-      "destination": "/china-visa-application/",
-      "permanent": true
-    },
-    {
-      "source": "/china-non-business-f-visa/",
-      "destination": "/china-visa-application/",
-      "permanent": true
-    },
-    {
-      "source": "/china-student-visa/",
       "destination": "/china-visa-application/",
       "permanent": true
     },
