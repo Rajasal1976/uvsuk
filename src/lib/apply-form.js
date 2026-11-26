@@ -817,6 +817,7 @@ export function mountApplication(root, config, opts = {}) {
           fd.append('company_name', isCo ? String(main.companyName || '').trim() : '');
           fd.append('company_number', isCo ? String(main.companyNumber || '').trim() : '');
           fd.append('company_address', isCo ? String(main.companyAddress || '').trim() : '');
+          fd.append('newsletter', main.newsletter === 'Yes' ? 'Yes' : 'No');
           const partTag = parts > 1 ? ` – documents part ${k + 1} of ${parts}` : '';
           fd.append('subject', `${config.title}: ${name} (${ref})${partTag}`);
           fd.append('summary', (k === 0
