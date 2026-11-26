@@ -5,6 +5,7 @@ import settingsJson from '../../content/settings.json' with { type: 'json' };
 import { officeStore, secretStore, readIndex, getRecord, saveRecord, rebuildIndex, applyPatch, manualRecord, STATUSES, recordFromSubmission, groupRef, dataFromOldSubmission } from '../office/store.mjs';
 import { checkPassword, passwordSet, sessionCookie, clearCookie, signedIn, tooManyTries, ingestAllowed } from '../office/auth.mjs';
 import { readList, addSubscribers, setStatus as setSubStatus, removeSubscriber, parseContacts, readCampaigns, createCampaign, sendBatch, sendTest, summary as campaignSummary, validEmail } from '../office/newsletter.mjs';
+import { readDiary, book, change as changeAppt, cancel as cancelAppt, TYPES as APPT_TYPES } from '../office/diary.mjs';
 import { COMPANIES, validateInvoice, createInvoice, connection, keysSet, waveCatalogue, disconnect } from '../office/accounts.mjs';
 
 export const config = { path: '/office/api/*' };
@@ -12,7 +13,7 @@ export const config = { path: '/office/api/*' };
 const json = (body, status = 200, headers = {}) => new Response(JSON.stringify(body), { status, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store', ...headers } });
 const fail = (message, status = 400) => json({ error: message }, status);
 
-const DEFAULT_SETTINGS = { paymentTermsDays: 0, waveProductMain: '', waveProductOther: '', waveVatTaxId: '', reminderDays: 90, tvhFeeVat: 0, uvsFeeVat: 0, newsletterDailyLimit: 200 };
+const DEFAULT_SETTINGS = { paymentTermsDays: 0, waveProductMain: '', waveProductOther: '', waveVatTaxId: '', reminderDays: 90, tvhFeeVat: 0, uvsFeeVat: 0, newsletterDailyLimit: 200, diaryPeople: [{ name: 'Raj', email: '' }, { name: 'Sunita', email: '' }] };
 const getSettings = async () => ({ ...DEFAULT_SETTINGS, ...((await secretStore().get('settings', { type: 'json' })) || {}) });
 
 export default async (req, context) => {
@@ -91,6 +92,11 @@ export default async (req, context) => {
         if ('paymentTermsDays' in body) s.paymentTermsDays = n(body.paymentTermsDays, 120);
         if ('reminderDays' in body) s.reminderDays = n(body.reminderDays, 365) || 90;
         if ('newsletterDailyLimit' in body) s.newsletterDailyLimit = n(body.newsletterDailyLimit, 2000) || 200;
+        if (Array.isArray(body.diaryPeople)) {
+          s.diaryPeople = body.diaryPeople.slice(0, 6).map((p) => ({ name: String(p.name || '').trim().slice(0, 40), email: String(p.email || '').trim().toLowerCase().slice(0, 200) }))
+            .filter((p) => p.name).map((p) => ({ ...p, email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(p.email) ? p.email : '' }));
+          if (!s.diaryPeople.length) s.diaryPeople = DEFAULT_SETTINGS.diaryPeople;
+        }
         for (const k of ['tvhFeeVat', 'uvsFeeVat']) if (k in body) s[k] = [0, 20].includes(Number(body[k])) ? Number(body[k]) : 0;
         for (const k of ['waveProductMain', 'waveProductOther', 'waveVatTaxId']) if (k in body) s[k] = String(body[k] || '').slice(0, 200);
         await secretStore().setJSON('settings', s);
@@ -160,12 +166,16 @@ export default async (req, context) => {
         const s = await getSettings();
         return json(await sendBatch(store, String(body.id || ''), { dailyLimit: Number(s.newsletterDailyLimit) || 200, origin: new URL(req.url).origin }));
       }
+      case 'diary': return json({ appts: await readDiary(store), types: APPT_TYPES, people: (await getSettings()).diaryPeople });
+      case 'diary-book': return json(await book(store, body, (await getSettings()).diaryPeople));
+      case 'diary-change': return json(await changeAppt(store, String(body.id || ''), body, (await getSettings()).diaryPeople));
+      case 'diary-cancel': return json(await cancelAppt(store, String(body.id || ''), (await getSettings()).diaryPeople));
       case 'rebuild': return json({ count: await rebuildIndex(store) });
       default: return fail('Unknown request', 404);
     }
   } catch (e) {
     console.error(`office-api ${action}:`, e.message);
-    return fail(e.message || 'Something went wrong', e.status || 502);
+    return json({ error: e.message || 'Something went wrong', clash: !!e.clash }, e.status || 502);
   }
 };
 

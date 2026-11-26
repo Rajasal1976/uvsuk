@@ -36,7 +36,7 @@ export function mountOffice(root, cfg) {
       : { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json', 'X-Office': '1' }, body: JSON.stringify(body) });
     const data = await res.json().catch(() => ({ error: `Error ${res.status}` }));
     if (res.status === 401 && action !== 'login') { me = null; showLogin(); throw new Error('Please sign in again.'); }
-    if (!res.ok) throw new Error(data.error || `Error ${res.status}`);
+    if (!res.ok) throw Object.assign(new Error(data.error || `Error ${res.status}`), { data });
     return data;
   }
   const get = (action) => api(action);
@@ -73,7 +73,7 @@ export function mountOffice(root, cfg) {
     root.append(
       h('header', { class: 'of-top' },
         h('div', { class: 'of-brand' }, h('span', {}, 'UVS'), 'Back office'),
-        h('nav', { class: 'of-nav', 'aria-label': 'Back office' }, link('home', 'Home'), link('apps', 'Applications'), link('clients', 'Clients'), link('newsletter', 'Newsletter'), link('new', '+ New record'), link('settings', 'Settings'), h('a', { href: '/admin/' }, 'Edit website ↗'))),
+        h('nav', { class: 'of-nav', 'aria-label': 'Back office' }, link('home', 'Home'), link('apps', 'Applications'), link('diary', 'Diary'), link('clients', 'Clients'), link('newsletter', 'Newsletter'), link('new', '+ New record'), link('settings', 'Settings'), h('a', { href: '/admin/' }, 'Edit website ↗'))),
       h('main', { class: 'of-main' },
         me?.preview ? h('p', { class: 'of-banner' }, h('strong', {}, 'Test copy. '), 'You’re on a preview of the site, so the records here are test records, kept apart from your real ones. Invoices made here still go to your real FreeAgent and Wave, so delete any test invoices there.') : null,
         ...content));
@@ -83,7 +83,7 @@ export function mountOffice(root, cfg) {
   function route() {
     const [view, ...rest] = (location.hash.slice(1) || 'home').split('/');
     const arg = decodeURIComponent(rest.join('/'));
-    ({ home, apps: appsView, clients, client: () => clientView(arg), app: () => recordView(arg), new: newRecord, newsletter, settings }[view] || home)();
+    ({ home, apps: appsView, clients, client: () => clientView(arg), app: () => recordView(arg), new: newRecord, newsletter, settings, diary: () => diaryView(arg) }[view] || home)();
   }
   const go = (hash) => { if (location.hash === `#${hash}`) route(); else location.hash = hash; };
 
@@ -124,6 +124,7 @@ export function mountOffice(root, cfg) {
         h('p', { style: 'margin:0' }, h('strong', {}, 'By hand: '), 'for phone calls, walk-ins and UK immigration clients, press ', h('strong', {}, '+ New record'), ', fill in their details, and the record opens with the invoice beside it.'),
         h('a', { class: 'btn primary', href: '#new', style: 'align-self:flex-start' }, '+ Add your first record')) : null,
       h('div', { class: 'grid' },
+        todayBox(),
         box('New applications', fresh.length, mini(fresh, (a) => `${a.formTitle || ''} · ${fmtDate(a.received)}`)),
         box('Reminders due', due.length, mini(due, (a) => `${a.nextReminder.text} · ${fmtDate(a.nextReminder.due)}`)),
         box(`Visas expiring in the next ${days} days`, expiring.length, mini(expiring, (a) => `${a.service || a.formTitle || ''} · expires ${fmtDate(a.visaExpiry)}${a.expiryReminded ? ' · reminder sent' : ''}`)),
@@ -238,7 +239,8 @@ export function mountOffice(root, cfg) {
             try { a = (await api('remind-email', { ref: a.ref })).app; syncIndex(a); flash('Reminder email sent'); draw(); } catch (ex) { flash(ex.message, true); e.target.disabled = false; }
           } }, 'Email expiry reminder to client'),
           a.expiryReminded ? h('span', { class: 'small muted' }, `Last sent ${fmtDate(a.expiryReminded)}`) : null) : null,
-        a.email ? newsletterToggle(a) : null);
+        a.email ? newsletterToggle(a) : null,
+        clientAppointments(a));
 
       // Reminders
       const rText = h('input', { type: 'text', placeholder: 'e.g. Chase bank statements', 'aria-label': 'Reminder' });
@@ -372,6 +374,142 @@ export function mountOffice(root, cfg) {
     };
     q.addEventListener('input', draw); draw();
     return h('div', { class: 'stack' }, q, out);
+  }
+
+  // ---------- diary ----------
+  let diaryCache = null;
+  const loadDiary = async () => (diaryCache = await get('diary'));
+  const endOf = (start, mins) => { const [hh, mm] = start.split(':').map(Number); const t = hh * 60 + mm + Number(mins); return `${String(Math.floor(t / 60) % 24).padStart(2, '0')}:${String(t % 60).padStart(2, '0')}`; };
+  const mondayOf = (iso) => { const d = new Date(`${iso}T12:00:00Z`); d.setUTCDate(d.getUTCDate() - ((d.getUTCDay() + 6) % 7)); return d.toISOString().slice(0, 10); };
+  const plusDays = (iso, n) => { const d = new Date(`${iso}T12:00:00Z`); d.setUTCDate(d.getUTCDate() + n); return d.toISOString().slice(0, 10); };
+  const localToday = () => new Date().toLocaleDateString('en-CA', { timeZone: 'Europe/London' });
+
+  function todayBox() {
+    const sec = h('section', { class: 'card' }, h('h2', {}, 'Today’s appointments'), h('p', { class: 'muted small' }, 'Loading…'));
+    loadDiary().then((d) => {
+      const list = d.appts.filter((x) => x.date === localToday() && x.status !== 'cancelled');
+      put(sec, h('h2', {}, 'Today’s appointments ', h('span', { class: 'muted' }, `(${list.length})`)),
+        list.length ? h('ul', { class: 'list' }, list.map((x) => h('li', {}, h('strong', {}, `${x.start} `), x.clientName, h('span', { class: 'small muted' }, ` · ${x.who} · ${x.type}`)))) : h('p', { class: 'muted small' }, 'Nothing booked.'),
+        h('a', { class: 'btn small', href: '#diary' }, 'Open diary'));
+    }).catch(() => put(sec, h('h2', {}, 'Today’s appointments'), h('p', { class: 'muted small' }, 'Couldn’t load the diary.')));
+    return sec;
+  }
+
+  function clientAppointments(a) {
+    const box = h('div', { class: 'stack', style: 'gap:6px' });
+    const draw = (d) => {
+      const mine = d.appts.filter((x) => x.status !== 'cancelled' && x.date >= localToday() && (x.ref === a.ref || (a.email && x.clientEmail === a.email)));
+      put(box, h('div', { class: 'row', style: 'justify-content:space-between' }, h('strong', { class: 'small' }, 'Appointments'), h('a', { class: 'btn small', href: `#diary/new/${encodeURIComponent(a.ref)}` }, 'Book appointment')),
+        mine.length ? h('ul', { class: 'list small' }, mine.map((x) => h('li', {}, `${fmtDate(x.date)} ${x.start} · ${x.who} · ${x.type}`))) : h('span', { class: 'small muted' }, 'None coming up.'));
+    };
+    (diaryCache ? Promise.resolve(diaryCache) : loadDiary()).then(draw).catch(() => put(box, ''));
+    return box;
+  }
+
+  function diaryPeopleCard(ok, bad) {
+    const people = (me.settings.diaryPeople || []).concat([{ name: '', email: '' }]).slice(0, 4);
+    const rows = people.map((p) => ({ name: h('input', { type: 'text', value: p.name, 'aria-label': 'Name' }), email: h('input', { type: 'email', value: p.email, 'aria-label': 'Email for calendar invites' }) }));
+    return h('section', { class: 'card stack', style: 'margin-top:16px' }, h('h2', {}, 'Diary: who takes appointments'),
+      h('p', { class: 'small muted', style: 'margin:0' }, 'Calendar invites go to these email addresses. Use the address of the calendar you use: your Zoho Mail address for Zoho Calendar, or a Gmail address for Google Calendar.'),
+      rows.map((r) => h('div', { class: 'fields' }, h('label', { class: 'f' }, 'Name', r.name), h('label', { class: 'f' }, 'Email for invites', r.email))),
+      h('button', { class: 'btn primary small', style: 'align-self:flex-start', onclick: async () => {
+        try { me.settings = (await api('settings', { diaryPeople: rows.map((r) => ({ name: r.name.value, email: r.email.value })) })).settings; ok('Diary people saved'); } catch (e) { bad(e.message); }
+      } }, 'Save'));
+  }
+
+  async function diaryView(arg) {
+    frame('diary', h('p', { class: 'muted' }, 'Loading…'));
+    let d;
+    try { d = await loadDiary(); } catch (e) { return frame('diary', h('p', { class: 'msg err' }, e.message)); }
+    const st = diaryView.st || (diaryView.st = { week: mondayOf(localToday()), who: '' });
+    const msg = h('div', { role: 'status', 'aria-live': 'polite' });
+    const ok = (t) => put(msg, h('p', { class: 'msg ok' }, t));
+    const bad = (t) => put(msg, h('p', { class: 'msg err' }, t));
+    const formBox = h('div');
+    const noEmails = d.people.filter((p) => !p.email).map((p) => p.name);
+
+    const mailedNote = (m) => !m ? '' : m.error ? ` ${m.error}` : ` Invite sent to ${[m.staff ? 'the diary owner' : '', m.client ? 'the client' : ''].filter(Boolean).join(' and ') || 'nobody (no email addresses)'}.`;
+
+    function openForm(existing, prefill = {}) {
+      const x = existing || { who: prefill.who || d.people[0]?.name, date: prefill.date || localToday(), start: '10:00', minutes: 30, type: d.types[0], title: prefill.title || '', clientName: prefill.clientName || '', clientEmail: prefill.clientEmail || '', clientPhone: prefill.clientPhone || '', ref: prefill.ref || '', notes: '', emailClient: true };
+      const f = {
+        who: h('select', { 'aria-label': 'Whose appointment' }, d.people.map((p) => h('option', { value: p.name, selected: p.name === x.who }, p.name))),
+        date: h('input', { type: 'date', value: x.date }), start: h('input', { type: 'time', step: '300', value: x.start }),
+        minutes: h('select', {}, [15, 30, 45, 60, 90, 120].map((m) => h('option', { value: m, selected: Number(x.minutes) === m }, m < 60 ? `${m} minutes` : `${m / 60} hour${m > 60 ? 's' : ''}`))),
+        type: h('select', {}, d.types.map((t) => h('option', { value: t, selected: t === x.type }, t))),
+        title: h('input', { type: 'text', value: x.title === 'Appointment' ? '' : x.title, placeholder: 'e.g. Spouse visa consultation' }),
+        clientName: h('input', { type: 'text', value: x.clientName }), clientEmail: h('input', { type: 'email', value: x.clientEmail }), clientPhone: h('input', { type: 'tel', value: x.clientPhone }),
+        notes: h('textarea', {}, x.notes || ''),
+        emailClient: h('input', { type: 'checkbox', checked: x.emailClient !== false, id: 'ap-mailc' }),
+      };
+      let ref = x.ref;
+      const find = h('input', { type: 'search', placeholder: 'Find an existing client (name, email or reference)', 'aria-label': 'Find a client' });
+      const hits = h('div', { class: 'rows' });
+      find.addEventListener('input', () => {
+        const t = find.value.trim().toLowerCase();
+        const list = t.length < 2 ? [] : apps.filter((a) => [a.name, a.email, a.ref, a.companyName].some((v) => String(v || '').toLowerCase().includes(t))).slice(0, 6);
+        put(hits, list.map((a) => h('button', { type: 'button', class: 'chip', onclick: () => { f.clientName.value = titleCase(a.name); f.clientEmail.value = a.email || ''; f.clientPhone.value = a.phone || ''; ref = a.ref; if (!f.title.value) f.title.value = a.formTitle || ''; put(hits); find.value = ''; } }, h('b', {}, titleCase(a.name)), a.email || a.ref)));
+      });
+      const save = async (btn, allowClash = false) => {
+        btn.disabled = true;
+        const body = { who: f.who.value, date: f.date.value, start: f.start.value, minutes: Number(f.minutes.value), type: f.type.value, title: f.title.value, clientName: f.clientName.value, clientEmail: f.clientEmail.value, clientPhone: f.clientPhone.value, notes: f.notes.value, ref, emailClient: f.emailClient.checked, allowClash };
+        try {
+          const r = existing ? await api('diary-change', { ...body, id: existing.id }) : await api('diary-book', body);
+          st.week = mondayOf(r.appt.date);
+          diaryView.flash = `${existing ? 'Appointment changed' : 'Booked'}: ${r.appt.clientName}, ${fmtDate(r.appt.date)} at ${r.appt.start} with ${r.appt.who}.${mailedNote(r.mailed)}`;
+          await diaryView();
+        } catch (e) {
+          btn.disabled = false;
+          if (e.data?.clash && confirm(e.message)) return save(btn, true);
+          bad(e.message);
+        }
+      };
+      put(formBox, h('section', { class: 'card stack', style: 'margin-bottom:16px;border-left:4px solid var(--gold)' },
+        h('h2', {}, existing ? 'Change appointment' : 'Book an appointment'),
+        h('div', { class: 'fields' }, h('label', { class: 'f' }, 'With', f.who), h('label', { class: 'f' }, 'Date', f.date), h('label', { class: 'f' }, 'Time', f.start), h('label', { class: 'f' }, 'Length', f.minutes), h('label', { class: 'f' }, 'Type', f.type)),
+        h('label', { class: 'f' }, 'About', f.title),
+        find, hits,
+        h('div', { class: 'fields' }, h('label', { class: 'f' }, 'Client name', f.clientName), h('label', { class: 'f' }, 'Client email', f.clientEmail), h('label', { class: 'f' }, 'Client phone', f.clientPhone)),
+        h('label', { class: 'f' }, 'Notes (only you and Sunita see these)', f.notes),
+        h('label', { class: 'row small', for: 'ap-mailc', style: 'gap:8px' }, f.emailClient, existing ? 'Email the client about the change' : 'Email the client a confirmation and calendar invite'),
+        h('div', { class: 'row', style: 'justify-content:flex-end' }, h('button', { class: 'btn', onclick: () => put(formBox) }, 'Close'), h('button', { class: 'btn primary', onclick: (e) => save(e.currentTarget) }, existing ? 'Save changes' : 'Book appointment'))));
+      formBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    const days = Array.from({ length: 7 }, (_, i) => plusDays(st.week, i));
+    const shown = d.appts.filter((x) => x.status !== 'cancelled' && (!st.who || x.who === st.who));
+    const pill = (on, label, click) => h('button', { type: 'button', class: 'pill', 'aria-pressed': String(on), onclick: click }, label);
+    frame('diary',
+      h('div', { class: 'head' }, h('div', {}, h('h1', {}, 'Diary'), h('p', { class: 'muted' }, `Week of ${fmtDate(st.week)}`)), h('button', { class: 'btn primary', onclick: () => openForm(null) }, '+ Book appointment')),
+      noEmails.length ? h('p', { class: 'of-banner' }, `No email address saved for ${noEmails.join(' and ')}, so their calendar invites can’t be sent. `, h('a', { href: '#settings' }, 'Add it in Settings')) : null,
+      msg, formBox,
+      h('div', { class: 'row', style: 'justify-content:space-between;margin-bottom:12px' },
+        h('div', { class: 'pills' }, pill(!st.who, 'Everyone', () => { st.who = ''; diaryView(); }), d.people.map((p) => pill(st.who === p.name, p.name, () => { st.who = p.name; diaryView(); }))),
+        h('div', { class: 'row' }, h('button', { class: 'btn small', onclick: () => { st.week = plusDays(st.week, -7); diaryView(); } }, '‹ Previous'), h('button', { class: 'btn small', onclick: () => { st.week = mondayOf(localToday()); diaryView(); } }, 'This week'), h('button', { class: 'btn small', onclick: () => { st.week = plusDays(st.week, 7); diaryView(); } }, 'Next ›'))),
+      h('div', { class: 'grid', style: 'grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px' }, days.map((day) => {
+        const list = shown.filter((x) => x.date === day);
+        const isToday = day === localToday();
+        return h('section', { class: 'card stack', style: `padding:14px;gap:8px;${isToday ? 'outline:2px solid var(--gold);' : ''}` },
+          h('div', { class: 'row', style: 'justify-content:space-between' }, h('strong', {}, new Date(`${day}T12:00:00Z`).toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', timeZone: 'UTC' })),
+            h('button', { class: 'btn link small', 'aria-label': `Book on ${day}`, onclick: () => openForm(null, { date: day }) }, '+')),
+          list.length ? list.map((x) => h('div', { class: 'box', style: 'padding:8px 10px' },
+            h('div', { style: 'font-weight:600' }, `${x.start}–${endOf(x.start, x.minutes)}`),
+            h('div', {}, x.clientName), h('div', { class: 'small muted' }, `${x.who} · ${x.type}`), x.title && x.title !== 'Appointment' ? h('div', { class: 'small muted' }, x.title) : null,
+            h('div', { class: 'row', style: 'gap:2px;margin-top:4px' },
+              x.ref ? h('a', { class: 'btn link small', href: `#app/${encodeURIComponent(x.ref)}` }, 'Record') : null,
+              h('button', { class: 'btn link small', onclick: () => openForm(x) }, 'Change'),
+              h('button', { class: 'btn link small', onclick: async () => {
+                if (!confirm(`Cancel ${x.clientName}'s appointment on ${fmtDate(x.date)} at ${x.start}?${x.clientEmail && x.emailClient !== false ? ' The client will be emailed.' : ''}`)) return;
+                try { const r = await api('diary-cancel', { id: x.id }); diaryView.flash = `Cancelled.${mailedNote(r.mailed)}`; await diaryView(); } catch (e) { bad(e.message); }
+              } }, 'Cancel')))) : h('span', { class: 'small muted' }, '–'));
+      })));
+    if (diaryView.flash) { ok(diaryView.flash); diaryView.flash = ''; }
+    const m = String(arg || '').match(/^new\/(.+)$/);
+    if (m) {
+      const a = apps.find((x) => x.ref === decodeURIComponent(m[1]));
+      if (a) openForm(null, { clientName: titleCase(a.name), clientEmail: a.email || '', clientPhone: a.phone || '', ref: a.ref, title: a.formTitle || '' });
+      history.replaceState(null, '', '#diary');
+    }
   }
 
   const syncIndex = (a) => {
@@ -563,6 +701,7 @@ export function mountOffice(root, cfg) {
         h('button', { class: 'btn primary small', style: 'align-self:flex-start', onclick: async () => {
           try { me.settings = (await api('settings', { paymentTermsDays: terms.value, reminderDays: days.value, newsletterDailyLimit: nlLimit.value, tvhFeeVat: tvhVat.value, uvsFeeVat: uvsVat.value })).settings; ok('Settings saved'); } catch (e) { bad(e.message); }
         } }, 'Save')),
+      diaryPeopleCard(ok, bad),
       h('section', { class: 'card stack', style: 'margin-top:16px' }, h('h2', {}, 'Import past applications'),
         h('p', { class: 'small', style: 'margin:0' }, 'Bring in applications sent through your website forms before the back office existed. Ones already here are skipped, so it’s safe to press more than once.'),
         h('p', { class: 'small muted', style: 'margin:0' }, 'One-time setup: in Netlify, click your profile picture › User settings › Applications › Personal access tokens › New access token. Copy it, then add it to the site as an environment variable called NETLIFY_API_TOKEN (tick “Contains secret values”, put it in Production) and rebuild the site.'),
