@@ -1,5 +1,5 @@
 // The back office screens (/office/). Talks to netlify/functions/office-api.mjs.
-// Pages: Home (what needs doing), Applications, Clients, one record (details + invoice), New record, Settings.
+// Pages: Home (what needs doing), Applications, Diary (appointments + to-dos), Clients, one record (details + invoice), New record, Settings.
 
 const h = (tag, attrs = {}, ...children) => {
   const el = document.createElement(tag);
@@ -111,7 +111,6 @@ export function mountOffice(root, cfg) {
   function home() {
     const days = Number(me.settings?.reminderDays) || 90;
     const fresh = apps.filter((a) => a.status === 'New');
-    const due = apps.filter((a) => a.nextReminder && a.nextReminder.due <= today());
     const expiring = apps.filter((a) => a.visaExpiry && a.visaExpiry >= today() && a.visaExpiry <= addDays(days)).sort((x, y) => x.visaExpiry.localeCompare(y.visaExpiry));
     const drafts = apps.filter((a) => (a.invoices || []).some((i) => i.status === 'draft'));
     const box = (title, count, body) => h('section', { class: 'card' }, h('h2', {}, title, ' ', h('span', { class: 'muted' }, `(${count})`)), body);
@@ -126,7 +125,6 @@ export function mountOffice(root, cfg) {
       h('div', { class: 'grid' },
         todayBox(),
         box('New applications', fresh.length, mini(fresh, (a) => `${a.formTitle || ''} · ${fmtDate(a.received)}`)),
-        box('Reminders due', due.length, mini(due, (a) => `${a.nextReminder.text} · ${fmtDate(a.nextReminder.due)}`)),
         box(`Visas expiring in the next ${days} days`, expiring.length, mini(expiring, (a) => `${a.service || a.formTitle || ''} · expires ${fmtDate(a.visaExpiry)}${a.expiryReminded ? ' · reminder sent' : ''}`)),
         box('Draft invoices', drafts.length, mini(drafts, (a) => `${money((a.invoices || []).filter((i) => i.status === 'draft').reduce((s, i) => s + i.total, 0))} in drafts`))));
   }
@@ -242,15 +240,8 @@ export function mountOffice(root, cfg) {
         a.email ? newsletterToggle(a) : null,
         clientAppointments(a));
 
-      // Reminders
-      const rText = h('input', { type: 'text', placeholder: 'e.g. Chase bank statements', 'aria-label': 'Reminder' });
-      const rDate = h('input', { type: 'date', value: addDays(3), 'aria-label': 'Reminder date' });
-      const open = (a.reminders || []).filter((r) => !r.done).sort((x, y) => x.due.localeCompare(y.due));
-      const reminders = h('section', { class: 'card stack' }, h('h2', {}, 'Reminders'),
-        open.length ? h('ul', { class: 'list' }, open.map((r) => h('li', { class: 'row', style: 'justify-content:space-between' }, h('span', {}, r.due <= today() ? h('span', { class: 'tag due' }, 'Due') : null, ' ', r.text, h('span', { class: 'small muted' }, ` · ${fmtDate(r.due)}`)),
-          h('button', { class: 'btn small', onclick: async () => { if (await save({ doneReminder: r.id }, 'Reminder done')) draw(); } }, 'Done')))) : h('p', { class: 'muted small' }, 'No reminders.'),
-        h('div', { class: 'row' }, h('div', { style: 'flex:2 1 180px' }, rText), h('div', { style: 'flex:1 1 140px' }, rDate),
-          h('button', { class: 'btn small', onclick: async () => { if (!rText.value.trim()) return rText.focus(); if (await save({ addReminder: { text: rText.value, due: rDate.value } }, 'Reminder added')) draw(); } }, 'Add')));
+      // To do (shared with the diary)
+      const reminders = clientTodos(a, async () => { try { a = (await get(`app?ref=${encodeURIComponent(a.ref)}`)).app; syncIndex(a); } catch {} draw(); });
 
       // Notes
       const nText = h('textarea', { placeholder: 'Add a note', 'aria-label': 'Note' });
@@ -377,21 +368,66 @@ export function mountOffice(root, cfg) {
   }
 
   // ---------- diary ----------
+  // Appointments plus to-dos (call a client, put a visa form through…). Reminders added on a
+  // client's record show here as to-dos too, so there's one list of everything to do.
   let diaryCache = null;
   const loadDiary = async () => (diaryCache = await get('diary'));
   const endOf = (start, mins) => { const [hh, mm] = start.split(':').map(Number); const t = hh * 60 + mm + Number(mins); return `${String(Math.floor(t / 60) % 24).padStart(2, '0')}:${String(t % 60).padStart(2, '0')}`; };
   const mondayOf = (iso) => { const d = new Date(`${iso}T12:00:00Z`); d.setUTCDate(d.getUTCDate() - ((d.getUTCDay() + 6) % 7)); return d.toISOString().slice(0, 10); };
   const plusDays = (iso, n) => { const d = new Date(`${iso}T12:00:00Z`); d.setUTCDate(d.getUTCDate() + n); return d.toISOString().slice(0, 10); };
   const localToday = () => new Date().toLocaleDateString('en-CA', { timeZone: 'Europe/London' });
+  const dayName = (iso, opts = { weekday: 'short', day: 'numeric', month: 'short' }) => new Date(`${iso}T12:00:00Z`).toLocaleDateString('en-GB', { ...opts, timeZone: 'UTC' });
+  const TASK_PICKS = ['Call client', 'Put visa form through', 'Chase documents', 'Book biometrics / VFS', 'Collect passport', 'Send invoice', 'Follow up'];
+  const apptName = (x) => x.clientName || x.title;
 
+  // Every to-do in one shape: diary to-dos and client-record reminders
+  const todoItems = (d) => [
+    ...(d.tasks || []).map((t) => ({ ...t, kind: 'task' })),
+    ...(d.reminders || []).map((r) => ({ kind: 'reminder', id: r.id, title: r.text, due: r.due, time: '', who: '', ref: r.ref, clientName: r.clientName, clientPhone: r.clientPhone, notes: '', done: false })),
+  ].sort((a, b) => `${a.due} ${a.time || '99'}`.localeCompare(`${b.due} ${b.time || '99'}`));
+  const forWho = (who) => (t) => !who || !t.who || t.who === who;
+
+  async function tick(item) {
+    if (item.kind === 'reminder') {
+      const r = await api('update', { ref: item.ref, patch: { doneReminder: item.id } });
+      syncIndex(r.app);
+    } else await api('task-done', { id: item.id, done: !item.done });
+    await loadDiary();
+  }
+
+  // One to-do line with a tick box. opts: { overdue, compact, onChange, onEdit }
+  function todoRow(t, opts = {}) {
+    const box = h('input', { type: 'checkbox', checked: t.done, 'aria-label': `Done: ${t.title}`, style: 'width:20px;height:20px;margin:2px 0 0;flex:none;accent-color:var(--green)' });
+    box.addEventListener('change', async () => {
+      box.disabled = true;
+      try { await tick(t); opts.onChange?.(); } catch (e) { box.checked = !box.checked; box.disabled = false; alert(e.message); }
+    });
+    const late = !t.done && t.due < localToday();
+    return h('div', { class: 'todo', style: `display:flex;gap:8px;align-items:flex-start;${t.done ? 'opacity:.55;' : ''}` }, box,
+      h('div', { style: 'min-width:0;flex:1' },
+        h('div', { style: `font-weight:500;${t.done ? 'text-decoration:line-through;' : ''}${opts.compact && opts.onEdit && t.kind === 'task' ? 'cursor:pointer;' : ''}`, title: opts.compact && opts.onEdit && t.kind === 'task' ? 'Click to change' : null, onclick: opts.compact && opts.onEdit && t.kind === 'task' ? () => opts.onEdit(t) : null }, t.time ? h('strong', {}, `${t.time} `) : null, t.title),
+        h('div', { class: 'small muted' },
+          late ? h('span', { class: 'tag due' }, opts.compact ? 'Overdue' : `Overdue · ${fmtDate(t.due)}`) : null, late ? ' ' : null,
+          [t.clientName ? (t.ref ? h('a', { href: `#app/${encodeURIComponent(t.ref)}` }, titleCase(t.clientName)) : titleCase(t.clientName)) : null,
+            t.clientPhone ? h('a', { href: `tel:${t.clientPhone.replace(/[^\d+]/g, '')}` }, t.clientPhone) : null,
+            t.who || null, t.kind === 'reminder' ? 'from client record' : null].filter(Boolean).flatMap((x, i) => (i ? [' · ', x] : [x]))),
+        t.notes && !opts.compact ? h('div', { class: 'small muted', style: 'white-space:pre-line' }, t.notes) : null),
+      opts.onEdit && t.kind === 'task' && !opts.compact ? h('button', { class: 'btn link small', onclick: () => opts.onEdit(t) }, 'Edit') : null);
+  }
+
+  // Home: today's appointments and what needs doing
   function todayBox() {
-    const sec = h('section', { class: 'card' }, h('h2', {}, 'Today’s appointments'), h('p', { class: 'muted small' }, 'Loading…'));
-    loadDiary().then((d) => {
-      const list = d.appts.filter((x) => x.date === localToday() && x.status !== 'cancelled');
-      put(sec, h('h2', {}, 'Today’s appointments ', h('span', { class: 'muted' }, `(${list.length})`)),
-        list.length ? h('ul', { class: 'list' }, list.map((x) => h('li', {}, h('strong', {}, `${x.start} `), x.clientName, h('span', { class: 'small muted' }, ` · ${x.who} · ${x.type}`)))) : h('p', { class: 'muted small' }, 'Nothing booked.'),
+    const sec = h('section', { class: 'card' }, h('h2', {}, 'Today'), h('p', { class: 'muted small' }, 'Loading…'));
+    const draw = (d) => {
+      const day = localToday();
+      const appts = d.appts.filter((x) => x.date === day && x.status !== 'cancelled');
+      const todos = todoItems(d).filter((t) => !t.done && t.due <= day);
+      put(sec, h('h2', {}, 'Today ', h('span', { class: 'muted' }, `(${appts.length} appointment${appts.length === 1 ? '' : 's'}, ${todos.length} to do)`)),
+        appts.length ? h('ul', { class: 'list', style: 'margin-bottom:12px' }, appts.map((x) => h('li', {}, h('strong', {}, `${x.start} `), apptName(x), h('span', { class: 'small muted' }, ` · ${x.who} · ${x.type}`)))) : h('p', { class: 'muted small' }, 'No appointments.'),
+        todos.length ? h('div', { class: 'stack', style: 'gap:8px;margin-bottom:12px' }, todos.slice(0, 15).map((t) => todoRow(t, { compact: true, onChange: () => draw(diaryCache) }))) : h('p', { class: 'muted small' }, 'Nothing to do. 🎉'),
         h('a', { class: 'btn small', href: '#diary' }, 'Open diary'));
-    }).catch(() => put(sec, h('h2', {}, 'Today’s appointments'), h('p', { class: 'muted small' }, 'Couldn’t load the diary.')));
+    };
+    loadDiary().then(draw).catch(() => put(sec, h('h2', {}, 'Today'), h('p', { class: 'muted small' }, 'Couldn’t load the diary.')));
     return sec;
   }
 
@@ -404,6 +440,32 @@ export function mountOffice(root, cfg) {
     };
     (diaryCache ? Promise.resolve(diaryCache) : loadDiary()).then(draw).catch(() => put(box, ''));
     return box;
+  }
+
+  // Client record: this client's to-dos (they show in the diary too)
+  function clientTodos(a, onReminderDone) {
+    const sec = h('section', { class: 'card stack' }, h('h2', {}, 'To do'), h('p', { class: 'muted small' }, 'Loading…'));
+    const draw = () => {
+      const d = diaryCache;
+      const legacy = (a.reminders || []).filter((r) => !r.done).map((r) => ({ kind: 'reminder', id: r.id, title: r.text, due: r.due, ref: a.ref, done: false }));
+      const mine = [...(d?.tasks || []).filter((t) => t.ref === a.ref && !t.done).map((t) => ({ ...t, kind: 'task', clientName: '', clientPhone: '' })), ...legacy].sort((x, y) => x.due.localeCompare(y.due));
+      const text = h('input', { type: 'text', placeholder: 'e.g. Call to chase bank statements', 'aria-label': 'What needs doing', list: 'todo-picks' });
+      const due = h('input', { type: 'date', value: localToday(), 'aria-label': 'Due' });
+      const who = h('select', { 'aria-label': 'For' }, h('option', { value: '' }, 'Either of us'), (d?.people || me.settings.diaryPeople || []).map((p) => h('option', { value: p.name }, p.name)));
+      put(sec, h('h2', {}, 'To do'),
+        mine.length ? h('div', { class: 'stack', style: 'gap:8px' }, mine.map((t) => todoRow({ ...t, clientName: '' }, { onChange: () => { if (t.kind === 'reminder') onReminderDone(); else draw(); } }))) : h('p', { class: 'muted small' }, 'Nothing to do for this client.'),
+        h('datalist', { id: 'todo-picks' }, TASK_PICKS.map((p) => h('option', { value: p }))),
+        h('div', { class: 'row' }, h('div', { style: 'flex:2 1 200px' }, text), h('div', { style: 'flex:1 1 140px' }, due), h('div', { style: 'flex:1 1 120px' }, who),
+          h('button', { class: 'btn small', onclick: async (e) => {
+            if (!text.value.trim()) return text.focus();
+            e.currentTarget.disabled = true;
+            try { await api('task-save', { title: text.value, due: due.value, who: who.value, ref: a.ref, clientName: titleCase(a.name), clientPhone: a.phone || '' }); await loadDiary(); draw(); }
+            catch (ex) { alert(ex.message); e.target.disabled = false; }
+          } }, 'Add')),
+        h('p', { class: 'small muted', style: 'margin:0' }, 'These also show in the diary on the day they’re due.'));
+    };
+    loadDiary().then(draw).catch(() => { diaryCache = null; draw(); });
+    return sec;
   }
 
   function diaryPeopleCard(ok, bad) {
@@ -421,43 +483,63 @@ export function mountOffice(root, cfg) {
     frame('diary', h('p', { class: 'muted' }, 'Loading…'));
     let d;
     try { d = await loadDiary(); } catch (e) { return frame('diary', h('p', { class: 'msg err' }, e.message)); }
-    const st = diaryView.st || (diaryView.st = { week: mondayOf(localToday()), who: '' });
+    const st = diaryView.st || (diaryView.st = { week: mondayOf(localToday()), who: '', view: 'week' });
     const msg = h('div', { role: 'status', 'aria-live': 'polite' });
     const ok = (t) => put(msg, h('p', { class: 'msg ok' }, t));
     const bad = (t) => put(msg, h('p', { class: 'msg err' }, t));
     const formBox = h('div');
     const noEmails = d.people.filter((p) => !p.email).map((p) => p.name);
+    const clientTypes = d.clientTypes || ['In the office', 'Phone call', 'Video call'];
+    const refresh = async (flash) => { if (flash) diaryView.flash = flash; await diaryView(); };
 
     const mailedNote = (m) => !m ? '' : m.error ? ` ${m.error}` : ` Invite sent to ${[m.staff ? 'the diary owner' : '', m.client ? 'the client' : ''].filter(Boolean).join(' and ') || 'nobody (no email addresses)'}.`;
 
-    function openForm(existing, prefill = {}) {
-      const x = existing || { who: prefill.who || d.people[0]?.name, date: prefill.date || localToday(), start: '10:00', minutes: 30, type: d.types[0], title: prefill.title || '', clientName: prefill.clientName || '', clientEmail: prefill.clientEmail || '', clientPhone: prefill.clientPhone || '', ref: prefill.ref || '', notes: '', emailClient: true };
-      const f = {
-        who: h('select', { 'aria-label': 'Whose appointment' }, d.people.map((p) => h('option', { value: p.name, selected: p.name === x.who }, p.name))),
-        date: h('input', { type: 'date', value: x.date }), start: h('input', { type: 'time', step: '300', value: x.start }),
-        minutes: h('select', {}, [15, 30, 45, 60, 90, 120].map((m) => h('option', { value: m, selected: Number(x.minutes) === m }, m < 60 ? `${m} minutes` : `${m / 60} hour${m > 60 ? 's' : ''}`))),
-        type: h('select', {}, d.types.map((t) => h('option', { value: t, selected: t === x.type }, t))),
-        title: h('input', { type: 'text', value: x.title === 'Appointment' ? '' : x.title, placeholder: 'e.g. Spouse visa consultation' }),
-        clientName: h('input', { type: 'text', value: x.clientName }), clientEmail: h('input', { type: 'email', value: x.clientEmail }), clientPhone: h('input', { type: 'tel', value: x.clientPhone }),
-        notes: h('textarea', {}, x.notes || ''),
-        emailClient: h('input', { type: 'checkbox', checked: x.emailClient !== false, id: 'ap-mailc' }),
-      };
-      let ref = x.ref;
+    // "Find an existing client" box, used by both forms
+    function clientFinder(onPick) {
       const find = h('input', { type: 'search', placeholder: 'Find an existing client (name, email or reference)', 'aria-label': 'Find a client' });
       const hits = h('div', { class: 'rows' });
       find.addEventListener('input', () => {
         const t = find.value.trim().toLowerCase();
         const list = t.length < 2 ? [] : apps.filter((a) => [a.name, a.email, a.ref, a.companyName].some((v) => String(v || '').toLowerCase().includes(t))).slice(0, 6);
-        put(hits, list.map((a) => h('button', { type: 'button', class: 'chip', onclick: () => { f.clientName.value = titleCase(a.name); f.clientEmail.value = a.email || ''; f.clientPhone.value = a.phone || ''; ref = a.ref; if (!f.title.value) f.title.value = a.formTitle || ''; put(hits); find.value = ''; } }, h('b', {}, titleCase(a.name)), a.email || a.ref)));
+        put(hits, list.map((a) => h('button', { type: 'button', class: 'chip', onclick: () => { onPick(a); put(hits); find.value = ''; } }, h('b', {}, titleCase(a.name)), a.email || a.ref)));
       });
+      return [find, hits];
+    }
+
+    function openForm(existing, prefill = {}) {
+      const x = existing || { who: prefill.who || st.who || d.people[0]?.name, date: prefill.date || localToday(), start: '10:00', minutes: 30, type: d.types[0], title: prefill.title || '', clientName: prefill.clientName || '', clientEmail: prefill.clientEmail || '', clientPhone: prefill.clientPhone || '', ref: prefill.ref || '', notes: '', emailClient: true };
+      const f = {
+        who: h('select', { 'aria-label': 'Whose appointment' }, d.people.map((p) => h('option', { value: p.name, selected: p.name === x.who }, p.name))),
+        date: h('input', { type: 'date', value: x.date }), start: h('input', { type: 'time', step: '300', value: x.start }),
+        minutes: h('select', {}, [15, 30, 45, 60, 90, 120, 180, 240, 480].map((m) => h('option', { value: m, selected: Number(x.minutes) === m }, m < 60 ? `${m} minutes` : m === 480 ? 'All day' : `${m / 60} hour${m > 60 ? 's' : ''}`))),
+        type: h('select', {}, d.types.map((t) => h('option', { value: t, selected: t === x.type }, t))),
+        title: h('input', { type: 'text', value: x.title === 'Appointment' || x.title === x.type ? '' : x.title }),
+        clientName: h('input', { type: 'text', value: x.clientName }), clientEmail: h('input', { type: 'email', value: x.clientEmail }), clientPhone: h('input', { type: 'tel', value: x.clientPhone }),
+        notes: h('textarea', {}, x.notes || ''),
+        emailClient: h('input', { type: 'checkbox', checked: x.emailClient !== false, id: 'ap-mailc' }),
+      };
+      let ref = x.ref;
+      const [find, hits] = clientFinder((a) => { f.clientName.value = titleCase(a.name); f.clientEmail.value = a.email || ''; f.clientPhone.value = a.phone || ''; ref = a.ref; if (!f.title.value) f.title.value = a.formTitle || ''; });
+      const clientBits = h('div', { class: 'stack' }, find, hits,
+        h('div', { class: 'fields' }, h('label', { class: 'f' }, 'Client name', f.clientName), h('label', { class: 'f' }, 'Client email', f.clientEmail), h('label', { class: 'f' }, 'Client phone', f.clientPhone)));
+      const mailLine = h('label', { class: 'row small', for: 'ap-mailc', style: 'gap:8px' }, f.emailClient, existing ? 'Email the client about the change' : 'Email the client a confirmation and calendar invite');
+      const aboutLabel = h('span', {}, 'About');
+      const setType = () => {
+        const withClient = clientTypes.includes(f.type.value);
+        clientBits.hidden = !withClient; mailLine.hidden = !withClient;
+        aboutLabel.textContent = withClient ? 'About' : 'What is it?';
+        f.title.placeholder = withClient ? 'e.g. Spouse visa consultation' : f.type.value === 'Out of office' ? 'e.g. Holiday, dentist' : 'e.g. VFS drop-off for 3 clients';
+      };
+      f.type.addEventListener('change', setType); setType();
       const save = async (btn, allowClash = false) => {
         btn.disabled = true;
-        const body = { who: f.who.value, date: f.date.value, start: f.start.value, minutes: Number(f.minutes.value), type: f.type.value, title: f.title.value, clientName: f.clientName.value, clientEmail: f.clientEmail.value, clientPhone: f.clientPhone.value, notes: f.notes.value, ref, emailClient: f.emailClient.checked, allowClash };
+        const withClient = clientTypes.includes(f.type.value);
+        const body = { who: f.who.value, date: f.date.value, start: f.start.value, minutes: Number(f.minutes.value), type: f.type.value, title: f.title.value,
+          clientName: withClient ? f.clientName.value : '', clientEmail: withClient ? f.clientEmail.value : '', clientPhone: withClient ? f.clientPhone.value : '', notes: f.notes.value, ref: withClient ? ref : '', emailClient: withClient && f.emailClient.checked, allowClash };
         try {
           const r = existing ? await api('diary-change', { ...body, id: existing.id }) : await api('diary-book', body);
           st.week = mondayOf(r.appt.date);
-          diaryView.flash = `${existing ? 'Appointment changed' : 'Booked'}: ${r.appt.clientName}, ${fmtDate(r.appt.date)} at ${r.appt.start} with ${r.appt.who}.${mailedNote(r.mailed)}`;
-          await diaryView();
+          await refresh(`${existing ? 'Changed' : 'Booked'}: ${apptName(r.appt)}, ${fmtDate(r.appt.date)} at ${r.appt.start} with ${r.appt.who}.${mailedNote(r.mailed)}`);
         } catch (e) {
           btn.disabled = false;
           if (e.data?.clash && confirm(e.message)) return save(btn, true);
@@ -467,42 +549,117 @@ export function mountOffice(root, cfg) {
       put(formBox, h('section', { class: 'card stack', style: 'margin-bottom:16px;border-left:4px solid var(--gold)' },
         h('h2', {}, existing ? 'Change appointment' : 'Book an appointment'),
         h('div', { class: 'fields' }, h('label', { class: 'f' }, 'With', f.who), h('label', { class: 'f' }, 'Date', f.date), h('label', { class: 'f' }, 'Time', f.start), h('label', { class: 'f' }, 'Length', f.minutes), h('label', { class: 'f' }, 'Type', f.type)),
-        h('label', { class: 'f' }, 'About', f.title),
-        find, hits,
-        h('div', { class: 'fields' }, h('label', { class: 'f' }, 'Client name', f.clientName), h('label', { class: 'f' }, 'Client email', f.clientEmail), h('label', { class: 'f' }, 'Client phone', f.clientPhone)),
+        h('label', { class: 'f' }, aboutLabel, f.title),
+        clientBits,
         h('label', { class: 'f' }, 'Notes (only you and Sunita see these)', f.notes),
-        h('label', { class: 'row small', for: 'ap-mailc', style: 'gap:8px' }, f.emailClient, existing ? 'Email the client about the change' : 'Email the client a confirmation and calendar invite'),
+        mailLine,
         h('div', { class: 'row', style: 'justify-content:flex-end' }, h('button', { class: 'btn', onclick: () => put(formBox) }, 'Close'), h('button', { class: 'btn primary', onclick: (e) => save(e.currentTarget) }, existing ? 'Save changes' : 'Book appointment'))));
       formBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
-    const days = Array.from({ length: 7 }, (_, i) => plusDays(st.week, i));
-    const shown = d.appts.filter((x) => x.status !== 'cancelled' && (!st.who || x.who === st.who));
+    function openTaskForm(existing, prefill = {}) {
+      const x = existing || { title: '', due: prefill.due || localToday(), time: '', who: st.who || '', ref: '', clientName: '', clientPhone: '', notes: '' };
+      const f = {
+        title: h('input', { type: 'text', value: x.title, placeholder: 'e.g. Call Mr Patel about his bank statements' }),
+        due: h('input', { type: 'date', value: x.due }),
+        time: h('input', { type: 'time', step: '300', value: x.time || '' }),
+        who: h('select', {}, h('option', { value: '' }, 'Either of us'), d.people.map((p) => h('option', { value: p.name, selected: p.name === x.who }, p.name))),
+        clientName: h('input', { type: 'text', value: x.clientName }), clientPhone: h('input', { type: 'tel', value: x.clientPhone }),
+        notes: h('textarea', {}, x.notes || ''),
+      };
+      let ref = x.ref;
+      const linked = h('span', { class: 'small muted' });
+      const showLinked = () => put(linked, ref ? ['Linked to record ', h('a', { href: `#app/${encodeURIComponent(ref)}` }, ref), ' ', h('button', { type: 'button', class: 'btn link small', onclick: () => { ref = ''; showLinked(); } }, 'Unlink')] : '');
+      showLinked();
+      const [find, hits] = clientFinder((a) => { f.clientName.value = titleCase(a.name); f.clientPhone.value = a.phone || ''; ref = a.ref; showLinked(); });
+      const picks = h('div', { class: 'rows' }, TASK_PICKS.map((p) => h('button', { type: 'button', class: 'chip', onclick: () => { f.title.value = f.title.value.trim() ? `${p}: ${f.title.value.replace(/^[^:]+:\s*/, '')}` : p; f.title.focus(); } }, p)));
+      const quick = (label, n) => h('button', { type: 'button', class: 'btn link small', onclick: () => { f.due.value = plusDays(localToday(), n); } }, label);
+      const save = async (btn) => {
+        btn.disabled = true;
+        try {
+          const r = await api('task-save', { id: existing?.id, title: f.title.value, due: f.due.value, time: f.time.value, who: f.who.value, ref, clientName: f.clientName.value, clientPhone: f.clientPhone.value, notes: f.notes.value });
+          if (st.view === 'week') st.week = mondayOf(r.task.due);
+          await refresh(`${existing ? 'To-do saved' : 'Added to do'}: ${r.task.title}, ${fmtDate(r.task.due)}.`);
+        } catch (e) { btn.disabled = false; bad(e.message); }
+      };
+      put(formBox, h('section', { class: 'card stack', style: 'margin-bottom:16px;border-left:4px solid var(--green)' },
+        h('h2', {}, existing ? 'Change to-do' : 'Add a to-do'),
+        h('label', { class: 'f' }, 'What needs doing', f.title), picks,
+        h('div', { class: 'fields' }, h('label', { class: 'f' }, h('span', {}, 'Due ', quick('Today', 0), quick('Tomorrow', 1), quick('Next week', 7)), f.due), h('label', { class: 'f' }, 'Time (optional)', f.time), h('label', { class: 'f' }, 'For', f.who)),
+        find, hits,
+        h('div', { class: 'fields' }, h('label', { class: 'f' }, 'Client name (optional)', f.clientName), h('label', { class: 'f' }, 'Client phone', f.clientPhone)), linked,
+        h('label', { class: 'f' }, 'Notes', f.notes),
+        h('div', { class: 'row', style: 'justify-content:space-between' },
+          existing ? h('button', { class: 'btn link small', style: 'color:var(--red)', onclick: async () => { if (!confirm(`Delete “${existing.title}”?`)) return; try { await api('task-delete', { id: existing.id }); await refresh('To-do deleted.'); } catch (e) { bad(e.message); } } }, 'Delete') : h('span'),
+          h('div', { class: 'row' }, h('button', { class: 'btn', onclick: () => put(formBox) }, 'Close'), h('button', { class: 'btn primary', onclick: (e) => save(e.currentTarget) }, existing ? 'Save' : 'Add to-do')))));
+      formBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (!existing) f.title.focus();
+    }
+
+    const today = localToday();
+    const todos = todoItems(d).filter(forWho(st.who));
+    const overdue = todos.filter((t) => !t.done && t.due < today);
+    const rowOpts = { onChange: () => diaryView(), onEdit: (t) => openTaskForm(t) };
     const pill = (on, label, click) => h('button', { type: 'button', class: 'pill', 'aria-pressed': String(on), onclick: click }, label);
+    const apptBox = (x) => h('div', { class: 'box', style: `padding:8px 10px;${clientTypes.includes(x.type) ? '' : 'background:#EEF0F2;'}` },
+      h('div', { style: 'font-weight:600' }, x.minutes >= 480 ? 'All day' : `${x.start}–${endOf(x.start, x.minutes)}`),
+      h('div', {}, apptName(x)), h('div', { class: 'small muted' }, `${x.who} · ${x.type}`), x.clientName && x.title && x.title !== 'Appointment' ? h('div', { class: 'small muted' }, x.title) : null,
+      x.clientPhone && x.type === 'Phone call' ? h('a', { class: 'small', href: `tel:${x.clientPhone.replace(/[^\d+]/g, '')}` }, x.clientPhone) : null,
+      h('div', { class: 'row', style: 'gap:2px;margin-top:4px' },
+        x.ref ? h('a', { class: 'btn link small', href: `#app/${encodeURIComponent(x.ref)}` }, 'Record') : null,
+        h('button', { class: 'btn link small', onclick: () => openForm(x) }, 'Change'),
+        h('button', { class: 'btn link small', onclick: async () => {
+          if (!confirm(`Cancel ${apptName(x)} on ${fmtDate(x.date)} at ${x.start}?${x.clientEmail && x.emailClient !== false ? ' The client will be emailed.' : ''}`)) return;
+          try { const r = await api('diary-cancel', { id: x.id }); await refresh(`Cancelled.${mailedNote(r.mailed)}`); } catch (e) { bad(e.message); }
+        } }, 'Cancel')));
+
+    let body;
+    if (st.view === 'todo') {
+      const sunday = plusDays(mondayOf(today), 6);
+      const open = todos.filter((t) => !t.done);
+      const groups = [
+        ['Overdue', overdue],
+        ['Today', open.filter((t) => t.due === today)],
+        ['Tomorrow', open.filter((t) => t.due === plusDays(today, 1))],
+        ['Rest of this week', open.filter((t) => t.due > plusDays(today, 1) && t.due <= sunday)],
+        ['Later', open.filter((t) => t.due > sunday && t.due > plusDays(today, 1))],
+        ['Done in the last 2 weeks', todos.filter((t) => t.done && (t.doneAt || '') >= plusDays(today, -14)).sort((a, b) => String(b.doneAt).localeCompare(String(a.doneAt))).slice(0, 40)],
+      ];
+      body = h('div', { class: 'stack' }, groups.map(([label, list]) => (label === 'Overdue' || label.startsWith('Done')) && !list.length ? null : h('section', { class: 'card stack', style: label === 'Overdue' ? 'border-left:4px solid var(--red)' : '' },
+        h('h2', {}, label, ' ', h('span', { class: 'muted' }, `(${list.length})`)),
+        list.length ? list.map((t) => h('div', {}, label === 'Later' || label === 'Rest of this week' ? h('div', { class: 'small muted', style: 'margin-bottom:2px' }, dayName(t.due, { weekday: 'long', day: 'numeric', month: 'short' })) : null, todoRow(t, rowOpts))) : h('p', { class: 'muted small', style: 'margin:0' }, 'Nothing.'))));
+    } else {
+      const days = Array.from({ length: 7 }, (_, i) => plusDays(st.week, i));
+      const shown = d.appts.filter((x) => x.status !== 'cancelled' && (!st.who || x.who === st.who));
+      body = [
+        overdue.length ? h('section', { class: 'card stack', style: 'margin-bottom:12px;border-left:4px solid var(--red);gap:8px' }, h('h2', {}, 'Overdue ', h('span', { class: 'muted' }, `(${overdue.length})`)), overdue.map((t) => todoRow(t, rowOpts))) : null,
+        h('div', { class: 'week' }, days.map((day) => {
+          const list = shown.filter((x) => x.date === day);
+          const dayTodos = todos.filter((t) => t.due === day && (t.done || day >= today));
+          return h('section', { class: 'card stack', style: `padding:14px;gap:8px;${day === today ? 'outline:2px solid var(--gold);' : ''}${day < today ? 'background:#FAFBFA;' : ''}` },
+            h('strong', {}, dayName(day)),
+            h('div', { class: 'row', style: 'gap:2px;margin-top:-6px' },
+              h('button', { class: 'btn link small', onclick: () => openForm(null, { date: day }) }, '+ Appt'),
+              h('button', { class: 'btn link small', onclick: () => openTaskForm(null, { due: day }) }, '+ To do')),
+            list.map(apptBox),
+            dayTodos.length ? h('div', { class: 'stack', style: 'gap:8px;border-top:1px dashed var(--line);padding-top:8px' }, dayTodos.map((t) => todoRow(t, { ...rowOpts, compact: true }))) : null,
+            !list.length && !dayTodos.length ? h('span', { class: 'small muted' }, '–') : null);
+        }))];
+    }
+
     frame('diary',
-      h('div', { class: 'head' }, h('div', {}, h('h1', {}, 'Diary'), h('p', { class: 'muted' }, `Week of ${fmtDate(st.week)}`)), h('button', { class: 'btn primary', onclick: () => openForm(null) }, '+ Book appointment')),
+      h('div', { class: 'head' }, h('div', {}, h('h1', {}, 'Diary'), h('p', { class: 'muted' }, st.view === 'todo' ? 'Everything to do' : `Week of ${fmtDate(st.week)}`)),
+        h('div', { class: 'row' }, h('button', { class: 'btn', onclick: () => openTaskForm(null) }, '+ To do'), h('button', { class: 'btn primary', onclick: () => openForm(null) }, '+ Appointment'))),
       noEmails.length ? h('p', { class: 'of-banner' }, `No email address saved for ${noEmails.join(' and ')}, so their calendar invites can’t be sent. `, h('a', { href: '#settings' }, 'Add it in Settings')) : null,
       msg, formBox,
       h('div', { class: 'row', style: 'justify-content:space-between;margin-bottom:12px' },
-        h('div', { class: 'pills' }, pill(!st.who, 'Everyone', () => { st.who = ''; diaryView(); }), d.people.map((p) => pill(st.who === p.name, p.name, () => { st.who = p.name; diaryView(); }))),
-        h('div', { class: 'row' }, h('button', { class: 'btn small', onclick: () => { st.week = plusDays(st.week, -7); diaryView(); } }, '‹ Previous'), h('button', { class: 'btn small', onclick: () => { st.week = mondayOf(localToday()); diaryView(); } }, 'This week'), h('button', { class: 'btn small', onclick: () => { st.week = plusDays(st.week, 7); diaryView(); } }, 'Next ›'))),
-      h('div', { class: 'grid', style: 'grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px' }, days.map((day) => {
-        const list = shown.filter((x) => x.date === day);
-        const isToday = day === localToday();
-        return h('section', { class: 'card stack', style: `padding:14px;gap:8px;${isToday ? 'outline:2px solid var(--gold);' : ''}` },
-          h('div', { class: 'row', style: 'justify-content:space-between' }, h('strong', {}, new Date(`${day}T12:00:00Z`).toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', timeZone: 'UTC' })),
-            h('button', { class: 'btn link small', 'aria-label': `Book on ${day}`, onclick: () => openForm(null, { date: day }) }, '+')),
-          list.length ? list.map((x) => h('div', { class: 'box', style: 'padding:8px 10px' },
-            h('div', { style: 'font-weight:600' }, `${x.start}–${endOf(x.start, x.minutes)}`),
-            h('div', {}, x.clientName), h('div', { class: 'small muted' }, `${x.who} · ${x.type}`), x.title && x.title !== 'Appointment' ? h('div', { class: 'small muted' }, x.title) : null,
-            h('div', { class: 'row', style: 'gap:2px;margin-top:4px' },
-              x.ref ? h('a', { class: 'btn link small', href: `#app/${encodeURIComponent(x.ref)}` }, 'Record') : null,
-              h('button', { class: 'btn link small', onclick: () => openForm(x) }, 'Change'),
-              h('button', { class: 'btn link small', onclick: async () => {
-                if (!confirm(`Cancel ${x.clientName}'s appointment on ${fmtDate(x.date)} at ${x.start}?${x.clientEmail && x.emailClient !== false ? ' The client will be emailed.' : ''}`)) return;
-                try { const r = await api('diary-cancel', { id: x.id }); diaryView.flash = `Cancelled.${mailedNote(r.mailed)}`; await diaryView(); } catch (e) { bad(e.message); }
-              } }, 'Cancel')))) : h('span', { class: 'small muted' }, '–'));
-      })));
+        h('div', { class: 'pills' },
+          pill(st.view === 'week', 'Week', () => { st.view = 'week'; diaryView(); }),
+          pill(st.view === 'todo', `To do list${overdue.length ? ` (${overdue.length} overdue)` : ''}`, () => { st.view = 'todo'; diaryView(); }),
+          h('span', { style: 'width:12px' }),
+          pill(!st.who, 'Everyone', () => { st.who = ''; diaryView(); }), d.people.map((p) => pill(st.who === p.name, p.name, () => { st.who = p.name; diaryView(); }))),
+        st.view === 'week' ? h('div', { class: 'row' }, h('button', { class: 'btn small', onclick: () => { st.week = plusDays(st.week, -7); diaryView(); } }, '‹ Previous'), h('button', { class: 'btn small', onclick: () => { st.week = mondayOf(localToday()); diaryView(); } }, 'This week'), h('button', { class: 'btn small', onclick: () => { st.week = plusDays(st.week, 7); diaryView(); } }, 'Next ›')) : null),
+      body);
     if (diaryView.flash) { ok(diaryView.flash); diaryView.flash = ''; }
     const m = String(arg || '').match(/^new\/(.+)$/);
     if (m) {
@@ -514,7 +671,7 @@ export function mountOffice(root, cfg) {
 
   const syncIndex = (a) => {
     const i = apps.findIndex((x) => x.ref === a.ref);
-    const s = { ...apps[i], ...a, invoices: (a.invoices || []).map((v) => ({ status: v.status, total: v.total, company: v.company })), people: (a.people || []).length, nextReminder: (a.reminders || []).filter((r) => !r.done).sort((x, y) => x.due.localeCompare(y.due)).map((r) => ({ due: r.due, text: r.text }))[0] || null };
+    const s = { ...apps[i], ...a, invoices: (a.invoices || []).map((v) => ({ status: v.status, total: v.total, company: v.company })), people: (a.people || []).length, openReminders: (a.reminders || []).filter((r) => !r.done).map((r) => ({ id: r.id, due: r.due, text: r.text })), nextReminder: (a.reminders || []).filter((r) => !r.done).sort((x, y) => x.due.localeCompare(y.due)).map((r) => ({ due: r.due, text: r.text }))[0] || null };
     if (i >= 0) apps[i] = s; else apps.unshift(s);
   };
 

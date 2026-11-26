@@ -5,7 +5,7 @@ import settingsJson from '../../content/settings.json' with { type: 'json' };
 import { officeStore, secretStore, readIndex, getRecord, saveRecord, rebuildIndex, applyPatch, manualRecord, STATUSES, recordFromSubmission, groupRef, dataFromOldSubmission } from '../office/store.mjs';
 import { checkPassword, passwordSet, sessionCookie, clearCookie, signedIn, tooManyTries, ingestAllowed } from '../office/auth.mjs';
 import { readList, addSubscribers, setStatus as setSubStatus, removeSubscriber, parseContacts, readCampaigns, createCampaign, sendBatch, sendTest, summary as campaignSummary, validEmail } from '../office/newsletter.mjs';
-import { readDiary, book, change as changeAppt, cancel as cancelAppt, TYPES as APPT_TYPES } from '../office/diary.mjs';
+import { readDiary, book, change as changeAppt, cancel as cancelAppt, TYPES as APPT_TYPES, CLIENT_TYPES, readTasks, saveTask, setTaskDone, deleteTask } from '../office/diary.mjs';
 import { COMPANIES, validateInvoice, createInvoice, connection, keysSet, waveCatalogue, disconnect } from '../office/accounts.mjs';
 
 export const config = { path: '/office/api/*' };
@@ -166,7 +166,18 @@ export default async (req, context) => {
         const s = await getSettings();
         return json(await sendBatch(store, String(body.id || ''), { dailyLimit: Number(s.newsletterDailyLimit) || 200, origin: new URL(req.url).origin }));
       }
-      case 'diary': return json({ appts: await readDiary(store), types: APPT_TYPES, people: (await getSettings()).diaryPeople });
+      case 'diary': {
+        // Reminders added on client records also show in the diary as to-dos.
+        // Older lists don't carry them yet, so rebuild once from the records.
+        let index = await readIndex(store);
+        if (index.some((x) => !Array.isArray(x.openReminders))) { await rebuildIndex(store); index = await readIndex(store); }
+        const reminders = index.flatMap((x) => (x.openReminders || []).map((r) => ({ ...r, ref: x.ref, clientName: x.name, clientPhone: x.phone || '' })));
+        const [appts, tasks] = await Promise.all([readDiary(store), readTasks(store)]);
+        return json({ appts, tasks, reminders, types: APPT_TYPES, clientTypes: CLIENT_TYPES, people: (await getSettings()).diaryPeople });
+      }
+      case 'task-save': return json(await saveTask(store, body, (await getSettings()).diaryPeople));
+      case 'task-done': return json(await setTaskDone(store, String(body.id || ''), body.done !== false));
+      case 'task-delete': return json(await deleteTask(store, String(body.id || '')));
       case 'diary-book': return json(await book(store, body, (await getSettings()).diaryPeople));
       case 'diary-change': return json(await changeAppt(store, String(body.id || ''), body, (await getSettings()).diaryPeople));
       case 'diary-cancel': return json(await cancelAppt(store, String(body.id || ''), (await getSettings()).diaryPeople));

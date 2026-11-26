@@ -26,6 +26,7 @@ export function summarise(a) {
     companyName: a.companyName, status: a.status, received: a.received, updated: a.updated,
     visaExpiry: a.visaExpiry || '', expiryReminded: a.expiryReminded || '',
     nextReminder: openReminders[0] ? { due: openReminders[0].due, text: openReminders[0].text } : null,
+    openReminders: openReminders.map((r) => ({ id: r.id, due: r.due, text: r.text })),
     invoices: (a.invoices || []).map((i) => ({ status: i.status, total: i.total, company: i.company })),
     people: (a.people || []).length,
   };

@@ -1,4 +1,6 @@
-// Diary: appointments for Raj and Sunita.
+// Diary: appointments and to-dos for Raj and Sunita.
+//
+// To-dos (call a client, put a visa form through, chase documents…) are kept in 'diary/tasks'.
 //
 // Booking, moving or cancelling an appointment emails a calendar invite (iCalendar) from the
 // Zoho mailbox to whoever's appointment it is, and to the client. Zoho Calendar and Google
@@ -7,7 +9,9 @@
 import nodemailer from 'nodemailer';
 import settingsJson from '../../content/settings.json' with { type: 'json' };
 
-export const TYPES = ['In the office', 'Phone call', 'Video call'];
+export const TYPES = ['In the office', 'Phone call', 'Video call', 'Embassy / visa centre', 'Meeting', 'Out of office'];
+// Types that are with a client (the others are your own time, so no client is needed or emailed)
+export const CLIENT_TYPES = ['In the office', 'Phone call', 'Video call'];
 const clean = (v, max = 500) => String(v ?? '').replace(/[\r\u0000]/g, '').trim().slice(0, max);
 const isDate = (d) => /^\d{4}-\d{2}-\d{2}$/.test(d || '');
 const isTime = (t) => /^([01]\d|2[0-3]):[0-5]\d$/.test(t || '');
@@ -40,14 +44,14 @@ export function checkInput(input, people) {
   if (minutes < 5 || minutes > 480) throw bad('Choose how long it is.');
   const clientEmail = clean(input.clientEmail, 200).toLowerCase();
   if (clientEmail && !validEmail(clientEmail)) throw bad('The client’s email doesn’t look right.');
-  if (!clean(input.clientName)) throw bad('Add the client’s name.');
+  const type = TYPES.includes(input.type) ? input.type : TYPES[0];
+  if (CLIENT_TYPES.includes(type) && !clean(input.clientName)) throw bad('Add the client’s name.');
   return {
-    who, date: input.date, start: input.start, minutes,
-    type: TYPES.includes(input.type) ? input.type : TYPES[0],
-    title: clean(input.title, 200) || 'Appointment',
+    who, date: input.date, start: input.start, minutes, type,
+    title: clean(input.title, 200) || (CLIENT_TYPES.includes(type) ? 'Appointment' : type),
     clientName: clean(input.clientName, 200), clientEmail, clientPhone: clean(input.clientPhone, 60),
     ref: clean(input.ref, 60), notes: clean(input.notes, 2000),
-    emailClient: input.emailClient !== false && !!clientEmail,
+    emailClient: input.emailClient !== false && !!clientEmail && CLIENT_TYPES.includes(type),
   };
 }
 
@@ -63,7 +67,7 @@ export async function book(store, input, people) {
   const list = await readDiary(store);
   const appt = { id: `${Date.now().toString(36)}${Math.random().toString(36).slice(2, 6)}`, ...a, status: 'booked', seq: 0, created: new Date().toISOString() };
   const clash = clashes(list, appt);
-  if (clash.length && !input.allowClash) throw Object.assign(bad(`${a.who} already has ${clash[0].clientName} at ${clash[0].start} that day. Book anyway?`), { clash: true });
+  if (clash.length && !input.allowClash) throw Object.assign(bad(`${a.who} already has ${clash[0].clientName || clash[0].title} at ${clash[0].start} that day. Book anyway?`), { clash: true });
   list.push(appt);
   await saveDiary(store, list);
   const mailed = await notify(appt, people, 'REQUEST');
@@ -77,7 +81,7 @@ export async function change(store, id, input, people) {
   if (cur.status === 'cancelled') throw bad('That appointment was cancelled.');
   const next = { ...cur, ...checkInput({ ...cur, ...input }, people) };
   const clash = clashes(list, next, id);
-  if (clash.length && !input.allowClash) throw Object.assign(bad(`${next.who} already has ${clash[0].clientName} at ${clash[0].start} that day. Move anyway?`), { clash: true });
+  if (clash.length && !input.allowClash) throw Object.assign(bad(`${next.who} already has ${clash[0].clientName || clash[0].title} at ${clash[0].start} that day. Move anyway?`), { clash: true });
   const prevWho = cur.who, whoChanged = next.who !== cur.who;
   next.seq = (cur.seq || 0) + 1;
   next.updated = new Date().toISOString();
@@ -112,7 +116,7 @@ export function ics(appt, people, method) {
     appt.clientEmail && `ATTENDEE;CN=${esc(appt.clientName)};ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;RSVP=FALSE:mailto:${appt.clientEmail}`].filter(Boolean);
   const lines = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Unique Visa Services//Back office//EN', `METHOD:${method}`, 'CALSCALE:GREGORIAN', 'BEGIN:VEVENT',
     `UID:${appt.id}@uvsuk.co.uk`, `SEQUENCE:${appt.seq || 0}`, `DTSTAMP:${icsTime(new Date())}`, `DTSTART:${icsTime(start)}`, `DTEND:${icsTime(end)}`,
-    `SUMMARY:${esc(`${appt.title}: ${appt.clientName} (Unique Visa Services)`)}`, `LOCATION:${esc(where)}`,
+    `SUMMARY:${esc(appt.clientName ? `${appt.title}: ${appt.clientName} (Unique Visa Services)` : appt.title)}`, `LOCATION:${esc(where)}`,
     `DESCRIPTION:${esc([`With ${appt.who}, Unique Visa Services`, appt.type, appt.clientPhone ? `Client phone: ${appt.clientPhone}` : '', appt.notes].filter(Boolean).join('\n'))}`,
     `ORGANIZER;CN=Unique Visa Services:mailto:${organiser}`, ...attendees, `STATUS:${method === 'CANCEL' ? 'CANCELLED' : 'CONFIRMED'}`, 'TRANSP:OPAQUE', 'END:VEVENT', 'END:VCALENDAR'];
   return lines.map(fold).join('\r\n') + '\r\n';
@@ -135,8 +139,8 @@ async function notify(appt, people, method, moved = false) {
   const result = { staff: false, client: false };
   const verb = method === 'CANCEL' ? 'Cancelled' : moved ? 'Changed' : 'New';
   if (staff?.email) {
-    await transport.sendMail({ from: `"UVS back office" <${user}>`, to: staff.email, subject: `${verb} appointment: ${appt.clientName}, ${niceDate(appt.date)} ${appt.start}`,
-      text: [`${verb} appointment for ${appt.who}`, '', when, appt.type, `Client: ${appt.clientName}`, appt.clientPhone ? `Phone: ${appt.clientPhone}` : '', appt.clientEmail ? `Email: ${appt.clientEmail}` : '', appt.title !== 'Appointment' ? `About: ${appt.title}` : '', appt.notes ? `Notes: ${appt.notes}` : '', appt.ref ? `Record: https://www.uvsuk.co.uk/office/#app/${appt.ref}` : ''].filter((l) => l !== '').join('\n'),
+    await transport.sendMail({ from: `"UVS back office" <${user}>`, to: staff.email, subject: `${verb} ${appt.clientName ? 'appointment' : 'diary entry'}: ${appt.clientName || appt.title}, ${niceDate(appt.date)} ${appt.start}`,
+      text: [`${verb} appointment for ${appt.who}`, '', when, appt.type, appt.clientName ? `Client: ${appt.clientName}` : '', appt.clientPhone ? `Phone: ${appt.clientPhone}` : '', appt.clientEmail ? `Email: ${appt.clientEmail}` : '', appt.title !== 'Appointment' ? `About: ${appt.title}` : '', appt.notes ? `Notes: ${appt.notes}` : '', appt.ref ? `Record: https://www.uvsuk.co.uk/office/#app/${appt.ref}` : ''].filter((l) => l !== '').join('\n'),
       icalEvent });
     result.staff = true;
   }
@@ -151,4 +155,53 @@ async function notify(appt, people, method, moved = false) {
     result.client = true;
   }
   return result;
+}
+
+// ---------- to-dos ----------
+// { id, title, due, time, who ('' = either of you), ref, clientName, clientPhone, notes, done, doneAt, created }
+export async function readTasks(store) { return (await store.get('diary/tasks', { type: 'json' })) || []; }
+async function saveTasks(store, list) {
+  list.sort((a, b) => `${a.due} ${a.time || '99'}`.localeCompare(`${b.due} ${b.time || '99'}`));
+  // Keep ticked-off to-dos for a year, then let them go
+  const cutoff = new Date(Date.now() - 365 * 864e5).toISOString();
+  await store.setJSON('diary/tasks', list.filter((t) => !t.done || (t.doneAt || '') > cutoff));
+}
+
+export async function saveTask(store, input, people) {
+  const title = clean(input.title, 300);
+  if (!title) throw bad('Say what needs doing.');
+  if (!isDate(input.due)) throw bad('Choose the day it’s due.');
+  const time = clean(input.time, 5);
+  if (time && !isTime(time)) throw bad('The time doesn’t look right.');
+  const who = clean(input.who, 60);
+  if (who && !people.some((p) => p.name === who)) throw bad('Choose who it’s for.');
+  const fields = { title, due: input.due, time, who, ref: clean(input.ref, 60), clientName: clean(input.clientName, 200), clientPhone: clean(input.clientPhone, 60), notes: clean(input.notes, 2000) };
+  const list = await readTasks(store);
+  let task;
+  if (input.id) {
+    task = list.find((t) => t.id === input.id);
+    if (!task) throw Object.assign(new Error('To-do not found'), { status: 404 });
+    Object.assign(task, fields, { updated: new Date().toISOString() });
+  } else {
+    task = { id: `t${Date.now().toString(36)}${Math.random().toString(36).slice(2, 6)}`, ...fields, done: false, created: new Date().toISOString() };
+    list.push(task);
+  }
+  await saveTasks(store, list);
+  return { task };
+}
+
+export async function setTaskDone(store, id, done) {
+  const list = await readTasks(store);
+  const task = list.find((t) => t.id === id);
+  if (!task) throw Object.assign(new Error('To-do not found'), { status: 404 });
+  task.done = !!done;
+  task.doneAt = done ? new Date().toISOString() : '';
+  await saveTasks(store, list);
+  return { task };
+}
+
+export async function deleteTask(store, id) {
+  const list = await readTasks(store);
+  await saveTasks(store, list.filter((t) => t.id !== id));
+  return { ok: true };
 }
