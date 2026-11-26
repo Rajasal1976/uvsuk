@@ -1,5 +1,5 @@
 // The back office screens (/office/). Talks to netlify/functions/office-api.mjs.
-// Pages: Home (what needs doing), Applications, Diary (appointments + to-dos), Clients, one record (details + invoice), New record, Settings.
+// Pages: Home (what needs doing), Applications, Diary (appointments), To do (simple list with photos), Clients, one record (details + invoice), New record, Settings.
 
 const h = (tag, attrs = {}, ...children) => {
   const el = document.createElement(tag);
@@ -73,7 +73,7 @@ export function mountOffice(root, cfg) {
     root.append(
       h('header', { class: 'of-top' },
         h('div', { class: 'of-brand' }, h('span', {}, 'UVS'), 'Back office'),
-        h('nav', { class: 'of-nav', 'aria-label': 'Back office' }, link('home', 'Home'), link('apps', 'Applications'), link('diary', 'Diary'), link('clients', 'Clients'), link('newsletter', 'Newsletter'), link('new', '+ New record'), link('settings', 'Settings'), h('a', { href: '/admin/' }, 'Edit website ↗'))),
+        h('nav', { class: 'of-nav', 'aria-label': 'Back office' }, link('home', 'Home'), link('apps', 'Applications'), link('diary', 'Diary'), link('todo', 'To do'), link('clients', 'Clients'), link('newsletter', 'Newsletter'), link('new', '+ New record'), link('settings', 'Settings'), h('a', { href: '/admin/' }, 'Edit website ↗'))),
       h('main', { class: 'of-main' },
         me?.preview ? h('p', { class: 'of-banner' }, h('strong', {}, 'Test copy. '), 'You’re on a preview of the site, so the records here are test records, kept apart from your real ones. Invoices made here still go to your real FreeAgent and Wave, so delete any test invoices there.') : null,
         ...content));
@@ -83,7 +83,7 @@ export function mountOffice(root, cfg) {
   function route() {
     const [view, ...rest] = (location.hash.slice(1) || 'home').split('/');
     const arg = decodeURIComponent(rest.join('/'));
-    ({ home, apps: appsView, clients, client: () => clientView(arg), app: () => recordView(arg), new: newRecord, newsletter, settings, diary: () => diaryView(arg) }[view] || home)();
+    ({ home, apps: appsView, clients, client: () => clientView(arg), app: () => recordView(arg), new: newRecord, newsletter, settings, diary: () => diaryView(arg), todo: () => todoView(arg) }[view] || home)();
   }
   const go = (hash) => { if (location.hash === `#${hash}`) route(); else location.hash = hash; };
 
@@ -95,16 +95,22 @@ export function mountOffice(root, cfg) {
     return h('span', { class: `tag${last.status === 'draft' ? ' draft' : ''}` }, `${last.status === 'draft' ? 'Draft' : last.status === 'marked sent' ? 'Marked sent' : 'Sent'} ${money(last.total)}`);
   };
 
+  // Two small buttons for any client: book in the diary, or put on the to-do list
+  const quickBtns = (a) => h('span', { class: 'quick', onclick: (e) => e.stopPropagation(), onkeydown: (e) => e.stopPropagation() },
+    h('a', { class: 'btn small', href: `#diary/new/${encodeURIComponent(a.ref)}` }, 'Diary'),
+    h('a', { class: 'btn small', href: `#todo/${encodeURIComponent(a.ref)}` }, 'To do'));
+
   function appTable(list, empty = 'Nothing here yet.') {
     if (!list.length) return h('p', { class: 'muted' }, empty);
     return h('div', { class: 'tablebox' }, h('table', {},
-      h('thead', {}, h('tr', {}, h('th', {}, 'Received'), h('th', {}, 'Client'), h('th', {}, 'Service'), h('th', {}, 'Status'), h('th', {}, 'Invoice'))),
+      h('thead', {}, h('tr', {}, h('th', {}, 'Received'), h('th', {}, 'Client'), h('th', {}, 'Service'), h('th', {}, 'Status'), h('th', {}, 'Invoice'), h('th', {}, ''))),
       h('tbody', {}, list.map((a) => h('tr', { class: 'click', tabindex: '0', onclick: () => go(`app/${a.ref}`), onkeydown: (e) => { if (e.key === 'Enter') go(`app/${a.ref}`); } },
         h('td', {}, fmtDate(a.received), h('div', { class: 'small muted' }, a.ref)),
         h('td', {}, titleCase(a.name) || '–', a.companyName ? h('div', { class: 'small muted' }, a.companyName) : null, a.people > 1 ? h('div', { class: 'small muted' }, `${a.people} people`) : null),
         h('td', {}, a.formTitle || '', a.service ? h('div', { class: 'small muted' }, a.service) : null),
         h('td', {}, statusTag(a.status)),
-        h('td', {}, invoiceTag(a)))))));
+        h('td', {}, invoiceTag(a)),
+        h('td', {}, quickBtns(a)))))));
   }
 
   // ---------- home ----------
@@ -165,11 +171,11 @@ export function mountOffice(root, cfg) {
       const t = q.value.trim().toLowerCase();
       const list = all.filter((c) => !t || [c.name, c.email, c.phone, ...c.companies].some((v) => String(v || '').toLowerCase().includes(t)));
       put(out, list.length ? h('div', { class: 'tablebox' }, h('table', {},
-        h('thead', {}, h('tr', {}, h('th', {}, 'Client'), h('th', {}, 'Contact'), h('th', {}, 'Applications'), h('th', {}, 'Last activity'), h('th', {}, 'Next visa expiry'))),
+        h('thead', {}, h('tr', {}, h('th', {}, 'Client'), h('th', {}, 'Contact'), h('th', {}, 'Applications'), h('th', {}, 'Last activity'), h('th', {}, 'Next visa expiry'), h('th', {}, ''))),
         h('tbody', {}, list.map((c) => h('tr', { class: 'click', tabindex: '0', onclick: () => go(`client/${encodeURIComponent(c.key)}`), onkeydown: (e) => { if (e.key === 'Enter') go(`client/${encodeURIComponent(c.key)}`); } },
           h('td', {}, titleCase(c.name) || '–', c.companies.size ? h('div', { class: 'small muted' }, [...c.companies].join(', ')) : null),
           h('td', {}, c.email || '', h('div', { class: 'small muted' }, c.phone || '')),
-          h('td', {}, String(c.apps.length)), h('td', {}, fmtDate(c.last)), h('td', {}, c.expiry ? fmtDate(c.expiry) : h('span', { class: 'muted' }, '–'))))))) : h('p', { class: 'muted' }, 'No clients match.'));
+          h('td', {}, String(c.apps.length)), h('td', {}, fmtDate(c.last)), h('td', {}, c.expiry ? fmtDate(c.expiry) : h('span', { class: 'muted' }, '–')), h('td', {}, quickBtns(c.apps[0]))))))) : h('p', { class: 'muted' }, 'No clients match.'));
     };
     q.addEventListener('input', draw);
     frame('clients', h('div', { class: 'head' }, h('div', {}, h('h1', {}, 'Clients'), h('p', { class: 'muted' }, 'Everyone you’ve helped, grouped by email address.'))), h('section', { class: 'card stack' }, q, out));
@@ -182,7 +188,7 @@ export function mountOffice(root, cfg) {
     frame('clients',
       h('p', {}, h('a', { href: '#clients' }, '← All clients')),
       h('div', { class: 'head' }, h('div', {}, h('h1', {}, titleCase(c.name) || c.email), h('p', { class: 'muted' }, [c.email, c.phone].filter(Boolean).join(' · '))),
-        h('button', { class: 'btn primary', onclick: () => go(`new/${encodeURIComponent(c.apps[0].ref)}`) }, '+ New application for this client')),
+        h('div', { class: 'row' }, quickBtns(c.apps[0]), h('button', { class: 'btn primary', onclick: () => go(`new/${encodeURIComponent(c.apps[0].ref)}`) }, '+ New application for this client'))),
       h('div', { class: 'cols' },
         h('div', { class: 'right' }, h('section', { class: 'card' }, h('h2', {}, 'Applications'), appTable(c.apps))),
         h('div', { class: 'left' },
@@ -252,7 +258,7 @@ export function mountOffice(root, cfg) {
       put(root.querySelector('.of-main'), 
         ...(me.preview ? [h('p', { class: 'of-banner' }, h('strong', {}, 'Test copy. '), 'Records here are test records. Invoices still go to your real FreeAgent and Wave.')] : []),
         h('p', {}, h('a', { href: '#apps' }, '← Applications'), a.email || a.name ? [' · ', h('a', { href: `#client/${encodeURIComponent(clientKey(a))}` }, 'Client page')] : null),
-        h('div', { class: 'head' }, h('div', {}, h('h1', {}, `${a.formTitle || 'Client record'}${a.service ? `: ${a.service}` : ''}`), h('p', { class: 'muted' }, `${titleCase(a.name)} · Received ${fmtDateTime(a.received)} · Ref ${a.ref}`)), statusTag(a.status)),
+        h('div', { class: 'head' }, h('div', {}, h('h1', {}, `${a.formTitle || 'Client record'}${a.service ? `: ${a.service}` : ''}`), h('p', { class: 'muted' }, `${titleCase(a.name)} · Received ${fmtDateTime(a.received)} · Ref ${a.ref}`)), h('div', { class: 'row' }, quickBtns(a), statusTag(a.status))),
         msg,
         h('div', { class: 'cols' }, h('div', { class: 'left' }, details, tracking, reminders, notes), h('div', { class: 'right' }, panel)));
     };
@@ -377,15 +383,13 @@ export function mountOffice(root, cfg) {
   const plusDays = (iso, n) => { const d = new Date(`${iso}T12:00:00Z`); d.setUTCDate(d.getUTCDate() + n); return d.toISOString().slice(0, 10); };
   const localToday = () => new Date().toLocaleDateString('en-CA', { timeZone: 'Europe/London' });
   const dayName = (iso, opts = { weekday: 'short', day: 'numeric', month: 'short' }) => new Date(`${iso}T12:00:00Z`).toLocaleDateString('en-GB', { ...opts, timeZone: 'UTC' });
-  const TASK_PICKS = ['Call client', 'Put visa form through', 'Chase documents', 'Book biometrics / VFS', 'Collect passport', 'Send invoice', 'Follow up'];
-  const apptName = (x) => x.clientName || x.title;
+    const apptName = (x) => x.clientName || x.title;
 
   // Every to-do in one shape: diary to-dos and client-record reminders
   const todoItems = (d) => [
     ...(d.tasks || []).map((t) => ({ ...t, kind: 'task' })),
     ...(d.reminders || []).map((r) => ({ kind: 'reminder', id: r.id, title: r.text, due: r.due, time: '', who: '', ref: r.ref, clientName: r.clientName, clientPhone: r.clientPhone, notes: '', done: false })),
   ].sort((a, b) => `${a.due} ${a.time || '99'}`.localeCompare(`${b.due} ${b.time || '99'}`));
-  const forWho = (who) => (t) => !who || !t.who || t.who === who;
 
   async function tick(item) {
     if (item.kind === 'reminder') {
@@ -395,24 +399,119 @@ export function mountOffice(root, cfg) {
     await loadDiary();
   }
 
-  // One to-do line with a tick box. opts: { overdue, compact, onChange, onEdit }
+  // Phone numbers in a to-do become tap-to-call links
+  function withLinks(text) {
+    const out = []; let last = 0; let m;
+    const re = /(\+?\d[\d ]{8,15}\d)/g;
+    while ((m = re.exec(text))) {
+      const digits = m[1].replace(/\D/g, '');
+      if (digits.length < 10 || digits.length > 13) continue;
+      out.push(text.slice(last, m.index), h('a', { href: `tel:${m[1].replace(/[^\d+]/g, '')}`, onclick: (e) => e.stopPropagation() }, m[1]));
+      last = m.index + m[1].length;
+    }
+    out.push(text.slice(last));
+    return out;
+  }
+  const photoUrl = (id) => `/office/api/photo?id=${encodeURIComponent(id)}`;
+  // Open to-dos in the order they were added (line 1 = the first one)
+  const openTodos = (d) => todoItems(d).filter((t) => !t.done && (t.kind === 'task' || t.due <= localToday()))
+    .sort((a, b) => String(a.created || a.due).localeCompare(String(b.created || b.due)));
+
+  // One line: tick box, number, text (tap to change), photo, delete. opts: { n, onChange }
   function todoRow(t, opts = {}) {
-    const box = h('input', { type: 'checkbox', checked: t.done, 'aria-label': `Done: ${t.title}`, style: 'width:20px;height:20px;margin:2px 0 0;flex:none;accent-color:var(--green)' });
+    const box = h('input', { type: 'checkbox', checked: t.done, 'aria-label': `Done: ${t.title}` });
     box.addEventListener('change', async () => {
       box.disabled = true;
       try { await tick(t); opts.onChange?.(); } catch (e) { box.checked = !box.checked; box.disabled = false; alert(e.message); }
     });
-    const late = !t.done && t.due < localToday();
-    return h('div', { class: 'todo', style: `display:flex;gap:8px;align-items:flex-start;${t.done ? 'opacity:.55;' : ''}` }, box,
-      h('div', { style: 'min-width:0;flex:1' },
-        h('div', { style: `font-weight:500;${t.done ? 'text-decoration:line-through;' : ''}${opts.compact && opts.onEdit && t.kind === 'task' ? 'cursor:pointer;' : ''}`, title: opts.compact && opts.onEdit && t.kind === 'task' ? 'Click to change' : null, onclick: opts.compact && opts.onEdit && t.kind === 'task' ? () => opts.onEdit(t) : null }, t.time ? h('strong', {}, `${t.time} `) : null, t.title),
-        h('div', { class: 'small muted' },
-          late ? h('span', { class: 'tag due' }, opts.compact ? 'Overdue' : `Overdue · ${fmtDate(t.due)}`) : null, late ? ' ' : null,
-          [t.clientName ? (t.ref ? h('a', { href: `#app/${encodeURIComponent(t.ref)}` }, titleCase(t.clientName)) : titleCase(t.clientName)) : null,
-            t.clientPhone ? h('a', { href: `tel:${t.clientPhone.replace(/[^\d+]/g, '')}` }, t.clientPhone) : null,
-            t.who || null, t.kind === 'reminder' ? 'from client record' : null].filter(Boolean).flatMap((x, i) => (i ? [' · ', x] : [x]))),
-        t.notes && !opts.compact ? h('div', { class: 'small muted', style: 'white-space:pre-line' }, t.notes) : null),
-      opts.onEdit && t.kind === 'task' && !opts.compact ? h('button', { class: 'btn link small', onclick: () => opts.onEdit(t) }, 'Edit') : null);
+    const edit = async () => {
+      if (t.kind !== 'task') return;
+      const v = prompt('Change this to-do', t.title);
+      if (v === null || v.trim() === t.title) return;
+      try { await api('task-save', { id: t.id, title: v, ...(t.photo ? { photo: t.photo } : {}) }); await loadDiary(); opts.onChange?.(); } catch (e) { alert(e.message); }
+    };
+    const meta = [
+      t.clientName ? (t.ref ? h('a', { href: `#app/${encodeURIComponent(t.ref)}` }, titleCase(t.clientName)) : titleCase(t.clientName)) : null,
+      t.clientPhone && !String(t.title).replace(/\s/g, '').includes(t.clientPhone.replace(/\s/g, '')) ? h('a', { href: `tel:${t.clientPhone.replace(/[^\d+]/g, '')}` }, t.clientPhone) : null,
+      t.created && t.created.slice(0, 10) !== localToday() ? `added ${dayName(t.created.slice(0, 10))}` : null,
+      t.kind === 'reminder' ? 'from client record' : null,
+    ].filter(Boolean);
+    return h('li', { class: `td-item${t.done ? ' done' : ''}` }, box,
+      opts.n ? h('span', { class: 'td-num' }, `${opts.n}.`) : null,
+      h('div', { class: 'td-text', title: t.kind === 'task' ? 'Tap to change' : null, onclick: edit },
+        h('div', {}, withLinks(t.title)),
+        meta.length ? h('div', { class: 'small muted' }, meta.flatMap((x, i) => (i ? [' · ', x] : [x]))) : null),
+      t.photo ? h('a', { href: photoUrl(t.photo), target: '_blank', rel: 'noopener' }, h('img', { class: 'td-thumb', src: photoUrl(t.photo), alt: 'Photo', loading: 'lazy' })) : null,
+      t.kind === 'task' ? h('button', { class: 'td-x', 'aria-label': `Delete: ${t.title}`, onclick: async () => {
+        if (!confirm(`Delete “${t.title}”?`)) return;
+        try { await api('task-delete', { id: t.id }); await loadDiary(); opts.onChange?.(); } catch (e) { alert(e.message); }
+      } }, '×') : null);
+  }
+
+  // Make phone photos small enough to upload quickly
+  async function shrinkPhoto(f) {
+    try {
+      const bmp = await createImageBitmap(f, { imageOrientation: 'from-image' });
+      const k = Math.min(1, 1600 / Math.max(bmp.width, bmp.height));
+      const c = document.createElement('canvas');
+      c.width = Math.round(bmp.width * k); c.height = Math.round(bmp.height * k);
+      c.getContext('2d').drawImage(bmp, 0, 0, c.width, c.height);
+      return c.toDataURL('image/jpeg', 0.82);
+    } catch {
+      if (!/^image\/(jpeg|png|webp)$/.test(f.type)) throw new Error('This photo can’t be read here. Try a screenshot of it instead.');
+      if (f.size > 4e6) throw new Error('That photo is too big.');
+      return new Promise((res, rej) => { const r = new FileReader(); r.onload = () => res(r.result); r.onerror = () => rej(new Error('Couldn’t read the photo.')); r.readAsDataURL(f); });
+    }
+  }
+
+  // ---------- to do: one simple list ----------
+  async function todoView(arg) {
+    frame('todo', h('p', { class: 'muted' }, 'Loading…'));
+    let d;
+    try { d = await loadDiary(); } catch (e) { return frame('todo', h('p', { class: 'msg err' }, e.message)); }
+    let client = arg ? apps.find((x) => x.ref === arg) || null : null;
+    let photo = null;
+    const msg = h('div', { role: 'status', 'aria-live': 'polite' });
+    const bad = (t) => put(msg, h('p', { class: 'msg err' }, t));
+    const text = h('input', { type: 'text', 'aria-label': 'New to-do', placeholder: 'Type a to-do…', enterkeyhint: 'done', autocomplete: 'off' });
+    const file = h('input', { type: 'file', accept: 'image/*', class: 'sr', 'aria-label': 'Choose a photo' });
+    const pending = h('div');
+    const linked = h('div');
+    const showPending = () => put(pending, photo ? h('div', { class: 'td-pending' }, h('img', { src: photo, alt: '' }), 'Photo ready. Type a note if you like, then press Add.', h('button', { type: 'button', class: 'btn link small', onclick: () => { photo = null; showPending(); } }, 'Remove')) : null);
+    const showLinked = () => put(linked, client ? h('p', { class: 'small muted', style: 'margin:0' }, 'For ', h('a', { href: `#app/${encodeURIComponent(client.ref)}` }, titleCase(client.name)), ' ', h('button', { type: 'button', class: 'btn link small', onclick: () => { client = null; showLinked(); } }, 'Not for this client')) : null);
+    file.addEventListener('change', async () => {
+      const f = file.files[0]; file.value = '';
+      if (!f) return;
+      try { photo = await shrinkPhoto(f); showPending(); text.focus(); } catch (e) { bad(e.message); }
+    });
+    const addBtn = h('button', { class: 'btn primary', type: 'button' }, 'Add');
+    const addIt = async () => {
+      if (!text.value.trim() && !photo) return text.focus();
+      addBtn.disabled = true;
+      try {
+        const photoId = photo ? (await api('photo-upload', { data: photo })).id : '';
+        await api('task-save', { title: text.value, photo: photoId, ref: client?.ref || '', clientName: client ? titleCase(client.name) : '', clientPhone: client?.phone || '' });
+        if (arg) history.replaceState(null, '', '#todo');
+        todoView();
+      } catch (e) { addBtn.disabled = false; bad(e.message); }
+    };
+    addBtn.addEventListener('click', addIt);
+    text.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); addIt(); } });
+    if (client) text.value = `${titleCase(client.name)}${client.phone ? ` ${client.phone}` : ''} – `;
+
+    const open = openTodos(d);
+    const done = todoItems(d).filter((t) => t.done && (t.doneAt || '') >= plusDays(localToday(), -14)).sort((a, b) => String(b.doneAt).localeCompare(String(a.doneAt)));
+    const redraw = () => todoView();
+    frame('todo',
+      h('div', { class: 'head' }, h('div', {}, h('h1', {}, 'To do'), h('p', { class: 'muted' }, open.length ? `${open.length} to do` : 'All done 🎉'))),
+      msg,
+      h('section', { class: 'card stack' },
+        h('div', { class: 'td-add' }, text, h('button', { type: 'button', class: 'btn td-cam', 'aria-label': 'Add a photo', title: 'Add a photo', onclick: () => file.click() }, '📷'), addBtn),
+        file, pending, linked,
+        open.length ? h('ol', { class: 'td-list' }, open.map((t, i) => todoRow(t, { n: i + 1, onChange: redraw }))) : h('p', { class: 'muted small', style: 'margin:0' }, 'Nothing to do. Type above to add something.'),
+        done.length ? h('details', {}, h('summary', { class: 'small muted', style: 'cursor:pointer' }, `Done (${done.length})`), h('ul', { class: 'td-list' }, done.map((t) => todoRow(t, { onChange: redraw })))) : null));
+    showLinked();
+    if (client) { text.focus(); text.setSelectionRange(text.value.length, text.value.length); }
   }
 
   // Home: today's appointments and what needs doing
@@ -421,11 +520,11 @@ export function mountOffice(root, cfg) {
     const draw = (d) => {
       const day = localToday();
       const appts = d.appts.filter((x) => x.date === day && x.status !== 'cancelled');
-      const todos = todoItems(d).filter((t) => !t.done && t.due <= day);
+      const todos = openTodos(d);
       put(sec, h('h2', {}, 'Today ', h('span', { class: 'muted' }, `(${appts.length} appointment${appts.length === 1 ? '' : 's'}, ${todos.length} to do)`)),
         appts.length ? h('ul', { class: 'list', style: 'margin-bottom:12px' }, appts.map((x) => h('li', {}, h('strong', {}, `${x.start} `), apptName(x), h('span', { class: 'small muted' }, ` · ${x.who} · ${x.type}`)))) : h('p', { class: 'muted small' }, 'No appointments.'),
-        todos.length ? h('div', { class: 'stack', style: 'gap:8px;margin-bottom:12px' }, todos.slice(0, 15).map((t) => todoRow(t, { compact: true, onChange: () => draw(diaryCache) }))) : h('p', { class: 'muted small' }, 'Nothing to do. 🎉'),
-        h('a', { class: 'btn small', href: '#diary' }, 'Open diary'));
+        todos.length ? h('ol', { class: 'td-list', style: 'margin-bottom:12px' }, todos.slice(0, 15).map((t, i) => todoRow(t, { n: i + 1, onChange: () => draw(diaryCache) }))) : h('p', { class: 'muted small' }, 'Nothing to do. 🎉'),
+        h('div', { class: 'row' }, h('a', { class: 'btn small', href: '#todo' }, '+ To do'), h('a', { class: 'btn small', href: '#diary' }, 'Open diary')));
     };
     loadDiary().then(draw).catch(() => put(sec, h('h2', {}, 'Today'), h('p', { class: 'muted small' }, 'Couldn’t load the diary.')));
     return sec;
@@ -442,27 +541,26 @@ export function mountOffice(root, cfg) {
     return box;
   }
 
-  // Client record: this client's to-dos (they show in the diary too)
+  // Client record: this client's to-dos (they're on the main To do list too)
   function clientTodos(a, onReminderDone) {
     const sec = h('section', { class: 'card stack' }, h('h2', {}, 'To do'), h('p', { class: 'muted small' }, 'Loading…'));
     const draw = () => {
       const d = diaryCache;
       const legacy = (a.reminders || []).filter((r) => !r.done).map((r) => ({ kind: 'reminder', id: r.id, title: r.text, due: r.due, ref: a.ref, done: false }));
-      const mine = [...(d?.tasks || []).filter((t) => t.ref === a.ref && !t.done).map((t) => ({ ...t, kind: 'task', clientName: '', clientPhone: '' })), ...legacy].sort((x, y) => x.due.localeCompare(y.due));
-      const text = h('input', { type: 'text', placeholder: 'e.g. Call to chase bank statements', 'aria-label': 'What needs doing', list: 'todo-picks' });
-      const due = h('input', { type: 'date', value: localToday(), 'aria-label': 'Due' });
-      const who = h('select', { 'aria-label': 'For' }, h('option', { value: '' }, 'Either of us'), (d?.people || me.settings.diaryPeople || []).map((p) => h('option', { value: p.name }, p.name)));
+      const mine = [...(d?.tasks || []).filter((t) => t.ref === a.ref && !t.done).map((t) => ({ ...t, kind: 'task' })), ...legacy].sort((x, y) => String(x.created || x.due).localeCompare(String(y.created || y.due)));
+      const text = h('input', { type: 'text', placeholder: 'e.g. Chase bank statements', 'aria-label': 'What needs doing' });
+      const addIt = async (btn) => {
+        if (!text.value.trim()) return text.focus();
+        btn.disabled = true;
+        try { await api('task-save', { title: text.value, ref: a.ref, clientName: titleCase(a.name), clientPhone: a.phone || '' }); await loadDiary(); draw(); }
+        catch (ex) { alert(ex.message); btn.disabled = false; }
+      };
+      const addBtn = h('button', { class: 'btn small', onclick: (e) => addIt(e.currentTarget) }, 'Add');
+      text.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); addIt(addBtn); } });
       put(sec, h('h2', {}, 'To do'),
-        mine.length ? h('div', { class: 'stack', style: 'gap:8px' }, mine.map((t) => todoRow({ ...t, clientName: '' }, { onChange: () => { if (t.kind === 'reminder') onReminderDone(); else draw(); } }))) : h('p', { class: 'muted small' }, 'Nothing to do for this client.'),
-        h('datalist', { id: 'todo-picks' }, TASK_PICKS.map((p) => h('option', { value: p }))),
-        h('div', { class: 'row' }, h('div', { style: 'flex:2 1 200px' }, text), h('div', { style: 'flex:1 1 140px' }, due), h('div', { style: 'flex:1 1 120px' }, who),
-          h('button', { class: 'btn small', onclick: async (e) => {
-            if (!text.value.trim()) return text.focus();
-            e.currentTarget.disabled = true;
-            try { await api('task-save', { title: text.value, due: due.value, who: who.value, ref: a.ref, clientName: titleCase(a.name), clientPhone: a.phone || '' }); await loadDiary(); draw(); }
-            catch (ex) { alert(ex.message); e.target.disabled = false; }
-          } }, 'Add')),
-        h('p', { class: 'small muted', style: 'margin:0' }, 'These also show in the diary on the day they’re due.'));
+        mine.length ? h('ol', { class: 'td-list' }, mine.map((t, i) => todoRow({ ...t, clientName: '', clientPhone: '' }, { n: i + 1, onChange: () => { if (t.kind === 'reminder') onReminderDone(); else draw(); } }))) : h('p', { class: 'muted small', style: 'margin:0' }, 'Nothing to do for this client.'),
+        h('div', { class: 'td-add' }, text, addBtn),
+        h('p', { class: 'small muted', style: 'margin:0' }, 'These are on the main To do list too. ', h('a', { href: `#todo/${encodeURIComponent(a.ref)}` }, 'Add one with a photo')));
     };
     loadDiary().then(draw).catch(() => { diaryCache = null; draw(); });
     return sec;
@@ -557,49 +655,7 @@ export function mountOffice(root, cfg) {
       formBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
-    function openTaskForm(existing, prefill = {}) {
-      const x = existing || { title: '', due: prefill.due || localToday(), time: '', who: st.who || '', ref: '', clientName: '', clientPhone: '', notes: '' };
-      const f = {
-        title: h('input', { type: 'text', value: x.title, placeholder: 'e.g. Call Mr Patel about his bank statements' }),
-        due: h('input', { type: 'date', value: x.due }),
-        time: h('input', { type: 'time', step: '300', value: x.time || '' }),
-        who: h('select', {}, h('option', { value: '' }, 'Either of us'), d.people.map((p) => h('option', { value: p.name, selected: p.name === x.who }, p.name))),
-        clientName: h('input', { type: 'text', value: x.clientName }), clientPhone: h('input', { type: 'tel', value: x.clientPhone }),
-        notes: h('textarea', {}, x.notes || ''),
-      };
-      let ref = x.ref;
-      const linked = h('span', { class: 'small muted' });
-      const showLinked = () => put(linked, ref ? ['Linked to record ', h('a', { href: `#app/${encodeURIComponent(ref)}` }, ref), ' ', h('button', { type: 'button', class: 'btn link small', onclick: () => { ref = ''; showLinked(); } }, 'Unlink')] : '');
-      showLinked();
-      const [find, hits] = clientFinder((a) => { f.clientName.value = titleCase(a.name); f.clientPhone.value = a.phone || ''; ref = a.ref; showLinked(); });
-      const picks = h('div', { class: 'rows' }, TASK_PICKS.map((p) => h('button', { type: 'button', class: 'chip', onclick: () => { f.title.value = f.title.value.trim() ? `${p}: ${f.title.value.replace(/^[^:]+:\s*/, '')}` : p; f.title.focus(); } }, p)));
-      const quick = (label, n) => h('button', { type: 'button', class: 'btn link small', onclick: () => { f.due.value = plusDays(localToday(), n); } }, label);
-      const save = async (btn) => {
-        btn.disabled = true;
-        try {
-          const r = await api('task-save', { id: existing?.id, title: f.title.value, due: f.due.value, time: f.time.value, who: f.who.value, ref, clientName: f.clientName.value, clientPhone: f.clientPhone.value, notes: f.notes.value });
-          if (st.view === 'week') st.week = mondayOf(r.task.due);
-          await refresh(`${existing ? 'To-do saved' : 'Added to do'}: ${r.task.title}, ${fmtDate(r.task.due)}.`);
-        } catch (e) { btn.disabled = false; bad(e.message); }
-      };
-      put(formBox, h('section', { class: 'card stack', style: 'margin-bottom:16px;border-left:4px solid var(--green)' },
-        h('h2', {}, existing ? 'Change to-do' : 'Add a to-do'),
-        h('label', { class: 'f' }, 'What needs doing', f.title), picks,
-        h('div', { class: 'fields' }, h('label', { class: 'f' }, h('span', {}, 'Due ', quick('Today', 0), quick('Tomorrow', 1), quick('Next week', 7)), f.due), h('label', { class: 'f' }, 'Time (optional)', f.time), h('label', { class: 'f' }, 'For', f.who)),
-        find, hits,
-        h('div', { class: 'fields' }, h('label', { class: 'f' }, 'Client name (optional)', f.clientName), h('label', { class: 'f' }, 'Client phone', f.clientPhone)), linked,
-        h('label', { class: 'f' }, 'Notes', f.notes),
-        h('div', { class: 'row', style: 'justify-content:space-between' },
-          existing ? h('button', { class: 'btn link small', style: 'color:var(--red)', onclick: async () => { if (!confirm(`Delete “${existing.title}”?`)) return; try { await api('task-delete', { id: existing.id }); await refresh('To-do deleted.'); } catch (e) { bad(e.message); } } }, 'Delete') : h('span'),
-          h('div', { class: 'row' }, h('button', { class: 'btn', onclick: () => put(formBox) }, 'Close'), h('button', { class: 'btn primary', onclick: (e) => save(e.currentTarget) }, existing ? 'Save' : 'Add to-do')))));
-      formBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      if (!existing) f.title.focus();
-    }
-
     const today = localToday();
-    const todos = todoItems(d).filter(forWho(st.who));
-    const overdue = todos.filter((t) => !t.done && t.due < today);
-    const rowOpts = { onChange: () => diaryView(), onEdit: (t) => openTaskForm(t) };
     const pill = (on, label, click) => h('button', { type: 'button', class: 'pill', 'aria-pressed': String(on), onclick: click }, label);
     const apptBox = (x) => h('div', { class: 'box', style: `padding:8px 10px;${clientTypes.includes(x.type) ? '' : 'background:#EEF0F2;'}` },
       h('div', { style: 'font-weight:600' }, x.minutes >= 480 ? 'All day' : `${x.start}–${endOf(x.start, x.minutes)}`),
@@ -613,52 +669,26 @@ export function mountOffice(root, cfg) {
           try { const r = await api('diary-cancel', { id: x.id }); await refresh(`Cancelled.${mailedNote(r.mailed)}`); } catch (e) { bad(e.message); }
         } }, 'Cancel')));
 
-    let body;
-    if (st.view === 'todo') {
-      const sunday = plusDays(mondayOf(today), 6);
-      const open = todos.filter((t) => !t.done);
-      const groups = [
-        ['Overdue', overdue],
-        ['Today', open.filter((t) => t.due === today)],
-        ['Tomorrow', open.filter((t) => t.due === plusDays(today, 1))],
-        ['Rest of this week', open.filter((t) => t.due > plusDays(today, 1) && t.due <= sunday)],
-        ['Later', open.filter((t) => t.due > sunday && t.due > plusDays(today, 1))],
-        ['Done in the last 2 weeks', todos.filter((t) => t.done && (t.doneAt || '') >= plusDays(today, -14)).sort((a, b) => String(b.doneAt).localeCompare(String(a.doneAt))).slice(0, 40)],
-      ];
-      body = h('div', { class: 'stack' }, groups.map(([label, list]) => (label === 'Overdue' || label.startsWith('Done')) && !list.length ? null : h('section', { class: 'card stack', style: label === 'Overdue' ? 'border-left:4px solid var(--red)' : '' },
-        h('h2', {}, label, ' ', h('span', { class: 'muted' }, `(${list.length})`)),
-        list.length ? list.map((t) => h('div', {}, label === 'Later' || label === 'Rest of this week' ? h('div', { class: 'small muted', style: 'margin-bottom:2px' }, dayName(t.due, { weekday: 'long', day: 'numeric', month: 'short' })) : null, todoRow(t, rowOpts))) : h('p', { class: 'muted small', style: 'margin:0' }, 'Nothing.'))));
-    } else {
-      const days = Array.from({ length: 7 }, (_, i) => plusDays(st.week, i));
-      const shown = d.appts.filter((x) => x.status !== 'cancelled' && (!st.who || x.who === st.who));
-      body = [
-        overdue.length ? h('section', { class: 'card stack', style: 'margin-bottom:12px;border-left:4px solid var(--red);gap:8px' }, h('h2', {}, 'Overdue ', h('span', { class: 'muted' }, `(${overdue.length})`)), overdue.map((t) => todoRow(t, rowOpts))) : null,
-        h('div', { class: 'week' }, days.map((day) => {
-          const list = shown.filter((x) => x.date === day);
-          const dayTodos = todos.filter((t) => t.due === day && (t.done || day >= today));
-          return h('section', { class: 'card stack', style: `padding:14px;gap:8px;${day === today ? 'outline:2px solid var(--gold);' : ''}${day < today ? 'background:#FAFBFA;' : ''}` },
-            h('strong', {}, dayName(day)),
-            h('div', { class: 'row', style: 'gap:2px;margin-top:-6px' },
-              h('button', { class: 'btn link small', onclick: () => openForm(null, { date: day }) }, '+ Appt'),
-              h('button', { class: 'btn link small', onclick: () => openTaskForm(null, { due: day }) }, '+ To do')),
-            list.map(apptBox),
-            dayTodos.length ? h('div', { class: 'stack', style: 'gap:8px;border-top:1px dashed var(--line);padding-top:8px' }, dayTodos.map((t) => todoRow(t, { ...rowOpts, compact: true }))) : null,
-            !list.length && !dayTodos.length ? h('span', { class: 'small muted' }, '–') : null);
-        }))];
-    }
+    const days = Array.from({ length: 7 }, (_, i) => plusDays(st.week, i));
+    const shown = d.appts.filter((x) => x.status !== 'cancelled' && (!st.who || x.who === st.who));
+    const body = h('div', { class: 'week' }, days.map((day) => {
+      const list = shown.filter((x) => x.date === day);
+      return h('section', { class: 'card stack', style: `padding:14px;gap:8px;${day === today ? 'outline:2px solid var(--gold);' : ''}${day < today ? 'background:#FAFBFA;' : ''}` },
+        h('strong', {}, dayName(day)),
+        h('div', { class: 'row', style: 'gap:2px;margin-top:-6px' }, h('button', { class: 'btn link small', onclick: () => openForm(null, { date: day }) }, '+ Appt')),
+        list.map(apptBox),
+        !list.length ? h('span', { class: 'small muted' }, '–') : null);
+    }));
 
     frame('diary',
-      h('div', { class: 'head' }, h('div', {}, h('h1', {}, 'Diary'), h('p', { class: 'muted' }, st.view === 'todo' ? 'Everything to do' : `Week of ${fmtDate(st.week)}`)),
-        h('div', { class: 'row' }, h('button', { class: 'btn', onclick: () => openTaskForm(null) }, '+ To do'), h('button', { class: 'btn primary', onclick: () => openForm(null) }, '+ Appointment'))),
+      h('div', { class: 'head' }, h('div', {}, h('h1', {}, 'Diary'), h('p', { class: 'muted' }, `Week of ${fmtDate(st.week)}`)),
+        h('div', { class: 'row' }, h('a', { class: 'btn', href: '#todo' }, 'To do list'), h('button', { class: 'btn primary', onclick: () => openForm(null) }, '+ Appointment'))),
       noEmails.length ? h('p', { class: 'of-banner' }, `No email address saved for ${noEmails.join(' and ')}, so their calendar invites can’t be sent. `, h('a', { href: '#settings' }, 'Add it in Settings')) : null,
       msg, formBox,
       h('div', { class: 'row', style: 'justify-content:space-between;margin-bottom:12px' },
         h('div', { class: 'pills' },
-          pill(st.view === 'week', 'Week', () => { st.view = 'week'; diaryView(); }),
-          pill(st.view === 'todo', `To do list${overdue.length ? ` (${overdue.length} overdue)` : ''}`, () => { st.view = 'todo'; diaryView(); }),
-          h('span', { style: 'width:12px' }),
           pill(!st.who, 'Everyone', () => { st.who = ''; diaryView(); }), d.people.map((p) => pill(st.who === p.name, p.name, () => { st.who = p.name; diaryView(); }))),
-        st.view === 'week' ? h('div', { class: 'row' }, h('button', { class: 'btn small', onclick: () => { st.week = plusDays(st.week, -7); diaryView(); } }, '‹ Previous'), h('button', { class: 'btn small', onclick: () => { st.week = mondayOf(localToday()); diaryView(); } }, 'This week'), h('button', { class: 'btn small', onclick: () => { st.week = plusDays(st.week, 7); diaryView(); } }, 'Next ›')) : null),
+        h('div', { class: 'row' }, h('button', { class: 'btn small', onclick: () => { st.week = plusDays(st.week, -7); diaryView(); } }, '‹ Previous'), h('button', { class: 'btn small', onclick: () => { st.week = mondayOf(localToday()); diaryView(); } }, 'This week'), h('button', { class: 'btn small', onclick: () => { st.week = plusDays(st.week, 7); diaryView(); } }, 'Next ›'))),
       body);
     if (diaryView.flash) { ok(diaryView.flash); diaryView.flash = ''; }
     const m = String(arg || '').match(/^new\/(.+)$/);

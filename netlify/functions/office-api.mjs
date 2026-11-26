@@ -5,7 +5,7 @@ import settingsJson from '../../content/settings.json' with { type: 'json' };
 import { officeStore, secretStore, readIndex, getRecord, saveRecord, rebuildIndex, applyPatch, manualRecord, STATUSES, recordFromSubmission, groupRef, dataFromOldSubmission } from '../office/store.mjs';
 import { checkPassword, passwordSet, sessionCookie, clearCookie, signedIn, tooManyTries, ingestAllowed } from '../office/auth.mjs';
 import { readList, addSubscribers, setStatus as setSubStatus, removeSubscriber, parseContacts, readCampaigns, createCampaign, sendBatch, sendTest, summary as campaignSummary, validEmail } from '../office/newsletter.mjs';
-import { readDiary, book, change as changeAppt, cancel as cancelAppt, TYPES as APPT_TYPES, CLIENT_TYPES, readTasks, saveTask, setTaskDone, deleteTask } from '../office/diary.mjs';
+import { readDiary, book, change as changeAppt, cancel as cancelAppt, TYPES as APPT_TYPES, CLIENT_TYPES, readTasks, saveTask, setTaskDone, deleteTask, savePhoto, readPhoto } from '../office/diary.mjs';
 import { COMPANIES, validateInvoice, createInvoice, connection, keysSet, waveCatalogue, disconnect } from '../office/accounts.mjs';
 
 export const config = { path: '/office/api/*' };
@@ -178,6 +178,12 @@ export default async (req, context) => {
       case 'task-save': return json(await saveTask(store, body, (await getSettings()).diaryPeople));
       case 'task-done': return json(await setTaskDone(store, String(body.id || ''), body.done !== false));
       case 'task-delete': return json(await deleteTask(store, String(body.id || '')));
+      case 'photo-upload': return json(await savePhoto(store, body.data));
+      case 'photo': {
+        const p = await readPhoto(store, new URL(req.url).searchParams.get('id'));
+        if (!p) return fail('Photo not found', 404);
+        return new Response(p.bytes, { headers: { 'Content-Type': p.type, 'Cache-Control': 'private, max-age=86400', 'X-Content-Type-Options': 'nosniff' } });
+      }
       case 'diary-book': return json(await book(store, body, (await getSettings()).diaryPeople));
       case 'diary-change': return json(await changeAppt(store, String(body.id || ''), body, (await getSettings()).diaryPeople));
       case 'diary-cancel': return json(await cancelAppt(store, String(body.id || ''), (await getSettings()).diaryPeople));

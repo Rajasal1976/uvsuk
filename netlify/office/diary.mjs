@@ -158,7 +158,8 @@ async function notify(appt, people, method, moved = false) {
 }
 
 // ---------- to-dos ----------
-// { id, title, due, time, who ('' = either of you), ref, clientName, clientPhone, notes, done, doneAt, created }
+// A simple one-line list. { id, title, due, time, who, ref, clientName, clientPhone, notes, photo, done, doneAt, created }
+// photo = the id of a picture kept under 'photos/<id>' (e.g. a snap of a caller's number).
 export async function readTasks(store) { return (await store.get('diary/tasks', { type: 'json' })) || []; }
 async function saveTasks(store, list) {
   list.sort((a, b) => `${a.due} ${a.time || '99'}`.localeCompare(`${b.due} ${b.time || '99'}`));
@@ -168,20 +169,25 @@ async function saveTasks(store, list) {
 }
 
 export async function saveTask(store, input, people) {
-  const title = clean(input.title, 300);
-  if (!title) throw bad('Say what needs doing.');
-  if (!isDate(input.due)) throw bad('Choose the day it’s due.');
+  const photo = /^p[a-z0-9]{6,30}$/.test(String(input.photo || '')) ? String(input.photo) : '';
+  const title = clean(input.title, 300) || (photo ? 'Photo' : '');
+  if (!title) throw bad('Type what needs doing.');
+  const hadDue = isDate(input.due);
+  const due = hadDue ? input.due : new Date().toLocaleDateString('en-CA', { timeZone: 'Europe/London' });
   const time = clean(input.time, 5);
   if (time && !isTime(time)) throw bad('The time doesn’t look right.');
   const who = clean(input.who, 60);
   if (who && !people.some((p) => p.name === who)) throw bad('Choose who it’s for.');
-  const fields = { title, due: input.due, time, who, ref: clean(input.ref, 60), clientName: clean(input.clientName, 200), clientPhone: clean(input.clientPhone, 60), notes: clean(input.notes, 2000) };
+  const fields = { title, due, time, who, ref: clean(input.ref, 60), clientName: clean(input.clientName, 200), clientPhone: clean(input.clientPhone, 60), notes: clean(input.notes, 2000) };
+  if ('photo' in input) fields.photo = photo;
   const list = await readTasks(store);
   let task;
   if (input.id) {
     task = list.find((t) => t.id === input.id);
     if (!task) throw Object.assign(new Error('To-do not found'), { status: 404 });
-    Object.assign(task, fields, { updated: new Date().toISOString() });
+    // Only change what was sent (a quick text edit keeps the date, client and photo)
+    for (const k of Object.keys(fields)) if (k === 'title' || (k === 'due' ? hadDue : k in input)) task[k] = fields[k];
+    task.updated = new Date().toISOString();
   } else {
     task = { id: `t${Date.now().toString(36)}${Math.random().toString(36).slice(2, 6)}`, ...fields, done: false, created: new Date().toISOString() };
     list.push(task);
@@ -202,6 +208,26 @@ export async function setTaskDone(store, id, done) {
 
 export async function deleteTask(store, id) {
   const list = await readTasks(store);
+  const gone = list.find((t) => t.id === id);
+  if (gone?.photo) await store.delete(`photos/${gone.photo}`).catch(() => {});
   await saveTasks(store, list.filter((t) => t.id !== id));
   return { ok: true };
+}
+
+// ---------- photos (to-do pictures) ----------
+const PHOTO_TYPES = ['image/jpeg', 'image/png', 'image/webp'];
+export async function savePhoto(store, dataUrl) {
+  const m = String(dataUrl || '').match(/^data:(image\/(?:jpeg|png|webp));base64,([A-Za-z0-9+/=]+)$/);
+  if (!m) throw bad('That file isn’t a photo (JPEG, PNG or WebP).');
+  const bytes = Buffer.from(m[2], 'base64');
+  if (bytes.length > 4.5 * 1024 * 1024) throw bad('That photo is too big. Please try a smaller one.');
+  const id = `p${Date.now().toString(36)}${Math.random().toString(36).slice(2, 8)}`;
+  await store.set(`photos/${id}`, bytes, { metadata: { type: m[1], at: new Date().toISOString() } });
+  return { id };
+}
+export async function readPhoto(store, id) {
+  if (!/^p[a-z0-9]{6,30}$/.test(String(id || ''))) return null;
+  const r = await store.getWithMetadata(`photos/${id}`, { type: 'arrayBuffer' });
+  if (!r) return null;
+  return { bytes: r.data, type: PHOTO_TYPES.includes(r.metadata?.type) ? r.metadata.type : 'image/jpeg' };
 }
