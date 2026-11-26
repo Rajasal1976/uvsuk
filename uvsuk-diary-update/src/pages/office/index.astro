@@ -1,0 +1,108 @@
+---
+// The back office: applications, clients (CRM), reminders and invoices.
+// Sign-in, records and invoicing are handled by netlify/functions/office-api.mjs.
+// Prices come from each page's price table and delivery prices from Business details,
+// so changing a price in the editor changes it here too.
+import { applications } from '../../data/applications.js';
+import { site } from '../../data/site.js';
+
+const files = {
+  ...import.meta.glob('../../../content/pages/*.json', { eager: true, import: 'default' }),
+  ...import.meta.glob('../../../content/special/*.json', { eager: true, import: 'default' }),
+};
+const priced = (r: any) => r && r.service && (r.processingFee || r.fee);
+const pages = Object.entries(files)
+  .map(([path, d]: [string, any]) => ({
+    slug: path.split('/').pop()!.replace('.json', ''),
+    title: d.h1 || d.title || '',
+    country: d.country || '',
+    rows: (d.prices || []).filter(priced).map((r: any) => ({ service: r.service, detail: r.processing || r.length || '', embassy: r.processingFee || '', fee: r.fee || '' })),
+  }))
+  .filter((p) => p.rows.length)
+  .sort((a, b) => `${a.country} ${a.title}`.localeCompare(`${b.country} ${b.title}`));
+const forms = Object.fromEntries(applications.map((a) => [a.slug, a.pageUrl || '']));
+const data = { pages, forms, delivery: site.delivery, evisaDelivery: site.evisaDelivery };
+---
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Back office · Unique Visa Services</title>
+  <link rel="icon" href="/favicon.svg" />
+  <style is:global>
+    :root { --green: #14532D; --green-2: #1F6B3E; --gold: #C9A227; --ink: #1F2A24; --muted: #55605A; --line: #DCE3DE; --bg: #F4F6F3; --soft: #F7F5EE; --red: #B42318; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; color: var(--ink); background: var(--bg); font-size: 15px; line-height: 1.45; }
+    a { color: var(--green); }
+    button, input, select, textarea { font: inherit; color: inherit; }
+    .of-top { background: var(--green); color: #fff; padding: 10px 24px; display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; justify-content: space-between; }
+    .of-brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 17px; }
+    .of-brand span { background: var(--gold); color: var(--green); border-radius: 7px; padding: 4px 7px; font-size: 13px; }
+    .of-nav { display: flex; flex-wrap: wrap; gap: 4px; }
+    .of-nav a { color: #fff; text-decoration: none; padding: 8px 12px; border-radius: 8px; opacity: .85; }
+    .of-nav a[aria-current="page"] { background: rgba(255,255,255,.14); opacity: 1; font-weight: 600; }
+    .of-main { max-width: 1240px; margin: 0 auto; padding: 24px 20px 60px; }
+    .of-banner { background: #FFF4D6; border: 1px solid #E8CF84; border-radius: 10px; padding: 10px 14px; margin-bottom: 16px; font-size: 14px; }
+    h1 { font-size: 24px; margin: 0 0 4px; } h2 { font-size: 17px; margin: 0 0 12px; } h3 { font-size: 15px; margin: 0 0 8px; }
+    .muted { color: var(--muted); } .small { font-size: 13px; }
+    .card { background: #fff; border-radius: 12px; padding: 20px; box-shadow: 0 1px 3px rgba(0,0,0,.07); }
+    .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+    .cols { display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start; }
+    .cols > .left { flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 16px; }
+    .cols > .right { flex: 1.6 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 16px; }
+    .head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 10px; margin-bottom: 18px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 42px; padding: 9px 16px; border-radius: 9px; border: 1.5px solid var(--green); background: #fff; color: var(--green); font-weight: 600; cursor: pointer; text-decoration: none; }
+    .btn:hover { background: #EEF4F0; }
+    .btn.primary { background: var(--green); color: #fff; } .btn.primary:hover { background: var(--green-2); }
+    .btn.gold { background: var(--gold); border-color: var(--gold); color: var(--ink); } .btn.gold:hover { background: #B8921F; }
+    .btn.small { min-height: 34px; padding: 5px 11px; font-size: 14px; }
+    .btn.link { border: none; background: none; padding: 4px 6px; min-height: 0; text-decoration: underline; }
+    .btn:disabled { opacity: .55; cursor: wait; }
+    .pills { display: flex; flex-wrap: wrap; gap: 8px; }
+    .pill { border: 1.5px solid var(--line); background: #fff; color: var(--green); border-radius: 999px; padding: 8px 15px; min-height: 42px; cursor: pointer; font-weight: 500; }
+    .pill[aria-pressed="true"] { background: var(--green); border-color: var(--green); color: #fff; font-weight: 600; }
+    label.f { display: flex; flex-direction: column; gap: 4px; font-size: 13px; font-weight: 600; color: var(--muted); }
+    input[type=text], input[type=email], input[type=tel], input[type=date], input[type=number], input[type=password], input[type=search], select, textarea { border: 1px solid #C7CFCA; border-radius: 8px; padding: 9px 10px; background: #fff; min-height: 42px; font-weight: 400; color: var(--ink); width: 100%; }
+    textarea { min-height: 70px; resize: vertical; }
+    .fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    th { font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+    tr.click { cursor: pointer; } tr.click:hover td { background: #F6FAF7; }
+    .tablebox { overflow-x: auto; }
+    .tag { display: inline-block; font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 999px; background: #E8F2EC; color: var(--green); white-space: nowrap; }
+    .tag.new { background: #FFF1C9; color: #6B4F00; } .tag.draft { background: #EEF0F2; color: #3D4650; } .tag.due { background: #FDE8E7; color: var(--red); }
+    .box { background: var(--soft); border-radius: 10px; padding: 12px 14px; }
+    .line { display: grid; grid-template-columns: 1fr 110px 92px 32px; gap: 8px; align-items: center; }
+    .line input, .line select { min-height: 40px; }
+    .line.has-name { grid-template-columns: 1fr 180px 110px 92px 32px; }
+    .amt { text-align: right; }
+    .total { display: flex; justify-content: space-between; align-items: baseline; border-top: 1px solid var(--line); padding-top: 10px; }
+    .total strong { font-size: 22px; }
+    .rows { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip { border: 1px solid var(--line); background: #fff; border-radius: 9px; padding: 7px 11px; cursor: pointer; text-align: left; font-size: 13px; }
+    .chip:hover { border-color: var(--green); } .chip b { display: block; font-size: 14px; color: var(--ink); }
+    .msg { border-radius: 9px; padding: 10px 14px; font-size: 14px; }
+    .msg.ok { background: #E8F2EC; color: #174A2E; } .msg.err { background: #FDE8E7; color: var(--red); }
+    .week { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 10px; }
+    @media (max-width: 1100px) { .week { grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); } }
+    .list { display: flex; flex-direction: column; gap: 8px; margin: 0; padding: 0; list-style: none; }
+    .list li { border-bottom: 1px solid var(--line); padding-bottom: 8px; }
+    .stack { display: flex; flex-direction: column; gap: 12px; }
+    .row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+    .login { max-width: 380px; margin: 10vh auto; }
+    @media (max-width: 560px) { .line, .line.has-name { grid-template-columns: 1fr 90px; } .line .who { grid-column: 1 / -1; } .line select, .line .x { grid-column: auto; } }
+    .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  </style>
+</head>
+<body>
+  <div id="office" data-config={JSON.stringify(data)}><p style="padding:40px;text-align:center" class="muted">Loading…</p></div>
+  <script>
+    import { mountOffice } from '../../lib/office-app.js';
+    const root = document.getElementById('office');
+    mountOffice(root, JSON.parse(root.dataset.config));
+  </script>
+</body>
+</html>
