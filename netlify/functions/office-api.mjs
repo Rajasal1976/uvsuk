@@ -5,7 +5,7 @@ import settingsJson from '../../content/settings.json' with { type: 'json' };
 import { officeStore, secretStore, readIndex, getRecord, saveRecord, rebuildIndex, applyPatch, manualRecord, STATUSES, recordFromSubmission, groupRef, dataFromOldSubmission } from '../office/store.mjs';
 import { checkPassword, passwordSet, sessionCookie, clearCookie, signedIn, tooManyTries, ingestAllowed } from '../office/auth.mjs';
 import { readList, addSubscribers, setStatus as setSubStatus, removeSubscriber, parseContacts, readCampaigns, createCampaign, sendBatch, sendTest, summary as campaignSummary, validEmail } from '../office/newsletter.mjs';
-import { readDiary, book, change as changeAppt, cancel as cancelAppt, TYPES as APPT_TYPES, CLIENT_TYPES, readTasks, saveTask, setTaskDone, deleteTask, savePhoto, readPhoto } from '../office/diary.mjs';
+import { readDiary, book, change as changeAppt, cancel as cancelAppt, TYPES as APPT_TYPES, CLIENT_TYPES, readTasks, saveTask, setTaskDone, deleteTask, savePhoto, readPhoto, readMessages, saveMessage, setMessageDone, deleteMessage } from '../office/diary.mjs';
 import { COMPANIES, validateInvoice, createInvoice, connection, keysSet, waveCatalogue, disconnect } from '../office/accounts.mjs';
 
 export const config = { path: '/office/api/*' };
@@ -178,6 +178,10 @@ export default async (req, context) => {
       case 'task-save': return json(await saveTask(store, body, (await getSettings()).diaryPeople));
       case 'task-done': return json(await setTaskDone(store, String(body.id || ''), body.done !== false));
       case 'task-delete': return json(await deleteTask(store, String(body.id || '')));
+      case 'messages': return json({ messages: await readMessages(store), people: (await getSettings()).diaryPeople });
+      case 'message-save': return json(await saveMessage(store, body, (await getSettings()).diaryPeople));
+      case 'message-done': return json(await setMessageDone(store, String(body.id || ''), body.done !== false));
+      case 'message-delete': return json(await deleteMessage(store, String(body.id || '')));
       case 'photo-upload': return json(await savePhoto(store, body.data));
       case 'photo': {
         const p = await readPhoto(store, new URL(req.url).searchParams.get('id'));

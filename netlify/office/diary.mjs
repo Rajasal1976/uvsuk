@@ -231,3 +231,50 @@ export async function readPhoto(store, id) {
   if (!r) return null;
   return { bytes: r.data, type: PHOTO_TYPES.includes(r.metadata?.type) ? r.metadata.type : 'image/jpeg' };
 }
+
+// ---------- phone messages ----------
+// Kept in 'messages' (not the diary). { id, for, name, phone, email, about, notes, at (date+time of the call), photo, by, done, doneAt, created }
+export async function readMessages(store) { return (await store.get('messages', { type: 'json' })) || []; }
+async function saveMessages(store, list) {
+  const cutoff = new Date(Date.now() - 365 * 864e5).toISOString();
+  list.sort((a, b) => String(b.at).localeCompare(String(a.at)));
+  await store.setJSON('messages', list.filter((m) => !m.done || (m.doneAt || '') > cutoff));
+}
+export async function saveMessage(store, input, people) {
+  const photo = /^p[a-z0-9]{6,30}$/.test(String(input.photo || '')) ? String(input.photo) : '';
+  const fields = {
+    for: clean(input.for, 60), name: clean(input.name, 200), phone: clean(input.phone, 60), email: clean(input.email, 200).toLowerCase(),
+    about: clean(input.about, 500), notes: clean(input.notes, 2000), by: clean(input.by, 60),
+    at: /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}/.test(String(input.at || '')) ? String(input.at).slice(0, 16) : new Date().toLocaleString('sv-SE', { timeZone: 'Europe/London' }).slice(0, 16).replace(' ', 'T'),
+  };
+  if (fields.for && !people.some((p) => p.name === fields.for)) throw bad('Choose who the message is for.');
+  if (!fields.name && !fields.phone && !fields.about && !photo) throw bad('Add the caller’s name, number, what it’s about or a screenshot.');
+  if ('photo' in input) fields.photo = photo;
+  const list = await readMessages(store);
+  let msg;
+  if (input.id) {
+    msg = list.find((m) => m.id === input.id);
+    if (!msg) throw Object.assign(new Error('Message not found'), { status: 404 });
+    Object.assign(msg, fields, { updated: new Date().toISOString() });
+  } else {
+    msg = { id: `m${Date.now().toString(36)}${Math.random().toString(36).slice(2, 6)}`, ...fields, done: false, created: new Date().toISOString() };
+    list.push(msg);
+  }
+  await saveMessages(store, list);
+  return { message: msg };
+}
+export async function setMessageDone(store, id, done) {
+  const list = await readMessages(store);
+  const msg = list.find((m) => m.id === id);
+  if (!msg) throw Object.assign(new Error('Message not found'), { status: 404 });
+  msg.done = !!done; msg.doneAt = done ? new Date().toISOString() : '';
+  await saveMessages(store, list);
+  return { message: msg };
+}
+export async function deleteMessage(store, id) {
+  const list = await readMessages(store);
+  const gone = list.find((m) => m.id === id);
+  if (gone?.photo) await store.delete(`photos/${gone.photo}`).catch(() => {});
+  await saveMessages(store, list.filter((m) => m.id !== id));
+  return { ok: true };
+}

@@ -95,6 +95,8 @@ const data = { pages, forms, delivery: site.delivery, evisaDelivery: site.evisaD
     .login { max-width: 380px; margin: 10vh auto; }
     @media (max-width: 560px) { .line, .line.has-name { grid-template-columns: 1fr 90px; } .line .who { grid-column: 1 / -1; } .line select, .line .x { grid-column: auto; } }
     [hidden] { display: none !important; }
+    .badge { display: inline-block; min-width: 20px; padding: 1px 6px; border-radius: 999px; background: var(--red); color: #fff; font-size: 12px; font-weight: 700; text-align: center; }
+    input[type=datetime-local] { border: 1px solid #C7CFCA; border-radius: 8px; padding: 9px 10px; background: #fff; min-height: 42px; width: 100%; }
     /* Simple to-do list */
     .td-add { display: flex; gap: 8px; align-items: stretch; }
     .td-add input[type=text] { flex: 1; min-height: 48px; font-size: 16px; }

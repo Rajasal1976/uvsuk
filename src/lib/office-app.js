@@ -1,5 +1,5 @@
 // The back office screens (/office/). Talks to netlify/functions/office-api.mjs.
-// Pages: Home (what needs doing), Applications, Diary (appointments), To do (simple list with photos), Clients, one record (details + invoice), New record, Settings.
+// Pages: Home (what needs doing), Applications, Diary (appointments), To do (simple list with photos), Messages (phone messages), Clients, one record (details + invoice), New record, Settings.
 
 const h = (tag, attrs = {}, ...children) => {
   const el = document.createElement(tag);
@@ -29,6 +29,8 @@ export function mountOffice(root, cfg) {
   let me = null;
   let apps = [];
   let started = false;
+  let openMsgs = 0; // phone messages not dealt with yet (shown on the menu)
+  const countMsgs = async () => { try { openMsgs = (await get('messages')).messages.filter((m) => !m.done).length; } catch {} const b = root.querySelector('.of-nav .badge'); if (b) { b.textContent = openMsgs; b.hidden = !openMsgs; } };
 
   async function api(action, body) {
     const res = await fetch(`/office/api/${action}${body === undefined ? '' : ''}`, body === undefined
@@ -60,7 +62,7 @@ export function mountOffice(root, cfg) {
 
   async function start() {
     try { me = await get('me'); } catch (e) { if (!me) return showLogin(); }
-    await loadApps();
+    await Promise.all([loadApps(), countMsgs()]);
     if (!started) { window.addEventListener('hashchange', route); started = true; }
     route();
   }
@@ -73,7 +75,7 @@ export function mountOffice(root, cfg) {
     root.append(
       h('header', { class: 'of-top' },
         h('div', { class: 'of-brand' }, h('span', {}, 'UVS'), 'Back office'),
-        h('nav', { class: 'of-nav', 'aria-label': 'Back office' }, link('home', 'Home'), link('apps', 'Applications'), link('diary', 'Diary'), link('todo', 'To do'), link('clients', 'Clients'), link('newsletter', 'Newsletter'), link('new', '+ New record'), link('settings', 'Settings'), h('a', { href: '/admin/' }, 'Edit website ↗'))),
+        h('nav', { class: 'of-nav', 'aria-label': 'Back office' }, link('home', 'Home'), link('apps', 'Applications'), link('diary', 'Diary'), link('todo', 'To do'), h('a', { href: '#messages', 'aria-current': current === 'messages' ? 'page' : false }, 'Messages ', h('span', { class: 'badge', hidden: !openMsgs }, String(openMsgs))), link('clients', 'Clients'), link('newsletter', 'Newsletter'), link('new', '+ New record'), link('settings', 'Settings'), h('a', { href: '/admin/' }, 'Edit website ↗'))),
       h('main', { class: 'of-main' },
         me?.preview ? h('p', { class: 'of-banner' }, h('strong', {}, 'Test copy. '), 'You’re on a preview of the site, so the records here are test records, kept apart from your real ones. Invoices made here still go to your real FreeAgent and Wave, so delete any test invoices there.') : null,
         ...content));
@@ -83,7 +85,7 @@ export function mountOffice(root, cfg) {
   function route() {
     const [view, ...rest] = (location.hash.slice(1) || 'home').split('/');
     const arg = decodeURIComponent(rest.join('/'));
-    ({ home, apps: appsView, clients, client: () => clientView(arg), app: () => recordView(arg), new: newRecord, newsletter, settings, diary: () => diaryView(arg), todo: () => todoView(arg) }[view] || home)();
+    ({ home, apps: appsView, clients, client: () => clientView(arg), app: () => recordView(arg), new: newRecord, newsletter, settings, diary: () => diaryView(arg), todo: () => todoView(arg), messages: messagesView }[view] || home)();
   }
   const go = (hash) => { if (location.hash === `#${hash}`) route(); else location.hash = hash; };
 
@@ -130,6 +132,7 @@ export function mountOffice(root, cfg) {
         h('a', { class: 'btn primary', href: '#new', style: 'align-self:flex-start' }, '+ Add your first record')) : null,
       h('div', { class: 'grid' },
         todayBox(),
+        messagesBox(),
         box('New applications', fresh.length, mini(fresh, (a) => `${a.formTitle || ''} · ${fmtDate(a.received)}`)),
         box(`Visas expiring in the next ${days} days`, expiring.length, mini(expiring, (a) => `${a.service || a.formTitle || ''} · expires ${fmtDate(a.visaExpiry)}${a.expiryReminded ? ' · reminder sent' : ''}`)),
         box('Draft invoices', drafts.length, mini(drafts, (a) => `${money((a.invoices || []).filter((i) => i.status === 'draft').reduce((s, i) => s + i.total, 0))} in drafts`))));
@@ -494,6 +497,102 @@ export function mountOffice(root, cfg) {
       if (f.size > 4e6) throw new Error('That photo is too big.');
       return new Promise((res, rej) => { const r = new FileReader(); r.onload = () => res(r.result); r.onerror = () => rej(new Error('Couldn’t read the photo.')); r.readAsDataURL(f); });
     }
+  }
+
+  // ---------- phone messages ----------
+  // Take a message for Raj or Sunita (with a screenshot if you like). It stays here until it's ticked as dealt with.
+  const nowLocal = () => new Date().toLocaleString('sv-SE', { timeZone: 'Europe/London' }).slice(0, 16).replace(' ', 'T');
+  const fmtWhen = (at) => { if (!at) return ''; const [d, t] = at.split('T'); return `${d === localToday() ? 'Today' : d === plusDays(localToday(), -1) ? 'Yesterday' : dayName(d)} ${t || ''}`.trim(); };
+
+  function messageCard(m, onChange) {
+    const box = h('input', { type: 'checkbox', checked: m.done, 'aria-label': `Dealt with: ${m.name || m.about}` });
+    box.addEventListener('change', async () => {
+      box.disabled = true;
+      try { await api('message-done', { id: m.id, done: box.checked }); await countMsgs(); onChange(); } catch (e) { box.checked = !box.checked; box.disabled = false; alert(e.message); }
+    });
+    const tel = m.phone ? h('a', { href: `tel:${m.phone.replace(/[^\d+]/g, '')}` }, m.phone) : null;
+    return h('li', { class: `td-item${m.done ? ' done' : ''}` }, box,
+      h('div', { class: 'td-text', style: 'cursor:default' },
+        h('div', {}, m.for ? h('span', { class: 'tag', style: 'margin-right:6px' }, `For ${m.for}`) : null, h('strong', {}, m.name || 'Caller'), tel ? [' · ', tel] : null),
+        m.about ? h('div', {}, withLinks(m.about)) : null,
+        m.notes ? h('div', { class: 'small muted', style: 'white-space:pre-line' }, m.notes) : null,
+        h('div', { class: 'small muted' }, [fmtWhen(m.at), m.email ? h('a', { href: `mailto:${m.email}` }, m.email) : null, m.done && m.doneAt ? `dealt with ${fmtDateTime(m.doneAt)}` : null].filter(Boolean).flatMap((x, i) => (i ? [' · ', x] : [x])))),
+      m.photo ? h('a', { href: photoUrl(m.photo), target: '_blank', rel: 'noopener' }, h('img', { class: 'td-thumb', src: photoUrl(m.photo), alt: 'Screenshot', loading: 'lazy' })) : null,
+      h('button', { class: 'td-x', 'aria-label': 'Delete message', onclick: async () => {
+        if (!confirm(`Delete the message from ${m.name || 'this caller'}?`)) return;
+        try { await api('message-delete', { id: m.id }); await countMsgs(); onChange(); } catch (e) { alert(e.message); }
+      } }, '×'));
+  }
+
+  function messagesBox() {
+    const sec = h('section', { class: 'card' }, h('h2', {}, 'Phone messages'), h('p', { class: 'muted small' }, 'Loading…'));
+    const draw = async () => {
+      let list = [];
+      try { list = (await get('messages')).messages.filter((m) => !m.done); } catch { return put(sec, ''); }
+      put(sec, h('h2', {}, 'Phone messages ', h('span', { class: 'muted' }, `(${list.length})`)),
+        list.length ? h('ul', { class: 'td-list', style: 'margin-bottom:12px' }, list.slice(0, 10).map((m) => messageCard(m, () => { draw(); countMsgs(); }))) : h('p', { class: 'muted small' }, 'No messages waiting.'),
+        h('a', { class: 'btn small', href: '#messages' }, '+ Take a message'));
+    };
+    draw();
+    return sec;
+  }
+
+  async function messagesView() {
+    frame('messages', h('p', { class: 'muted' }, 'Loading…'));
+    let data;
+    try { data = await get('messages'); } catch (e) { return frame('messages', h('p', { class: 'msg err' }, e.message)); }
+    const st = messagesView.st || (messagesView.st = { show: '' });
+    const people = data.people || [];
+    const msg = h('div', { role: 'status', 'aria-live': 'polite' });
+    const bad = (t) => put(msg, h('p', { class: 'msg err' }, t));
+    let forWho = messagesView.lastFor ?? (people.find((p) => p.name !== 'Raj')?.name || '');
+    const forBox = h('div', { class: 'pills' });
+    const showFor = () => put(forBox, people.map((p) => h('button', { type: 'button', class: 'pill small', 'aria-pressed': String(forWho === p.name), onclick: () => { forWho = p.name; showFor(); } }, p.name)),
+      h('button', { type: 'button', class: 'pill small', 'aria-pressed': String(!forWho), onclick: () => { forWho = ''; showFor(); } }, 'Either'));
+    const f = {
+      name: h('input', { type: 'text', placeholder: 'Caller’s name', 'aria-label': 'Caller’s name', autocomplete: 'off' }),
+      phone: h('input', { type: 'tel', placeholder: 'Their number', 'aria-label': 'Their number', autocomplete: 'off' }),
+      email: h('input', { type: 'email', placeholder: 'Email (optional)', 'aria-label': 'Email', autocomplete: 'off' }),
+      about: h('input', { type: 'text', placeholder: 'Regarding, e.g. China visa, wants a call back', 'aria-label': 'Regarding' }),
+      at: h('input', { type: 'datetime-local', value: nowLocal(), 'aria-label': 'Date and time of the call' }),
+      notes: h('textarea', { placeholder: 'Message (optional)', 'aria-label': 'Message', style: 'min-height:56px' }),
+    };
+    let photo = null;
+    const file = h('input', { type: 'file', accept: 'image/*', class: 'sr', 'aria-label': 'Choose a screenshot' });
+    const pending = h('div');
+    const showPending = () => put(pending, photo ? h('div', { class: 'td-pending' }, h('img', { src: photo, alt: '' }), 'Screenshot added.', h('button', { type: 'button', class: 'btn link small', onclick: () => { photo = null; showPending(); } }, 'Remove')) : null);
+    file.addEventListener('change', async () => { const fl = file.files[0]; file.value = ''; if (!fl) return; try { photo = await shrinkPhoto(fl); showPending(); } catch (e) { bad(e.message); } });
+    const saveBtn = h('button', { class: 'btn primary', type: 'button' }, 'Save message');
+    saveBtn.addEventListener('click', async () => {
+      saveBtn.disabled = true;
+      try {
+        const photoId = photo ? (await api('photo-upload', { data: photo })).id : '';
+        await api('message-save', { for: forWho, name: f.name.value, phone: f.phone.value, email: f.email.value, about: f.about.value, notes: f.notes.value, at: f.at.value, photo: photoId });
+        messagesView.lastFor = forWho;
+        messagesView.flash = `Message saved${forWho ? ` for ${forWho}` : ''}.`;
+        await countMsgs(); messagesView();
+      } catch (e) { saveBtn.disabled = false; bad(e.message); }
+    });
+
+    const shown = data.messages.filter((m) => !st.show || m.for === st.show || !m.for);
+    const open = shown.filter((m) => !m.done);
+    const done = shown.filter((m) => m.done).sort((a, b) => String(b.doneAt).localeCompare(String(a.doneAt))).slice(0, 50);
+    const pill = (on, label, click) => h('button', { type: 'button', class: 'pill small', 'aria-pressed': String(on), onclick: click }, label);
+    frame('messages',
+      h('div', { class: 'head' }, h('div', {}, h('h1', {}, 'Phone messages'), h('p', { class: 'muted' }, open.length ? `${open.length} waiting` : 'No messages waiting'))),
+      msg,
+      h('section', { class: 'card stack', style: 'gap:10px' }, h('h2', { style: 'margin:0' }, 'Take a message'),
+        h('div', { class: 'row small', style: 'gap:8px' }, h('span', { class: 'muted' }, 'For:'), forBox),
+        h('div', { class: 'fields' }, f.name, f.phone), f.about,
+        h('div', { class: 'fields' }, h('label', { class: 'f' }, 'When they called', f.at), f.email),
+        f.notes, file, pending,
+        h('div', { class: 'row', style: 'justify-content:space-between' }, h('button', { type: 'button', class: 'btn', onclick: () => file.click() }, '📷 Add screenshot'), saveBtn)),
+      h('div', { class: 'pills', style: 'margin:16px 0 10px' }, pill(!st.show, 'Everyone', () => { st.show = ''; messagesView(); }), people.map((p) => pill(st.show === p.name, p.name, () => { st.show = p.name; messagesView(); }))),
+      h('section', { class: 'card stack' },
+        open.length ? h('ul', { class: 'td-list' }, open.map((m) => messageCard(m, messagesView))) : h('p', { class: 'muted small', style: 'margin:0' }, 'No messages waiting.'),
+        done.length ? h('details', {}, h('summary', { class: 'small muted', style: 'cursor:pointer' }, `Dealt with (${done.length})`), h('ul', { class: 'td-list' }, done.map((m) => messageCard(m, messagesView)))) : null));
+    showFor();
+    if (messagesView.flash) { put(msg, h('p', { class: 'msg ok' }, messagesView.flash)); messagesView.flash = ''; }
   }
 
   // ---------- to do: one simple list ----------
