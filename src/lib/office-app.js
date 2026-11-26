@@ -526,38 +526,39 @@ export function mountOffice(root, cfg) {
     let page = cfg.pages.find((p) => p.slug === pageSlug) || null;
     const feeVat = () => Number(st.company === 'tvh' ? me.settings.tvhFeeVat : me.settings.uvsFeeVat) || 0;
     const defaultLines = () => (st.company === 'tvh'
-      ? [{ kind: 'embassy', description: `Embassy fee${page ? ` – ${page.title}` : ''}`, name: titleCase(a.name || ''), amount: 0, vat: 0 }, { kind: 'fee', base: 'Travel Visa Help service fee', description: 'Travel Visa Help service fee', rate: 0, amount: 0, vat: feeVat() }]
+      ? applicantLines({ id: 1, name: titleCase(a.name || '') })
       : [{ kind: 'fee', description: `UVSUK fee${a.service ? ` – ${a.service}` : ''}`, amount: 0, vat: feeVat() }]);
     st.lines = defaultLines();
     if (st.company === 'tvh' && page && page.rows.length === 1) pickRow(page.rows[0]);
     function pickRow(r) {
       const e = st.lines.find((l) => l.kind === 'embassy'), f = st.lines.find((l) => l.kind === 'fee');
       const label = [r.service, r.detail].filter(Boolean).join(', ');
-      if (e) st.lines.forEach((l) => { if (l.kind === 'embassy') { l.amount = amountOf(r.embassy); l.description = `Embassy fee – ${page.title}${label ? ` (${label})` : ''}`; } });
-      if (f) { f.rate = amountOf(r.fee); f.base = `Travel Visa Help service fee – ${page.title}${label ? ` (${label})` : ''}`; }
-      syncFee();
+      st.lines.forEach((l) => {
+        if (l.kind === 'embassy') { l.amount = amountOf(r.embassy); l.description = `Embassy fee – ${page.title}${label ? ` (${label})` : ''}`; }
+        if (l.kind === 'fee' && l.person) { l.amount = amountOf(r.fee); l.description = `Travel Visa Help service fee – ${page.title}${label ? ` (${label})` : ''}`; }
+      });
     }
-    // One embassy fee line per applicant; the service fee line is the per-person fee × applicants.
-    function applicants() { return Math.max(1, st.lines.filter((l) => l.kind === 'embassy').length); }
-    function syncFee() {
-      const f = st.lines.find((l) => l.kind === 'fee' && 'rate' in l);
-      if (!f) return;
-      const n = st.company === 'tvh' ? applicants() : 1;
-      f.amount = Math.round((Number(f.rate) || 0) * n * 100) / 100;
-      f.description = `${f.base}${n > 1 ? ` × ${n} applicants` : ''}`;
+    // Each applicant gets their own embassy fee line and service fee line, sharing one name.
+    function applicantLines(person, copyFrom = []) {
+      const e = copyFrom.find((l) => l.kind === 'embassy'), f = copyFrom.find((l) => l.kind === 'fee' && l.person);
+      return [
+        { kind: 'embassy', person, description: e ? e.description : `Embassy fee${page ? ` – ${page.title}` : ''}`, amount: e ? e.amount : 0, vat: e ? e.vat : 0 },
+        { kind: 'fee', person, description: f ? f.description : 'Travel Visa Help service fee', amount: f ? f.amount : 0, vat: f ? f.vat : feeVat() },
+      ];
     }
+    const people = () => [...new Set(st.lines.filter((l) => l.person).map((l) => l.person))];
     function setApplicants(n) {
-      const emb = st.lines.filter((l) => l.kind === 'embassy');
-      const first = emb[0] || { kind: 'embassy', description: `Embassy fee${page ? ` – ${page.title}` : ''}`, name: titleCase(a.name || ''), amount: 0, vat: 0 };
-      if (n > emb.length) {
-        const extra = Array.from({ length: n - emb.length }, () => ({ ...first, name: '' }));
-        const lastIdx = emb.length ? st.lines.lastIndexOf(emb[emb.length - 1]) : -1;
-        st.lines.splice(lastIdx + 1, 0, ...extra);
-      } else if (n < emb.length) {
-        const drop = new Set(emb.slice(n));
-        st.lines = st.lines.filter((l) => !drop.has(l));
+      const ps = people();
+      if (n > ps.length) {
+        const firstLines = ps.length ? st.lines.filter((l) => l.person === ps[0]) : [];
+        const lastIdx = ps.length ? Math.max(...st.lines.map((l, i) => (l.person ? i : -1))) : -1;
+        const add = [];
+        for (let k = ps.length; k < n; k++) add.push(...applicantLines({ id: Date.now() + k, name: '' }, firstLines));
+        st.lines.splice(lastIdx + 1, 0, ...add);
+      } else if (n < ps.length) {
+        const drop = new Set(ps.slice(n));
+        st.lines = st.lines.filter((l) => !drop.has(l.person));
       }
-      syncFee();
     }
 
     const card = h('section', { class: 'card stack' });
@@ -576,15 +577,16 @@ export function mountOffice(root, cfg) {
             h('option', { value: '' }, 'Choose another page…'), cfg.pages.map((p) => h('option', { value: p.slug, selected: page && p.slug === page.slug }, `${p.country ? p.country + ' › ' : ''}${p.title}`)))),
         page ? h('div', { class: 'rows' }, page.rows.map((r) => h('button', { type: 'button', class: 'chip', onclick: () => { pickRow(r); draw(); } }, h('b', {}, [r.service, r.detail].filter(Boolean).join(' · ')), `Embassy ${r.embassy || '–'} + fee ${r.fee || '–'}`))) : h('p', { class: 'small muted' }, 'Pick the page to fill in the prices, or type them below.')) : null;
 
-      const lineRows = st.lines.map((l, i) => h('div', { class: l.kind === 'embassy' ? 'line has-name' : 'line' },
-        h('input', { type: 'text', value: l.description, 'aria-label': `Line ${i + 1} description`, oninput: (e) => { l.description = e.target.value; if ('rate' in l) l.base = e.target.value.replace(/ × \d+ applicants$/, ''); } }),
-        l.kind === 'embassy' ? h('input', { type: 'text', class: 'who', value: l.name || '', placeholder: 'Applicant name', 'aria-label': `Line ${i + 1} applicant name`, oninput: (e) => { l.name = e.target.value; } }) : null,
-        h('input', { type: 'number', class: 'amt', step: '0.01', min: '0', value: l.amount ? l.amount.toFixed(2) : '', placeholder: '0.00', 'aria-label': `Line ${i + 1} amount (£)`, oninput: (e) => { l.amount = Number(e.target.value) || 0; if ('rate' in l) l.rate = l.amount / (st.company === 'tvh' ? applicants() : 1); totals(); } }),
+      const lineRows = st.lines.map((l, i) => h('div', { class: l.person ? 'line has-name' : 'line' },
+        h('input', { type: 'text', value: l.description, 'aria-label': `Line ${i + 1} description`, oninput: (e) => { l.description = e.target.value; } }),
+        l.kind === 'embassy' && l.person ? h('input', { type: 'text', class: 'who', value: l.person.name || '', placeholder: 'Applicant name', 'aria-label': `Line ${i + 1} applicant name`, oninput: (e) => { l.person.name = e.target.value; card.querySelectorAll(`[data-person="${l.person.id}"]`).forEach((s) => { s.textContent = e.target.value || 'same applicant'; }); } })
+          : l.person ? h('span', { class: 'who small muted', 'data-person': l.person.id, title: 'Name comes from the embassy fee line above' }, l.person.name || 'same applicant') : null,
+        h('input', { type: 'number', class: 'amt', step: '0.01', min: '0', value: l.amount ? l.amount.toFixed(2) : '', placeholder: '0.00', 'aria-label': `Line ${i + 1} amount (£)`, oninput: (e) => { l.amount = Number(e.target.value) || 0; totals(); } }),
         h('select', { 'aria-label': `Line ${i + 1} VAT`, onchange: (e) => { l.vat = Number(e.target.value); totals(); } }, [0, 20].map((v) => h('option', { value: v, selected: Number(l.vat) === v }, v ? '+20% VAT' : 'No VAT'))),
-        h('button', { type: 'button', class: 'btn link x', 'aria-label': `Remove line ${i + 1}`, title: 'Remove', onclick: () => { st.lines.splice(i, 1); syncFee(); draw(); } }, '✕')));
+        h('button', { type: 'button', class: 'btn link x', 'aria-label': `Remove line ${i + 1}`, title: 'Remove', onclick: () => { st.lines.splice(i, 1); draw(); } }, '✕')));
       const count = st.company === 'tvh' ? h('label', { class: 'f', style: 'max-width:220px' }, 'Number of applicants',
         h('select', { onchange: (e) => { setApplicants(Number(e.target.value)); draw(); } },
-          Array.from({ length: 10 }, (_, k) => k + 1).map((n) => h('option', { value: n, selected: n === st.lines.filter((l) => l.kind === 'embassy').length }, n === 1 ? '1 applicant' : `${n} applicants`)))) : null;
+          Array.from({ length: 10 }, (_, k) => k + 1).map((n) => h('option', { value: n, selected: n === people().length }, n === 1 ? '1 applicant' : `${n} applicants`)))) : null;
 
       const delivery = st.company === 'tvh' ? h('label', { class: 'f' }, 'Additional delivery',
         h('select', { onchange: (e) => {
@@ -603,8 +605,8 @@ export function mountOffice(root, cfg) {
       };
 
       const send = async (mode, btn) => {
-        const unnamed = st.company === 'tvh' && st.lines.filter((l) => l.kind === 'embassy').length > 1 && st.lines.some((l) => l.kind === 'embassy' && !(l.name || '').trim());
-        if (unnamed && !confirm('Some embassy fee lines have no applicant name. Carry on anyway?')) return;
+        const unnamed = people().length > 1 && people().some((p) => !p.name.trim());
+        if (unnamed && !confirm('Some applicants have no name. Carry on anyway?')) return;
         const missing = !billTo.name ? 'The invoice needs a name: add the company name in Client details.' : !billTo.email ? 'Add the client’s email in Client details first.' : '';
         if (missing) return flash(missing, true);
         const total = tot.textContent;
@@ -614,7 +616,7 @@ export function mountOffice(root, cfg) {
         card.querySelectorAll('.inv-actions button').forEach((b) => { b.disabled = true; });
         btn.textContent = 'Working…';
         try {
-          const r = await api('invoice', { ref: a.ref, invoice: { company: st.company, mode, billTo, lines: st.lines.map(({ description, name, amount, vat }) => ({ description: name && name.trim() ? `${description} – ${name.trim()}` : description, amount, vat })) } });
+          const r = await api('invoice', { ref: a.ref, invoice: { company: st.company, mode, billTo, lines: st.lines.map(({ description, person, amount, vat }) => ({ description: person && person.name.trim() ? `${description} – ${person.name.trim()}` : description, amount, vat })) } });
           flash(mode === 'send' ? `Invoice ${r.invoice.number} emailed to ${billTo.email}.` : mode === 'mark' ? `Invoice ${r.invoice.number} saved and marked as sent.` : `Draft invoice ${r.invoice.number} saved in ${app}.`);
           onSaved(r.app);
         } catch (e) { flash(e.message, true); draw(); }
