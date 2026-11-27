@@ -1,6 +1,7 @@
 // The back office (/office/) talks to this function. Everything except signing in needs the
 // sign-in cookie (see netlify/office/auth.mjs). Records are kept in Netlify Blobs (netlify/office/store.mjs).
 import nodemailer from 'nodemailer';
+import { publicKey, subscribe, unsubscribe, whoIs, push, messageAlert, applicationAlert } from '../office/notify.mjs';
 import settingsJson from '../../content/settings.json' with { type: 'json' };
 import { officeStore, secretStore, readIndex, getRecord, saveRecord, rebuildIndex, applyPatch, manualRecord, STATUSES, recordFromSubmission, groupRef, dataFromOldSubmission } from '../office/store.mjs';
 import { checkPassword, passwordSet, sessionCookie, clearCookie, signedIn, tooManyTries, ingestAllowed } from '../office/auth.mjs';
@@ -41,6 +42,7 @@ export default async (req, context) => {
     const target = officeStore(!!body.preview);
     const existing = await getRecord(target, groupRef(data.reference));
     const saved = await saveRecord(target, recordFromSubmission(data, existing));
+    if (!existing && !body.preview) await applicationAlert((await getSettings()).diaryPeople, saved);
     if (/^yes/i.test(String(data.newsletter || '')) && validEmail(data.email)) await addSubscribers(target, [{ email: data.email, name: data.applicant_name }], 'form');
     return json({ ok: true, ref: saved.ref });
   }
@@ -179,7 +181,20 @@ export default async (req, context) => {
       case 'task-done': return json(await setTaskDone(store, String(body.id || ''), body.done !== false));
       case 'task-delete': return json(await deleteTask(store, String(body.id || '')));
       case 'messages': return json({ messages: await readMessages(store), people: (await getSettings()).diaryPeople });
-      case 'message-save': return json(await saveMessage(store, body, (await getSettings()).diaryPeople));
+      case 'message-save': {
+        const people = (await getSettings()).diaryPeople;
+        const r = await saveMessage(store, body, people);
+        if (!body.id && !preview) await messageAlert(people, r.message);
+        return json(r);
+      }
+      case 'push-key': return json({ key: await publicKey() });
+      case 'push-subscribe': return json(await subscribe(body.subscription, body.person));
+      case 'push-unsubscribe': return json(await unsubscribe(String(body.endpoint || '')));
+      case 'push-who': return json({ person: await whoIs(String(body.endpoint || '')) });
+      case 'push-test': {
+        const person = await whoIs(String(body.endpoint || ''));
+        return json(await push(person ? [person] : [], { title: 'Notifications are working ✅', body: `This ${person ? `is ${person}’s` : 'is your'} phone. You’ll get phone messages, new applications, appointment reminders and the 8am summary here.`, url: '/office/#home', tag: 'test' }));
+      }
       case 'message-done': return json(await setMessageDone(store, String(body.id || ''), body.done !== false));
       case 'message-delete': return json(await deleteMessage(store, String(body.id || '')));
       case 'photo-upload': return json(await savePhoto(store, body.data));

@@ -16,6 +16,7 @@ const h = (tag, attrs = {}, ...children) => {
 
 // replaceChildren/append without the gaps left by optional parts
 const put = (el, ...kids) => el.replaceChildren(...kids.flat(Infinity).filter((k) => k != null && k !== false));
+const putInto = put;
 const add = (el, ...kids) => el.append(...kids.flat(Infinity).filter((k) => k != null && k !== false));
 const today = () => new Date().toISOString().slice(0, 10);
 const addDays = (n) => new Date(Date.now() + n * 864e5).toISOString().slice(0, 10);
@@ -131,6 +132,7 @@ export function mountOffice(root, cfg) {
         h('p', { style: 'margin:0' }, h('strong', {}, 'By hand: '), 'for phone calls, walk-ins and UK immigration clients, press ', h('strong', {}, '+ New record'), ', fill in their details, and the record opens with the invoice beside it.'),
         h('a', { class: 'btn primary', href: '#new', style: 'align-self:flex-start' }, '+ Add your first record')) : null,
       h('div', { class: 'grid' },
+        notifyCard(true),
         todayBox(),
         messagesBox(),
         box('New applications', fresh.length, mini(fresh, (a) => `${a.formTitle || ''} · ${fmtDate(a.received)}`)),
@@ -497,6 +499,67 @@ export function mountOffice(root, cfg) {
       if (f.size > 4e6) throw new Error('That photo is too big.');
       return new Promise((res, rej) => { const r = new FileReader(); r.onload = () => res(r.result); r.onerror = () => rej(new Error('Couldn’t read the photo.')); r.readAsDataURL(f); });
     }
+  }
+
+  // ---------- phone notifications ----------
+  // Each phone/computer turns notifications on once and says whose it is (Raj or Sunita).
+  if ('serviceWorker' in navigator) navigator.serviceWorker.addEventListener('message', (e) => { if (e.data?.go) location.href = e.data.go; });
+  const pushSupported = () => 'serviceWorker' in navigator && 'PushManager' in window && 'Notification' in window;
+  const isIos = /iPhone|iPad|iPod/.test(navigator.userAgent);
+  const installed = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone;
+  const b64ToBytes = (b64) => { const s = atob((b64 + '='.repeat((4 - (b64.length % 4)) % 4)).replace(/-/g, '+').replace(/_/g, '/')); return Uint8Array.from(s, (c) => c.charCodeAt(0)); };
+  async function currentSub() {
+    if (!pushSupported()) return null;
+    const reg = await navigator.serviceWorker.getRegistration('/office/');
+    return reg ? reg.pushManager.getSubscription() : null;
+  }
+
+  // compact: shown on Home only when this device hasn't turned them on yet
+  function notifyCard(compact = false) {
+    const sec = h('section', { class: 'card stack', style: 'gap:10px', hidden: true });
+    const put = (el, ...kids) => { el.hidden = false; return putInto(el, ...kids); };
+    const draw = async () => {
+      if (!pushSupported()) {
+        if (compact) return sec.remove();
+        return put(sec, h('h2', {}, 'Phone notifications'), h('p', { class: 'muted small', style: 'margin:0' },
+          isIos && !installed ? 'On an iPhone, first add the back office to your Home Screen (Safari › Share › Add to Home Screen), open it from there, then come back here.' : 'This browser can’t show notifications. Use Chrome, Edge or Safari, or the installed UVS Office app.'));
+      }
+      const sub = await currentSub().catch(() => null);
+      if (sub && Notification.permission === 'granted') {
+        const person = (await api('push-who', { endpoint: sub.endpoint }).catch(() => ({}))).person || '';
+        if (compact) return sec.remove();
+        return put(sec, h('h2', {}, 'Phone notifications'),
+          h('p', { style: 'margin:0' }, '✅ On for ', h('strong', {}, person || 'everyone'), ' on this device.'),
+          h('p', { class: 'muted small', style: 'margin:0' }, 'You’ll get phone messages, new applications, appointment reminders (30 minutes before) and the 8am summary.'),
+          h('div', { class: 'row' },
+            h('button', { class: 'btn small', onclick: async (e) => { e.currentTarget.disabled = true; try { const r = await api('push-test', { endpoint: sub.endpoint }); alert(r.sent ? 'Test sent. It should pop up in a few seconds.' : 'Nothing was sent. Try turning notifications off and on again.'); } catch (x) { alert(x.message); } e.currentTarget.disabled = false; } }, 'Send a test'),
+            h('button', { class: 'btn link small', onclick: async () => { await api('push-unsubscribe', { endpoint: sub.endpoint }).catch(() => {}); await sub.unsubscribe().catch(() => {}); draw(); } }, 'Turn off on this device')));
+      }
+      if (Notification.permission === 'denied') {
+        return put(sec, h('h2', {}, 'Phone notifications'), h('p', { class: 'muted small', style: 'margin:0' }, 'Notifications are blocked for this site. Allow them in your phone’s settings for the UVS Office app (or the browser’s site settings), then come back here.'));
+      }
+      const people = (me?.settings?.diaryPeople || []).filter((p) => p.name).length ? me.settings.diaryPeople.filter((p) => p.name) : [{ name: 'Raj' }, { name: 'Sunita' }];
+      const turnOn = async (name, btn) => {
+        btn.disabled = true;
+        try {
+          if (await Notification.requestPermission() !== 'granted') throw new Error('Notifications weren’t allowed. Tap Allow when your phone asks.');
+          const reg = await navigator.serviceWorker.register('/office/sw.js', { scope: '/office/' });
+          await navigator.serviceWorker.ready;
+          const { key } = await get('push-key');
+          let s2 = await reg.pushManager.getSubscription();
+          if (s2) await s2.unsubscribe();
+          s2 = await reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: b64ToBytes(key) });
+          await api('push-subscribe', { subscription: s2.toJSON(), person: name });
+          await api('push-test', { endpoint: s2.endpoint }).catch(() => {});
+          compact = false; draw();
+        } catch (x) { btn.disabled = false; alert(x.message); }
+      };
+      put(sec, h('h2', {}, '🔔 Turn on phone notifications'),
+        h('p', { class: 'muted small', style: 'margin:0' }, 'Get a pop-up for phone messages, new applications, appointment reminders and the 8am summary. Whose phone is this?'),
+        h('div', { class: 'row' }, people.map((p) => h('button', { class: 'btn primary', onclick: (e) => turnOn(p.name, e.currentTarget) }, p.name))));
+    };
+    draw();
+    return sec;
   }
 
   // ---------- phone messages ----------
@@ -1086,6 +1149,7 @@ export function mountOffice(root, cfg) {
         h('button', { class: 'btn primary small', style: 'align-self:flex-start', onclick: async () => {
           try { me.settings = (await api('settings', { paymentTermsDays: terms.value, reminderDays: days.value, newsletterDailyLimit: nlLimit.value, tvhFeeVat: tvhVat.value, uvsFeeVat: uvsVat.value })).settings; ok('Settings saved'); } catch (e) { bad(e.message); }
         } }, 'Save')),
+      notifyCard(),
       diaryPeopleCard(ok, bad),
       h('section', { class: 'card stack', style: 'margin-top:16px' }, h('h2', {}, 'Import past applications'),
         h('p', { class: 'small', style: 'margin:0' }, 'Bring in applications sent through your website forms before the back office existed. Ones already here are skipped, so it’s safe to press more than once.'),

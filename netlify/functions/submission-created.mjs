@@ -15,7 +15,8 @@
 import nodemailer from 'nodemailer';
 import { connectLambda } from '@netlify/blobs';
 import settings from '../../content/settings.json' with { type: 'json' };
-import { officeStore, getRecord, saveRecord, recordFromSubmission, groupRef } from '../office/store.mjs';
+import { officeStore, secretStore, getRecord, saveRecord, recordFromSubmission, groupRef } from '../office/store.mjs';
+import { applicationAlert } from '../office/notify.mjs';
 import { ingestToken } from '../office/auth.mjs';
 
 const SITE = 'https://www.uvsuk.co.uk';
@@ -131,7 +132,8 @@ async function saveToOffice(event, data) {
     connectLambda(event);
     const store = officeStore(preview);
     const existing = await getRecord(store, groupRef(data.reference));
-    await saveRecord(store, recordFromSubmission(data, existing));
+    const saved = await saveRecord(store, recordFromSubmission(data, existing));
+    if (!existing && !preview) await applicationAlert((await secretStore().get('settings', { type: 'json' }))?.diaryPeople || [], saved);
     return;
   }
   // Only ever send to this site: a test copy's own address, or the live site
