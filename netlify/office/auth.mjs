@@ -25,10 +25,16 @@ const nice = (s) => s.charAt(0).toUpperCase() + s.slice(1).toLowerCase();
 export const passwordSet = () => String(process.env.OFFICE_PASSWORD || '').length >= 8;
 
 // People with their own password: [{ name: 'Raj', pw: '...' }]
+// Secret values on Netlify can't always be listed, only read by name, so the known names are
+// always asked for directly as well as any others that show up in the list.
+const KNOWN = ['RAJ', 'SUNITA'];
+const envGet = (k) => { try { const v = globalThis.Netlify?.env?.get?.(k); if (v) return v; } catch {} return process.env[k]; };
 function people() {
-  return Object.entries(process.env)
-    .filter(([k, v]) => /^OFFICE_PASSWORD_[A-Z]+$/.test(k) && String(v || '').length >= 8)
-    .map(([k, v]) => ({ name: nice(k.slice('OFFICE_PASSWORD_'.length)), pw: String(v) }))
+  const keys = new Set([...KNOWN.map((n) => `OFFICE_PASSWORD_${n}`), ...Object.keys(process.env).filter((k) => /^OFFICE_PASSWORD_[A-Z]+$/.test(k))]);
+  return [...keys]
+    .map((k) => [k, String(envGet(k) || '').trim()])
+    .filter(([, v]) => v.length >= 8)
+    .map(([k, v]) => ({ name: nice(k.slice('OFFICE_PASSWORD_'.length)), pw: v }))
     .sort((a, b) => a.name.localeCompare(b.name));
 }
 export const userNames = () => (passwordSet() ? people().map((p) => p.name) : []);
@@ -37,7 +43,7 @@ export const userNames = () => (passwordSet() ? people().map((p) => p.name) : []
 export function checkPassword(given, name) {
   if (!passwordSet()) return false;
   const p = name ? people().find((x) => x.name.toLowerCase() === String(name).toLowerCase()) : null;
-  if (p) return same(hash(given), hash(p.pw)) ? { user: p.name } : false;
+  if (p) return same(hash(String(given).trim()), hash(p.pw)) ? { user: p.name } : false;
   // Compare hashes so the comparison takes the same time whatever the length
   return same(hash(given), hash(process.env.OFFICE_PASSWORD)) ? { user: '' } : false;
 }
