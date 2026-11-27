@@ -233,12 +233,12 @@ export async function readPhoto(store, id) {
 }
 
 // ---------- phone messages ----------
-// Kept in 'messages' (not the diary). { id, for, name, phone, email, about, notes, at (date+time of the call), photo, by, done, doneAt, created }
+// Kept in 'messages' (not the diary) until deleted. { id, for, name, phone, email, about, notes, at (date+time of the call), photo, by, done, doneAt, created }
 export async function readMessages(store) { return (await store.get('messages', { type: 'json' })) || []; }
 async function saveMessages(store, list) {
-  const cutoff = new Date(Date.now() - 365 * 864e5).toISOString();
+  // Kept until someone deletes them
   list.sort((a, b) => String(b.at).localeCompare(String(a.at)));
-  await store.setJSON('messages', list.filter((m) => !m.done || (m.doneAt || '') > cutoff));
+  await store.setJSON('messages', list);
 }
 export async function saveMessage(store, input, people) {
   const photo = /^p[a-z0-9]{6,30}$/.test(String(input.photo || '')) ? String(input.photo) : '';

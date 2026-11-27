@@ -419,6 +419,16 @@ export function mountOffice(root, cfg) {
     return out;
   }
   const photoUrl = (id) => `/office/api/photo?id=${encodeURIComponent(id)}`;
+  // Full-size photo over the page (works inside the installed app, where new tabs can lose the sign-in)
+  function showPhoto(url) {
+    const close = () => { box.remove(); document.removeEventListener('keydown', esc); };
+    const esc = (e) => { if (e.key === 'Escape') close(); };
+    const box = h('div', { class: 'photo-view', role: 'dialog', 'aria-label': 'Photo', onclick: (e) => { if (e.target === box) close(); } },
+      h('img', { src: url, alt: 'Photo' }),
+      h('div', { class: 'row' }, h('a', { class: 'btn small', href: url, download: 'photo.jpg' }, 'Save photo'), h('button', { class: 'btn primary small', onclick: close }, 'Close')));
+    document.addEventListener('keydown', esc);
+    document.body.append(box);
+  }
   // Open to-dos in the order they were added (line 1 = the first one)
   const byDay = (a, b) => `${a.due} ${a.created || ''}`.localeCompare(`${b.due} ${b.created || ''}`);
   const openTodos = (d) => todoItems(d).filter((t) => !t.done && t.due <= localToday()).sort(byDay);
@@ -457,7 +467,7 @@ export function mountOffice(root, cfg) {
         h('div', {}, withLinks(t.title)),
         meta.length ? h('div', { class: 'small muted' }, meta.flatMap((x, i) => (i ? [' · ', x] : [x]))) : null,
         t.notes ? h('div', { class: 'small muted', style: 'white-space:pre-line' }, t.notes) : null),
-      t.photo ? h('a', { href: photoUrl(t.photo), target: '_blank', rel: 'noopener' }, h('img', { class: 'td-thumb', src: photoUrl(t.photo), alt: 'Photo', loading: 'lazy' })) : null,
+      t.photo ? h('a', { href: photoUrl(t.photo), onclick: (e) => { e.preventDefault(); e.stopPropagation(); showPhoto(photoUrl(t.photo)); } }, h('img', { class: 'td-thumb', src: photoUrl(t.photo), alt: 'Photo', loading: 'lazy' })) : null,
       t.kind === 'task' && !t.done ? moveBtn(t, opts) : null,
       t.kind === 'task' ? h('button', { class: 'td-x', 'aria-label': `Delete: ${t.title}`, onclick: async () => {
         if (!confirm(`Delete “${t.title}”?`)) return;
@@ -764,7 +774,7 @@ export function mountOffice(root, cfg) {
         m.about ? h('div', {}, withLinks(m.about)) : null,
         m.notes ? h('div', { class: 'small muted', style: 'white-space:pre-line' }, m.notes) : null,
         h('div', { class: 'small muted' }, [fmtWhen(m.at), m.email ? h('a', { href: `mailto:${m.email}` }, m.email) : null, m.done && m.doneAt ? `dealt with ${fmtDateTime(m.doneAt)}` : null].filter(Boolean).flatMap((x, i) => (i ? [' · ', x] : [x])))),
-      m.photo ? h('a', { href: photoUrl(m.photo), target: '_blank', rel: 'noopener' }, h('img', { class: 'td-thumb', src: photoUrl(m.photo), alt: 'Screenshot', loading: 'lazy' })) : null,
+      m.photo ? h('a', { href: photoUrl(m.photo), onclick: (e) => { e.preventDefault(); showPhoto(photoUrl(m.photo)); } }, h('img', { class: 'td-thumb', src: photoUrl(m.photo), alt: 'Screenshot', loading: 'lazy' })) : null,
       h('button', { class: 'td-x', 'aria-label': 'Delete message', onclick: async () => {
         if (!confirm(`Delete the message from ${m.name || 'this caller'}?`)) return;
         try { await api('message-delete', { id: m.id }); await countMsgs(); onChange(); } catch (e) { alert(e.message); }
@@ -823,7 +833,7 @@ export function mountOffice(root, cfg) {
 
     const shown = data.messages.filter((m) => !st.show || m.for === st.show || !m.for);
     const open = shown.filter((m) => !m.done);
-    const done = shown.filter((m) => m.done).sort((a, b) => String(b.doneAt).localeCompare(String(a.doneAt))).slice(0, 50);
+    const done = shown.filter((m) => m.done).sort((a, b) => String(b.doneAt).localeCompare(String(a.doneAt)));
     const pill = (on, label, click) => h('button', { type: 'button', class: 'pill small', 'aria-pressed': String(on), onclick: click }, label);
     frame('messages',
       h('div', { class: 'head' }, h('div', {}, h('h1', {}, 'Phone messages'), h('p', { class: 'muted' }, open.length ? `${open.length} waiting` : 'No messages waiting'))),

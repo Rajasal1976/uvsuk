@@ -54,31 +54,32 @@ export async function push(names, note) {
 }
 
 // Email the named people (or everyone with an address in Settings › Diary people)
-export async function email(people, names, subject, text) {
+export async function email(people, names, subject, text, attachments = []) {
   const user = process.env.ZOHO_SMTP_USER, pass = process.env.ZOHO_SMTP_PASS;
   const to = (people || []).filter((p) => p.email && (!names?.length || names.includes(p.name)));
   if (!user || !pass || !to.length) return { sent: 0 };
   const transport = nodemailer.createTransport({ host: process.env.ZOHO_SMTP_HOST || 'smtp.zoho.com', port: 465, secure: true, auth: { user, pass } });
   let sent = 0;
   for (const p of to) {
-    try { await transport.sendMail({ from: `"UVS back office" <${user}>`, to: p.email, subject, text: `${text}\n\nOpen the back office: ${SITE}/office/` }); sent++; }
+    try { await transport.sendMail({ from: `"UVS back office" <${user}>`, to: p.email, subject, text: `${text}\n\nOpen the back office: ${SITE}/office/`, attachments }); sent++; }
     catch (e) { console.error('Alert email failed:', e.message); }
   }
   return { sent };
 }
 
 // Both at once; never lets a failed alert break what the person was doing
-export async function alert(people, names, note, emailText) {
-  try { await Promise.all([push(names, note), emailText ? email(people, names, note.title, emailText) : null]); }
+export async function alert(people, names, note, emailText, attachments) {
+  try { await Promise.all([push(names, note), emailText ? email(people, names, note.title, emailText, attachments) : null]); }
   catch (e) { console.error('Alert failed:', e.message); }
 }
 
 // ---------- the alerts themselves ----------
-export function messageAlert(people, m) {
+export function messageAlert(people, m, photo) {
   const who = m.for ? [m.for] : [];
   const line = [m.name || 'Caller', m.phone].filter(Boolean).join(' · ');
   return alert(people, who, { title: `Phone message${m.for ? ` for ${m.for}` : ''}: ${m.name || m.phone || 'caller'}`, body: [line, m.about].filter(Boolean).join('\n'), url: '/office/#messages', tag: `msg-${m.id}` },
-    [`New phone message${m.for ? ` for ${m.for}` : ''}.`, '', `Caller: ${m.name || '–'}`, `Number: ${m.phone || '–'}`, m.email ? `Email: ${m.email}` : '', `Regarding: ${m.about || '–'}`, m.notes ? `Message: ${m.notes}` : '', `When: ${String(m.at || '').replace('T', ' ')}`, m.photo ? 'There’s a screenshot with it in the back office.' : ''].filter((l) => l !== '').join('\n'));
+    [`New phone message${m.for ? ` for ${m.for}` : ''}.`, '', `Caller: ${m.name || '–'}`, `Number: ${m.phone || '–'}`, m.email ? `Email: ${m.email}` : '', `Regarding: ${m.about || '–'}`, m.notes ? `Message: ${m.notes}` : '', `When: ${String(m.at || '').replace('T', ' ')}`, m.photo ? 'The screenshot is attached.' : ''].filter((l) => l !== '').join('\n'),
+    photo ? [{ filename: `screenshot.${photo.type.split('/')[1] === 'jpeg' ? 'jpg' : photo.type.split('/')[1]}`, content: Buffer.from(photo.bytes), contentType: photo.type }] : []);
 }
 
 export function applicationAlert(people, rec) {

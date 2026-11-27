@@ -186,7 +186,7 @@ export default async (req, context) => {
       case 'message-save': {
         const people = (await getSettings()).diaryPeople;
         const r = await saveMessage(store, body, people);
-        if (!body.id && !preview) await messageAlert(people, r.message);
+        if (!body.id && !preview) await messageAlert(people, r.message, r.message.photo ? await readPhoto(store, r.message.photo).catch(() => null) : null);
         return json(r);
       }
       case 'contacts': return json({ contacts: await readContacts(store) });
