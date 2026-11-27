@@ -45,25 +45,44 @@ export function mountOffice(root, cfg) {
   const get = (action) => api(action);
 
   // ---------- sign in ----------
-  function showLogin(message) {
+  async function showLogin(message) {
+    const turn = (showLogin.turn = (showLogin.turn || 0) + 1);
     root.innerHTML = '';
+    // People with their own password (Raj, Sunita). The last choice is remembered on this device.
+    const people = (await get('login-options').catch(() => ({}))).people || [];
+    if (turn !== showLogin.turn) return; // called again while waiting: only draw once
+    root.innerHTML = '';
+    let name = '';
+    try { name = localStorage.getItem('uvs-office-who') || ''; } catch {}
+    if (!people.includes(name)) name = people.length === 1 ? people[0] : '';
     const pw = h('input', { type: 'password', id: 'pw', autocomplete: 'current-password', required: true });
     const err = h('p', { class: 'msg err', hidden: !message, role: 'alert' }, message || '');
     const btn = h('button', { class: 'btn primary', type: 'submit' }, 'Sign in');
+    const whoBox = h('div', { class: 'pills', role: 'group', 'aria-label': 'Who are you?' });
+    const drawWho = () => put(whoBox, people.map((p) => h('button', { type: 'button', class: 'pill', 'aria-pressed': String(name === p), onclick: () => { name = p; drawWho(); pw.focus(); } }, p)));
+    if (people.length) drawWho();
     const form = h('form', { class: 'card login stack', onsubmit: async (e) => {
-      e.preventDefault(); btn.disabled = true; err.hidden = true;
-      try { await api('login', { password: pw.value }); await start(); }
+      e.preventDefault();
+      if (people.length && !name) { err.textContent = 'Tap your name first.'; err.hidden = false; return; }
+      btn.disabled = true; err.hidden = true;
+      try { await api('login', { password: pw.value, name }); try { localStorage.setItem('uvs-office-who', name); } catch {} await start(); }
       catch (ex) { err.textContent = ex.message; err.hidden = false; btn.disabled = false; pw.select(); }
     } },
     h('div', { class: 'of-brand', style: 'color:var(--green)' }, h('span', {}, 'UVS'), 'Back office'),
-    h('label', { class: 'f', for: 'pw' }, 'Password', pw), err, btn);
+    people.length ? h('div', { class: 'stack', style: 'gap:6px' }, h('span', { class: 'small', style: 'font-weight:600;color:var(--muted)' }, 'Who are you?'), whoBox) : null,
+    h('label', { class: 'f', for: 'pw' }, people.length ? 'Your password' : 'Password', pw), err, btn);
     root.append(form);
-    pw.focus();
+    if (!people.length || name) pw.focus();
   }
+
+  let unreadMail = 0; // emails not opened yet, across this person's mailboxes
+  const showMailBadge = () => { const b = root.querySelector('.of-nav .mail-badge'); if (b) { b.textContent = unreadMail; b.hidden = !unreadMail; } };
+  const countMail = async () => { if (!me?.user) return; try { const d = await get('mail'); unreadMail = d.accounts.reduce((n, a) => n + (a.unread || 0), 0); showMailBadge(); } catch {} };
 
   async function start() {
     try { me = await get('me'); } catch (e) { if (!me) return showLogin(); }
-    await Promise.all([loadApps(), countMsgs()]);
+    await Promise.all([loadApps(), countMsgs(), countMail()]);
+    if (!start.timer) start.timer = setInterval(() => { if (document.visibilityState === 'visible') countMail(); }, 120000);
     if (!started) { window.addEventListener('hashchange', route); started = true; }
     route();
   }
@@ -76,7 +95,7 @@ export function mountOffice(root, cfg) {
     root.append(
       h('header', { class: 'of-top' },
         h('div', { class: 'of-brand' }, h('span', {}, 'UVS'), 'Back office'),
-        h('nav', { class: 'of-nav', 'aria-label': 'Back office' }, link('home', 'Home'), link('apps', 'Applications'), link('diary', 'Diary'), link('todo', 'To do'), h('a', { href: '#messages', 'aria-current': current === 'messages' ? 'page' : false }, 'Messages ', h('span', { class: 'badge', hidden: !openMsgs }, String(openMsgs))), link('clients', 'Clients'), link('contacts', 'Address book'), link('newsletter', 'Newsletter'), link('new', '+ New record'), link('settings', 'Settings'), h('a', { href: '/admin/' }, 'Edit website ↗'))),
+        h('nav', { class: 'of-nav', 'aria-label': 'Back office' }, link('home', 'Home'), link('apps', 'Applications'), link('diary', 'Diary'), link('todo', 'To do'), me?.user ? h('a', { href: '#mail', 'aria-current': current === 'mail' ? 'page' : false }, 'Email ', h('span', { class: 'badge mail-badge', hidden: !unreadMail }, String(unreadMail))) : null, h('a', { href: '#messages', 'aria-current': current === 'messages' ? 'page' : false }, 'Messages ', h('span', { class: 'badge', hidden: !openMsgs }, String(openMsgs))), link('clients', 'Clients'), link('contacts', 'Address book'), link('newsletter', 'Newsletter'), link('new', '+ New record'), link('settings', 'Settings'), h('a', { href: '/admin/' }, 'Edit website ↗'))),
       h('main', { class: 'of-main' },
         me?.preview ? h('p', { class: 'of-banner' }, h('strong', {}, 'Test copy. '), 'You’re on a preview of the site, so the records here are test records, kept apart from your real ones. Invoices made here still go to your real FreeAgent and Wave, so delete any test invoices there.') : null,
         ...content));
@@ -86,7 +105,7 @@ export function mountOffice(root, cfg) {
   function route() {
     const [view, ...rest] = (location.hash.slice(1) || 'home').split('/');
     const arg = decodeURIComponent(rest.join('/'));
-    ({ home, apps: appsView, clients, client: () => clientView(arg), app: () => recordView(arg), new: newRecord, newsletter, settings, diary: () => diaryView(arg), todo: () => todoView(arg), messages: messagesView, contacts: contactsView }[view] || home)();
+    ({ home, apps: appsView, clients, client: () => clientView(arg), app: () => recordView(arg), new: newRecord, newsletter, settings, diary: () => diaryView(arg), todo: () => todoView(arg), messages: messagesView, contacts: contactsView, mail: () => mailView(arg) }[view] || home)();
   }
   const go = (hash) => { if (location.hash === `#${hash}`) route(); else location.hash = hash; };
 
@@ -541,7 +560,7 @@ export function mountOffice(root, cfg) {
         if (compact) return sec.remove();
         return put(sec, h('h2', {}, 'Phone notifications'),
           h('p', { style: 'margin:0' }, '✅ On for ', h('strong', {}, person || 'everyone'), ' on this device.'),
-          h('p', { class: 'muted small', style: 'margin:0' }, 'You’ll get phone messages, new applications, appointment reminders (30 minutes before) and the 8am summary.'),
+          h('p', { class: 'muted small', style: 'margin:0' }, 'You’ll get new emails, phone messages, new applications, appointment reminders (30 minutes before) and the 8am summary.'),
           h('div', { class: 'row' },
             h('button', { class: 'btn small', onclick: async (e) => { e.currentTarget.disabled = true; try { const r = await api('push-test', { endpoint: sub.endpoint }); alert(r.sent ? 'Test sent. It should pop up in a few seconds.' : 'Nothing was sent. Try turning notifications off and on again.'); } catch (x) { alert(x.message); } e.currentTarget.disabled = false; } }, 'Send a test'),
             h('button', { class: 'btn link small', onclick: async () => { await api('push-unsubscribe', { endpoint: sub.endpoint }).catch(() => {}); await sub.unsubscribe().catch(() => {}); draw(); } }, 'Turn off on this device')));
@@ -566,7 +585,7 @@ export function mountOffice(root, cfg) {
         } catch (x) { btn.disabled = false; alert(x.message); }
       };
       put(sec, h('h2', {}, '🔔 Turn on phone notifications'),
-        h('p', { class: 'muted small', style: 'margin:0' }, 'Get a pop-up for phone messages, new applications, appointment reminders and the 8am summary. Whose phone is this?'),
+        h('p', { class: 'muted small', style: 'margin:0' }, 'Get a pop-up for new emails, phone messages, new applications, appointment reminders and the 8am summary. Whose phone is this?'),
         h('div', { class: 'row' }, people.map((p) => h('button', { class: 'btn primary', onclick: (e) => turnOn(p.name, e.currentTarget) }, p.name))));
     };
     draw();
@@ -882,6 +901,7 @@ export function mountOffice(root, cfg) {
     const more = contactFields(client ? { clientName: titleCase(client.name), clientPhone: client.phone || '', clientEmail: client.email || '' } : {});
     const moreBox = h('div', { hidden: !client }, more.box);
     const moreBtn = h('button', { type: 'button', class: 'btn link small', style: 'align-self:flex-start', hidden: !!client, onclick: () => { moreBox.hidden = false; moreBtn.hidden = true; } }, '+ Phone, email, note');
+    if (todoView.prefill) { const f = todoView.prefill; todoView.prefill = null; text.value = f.text || ''; if (!client) { more.set({ clientName: f.name || '', clientEmail: f.email || '' }); moreBox.hidden = false; moreBtn.hidden = true; } setTimeout(() => text.focus(), 0); }
     const showPending = () => put(pending, photo ? h('div', { class: 'td-pending' }, h('img', { src: photo, alt: '' }), 'Photo ready. Type a note if you like, then press Add.', h('button', { type: 'button', class: 'btn link small', onclick: () => { photo = null; showPending(); } }, 'Remove')) : null);
     const showLinked = () => put(linked, client ? h('p', { class: 'small muted', style: 'margin:0' }, 'For ', h('a', { href: `#app/${encodeURIComponent(client.ref)}` }, titleCase(client.name)), ' ', h('button', { type: 'button', class: 'btn link small', onclick: () => { client = null; more.set({}); showLinked(); } }, 'Not for this client')) : null);
     file.addEventListener('change', async () => {
@@ -1295,6 +1315,223 @@ export function mountOffice(root, cfg) {
   }
 
   // ---------- settings ----------
+  // ---------- email ----------
+  // Each person sees their own mailboxes plus the shared ones (hello@). Emails stay in Zoho:
+  // the list comes from a quick saved copy first, then fresh from Zoho a moment later.
+  const shortBox = (a) => (a ? a.email.split('@')[0] + '@' : '');
+  const mailDate = (iso) => { if (!iso) return ''; const d = new Date(iso); return d.toDateString() === new Date().toDateString() ? d.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }) : d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' }); };
+  const fmtSize = (n) => (n > 1048576 ? `${(n / 1048576).toFixed(1)} MB` : `${Math.max(1, Math.round(n / 1024))} KB`);
+  const byTag = (by) => !by ? null : by.replied ? h('span', { class: 'tag' }, `↩ Replied by ${by.replied}`) : by.opened ? h('span', { class: 'tag draft' }, `Opened by ${by.opened}`) : null;
+  const clientByEmail = (email) => email ? apps.find((a) => String(a.email || '').toLowerCase() === email) : null;
+  const fileToB64 = (f) => new Promise((res, rej) => { const r = new FileReader(); r.onload = () => res(String(r.result).split(',')[1] || ''); r.onerror = () => rej(new Error(`Couldn’t read ${f.name}`)); r.readAsDataURL(f); });
+
+  function mailNoAccess() {
+    return h('section', { class: 'card stack' }, h('h2', {}, 'Email is private to each of you'),
+      me.people?.length
+        ? h('p', { style: 'margin:0' }, 'You’re signed in with the shared password, so email is hidden. Sign out and sign in with your own name and password to see your mailboxes.')
+        : h('p', { style: 'margin:0' }, 'Set up your own passwords first: in Netlify › Site configuration › Environment variables, add OFFICE_PASSWORD_RAJ and OFFICE_PASSWORD_SUNITA (at least 8 characters each, tick “Contains secret values”), redeploy, then sign in with your name.'),
+      h('button', { class: 'btn small', style: 'align-self:flex-start', onclick: async () => { await api('logout', {}); showLogin(); } }, 'Sign out'));
+  }
+
+  async function mailView(arg) {
+    if (!me.user) return frame('mail', h('h1', {}, 'Email'), mailNoAccess());
+    const [first, second] = String(arg || '').split('/');
+    if (first === 'new') return mailCompose({});
+    if (first && second) return mailMessage(first, Number(second));
+    let filter = first || mailView.filter || '';
+    const listBox = h('div', {}, h('p', { class: 'muted' }, 'Loading…'));
+    const pills = h('div', { class: 'pills', style: 'margin-bottom:12px' });
+    const status = h('span', { class: 'small muted' });
+    const problems = h('div');
+    let data = null;
+    const draw = () => {
+      const accs = data.accounts;
+      if (!accs.length) {
+        put(pills); put(problems);
+        return put(listBox, h('section', { class: 'card stack' }, h('h2', {}, 'Add your mailboxes'), h('p', { style: 'margin:0' }, 'Go to Settings › Your email accounts and add each Zoho mailbox once. Then all your emails show up here.'), h('a', { class: 'btn primary small', href: '#settings', style: 'align-self:flex-start' }, 'Go to Settings')));
+      }
+      if (filter && !accs.some((a) => a.id === filter)) filter = '';
+      const total = accs.reduce((n, a) => n + a.unread, 0);
+      unreadMail = total; showMailBadge();
+      const pill = (id, label, n, color) => h('button', { type: 'button', class: 'pill small', 'aria-pressed': String(filter === id), onclick: () => { filter = id; mailView.filter = id; history.replaceState(null, '', id ? `#mail/${id}` : '#mail'); draw(); } },
+        color ? h('span', { class: 'dot', style: `background:${color}` }) : null, label, n ? h('span', { class: 'badge', style: 'margin-left:6px' }, String(n)) : null);
+      put(pills, pill('', 'All', total), accs.map((a) => pill(a.id, `${shortBox(a)}${a.owner === 'shared' ? ' (shared)' : ''}`, a.unread, a.color)));
+      put(problems, accs.filter((a) => a.problem || a.error).map((a) => h('p', { class: 'of-banner' }, h('strong', {}, `${a.email}: `), a.error || a.problem)));
+      const accById = Object.fromEntries(accs.map((a) => [a.id, a]));
+      const list = data.messages.filter((m) => !filter || m.acc === filter);
+      if (!list.length) return put(listBox, h('p', { class: 'muted' }, 'No emails in this inbox.'));
+      put(listBox, h('ul', { class: 'mail-list card' }, list.slice(0, 150).map((m) => {
+        const a = accById[m.acc];
+        const open = () => go(`mail/${m.acc}/${m.uid}`);
+        return h('li', { class: `mail-row${m.seen ? '' : ' unread'}`, tabindex: '0', onclick: open, onkeydown: (e) => { if (e.key === 'Enter') open(); }, style: `border-left-color:${a?.color || 'var(--line)'}` },
+          h('div', { class: 'mail-top' }, h('span', { class: 'mail-from' }, m.fromName || m.from || 'Unknown'), h('span', { class: 'mail-date' }, m.attach ? '📎 ' : '', mailDate(m.date))),
+          h('div', { class: 'mail-subj' }, m.subject),
+          h('div', { class: 'mail-meta' }, h('span', { class: 'small muted' }, shortBox(a)), m.answered && !m.by?.replied ? h('span', { class: 'tag' }, '↩ Replied') : null, byTag(m.by), clientByEmail(m.from) ? h('span', { class: 'tag new' }, 'Client') : null));
+      })));
+    };
+    const load = async (fresh) => {
+      put(status, fresh ? 'Checking Zoho…' : '');
+      try { data = await get(`mail${fresh ? '?fresh=1' : ''}`); draw(); put(status, fresh ? `Up to date · ${new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}` : ''); }
+      catch (e) { if (!data) put(listBox, h('p', { class: 'msg err' }, e.message)); put(status, e.message); }
+    };
+    frame('mail',
+      h('div', { class: 'head' }, h('div', {}, h('h1', {}, 'Email'), status),
+        h('div', { class: 'row' }, h('button', { class: 'btn small', onclick: () => load(true) }, '↻ Check now'), h('a', { class: 'btn primary small', href: '#mail/new' }, '✏️ New email'))),
+      problems, pills, listBox);
+    await load(false);
+    load(true);
+  }
+
+  async function mailMessage(acc, uid) {
+    frame('mail', h('p', { class: 'muted' }, 'Opening…'));
+    let m;
+    try { m = (await get(`mail-read?acc=${encodeURIComponent(acc)}&uid=${uid}`)).message; }
+    catch (e) { return frame('mail', h('p', {}, h('a', { href: '#mail' }, '← Back to email')), h('p', { class: 'msg err' }, e.message)); }
+    countMail();
+    const msg = h('div', { role: 'status', 'aria-live': 'polite' });
+    const client = clientByEmail(m.from.email) || clientByEmail(m.replyTo?.email);
+    const who = (x) => (x.name ? `${x.name} <${x.email}>` : x.email);
+    const fileUrl = (x, view) => `/office/api/mail-file?acc=${encodeURIComponent(acc)}&uid=${uid}&n=${x.n}${view ? '&view=1' : ''}`;
+    // The email is shown in a locked-down frame: no scripts, links open in a new tab
+    let body;
+    if (m.html) {
+      const doc = `<!doctype html><html><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src https: data:; style-src 'unsafe-inline'; font-src https: data:"><base target="_blank"><style>body{font-family:system-ui,sans-serif;font-size:15px;line-height:1.45;color:#1F2A24;margin:12px;word-wrap:break-word}img{max-width:100%;height:auto}</style></head><body>${m.html}</body></html>`;
+      body = h('iframe', { class: 'mail-frame', sandbox: 'allow-popups allow-popups-to-escape-sandbox', title: 'Email', srcdoc: doc, referrerpolicy: 'no-referrer' });
+    } else body = h('div', { class: 'mail-text' }, m.text || '(This email is empty.)');
+    const files = m.attachments.filter((x) => !x.inline || !m.html);
+    const quoteText = () => {
+      const src = m.text || (m.html ? new DOMParser().parseFromString(m.html, 'text/html').body.innerText : '');
+      const head = `On ${new Date(m.date || Date.now()).toLocaleString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' })}, ${who(m.from)} wrote:`;
+      return `${head}\n${String(src).trim().split('\n').slice(0, 400).map((l) => `> ${l}`).join('\n')}`;
+    };
+    const reply = (all) => {
+      const to = m.replyTo?.email || m.from.email;
+      const mine = new Set([m.acc.email]);
+      const cc = all ? [...m.to, ...m.cc].map((x) => x.email).filter((e) => e !== to && !mine.has(e)) : [];
+      mailCompose({ acc: m.acc.id, to, cc: [...new Set(cc)].join(', '), subject: /^re:/i.test(m.subject) ? m.subject : `Re: ${m.subject}`, replyUid: uid, inReplyTo: m.messageId, references: m.references, quote: quoteText(), back: `mail/${acc}/${uid}`, about: m });
+    };
+    const forward = () => mailCompose({ acc: m.acc.id, to: '', subject: /^fwd?:/i.test(m.subject) ? m.subject : `Fwd: ${m.subject}`, forwardUid: files.length ? uid : 0, forwardFiles: files, quote: `---------- Forwarded message ----------\nFrom: ${who(m.from)}\nDate: ${new Date(m.date || Date.now()).toLocaleString('en-GB')}\nSubject: ${m.subject}\nTo: ${m.to.map(who).join(', ')}\n\n${(m.text || (m.html ? new DOMParser().parseFromString(m.html, 'text/html').body.innerText : '')).trim()}`, back: `mail/${acc}/${uid}`, about: m, forward: true });
+    frame('mail',
+      h('p', {}, h('a', { href: mailView.filter ? `#mail/${mailView.filter}` : '#mail' }, '← Back to email')),
+      h('section', { class: 'card stack' },
+        h('div', {}, h('h1', { style: 'font-size:20px' }, m.subject),
+          h('div', { class: 'row small', style: 'gap:6px;margin-top:6px' }, h('span', { class: 'dot', style: `background:${m.acc.color}` }), h('span', { class: 'muted' }, `To ${m.acc.email}${m.acc.owner === 'shared' ? ' (shared)' : ''}`), byTag(m.by), m.answered && !m.by?.replied ? h('span', { class: 'tag' }, '↩ Replied') : null)),
+        h('div', { class: 'small', style: 'line-height:1.6' },
+          h('div', {}, h('strong', {}, m.from.name || m.from.email), m.from.name ? h('span', { class: 'muted' }, ` <${m.from.email}>`) : null),
+          m.to.length ? h('div', { class: 'muted' }, 'To: ', m.to.map(who).join(', ')) : null,
+          m.cc.length ? h('div', { class: 'muted' }, 'Cc: ', m.cc.map(who).join(', ')) : null,
+          h('div', { class: 'muted' }, fmtDateTime(m.date)),
+          client ? h('div', {}, '👤 Client: ', h('a', { href: `#app/${encodeURIComponent(client.ref)}` }, titleCase(client.name) || client.ref), client.formTitle ? h('span', { class: 'muted' }, ` · ${client.formTitle}`) : null) : null),
+        h('div', { class: 'row' },
+          h('button', { class: 'btn primary small', onclick: () => reply(false) }, '↩ Reply'),
+          m.to.length + m.cc.length > 1 ? h('button', { class: 'btn small', onclick: () => reply(true) }, 'Reply all') : null,
+          h('button', { class: 'btn small', onclick: forward }, 'Forward'),
+          h('button', { class: 'btn small', onclick: () => { todoView.prefill = { text: `Email from ${m.from.name || m.from.email}: ${m.subject}`.slice(0, 200), name: m.from.name, email: m.from.email }; go(client ? `todo/${client.ref}` : 'todo'); } }, '+ To do'),
+          h('button', { class: 'btn small', onclick: async (e) => { e.currentTarget.disabled = true; try { await api('mail-seen', { acc, uid, seen: false }); go(mailView.filter ? `mail/${mailView.filter}` : 'mail'); } catch (x) { put(msg, h('p', { class: 'msg err' }, x.message)); } } }, 'Mark unread'),
+          h('button', { class: 'btn small', onclick: async (e) => { if (!confirm('Move this email to the Trash folder in Zoho? You can get it back from there.')) return; e.currentTarget.disabled = true; try { await api('mail-trash', { acc, uid }); go(mailView.filter ? `mail/${mailView.filter}` : 'mail'); } catch (x) { put(msg, h('p', { class: 'msg err' }, x.message)); } } }, '🗑 Delete')),
+        msg,
+        files.length ? h('div', { class: 'rows' }, files.map((x) => h('span', { class: 'chip', style: 'cursor:default' }, h('b', {}, `📎 ${x.name}`), fmtSize(x.size), ' · ',
+          /^(image\/(png|jpe?g|gif|webp)|application\/pdf)$/i.test(x.type) ? [h('a', { href: fileUrl(x, true), target: '_blank', rel: 'noopener' }, 'View'), ' · '] : null,
+          h('a', { href: fileUrl(x, false) }, 'Download')))) : null,
+        body));
+  }
+
+  // New email, reply or forward. o: { acc, to, cc, subject, replyUid, inReplyTo, references, quote, forwardUid, forwardFiles, back, about }
+  async function mailCompose(o) {
+    let accounts = [];
+    try { accounts = (await get('mail-accounts')).accounts; } catch (e) { return frame('mail', h('p', { class: 'msg err' }, e.message)); }
+    if (!accounts.length) return go('mail');
+    const back = o.back || 'mail';
+    const msg = h('div', { role: 'status', 'aria-live': 'polite' });
+    const from = h('select', { disabled: !!o.replyUid }, accounts.map((a) => h('option', { value: a.id, selected: a.id === (o.acc || mailView.filter) }, `${a.email}${a.owner === 'shared' ? ' (shared)' : ''}`)));
+    const to = h('input', { type: 'text', value: o.to || '', autocomplete: 'off', inputmode: 'email', placeholder: 'name@example.com' });
+    const cc = h('input', { type: 'text', value: o.cc || '', autocomplete: 'off', inputmode: 'email', placeholder: 'Optional' });
+    const subject = h('input', { type: 'text', value: o.subject || '' });
+    const text = h('textarea', { rows: '10', style: 'min-height:220px', placeholder: 'Write your message…' });
+    const files = h('input', { type: 'file', multiple: true });
+    const sigNote = h('p', { class: 'small muted', style: 'margin:0' });
+    const showSig = () => { const a = accounts.find((x) => x.id === from.value); put(sigNote, a?.signature ? `Your signature for ${a.email} is added at the end.` : h('span', {}, 'No signature for this mailbox yet. ', h('a', { href: '#settings' }, 'Add one in Settings'))); };
+    from.addEventListener('change', showSig); showSig();
+    const sendBtn = h('button', { class: 'btn primary', type: 'submit' }, 'Send');
+    const form = h('form', { class: 'card stack', onsubmit: async (e) => {
+      e.preventDefault(); sendBtn.disabled = true; put(msg, h('p', { class: 'msg ok' }, 'Sending…'));
+      try {
+        const attachments = [];
+        for (const f of files.files) { if (f.size > 4.3 * 1048576) throw new Error(`${f.name} is too big (over 4 MB).`); attachments.push({ name: f.name, type: f.type, data: await fileToB64(f) }); }
+        const r = await api('mail-send', { acc: from.value, to: to.value, cc: cc.value, subject: subject.value, text: text.value, replyUid: o.replyUid || 0, inReplyTo: o.inReplyTo || '', references: o.references || [], quote: o.quote || '', forwardUid: o.forwardUid || 0, forwardFrom: o.forwardUid ? o.acc : '', attachments });
+        put(msg, h('p', { class: 'msg ok' }, `Sent from ${r.from} to ${r.to.join(', ')}.`));
+        setTimeout(() => go(back), 900);
+      } catch (x) { put(msg, h('p', { class: 'msg err' }, x.message)); sendBtn.disabled = false; }
+    } },
+      h('label', { class: 'f' }, 'From', from), sigNote,
+      h('div', { class: 'fields' }, h('label', { class: 'f' }, 'To', to), h('label', { class: 'f' }, 'Cc', cc)),
+      h('label', { class: 'f' }, 'Subject', subject),
+      h('label', { class: 'f' }, 'Message', text),
+      o.forwardFiles?.length ? h('p', { class: 'small muted', style: 'margin:0' }, `The original attachments go with it: ${o.forwardFiles.map((x) => x.name).join(', ')}.`) : null,
+      h('label', { class: 'f' }, 'Attach files (up to about 4 MB in total)', files),
+      o.quote ? h('details', {}, h('summary', { class: 'small muted' }, o.forward ? 'Forwarded email (included)' : 'Their email (included below your reply)'), h('div', { class: 'mail-text small muted' }, o.quote)) : null,
+      msg,
+      h('div', { class: 'row' }, sendBtn, h('a', { class: 'btn', href: `#${back}`, onclick: (e) => { if (text.value.trim() && !confirm('Discard this email?')) e.preventDefault(); else if (location.hash === `#${back}`) { e.preventDefault(); route(); } } }, 'Cancel')));
+    frame('mail', h('p', {}, h('a', { href: `#${back}` }, '← Back')), h('h1', { style: 'margin-bottom:14px' }, o.replyUid ? 'Reply' : o.forward ? 'Forward' : 'New email'), form);
+    (o.to ? text : to).focus();
+  }
+
+  // Settings › Your email accounts
+  function mailSettingsCard() {
+    const sec = h('section', { class: 'card stack', style: 'margin-bottom:16px' }, h('h2', {}, '✉️ Your email accounts'));
+    if (!me.user) { sec.append(mailNoAccess()); return sec; }
+    const msg = h('div', { role: 'status', 'aria-live': 'polite' });
+    const listBox = h('div', { class: 'stack' });
+    const draw = async () => {
+      let d;
+      try { d = await get('mail-accounts'); } catch (e) { return put(listBox, h('p', { class: 'msg err' }, e.message)); }
+      const email = h('input', { type: 'email', placeholder: 'The full email address', autocomplete: 'off' });
+      const pass = h('input', { type: 'password', placeholder: 'Paste the app password from Zoho', autocomplete: 'new-password' });
+      const name = h('input', { type: 'text', value: 'Unique Visa Services' });
+      const shared = h('input', { type: 'checkbox' });
+      const addBtn = h('button', { class: 'btn primary small', type: 'submit' }, 'Add mailbox');
+      put(listBox,
+        d.accounts.length ? h('ul', { class: 'list' }, d.accounts.map((a) => {
+          const nm = h('input', { type: 'text', value: a.name });
+          const sig = h('textarea', { rows: '3', placeholder: `e.g.\n${me.user}\nUnique Visa Services` }, a.signature);
+          const sh = h('input', { type: 'checkbox', checked: a.owner === 'shared' });
+          const edit = h('div', { class: 'stack', hidden: true, style: 'margin-top:10px' },
+            h('label', { class: 'f' }, 'Name clients see', nm), h('label', { class: 'f' }, 'Signature (added to the end of every email)', sig),
+            h('label', { class: 'row small' }, sh, 'Shared with everyone (like hello@)'),
+            h('div', { class: 'row' },
+              h('button', { class: 'btn small primary', onclick: async () => { try { await api('mail-account-update', { id: a.id, name: nm.value, signature: sig.value, shared: sh.checked }); put(msg, h('p', { class: 'msg ok' }, 'Saved.')); draw(); } catch (x) { put(msg, h('p', { class: 'msg err' }, x.message)); } } }, 'Save'),
+              h('button', { class: 'btn small', onclick: async () => { if (!confirm(`Remove ${a.email} from the back office? Nothing is deleted in Zoho.`)) return; try { await api('mail-account-remove', { id: a.id }); draw(); } catch (x) { put(msg, h('p', { class: 'msg err' }, x.message)); } } }, 'Remove')));
+          return h('li', {}, h('div', { class: 'row', style: 'justify-content:space-between' },
+            h('span', { class: 'row', style: 'gap:8px' }, h('span', { class: 'dot', style: `background:${a.color}` }), h('strong', {}, a.email), h('span', { class: 'tag draft' }, a.owner === 'shared' ? 'Shared' : `Only ${a.owner}`)),
+            h('button', { class: 'btn link small', onclick: () => { edit.hidden = !edit.hidden; } }, 'Edit')),
+            a.error ? h('p', { class: 'msg err small', style: 'margin:6px 0 0' }, a.error) : null, edit);
+        })) : h('p', { class: 'muted small', style: 'margin:0' }, 'No mailboxes yet.'),
+        h('form', { class: 'box stack', onsubmit: async (e) => {
+          e.preventDefault(); addBtn.disabled = true; put(msg, h('p', { class: 'msg ok' }, 'Connecting to Zoho… (this takes a few seconds)'));
+          try { const r = await api('mail-account-add', { email: email.value, pass: pass.value, name: name.value, shared: shared.checked }); put(msg, h('p', { class: 'msg ok' }, `${r.account.email} is connected.`)); draw(); countMail(); }
+          catch (x) { put(msg, h('p', { class: 'msg err' }, x.message)); addBtn.disabled = false; }
+        } },
+          h('h3', { style: 'margin:0' }, 'Add a mailbox'),
+          h('div', { class: 'fields' }, h('label', { class: 'f' }, 'Email address', email), h('label', { class: 'f' }, 'Zoho app password', pass), h('label', { class: 'f' }, 'Name clients see', name)),
+          h('label', { class: 'row small' }, shared, 'Shared with everyone (tick this for hello@)'),
+          h('details', { class: 'small' }, h('summary', {}, 'How to get an app password from Zoho'),
+            h('ol', { style: 'margin:8px 0 0;padding-left:20px;line-height:1.6' },
+              h('li', {}, 'Sign in to Zoho Mail on a computer as that mailbox.'),
+              h('li', {}, 'Check IMAP is on: Settings (gear) › Mail Accounts › IMAP › tick IMAP Access.'),
+              h('li', {}, 'Go to accounts.zoho.com › Security › App Passwords › Generate New Password. Call it “UVS back office”.'),
+              h('li', {}, 'Copy the password Zoho shows and paste it here. Your normal Zoho password stays private and keeps working.'))),
+          addBtn),
+        h('p', { class: 'small muted', style: 'margin:0' }, `Only you can see mailboxes you add, unless you tick “Shared”. New emails pop up on your phone within about 3 minutes (7am–10pm), if phone notifications are on for ${me.user} below.`),
+        d.hook ? h('details', { class: 'small' }, h('summary', { class: 'muted' }, 'Optional: instant notifications from Zoho'),
+          h('p', {}, 'For a pop-up the moment an email lands (instead of within 3 minutes), in Zoho Mail go to Settings › Developer Space › Outgoing Webhooks, add one for new incoming emails, and paste this address as the URL:'),
+          h('input', { type: 'text', readonly: true, value: d.hook, onclick: (e) => e.target.select() }),
+          h('p', { class: 'muted' }, 'Keep this address private.')) : null);
+    };
+    sec.append(msg, listBox);
+    draw();
+    return sec;
+  }
+
   function settings() {
     const s = me.settings;
     const msg = h('div', { role: 'status', 'aria-live': 'polite' });
@@ -1330,8 +1567,9 @@ export function mountOffice(root, cfg) {
       } catch (e) { put(waveBox, h('p', { class: 'msg err small' }, e.message)); }
     };
     frame('settings',
-      h('div', { class: 'head' }, h('h1', {}, 'Settings'), h('button', { class: 'btn', onclick: async () => { await api('logout', {}); showLogin('You’ve signed out.'); } }, 'Sign out')),
+      h('div', { class: 'head' }, h('div', {}, h('h1', {}, 'Settings'), h('p', { class: 'muted small', style: 'margin:0' }, me.user ? `Signed in as ${me.user}.` : 'Signed in with the shared password.')), h('button', { class: 'btn', onclick: async () => { await api('logout', {}); showLogin('You’ve signed out.'); } }, 'Sign out')),
       msg,
+      mailSettingsCard(),
       h('div', { class: 'grid' }, connCard('freeagent', 'FreeAgent', 'Travel Visa Help'), connCard('wave', 'Wave', 'Unique Visa Services')),
       me.connections.wave.connected ? h('section', { class: 'card stack', style: 'margin-top:16px' }, h('h2', {}, 'Wave invoice lines'), waveBox) : null,
       h('section', { class: 'card stack', style: 'margin-top:16px' }, h('h2', {}, 'Invoices and reminders'),

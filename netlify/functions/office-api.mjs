@@ -4,7 +4,8 @@ import nodemailer from 'nodemailer';
 import { publicKey, subscribe, unsubscribe, whoIs, push, messageAlert, applicationAlert } from '../office/notify.mjs';
 import settingsJson from '../../content/settings.json' with { type: 'json' };
 import { officeStore, secretStore, readIndex, getRecord, saveRecord, rebuildIndex, applyPatch, manualRecord, STATUSES, recordFromSubmission, groupRef, dataFromOldSubmission } from '../office/store.mjs';
-import { checkPassword, passwordSet, sessionCookie, clearCookie, signedIn, tooManyTries, ingestAllowed } from '../office/auth.mjs';
+import { checkPassword, passwordSet, sessionCookie, clearCookie, session, tooManyTries, ingestAllowed, userNames, mailHookToken } from '../office/auth.mjs';
+import { accountsFor, addAccount, updateAccount, removeAccount, inbox, readMessage, attachment, setSeen, trash, send as sendMail } from '../office/mail.mjs';
 import { readList, addSubscribers, setStatus as setSubStatus, removeSubscriber, parseContacts, readCampaigns, createCampaign, sendBatch, sendTest, summary as campaignSummary, validEmail } from '../office/newsletter.mjs';
 import { readDiary, book, change as changeAppt, cancel as cancelAppt, TYPES as APPT_TYPES, CLIENT_TYPES, readTasks, saveTask, setTaskDone, deleteTask, savePhoto, readPhoto, readMessages, saveMessage, setMessageDone, deleteMessage } from '../office/diary.mjs';
 import { COMPANIES, validateInvoice, createInvoice, connection, keysSet, waveCatalogue, disconnect, faAllContacts, waveAllCustomers } from '../office/accounts.mjs';
@@ -32,10 +33,13 @@ export default async (req, context) => {
     if (!passwordSet()) return fail('The back office password hasn’t been set yet. Add OFFICE_PASSWORD (at least 8 characters) in Netlify › Site configuration › Environment variables, then redeploy.', 503);
     const guard = await tooManyTries(store, context?.ip || req.headers.get('x-nf-client-connection-ip') || 'unknown');
     if (guard.locked) return fail('Too many wrong passwords. Please wait 15 minutes and try again.', 429);
-    if (!checkPassword(body.password)) { await guard.fail(); return fail('That password isn’t right.', 401); }
+    const ok = checkPassword(body.password, body.name);
+    if (!ok) { await guard.fail(); return fail('That password isn’t right.', 401); }
     await guard.clear();
-    return json({ ok: true }, 200, { 'Set-Cookie': sessionCookie() });
+    return json({ ok: true, user: ok.user }, 200, { 'Set-Cookie': sessionCookie(ok.user) });
   }
+  // Who can sign in (names only), so the sign-in screen can ask "who are you?"
+  if (action === 'login-options') return json({ people: userNames() });
   // A new application from the website forms (sent by submission-created.mjs)
   if (action === 'ingest' && req.method === 'POST') {
     if (!ingestAllowed(req)) return fail('Not allowed', 403);
@@ -50,13 +54,15 @@ export default async (req, context) => {
   }
   if (action === 'logout') return json({ ok: true }, 200, { 'Set-Cookie': clearCookie() });
 
-  if (!signedIn(req)) return fail('Please sign in.', 401);
+  const who = session(req);
+  if (!who) return fail('Please sign in.', 401);
+  const user = who.user; // '' = signed in with the shared password (no email)
 
   try {
     switch (action) {
       case 'me': {
         const [fa, wave] = await Promise.all([connection('freeagent'), connection('wave')]);
-        return json({ ok: true, preview, statuses: STATUSES, companies: COMPANIES, connections: { freeagent: { ...fa, keys: keysSet('freeagent') }, wave: { ...wave, keys: keysSet('wave') } }, settings: await getSettings() });
+        return json({ ok: true, preview, user, people: userNames(), statuses: STATUSES, companies: COMPANIES, connections: { freeagent: { ...fa, keys: keysSet('freeagent') }, wave: { ...wave, keys: keysSet('wave') } }, settings: await getSettings() });
       }
       case 'apps': return json({ apps: await readIndex(store) });
       case 'app': {
@@ -224,7 +230,7 @@ export default async (req, context) => {
       case 'push-who': return json({ person: await whoIs(String(body.endpoint || '')) });
       case 'push-test': {
         const person = await whoIs(String(body.endpoint || ''));
-        return json(await push(person ? [person] : [], { title: 'Notifications are working ✅', body: `This ${person ? `is ${person}’s` : 'is your'} phone. You’ll get phone messages, new applications, appointment reminders and the 8am summary here.`, url: '/office/#home', tag: 'test' }));
+        return json(await push(person ? [person] : [], { title: 'Notifications are working ✅', body: `This ${person ? `is ${person}’s` : 'is your'} phone. You’ll get new emails, phone messages, new applications, appointment reminders and the 8am summary here.`, url: '/office/#home', tag: 'test' }));
       }
       case 'message-done': return json(await setMessageDone(store, String(body.id || ''), body.done !== false));
       case 'message-delete': return json(await deleteMessage(store, String(body.id || '')));
@@ -238,6 +244,29 @@ export default async (req, context) => {
       case 'diary-change': return json(await changeAppt(store, String(body.id || ''), body, (await getSettings()).diaryPeople));
       case 'diary-cancel': return json(await cancelAppt(store, String(body.id || ''), (await getSettings()).diaryPeople));
       case 'rebuild': return json({ count: await rebuildIndex(store) });
+      // ---------- email (each person only ever sees their own mailboxes and the shared ones) ----------
+      case 'mail-accounts': return json({ accounts: await accountsFor(user), hook: user ? `${new URL(req.url).origin}/office/mail-hook/${mailHookToken()}` : '' });
+      case 'mail-account-add': return json({ account: await addAccount(user, body) });
+      case 'mail-account-update': return json({ account: await updateAccount(user, String(body.id || ''), body) });
+      case 'mail-account-remove': return json(await removeAccount(user, String(body.id || '')));
+      case 'mail': {
+        if (!user) return json({ accounts: [], messages: [], needLogin: true });
+        return json(await inbox(user, { fresh: new URL(req.url).searchParams.get('fresh') === '1' }));
+      }
+      case 'mail-read': {
+        const q = new URL(req.url).searchParams;
+        return json({ message: await readMessage(user, q.get('acc'), q.get('uid')) });
+      }
+      case 'mail-file': {
+        const q = new URL(req.url).searchParams;
+        const f = await attachment(user, q.get('acc'), q.get('uid'), q.get('n'));
+        const safe = f.name.replace(/["\\\r\n]/g, '_');
+        const show = q.get('view') === '1' && /^(image\/(png|jpe?g|gif|webp)|application\/pdf)$/i.test(f.type);
+        return new Response(f.bytes, { headers: { 'Content-Type': f.type, 'Content-Disposition': `${show ? 'inline' : 'attachment'}; filename="${safe}"; filename*=UTF-8''${encodeURIComponent(f.name)}`, 'Cache-Control': 'private, no-store', 'X-Content-Type-Options': 'nosniff', 'Content-Security-Policy': "default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; sandbox" } });
+      }
+      case 'mail-seen': return json(await setSeen(user, String(body.acc || ''), body.uid, body.seen !== false));
+      case 'mail-trash': return json(await trash(user, String(body.acc || ''), body.uid));
+      case 'mail-send': return json(await sendMail(user, body));
       default: return fail('Unknown request', 404);
     }
   } catch (e) {

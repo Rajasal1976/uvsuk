@@ -37,8 +37,13 @@ export async function unsubscribe(endpoint) {
 export async function whoIs(endpoint) { return (await readSubs()).find((s) => s.endpoint === endpoint)?.person || ''; }
 
 // names: ['Sunita'] or [] / null for everyone. note: { title, body, url, tag }
-export async function push(names, note) {
-  const subs = (await readSubs()).filter((s) => !names?.length || names.includes(s.person) || !s.person);
+// strict: only phones set up for those exact people (used for private email notifications, so a
+// phone that hasn't said whose it is never shows someone else's email)
+export async function push(names, note, { strict = false } = {}) {
+  const lower = (names || []).map((n) => String(n).toLowerCase());
+  const subs = (await readSubs()).filter((s) => strict
+    ? !!s.person && (!lower.length || lower.includes(String(s.person).toLowerCase()))
+    : !names?.length || names.includes(s.person) || !s.person);
   if (!subs.length) return { sent: 0 };
   const k = await keys();
   webpush.setVapidDetails('mailto:hello@uvsuk.com', k.publicKey, k.privateKey);
