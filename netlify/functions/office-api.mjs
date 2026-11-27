@@ -7,7 +7,9 @@ import { officeStore, secretStore, readIndex, getRecord, saveRecord, rebuildInde
 import { checkPassword, passwordSet, sessionCookie, clearCookie, signedIn, tooManyTries, ingestAllowed } from '../office/auth.mjs';
 import { readList, addSubscribers, setStatus as setSubStatus, removeSubscriber, parseContacts, readCampaigns, createCampaign, sendBatch, sendTest, summary as campaignSummary, validEmail } from '../office/newsletter.mjs';
 import { readDiary, book, change as changeAppt, cancel as cancelAppt, TYPES as APPT_TYPES, CLIENT_TYPES, readTasks, saveTask, setTaskDone, deleteTask, savePhoto, readPhoto, readMessages, saveMessage, setMessageDone, deleteMessage } from '../office/diary.mjs';
-import { COMPANIES, validateInvoice, createInvoice, connection, keysSet, waveCatalogue, disconnect } from '../office/accounts.mjs';
+import { COMPANIES, validateInvoice, createInvoice, connection, keysSet, waveCatalogue, disconnect, faAllContacts, waveAllCustomers } from '../office/accounts.mjs';
+import { readContacts, importContacts, saveContact, deleteContact } from '../office/contacts.mjs';
+import { getStore } from '@netlify/blobs';
 
 export const config = { path: '/office/api/*' };
 
@@ -186,6 +188,35 @@ export default async (req, context) => {
         const r = await saveMessage(store, body, people);
         if (!body.id && !preview) await messageAlert(people, r.message);
         return json(r);
+      }
+      case 'contacts': return json({ contacts: await readContacts(store) });
+      case 'contact-save': return json(await saveContact(store, body));
+      case 'contact-delete': return json(await deleteContact(store, String(body.id || '')));
+      case 'contacts-import': {
+        const src = ['Zoho Mail', 'Imported file'].includes(body.source) ? body.source : 'Imported file';
+        return json(await importContacts(store, Array.isArray(body.rows) ? body.rows : [], src));
+      }
+      case 'contacts-import-app': {
+        if (body.app === 'freeagent') return json(await importContacts(store, await faAllContacts(), 'FreeAgent'));
+        if (body.app === 'wave') return json(await importContacts(store, await waveAllCustomers(), 'Wave'));
+        if (body.app === 'clients') return json(await importContacts(store, (await readIndex(store)).map((a) => ({ name: a.name ? String(a.name).toLowerCase().replace(/(^|[\s'-])\p{L}/gu, (c) => c.toUpperCase()) : '', company: a.companyName || '', email: a.email, phone: a.phone })), 'Website forms'));
+        return fail('Unknown app');
+      }
+      // Clients who pressed "Save and finish later" on a website form but haven't sent it yet
+      case 'drafts': {
+        const ds = getStore({ name: 'drafts', consistency: 'strong' });
+        const { blobs } = await ds.list({ prefix: 'd/' });
+        const now = new Date().toISOString();
+        const out = [];
+        for (const b of blobs) {
+          const d = await ds.get(b.key, { type: 'json' }).catch(() => null);
+          if (!d?.saved || d.expires < now) continue;
+          const a = d.state?.people?.[0]?.answers || {};
+          out.push({ id: b.key.slice(2, 14), form: d.form, formTitle: d.formTitle || d.form, name: d.name && !/^the main applicant$/i.test(d.name) ? d.name : '', email: d.email,
+            phone: a.phone || a.mobile || a.telephone || a.phoneNumber || '', people: d.state?.people?.length || 1, documents: Object.keys(d.files || {}).length, saved: d.saved, expires: d.expires });
+        }
+        out.sort((x, y) => y.saved.localeCompare(x.saved));
+        return json({ drafts: out });
       }
       case 'push-key': return json({ key: await publicKey() });
       case 'push-subscribe': return json(await subscribe(body.subscription, body.person));

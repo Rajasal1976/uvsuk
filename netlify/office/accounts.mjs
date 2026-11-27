@@ -202,6 +202,36 @@ async function waveCustomer(businessId, bill) {
   return waveCheck(d.customerCreate, 'add the customer').customer.id;
 }
 
+// ---------- contacts for the address book ----------
+export async function faAllContacts() {
+  const out = [];
+  for (let page = 1; page <= 50; page++) {
+    const { contacts = [] } = await faRequest('GET', `/contacts?view=all&per_page=100&page=${page}`);
+    for (const c of contacts) out.push({
+      name: [c.first_name, c.last_name].filter((x) => x && x !== '-').join(' '), company: c.organisation_name || '', email: c.email || c.billing_email || '',
+      phone: c.phone_number || '', mobile: c.mobile || '', address: [c.address1, c.address2, c.address3, c.town, c.region, c.postcode, c.country].filter(Boolean).join(', '),
+    });
+    if (contacts.length < 100) break;
+  }
+  return out;
+}
+export async function waveAllCustomers() {
+  const b = await waveBusiness();
+  const out = [];
+  for (let page = 1; page <= 50; page++) {
+    const d = await waveQuery(`query ($id: ID!, $page: Int!) { business(id: $id) { customers(page: $page, pageSize: 100) {
+      pageInfo { totalPages } edges { node { name firstName lastName email phone mobile address { addressLine1 addressLine2 city postalCode } } } } } }`, { id: b.id, page });
+    const c = d.business.customers;
+    for (const { node: n } of c.edges) {
+      const person = [n.firstName, n.lastName].filter(Boolean).join(' ');
+      out.push({ name: person || n.name, company: person && n.name !== person ? n.name : '', email: n.email || '', phone: n.phone || '', mobile: n.mobile || '',
+        address: [n.address?.addressLine1, n.address?.addressLine2, n.address?.city, n.address?.postalCode].filter(Boolean).join(', ') });
+    }
+    if (page >= (c.pageInfo.totalPages || 1)) break;
+  }
+  return out;
+}
+
 async function waveInvoice(inv, settings) {
   const b = await waveBusiness();
   const mainProduct = settings.waveProductMain, otherProduct = settings.waveProductOther || settings.waveProductMain;

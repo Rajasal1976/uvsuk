@@ -76,7 +76,7 @@ export function mountOffice(root, cfg) {
     root.append(
       h('header', { class: 'of-top' },
         h('div', { class: 'of-brand' }, h('span', {}, 'UVS'), 'Back office'),
-        h('nav', { class: 'of-nav', 'aria-label': 'Back office' }, link('home', 'Home'), link('apps', 'Applications'), link('diary', 'Diary'), link('todo', 'To do'), h('a', { href: '#messages', 'aria-current': current === 'messages' ? 'page' : false }, 'Messages ', h('span', { class: 'badge', hidden: !openMsgs }, String(openMsgs))), link('clients', 'Clients'), link('newsletter', 'Newsletter'), link('new', '+ New record'), link('settings', 'Settings'), h('a', { href: '/admin/' }, 'Edit website ↗'))),
+        h('nav', { class: 'of-nav', 'aria-label': 'Back office' }, link('home', 'Home'), link('apps', 'Applications'), link('diary', 'Diary'), link('todo', 'To do'), h('a', { href: '#messages', 'aria-current': current === 'messages' ? 'page' : false }, 'Messages ', h('span', { class: 'badge', hidden: !openMsgs }, String(openMsgs))), link('clients', 'Clients'), link('contacts', 'Address book'), link('newsletter', 'Newsletter'), link('new', '+ New record'), link('settings', 'Settings'), h('a', { href: '/admin/' }, 'Edit website ↗'))),
       h('main', { class: 'of-main' },
         me?.preview ? h('p', { class: 'of-banner' }, h('strong', {}, 'Test copy. '), 'You’re on a preview of the site, so the records here are test records, kept apart from your real ones. Invoices made here still go to your real FreeAgent and Wave, so delete any test invoices there.') : null,
         ...content));
@@ -86,7 +86,7 @@ export function mountOffice(root, cfg) {
   function route() {
     const [view, ...rest] = (location.hash.slice(1) || 'home').split('/');
     const arg = decodeURIComponent(rest.join('/'));
-    ({ home, apps: appsView, clients, client: () => clientView(arg), app: () => recordView(arg), new: newRecord, newsletter, settings, diary: () => diaryView(arg), todo: () => todoView(arg), messages: messagesView }[view] || home)();
+    ({ home, apps: appsView, clients, client: () => clientView(arg), app: () => recordView(arg), new: newRecord, newsletter, settings, diary: () => diaryView(arg), todo: () => todoView(arg), messages: messagesView, contacts: contactsView }[view] || home)();
   }
   const go = (hash) => { if (location.hash === `#${hash}`) route(); else location.hash = hash; };
 
@@ -135,6 +135,7 @@ export function mountOffice(root, cfg) {
         notifyCard(true),
         todayBox(),
         messagesBox(),
+        draftsBox(),
         box('New applications', fresh.length, mini(fresh, (a) => `${a.formTitle || ''} · ${fmtDate(a.received)}`)),
         box(`Visas expiring in the next ${days} days`, expiring.length, mini(expiring, (a) => `${a.service || a.formTitle || ''} · expires ${fmtDate(a.visaExpiry)}${a.expiryReminded ? ' · reminder sent' : ''}`)),
         box('Draft invoices', drafts.length, mini(drafts, (a) => `${money((a.invoices || []).filter((i) => i.status === 'draft').reduce((s, i) => s + i.total, 0))} in drafts`))));
@@ -562,6 +563,189 @@ export function mountOffice(root, cfg) {
     return sec;
   }
 
+  // ---------- saved forms (clients who pressed "Save and finish later") ----------
+  function draftsBox() {
+    const sec = h('section', { class: 'card', hidden: true });
+    get('drafts').then(({ drafts }) => {
+      if (!drafts.length) return;
+      sec.hidden = false;
+      put(sec, h('h2', {}, 'Saved forms, not sent yet ', h('span', { class: 'muted' }, `(${drafts.length})`)),
+        h('p', { class: 'muted small' }, 'Clients who pressed “Save and finish later” on a website form. Worth a call. They’re kept for 30 days.'),
+        h('ul', { class: 'td-list' }, drafts.map((d) => h('li', { class: 'td-item' },
+          h('div', { class: 'td-text', style: 'cursor:default' },
+            h('div', {}, h('strong', {}, d.name || d.email), ' · ', d.formTitle),
+            h('div', { class: 'small muted' }, [
+              h('a', { href: `mailto:${d.email}` }, d.email),
+              d.phone ? h('a', { href: `tel:${d.phone.replace(/[^\d+]/g, '')}` }, d.phone) : null,
+              `saved ${fmtDateTime(d.saved)}`,
+              d.documents ? `${d.documents} document${d.documents > 1 ? 's' : ''}` : 'no documents yet',
+              d.people > 1 ? `${d.people} people` : null,
+            ].filter(Boolean).flatMap((x, i) => (i ? [' · ', x] : [x])))),
+          h('a', { class: 'btn small', href: `#todo`, onclick: () => { todoView.prefill = { title: `Call ${d.name || d.email} about their saved ${d.formTitle}`, clientName: d.name, clientPhone: d.phone, clientEmail: d.email }; } }, 'To do')))));
+    }).catch(() => {});
+    return sec;
+  }
+
+  // ---------- address book ----------
+  // Read a contacts file: CSV from Zoho Mail, Google, Outlook, FreeAgent, or a vCard (.vcf) from a phone
+  function parseCsv(text) {
+    const rows = []; let row = [], cell = '', q = false;
+    for (let i = 0; i < text.length; i++) {
+      const c = text[i];
+      if (q) { if (c === '"') { if (text[i + 1] === '"') { cell += '"'; i++; } else q = false; } else cell += c; }
+      else if (c === '"') q = true;
+      else if (c === ',' || c === ';' || c === '\t') { row.push(cell); cell = ''; }
+      else if (c === '\n' || c === '\r') { if (c === '\r' && text[i + 1] === '\n') i++; row.push(cell); rows.push(row); row = []; cell = ''; }
+      else cell += c;
+    }
+    if (cell || row.length) { row.push(cell); rows.push(row); }
+    return rows.filter((r) => r.some((x) => x.trim()));
+  }
+  function contactsFromFile(text) {
+    text = text.replace(/^﻿/, '');
+    if (/BEGIN:VCARD/i.test(text)) {
+      return text.replace(/\r?\n[ \t]/g, '').split(/BEGIN:VCARD/i).slice(1).map((card) => {
+        const val = (re) => { const m = card.match(re); return m ? m[1].replace(/\\,/g, ',').replace(/\;/g, ';').trim() : ''; };
+        const all = (re) => [...card.matchAll(re)].map((m) => ({ type: m[1] || '', v: m[2].trim() }));
+        const tels = all(/^TEL([^:]*):(.+)$/gim);
+        const mob = tels.find((t) => /cell|mobile|iphone/i.test(t.type));
+        const n = val(/^N[^:]*:(.+)$/im).split(';');
+        return {
+          name: val(/^FN[^:]*:(.+)$/im) || [n[1], n[0]].filter(Boolean).join(' '),
+          company: val(/^ORG[^:]*:(.+)$/im).split(';')[0],
+          email: val(/^EMAIL[^:]*:(.+)$/im),
+          mobile: mob?.v || '', phone: tels.find((t) => t !== mob)?.v || '',
+          address: val(/^ADR[^:]*:(.+)$/im).split(';').filter(Boolean).join(', '),
+          notes: val(/^NOTE[^:]*:(.+)$/im),
+        };
+      });
+    }
+    const rows = parseCsv(text);
+    if (rows.length < 2) return [];
+    const head = rows[0].map((x) => x.toLowerCase().trim());
+    const col = (...res) => { for (const re of res) { const i = head.findIndex((h0) => re.test(h0)); if (i >= 0) return i; } return -1; };
+    const ci = {
+      first: col(/^first ?name$/, /^given ?name$/, /^first$/), last: col(/^last ?name$/, /^family ?name$/, /^surname$/, /^last$/),
+      full: col(/^(display ?name|full ?name|name|contact ?name)$/),
+      company: col(/^(company|company ?name|organi[sz]ation( name| 1 - name)?|organisation_name)$/),
+      email: col(/^(e-?mail ?address|email|e-?mail 1 - value|primary ?e-?mail|email ?id|e-?mail)$/, /e-?mail/),
+      mobile: col(/^(mobile( ?phone)?|cell( ?phone)?|mobile ?number)$/, /mobile|cell/),
+      phone: col(/^(phone|telephone|business ?phone|work ?phone|home ?phone|phone ?number|phone 1 - value|phone_number)$/, /phone|tel/),
+      address: col(/^(address|business ?address|home ?address|address ?1|street|business ?street|home ?street|address 1 - formatted|mailing ?street|work ?street)$/, /^(?!.*e-?mail).*(address|street)/),
+      city: col(/^(city|town|business ?city|home ?city)$/), postcode: col(/^(post ?code|postal ?code|zip|zip ?code|business ?postal code|home ?postal code)$/),
+      notes: col(/^(notes?|description)$/),
+    };
+    const g = (r, k) => (ci[k] >= 0 ? String(r[ci[k]] || '').trim() : '');
+    return rows.slice(1).map((r) => ({
+      name: g(r, 'full') || [g(r, 'first'), g(r, 'last')].filter(Boolean).join(' '),
+      company: g(r, 'company'), email: g(r, 'email'), phone: g(r, 'phone'), mobile: g(r, 'mobile'),
+      address: [g(r, 'address'), g(r, 'city'), g(r, 'postcode')].filter(Boolean).join(', '), notes: g(r, 'notes'),
+    }));
+  }
+
+  async function contactsView() {
+    frame('contacts', h('p', { class: 'muted' }, 'Loading…'));
+    let list;
+    try { list = (await get('contacts')).contacts; } catch (e) { return frame('contacts', h('p', { class: 'msg err' }, e.message)); }
+    const st = contactsView.st || (contactsView.st = { q: '', src: '', panel: '' });
+    const msg = h('div', { role: 'status', 'aria-live': 'polite' });
+    const ok = (t) => put(msg, h('p', { class: 'msg ok' }, t));
+    const bad = (t) => put(msg, h('p', { class: 'msg err' }, t));
+    const out = h('div');
+    const panel = h('div');
+    const sources = [...new Set(list.flatMap((c) => c.sources || []))];
+    const tel = (n) => (n ? h('a', { href: `tel:${n.replace(/[^\d+]/g, '')}`, onclick: (e) => e.stopPropagation() }, n) : null);
+
+    const editForm = (c = {}) => {
+      const f = {};
+      const field = (k, label, type = 'text') => h('label', { class: 'f' }, label, f[k] = h(type === 'textarea' ? 'textarea' : 'input', type === 'textarea' ? {} : { type, value: c[k] || '', autocomplete: 'off' }, type === 'textarea' ? (c[k] || '') : null));
+      const save = async (btn) => {
+        btn.disabled = true;
+        try { await api('contact-save', { id: c.id, ...Object.fromEntries(Object.entries(f).map(([k, el]) => [k, el.value])) }); contactsView.flash = c.id ? 'Contact saved.' : 'Contact added.'; contactsView(); }
+        catch (e) { btn.disabled = false; bad(e.message); }
+      };
+      return h('section', { class: 'card stack', style: 'gap:10px' }, h('h2', { style: 'margin:0' }, c.id ? 'Edit contact' : 'Add a contact'),
+        h('div', { class: 'fields' }, field('name', 'Name'), field('company', 'Company'), field('email', 'Email', 'email'), field('phone', 'Phone', 'tel'), field('mobile', 'Mobile', 'tel'), field('address', 'Address')),
+        field('notes', 'Notes', 'textarea'),
+        c.sources?.length ? h('p', { class: 'small muted', style: 'margin:0' }, `From: ${c.sources.join(', ')}`) : null,
+        h('div', { class: 'row', style: 'justify-content:space-between' },
+          c.id ? h('button', { class: 'btn link small', onclick: async () => { if (!confirm(`Delete ${c.name || c.company || c.email}?`)) return; await api('contact-delete', { id: c.id }); contactsView.flash = 'Contact deleted.'; contactsView(); } }, 'Delete') : h('span'),
+          h('div', { class: 'row' }, h('button', { class: 'btn', onclick: () => { st.panel = ''; put(panel); } }, 'Cancel'), h('button', { class: 'btn primary', onclick: (e) => save(e.currentTarget) }, 'Save'))));
+    };
+
+    const importPanel = () => {
+      const result = (r) => { contactsView.flash = `${r.added} added, ${r.updated} updated with new details${r.skipped ? `, ${r.skipped} already there` : ''}. ${r.total} contacts in total.`; st.panel = ''; contactsView(); };
+      const fromApp = async (app, btn) => {
+        const label = btn.textContent; btn.disabled = true; btn.textContent = 'Importing…';
+        try { result(await api('contacts-import-app', { app })); } catch (e) { btn.disabled = false; btn.textContent = label; bad(e.message); }
+      };
+      const file = h('input', { type: 'file', accept: '.csv,.vcf,.txt,text/csv,text/vcard', class: 'sr' });
+      file.addEventListener('change', async () => {
+        const fl = file.files[0]; file.value = '';
+        if (!fl) return;
+        try {
+          const rows = contactsFromFile(await fl.text()).filter((r) => r.name || r.company || r.email || r.phone || r.mobile);
+          if (!rows.length) throw new Error('No contacts found in that file. Export it as CSV or vCard and try again.');
+          if (!confirm(`Import ${rows.length} contact${rows.length > 1 ? 's' : ''} from ${fl.name}?`)) return;
+          ok(`Importing ${rows.length} contacts…`);
+          const source = /zoho/i.test(fl.name) || zohoBox.checked ? 'Zoho Mail' : 'Imported file';
+          const sum = { added: 0, updated: 0, skipped: 0, total: 0 };
+          for (let i = 0; i < rows.length; i += 500) {
+            const r = await api('contacts-import', { rows: rows.slice(i, i + 500), source });
+            sum.added += r.added; sum.updated += r.updated; sum.skipped += r.skipped; sum.total = r.total;
+          }
+          result(sum);
+        } catch (e) { bad(e.message); }
+      });
+      const zohoBox = h('input', { type: 'checkbox' });
+      const fa = me.connections?.freeagent?.connected, wave = me.connections?.wave?.connected;
+      return h('section', { class: 'card stack', style: 'gap:12px' }, h('h2', { style: 'margin:0' }, 'Import contacts'),
+        h('p', { class: 'small muted', style: 'margin:0' }, 'Nobody is added twice: the same email or phone number is merged into one contact, and missing details are filled in.'),
+        h('div', { class: 'stack', style: 'gap:8px' },
+          h('div', { class: 'row' }, h('button', { class: 'btn', disabled: !fa, onclick: (e) => fromApp('freeagent', e.currentTarget) }, 'From FreeAgent'), fa ? null : h('span', { class: 'small muted' }, 'Connect FreeAgent in Settings first')),
+          h('div', { class: 'row' }, h('button', { class: 'btn', disabled: !wave, onclick: (e) => fromApp('wave', e.currentTarget) }, 'From Wave'), wave ? null : h('span', { class: 'small muted' }, 'Connect Wave in Settings first')),
+          h('div', { class: 'row' }, h('button', { class: 'btn', onclick: (e) => fromApp('clients', e.currentTarget) }, 'Clients from website forms'))),
+        h('div', { class: 'stack', style: 'gap:6px;border-top:1px solid var(--line);padding-top:12px' },
+          h('strong', {}, 'Zoho Mail, Google, Outlook or your phone'),
+          h('p', { class: 'small muted', style: 'margin:0' }, 'In Zoho Mail open Contacts, choose Export (under ⋯ or ⚙), pick All contacts and CSV or vCard, and save the file. Then upload it here.'),
+          h('label', { class: 'row small', style: 'gap:6px' }, zohoBox, 'This file is from Zoho Mail'),
+          h('div', {}, h('button', { class: 'btn primary', onclick: () => file.click() }, 'Upload a file (CSV or vCard)'), file)),
+        h('div', {}, h('button', { class: 'btn link small', onclick: () => { st.panel = ''; put(panel); } }, 'Close')));
+    };
+
+    const draw = () => {
+      const q = st.q.toLowerCase().replace(/\s+/g, ' ').trim();
+      const qd = q.replace(/\D/g, '');
+      const shown = list.filter((c) => (!st.src || (c.sources || []).includes(st.src)) && (!q
+        || `${c.name} ${c.company} ${c.email} ${c.address} ${c.notes}`.toLowerCase().includes(q)
+        || (qd.length >= 4 && `${c.phone} ${c.mobile}`.replace(/\D/g, '').includes(qd))));
+      let letter = '';
+      put(out, shown.length ? h('ul', { class: 'td-list' }, shown.slice(0, 400).flatMap((c) => {
+        const first = ((c.name || c.company || c.email || '#')[0] || '#').toUpperCase();
+        const headRow = first !== letter ? h('li', { class: 'small muted', style: 'padding:10px 0 2px;font-weight:700' }, (letter = first)) : null;
+        return [headRow, h('li', { class: 'td-item', style: 'cursor:pointer', onclick: () => { st.panel = 'edit'; put(panel, editForm(c)); panel.scrollIntoView({ behavior: 'smooth', block: 'start' }); } },
+          h('div', { class: 'td-text' },
+            h('div', {}, h('strong', {}, c.name || c.company || c.email), c.name && c.company ? h('span', { class: 'muted' }, ` · ${c.company}`) : null),
+            h('div', { class: 'small' }, [tel(c.mobile), tel(c.phone), c.email ? h('a', { href: `mailto:${c.email}`, onclick: (e) => e.stopPropagation() }, c.email) : null].filter(Boolean).flatMap((x, i) => (i ? [' · ', x] : [x]))),
+            c.address ? h('div', { class: 'small muted' }, c.address) : null),
+          h('span', { class: 'small muted', style: 'flex:none;text-align:right' }, (c.sources || []).join(', ')))];
+      })) : null, shown.length > 400 ? h('p', { class: 'small muted' }, `Showing 400 of ${shown.length}. Search to narrow it down.`) : null, shown.length ? null : h('p', { class: 'muted' }, list.length ? 'No contacts match.' : 'No contacts yet. Use Import to bring in FreeAgent, Wave or your Zoho contacts.'));
+    };
+    const search = h('input', { type: 'search', placeholder: 'Search name, company, email or phone', 'aria-label': 'Search contacts', value: st.q, style: 'min-height:46px;font-size:16px' });
+    search.addEventListener('input', () => { st.q = search.value; draw(); });
+    const pill = (on, label, click) => h('button', { type: 'button', class: 'pill small', 'aria-pressed': String(on), onclick: click }, label);
+    frame('contacts',
+      h('div', { class: 'head' }, h('div', {}, h('h1', {}, 'Address book'), h('p', { class: 'muted' }, `${list.length} contact${list.length === 1 ? '' : 's'}`)),
+        h('div', { class: 'row' }, h('button', { class: 'btn', onclick: () => { st.panel = 'import'; put(panel, importPanel()); } }, 'Import'), h('button', { class: 'btn primary', onclick: () => { st.panel = 'edit'; put(panel, editForm()); } }, '+ Add contact'))),
+      msg, panel,
+      h('section', { class: 'card stack', style: 'margin-top:12px' }, search,
+        sources.length > 1 ? h('div', { class: 'pills' }, pill(!st.src, 'All', () => { st.src = ''; contactsView(); }), sources.map((x) => pill(st.src === x, x, () => { st.src = x; contactsView(); }))) : null,
+        out));
+    draw();
+    if (st.panel === 'import') put(panel, importPanel());
+    if (contactsView.flash) { ok(contactsView.flash); contactsView.flash = ''; }
+  }
+
   // ---------- phone messages ----------
   // Take a message for Raj or Sunita (with a screenshot if you like). It stays here until it's ticked as dealt with.
   const nowLocal = () => new Date().toLocaleString('sv-SE', { timeZone: 'Europe/London' }).slice(0, 16).replace(' ', 'T');
@@ -736,6 +920,7 @@ export function mountOffice(root, cfg) {
           : h('section', { class: 'card' }, h('p', { class: 'muted small', style: 'margin:0' }, 'Nothing to do. Type above to add something.')),
         done.length ? h('details', {}, h('summary', { class: 'small muted', style: 'cursor:pointer' }, `Done (${done.length})`), h('ul', { class: 'td-list' }, done.map((t) => todoRow(t, { onChange: redraw })))) : null));
     showLinked(); showDue();
+    if (todoView.prefill) { const pf = todoView.prefill; todoView.prefill = null; text.value = pf.title; more.set(pf); moreBox.hidden = false; moreBtn.hidden = true; text.focus(); }
     if (todoView.flash) { put(msg, h('p', { class: 'msg ok' }, todoView.flash)); todoView.flash = ''; }
     if (client) text.focus();
   }
