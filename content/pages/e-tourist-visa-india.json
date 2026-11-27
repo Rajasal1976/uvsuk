@@ -88,11 +88,6 @@
       "document": "Photo",
       "details": "Recent passport-style photo meeting the Indian specifications",
       "needed": "Required"
-    },
-    {
-      "document": "Travel details",
-      "details": "",
-      "needed": "Required"
     }
   ],
   "shareImage": "/images/uvs-share.jpg"
