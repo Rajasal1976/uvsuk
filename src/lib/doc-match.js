@@ -78,6 +78,31 @@ export function pageDocUploads(entry, existing = []) {
   return out;
 }
 
+// The form's own boxes follow the page too: if the page's table says a document is Required (or
+// If not British), the form's matching box (e.g. its "Flight booking (optional)") becomes required.
+// When one box matches the row, it takes the page's wording, e.g. "Accommodation or invitation".
+export function requireFromPage(entry, own = []) {
+  if (!entry) return own;
+  const out = own.map((u) => ({ ...u }));
+  for (const r of entry.rows || []) {
+    if (!r?.document) continue;
+    const needed = r.needed || 'Required';
+    if (needed !== 'Required' && needed !== 'If not British') continue;
+    const gs = docGroups(r.document).filter((g) => !SKIP_ALWAYS.has(g) && g !== 'photo' && g !== 'ukstatus');
+    if (!gs.length) continue;
+    const hits = out.filter((u) => !u.required && u.name !== 'photo' && !/^any other/i.test(u.label) && docGroups(u.label).some((g) => gs.includes(g)));
+    // "Accommodation or invitation": either will do, so only the first matching box is needed
+    const take = / or /i.test(r.document) ? hits.slice(0, 1) : hits;
+    for (const u of take) {
+      u.required = true;
+      if (needed === 'If not British') u.showIf = u.showIf || { name: 'nationality', isNot: 'United Kingdom' };
+      u.label = take.length === 1 ? r.document : u.label.replace(/\s*\(optional\)/i, '');
+      if (take.length === 1 && r.details) u.hint = r.details;
+    }
+  }
+  return out;
+}
+
 // Build time: read every page's Documents table and group them by the form their Apply button opens.
 // pages: [{ slug, applyButton, documentsTable }]  ->  { 'evisa': [{ match: { destination: 'Kenya' }, rows }] }
 export function collectPageDocs(pages) {

@@ -1,7 +1,7 @@
 // Online application form engine. The questions come from src/data/applications.js.
 import { readPassport, warmUp } from './passport-ocr.js';
 import { countries, commonCountries } from '../data/countries.js';
-import { pickPageDocs, pageDocUploads, LIST_SLOTS } from './doc-match.js';
+import { pickPageDocs, pageDocUploads, requireFromPage, LIST_SLOTS } from './doc-match.js';
 
 const MAX_TOTAL = 7.5 * 1024 * 1024; // Netlify Forms accepts up to 8 MB per submission
 const MAX_PDF = 4 * 1024 * 1024;
@@ -220,13 +220,14 @@ export function mountApplication(root, config, opts = {}) {
   // Documents: the form's own list, plus anything on the visa page's Documents table that the form
   // doesn't already ask for (src/lib/doc-match.js). Proof of UK status adapts to the client's status.
   const visibleUploads = () => {
-    const own = (config.uploads || []).filter((u) => visible(u));
+    const entry = pickPageDocs(config.pageDocs, answers, fromPage);
+    const own = requireFromPage(entry, (config.uploads || []).filter((u) => visible(u))).filter((u) => visible(u));
     const out = [];
     for (const u of own) {
       out.push(u.example === 'ukStatus' ? statusUpload(u, answers.ukStatus) : u);
       if (u.example === 'ukStatus' && answers.ukStatus === REFUGEE) out.push(STATUS2_UPLOAD);
     }
-    const listed = pageDocUploads(pickPageDocs(config.pageDocs, answers, fromPage), own).filter((u) => visible(u));
+    const listed = pageDocUploads(entry, own).filter((u) => visible(u));
     for (const u of listed) out.push(u.example === 'ukStatus' ? statusUpload(u, answers.ukStatus) : u);
     return out.map((u) => (p > 0 && u.name !== 'photo' ? { ...u, required: false } : u));
   };
