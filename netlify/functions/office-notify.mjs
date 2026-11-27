@@ -5,6 +5,7 @@
 import { officeStore, secretStore, readIndex } from '../office/store.mjs';
 import { readDiary, readTasks, readMessages } from '../office/diary.mjs';
 import { push, email } from '../office/notify.mjs';
+import { purgeDrafts } from './apply-draft.mjs';
 
 export const config = { schedule: '*/15 * * * *' };
 
@@ -37,6 +38,7 @@ export default async () => {
   const doneKey = `notify/summary-${now.date}`;
   if (await store.get(doneKey)) return new Response('already sent');
   await store.set(doneKey, new Date().toISOString());
+  await purgeDrafts().catch((e) => console.error('Clearing old saved forms failed:', e.message));
 
   const tasks = (await readTasks(store)).filter((t) => !t.done && t.due <= now.date);
   const oldReminders = (await readIndex(store)).flatMap((r) => (r.openReminders || []).filter((x) => x.due <= now.date).map((x) => ({ title: `${x.text} (${r.name})`, due: x.due, who: '' })));

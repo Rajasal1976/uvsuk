@@ -113,6 +113,22 @@ async function compressImage(file, maxSide = 2000, quality = 0.85) {
 // ---------- the form ----------
 export function mountApplication(root, config, opts = {}) {
   const storeKey = `uvs-apply-${config.slug}`;
+  const draftKey = `${storeKey}-draft`;
+  const resumeToken = !opts.resumed ? new URLSearchParams(location.search).get('resume') : '';
+  if (resumeToken && /^[a-f0-9]{48}$/.test(resumeToken)) {
+    root.innerHTML = '<p class="ap-note">Loading your saved application…</p>';
+    loadDraft(resumeToken).then(({ state, files }) => {
+      sessionStorage.setItem(storeKey, JSON.stringify(state));
+      if (state.fromPage) sessionStorage.setItem(`${storeKey}-from`, state.fromPage);
+      sessionStorage.setItem(draftKey, resumeToken);
+      history.replaceState(null, '', location.pathname);
+      mountApplication(root, config, { ...opts, resumed: files });
+    }).catch((e) => {
+      history.replaceState(null, '', location.pathname);
+      mountApplication(root, config, { ...opts, resumed: null, resumeError: e.message });
+    });
+    return;
+  }
   // The visa page the client came from, so the form can ask for the documents on that page's table
   let fromPage = '';
   try {
@@ -241,6 +257,12 @@ export function mountApplication(root, config, opts = {}) {
   const activeFiles = () => Object.entries(files).filter(([slot]) => slotInfo(slot)).sort(([a], [b]) => SLOT_ORDER.indexOf(a) - SLOT_ORDER.indexOf(b));
   const safeName = (t) => t.replace(/[^\w\s().,-]/g, '').replace(/\s+/g, ' ').trim().slice(0, 80);
 
+  if (opts.resumed) {
+    opts.resumed.forEach((f, i) => { if (people[i]) Object.assign(people[i].files, f); });
+    ({ files } = people[p]);
+    if (files.passport?.type?.startsWith('image/')) passportPreview = URL.createObjectURL(files.passport);
+  }
+
   // ---------- layout ----------
   root.innerHTML = '';
   const sideList = h('ol', { class: 'ap-steps' });
@@ -253,7 +275,8 @@ export function mountApplication(root, config, opts = {}) {
       h('aside', { class: 'ap-side', 'aria-label': 'Steps' }, sideHead, sideList),
       h('div', { class: 'ap-main' },
         h('div', { class: 'ap-progress' }, progressText, progressBar),
-        restored ? h('div', { class: 'ap-note' }, 'We’ve kept the answers you gave earlier in this browser tab. ',
+        opts.resumeError ? h('div', { class: 'ap-note' }, opts.resumeError) : null,
+        opts.resumed ? h('div', { class: 'ap-note' }, 'Welcome back. We’ve brought back your saved application, including the documents you added.') : restored ? h('div', { class: 'ap-note' }, 'We’ve kept the answers you gave earlier in this browser tab. ',
           h('button', { type: 'button', class: 'ap-link', onclick: () => { sessionStorage.removeItem(storeKey); location.reload(); } }, 'Start again')) : null,
         stage)),
   );
@@ -746,11 +769,82 @@ export function mountApplication(root, config, opts = {}) {
     const nextLabel = step.id === 'review' ? 'Send application' : steps[current + 1]?.id === 'review' ? 'Check your answers' : 'Continue';
     const next = h('button', { type: 'button', class: 'btn btn-primary ap-next', onclick: onNext }, nextLabel);
     stage.append(h('div', { class: 'ap-nav' }, back, next));
-    if (step.id !== 'review') stage.append(h('p', { class: 'ap-saved' }, 'Your answers are saved in this browser tab as you go.'));
+    stage.append(saveLaterBlock());
 
     renderSide();
     if (focus) { head.querySelector('h2').focus({ preventScroll: true }); root.scrollIntoView({ block: 'start', behavior: 'smooth' }); }
     if (step.passportScan) warmUp();
+  }
+
+  // ---------- save and finish later ----------
+  const sentFiles = new WeakMap(); // File -> key, so documents already saved aren't sent again
+  function saveLaterBlock() {
+    const box = h('div', { class: 'ap-later' });
+    const closed = () => box.replaceChildren(h('p', { class: 'ap-saved' }, 'Don’t have everything yet? ',
+      h('button', { type: 'button', class: 'ap-link', onclick: open }, 'Save and finish later'), ' and we’ll email you a link.'));
+    const open = () => {
+      const email = h('input', { type: 'email', class: 'ap-input', autocomplete: 'email', value: people[0].answers.email || '', 'aria-label': 'Your email address', placeholder: 'Your email address' });
+      const msg = h('p', { class: 'ap-later-msg', role: 'status', 'aria-live': 'polite' });
+      const btn = h('button', { type: 'button', class: 'btn btn-primary' }, 'Save and email me the link');
+      btn.addEventListener('click', async () => {
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value.trim())) { msg.textContent = 'Please enter your email address.'; email.focus(); return; }
+        btn.disabled = true; msg.textContent = 'Saving…';
+        try {
+          const r = await saveDraft(email.value.trim(), (t) => { msg.textContent = t; });
+          const until = new Date(r.expires).toLocaleDateString('en-GB', { day: 'numeric', month: 'long' });
+          box.replaceChildren(h('div', { class: 'ap-note' }, h('strong', {}, 'Saved. '),
+            r.emailed ? `We’ve emailed a link to ${email.value.trim()}. Open it any time before ${until} to carry on where you left off.` : `Keep this link to carry on before ${until}: `,
+            r.emailed ? null : h('a', { href: r.link }, `${location.origin}${r.link}`),
+            h('br'), h('small', {}, 'Can’t see the email? Check your junk folder.')));
+        } catch (e) { btn.disabled = false; msg.textContent = e.message; }
+      });
+      email.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); btn.click(); } });
+      box.replaceChildren(h('div', { class: 'ap-later-form' },
+        h('p', { style: 'margin:0 0 8px' }, h('strong', {}, 'Save and finish later'), h('br'), h('small', {}, 'We’ll keep your answers and the documents you’ve added for 30 days, and email you a link to come back.')),
+        h('div', { class: 'ap-later-row' }, email, btn), msg,
+        h('button', { type: 'button', class: 'ap-link', onclick: closed }, 'Cancel')));
+      email.focus();
+    };
+    closed();
+    return box;
+  }
+
+  async function draftCall(path, body) {
+    const res = await fetch(`/apply-draft/${path}`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Apply': '1' }, body: JSON.stringify(body) });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) throw new Error(data.error || `Couldn’t save (${res.status}). Please try again.`);
+    return data;
+  }
+
+  async function saveDraft(email, progress) {
+    let token = sessionStorage.getItem(draftKey) || '';
+    if (!token) { token = (await draftCall('start', { form: config.slug, email })).token; sessionStorage.setItem(draftKey, token); }
+    people[p].furthest = furthest;
+    const all = people.flatMap((x, i) => Object.entries(x.files).map(([slot, f]) => ({ i, slot, f })));
+    let n = 0;
+    const fileMaps = people.map(() => ({}));
+    for (const { i, slot, f } of all) {
+      let key = sentFiles.get(f);
+      if (!key) {
+        progress(`Saving documents (${++n} of ${all.filter((x) => !sentFiles.has(x.f)).length + n - 1})…`);
+        key = Math.random().toString(36).slice(2, 12) + Date.now().toString(36);
+        const res = await fetch(`/apply-draft/file?t=${token}&k=${key}`, { method: 'POST', headers: { 'X-Apply': '1', 'X-Name': encodeURIComponent(f.name), 'X-Type': f.type || '' }, body: f });
+        if (!res.ok) {
+          if (res.status === 404) sessionStorage.removeItem(draftKey);
+          throw new Error((await res.json().catch(() => ({}))).error || 'A document couldn’t be saved. Please try again.');
+        }
+        sentFiles.set(f, key);
+      }
+      fileMaps[i][slot] = { key, name: f.name, type: f.type };
+    }
+    progress('Saving your answers…');
+    const state = { p, current, fromPage, people: people.map((x, i) => ({ answers: x.answers, autofilled: [...x.autofilled], same: x.same, labels: x.labels, furthest: x.furthest, files: fileMaps[i] })) };
+    try {
+      return await draftCall('save', { token, email, form: config.slug, formTitle: config.title, name: personName(0), state });
+    } catch (e) {
+      if (/expired/i.test(e.message)) sessionStorage.removeItem(draftKey);
+      throw e;
+    }
   }
 
   function go(i) {
@@ -838,6 +932,8 @@ export function mountApplication(root, config, opts = {}) {
       }
       ({ p, answers, files, autofilled } = keep);
       sessionStorage.removeItem(storeKey);
+      const draft = sessionStorage.getItem(draftKey);
+      if (draft) { sessionStorage.removeItem(draftKey); fetch('/apply-draft/delete', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Apply': '1' }, body: JSON.stringify({ token: draft }) }).catch(() => {}); }
       done(base, names[0], total);
     } catch (e) {
       ({ p, answers, files, autofilled } = keep);
@@ -861,6 +957,24 @@ export function mountApplication(root, config, opts = {}) {
   }
 
   renderStep(false);
+}
+
+// Fetch a saved application and its documents from an emailed "finish later" link
+async function loadDraft(token) {
+  const res = await fetch(`/apply-draft/load?t=${token}`);
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || 'We couldn’t open your saved application. Please start again or call us.');
+  const state = data.state || {};
+  const files = await Promise.all((state.people || []).map(async (person) => {
+    const out = {};
+    for (const [slot, f] of Object.entries(person.files || {})) {
+      const r = await fetch(`/apply-draft/file?t=${token}&k=${f.key}`);
+      if (r.ok) out[slot] = new File([await r.blob()], decodeURIComponent(f.name || 'document'), { type: f.type || 'application/octet-stream' });
+    }
+    return out;
+  }));
+  for (const person of state.people || []) delete person.files;
+  return { state, files };
 }
 
 function passportIcon() {
